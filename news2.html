@@ -82,9 +82,6 @@
       </section>
     </nav>
   </div>
-</section>
-</nav>
-</div>
 
 <!-- News -->
 <div class="row">
@@ -98,17 +95,24 @@
 <!-- Row 1 -->
 
 <div class="row">
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <a href="?id=0">
       <div class="panel" id="selectedborder1">
         <p id="news1"></p>
       </div>
     </a>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <a href="?id=1">
       <div class="panel" id="selectedborder2">
         <p id="news2"></p>
+      </div>
+    </a>
+  </div>
+  <div class="large-4 columns">
+    <a href="?id=2">
+      <div class="panel" id="selectedborder3">
+        <p id="news3"></p>
       </div>
     </a>
   </div>
@@ -117,24 +121,24 @@
 <!-- Row 2 -->
 
 <div class="row">
-  <div class="small-4 columns">
-    <a href="?id=2">
-      <div class="panel" id="selectedborder3">
-        <p id="news3"></p>
-      </div>
-    </a>
-  </div>
-  <div class="small-4 columns">
+  <div class="large-4 columns">
     <a href="?id=3">
       <div class="panel" id="selectedborder4">
         <p id="news4"></p>
       </div>
     </a>
   </div>
-  <div class="small-4 columns">
+  <div class="large-4 columns">
     <a href="?id=4">
       <div class="panel" id="selectedborder5">
         <p id="news5"></p>
+      </div>
+    </a>
+  </div>
+  <div class="large-4 columns">
+    <a href="?id=5">
+      <div class="panel" id="selectedborder6">
+        <p id="news6"></p>
       </div>
     </a>
   </div>
@@ -155,10 +159,9 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="panel">
-    <p id= "article"></p>
+      <p id= "article"></p>
+    </div>
   </div>
-  </div>
-</div>
 </div>
 
 
@@ -236,7 +239,7 @@ jQuery(function() {
   jQuery.getFeed({
     url: 'faffeed.xml',
     success: function(feed) {
-      for(var i = 0; i < feed.items.length && i < 2; i++) {
+      /*for(var i = 0; i < feed.items.length && i < 2; i++) {
 
         var html = '';
 
@@ -256,9 +259,9 @@ jQuery(function() {
         + '</p>';
 
         jQuery('#news' + (i+1)).append(html);
-      }
+      }*/
 
-      for(var i = 2; i < feed.items.length && i < 5; i++) {
+      for(var i = 0; i < feed.items.length && i < 7; i++) {
 
         var html = '';
 
@@ -300,9 +303,9 @@ function getArticle() {
 
         var item = feed.items[i];
 
-        html += '<h3>'
+        html += '<h2>'
         + item.title
-        + '</h3>';
+        + '</h2>';
 
         html += '<small><i>'
         + item.updated
