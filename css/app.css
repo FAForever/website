@@ -1,0 +1,173 @@
+body {
+	background: #333;
+}
+
+footer {
+	color: #999999;
+}
+
+.coloragainstback h1, h2 {
+    color: #fff;
+}
+
+.coloragainstback h3 {
+    color: #ccc;
+}
+
+#modalTitle { 
+    color: #000;
+}
+
+/* Navigation */
+/*
+.top-bar {
+	line-height: 3rem;
+}
+.top-bar-section ul li > a {
+	font-size: 1rem;
+}
+
+.top-bar .name h1 a, .top-bar .name h2 a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {
+	font-size: 1.5rem;
+}
+
+.top-bar-text  {
+    font-size: 0.8125rem;
+    padding-top: 0.9rem;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    background-color: #008CBA;
+    border-color: #007095;
+    color: #FFFFFF;
+}
+*/
+/* Pricing table */
+
+.pricing-table li > h1 {
+    color: #fff;
+}
+
+/* Carousel */
+.carousel {
+	background: #fff;
+	text-align: center;
+}
+
+/*
+.slick-prev {
+	top: 50%;
+	margin-top: -50px;
+	left: -50px;
+}
+
+.slick-next {
+	top: 50%;
+	margin-top: -50px;
+	right: -50px;
+}
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+    color: transparent;
+    outline: none;
+    background: url('../img/bestarroweverholyshit.png') no-repeat;
+}
+
+.slick-prev:before {
+  content: '';
+  display: block;
+  height: 100px;
+  width: 50px;
+  background: url('../img/bestarroweverholyshit.png') no-repeat;
+}
+
+.slick-next:before {
+  content: '';
+  display: block;
+  height: 100px;
+  width: 50px;
+  background: url('../img/bestarroweverholyshit.png') no-repeat;
+}
+*/
+
+.slick-dots
+{
+    position: absolute;
+    bottom: -15px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 40px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 40px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 12px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 40px;
+    height: 20px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: .75;
+    color: black;
+}
