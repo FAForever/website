@@ -267,12 +267,15 @@ jQuery(function() {
 
         var item = feed.items[i];
 
+        var newDate = item.updated;
+        newDate = newDate.substr(0, newDate.length-15);
+
         html += '<h4>'
         + item.title
         + '</h4>';
 
         html += '<small><i>'
-        + item.updated
+        + newDate
         + '</i></small>'
 
         jQuery('#news' + (i+1)).append(html);
@@ -303,12 +306,15 @@ function getArticle() {
 
         var item = feed.items[i];
 
+        var newDate = item.updated;
+        newDate = newDate.substr(0, newDate.length-15);
+
         html += '<h2>'
         + item.title
         + '</h2>';
 
         html += '<small><i>'
-        + item.updated
+        + newDate
         + '</i></small>'
         + '<br>';
 
