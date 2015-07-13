@@ -22,6 +22,12 @@ p {
     color: #ccc;
 }
 
+/* Video */
+
+.flex-video {
+    padding: 29.664%;
+}
+
 /* Fonts */
 
 @font-face {
