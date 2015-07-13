@@ -43,7 +43,10 @@
         <!-- Right Nav Section -->
         <ul class="right">
 
-          <li><a href="downloads.html" class="button radius">Play now!</a></li>
+          <li><a href="downloads.html" class="button radius">Download Now!</a></li>
+
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;</li>
 
           <li><a target="_blank" rel="nofollow" href="http://www.facebook.com/ForgedAllianceForever" class="socialicons social-Facebook" title="Facebook"><img alt="Facebook" src="http://www.faforever.com/wp-content/themes/mantra/images/socials/Facebook.png" /></a>
           </li>
@@ -96,57 +99,73 @@
     </div>
   </div>
 
+<br>
+
   <!-- Row 1 -->
 
-  <div class="row">
-    <div class="large-4 columns">
-      <a href="?id=0">
-        <div class="panel radius" id="selectedborder1">
-          <p id="news1"></p>
-        </div>
-      </a>
-    </div>
-    <div class="large-4 columns">
-      <a href="?id=1">
-        <div class="panel radius" id="selectedborder2">
-          <p id="news2"></p>
-        </div>
-      </a>
-    </div>
-    <div class="large-4 columns">
-      <a href="?id=2">
-        <div class="panel radius" id="selectedborder3">
-          <p id="news3"></p>
-        </div>
-      </a>
+  <!--<div class="row">
+    <div class="large-12 columns">
+      <ul class="accordion" data-accordion>
+        <li class="accordion-navigation">
+          <a href="#panel1a"><center><h1>News</h1></center></a>
+          <div id="panel1a" class="content active">
+-->
+            <div class="row">
+              <div class="large-4 columns">
+                <a href="?id=0">
+                  <div class="panel radius" id="selectedborder1">
+                    <p id="news1"></p>
+                  </div>
+                </a>
+              </div>
+              <div class="large-4 columns">
+                <a href="?id=1">
+                  <div class="panel radius" id="selectedborder2">
+                    <p id="news2"></p>
+                  </div>
+                </a>
+              </div>
+              <div class="large-4 columns">
+                <a href="?id=2">
+                  <div class="panel radius" id="selectedborder3">
+                    <p id="news3"></p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+
+            <div class="row">
+              <div class="large-4 columns">
+                <a href="?id=3">
+                  <div class="panel radius" id="selectedborder4">
+                    <p id="news4"></p>
+                  </div>
+                </a>
+              </div>
+              <div class="large-4 columns">
+                <a href="?id=4">
+                  <div class="panel radius" id="selectedborder5">
+                    <p id="news5"></p>
+                  </div>
+                </a>
+              </div>
+              <div class="large-4 columns">
+                <a href="?id=5">
+                  <div class="panel radius" id="selectedborder6">
+                    <p id="news6"></p>
+                  </div>
+                </a>
+              </div>
+            </div>
+      <!--    </div>
+        </li>
+      </ul>
     </div>
   </div>
-
-  <!-- Row 2 -->
-
-  <div class="row">
-    <div class="large-4 columns">
-      <a href="?id=3">
-        <div class="panel radius" id="selectedborder4">
-          <p id="news4"></p>
-        </div>
-      </a>
-    </div>
-    <div class="large-4 columns">
-      <a href="?id=4">
-        <div class="panel radius" id="selectedborder5">
-          <p id="news5"></p>
-        </div>
-      </a>
-    </div>
-    <div class="large-4 columns">
-      <a href="?id=5">
-        <div class="panel radius" id="selectedborder6">
-          <p id="news6"></p>
-        </div>
-      </a>
-    </div>
-  </div>
+-->
+  <br>
 
   <!-- More... -->
 
@@ -167,7 +186,7 @@
     </div>
   </div>
 
-  <div class="row"><hr/></div>
+  <div class="row"><div class="small-6 small-centered columns"><hr/></div></div>
   <br>
 
   <!-- Article -->
@@ -319,6 +338,7 @@ function getArticle() {
 
         var element = document.getElementById('selectedborder' + (Number(i)+1));
         element.style.border = "5px solid #008CBA";
+        element.style.margin = "0px";
 
         var item = feed.items[i];
 

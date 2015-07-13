@@ -7,7 +7,7 @@ footer {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'BebasNeue';
+    font-family: 'supcom';
 }
 
 p {
@@ -20,6 +20,20 @@ p {
 
 .coloragainstback h3 {
     color: #ccc;
+}
+
+.superrow {
+    max-width: 100%;
+    background-color: #ccc;
+}
+
+.superrow2 {
+    max-width: 100%;
+    background-color: #222;
+}
+
+.selectedborder {
+    margin: 5px;
 }
 
 /* Video */
@@ -41,21 +55,17 @@ p {
     font-weight: bold;
 }
 
+@font-face {
+    font-family: 'supcom';
+    src: url('../fonts/zeroes_3.ttf');
+}
+
 /* Entypo pictograms by Daniel Bruce — www.entypo.com */
 
 @font-face {
     font-family: Entypo;
     src: url('../fonts/Entypo.otf');
 }
-
-
-
-/* Top bar button
-
-.top-bar-section ul li > a.button {
-    font-family: BebasNeue;
-}
-*/
 
 /* Pricing table */
 
@@ -148,3 +158,38 @@ p {
     opacity: .75;
     color: black;
 }
+
+/* Accordion 
+
+.accordion {
+    margin-bottom: 0;
+}
+.accordion:before, .accordion:after {
+    content: " ";
+    display: table;
+}
+.accordion:after {
+    clear: both;
+}
+.accordion .accordion-navigation > a {
+    background: #333;
+    max-width: 20rem;
+}
+.accordion .accordion-navigation h1 {
+    color: white;
+}
+.accordion .accordion-navigation, .accordion dd {
+    display: block;
+    margin-bottom: 0 !important;
+}
+.accordion .accordion-navigation > a:hover, .accordion dd > a:hover {
+    background: #222;
+}
+.accordion .accordion-navigation > .content, .accordion dd > .content {
+    display: none;
+    padding: 0.9375rem;
+}
+.accordion .accordion-navigation > .content.active, .accordion dd > .content.active {
+    background: #333;
+    display: block;
+}*/
