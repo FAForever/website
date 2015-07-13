@@ -13,6 +13,9 @@
   <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 
+  <!-- Google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
   <!-- Custom stylesheet -->
   <link rel="stylesheet" href="css/app.css">
 
@@ -33,13 +36,7 @@
         <!-- Right Nav Section -->
         <ul class="right">
 
-          <li class="has-dropdown">
-            <a>Statistics</a>
-            <ul class="dropdown">
-              <li><a>Players online: over 9000</a></li>
-              <li><a>Games online: over 9000</a></li>
-            </ul>
-          </li>
+          <li><a href="downloads.html" class="button">Play now!</a></li>
 
           <li><a target="_blank" rel="nofollow" href="http://www.facebook.com/ForgedAllianceForever" class="socialicons social-Facebook" title="Facebook"><img alt="Facebook" src="http://www.faforever.com/wp-content/themes/mantra/images/socials/Facebook.png" /></a>
           </li>
@@ -48,7 +45,6 @@
         <!-- Left Nav Section -->
         <ul class="left">
           <li><a href="news.html">News</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
           <li class="has-dropdown">
             <a href="#">Documentation</a>
             <ul class="dropdown">
@@ -89,8 +85,8 @@
   <div class="row">
     <div class="large-12 columns">
       <div class="coloragainstback">
-        <h1>Forged Alliance Forever</h1>
-        <h3>The community-driven lobby for Supreme Commander: Forged Alliance</h3>
+        <h1><center>Forged Alliance Forever</center></h1>
+        <h3><center>The community-driven lobby for Supreme Commander: Forged Alliance</center></h3>
       </div>
     </div>
   </div>
@@ -115,14 +111,12 @@
     </div>
   </div>
 
-  <!-- Another Carousel -->
-  <div class = "row">
-    <div class="carousel">
-      <div><img src="http://placehold.it/1000x500/A92B48/fff" alt="slide 1" align = center/></div>
-      <div><img src="http://placehold.it/1000x500/EE964D/fff" alt="slide 2" align = center/></div>
-      <div><img src="http://placehold.it/1000x500/FDC43D/fff" alt="slide 3" align = center/></div>
-    </div>
+  <!-- Picture of FAF client -->
+  <div class="row">
+      <img src="http://placehold.it/1000x500"/>
   </div>
+
+  <br>
 
   <!-- FAF Client -->
 
@@ -199,6 +193,8 @@
 $(document).ready(function(){
   $('.carousel').slick({
     dots: true,
+    arrows: false,
+    autoplay: true
   });
 });
 </script>
