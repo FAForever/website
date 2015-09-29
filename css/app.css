@@ -24,6 +24,7 @@ p {
 
 /* "Download Now" button */
 
+/* Hover Color
 .top-bar-section ul li:hover:not(.has-form) > a {
     background-color: #264856;
 }
