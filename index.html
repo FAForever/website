@@ -16,6 +16,9 @@
   <!-- Google fonts -->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
+  <!-- Foundation Icons -->
+  <link rel="stylesheet" href="css/foundation-icons.css">
+
   <!-- Custom stylesheet -->
   <link rel="stylesheet" href="css/app.css">
 
@@ -24,7 +27,8 @@
 <body>
 
   <!-- Navbar -->
-  <div class="sticky">
+  
+  <div class="contain-to-grid sticky">
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
@@ -34,14 +38,17 @@
       </ul>
 
       <section class="top-bar-section">
+
         <!-- Right Nav Section -->
+
         <ul class="right">
 
-          <li><a href="downloads.html" class="button radius">Download Now!</a></li>
+          <li><a href="downloads.html" class="button alert radius"><i class="fi-download"></i> Download Now</a></li>
           <li>&nbsp;</li>
         </ul>
 
         <!-- Left Nav Section -->
+
         <ul class="left">
           <li><a href="news.html">News</a></li>
           <li class="has-dropdown">
@@ -80,172 +87,200 @@
   </div>
 
   <!-- Title -->
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="coloragainstback">
-        <h1 id="titlefont"><center>Forged Alliance Forever</center></h1>
-        <h3 id="titlefont"><center>The community-driven lobby for Supreme Commander: Forged Alliance</center></h3>
+
+  <div class = "superrow">
+    <center>
+      <div class="intro">
+        <h1 id="titlefont" style="color:#fff">Forged Alliance Forever</h1>
+        <h3 id="titlefont" style="color:#999">The community-driven lobby for Supreme Commander: Forged Alliance</h3>
+      </div>
+    </center>
+
+    <!-- Description -->
+
+    <div class="superrow" style="background-color:#fff">
+      <br>
+      <br>
+      <div class = "row">
+        <div class="large-8 large-centered columns">
+          <center><span id="intro-text">
+            - The Project -
+          </span></center>
+        </div>
+      </div>
+
+      <div class = "row">
+        <div class="large-8 large-centered columns">
+          <center><p style="color:#000;">
+            (this is direct quote from old site, it sucks)
+            Forged Alliance Forever (commonly abbreviated to FAF) is a community-driven project designed to ensure that Forged Alliance will live on… forever. It is a complete lobby client system, similar to that of GPGNet was, the default client provided with Forged Alliance, but with many improvements.
+          </p></center>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <!-- Features boxes -->
+
+    <div class = "superrow" style="background-color:#999">
+
+      <br>
+
+      <div class = "row">
+        <div class="large-6 columns">
+          <center>
+            <div class="panel" id ="rounded">
+              <span id="intro-text">
+                <i class="fi-web"></i>
+                Multiplayer
+              </span>
+              <p>Placeholder description</p>
+            </div>
+          </center>
+        </div>
+        <div class="large-6 columns">
+          <center>
+            <div class="panel" id ="rounded">
+              <span id="intro-text">
+                <i class="fi-dollar"></i>
+                Non-Profit
+              </span>
+              <p>Placeholder description</p>
+            </div>
+          </center>
+        </div>
+      </div>
+
+      <div class = "row">
+        <div class="large-6 columns">
+          <center>
+            <div class="panel" id ="rounded">
+              <span id="intro-text">
+                <i class="fi-torsos-all"></i>
+                Community
+              </span>
+              <p>Placeholder description</p>
+            </div>
+          </center>
+        </div>
+        <div class="large-6 columns">
+          <center>
+            <div class="panel" id ="rounded">
+              <span id="intro-text">
+                <i class="fi-wrench"></i>
+                Modding
+              </span>
+              <p>Placeholder description</p>
+            </div>
+          </center>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- Carousel -->
+
+      <div class = "row">
+        <div class="large-12 columns">
+          <div class="carousel">
+            <div><img src="img/seravsuef.png" alt="slide 1" align = center/></div>
+            <div><img src="img/aeonbase.png" alt="slide 2" align = center/></div>
+            <div><img src="img/cybranvssera.png" alt="slide 3" align = center/></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Third section -->
+
+    <div class="superrow" style="background-color:#fff">
+      <br>
+      <div class="row">
+        <div class="large-12 columns">
+          <br>
+          <center><span id="intro-text">
+            - Supreme Commander: Forged Alliance -
+          </span>
+          <br>
+          <br>
+          <p>A few paragraphs about the game itself. Maybe some picture of an ACU with a transparent background or so</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed rhoncus arcu. Mauris id aliquam ante. Fusce ornare odio at nisi cursus luctus. Aliquam porttitor ligula bibendum nulla bibendum, id cursus enim lobortis. Integer lobortis ac arcu dapibus dictum. Integer tempor augue et augue pulvinar, eget maximus purus molestie. Integer sagittis erat ut nibh cursus vulputate. Etiam sit amet varius eros, </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed rhoncus arcu. Mauris id aliquam ante. Fusce ornare odio at nisi cursus luctus. Aliquam porttitor ligula bibendum nulla bibendum, id cursus enim lobortis. Integetis.</p>
+        </center>
       </div>
     </div>
+    <br>
   </div>
 
-  <!-- Carousel -->
-  <div class = "row">
-    <div class="large-12 columns">
-    <div class="carousel">
-      <div><img src="http://placehold.it/1000x500/A92B48/fff" alt="slide 1" align = center/></div>
-      <div><img src="http://placehold.it/1000x500/EE964D/fff" alt="slide 2" align = center/></div>
-      <div><img src="http://placehold.it/1000x500/FDC43D/fff" alt="slide 3" align = center/></div>
-    </div>
-  </div>
-  </div>
+  <!-- Ending section -->
 
-  <!-- What is supcom -->
-
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="panel">
-        <h3>Supreme Commander: Forged Alliance</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed rhoncus arcu. Mauris id aliquam ante. Fusce ornare odio at nisi cursus luctus. Aliquam porttitor ligula bibendum nulla bibendum, id cursus enim lobortis. Integer lobortis ac arcu dapibus dictum. Integer tempor augue et augue pulvinar, eget maximus purus molestie. Integer sagittis erat ut nibh cursus vulputate. Etiam sit amet varius eros, vitae laoreet risus. Donec hendrerit turpis lobortis ante congue tincidunt. Quisque tristique lacinia elit, in elementum nisi porttitor in. Fusce scelerisque nulla massa, at commodo libero ultrices eu. Aenean elementum dui sed dignissim rhoncus. In finibus pellentesque vehicula. Aliquam eget eros non diam gravida venenatis.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Picture of FAF client -->
-  <div class ="superrow">
   <div class="row">
     <br>
     <div class="large-12 columns">
-    <center><img src="http://placehold.it/1000x500/fff"/></center>
+      <div class="flex-video">
+        <iframe src="http://www.youtube.com/embed/_ouejDOElfQ" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <br>
+      <div class="panel" id="rounded">
+        <center>
+          <span id="intro-text">
+            Buy SC:FA from Steam
+          </span>
+          <br>
+          <br>
+          <a href="http://store.steampowered.com/app/9420/"><img src="http://placehold.it/150x50/fff" alt="slide 1" align = center/></a>
+          <br>
+          <br>
+          <span id="intro-text">
+            Download FA Forever Client
+          </span>
+          <br>
+          <br>
+          <a href="downloads.html" class="button alert radius"><i class="fi-download"></i> Download Now</a>
+          <br>
+          <br>
+        </center>
+      </div>
+    </div>
   </div>
-</div>
-  
-  <div class="row"><br></div>
 
-  <!-- Description -->
+  <!-- Footer -->
 
-  <div class="row">
+  <footer class="row">
     <div class="large-12 columns">
-      <div class="panel">
-        <h3>Forged Alliance Forever</h3>
-        <p>Duis convallis felis in ultricies lobortis. Ut id mi rhoncus, sollicitudin lectus nec, consectetur massa. Phasellus id nunc non metus efficitur convallis a nec urna. Etiam consequat, elit at cursus feugiat, erat est varius ex, eget varius dui elit ac libero. Cras sagittis augue nulla, nec pulvinar odio scelerisque non. Nulla facilisi. Pellentesque congue libero sed leo fringilla, et tincidunt lorem tempor. Mauris viverra dui eget faucibus auctor. Suspendisse viverra nisi at velit rhoncus dictum. Fusce nec ligula dictum, luctus diam quis, malesuada justo. Etiam hendrerit ligula a arcu ultrices blandit maximus at ex. Nulla ac lectus lacus. Morbi massa est, tristique eget mi nec, suscipit porta purus.</p>
+      <hr/>
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Copyright stuff</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </footer>
 
-  <!-- Picture of FAF client -->
-  <div class ="superrow2">
-  <div class="row">
-    <br>
-    <div class="large-12 columns">
-    <center><img src="http://placehold.it/1000x500/fff"/></center>
-  </div>
-</div>
-  
-  <div class="row"><br></div>
+  <!-- Scripts -->
 
-  <!-- Description -->
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script src="slick/slick.min.js"></script>
 
-  <div class="row">
-    <div class="large-6 columns">
-      <div class="panel">
-        <h3>Forged Alliance Forever</h3>
-        <p>Duis convallis felis in ultricies lobortis. Ut id mi rhoncus, sollicitudin lectus nec, consectetur massa. Phasellus id nunc non metus efficitur convallis a nec urna. Etiam consequat, elit at cursus feugiat, erat est varius ex, eget varius dui elit ac libero. Cras sagittis augue nulla, nec pulvinar odio scelerisque non. Nulla facilisi.</p>
-      </div>
-    </div>
-
-    <div class="large-6 columns">
-      <div class="panel">
-        <h3>Forged Alliance Forever</h3>
-        <p>Duis convallis felis in ultricies lobortis. Ut id mi rhoncus, sollicitudin lectus nec, consectetur massa. Phasellus id nunc non metus efficitur convallis a nec urna. Etiam consequat, elit at cursus feugiat, erat est varius ex, eget varius dui elit ac libero. Cras sagittis augue nulla, nec pulvinar odio scelerisque non.</p>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<br>
-
-  <!-- Youtube -->
-
-  <div class="row">
-    <div class="large-12 columns">
-    <div class="flex-video">
-      <iframe src="http://www.youtube.com/embed/GY-nwY7tbIg" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-  </div>
-
-  <br>
-
-  <!-- Getting Started -->
-
-  <div class="row">
-    <div class="large-12 columns">
-     <div class="panel">
-       <h3>Getting Started </h3>
-       <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque ut augue rutrum, tincidunt nisl a, iaculis lectus. Nulla molestie dolor sed neque elementum euismod. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut volutpat nunc in quam finibus feugiat. Fusce et est nulla. Mauris nulla urna, hendrerit vel tellus sit amet, dapibus eleifend nibh. Aenean molestie blandit eros. Phasellus molestie, diam quis luctus viverra, massa augue aliquam tellus, sed consequat nisi urna eu neque. Suspendisse potenti.</p>
-
-        <div class="large-3 large-centered columns"><center><a href="#" class="button expand">Download FAF Client</a></center></div>
-
-       <hr/>
-       <div class="row">
-        <div class="large-6 medium-6 columns">
-         <p><a href="http://wiki.faforever.com/index.php?title=Main_Page">FAF Wiki</a><br />Everything you need to know about Forged Alliance Forever.</p>
-       </div>
-       <div class="large-6 medium-6 columns">
-         <p><a href="http://forums.faforever.com">Forums</a><br />Community forums</p>
-       </div>
-       <br>
-       <div class="large-6 medium-6 columns">
-         <p><a href="http://wiki.faforever.com/index.php?title=Main_Page">Third resource</a><br />Nulla molestie dolor sed neque elementum euismod. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-       </div>
-       <div class="large-6 medium-6 columns">
-         <p><a href="http://forums.faforever.com">Fourth resource</a><br />Quisque sit amet odio accumsan, viverra sapien eget, elementum nibh. Aliquam augue tortor, pharetra quis dignissim et, sodales nec enim.</p>
-       </div>
-     </div>
-   </div>
- </div>
-</div>
-
-<!-- Footer -->
-
-<footer class="row">
-  <div class="large-12 columns">
-    <hr/>
-    <div class="row">
-      <div class="large-6 columns">
-        <p>© Copyright stuff</p>
-      </div>
-      <div class="large-6 columns">
-        <ul class="inline-list right">
-          <li><a href="#">Contact us</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-<!-- Scripts -->
-
-<script src="js/vendor/jquery.js"></script>
-<script src="js/foundation.min.js"></script>
-<script src="slick/slick.min.js"></script>
-
-<script>
-$(document).ready(function(){
-  $('.carousel').slick({
-    dots: true,
-    arrows: false,
-    autoplay: true
+  <script>
+  $(document).ready(function(){
+    $('.carousel').slick({
+      dots: true,
+      arrows: false,
+      autoplay: true
+    });
   });
-});
-</script>
+  </script>
 
-<script>
-$(document).foundation();
-</script>
+  <script>
+  $(document).foundation();
+  </script>
 </body>
 </html>
