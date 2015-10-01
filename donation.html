@@ -69,9 +69,9 @@
           </li>
           <li class="has-dropdown"><a>Support Us</a>
             <ul class="dropdown">
-            <li><a href="contribution.html">Development</a></li>
-            <li><a href="donation.html">Donation</a></li>
-           </ul>
+              <li><a href="contribution.html">Development</a></li>
+              <li><a href="donation.html">Donate</a></li>
+            </ul>
           </li>
         </ul>
       </section>
@@ -80,51 +80,90 @@
 
   <br>
 
-  <!-- Content -->
+  <!-- Donation Form -->
 
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="panel">
-      </div>
+<div class="superrow" style="background-color:#fff">
+
+  <div class = "row">
+    <br>
+    <div class="large-8 large-centered columns">
+      <center><span id="intro-text">
+        - Donations -
+      </span>
+      <p style="color:#999"><i>If you would like to support the continuing development of Forged Alliance Forever you can do so here. All contributions will be used exclusively to maintain the servers and fund tournaments. We are extremely grateful for your aid!</i></p>
+      </center>
     </div>
   </div>
 
-  <!-- Footer -->
+  <div class="row">
+    <br>
+    <div class="large-2 large-centered columns">
+      <center>
+      <form id="donateextraform" style="float: left;" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" id="cmd" name="cmd" value="_donations">
 
-  <footer class="row">
-    <div class="large-12 columns">
-      <hr/>
-      <div class="row">
-        <div class="large-6 columns">
-          <p>© Copyright stuff</p>
+        <p class="donate_amount"><label for="amount">Donation Amount:</label><br /><input type="text" name="amount" id="amount" value="5" /> <small>(Currency: EUR)</small></p>
+
+        <div style="height: 0px;">
+          <input type="hidden" name="notify_url" value="http://www.faforever.com/wp-content/plugins/donate-extra/paypal.php">
+          <input type="hidden" name="item_name" value="Donation to Forged Alliance Forever">
+          <input type="hidden" name="business" value="visionik@pobox.com">
+          <input type="hidden" name="lc" value="US">
+          <input type="hidden" name="no_note" value="1">
+          <input type="hidden" name="no_shipping" value="1">
+          <input type="hidden" name="rm" value="2">
+          <input type="hidden" name="return" value="http://www.faforever.com/thankyou.html">
+          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
         </div>
-        <div class="large-6 columns">
-          <ul class="inline-list right">
-            <li><a href="#">Contact us</a></li>
-          </ul>
-        </div>
-      </div>
+
+        <p class="submit"><input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" style="background-color: transparent;" border="0" name="submit" alt="">
+          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </p>
+      </form>
+    </center>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <!-- Scripts -->
+<br>
+<br>
 
-  <script src="js/vendor/jquery.js"></script>
-  <script src="js/foundation.min.js"></script>
-  <script src="slick/slick.min.js"></script>
+        <!-- Footer -->
 
-  <script>
-  $(document).ready(function(){
-    $('.carousel').slick({
-      dots: true,
-      arrows: false,
-      autoplay: true
-    });
-  });
-  </script>
+        <footer class="row">
+          <div class="large-12 columns">
+            <hr/>
+            <div class="row">
+              <div class="large-6 columns">
+                <p>© Copyright stuff</p>
+              </div>
+              <div class="large-6 columns">
+                <ul class="inline-list right">
+                  <li><a href="#">Contact us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
 
-  <script>
-  $(document).foundation();
-  </script>
-</body>
-</html>
+        <!-- Scripts -->
+
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script src="slick/slick.min.js"></script>
+
+        <script>
+        $(document).ready(function(){
+          $('.carousel').slick({
+            dots: true,
+            arrows: false,
+            autoplay: true
+          });
+        });
+        </script>
+
+        <script>
+        $(document).foundation();
+        </script>
+      </body>
+      </html>
