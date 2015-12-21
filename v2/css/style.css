@@ -1,0 +1,193 @@
+#search {
+    text-align: center;
+    border-radius: 20px;
+}
+
+#topbar-logo {
+    max-width: 100px;
+    margin-top: -5px;
+}
+
+.competitiveheader {
+    background-image: url('http://placehold.it/1140x150/151515');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    margin-top: 75px;
+    margin-bottom: 20px;
+    
+    border-radius: 20px;
+}
+
+.competitiveheader h2 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: Zeroes3;
+}
+
+.newsheader {
+    background-image: url('http://placehold.it/1140x150/151515');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    margin-top: 75px;
+    margin-bottom: 20px;
+    
+    border-radius: 20px;
+}
+
+.newsheader h2 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: Zeroes3;
+}
+
+.contributionheader {
+    background-image: url('http://placehold.it/1140x150/151515');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    margin-top: 75px;
+    margin-bottom: 20px;
+    
+    border-radius: 20px;
+}
+
+.contributionheader h2 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: Zeroes3;
+}
+
+#view {
+    margin-top: 13px;
+}
+
+.intro {
+    background-image: url('http://placehold.it/2560x656/333333');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.features {
+    background-image: url('http://placehold.it/2560x1440/151515');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.supcominfo {
+    background-image: url('http://placehold.it/2560x572/333333');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.feature-item {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#maintitle {
+    font-family: Zeroes3;
+    letter-spacing: -2px;
+    text-align: center;
+    font-size: 64px;
+
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#subtitle {
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-align: center;
+    
+    color: #888;
+
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.introwell {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.downloadwell {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.downloadwell h2 {
+    padding: 20px;
+}
+
+.well {
+    opacity: 0.8;
+}
+
+.well h1 {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.well p {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+@font-face {
+    font-family: Zeroes3;
+    src: url(../fonts/ZeroesThree.ttf);
+}
+
+footer .container {
+    padding: 50px;
+}
+
+.footerdivider {
+    border-color: #666666;
+}
+
+footer h4 {
+    color: #999;
+}
+
+/* For sticky footer */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 205px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 205px;
+    background-color: #151515;
+}
+
+
+/* List groups (for news) */
+
+.list-group-item {
+    padding: 30px;
+}
+
+.pagination {
+    margin: 0px;
+}
