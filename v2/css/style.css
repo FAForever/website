@@ -70,10 +70,10 @@
 }
 
 .intro {
-    background-image: url('http://placehold.it/2560x656/333333');
+    background-image: url('http://puu.sh/mIkz5/9a25b8dbec.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: right; 
 }
 
 .features {
