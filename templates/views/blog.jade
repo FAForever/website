@@ -3,7 +3,7 @@ extends ../layouts/default
 // MIXINS
 
 mixin post(post)
-	.col-md-6
+	.col-md-4
 		a(href='/news/post/' + post.slug).newspanel
 			.panel.panel-default
 				.panel-heading
@@ -11,17 +11,17 @@ mixin post(post)
 				.panel-body
 					p.text-muted Posted 
 						if post.publishedDate
-							| on #{post._.publishedDate.format('MMMM Do, YYYY')} 
+							| on <span class="primary-color">#{post._.publishedDate.format('MMMM Do, YYYY')}</span> 
 						if post.categories && post.categories.length
 							| in 
 							each cat, i in post.categories
-								span()= cat.name
+								span.primary-color()= cat.name
 								if i < post.categories.length - 1
 									| , 
 								else
 									|  
 						if post.author
-							| by #{post.author.name.first}
+							| by <span class="primary-color">#{post.author.name.first}</span>
 					p!= post.content.brief
 
 // CONTENT

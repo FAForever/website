@@ -8,13 +8,23 @@ h1 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 50px;
 }
+
 h2 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 42px;
 }
+
 h3 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 36px;
+}
+
+.primary-color {
+  color: $brand-primary;
+}
+
+.text-muted {
+  font-size: 12px;
 }
 
 /* Keystone */
@@ -259,6 +269,10 @@ iframe {
 
 .newspanel .panel:hover {
   box-shadow: 0px 0px 15px #000;
+}
+
+.newspanel .panel {
+  height: 315px;
 }
 
 /* List-Group */

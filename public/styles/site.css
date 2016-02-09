@@ -5837,6 +5837,12 @@ h3 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 36px; }
 
+.primary-color {
+  color: #008cba; }
+
+.text-muted {
+  font-size: 12px; }
+
 /* Keystone */
 #footer {
   background-color: #333;
@@ -6037,6 +6043,9 @@ iframe {
 
 .newspanel .panel:hover {
   box-shadow: 0px 0px 15px #000; }
+
+.newspanel .panel {
+  height: 315px; }
 
 /* List-Group */
 .list-group-horizontal .list-group-item {
