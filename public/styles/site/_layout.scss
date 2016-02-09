@@ -94,9 +94,9 @@ iframe {
 /* Presentation */
 
 .intro {
-  /*background-image: url("/images/dustygrounds pic 2560x600.jpg");
-*/
-  background-color: #333;
+  background-image: url("/images/index-background.jpg");
+
+  //background-color: #333;
 
   background-size: cover;
   background-position: center;
@@ -116,12 +116,11 @@ iframe {
   top: 47px;
   left: 0;
 
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#353535+0,1e1e1e+0,383838+100 */
-  background: rgb(53,53,53); /* Old browsers */
-  background: -moz-linear-gradient(45deg,  rgba(53,53,53,1) 0%, rgba(30,30,30,1) 0%, rgba(56,56,56,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(45deg,  rgba(53,53,53,1) 0%,rgba(30,30,30,1) 0%,rgba(56,56,56,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg,  rgba(53,53,53,1) 0%,rgba(30,30,30,1) 0%,rgba(56,56,56,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#383838',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.11+0,0.65+100 */
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0.11) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.11) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(0,0,0,0.11) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
 
 }
 
