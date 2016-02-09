@@ -22,8 +22,6 @@ mixin post(post)
 									|  
 						if post.author
 							| by #{post.author.name.first}
-					if post.image.exists
-						img(src=post._.image.fit(160,160)).img.pull-right
 					p!= post.content.brief
 
 // CONTENT

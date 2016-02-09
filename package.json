@@ -1,5 +1,5 @@
 {
-  "name": "test-project",
+  "name": "website",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
@@ -7,7 +7,7 @@
     "async": "^1.5.0",
     "underscore": "^1.8.3",
     "node-sass": "^3.3.2",
-    "node-sass-middleware": "^0.9.7", 
+    "node-sass-middleware": "^0.9.7",
     "dotenv": "^1.1.0"
   },
   "devDependencies": {
@@ -21,8 +21,8 @@
     "grunt-node-inspector": "^0.4.1",
     "time-grunt": "^0.3.1",
     "grunt-concurrent": "^0.5.0",
-    "grunt-nodemon": "^0.2.1", 
-    "grunt-sass": "^1.0.0", 
+    "grunt-nodemon": "^0.2.1",
+    "grunt-sass": "^1.0.0",
     "open": "0.0.5"
   },
   "engines": {
