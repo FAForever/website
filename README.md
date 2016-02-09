@@ -6,3 +6,7 @@ Requires Node and Mongodb
 1. npm install
 2. mongod
 3. node keystone
+
+Default admin:
+user: admin@faforever.com
+password: admin
