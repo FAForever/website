@@ -1,6 +1,8 @@
 # website
 New FAForever main website to replace http://faforever.com
 
-v2 hosted at http://dev.faforever.com
+Requires Node and Mongodb
 
-v1 is discontinued
+1. npm install
+2. mongod
+3. node keystone
