@@ -8,5 +8,5 @@ Requires Node and Mongodb
 3. node keystone
 
 Default admin:
-user: admin@faforever.com
-password: admin
+* user: admin@faforever.com
+* password: admin
