@@ -1,0 +1,37 @@
+.introtitle {
+  position: relative;
+  left: -50%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 10px;
+
+  color: white;
+
+  text-align: center;
+}
+
+.introtitle img {
+  padding: 10px;
+}
+
+.introtitle h1 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3em;
+  padding: 0px;
+  margin: 0px;
+}
+
+.introtitle h3 {
+  font-size: 2em;
+  padding: 5px;
+}
+
+.btn-intro {
+  background-color: transparent;
+  color: white;
+  margin: 5px;
+}
+
+.btn-intro:hover {
+  background-color: white;
+}

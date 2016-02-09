@@ -1,0 +1,53 @@
+extends ../layouts/default
+
+block content
+	.intro
+		.positionutil: .introtitle
+			img(src="/images/vector_faf_logo.png")
+			h1 Forged Alliance Forever
+			h3 The Community Driven Lobby for </br> Supreme Commander: Forged Alliance
+			button(class="btn btn-default btn-lg btn-intro") Download Client
+			button(class="btn btn-default btn-lg btn-intro") View on Github
+	.the-project: .container
+		.col-md-3
+		.col-md-6
+			h1 The Project
+			p Forged Alliance Forever is a community-driven project designed to facilitate online play for Supreme Commander: Forged Alliance. Complete with chat, matchmaking, replay vaults, tournaments and ever evolving balance.
+			p If you want to experience Forged Alliance in its true glory together with thousands of other players of all skill levels, FAF is the place to be.
+		.col-md-3
+	.features: .container
+		.row
+			.col-md-2
+			.col-md-4: .text-right
+				h3 Multiplayer
+				p Host and join teamgames or measure your skill against others in one versus one combat against players from all over the world.
+			.col-md-4
+				img(src="/images/multiplayer.png")
+		.row
+			.col-md-2
+			.col-md-4: .text-right
+				img(src="/images/modding.png")
+			.col-md-4
+				h3 Modding
+				p Experience countless variations on gameplay and thousands of player made maps to keep things fresh forever.
+		.row
+			.col-md-2
+			.col-md-4: .text-right
+				h3 Community
+				p Meet one of the friendliest online communities out there complete with forums, a voice chat server, clans, wiki and a supremely moderated global chat to enjoy between games.
+			.col-md-4
+				img(src="/images/community.png")
+		.row
+			.col-md-2
+			.col-md-4: .text-right
+				img(src="/images/tournaments.png")
+			.col-md-4
+				h3 Non-Profit
+				p FAF is completely free and open source. Donations are used for server costs and tournament prize-pools
+	.trailer: .container: .text-center
+		.row
+			h1 Join the largest SupCom community today!
+		.row
+			iframe(width="640" height="480" src="http://www.youtube.com/embed/p25PtKMOh9A?autoplay=0")
+		.row
+			button(class="btn btn-default btn-lg btn-outro") Download Client

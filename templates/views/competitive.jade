@@ -1,0 +1,14 @@
+extends ../layouts/default
+
+block content
+  .container
+    div.banner
+    
+    ul.nav.nav-tabs
+      each link in cNavLinks
+        li(class=(cSection == link.key ? 'active' : null)): a(href=link.href)= link.label
+
+  .container
+    block cContent
+      h1 Upcoming Tournaments
+      p Lorem ipsum...
