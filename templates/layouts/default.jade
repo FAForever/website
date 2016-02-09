@@ -97,17 +97,12 @@ html
 
 		//- FOOTER
 		#footer: .container
-			.col-md-4
+			.col-md-4.text-right
 				h3 Official Tools
-				ul
-					li: a(href='#') Password Recovery
-					li: a(href='#') Change Username
-			.col-md-4
-				h3 Unofficial Tools
-				ul
-					li: a(href='#') Replay Parser
-					li: a(href='#') Other Stuff
-			.col-md-4: .text-center
+				a(href='#') Password Recovery
+				br
+				a(href='http://app.faforever.com/faf/userName.php') Change Username
+			.col-md-4.text-center
 				img(src="/images/vector_faf_logo.png")
 				br
 				br
@@ -122,6 +117,12 @@ html
 				span: a(href='/keystone/signin') Admin Login
 				br
 				p Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
+			.col-md-4.text-left
+				h3 Unofficial Tools
+				a(href='http://fafafaf.bitbucket.org/') Replay Parser
+				br
+				a(href='#') Other Stuff
+			
 
 		//- JAVASCRIPT
 
