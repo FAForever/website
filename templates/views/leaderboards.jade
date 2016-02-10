@@ -1,4 +1,18 @@
 extends competitive
 
 block cContent
-  p asdasd
+  h3#test
+  
+  button(onclick="prevPage()") Previous
+  button(onclick="nextPage()") Next
+  table.table.table-striped.table-hover
+    thead
+      tr
+        th #
+        th Player
+        th Rating
+        th Games
+    tbody#players
+
+block js
+  script(src='/js/app/leaderboards.js')
