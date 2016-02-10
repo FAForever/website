@@ -19,6 +19,10 @@ h3 {
   font-size: 36px;
 }
 
+iframe {
+  box-shadow: 0px 0px 10px #000;
+}
+
 .primary-color {
   color: $brand-primary;
 }
@@ -31,6 +35,8 @@ h3 {
 
 #header {
 }
+
+/* Footer */
 
 #footer {
   background-color: #333;
@@ -45,21 +51,29 @@ h3 {
 }
 
 #footer .container {
-  margin-top: 50px;
   padding-top: 50px;
   padding-bottom: 50px;
   margin-bottom: 0px;
 	color: #777777;
 }
 
-iframe {
-  box-shadow: 0px 0px 10px #000;
-}
+/* Sticky footer */
 
-.gallery-image img{
-    display: block;
-    max-width: 100%;
-    height: auto;
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 295px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 295px;
+  background-color: #f5f5f5;
 }
 
 /* Containers */

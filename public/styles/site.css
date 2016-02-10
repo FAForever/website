@@ -5837,6 +5837,9 @@ h3 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 36px; }
 
+iframe {
+  box-shadow: 0px 0px 10px #000; }
+
 .primary-color {
   color: #008cba; }
 
@@ -5844,6 +5847,7 @@ h3 {
   font-size: 12px; }
 
 /* Keystone */
+/* Footer */
 #footer {
   background-color: #333;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#353535+0,1e1e1e+0,383838+100 */
@@ -5860,19 +5864,27 @@ h3 {
   box-shadow: 0px 0px 10px #000; }
 
 #footer .container {
-  margin-top: 50px;
   padding-top: 50px;
   padding-bottom: 50px;
   margin-bottom: 0px;
   color: #777777; }
 
-iframe {
-  box-shadow: 0px 0px 10px #000; }
+/* Sticky footer */
+html {
+  position: relative;
+  min-height: 100%; }
 
-.gallery-image img {
-  display: block;
-  max-width: 100%;
-  height: auto; }
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 295px; }
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 295px;
+  background-color: #f5f5f5; }
 
 /* Containers */
 .container-fluid {
