@@ -1,14 +1,20 @@
-extends ../layouts/default
+extends competitive_nav
 
-block content
-  .container
-    div.banner
-    
-    ul.nav.nav-tabs
-      each link in cNavLinks
-        li(class=(cSection == link.key ? 'active' : null)): a(href=link.href)= link.label
-
-  .container
-    block cContent
-      h1 Upcoming Tournaments
-      p Lorem ipsum...
+block cContent
+  h1 Upcoming Tournaments
+  
+  if error
+    h2 Error!
+  else
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th Name
+          th Start at
+          th Link
+      tbody
+        each tournament, i in data.upcomingTournaments
+          tr
+            td= tournament.name
+            td= tournament.start_at
+            td= tournament.full_challonge_url
