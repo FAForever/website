@@ -15,15 +15,19 @@ var getPlayers = function () {
 
 var paginate = function (players) {
   var pages = [];
+  var currentPage = -1;
 
-  for (var i = 0; i < 50; i++) {
-    var page = [];
-
-    for (var j = 0; j < 100; j++) {
-      page[j] = players.data[i * 100 + j];
+  for (var i = 0; i < players.length; i++) {
+    var player = players[i];
+    if (player.attributes.is_active) {
+      if (!pages[currentPage] || pages[currentPage].length === 50){
+        var newPage = [];
+        pages.push(newPage);
+        currentPage++;
+      }
+      player.attributes.ranking = (currentPage * 100 + pages[currentPage].length + 1);
+      pages[currentPage].push(player);
     }
-
-    pages.push(page);
   }
 
   return pages;
@@ -64,7 +68,7 @@ function prevPage() {
 }
 
 function nextPage() {
-  if (currentPage === 49) {
+  if (currentPage === pages.length - 1) {
     return;
   }
   currentPage++;
@@ -75,10 +79,9 @@ function nextPage() {
 
 var players = getPlayers();
 
-var pages = paginate(players);
+//var pages = paginate(players);
+var pages = paginate(players.data);
 
 renderPage(pages[0], document.getElementById("players"));
 
 var currentPage = 0;
-
-console.log(pages[5][52]);
