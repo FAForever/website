@@ -1,16 +1,15 @@
 var getPlayers = function () {
-
   var output;
 
   jQuery.ajax({
-        url: 'http://api.faforever.com/ranked1v1',
-        success: function (result) {
-          output = result;
-        },
-        async: false
-    });
+    url: 'http://api.faforever.com/ranked1v1',
+    success: function (result) {
+      output = result;
+    },
+    async: false
+  });
 
-    return output;
+  return output;
 }
 
 var paginate = function (players) {
@@ -33,6 +32,17 @@ var paginate = function (players) {
   return pages;
 }
 
+var findPlayer = function (name, pages) {
+  for (var i = 0; i < pages.length; i++) {
+    for (var j = 0; j < pages[i].length; j++) {
+      if (name === pages[i][j].attributes.login) {
+        return {page: i, element: j};
+      }
+    }
+  }
+  return {page: 0, element: -1};
+}
+
 var removeAllChildElements = function (element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
@@ -41,8 +51,10 @@ var removeAllChildElements = function (element) {
 
 var renderPage = function (page, element) {
   removeAllChildElements(element);
-  for(var player of page) {
+  for(var i = 0; i < page.length; i++) {
+    var player = page[i];
     var tr = document.createElement("tr")
+    tr.setAttribute("id", "tr" + i);
     element.appendChild(tr);
     var rank = document.createElement("td")
     tr.appendChild(rank);
@@ -58,6 +70,8 @@ var renderPage = function (page, element) {
     games.innerHTML = player.attributes.num_games;
   }
 }
+
+/* Onclick */
 
 function prevPage() {
   if (currentPage === 0) {
@@ -75,6 +89,20 @@ function nextPage() {
   renderPage(pages[currentPage], document.getElementById("players"));
 }
 
+function search() {
+  playerIndexes = findPlayer(document.getElementById("searchbar").value, pages);
+  console.log(playerIndexes);
+  currentPage = playerIndexes.page;
+  renderPage(pages[currentPage], document.getElementById("players"));
+
+  var elementId = "tr" + playerIndexes.element;
+  if (playerIndexes.element >= 0) {
+    document.getElementById(elementId).setAttribute("class", "success");
+  }
+
+  $("#" + elementId).animatedScroll();
+}
+
 /* INIT */
 
 var players = getPlayers();
@@ -85,3 +113,10 @@ var pages = paginate(players.data);
 renderPage(pages[0], document.getElementById("players"));
 
 var currentPage = 0;
+
+/* Enter activates search button */
+$("#searchbar").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#search-button").click();
+    }
+});
