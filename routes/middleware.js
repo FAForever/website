@@ -25,11 +25,11 @@ exports.initLocals = function(req, res, next) {
 
 	locals.navLinks = [
 		{ label: 'News',		key: 'blog',		href: '/news' },
-		{ label: 'Competitive',		key: 'competitive',		href: '/competitive' }
+		{ label: 'Competitive',		key: 'competitive',		href: '/competitive/tournaments' }
 	];
 
 	locals.cNavLinks = [
-		{ label: 'Competitive',		key: 'competitive',		href: '/competitive' },
+		{ label: 'Tournaments',		key: 'tournaments',		href: '/competitive/tournaments' },
 		{ label: 'Leaderboards',		key: 'leaderboards',		href: '/competitive/leaderboards' }
 	];
 

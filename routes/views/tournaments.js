@@ -10,7 +10,7 @@ exports = module.exports = function(req, res) {
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'competitive';
-  locals.cSection = 'competitive';
+  locals.cSection = 'tournaments';
 	locals.data = {
 	};
 	locals.error = false;
@@ -33,6 +33,6 @@ exports = module.exports = function(req, res) {
 			locals.error = true;
 		}
 		// Render the view
-		view.render('competitive');
+		view.render('tournaments');
 	});
 };
