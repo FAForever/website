@@ -1,20 +1,43 @@
 extends competitive_nav
 
 block cContent
-  h1 Upcoming Tournaments
+  if error
+    h2 Error: No response from Challonge
+  else
+    if data.runningTournaments.length == 0
+      p.text-center No tournaments currently in progress
+    else
+      each tournament, i in data.runningTournaments
+        h1.text-center= tournament.name
+        br
+        <iframe class="tournament-live" src="http://challonge.com/#{tournament.url}/module?theme=3899" width="100%" height="800" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
+      br
+      hr
+      br
+  
+  h1.text-center Upcoming Tournaments
+  br
   
   if error
-    h2 Error!
+    h2 Error: No response from Challonge
   else
-    table.table.table-striped.table-hover
-      thead
-        tr
-          th Name
-          th Start at
-          th Link
-      tbody
-        each tournament, i in data.upcomingTournaments
+    if data.upcomingTournaments.length == 0 && data.runningTournaments.length == 0
+      p.text-center No upcoming tournaments have been registered
+    else
+      table.table.table-striped.table-hover
+        thead
           tr
-            td= tournament.name
-            td= tournament.start_at
-            td= tournament.full_challonge_url
+            th Name
+            th Start at
+            th Link
+        tbody
+          each tournament, i in data.runningTournaments
+            tr.info
+              td= tournament.name
+              td In Progress
+              td: a(href="#{tournament.full_challonge_url}" target="_blank")= tournament.full_challonge_url
+          each tournament, i in data.upcomingTournaments
+            tr
+              td= tournament.name
+              td= tournament.start_at
+              td: a(href="#{tournament.full_challonge_url}" target="_blank")= tournament.full_challonge_url

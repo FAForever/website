@@ -19,10 +19,6 @@ h3 {
   font-size: 36px;
 }
 
-iframe {
-  box-shadow: 0px 0px 10px #000;
-}
-
 .primary-color {
   color: $brand-primary;
 }
@@ -248,6 +244,10 @@ body {
   font-size: 56px;
 }
 
+.trailer iframe {
+  box-shadow: 0px 0px 10px #000;
+}
+
 /* News */
 
 .news-categories {
@@ -315,4 +315,10 @@ body {
 
 .thanks-for-support {
   margin: 100px;
+}
+
+/* Tournaments */
+
+.tournament-live {
+  box-shadow: 0px 0px 15px #000;
 }

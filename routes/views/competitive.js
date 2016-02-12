@@ -15,14 +15,18 @@ exports = module.exports = function(req, res) {
 	};
 	locals.error = false;
 	locals.data.upcomingTournaments = [];
+	locals.data.runningTournaments = [];
 
 	request(challonge_config.getAuth() + '/tournaments.json', function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-			//console.log(body);
 			var tournaments = JSON.parse(body);
 			for (tournament of tournaments) {
 				if (tournament.tournament.state === 'pending') {
+					var startDate = new Date(tournament.tournament.start_at);
+					tournament.tournament.start_at = startDate.toUTCString();
 					locals.data.upcomingTournaments.push(tournament.tournament);
+				} else if (tournament.tournament.state === 'underway' || tournament.tournament.state === 'in_progress') {
+					locals.data.runningTournaments.push(tournament.tournament);
 				}
 			}
 		} else {

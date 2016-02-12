@@ -5837,9 +5837,6 @@ h3 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 36px; }
 
-iframe {
-  box-shadow: 0px 0px 10px #000; }
-
 .primary-color {
   color: #008cba; }
 
@@ -6024,6 +6021,9 @@ body {
   margin-bottom: 50px;
   font-size: 56px; }
 
+.trailer iframe {
+  box-shadow: 0px 0px 10px #000; }
+
 /* News */
 .news-categories {
   margin: 20px; }
@@ -6077,6 +6077,10 @@ body {
 
 .thanks-for-support {
   margin: 100px; }
+
+/* Tournaments */
+.tournament-live {
+  box-shadow: 0px 0px 15px #000; }
 
 @media (max-width: 970px) {
   .introtitle {
