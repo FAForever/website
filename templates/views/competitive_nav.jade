@@ -1,10 +1,12 @@
 extends ../layouts/default
 
+block intro
+  .container-fluid
+    .banner
+
 block content
   .container
-    div.banner
-    
-    ul.nav.nav-tabs
+    ul.nav.nav-tabs.competitive-nav
       each link in cNavLinks
         li(class=(cSection == link.key ? 'active' : null)): a(href=link.href)= link.label
 

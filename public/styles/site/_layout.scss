@@ -88,15 +88,20 @@ body {
   margin-right: 5px;
 }
 
+/* Competitive navbar */
+
+.competitive-nav {
+  margin-top: 20px;
+}
+
 /* Banner */
 
 .banner {
-  background-image: url("http://placehold.it/900x200/ccc");
+  background-image: url("http://placehold.it/2560x300/ccc");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 200px;
-  margin-top: 40px;
+  height: 300px;
 }
 
 /* Presentation */
