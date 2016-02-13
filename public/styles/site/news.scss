@@ -1,0 +1,35 @@
+/* News */
+
+.news-categories {
+  margin: 20px;
+}
+
+.news-count {
+  margin-bottom: 30px;
+}
+
+.newspanel {
+  text-decoration: none;
+  color: black;
+}
+
+.newspanel:visited {
+  text-decoration: none;
+}
+
+.newspanel:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.newspanel:active {
+  text-decoration: none;
+}
+
+.newspanel .panel:hover {
+  box-shadow: 0px 0px 15px #000;
+}
+
+.newspanel .panel {
+  height: 315px;
+}

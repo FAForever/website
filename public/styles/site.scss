@@ -11,6 +11,10 @@
 // Add your own site style includes here
 @import "site/layout";
 
+// Templates (these should move into their own css files soon)
+@import "site/index";
+@import "site/news";
+
 @media (max-width: 970px) {
   @import "site/mobile";
 }

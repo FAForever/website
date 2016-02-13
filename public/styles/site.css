@@ -5904,6 +5904,37 @@ body {
   background-repeat: no-repeat;
   height: 300px; }
 
+/* List-Group */
+.list-group-horizontal .list-group-item {
+  display: inline-block; }
+
+.list-group-horizontal .list-group-item {
+  margin-bottom: 0;
+  margin-left: -4px;
+  margin-right: 0; }
+
+.list-group-horizontal .list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 4px; }
+
+.list-group-horizontal .list-group-item:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 0; }
+
+/* Contributions */
+.contribution-title {
+  margin: 50px; }
+
+.donation-form {
+  margin: 40px; }
+
+.thanks-for-support {
+  margin: 100px; }
+
+/* Tournaments */
+.tournament-live {
+  box-shadow: 0px 0px 15px #000; }
+
 /* Presentation */
 .intro {
   background-image: url("/images/index-background.jpg");
@@ -6053,37 +6084,6 @@ body {
 
 .newspanel .panel {
   height: 315px; }
-
-/* List-Group */
-.list-group-horizontal .list-group-item {
-  display: inline-block; }
-
-.list-group-horizontal .list-group-item {
-  margin-bottom: 0;
-  margin-left: -4px;
-  margin-right: 0; }
-
-.list-group-horizontal .list-group-item:first-child {
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 4px; }
-
-.list-group-horizontal .list-group-item:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-left-radius: 0; }
-
-/* Contributions */
-.contribution-title {
-  margin: 50px; }
-
-.donation-form {
-  margin: 40px; }
-
-.thanks-for-support {
-  margin: 100px; }
-
-/* Tournaments */
-.tournament-live {
-  box-shadow: 0px 0px 15px #000; }
 
 @media (max-width: 970px) {
   .introtitle {
