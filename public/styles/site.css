@@ -5898,11 +5898,11 @@ body {
 
 /* Banner */
 .banner {
-  background-image: url("http://placehold.it/2560x300/ccc");
+  background-image: url("http://placehold.it/2560x200/ccc");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 300px; }
+  height: 200px; }
 
 /* List-Group */
 .list-group-horizontal .list-group-item {
@@ -5930,10 +5930,6 @@ body {
 
 .thanks-for-support {
   margin: 100px; }
-
-/* Tournaments */
-.tournament-live {
-  box-shadow: 0px 0px 15px #000; }
 
 /* Presentation */
 .intro {
