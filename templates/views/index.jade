@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block content
 	.intro
-		.positionutil: .introtitle
+		.introtitle
 			img(src="/images/vector_faf_logo.png")
 			h1 Forged Alliance Forever
 			h3 The Community Driven Lobby for </br> Supreme Commander: Forged Alliance
@@ -47,7 +47,7 @@ block content
 	.trailer: .container: .text-center
 		.row
 			h1 Join the largest SupCom community today!
-		.row
+		div(class=['row', 'video-trailer'])
 			iframe(width="640" height="480" src="http://www.youtube.com/embed/p25PtKMOh9A?autoplay=0")
 		.row
 			button(class="btn btn-default btn-lg btn-outro") Download Client
