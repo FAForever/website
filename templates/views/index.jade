@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block content
 	.intro
-		.positionutil: .introtitle
+		.introtitle
 			img(src="/images/vector_faf_logo.png")
 			h1 Forged Alliance Forever
 			h3 The Community Driven Lobby for </br> Supreme Commander: Forged Alliance
@@ -21,11 +21,11 @@ block content
 				h3 Multiplayer
 				p Host and join teamgames or measure your skill against others in one versus one combat against players from all over the world.
 			.col-md-4
-				img(src="/images/multiplayer.png")
+				img(src="/images/multiplayer.png" class="img-responsive")
 		.row
 			.col-md-2
 			.col-md-4: .text-right
-				img(src="/images/modding.png")
+				img(src="/images/modding.png" class="img-responsive")
 			.col-md-4
 				h3 Modding
 				p Experience countless variations on gameplay and thousands of player made maps to keep things fresh forever.
@@ -35,11 +35,11 @@ block content
 				h3 Community
 				p Meet one of the friendliest online communities out there complete with forums, a voice chat server, clans, wiki and a supremely moderated global chat to enjoy between games.
 			.col-md-4
-				img(src="/images/community.png")
+				img(src="/images/community.png" class="img-responsive")
 		.row
 			.col-md-2
 			.col-md-4: .text-right
-				img(src="/images/tournaments.png")
+				img(src="/images/tournaments.png" class="img-responsive")
 			.col-md-4
 				h3 Non-Profit
 				p FAF is completely free and open source. Donations are used for server costs and tournament prize-pools
@@ -47,6 +47,9 @@ block content
 		.row
 			h1 Join the SupCom community today!
 		.row
-			iframe(width="640" height="480" src="http://www.youtube.com/embed/p25PtKMOh9A?autoplay=0")
+			div.col-sm-3
+			div.col-sm-6
+				div(class=['embed-responsive', 'embed-responsive-16by9'])
+					iframe(width="640" height="480" class=['embed-responsive-item'] src="http://www.youtube.com/embed/p25PtKMOh9A?autoplay=0")
 		.row
 			button(class="btn btn-default btn-lg btn-outro") Download Client
