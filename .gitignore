@@ -35,3 +35,6 @@ routes/challonge_config.js
 
 # Ignore automatically generated site.css
 public/styles/site.css
+
+# Ignore idea file from PHPstorm/Webstorm
+.idea
