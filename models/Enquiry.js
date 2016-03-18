@@ -12,13 +12,14 @@ var Enquiry = new keystone.List('Enquiry', {
 });
 
 Enquiry.add({
-	name: { type: Types.Name, required: true },
-	email: { type: Types.Email, required: true },
-	phone: { type: String },
+	name: { type: Types.Name, required: false },
+	email: { type: Types.Email, required: false },
 	enquiryType: { type: Types.Select, options: [
-		{ value: 'message', label: 'Just leaving a message' },
+		{ value: 'message', label: 'I have a FAF Client Issues' },
+		{ value: 'message1', label: 'I have a FAF Website Issues' },
+		{ value: 'message2', label: 'I have a suggestion' },
 		{ value: 'question', label: 'I\'ve got a question' },
-		{ value: 'other', label: 'Something else...' }
+		{ value: 'other', label: 'Something else3...' }
 	] },
 	message: { type: Types.Markdown, required: true },
 	createdAt: { type: Date, default: Date.now }
