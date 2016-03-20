@@ -4,9 +4,10 @@ New FAForever main website to replace http://faforever.com
 Requires Node, Mongodb, AND Grunt
 
 1. npm install
-2. mongod
-3. grunt sass:dev 
-4. grunt serve
+2. gem install compass
+3. mongod
+4. grunt sass:dev 
+5. grunt serve
 
 In order to install grunt for the command line, please follow this guide - http://gruntjs.com/getting-started
 
