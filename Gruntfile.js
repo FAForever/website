@@ -48,9 +48,20 @@ module.exports = function(grunt) {
 		'concurrent:dev'
 	]);
 
+	grunt.registerTask('prod', [
+		'sass:dist',
+		'concat:js',
+		'uglify:dist'
+	]);
+
 	grunt.registerTask('server', function () {
 		grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
 		grunt.task.run(['serve:' + target]);
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-compass');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 };

@@ -4,7 +4,7 @@ module.exports = {
 			'model/**/*.js',
 			'routes/**/*.js'
 		],
-		tasks: ['jshint:all']
+		tasks: ['jshint:all', 'concat:js', 'uglify:dev']
 	},
 	express: {
 		files: [
@@ -15,7 +15,7 @@ module.exports = {
 	},
 	sass: {
 		files: ['public/styles/**/*.scss'],
-		tasks: ['sass']
+		tasks: ['sass:dev']
 	},
 	livereload: {
 		files: [
