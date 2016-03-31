@@ -125,6 +125,26 @@
   box-shadow: 0px 0px 15px #000;
 }
 
+/* What is Supreme Commander? */
+
+.what-is {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.what-is h1 {
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.what-is img {
+  box-shadow: 0px 0px 15px #000;
+}
+
+.buy-now {
+  margin-top: 50px;
+}
+
 .btn-outro {
   background-color: white;
   color: black;
@@ -132,15 +152,6 @@
 }
 
 .btn-outro:hover {
-  background-color: #333;
+  background-color: #222;
   color: white;
-}
-
-.trailer h1 {
-  margin-bottom: 50px;
-  font-size: 56px;
-}
-
-.trailer iframe {
-  box-shadow: 0px 0px 10px #000;
 }
