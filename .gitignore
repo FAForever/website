@@ -45,3 +45,5 @@ public/js/bottom.min.js
 
 # Ignore .bat for windows
 .bat
+
+.sass-cache
