@@ -33,27 +33,13 @@
 
 }
 
-.positionutil {
-  position: absolute;
-  left: 50%;
-  top: 50px;
-}
-
 .introtitle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
+  top: -90%;
   z-index: 3;
   color: #fff;
   text-align: center;
-  text-transform: uppercase;
   text-shadow: 1px 1px 0 rgba(0,0,0,.75);
-  -webkit-transform: translate3d(-50%,-50%,0);
-  -moz-transform: translate3d(-50%,-50%,0);
-  -ms-transform: translate3d(-50%,-50%,0);
-  -o-transform: translate3d(-50%,-50%,0);
-  transform: translate3d(-50%,-50%,0);
-
 }
 
 .introtitle img {
