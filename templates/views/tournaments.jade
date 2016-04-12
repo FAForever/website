@@ -2,7 +2,7 @@ extends competitive_nav
 
 block cContent
   if error
-    h2 Error: No response from Challonge
+    h3 Error: No response from Challonge
   else
     if data.runningTournaments.length == 0
     else
@@ -19,11 +19,11 @@ block cContent
       hr
       br
   
-  h1.text-center Upcoming Tournaments
+  h2 Upcoming Tournaments
   br
   
   if error
-    h2 Error: No response from Challonge
+    h3 Error: No response from Challonge
   else
     if data.upcomingTournaments.length == 0 && data.runningTournaments.length == 0
       p.text-center No upcoming tournaments have been registered

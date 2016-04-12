@@ -1,11 +1,26 @@
 /* Contributions */
 
 .contribution-title {
-  margin: 50px;
+  margin-top: 50px;
+}
+
+.contribution-subtitle {
+  margin-bottom: 50px;
 }
 
 .donation-form {
   margin: 40px;
+}
+
+.github-button {
+  background-color: white;
+  color: black;
+  margin: 15px;
+}
+
+.github-button:hover {
+  background-color: #222;
+  color: white;
 }
 
 .thanks-for-support {
