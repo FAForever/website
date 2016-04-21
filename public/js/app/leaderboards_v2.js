@@ -19,6 +19,20 @@ var getPage = function(pageNumber, pageSize) {
   return output;
 }
 
+var getPlayer = function(playerName) {
+  var output;
+
+  jQuery.ajax({
+    url: "http://api.faforever.com/ranked1v1?filter[player]=" + playerName,
+    success: function (result) {
+      output = result;
+    },
+    async: false
+  });
+
+  return output;
+}
+
 var renderPage = function (page, element) {
   removeAllChildElements(element);
   for(var i = 0; i < page.data.length; i++) {
@@ -66,6 +80,20 @@ function nextPage() {
   currentPage++;
   renderPage(getPage(currentPage, pageSize), document.getElementById("players"));
 }
+
+function search() {
+  player = getPlayer(document.getElementById("searchbar").value);
+
+  renderPage(player, document.getElementById("players"));
+}
+
+/* Enter activates search button */
+$("#searchbar").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#search-button").click();
+    }
+});
+
 
 /* Init */
 

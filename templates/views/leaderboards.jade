@@ -1,14 +1,32 @@
 extends competitive_nav
 
 block cContent
-  h3#test
+
+  br
   
-  button(onclick="prevPage()") Previous
-  button(onclick="nextPage()") Next
-  .input-group
-    input(type="text" class="form-control" placeholder="Player name...")#searchbar
-    span.input-group-btn
-      button(class="btn btn-default" type="button" onclick="search()" id="search-button") Search
+  h2.text-center 1v1 Ladder Leaderboards
+  
+  br
+  
+  .row
+    .col-md-2
+    .col-md-8
+      .input-group
+        input(type="text" class="form-control" placeholder="Player name...")#searchbar
+        span.input-group-btn
+          button(class="btn btn-default" type="button" onclick="search()" id="search-button") Search
+    .col-md-2
+  
+  br
+  br
+  
+  .row
+    .col-md-2.text-left
+      button(class="btn btn-primary" onclick="prevPage()") Previous
+    .col-md-8
+    .col-md-2.text-right
+      button(class="btn btn-primary" onclick="nextPage()") Next
+  
   table.table.table-striped.table-hover
     thead
       tr
@@ -17,6 +35,15 @@ block cContent
         th Rating
         th Games
     tbody#players
+    
+  .row
+    .col-md-2.text-left
+      button(class="btn btn-primary" onclick="prevPage()") Previous
+    .col-md-8
+    .col-md-2.text-right
+      button(class="btn btn-primary" onclick="nextPage()") Next
+      
+  br
 
 block js
   script(src='/js/app/leaderboards_v2.js')
