@@ -24,7 +24,18 @@ module.exports = function(grunt) {
 					ignore: ['node_modules/**']
 				}
 			}
-		}
+		},
+                sass: {
+                        dist: {
+                                files: [{
+                                        expand: true,
+                                        cwd: 'public/styles',
+                                        src: ['*.scss'],
+                                        dest: 'public/styles',
+                                        ext: '.min.css'
+                                }]
+                        }
+                }
 	};
 
 	var configs = require('load-grunt-configs')(grunt, options);
@@ -61,7 +72,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 };
