@@ -16,7 +16,7 @@ RUN npm install
 ADD . /code/
 
 RUN npm install -g grunt-cli
-RUN grunt sass
+RUN grunt prod
 
 CMD mongod --fork --logpath /log/mongodb.log && node keystone
 
