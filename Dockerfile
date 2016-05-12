@@ -13,6 +13,8 @@ ADD . /code/
 WORKDIR /code
 
 RUN npm install
+RUN npm install -g grunt-cli
+RUN grunt sass:dev
 
 CMD mongod --fork --logpath /log/mongodb.log && node keystone
 
