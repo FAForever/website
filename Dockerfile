@@ -1,17 +1,19 @@
 FROM node
 
-RUN apt-get update && apt-get -y install mongodb vim ruby
+RUN apt-get update && apt-get -y install mongodb
 
 RUN mkdir code
+
+RUN mkdir /log/
+
+RUN mkdir -p /data/db/
 
 ADD . /code/
 
 WORKDIR /code
 
 RUN npm install
-RUN npm install -g grunt
-RUN npm install grunt-contrib-sass
 
-CMD service mongod start &&  grunt serve
+CMD mongod --fork --logpath /log/mongodb.log && node keystone
 
-EXPOSE 80
+EXPOSE 3000
