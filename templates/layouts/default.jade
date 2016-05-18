@@ -54,7 +54,7 @@ html
 						a.navbar-brand(href='/')
 							img(src="/images/faf_32x32.png")
 					.collapse.navbar-collapse
-						ul.nav.navbar-nav.navbar-left
+						ul.nav.navbar-nav
 							each link in navLinks
 								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 							li.dropdown
@@ -70,8 +70,14 @@ html
 								ul.dropdown-menu(role="menu")
 									li: a(href="http://wiki.faforever.com/index.php?title=Main_Page") Wiki
 									li: a(href="http://www.faforever.com/faf/unitsDB/") Unit Database
+							li.dropdown
+								a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Development
+									span.caret
+								ul.dropdown-menu(role="menu")
+									li: a(href="http://faforeverdevblog.tumblr.com/") DevBlog
+									li: a(href="https://faf.statuspage.io/") Status Page
+									li: a(href="https://github.com/faforever") GitHub
 							li: a(href='/contribution') Contribute
-						ul.nav.navbar-nav.navbar-right
 							li: a(href='http://content.faforever.com/FAF.msi') Download Client
 							if user
 								if user.canAccessKeystone
