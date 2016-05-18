@@ -6,54 +6,44 @@ http://api.faforever.com/ranked1v1/500
 */
 
 var getPage = function(pageNumber, pageSize) {
-  var output;
-
-  jQuery.ajax({
+  $.ajax({
     url: "http://api.faforever.com/ranked1v1?page[size]=" + pageSize + "&page[number]=" + pageNumber + "&filter[is_active]=true",
     success: function (result) {
-      output = result;
-    },
-    async: false
+      renderPage(result, document.getElementById("players"));
+    }
   });
-
-  return output;
-}
+};
 
 var getPlayer = function(playerName) {
-  var output;
-
-  jQuery.ajax({
+  $.ajax({
     url: "http://api.faforever.com/ranked1v1?filter[player]=" + playerName,
     success: function (result) {
-      output = result;
-    },
-    async: false
+      renderPage(result, document.getElementById("players"));
+    }
   });
-
-  return output;
-}
+};
 
 var renderPage = function (page, element) {
   removeAllChildElements(element);
   for(var i = 0; i < page.data.length; i++) {
     var player = page.data[i];
-    var tr = document.createElement("tr")
+    var tr = document.createElement("tr");
     tr.setAttribute("id", "tr" + i);
     element.appendChild(tr);
-    var rank = document.createElement("td")
+    var rank = document.createElement("td");
     tr.appendChild(rank);
     rank.innerHTML = player.attributes.ranking;
-    var name = document.createElement("td")
+    var name = document.createElement("td");
     tr.appendChild(name);
     name.innerHTML = player.attributes.login;
-    var rating = document.createElement("td")
+    var rating = document.createElement("td");
     tr.appendChild(rating);
     rating.innerHTML = player.attributes.rating;
-    var games = document.createElement("td")
+    var games = document.createElement("td");
     tr.appendChild(games);
     games.innerHTML = player.attributes.num_games;
   }
-}
+};
 
 /* Utilities */
 
@@ -61,7 +51,7 @@ var removeAllChildElements = function (element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
-}
+};
 
 /* Page Onclick */
 
@@ -70,7 +60,7 @@ function prevPage() {
     return;
   }
   currentPage--;
-  renderPage(getPage(currentPage, pageSize), document.getElementById("players"));
+  getPage(currentPage, pageSize);
 }
 
 function nextPage() {
@@ -78,13 +68,11 @@ function nextPage() {
     return;
   }
   currentPage++;
-  renderPage(getPage(currentPage, pageSize), document.getElementById("players"));
+  getPage(currentPage, pageSize);
 }
 
 function search() {
-  player = getPlayer(document.getElementById("searchbar").value);
-
-  renderPage(player, document.getElementById("players"));
+  getPlayer(document.getElementById("searchbar").value);
 }
 
 /* Enter activates search button */
@@ -97,8 +85,8 @@ $("#searchbar").keyup(function(event){
 
 /* Init */
 
-var pageSize = 50;
+var pageSize = 100;
 
 var currentPage = 1;
 
-renderPage(getPage(1, pageSize), document.getElementById("players"));
+getPage(currentPage, pageSize);
