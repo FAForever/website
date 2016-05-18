@@ -54,7 +54,7 @@ html
 						a.navbar-brand(href='/')
 							img(src="/images/faf_32x32.png")
 					.collapse.navbar-collapse
-						ul.nav.navbar-nav.navbar-left
+						ul.nav.navbar-nav
 							each link in navLinks
 								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 							li.dropdown
@@ -67,11 +67,17 @@ html
 							li.dropdown
 								a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Documentation 
 									span.caret
-									ul.dropdown-menu(role="menu")
-										li: a(href="http://wiki.faforever.com/index.php?title=Main_Page") Wiki
-										li: a(href="http://www.faforever.com/faf/unitsDB/") Unit Database
+								ul.dropdown-menu(role="menu")
+									li: a(href="http://wiki.faforever.com/index.php?title=Main_Page") Wiki
+									li: a(href="http://www.faforever.com/faf/unitsDB/") Unit Database
+							li.dropdown
+								a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Development
+									span.caret
+								ul.dropdown-menu(role="menu")
+									li: a(href="http://faforeverdevblog.tumblr.com/") DevBlog
+									li: a(href="https://faf.statuspage.io/") Status Page
+									li: a(href="https://github.com/faforever") GitHub
 							li: a(href='/contribution') Contribute
-						ul.nav.navbar-nav.navbar-right
 							li: a(href='http://content.faforever.com/FAF.msi') Download Client
 							if user
 								if user.canAccessKeystone
@@ -122,7 +128,10 @@ html
 			.col-md-4: .text-center
 				h3 Unofficial Tools
 				a(href='http://fafafaf.bitbucket.org/') Replay Parser
-			
+				h3 Connect
+				div.social
+					<a href="https://www.facebook.com/ForgedAllianceForever" title="Follow FAForever on Facebook" target="_blank"><i class="fa fa-facebook fa-3x"></i></a>
+
 
 		//- JAVASCRIPT
 

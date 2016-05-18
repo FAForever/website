@@ -111,3 +111,28 @@ body {
 	border-top-right-radius:4px;
 	border-bottom-left-radius:0;
 }
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none !important;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+@media (max-width: 994px) {
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .navbar-collapse.collapse.in {
+    display: block !important;
+  }
+  .navbar-header .collapse, .navbar-toggle {
+    display:block !important;
+  }
+  .navbar-header {
+    float:none;
+  }
+}
