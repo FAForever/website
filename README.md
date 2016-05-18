@@ -7,7 +7,7 @@ Requires Node, Mongodb, AND Grunt
 2. gem install compass
 3. mongod
 4. grunt sass:dev 
-5. grunt serve
+5. grunt serve (production) grunt serve:dev (development)
 
 In order to install grunt for the command line, please follow this guide - http://gruntjs.com/getting-started
 
