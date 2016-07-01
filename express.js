@@ -9,16 +9,23 @@ app.use(express.static('public'));
 
 app.set('views', 'templates/views');
 app.set('view engine', 'pug');
+app.set('port', process.env.PORT);
 
 app.get('/', function(req, res) { res.render('index'); });
 app.get('/contribution', function(req, res) { res.render('contribution'); });
 app.get('/competitive/tournaments', function(req, res) { res.render('tournaments'); });
 app.get('/competitive/leaderboards', function(req, res) { res.render('leaderboards'); });
 
-app.use(function(err, req, res, next){
-	res.render('errors/500', { error: err });
-});
+if (app.get('env') === 'development') {
+	app.use(function(err, req, res, next) {
+		res.status(err.status || 500);
+		res.render('errors/500', {
+			message: err.message,
+			error: err
+		});
+	});
+}
 
-app.listen(3000, function () {
-	console.log('Example app listening on port 3000!');
+app.listen(app.get('port'), function () {
+	console.log('Express listening on port ' + app.get('port'));
 });
