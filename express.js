@@ -28,6 +28,11 @@ app.get('/contribution', require(routes + 'contribution'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
 app.get('/competitive/leaderboards', require(routes + 'leaderboards'));
 
+//404 Error Handler
+app.use(function(req, res, next) {
+	res.status(404).render('errors/404');
+});
+
 //Start and listen on port
 app.listen(app.get('port'), function () {
 	console.log('Express listening on port ' + app.get('port'));
