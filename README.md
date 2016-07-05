@@ -1,8 +1,12 @@
 # website
 New FAForever main website to replace http://faforever.com
 
-Requires Node, Mongodb, AND Grunt
+Requires Node AND Grunt
 
+1. npm install
+2. gem install compass
+4. grunt sass:dev 
+5. grunt serve (production) grunt serve:dev (development)
 1. Update .env and set to development or production
 2. npm install
 3. gem install compass
