@@ -1,16 +1,14 @@
-var keystone = require('keystone');
 var request = require('request');
 var challonge_config = require('../challonge_config');
 
 exports = module.exports = function(req, res) {
 
-	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'competitive';
-  locals.cSection = 'tournaments';
+	locals.cSection = 'tournaments';
 	locals.data = {
 	};
 	locals.error = false;
@@ -33,6 +31,6 @@ exports = module.exports = function(req, res) {
 			locals.error = true;
 		}
 		// Render the view
-		view.render('tournaments');
+		res.render('tournaments');
 	});
 };
