@@ -12,7 +12,7 @@ RUN npm install
 ADD . /code/
 
 RUN npm install -g grunt-cli
-RUN grunt serve:prod
+RUN grunt serve
 
 CMD node express
 
