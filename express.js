@@ -9,7 +9,7 @@ var middleware = require('./routes/middleware');
 var app = express();
 
 //Execute middleware before each request...
-app.use('/', middleware);
+app.use(middleware.initLocals);
 
 //Set static public directory path
 app.use(express.static('public'));

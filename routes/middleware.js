@@ -5,10 +5,8 @@
 	the navigation in the header, you may wish to change this array
 	or replace it with your own templates / logic.
 */
-var express = require('express');
-var router = express.Router();
 
-router.use(function(req, res, next) {
+exports.initLocals = function(req, res, next) {
 
 	var locals = res.locals;
 
@@ -24,4 +22,4 @@ router.use(function(req, res, next) {
 
 	next();
 
-});
+};
