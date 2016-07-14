@@ -71,7 +71,7 @@ html
 										li: a(href="http://www.faforever.com/faf/unitsDB/") Unit Database
 							li: a(href='/contribution') Contribute
 						ul.nav.navbar-nav.navbar-right
-							li: a(href='http://content.faforever.com/FAF.msi') Download Client
+							li: a(href='http://content.faforever.com/FAF.msi' id="btn-dl-nav") Download Client
 							if user
 								if user.canAccessKeystone
 									li: a(href='/keystone') Open Keystone
@@ -112,10 +112,14 @@ html
 				p Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
 			.col-md-4: .text-center
 				h3 Connect
-				div.social
-				<a href="https://www.facebook.com/ForgedAllianceForever" title="Follow FAForever on Facebook" target="_blank"><i class="fa fa-facebook fa-3x"></i></a>
-				<a href="https://www.youtube.com/channel/UCkAWiUu4QE172kv-ZuyR42w" title="Follow FAForever on YouTube" target="_blank"><i class="fa fa-youtube fa-3x"></i></a>
-				<a href="https://github.com/FAForever/" title="Follow FAForever on GitHub" target="_blank"><i class="fa fa-github fa-3x"></i></a>
+				div#social
+					ul
+						li: a(href="https://www.facebook.com/ForgedAllianceForever" title="Follow FAForever on Facebook" target="_blank")
+							i.fa.fa-facebook.fa-3x
+						li: a(href="https://www.youtube.com/channel/UCkAWiUu4QE172kv-ZuyR42w" title="Follow FAForever on YouTube" target="_blank")
+							i.fa.fa-youtube.fa-3x
+						li: a(href="https://github.com/FAForever/" title="Follow FAForever on GitHub" target="_blank")
+							i.fa.fa-github.fa-3x
 
 
 		//- JAVASCRIPT
