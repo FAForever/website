@@ -79,3 +79,6 @@ block content
 					h3.text-muted There are no posts in the category #{data.category.name}.
 				else
 					h3.text-muted There are no posts yet.
+block js
+	<script>$("a:contains('Continue reading')").css("display", "none");</script>
+
