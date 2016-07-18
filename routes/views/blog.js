@@ -17,7 +17,7 @@ exports = module.exports = function(req, res) {
 	locals.moment = moment;
 
 	//Set the default page number if not specified to 1
-	var page = (req.params.page ? req.params.page : 1);
+	var page = (req.params.page ? parseInt(req.params.page) : 1);
 
 	var filter = {};
 
@@ -34,7 +34,7 @@ exports = module.exports = function(req, res) {
 	locals.data.currentPage = page;
 
 	//Grab data before rendering the page for SEO...
-	wp.connect().posts().embed().page(page).perPage(6).filter(filter).then(function( data ) {
+	wp.connect().posts().embed().page(page).perPage(9).filter(filter).then(function( data ) {
 		locals.data.posts = data;
 		// do something with the returned posts
 
