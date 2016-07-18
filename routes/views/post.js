@@ -1,4 +1,6 @@
 var keystone = require('keystone');
+var wp = require('../wp_connector');
+var moment = require('moment');
 
 exports = module.exports = function(req, res) {
 	
@@ -13,35 +15,19 @@ exports = module.exports = function(req, res) {
 	locals.data = {
 		posts: []
 	};
-	
-	// Load the current post
-	view.on('init', function(next) {
-		
-		var q = keystone.list('Post').model.findOne({
-			state: 'published',
-			slug: locals.filters.post
-		}).populate('author categories');
-		
-		q.exec(function(err, result) {
-			locals.data.post = result;
-			next(err);
-		});
-		
+
+	//Moment is used for converting timestamp to January 1st 2016...
+	locals.moment = moment;
+
+	//Grab data before rendering the page for SEO...
+	wp.connect().posts().id(req.params.post).embed().then(function( data ) {
+		locals.data.post = data;
+		// do something with the returned posts
+
+		// Render the view
+		view.render('post');
+	}).catch(function( err ) {
+		// handle error
 	});
-	
-	// Load other posts
-	view.on('init', function(next) {
-		
-		var q = keystone.list('Post').model.find().where('state', 'published').sort('-publishedDate').populate('author').limit('4');
-		
-		q.exec(function(err, results) {
-			locals.data.posts = results;
-			next(err);
-		});
-		
-	});
-	
-	// Render the view
-	view.render('post');
 	
 };

@@ -7,25 +7,32 @@ block css
 
 mixin post(post)
 	.col-md-4
-		a(href='/news/post/' + post.slug).newspanel
+		.newspanel
 			.panel.panel-default
 				.panel-heading
-					h3()= post.title
+					a.plain(href='/news/post/' + post.id)
+						h3()!= post.title.rendered
 				.panel-body
-					p.text-muted Posted 
-						if post.publishedDate
-							| on <span class="primary-color">#{post._.publishedDate.format('MMMM Do, YYYY')}</span> 
-						if post.categories && post.categories.length
-							| in 
-							each cat, i in post.categories
-								span.primary-color()= cat.name
-								if i < post.categories.length - 1
-									| , 
-								else
-									|  
+					p.text-muted Posted
+						if post.date
+							| <span class="primary-color">#{moment(post.date).fromNow()}</span>
+							| on <span class="primary-color">#{moment(post.date).format("MMMM Do YYYY")}</span>
 						if post.author
-							| by <span class="primary-color">#{post.author.name.first}</span>
-					p!= post.content.brief
+							|  by&nbsp;
+							a.primary-color(href='/news/1/page/' + post._embedded.author[0].name + '/author') #{post._embedded.author[0].name}
+					div.excerpt
+						a.plain(href='/news/post/' + post.id)
+							p!= post.excerpt.rendered
+					p.text-muted
+						if post.categories && post.categories.length
+							each type, type_index in post._embedded["wp:term"]
+								if type
+									each taxonomy, index in type
+										a.primary-color(href='/news/1/page/' + taxonomy.name + '/' + taxonomy.taxonomy) #{taxonomy.name}
+										if index < type.length - 1
+											| ,&nbsp;
+								if type_index < post._embedded["wp:term"].length - 1 && post._embedded["wp:term"][1].length > 1
+									| ,&nbsp;
 
 // CONTENT
 
@@ -37,53 +44,39 @@ block intro
 
 block content
 	.container
-		.row
-		if data.categories.length
-			.col-md-12.text-center: .news-categories
-				.list-group.list-group-horizontal
-					a(href='/news', class=!data.category ? 'active' : false).list-group-item All Categories
-					each cat in data.categories
-						a(href='/news/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
-
 		.row.text-center
-			if filters.category && !data.category
-				h3.text-muted Invalid Category.
-			else
-				if data.posts.results.length
-					if data.posts.totalPages > 1
-						.news-count
-							h5.text-weight-normal.text-muted Showing 
-								strong #{data.posts.first}
-								|  to 
-								strong #{data.posts.last}
-								|  of 
-								strong #{data.posts.total}
-								|  posts.
-					else
-						h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
-					.blog
-						each post in data.posts.results
-							+post(post)
-					
-					// PAGINATION
-					.col-md-12
-						if data.posts.totalPages > 1
-							ul.pagination
-								if data.posts.previous
-									li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
-								else
-									li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
-								each p, i in data.posts.pages
-									li(class=data.posts.currentPage == p ? 'active' : null)
-										a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
-								if data.posts.next
-									li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
-								else
-									li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
-					// PAGINATION END
-				
+			if data.posts.length > 1
+				if data.posts.totalPages > 1
+					.news-count
+						h5.text-weight-normal.text-muted Showing
+							strong #{data.posts.length}
+							|  to
+							strong #{data.posts.last}
+							|  of
+							strong #{data.posts.total}
+							|  posts.
 				else
-					if data.category
-						h3.text-muted There are no posts in the category #{data.category.name}.
-					else
-						h3.text-muted There are no posts yet.
+					h4.text-weight-normal Showing #{utils.plural(data.posts.length, '* post')}.
+				.blog
+					each post in data.posts
+						+post(post)
+
+				// PAGINATION
+				.col-md-12
+					if data.posts._paging.totalPages > 1
+						ul.pagination
+							if data.posts._paging.links.prev
+								li: a(href='/news/' + (data.currentPage-1) + '/page'): span.glyphicon.glyphicon-chevron-left
+							else
+								li.disabled: a(href='/news/'): span.glyphicon.glyphicon-chevron-left
+							if data.posts._paging.links.next
+								li: a(href='/news/' + (data.currentPage+1) + '/page'): span.glyphicon.glyphicon-chevron-right
+							else
+								li.disabled: a(href='/news/' + data.posts._paging.totalPages + '/page'): span.entypo.glyphicon.glyphicon-chevron-right
+				// PAGINATION END
+
+			else
+				if data.category
+					h3.text-muted There are no posts in the category #{data.category.name}.
+				else
+					h3.text-muted There are no posts yet.

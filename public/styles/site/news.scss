@@ -31,5 +31,21 @@
 }
 
 .newspanel .panel {
-  height: 315px;
+  height: 350px;
+}
+
+.newspanel .panel-heading h3 {
+  font-size: 26px;
+}
+
+.newspanel a.plain {
+  color: #333;
+}
+
+.newspanel a.plain:hover {
+  color: #333;
+}
+
+.newspanel .excerpt {
+  height: 195px;
 }
