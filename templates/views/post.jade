@@ -26,6 +26,6 @@ block content
 									| ,&nbsp;
 						if data.post.author
 							|  by&nbsp;
-							a.primary-color(href='/news/1/page/' + data.post._embedded.author[0].name + '/author') #{data.post._embedded.author[0].name}
+							a.primary-color(href='/news/1/page/' + data.post._embedded.author[0].slug + '/author') #{data.post._embedded.author[0].name}
 				.post
 					!= data.post.content.rendered

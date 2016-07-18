@@ -19,7 +19,7 @@ mixin post(post)
 							| on <span class="primary-color">#{moment(post.date).format("MMMM Do YYYY")}</span>
 						if post.author
 							|  by&nbsp;
-							a.primary-color(href='/news/1/page/' + post._embedded.author[0].name + '/author') #{post._embedded.author[0].name}
+							a.primary-color(href='/news/1/page/' + post._embedded.author[0].slug + '/author') #{post._embedded.author[0].name}
 					div.excerpt
 						p!= post.excerpt.rendered
 					p.text-muted.footer
