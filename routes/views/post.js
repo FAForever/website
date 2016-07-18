@@ -10,7 +10,7 @@ exports = module.exports = function(req, res) {
 	// Set locals
 	locals.section = 'blog';
 	locals.filters = {
-		post: req.params.post
+		post: req.params.slug
 	};
 	locals.data = {
 		posts: []
@@ -20,8 +20,8 @@ exports = module.exports = function(req, res) {
 	locals.moment = moment;
 
 	//Grab data before rendering the page for SEO...
-	wp.connect().posts().id(req.params.post).embed().then(function( data ) {
-		locals.data.post = data;
+	wp.connect().posts().slug(req.params.slug).embed().then(function( data ) {
+		locals.data.post = data[0];
 		// do something with the returned posts
 
 		// Render the view

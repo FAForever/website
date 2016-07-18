@@ -19,13 +19,13 @@ block content
 							each type, type_index in data.post._embedded["wp:term"]
 								if type
 									each taxonomy, index in type
-										a.primary-color(href='/news/1/page/' + taxonomy.name + '/' + taxonomy.taxonomy) #{taxonomy.name}
+										a.primary-color(href='/' + (taxonomy.taxonomy == 'category' ? 'category' : 'tag') + '/' + taxonomy.slug + '/page/1') #{taxonomy.name}
 										if index < type.length -1
 											| ,&nbsp;
 								if type_index < data.post._embedded["wp:term"].length - 1 && data.post._embedded["wp:term"][1].length > 1
 									| ,&nbsp;
 						if data.post.author
 							|  by&nbsp;
-							a.primary-color(href='/news/1/page/' + data.post._embedded.author[0].slug + '/author') #{data.post._embedded.author[0].name}
+							a.primary-color(href='/author/' + data.post._embedded.author[0].slug + '/page/1') #{data.post._embedded.author[0].name}
 				.post
 					!= data.post.content.rendered

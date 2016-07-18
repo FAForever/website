@@ -10,7 +10,7 @@ mixin post(post)
 		.newspanel
 			.panel.panel-default
 				.panel-heading
-					a.plain(href='/news/post/' + post.id)
+					a.plain(href='/' + moment(post.date).format("YYYY") + '/' + moment(post.date).format("MM") + '/' + post.slug)
 						h3()!= post.title.rendered
 				.panel-body
 					p.text-muted Posted
@@ -19,7 +19,7 @@ mixin post(post)
 							| on <span class="primary-color">#{moment(post.date).format("MMMM Do YYYY")}</span>
 						if post.author
 							|  by&nbsp;
-							a.primary-color(href='/news/1/page/' + post._embedded.author[0].slug + '/author') #{post._embedded.author[0].name}
+							a.primary-color(href='/author/' + post._embedded.author[0].slug + '/page/1') #{post._embedded.author[0].name}
 					div.excerpt
 						p!= post.excerpt.rendered
 					p.text-muted.footer
@@ -27,7 +27,7 @@ mixin post(post)
 							each type, type_index in post._embedded["wp:term"]
 								if type
 									each taxonomy, index in type
-										a.primary-color(href='/news/1/page/' + taxonomy.name + '/' + taxonomy.taxonomy) #{taxonomy.name}
+										a.primary-color(href='/' + (taxonomy.taxonomy == 'category' ? 'category' : 'tag') + '/' + taxonomy.slug + '/page/1') #{taxonomy.name}
 										if index < type.length - 1
 											| ,&nbsp;
 								if type_index < post._embedded["wp:term"].length - 1 && post._embedded["wp:term"][1].length > 0
@@ -65,13 +65,13 @@ block content
 					if data.posts._paging.totalPages > 1
 						ul.pagination
 							if data.posts._paging.links.prev
-								li: a(href='/news/' + (data.currentPage-1) + '/page'): span.glyphicon.glyphicon-chevron-left
+								li: a(href='/news/page/' + (data.currentPage - 1)): span.glyphicon.glyphicon-chevron-left
 							else
 								li.disabled: a(href='/news/'): span.glyphicon.glyphicon-chevron-left
 							if data.posts._paging.links.next
-								li: a(href='/news/' + (data.currentPage+1) + '/page'): span.glyphicon.glyphicon-chevron-right
+								li: a(href='/news/page/' + (data.currentPage + 1)): span.glyphicon.glyphicon-chevron-right
 							else
-								li.disabled: a(href='/news/' + data.posts._paging.totalPages + '/page'): span.entypo.glyphicon.glyphicon-chevron-right
+								li.disabled: a(href='/news/page/' + data.posts._paging.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				// PAGINATION END
 
 			else
