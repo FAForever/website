@@ -21,9 +21,8 @@ mixin post(post)
 							|  by&nbsp;
 							a.primary-color(href='/news/1/page/' + post._embedded.author[0].name + '/author') #{post._embedded.author[0].name}
 					div.excerpt
-						a.plain(href='/news/post/' + post.id)
-							p!= post.excerpt.rendered
-					p.text-muted
+						p!= post.excerpt.rendered
+					p.text-muted.footer
 						if post.categories && post.categories.length
 							each type, type_index in post._embedded["wp:term"]
 								if type
@@ -31,7 +30,7 @@ mixin post(post)
 										a.primary-color(href='/news/1/page/' + taxonomy.name + '/' + taxonomy.taxonomy) #{taxonomy.name}
 										if index < type.length - 1
 											| ,&nbsp;
-								if type_index < post._embedded["wp:term"].length - 1 && post._embedded["wp:term"][1].length > 1
+								if type_index < post._embedded["wp:term"].length - 1 && post._embedded["wp:term"][1].length > 0
 									| ,&nbsp;
 
 // CONTENT
