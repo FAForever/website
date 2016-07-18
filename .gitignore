@@ -30,9 +30,6 @@ node_modules
 # Ignore .DS_Store files on OS X
 .DS_Store
 
-# Ignore Challonge_Config which contains API_Key for Challonge account
-routes/challonge_config.js
-
 # Ignore automatically generated site.css
 public/styles/site.css
 public/styles/css/*
