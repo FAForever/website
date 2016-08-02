@@ -1,5 +1,6 @@
 var keystone = require('keystone');
-var async = require('async');
+var wp = require('../wp_connector');
+var moment = require('moment');
 
 exports = module.exports = function(req, res) {
 
@@ -8,79 +9,39 @@ exports = module.exports = function(req, res) {
 
 	// Init locals
 	locals.section = 'blog';
-	locals.filters = {
-		category: req.params.category
-	};
 	locals.data = {
-		posts: [],
-		categories: []
+		posts: []
 	};
 
-	// Load all categories
-	view.on('init', function(next) {
+	//Moment is used for converting timestamp to January 1st 2016...
+	locals.moment = moment;
 
-		keystone.list('PostCategory').model.find().sort('name').exec(function(err, results) {
+	//Set the default page number if not specified to 1
+	var page = (req.params.page ? parseInt(req.params.page) : 1);
 
-			if (err || !results.length) {
-				return next(err);
-			}
+	var filter = {};
 
-			locals.data.categories = results;
+	//Setup filters based upon parameter... Otherwise default to empty object
+	if (req.params.category) {
+		filter = {category_name: req.params.category};
+	} else if (req.params.tag) {
+		filter = {tag: [req.params.tag]};
+	} else if (req.params.author) {
+		filter = {author_name: req.params.author};
+	}
 
-			// Load the counts for each category
-			async.each(locals.data.categories, function(category, next) {
+	//Set the current page to reference in pagination
+	locals.data.currentPage = page;
 
-				keystone.list('Post').model.count().where('categories').in([category.id]).exec(function(err, count) {
-					category.postCount = count;
-					next(err);
-				});
+	//Grab data before rendering the page for SEO...
+	wp.connect().posts().embed().page(page).perPage(9).filter(filter).then(function( data ) {
+		locals.data.posts = data;
+		// do something with the returned posts
 
-			}, function(err) {
-				next(err);
-			});
-
-		});
-
+		// Render the view
+		view.render('blog');
+	}).catch(function( err ) {
+		// handle error
 	});
-
-	// Load the current category filter
-	view.on('init', function(next) {
-
-		if (req.params.category) {
-			keystone.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
-				locals.data.category = result;
-				next(err);
-			});
-		} else {
-			next();
-		}
-
-	});
-
-	// Load the posts
-	view.on('init', function(next) {
-
-		var q = keystone.list('Post').paginate({
-				page: req.query.page || 1,
-				perPage: 6,
-				maxPages: 10
-			})
-			.where('state', 'published')
-			.sort('-publishedDate')
-			.populate('author categories');
-
-		if (locals.data.category) {
-			q.where('categories').in([locals.data.category]);
-		}
-
-		q.exec(function(err, results) {
-			locals.data.posts = results;
-			next(err);
-		});
-
-	});
-
-	// Render the view
-	view.render('blog');
 
 };

@@ -10,19 +10,22 @@ block content
 				h2 Invalid Post.
 			else
 				header
-					h1= data.post.title
+					h1!= data.post.title.rendered
 					h5 Posted 
-						if data.post.publishedDate
-							| on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
+						if data.post.date
+							| on #{moment(data.post.date).format("MMMM Do YYYY")}
 						if data.post.categories && data.post.categories.length
-							| in 
-							each cat, cat_i in data.post.categories
-								a(href='/news/' + cat.key)= cat.name
-								if cat_i < data.post.categories.length - 1
-									| , 
-								else
-									|  
+							| &nbsp;in&nbsp;
+							each type, type_index in data.post._embedded["wp:term"]
+								if type
+									each taxonomy, index in type
+										a.primary-color(href='/' + (taxonomy.taxonomy == 'category' ? 'category' : 'tag') + '/' + taxonomy.slug + '/page/1') #{taxonomy.name}
+										if index < type.length -1
+											| ,&nbsp;
+								if type_index < data.post._embedded["wp:term"].length - 1 && data.post._embedded["wp:term"][1].length > 1
+									| ,&nbsp;
 						if data.post.author
-							| by #{data.post.author.name.first}
+							|  by&nbsp;
+							a.primary-color(href='/author/' + data.post._embedded.author[0].slug + '/page/1') #{data.post._embedded.author[0].name}
 				.post
-					!= data.post.content.full
+					!= data.post.content.rendered

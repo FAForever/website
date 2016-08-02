@@ -31,5 +31,40 @@
 }
 
 .newspanel .panel {
-  height: 315px;
+  height: 350px;
+}
+
+.newspanel .panel-heading h3 {
+  font-size: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.newspanel a.plain {
+  color: #333;
+}
+
+.newspanel a.plain:hover {
+  color: #333;
+}
+
+.newspanel .excerpt {
+  height: 195px;
+  overflow: auto;
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
+
+.newspanel img {
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  border-radius: 2px 2px 0 0;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.newspanel .footer {
+  padding-top: 5px;
 }
