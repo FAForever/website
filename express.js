@@ -27,6 +27,12 @@ app.get('/', require(routes + 'index'));
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
 app.get('/competitive/leaderboards', require(routes + 'leaderboards'));
+app.get('/news/', require(routes + 'blog'));
+app.get('/category/:category/page/:page', require(routes + 'blog'));
+app.get('/tag/:tag/page/:page', require(routes + 'blog'));
+app.get('/author/:author/page/:page', require(routes + 'blog'));
+app.get('/news/page/:page', require(routes + 'blog'));
+app.get('/:year/:month/:slug', require(routes + 'post'));
 
 //404 Error Handler
 app.use(function(req, res, next) {
