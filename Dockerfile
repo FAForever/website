@@ -12,8 +12,8 @@ RUN npm install
 ADD . /code/
 
 RUN npm install -g grunt-cli
-RUN grunt serve
+RUN grunt prod
 
 CMD node express
 
-EXPOSE 3000
+EXPOSE 4000
