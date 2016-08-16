@@ -5,9 +5,8 @@ Requires Node AND Grunt
 
 1. Update .env and set to development or production
 2. npm install
-3. gem install compass
-4. grunt sass:dev
-5. grunt serve (production) grunt serve:dev (development)
+3. grunt sass:dev
+4. grunt serve (production) grunt serve:dev (development)
 
 In order to install grunt for the command line, please follow this guide - http://gruntjs.com/getting-started
 
