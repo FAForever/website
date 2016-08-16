@@ -40,7 +40,7 @@ app.use(function(req, res, next) {
 });
 
 //Display 500 Error Handler if in development mode.
-if (app.get('env') == 'development') {
+if (process.env.NODE_ENV == 'development') {
 	app.enable('verbose errors');
 	
 	//500 Error Handler
@@ -50,6 +50,6 @@ if (app.get('env') == 'development') {
 }
 
 //Start and listen on port
-app.listen(app.get('port'), function () {
-	console.log('Express listening on port ' + app.get('port'));
+app.listen(process.env.PORT, function () {
+	console.log('Express listening on port ' + process.env.PORT);
 });
