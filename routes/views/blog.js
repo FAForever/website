@@ -1,10 +1,8 @@
-var keystone = require('keystone');
 var wp = require('../wp_connector');
 var moment = require('moment');
 
 exports = module.exports = function(req, res) {
 
-	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
 	// Init locals
@@ -39,7 +37,7 @@ exports = module.exports = function(req, res) {
 		// do something with the returned posts
 
 		// Render the view
-		view.render('blog');
+		res.render('blog');
 	}).catch(function( err ) {
 		// handle error
 	});
