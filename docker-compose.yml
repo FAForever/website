@@ -1,0 +1,6 @@
+web:
+  build: .
+  env_file: .env
+  command: node express
+  ports:
+   - "4000:4000"
