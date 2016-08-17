@@ -44,3 +44,6 @@ public/js/bottom.min.js
 .bat
 
 .sass-cache
+
+#Ignore environment
+.env

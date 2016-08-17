@@ -3,7 +3,7 @@ New FAForever main website to replace http://faforever.com
 
 Requires Node AND Grunt
 
-1. Update .env and set to development or production
+1. Copy .env.example to .env and set to development or production
 2. npm install
 3. grunt sass:dev
 4. grunt serve:dev (development)
