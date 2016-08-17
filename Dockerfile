@@ -14,6 +14,4 @@ ADD . /code/
 RUN npm install -g grunt-cli
 RUN grunt prod
 
-CMD node express
-
 EXPOSE 4000
