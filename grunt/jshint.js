@@ -8,6 +8,6 @@ module.exports = {
 		'models/**/*.js'
 	],
 	server: [
-		'./keystone.js'
+		'./express.js'
 	]
 }

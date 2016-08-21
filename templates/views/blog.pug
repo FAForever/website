@@ -3,7 +3,7 @@ extends ../layouts/default
 block css
 	link(href="/styles/css/news.min.css", rel="stylesheet")
 
-// MIXINS
+//- MIXINS
 
 mixin post(post)
 	.col-md-4
@@ -15,7 +15,7 @@ mixin post(post)
 				.panel-body
 					p.text-muted Posted
 						if post.date
-							| <span class="primary-color">#{moment(post.date).fromNow()}</span>
+							|  <span class="primary-color">#{moment(post.date).fromNow()}</span>
 							| on <span class="primary-color">#{moment(post.date).format("MMMM Do YYYY")}</span>
 						if post.author
 							|  by&nbsp;
@@ -33,7 +33,7 @@ mixin post(post)
 								if type_index < post._embedded["wp:term"].length - 1 && post._embedded["wp:term"][1].length > 0
 									| ,&nbsp;
 
-// CONTENT
+//- CONTENT
 
 block intro
 	.container
@@ -55,12 +55,12 @@ block content
 							strong #{data.posts.total}
 							|  posts.
 				else
-					h4.text-weight-normal Showing #{utils.plural(data.posts.length, '* post')}.
+					h4.text-weight-normal Showing #{data.posts.length} post(s).
 				.blog
 					each post in data.posts
 						+post(post)
 
-				// PAGINATION
+				//- PAGINATION
 				.col-md-12
 					if data.posts._paging.totalPages > 1
 						ul.pagination
@@ -72,7 +72,7 @@ block content
 								li: a(href='/news/page/' + (data.currentPage + 1)): span.glyphicon.glyphicon-chevron-right
 							else
 								li.disabled: a(href='/news/page/' + data.posts._paging.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
-				// PAGINATION END
+				//- PAGINATION END
 
 			else
 				if data.category

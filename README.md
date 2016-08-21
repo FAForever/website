@@ -1,20 +1,39 @@
 # website
 New FAForever main website to replace http://faforever.com
 
-Requires Node, Mongodb, AND Grunt
+Requires Node AND Grunt
 
-1. Update .env and set to development or production
+1. Copy .env.example to .env and set to development or production
 2. npm install
-3. gem install compass
-4. mongod
-5. grunt sass:dev
-6. grunt serve (production) grunt serve:dev (development)
+3. grunt sass:dev
+4. grunt serve:dev (development)
 
 In order to install grunt for the command line, please follow this guide - http://gruntjs.com/getting-started
 
-Default admin:
-* user: admin@faforever.com
-* password: admin
+## Docker Install Guide
+You will need to setup a default machine in a new terminal window. This can be accomplished by doing the following.
+
+1. Create a new virtual machine to run the docker file in. **This only needs to be done ONCE**
+```sh
+→ docker-compose run web
+```
+2. Build docker image
+```sh
+→ docker-compose run web
+```
+3. Run docker image
+```sh
+→ docker-compose up
+```
+4. Open the app in your browser
+```sh
+→ open http://$(docker-machine ip default):4000/
+```
+
+### You can find your IP by doing
+```sh
+→ docker-machine ip
+```
 
 ## Adding stylesheets and javascripts
 Since we are using grunt to handle all tasks, files must be registered in the correct grunt configurations. 

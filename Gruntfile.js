@@ -1,9 +1,5 @@
 'use strict()';
 
-var config= {
-	port: 3000
-};
-
 module.exports = function(grunt) {
 
 	// Load grunt tasks automatically
@@ -19,7 +15,7 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		nodemon: {
 			serve: {
-				script: 'keystone.js',
+				script: 'express.js',
 				options: {
 					ignore: ['node_modules/**']
 				}
