@@ -25,6 +25,7 @@ var routes = './routes/views/';
 //Define routes
 app.get('/', require(routes + 'index'));
 app.get('/contribution', require(routes + 'contribution'));
+app.get('/calendar', require(routes + 'calendar'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
 app.get('/competitive/leaderboards', require(routes + 'leaderboards'));
 app.get('/news/', require(routes + 'blog'));

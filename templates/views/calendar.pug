@@ -1,0 +1,25 @@
+extends ../layouts/default
+
+block css
+	link(href="/styles/css/calendar.min.css", rel="stylesheet")
+
+block content
+	.container.text-center
+		.col-md-12
+			h1 Forged Alliance Forever Calendar
+			h4 The Forged Alliance Forever calendar includes upcoming Tournaments and Developer Events
+			hr
+		.col-md-12
+			.col-md-6
+				h2.developerCalendar Developer Calendar
+				input.toggleSwitch.toggleDeveloper(type='checkbox', checked)
+			.col-md-6
+				h2.tournamentCalendar Tournament Calendar
+				input.toggleSwitch.toggleTournament(type='checkbox', checked)
+			hr
+	div.calendar
+
+block js
+	script(type='text/javascript').
+		var calendar_key =!{JSON.stringify(calendar)}
+	script(src='/js/calendar.min.js')

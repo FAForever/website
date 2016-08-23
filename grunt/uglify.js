@@ -6,7 +6,8 @@ module.exports = {
             beautify: true,
         },
         files: {
-            'public/js/bottom.min.js': 'public/js/bottom.min.js'
+            'public/js/bottom.min.js': 'public/js/bottom.min.js',
+            'public/js/calendar.min.js': 'public/js/calendar.min.js'
         },
     },
     dist: {
@@ -15,7 +16,8 @@ module.exports = {
             mangle: true
         },
         files: {
-            'public/js/bottom.min.js': 'public/js/bottom.min.js'
+            'public/js/bottom.min.js': 'public/js/bottom.min.js',
+            'public/js/calendar.min.js': 'public/js/calendar.min.js'
         },
     },
 };

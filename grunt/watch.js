@@ -2,7 +2,8 @@ module.exports = {
 	js: {
 		files: [
 			'model/**/*.js',
-			'routes/**/*.js'
+			'routes/**/*.js',
+			'public/js/app/*.js'
 		],
 		tasks: ['jshint:all', 'concat:js', 'uglify:dev']
 	},
