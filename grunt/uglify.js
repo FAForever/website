@@ -7,7 +7,8 @@ module.exports = {
         },
         files: {
             'public/js/bottom.min.js': 'public/js/bottom.min.js',
-            'public/js/calendar.min.js': 'public/js/calendar.min.js'
+            'public/js/calendar.min.js': 'public/js/calendar.min.js',
+            'public/js/leaderboard.min.js': 'public/js/leaderboard.min.js'
         },
     },
     dist: {
@@ -17,7 +18,8 @@ module.exports = {
         },
         files: {
             'public/js/bottom.min.js': 'public/js/bottom.min.js',
-            'public/js/calendar.min.js': 'public/js/calendar.min.js'
+            'public/js/calendar.min.js': 'public/js/calendar.min.js',
+            'public/js/leaderboard.min.js': 'public/js/leaderboard.min.js'
         },
     },
 };

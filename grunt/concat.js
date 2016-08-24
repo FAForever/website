@@ -11,7 +11,11 @@ module.exports = {
                 'node_modules/fullcalendar/dist/gcal.js',
                 'node_modules/bootstrap-switch/dist/js/bootstrap-switch.min.js',
                 'public/js/app/calendar.js'
-            ]
+            ],
+            'public/js/leaderboard.min.js': [
+                'public/js/app/leaderboards_v2.js',
+                'public/js/app/jquery.animatedscroll-1.1.5.min.js'
+            ],
         },
     }
 };
