@@ -5,27 +5,50 @@ block css
 
 block content
 	.container.text-center
-		.col-md-12
-			h1.contribution-title Contribute to Forged Alliance Forever
-			h4.contribution-subtitle.text-center As a non-profit open source project we are reliant on contributions from the community
-			hr
-		.col-md-6
-			h2 Donations
-			p If you would like to support the continuing development of Forged Alliance Forever you can do so here. All donations will be used exclusively for continued development and support of Forged Alliance Forever. We are extremely grateful for your aid!
-			<form class="donation-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-			<input type="hidden" name="cmd" value="_donations">
-			<input type="hidden" name="business" value="visionik@pobox.com">
-			<input type="hidden" name="lc" value="US">
-			<input type="hidden" name="item_name" value="FAForever">
-			<input type="hidden" name="no_note" value="0">
-			<input type="hidden" name="currency_code" value="EUR">
-			<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
-			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
-			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		.col-md-6
-			h2 Development
-			p Forged Alliance Forever is an open source project and always looking for new collaborators. If you would like to help with development you can do so on Github, however we request you to contact an administrator/moderator on the forums or in our in-client chat (white names at the top) so that we can invite you to our developer Slack chat for easier communication.
-			button(class="btn btn-default btn-lg github-button") View on Github
-		.col-md-12
-			h2.thanks-for-support Thank you for your support!
+		.row
+			.col-md-12
+				h1.contribution-title Contribute to Forged Alliance Forever
+				h4.contribution-subtitle.text-center As a non-profit open source project we are reliant on contributions from the community. Donating is just one of the many ways on how to contribute to the community. Check out the different ways <strong>YOU</strong> can contribute today!
+				hr
+		.row
+			.col-md-6
+				h2 Donations
+				p If you would like to support the continuing development of Forged Alliance Forever you can do so here. All donations will be used exclusively for continued development and support of Forged Alliance Forever. We are extremely grateful for your aid!
+				<form class="donation-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_donations">
+				<input type="hidden" name="business" value="visionik@pobox.com">
+				<input type="hidden" name="lc" value="US">
+				<input type="hidden" name="item_name" value="FAForever">
+				<input type="hidden" name="no_note" value="0">
+				<input type="hidden" name="currency_code" value="EUR">
+				<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			.col-md-6
+				h2 Development
+				p Forged Alliance Forever is an open source project and always looking for new collaborators. If you would like to help with development you can do so on Github, however we request you to contact an administrator/moderator on the forums or in our in-client chat (white names at the top) so that we can invite you to our developer Slack chat for easier communication.
+				a(class="btn btn-default btn-lg github-button", href="http://wiki.faforever.com/index.php?title=Introduction_to_development") Intro to Development
+				a(class="btn btn-default btn-lg github-button", href="https://github.com/faforever/") View on Github
+		.row
+			.col-md-6
+				h2 Creating Maps and Mods
+				p You have a cool idea for a new map or mod? Awesome! Our vaults are always open for new and exciting maps and mods.
+				a(class="btn btn-default btn-lg github-button", href="http://wiki.faforever.com/index.php?title=Map_Editor") Mapping Information
+				a(class="btn btn-default btn-lg github-button", href="http://wiki.faforever.com/index.php?title=Modding") Modding Information
+			.col-md-6
+				h2 Testing & Bug Reports
+				p Forged Alliance Forever is constantly evolving. You can help as a tester for balance patches or you can help testing the latest new mods from our developers.
+				a(class="btn btn-default btn-lg github-button", href="http://wiki.faforever.com/index.php?title=Reporting_Technical_Issues") Learn more about Testing
+		.row
+			.col-md-6
+				h2 Train Beginners
+				p One of the biggest challenges for every beginner is understanding the game play and mechanics of Supreme Commander. Help out your fellow n00bies by teaching others the basics to more advanced techniques on crushing their opponent.
+				a(class="btn btn-default btn-lg github-button", href="http://wiki.faforever.com/index.php?title=Learning_SupCom") Learn more about Teaching
+			.col-md-6
+				h2 Streaming & Casting
+				p Don't know how to contribute in any other way? Then streaming and casting is right for you! Cast replays or stream live games on Twitch, Youtube, or etc and help boost the community.
+				a(class="btn btn-default btn-lg github-button", href="http://forums.faforever.com/viewtopic.php?f=2&t=8199") Start Streaming & Casting Now!
+		.row
+			.col-md-12
+				h2.thanks-for-support Thank you for your support!
