@@ -14,4 +14,6 @@ ADD . /code/
 RUN npm install -g grunt-cli
 RUN grunt prod
 
-EXPOSE 4000
+CMD PORT=3000 npm start
+
+EXPOSE 3000
