@@ -1,13 +1,13 @@
 /*
 
-http://api.faforever.com/ranked1v1?page[size]=50&page[number]=1&filter[is_active]=true
-http://api.faforever.com/ranked1v1/500
+https://api.faforever.com/ranked1v1?page[size]=50&page[number]=1&filter[is_active]=true
+https://api.faforever.com/ranked1v1/500
 
 */
 
 var getPage = function(pageNumber, pageSize) {
   $.ajax({
-    url: "http://api.faforever.com/ranked1v1?page[size]=" + pageSize + "&page[number]=" + pageNumber + "&filter[is_active]=true",
+    url: "https://api.faforever.com/ranked1v1?page[size]=" + pageSize + "&page[number]=" + pageNumber + "&filter[is_active]=true",
     success: function (result) {
       renderPage(result, document.getElementById("players"));
     }
@@ -16,7 +16,7 @@ var getPage = function(pageNumber, pageSize) {
 
 var getPlayer = function(playerName) {
   $.ajax({
-    url: "http://api.faforever.com/ranked1v1?filter[player]=" + playerName,
+    url: "https://api.faforever.com/ranked1v1?filter[player]=" + playerName,
     success: function (result) {
       renderPage(result, document.getElementById("players"));
     }
