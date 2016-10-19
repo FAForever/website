@@ -1,0 +1,30 @@
+extends ../../layouts/default
+
+block css
+    link(href="/styles/css/account.min.css", rel="stylesheet")
+
+block content
+    .container.text-center
+        .row
+            .col-md-12
+                h1.account-title Reset Password
+                //h4.account-subtitle.text-center As a non-profit open source project we are reliant on contributions from the community. Donating is just one of the many ways on how to contribute to the community. Check out the different ways <strong>YOU</strong> can contribute today!
+                hr
+        .row
+            .col-md-offset-3.col-md-6
+                form(method='post')
+                    .form-group()
+                        label Username
+                            input(type='text', name='username_old', required='required').form-control
+                    .form-group()
+                        label Password
+                            input(type='password', name='password', required='required').form-control
+                    .form-group()
+                        label Confirm Password
+                            input(type='password', name='password_confirm', required='required').form-control
+                    hr
+                    .form-group()
+                        label Username
+                            input(type='text', name='username_new', required='required').form-control
+                    .form-actions
+                        button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Change Username

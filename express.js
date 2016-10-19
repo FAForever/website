@@ -6,6 +6,9 @@ var express = require('express');
 
 var middleware = require('./routes/middleware');
 
+var expressValidator = require('express-validator');
+var bodyParser = require('body-parser');
+
 var app = express();
 
 //Execute middleware before each request...
@@ -13,6 +16,15 @@ app.use(middleware.initLocals);
 
 //Set static public directory path
 app.use(express.static('public'));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator({
+    customValidators: {
+        isEqual: function(value1, value2) {
+            return value1 === value2;
+        }
+    }
+}));
 
 //Initialize values for default configs
 app.set('views', 'templates/views');
@@ -24,8 +36,25 @@ var routes = './routes/views/';
 
 //Define routes
 app.get('/', require(routes + 'index'));
+
+//Account routes
+app.get('/account/register', require(routes + 'accounts/get/register'));
+app.post('/account/register', require(routes + 'accounts/post/register'));
+
+app.get('/account/link', require(routes + 'accounts/get/linkSteam'));
+app.post('/account/link', require(routes + 'accounts/post/linkSteam'));
+
+app.get('/account/password/reset', require(routes + 'accounts/get/resetPassword'));
+app.post('/account/password/reset', require(routes + 'accounts/post/resetPassword'));
+
+app.get('/account/password/forgot', require(routes + 'accounts/get/forgotPassword'));
+app.post('/account/password/forgot', require(routes + 'accounts/post/forgotPassword'));
+
+app.get('/account/username/change', require(routes + 'accounts/get/changeUsername'));
+app.post('/account/username/change', require(routes + 'accounts/post/changeUsername'));
+
+
 app.get('/contribution', require(routes + 'contribution'));
-app.get('/register', require(routes + 'register'));
 app.get('/calendar', require(routes + 'calendar'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
 app.get('/competitive/leaderboards', require(routes + 'leaderboards'));
