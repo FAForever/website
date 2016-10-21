@@ -5,7 +5,9 @@ exports = module.exports = function(req, res) {
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'competitive';
-  	locals.cSection = 'leaderboards';
+	locals.cSection = '1v1';
+	locals.ratingType = '1v1';
+	locals.apiURL = process.env.API_URL;
 
 	// Render the view
 	res.render('leaderboards');
