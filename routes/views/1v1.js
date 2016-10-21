@@ -8,6 +8,8 @@ exports = module.exports = function(req, res) {
 	locals.cSection = '1v1';
 	locals.ratingType = '1v1';
 	locals.apiURL = process.env.API_URL;
+	locals.members = require('../../members/1v1.json');
+	locals.lastPage = Math.ceil(locals.members.length / 100);
 
 	// Render the view
 	res.render('leaderboards');
