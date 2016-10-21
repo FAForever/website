@@ -4,7 +4,7 @@ block cContent
 
   br
   
-  h2.text-center 1v1 Ladder Leaderboards
+  h2.text-center #{ratingType} Leaderboards
   
   br
   
@@ -19,6 +19,8 @@ block cContent
   
   br
   br
+
+  canvas.stats
   
   .row
     .col-md-2.text-left
@@ -34,6 +36,7 @@ block cContent
         th Player
         th Rating
         th Games
+        th Stats
     tbody#players
     
   .row
@@ -46,4 +49,7 @@ block cContent
   br
 
 block js
-  script(src="/js/leaderboard.min.js")
+  script(type='text/javascript').
+    var apiURL = !{JSON.stringify(apiURL)}
+    var ratingType = !{JSON.stringify(cSection)}
+  script(src="/js/leaderboards.min.js")
