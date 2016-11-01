@@ -47,9 +47,6 @@ app.post('/account/link', require(routes + 'accounts/post/linkSteam'));
 app.get('/account/password/reset', require(routes + 'accounts/get/resetPassword'));
 app.post('/account/password/reset', require(routes + 'accounts/post/resetPassword'));
 
-app.get('/account/password/forgot', require(routes + 'accounts/get/forgotPassword'));
-app.post('/account/password/forgot', require(routes + 'accounts/post/forgotPassword'));
-
 app.get('/account/username/change', require(routes + 'accounts/get/changeUsername'));
 app.post('/account/username/change', require(routes + 'accounts/post/changeUsername'));
 
