@@ -6,6 +6,8 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'register';
 
+	locals.formData = req.body || {};
+
 	// Render the view
 	res.render('account/register');
 
