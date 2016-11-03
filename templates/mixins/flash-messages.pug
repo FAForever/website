@@ -1,8 +1,6 @@
 mixin flash-messages(messages)
 	if flash
-		div.alert(class=flash['type'])
-			ul
-			- for (var i = 0; i < flash.messages.length; i++) {
-			li #{flash.messages[i].msg}
-			- }
-			ul
+		div.alert(class=flash['class'])
+			ul.flash-errors
+				- for (var i = 0; i < flash.messages.length; i++)
+					li <strong>#{flash.type}</strong> #{flash.messages[i].msg}
