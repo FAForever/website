@@ -118,7 +118,7 @@ $(document).on('click', '.player', (function(){
   var pastYear = moment().subtract(1, 'years').unix();
 
   $.ajax({
-    url: apiURL + '/leaderboards/' + ratingType + '/' + id + '/history',
+    url: apiURL + '/players/' + id + '/ratings/' + ratingType + '/history',
     success: function(result) {
       $.each(result.data.attributes.history, function(unixTime, values){
 
