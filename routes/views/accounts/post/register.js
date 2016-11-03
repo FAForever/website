@@ -10,8 +10,10 @@ exports = module.exports = function(req, res) {
 
 	// validate the input
 	req.checkBody('username', 'Username is required').notEmpty();
+	req.checkBody('username', 'Username must be three or more characters').isLength({min: 3});
 	req.checkBody('password', 'Password is required').notEmpty();
-	req.checkBody('password', 'Password should be equal to confirmed password').isEqual(req.body.password_confirm);
+	req.checkBody('password', 'Password must be six or more characters').isLength({min: 6});
+	req.checkBody('password', 'Passwords don\'t match').isEqual(req.body.password_confirm);
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email does not appear to be valid').isEmail();
 
@@ -22,8 +24,9 @@ exports = module.exports = function(req, res) {
 	if (errors) {
 
 		// failure
-		flash.type = 'alert-danger';
+		flash.class = 'alert-danger';
 		flash.messages = errors;
+        flash.type = 'Error!';
 
 		res.render('account/register', {flash: flash});
 
@@ -60,14 +63,16 @@ exports = module.exports = function(req, res) {
 					errorMessages.push({msg: 'Invalid registration sign up. Please try again later.'})
 				}
 
-				flash.type = 'alert-danger';
+				flash.class = 'alert-danger';
 				flash.messages = errorMessages;
+                flash.type = 'Error!';
 
 				overallRes.render('account/register', {flash: flash});
 			} else {
 				// Successfully registered user
-				flash.type = 'alert-success';
+				flash.class = 'alert-success';
 				flash.messages = [{msg: 'Please check your email to verify your registration. Then you will be ready to log in!'}];
+                flash.type = 'Success!';
 
 				overallRes.render('account/register', {flash: flash});
 			}
