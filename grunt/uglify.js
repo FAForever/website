@@ -3,13 +3,14 @@ module.exports = {
         options: {
             compress: false,
             mangle: false,
-            beautify: true,
+            beautify: true
         },
         files: {
             'public/js/bottom.min.js': 'public/js/bottom.min.js',
             'public/js/calendar.min.js': 'public/js/calendar.min.js',
-            'public/js/leaderboard.min.js': 'public/js/leaderboard.min.js'
-        },
+            'public/js/leaderboard.min.js': 'public/js/leaderboard.min.js',
+            'public/js/account.min.js': 'public/js/account.min.js'
+        }
     },
     dist: {
         options:{
@@ -19,7 +20,8 @@ module.exports = {
         files: {
             'public/js/bottom.min.js': 'public/js/bottom.min.js',
             'public/js/calendar.min.js': 'public/js/calendar.min.js',
-            'public/js/leaderboard.min.js': 'public/js/leaderboard.min.js'
-        },
-    },
+            'public/js/leaderboard.min.js': 'public/js/leaderboard.min.js',
+            'public/js/account.min.js': 'public/js/account.min.js'
+        }
+    }
 };

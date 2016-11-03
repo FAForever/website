@@ -16,6 +16,9 @@ module.exports = {
                 'public/js/app/leaderboards_v2.js',
                 'public/js/app/jquery.animatedscroll-1.1.5.min.js'
             ],
-        },
+            'public/js/account.min.js': [
+                'node_modules/bootstrap-validator/dist/validator.js'
+            ]
+        }
     }
 };

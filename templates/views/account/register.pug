@@ -17,18 +17,33 @@ block content
 				+flash-messages(flash)
 		.row
 			.col-md-offset-3.col-md-6
-				form(method='post',action="/account/register")
-					.form-group()
-						label Username
-							input(type='text', name='username', required='required', value=formData['username']).form-control
-					.form-group()
-						label Email
-							input(type='email', name='email', required='required', value=formData['email']).form-control
-					.form-group()
-						label Password
-							input(type='password', name='password', required='required').form-control
-					.form-group()
-						label Confirm Password
-							input(type='password', name='password_confirm', required='required').form-control
+				form(method='post',action="/account/register",data-toggle="validator")
+					.form-group.has-feedback
+						label Username:
+							.input-group
+								input(type='text', name='username', required='required', value=formData['username'], data-minlength='3').form-control
+								span(aria-hidden='true').glyphicon.form-control-feedback
+								.help-block Minimum of 3 characters
+					.form-group.has-feedback
+						label Email:
+							.input-group
+								input(type='email', name='email', required='required', value=formData['email']).form-control
+								span(aria-hidden='true').glyphicon.form-control-feedback
+								.help-block.with-errors
+					.form-group.has-feedback
+						label Password:
+							.input-group
+								input(type='password', name='password', required='required', id='inputPassword', data-minlength='6').form-control
+								span(aria-hidden='true').glyphicon.form-control-feedback
+								.help-block Minimum of 6 characters
+					.form-group.has-feedback
+						label Confirm Password:
+							.input-group
+								input(type='password', name='password_confirm', required='required',data-match='#inputPassword', data-match-error='Passwords don\'t match. Please fix!', data-minlength='6').form-control
+								span(aria-hidden='true').glyphicon.form-control-feedback
+								.help-block.with-errors
 					.form-actions
 						button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
+
+block js
+	script(src='/js/account.min.js')
