@@ -13,21 +13,17 @@ In order to install grunt for the command line, please follow this guide - http:
 ## Docker Install Guide
 You will need to setup a default machine in a new terminal window. This can be accomplished by doing the following.
 
-1. Create a new virtual machine to run the docker file in. **This only needs to be done ONCE**
-```sh
-→ docker-compose run web
-```
 2. Build docker image
 ```sh
-→ docker-compose run web
+→ docker build -t faf-website .
 ```
 3. Run docker image
 ```sh
-→ docker-compose up
+→ docker run --name faf-website -p 3000:3000 -d faf-website
 ```
 4. Open the app in your browser
 ```sh
-→ open http://$(docker-machine ip default):4000/
+→ open http://$(docker-machine ip default):3000/
 ```
 
 ### You can find your IP by doing

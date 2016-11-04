@@ -1,31 +1,40 @@
 extends competitive_nav
 
+block css
+  link(href="/styles/css/leaderboards.min.css", rel="stylesheet")
+
+mixin pagination
+  .row
+    .col-md-2.text-left.pagination
+      button(class="btn btn-primary first") First
+      button(class="btn btn-primary previous") Previous
+    .col-md-8
+    .col-md-2.text-right.pagination
+      button(class="btn btn-primary next") Next
+      button(class="btn btn-primary last") Last
+
 block cContent
 
   br
   
-  h2.text-center 1v1 Ladder Leaderboards
+  h2.text-center #{ratingType} Leaderboards
   
   br
   
   .row
     .col-md-2
-    .col-md-8
-      .input-group
+    .col-md-6
         input(type="text" class="form-control" placeholder="Player name...")#searchbar
-        span.input-group-btn
-          button(class="btn btn-default" type="button" onclick="search()" id="search-button") Search
     .col-md-2
-  
+        button(class="btn btn-default" type="button" id="forget-search") Forget Search
+    .col-md-2
+
   br
   br
+
+  canvas.stats
   
-  .row
-    .col-md-2.text-left
-      button(class="btn btn-primary" onclick="prevPage()") Previous
-    .col-md-8
-    .col-md-2.text-right
-      button(class="btn btn-primary" onclick="nextPage()") Next
+  +pagination
   
   table.table.table-striped.table-hover
     thead
@@ -34,16 +43,17 @@ block cContent
         th Player
         th Rating
         th Games
+        th Stats
     tbody#players
     
-  .row
-    .col-md-2.text-left
-      button(class="btn btn-primary" onclick="prevPage()") Previous
-    .col-md-8
-    .col-md-2.text-right
-      button(class="btn btn-primary" onclick="nextPage()") Next
-      
+  +pagination
+
   br
 
 block js
-  script(src="/js/leaderboard.min.js")
+  script(type='text/javascript').
+    var apiURL = !{JSON.stringify(apiURL)};
+    var ratingType = !{JSON.stringify(cSection)};
+    var members = '!{JSON.stringify(members)}';
+    var lastPage = !{JSON.stringify(lastPage)};
+  script(src="/js/leaderboards.min.js")
