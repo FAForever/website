@@ -7,7 +7,7 @@ RUN mkdir code
 # First add _only_ package.json to utilize docker cache when deps don't change
 ADD package.json /code
 WORKDIR /code
-RUN npm install
+RUN yarn install
 
 ADD . /code/
 
