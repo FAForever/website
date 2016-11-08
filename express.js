@@ -54,7 +54,8 @@ app.post('/account/username/change', require(routes + 'accounts/post/changeUsern
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/calendar', require(routes + 'calendar'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
-app.get('/competitive/leaderboards', require(routes + 'leaderboards'));
+app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
+app.get('/competitive/leaderboards/global', require(routes + 'global'));
 app.get('/news/', require(routes + 'blog'));
 app.get('/category/:category/page/:page', require(routes + 'blog'));
 app.get('/tag/:tag/page/:page', require(routes + 'blog'));

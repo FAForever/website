@@ -10,7 +10,8 @@ module.exports = {
             'public/styles/css/account.min.css': 'public/styles/site/account.scss',
             'public/styles/css/index.min.css': 'public/styles/site/index.scss',
             'public/styles/css/news.min.css': 'public/styles/site/news.scss',
-            'public/styles/css/calendar.min.css': 'public/styles/site/calendar.scss'
+            'public/styles/css/calendar.min.css': 'public/styles/site/calendar.scss',
+            'public/styles/css/leaderboards.min.css': 'public/styles/site/leaderboards.scss'
         }
     },
     dist: {
@@ -24,7 +25,8 @@ module.exports = {
             'public/styles/css/account.min.css': 'public/styles/site/account.scss',
             'public/styles/css/index.min.css': 'public/styles/site/index.scss',
             'public/styles/css/news.min.css': 'public/styles/site/news.scss',
-            'public/styles/css/calendar.min.css': 'public/styles/site/calendar.scss'
+            'public/styles/css/calendar.min.css': 'public/styles/site/calendar.scss',
+            'public/styles/css/leaderboards.min.css': 'public/styles/site/leaderboards.scss'
         }
     }
 };

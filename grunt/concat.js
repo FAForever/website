@@ -12,6 +12,14 @@ module.exports = {
                 'node_modules/bootstrap-switch/dist/js/bootstrap-switch.min.js',
                 'public/js/app/calendar.js'
             ],
+            'public/js/leaderboards.min.js': [
+                'node_modules/awesomplete/awesomplete.js',
+                'node_modules/moment/min/moment-with-locales.min.js',
+                'node_modules/chart.js/dist/Chart.bundle.js',
+                'public/js/jquery/jquery.animatedscroll-1.1.5.min.js',
+                'public/js/app/leaderboards.js'
+            ]
+        }
             'public/js/leaderboard.min.js': [
                 'public/js/app/leaderboards_v2.js',
                 'public/js/app/jquery.animatedscroll-1.1.5.min.js'
