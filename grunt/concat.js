@@ -18,11 +18,6 @@ module.exports = {
                 'node_modules/chart.js/dist/Chart.bundle.js',
                 'public/js/jquery/jquery.animatedscroll-1.1.5.min.js',
                 'public/js/app/leaderboards.js'
-            ]
-        }
-            'public/js/leaderboard.min.js': [
-                'public/js/app/leaderboards_v2.js',
-                'public/js/app/jquery.animatedscroll-1.1.5.min.js'
             ],
             'public/js/account.min.js': [
                 'node_modules/bootstrap-validator/dist/validator.js'
