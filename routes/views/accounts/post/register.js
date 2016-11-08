@@ -60,7 +60,7 @@ exports = module.exports = function(req, res) {
 						errorMessages.push({msg: error.detail});
 					}
 				} catch(e) {
-					errorMessages.push({msg: 'Invalid registration sign up. Please try again later.'})
+					errorMessages.push({msg: 'Invalid registration sign up. Please try again later.'});
 				}
 
 				flash.class = 'alert-danger';
