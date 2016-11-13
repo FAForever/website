@@ -4,6 +4,7 @@ module.exports = {
 		script: 'express.js',
 		options: {
 			nodeArgs: ['--debug'],
+			open: true,
 			env: {
 				port: process.env.PORT || 3000
 			}
