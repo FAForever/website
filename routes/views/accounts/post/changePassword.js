@@ -9,8 +9,6 @@ exports = module.exports = function(req, res) {
 	locals.formData = req.body || {};
 
 	// validate the input
-	req.checkBody('username', 'Username is required').notEmpty();
-	req.checkBody('username', 'Username must be three or more characters').isLength({min: 3});
 	req.checkBody('old_password', 'Old Password is required').notEmpty();
 	req.checkBody('old_password', 'Old Password must be six or more characters').isLength({min: 6});
 	req.checkBody('password', 'New Password is required').notEmpty();
@@ -32,9 +30,6 @@ exports = module.exports = function(req, res) {
 
 	} else {
 
-		// pull the form variables off the request body
-		var username = req.body.username;
-
 		//Encrypt password before sending it off to endpoint
 		var newPassword = SHA256(req.body.password).toString();
 		var oldPassword = SHA256(req.body.old_password).toString();
@@ -44,7 +39,7 @@ exports = module.exports = function(req, res) {
 		//Run post to reset endpoint
 		request.post({
 			url: process.env.API_URL + '/users/change_password',
-			form : {name: username, pw_hash_old: oldPassword, pw_hash_new: newPassword}
+			form : {pw_hash_old: oldPassword, pw_hash_new: newPassword}
 		}, function (err, res, body) {
 			//Check to see if valid user
 			if(body != 'ok') {
