@@ -1,4 +1,6 @@
 extends ../../layouts/default
+include ../../mixins/flash-messages
+include ../../mixins/form/account
 
 block css
     link(href="/styles/css/account.min.css", rel="stylesheet")
@@ -11,13 +13,8 @@ block content
                 h4.account-subtitle.text-center By doing that, you will be able to run several accounts on the same computer, as long as all these accounts are also linked to Steam. The Steam account need to have a copy of Forged Alliance. It doesn't need to be installed. The Steam account need to be public during the first login. You can set it back to private after the initial login. Be careful : If you try to log with a non-linked account on a computer that used a steam-linked account, you will not able to login! there is no going back! Once your account is tied to Steam, you can't unlink it!
                 hr
         .row
-            .col-md-offset-3.col-md-6
-                form(method='post')
-                    .form-group()
-                        label Email
-                            input(type='email', name='email', required='required').form-control
-                    .form-group()
-                        label Password
-                            input(type='password', name='password', required='required').form-control
-                    .form-actions
-                        button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Link
+            a(href=steam)
+                img(src='/images/steam_link.png')
+
+block js
+    script(src='/js/account.min.js')
