@@ -34,7 +34,8 @@ exports = module.exports = function(req, res) {
 		//Run post to reset endpoint
 		request.post({
 			url: process.env.API_URL + '/users/change_email',
-			form : {email: email}
+			headers: {'Authorization':'Bearer ' + req.user.data.attributes.token},
+			form : {new_email: email}
 		}, function (err, res, body) {
 			//Check to see if valid user
 			if(body != 'ok') {
