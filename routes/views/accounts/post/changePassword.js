@@ -14,6 +14,8 @@ exports = module.exports = function(req, res) {
 	req.checkBody('password', 'New Password is required').notEmpty();
 	req.checkBody('password', 'New Password must be six or more characters').isLength({min: 6});
 	req.checkBody('password', 'New Passwords don\'t match').isEqual(req.body.password_confirm);
+	req.checkBody('username', 'Username is required').notEmpty();
+	req.checkBody('username', 'Username must be three or more characters').isLength({min: 3});
 
 	// check the validation object for errors
 	var errors = req.validationErrors();
@@ -33,13 +35,15 @@ exports = module.exports = function(req, res) {
 		//Encrypt password before sending it off to endpoint
 		var newPassword = SHA256(req.body.password).toString();
 		var oldPassword = SHA256(req.body.old_password).toString();
+		var username = req.body.username;
 
 		var overallRes = res;
 
 		//Run post to reset endpoint
 		request.post({
 			url: process.env.API_URL + '/users/change_password',
-			form : {pw_hash_old: oldPassword, pw_hash_new: newPassword}
+			headers: {'Authorization':'Bearer ' + req.user.data.attributes.token},
+			form : {name: username, pw_hash_old: oldPassword, pw_hash_new: newPassword}
 		}, function (err, res, body) {
 			//Check to see if valid user
 			if(body != 'ok') {
