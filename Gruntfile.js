@@ -12,26 +12,7 @@ module.exports = function(grunt) {
 		config: {
 			src: './grunt/*.js'
 		},
-		pkg: grunt.file.readJSON('package.json'),
-		nodemon: {
-			serve: {
-				script: 'express.js',
-				options: {
-					ignore: ['node_modules/**']
-				}
-			}
-		},
-                sass: {
-                        dist: {
-                                files: [{
-                                        expand: true,
-                                        cwd: 'public/styles',
-                                        src: ['*.scss'],
-                                        dest: 'public/styles',
-                                        ext: '.min.css'
-                                }]
-                        }
-                }
+		pkg: grunt.file.readJSON('package.json')
 	};
 
 	var configs = require('load-grunt-configs')(grunt, options);
@@ -42,11 +23,6 @@ module.exports = function(grunt) {
 	// load jshint
 	grunt.registerTask('lint', [
 		'jshint'
-	]);
-
-	grunt.registerTask('dev', [
-		'sass',
-		'watch'
 	]);
 
 	// default option to connect server
