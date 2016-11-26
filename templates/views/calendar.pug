@@ -21,5 +21,6 @@ block content
 
 block js
 	script(type='text/javascript').
-		var calendar_key =!{JSON.stringify(calendar)}
+		var calendar_key =!{JSON.stringify(calendar)};
+		var locale =!{JSON.stringify(locale)};
 	script(src='/js/calendar.min.js')

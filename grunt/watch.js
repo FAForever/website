@@ -5,7 +5,10 @@ module.exports = {
 			'routes/**/*.js',
 			'public/js/app/*.js'
 		],
-		tasks: ['jshint:all', 'concat:js', 'uglify:dev']
+		tasks: ['jshint:all', 'concat:js', 'uglify:dev'],
+		options: {
+			livereload: true
+		}
 	},
 	express: {
 		files: [
@@ -20,7 +23,7 @@ module.exports = {
 	},
 	livereload: {
 		files: [
-			'public/styles/**/*.css',
+			'public/styles/**/*.css'
 		],
 		options: {
 			livereload: true
