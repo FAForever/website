@@ -15,6 +15,7 @@ var app = express();
 
 //Execute middleware before each request...
 app.use(middleware.initLocals);
+app.use(middleware.getLatestClientRelease);
 
 //Set static public directory path
 app.use(express.static('public'));

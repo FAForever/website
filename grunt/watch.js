@@ -15,14 +15,16 @@ module.exports = {
 			'express.js',
 			'public/js/lib/**/*.{js,json}'
 		],
-		tasks: ['jshint:server', 'concurrent:dev'],
-		options: {
-			livereload: true
-		}
+		tasks: ['jshint:server', 'concurrent:dev']
 	},
 	sass: {
 		files: ['public/styles/**/*.scss'],
-		tasks: ['sass:dev'],
+		tasks: ['sass:dev']
+	},
+	livereload: {
+		files: [
+			'public/styles/**/*.css'
+		],
 		options: {
 			livereload: true
 		}

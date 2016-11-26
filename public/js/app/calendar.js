@@ -3,6 +3,7 @@ $(document).ready(function() {
     $('.calendar').fullCalendar({
 
         googleCalendarApiKey: calendar_key,
+        lang: locale,
 
         eventSources: [
             {
