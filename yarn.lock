@@ -4,6 +4,10 @@ abbrev@1:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"
 
+accept-language-parser:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/accept-language-parser/-/accept-language-parser-1.3.0.tgz#21be4e0f46a3f695a0cf08edd2d955369221f3f0"
+
 accepts@~1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/accepts/-/accepts-1.3.3.tgz#c3ca7434938648c3e0d9c1e328dd68b622c284ca"
