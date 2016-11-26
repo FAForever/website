@@ -24,3 +24,15 @@ exports.initLocals = function(req, res, next) {
 	next();
 
 };
+
+exports.getLatestClientRelease = function(req, res, next) {
+
+	var locals = res.locals;
+
+	var clientLink = require('../link.json');
+
+	locals.client_download_link = clientLink.link;
+
+	next();
+
+};
