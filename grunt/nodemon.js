@@ -5,7 +5,6 @@ module.exports = {
 		options: {
 			nodeArgs: ['--debug', '--inspect'],
 			args: ['development'],
-			nodeArgs: ['--debug'],
 			open: true,
 			env: {
 				port: process.env.PORT || 3000
