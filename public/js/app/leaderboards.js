@@ -133,19 +133,32 @@ $(document).on('click', '.player', (function(){
       });
 
       var data = {
-        labels: labels,
-        datasets: [ {
-          label: name + ' Rating over the Past Year',
-          data: dataset,
-          backgroundColor: "rgba(0, 140, 186, 0.4)"
-        }]
-      };
+            title: {
+                text: name + ' Rating over the Past Year',
+                x: -20 //center
+            },
+            xAxis: {
+                categories: labels
+            },
+            yAxis: {
+                title: {
+                    text: 'Rating'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            series: [{
+                name: name + '\'s Rating',
+                data: dataset
+            }]
+        };
 
-      var ctx = $(".stats");
+      chart.createChart(data);
 
-      chart.createChart(ctx, data);
-
-      $(".stats").animatedScroll();
+      $("#stats").animatedScroll();
 
     }
   });
@@ -159,11 +172,8 @@ var chart = {
         return this.chart;
     },
 
-    createChart: function(ctx, data) {
-        this.chart = new Chart(ctx, {
-            type: 'line',
-            data: data
-        });
+    createChart: function(data) {
+        this.chart = Highcharts.chart("stats", data);
     }
 };
 

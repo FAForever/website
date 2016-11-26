@@ -16,7 +16,7 @@ module.exports = {
             'public/js/leaderboards.min.js': [
                 'node_modules/awesomplete/awesomplete.js',
                 'node_modules/moment/min/moment-with-locales.min.js',
-                'node_modules/chart.js/dist/Chart.bundle.js',
+                'node_modules/highcharts/highcharts.js',
                 'public/js/jquery/jquery.animatedscroll-1.1.5.min.js',
                 'public/js/app/leaderboards.js'
             ],
