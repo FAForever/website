@@ -110,7 +110,7 @@ passport.use('faforever', new OAuthStrategy({
 		authorizationURL: process.env.API_URL + '/oauth/authorize',
 		clientID: process.env.OAUTH_CLIENT_ID,
 		clientSecret: process.env.OAUTH_CLIENT_SECRET,
-		callbackURL: process.env.HOST + ':' + process.env.PORT + '/callback',
+		callbackURL: process.env.HOST + '/callback',
 		scope: ['write_account_data', 'public_profile']
 	},
 	function(token, tokenSecret, profile, done) {
