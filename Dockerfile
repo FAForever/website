@@ -1,4 +1,4 @@
-docker FROM node
+FROM node
 
 # Update and install cron
 RUN apt-get update && apt-get install -y cron
