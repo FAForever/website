@@ -1,5 +1,8 @@
 extends ../layouts/default
 
+block css
+	link(href="/styles/css/post.min.css", rel="stylesheet")
+
 block content
 	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
 		article
@@ -11,9 +14,9 @@ block content
 			else
 				header
 					h1!= data.post.title.rendered
-					h5 Posted 
+					h5 Posted
 						if data.post.date
-							| on #{moment(data.post.date).format("MMMM Do YYYY")}
+							|  on #{moment(data.post.date).format("MMMM Do YYYY")}
 						if data.post.categories && data.post.categories.length
 							| &nbsp;in&nbsp;
 							each type, type_index in data.post._embedded["wp:term"]
