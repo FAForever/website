@@ -27,8 +27,8 @@ RUN grunt prod
 
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
-CMD node scripts/extractor.js
-CMD node scripts/getLatestClientRelease.js
+RUN node scripts/extractor.js
+RUN node scripts/getLatestClientRelease.js
 
 CMD PORT=3000 npm start
 
