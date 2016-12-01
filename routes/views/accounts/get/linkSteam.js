@@ -1,4 +1,4 @@
-var flash = {};
+var flash = {class: true, messages: [], type: true};
 
 exports = module.exports = function(req, res) {
 
