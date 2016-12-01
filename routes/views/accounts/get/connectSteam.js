@@ -18,8 +18,16 @@ exports = module.exports = function(req, res) {
 				overallRes.redirect(body.steam_url);
 			}
 
+            var errorMessages = [];
+
+            for(var i = 0; i < body.errors.length; i++) {
+                var error = body.errors[i];
+
+                errorMessages.push({msg: error.detail});
+            }
+
 			flash.class = 'alert-danger';
-			flash.messages = [{msg: 'Your steam account was not successfully linked! Please verify you logged into the website correctly.'}];
+			flash.messages = errorMessages;
 			flash.type = 'Error!';
 
 			overallRes.render('account/linkSteam', {flash: flash});

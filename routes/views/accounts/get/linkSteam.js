@@ -1,4 +1,4 @@
-var flash = {class: true, messages: [], type: true};
+var flash = {};
 
 exports = module.exports = function(req, res) {
 
@@ -14,6 +14,7 @@ exports = module.exports = function(req, res) {
 
 	if (req.query.steam_link_result) {
 		result = req.query.steam_link_result;
+        var flash = {};
 		if (result == 'success') {
 			flash.class = 'alert-success';
 			flash.messages = [{msg: 'Your steam account was successfully linked!'}];
