@@ -90,6 +90,7 @@ app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
 app.get('/competitive/leaderboards/global', require(routes + 'global'));
 app.get('/news/', require(routes + 'blog'));
 app.get('/category/:category/page/:page', require(routes + 'blog'));
+app.get('/news/search/:search/page/:page', require(routes + 'blog'));
 app.get('/tag/:tag/page/:page', require(routes + 'blog'));
 app.get('/author/:author/page/:page', require(routes + 'blog'));
 app.get('/news/page/:page', require(routes + 'blog'));

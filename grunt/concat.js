@@ -22,6 +22,9 @@ module.exports = {
             ],
             'public/js/account.min.js': [
                 'node_modules/bootstrap-validator/dist/validator.js'
+            ],
+            'public/js/blog.min.js': [
+                'public/js/app/blog.js'
             ]
         }
     }
