@@ -45,7 +45,7 @@ exports = module.exports = function(req, res) {
 	locals.data.currentUrl = urlGenerator;
 
 	//search keyword
-	locals.data.search = search == {} ? '' : search;
+	locals.data.search = JSON.stringify(search) === '{}' ? '' : search;
 
 	//Grab data before rendering the page for SEO...
 	wp.connect().posts().embed().page(page).perPage(9).filter(filter).search(search).then(function( data ) {
