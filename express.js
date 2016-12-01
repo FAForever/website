@@ -67,7 +67,6 @@ app.get('/account/register', require(routes + 'accounts/get/register'));
 app.post('/account/register', require(routes + 'accounts/post/register'));
 
 app.get('/account/link', loggedIn, require(routes + 'accounts/get/linkSteam'));
-app.post('/account/link', loggedIn, require(routes + 'accounts/post/linkSteam'));
 
 app.get('/account/connect', loggedIn, require(routes + 'accounts/get/connectSteam'));
 
