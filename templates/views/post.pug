@@ -1,34 +1,41 @@
 extends ../layouts/default
 
 block css
-	link(href="/styles/css/post.min.css", rel="stylesheet")
+    link(href="/styles/css/post.min.css", rel="stylesheet")
 
 block content
-	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
-		article
-			br
-			p: a(href='/news') &larr; back to news
-			hr
-			if !data.post
-				h2 Invalid Post.
-			else
-				header
-					h1!= data.post.title.rendered
-					h5 Posted
-						if data.post.date
-							|  on #{moment(data.post.date).format("MMMM Do YYYY")}
-						if data.post.categories && data.post.categories.length
-							| &nbsp;in&nbsp;
-							each type, type_index in data.post._embedded["wp:term"]
-								if type
-									each taxonomy, index in type
-										a.primary-color(href='/' + (taxonomy.taxonomy == 'category' ? 'category' : 'tag') + '/' + taxonomy.slug + '/page/1') #{taxonomy.name}
-										if index < type.length -1
-											| ,&nbsp;
-								if type_index < data.post._embedded["wp:term"].length - 1 && data.post._embedded["wp:term"][1].length > 1
-									| ,&nbsp;
-						if data.post.author
-							|  by&nbsp;
-							a.primary-color(href='/author/' + data.post._embedded.author[0].slug + '/page/1') #{data.post._embedded.author[0].name}
-				.post
-					!= data.post.content.rendered
+    .container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+        article
+            br
+            p: a(href='/news') &larr; back to news
+            hr
+            if !data.post
+                h2 Invalid Post.
+            else
+                header
+                    h1.text-center!= data.post.title.rendered
+                    br
+                    h5
+                        span.glyphicon.glyphicon-time
+                        if data.post.date
+                            |  Posted on #{moment(data.post.date).format("MMMM Do YYYY")}
+                        if data.post.author
+                            |  by&nbsp;
+                            a.primary-color(href='/author/' + data.post._embedded.author[0].slug + '/page/1') #{data.post._embedded.author[0].name}
+                br
+                .post
+                    != data.post.content.rendered
+                br
+                .news-categories
+                    if data.post.categories && data.post.categories.length
+                        | Posted&nbsp;in&nbsp;
+                        each type, type_index in data.post._embedded["wp:term"]
+                            if type
+                                each taxonomy, index in type
+                                    a.primary-color(href='/' + (taxonomy.taxonomy == 'category' ? 'category' : 'tag') + '/' + taxonomy.slug + '/page/1') #{taxonomy.name}
+                                    if index < type.length - 1
+                                        | ,&nbsp;
+                            if type_index < data.post._embedded["wp:term"].length - 1 && data.post._embedded["wp:term"][1].length > 1
+                                | ,&nbsp;
+                hr
+                p: a(href='/news') &larr; back to news
