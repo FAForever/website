@@ -82,6 +82,7 @@ app.post('/account/username/change', loggedIn, require(routes + 'accounts/post/c
 app.get('/account/email/change', loggedIn, require(routes + 'accounts/get/changEmail'));
 app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/changEmail'));
 
+app.get('/client', require(routes + 'client'));
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/calendar', require(routes + 'calendar'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
