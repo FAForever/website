@@ -18,7 +18,7 @@ gh.getRepo('faforever', 'client').getRelease('latest', function(err, release) {
                 };
 
                 //Write to file
-                fs.writeFile("../link.json", JSON.stringify(data), function(error) {
+                fs.writeFile("link.json", JSON.stringify(data), function(error) {
                     if (error) {
                         console.log(error);
                     } else {
