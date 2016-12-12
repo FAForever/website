@@ -91,6 +91,18 @@ body {
   background-color: #F04124;
 }
 
+.highlightButton {
+  background-color: #F04124;
+  color: #ffffff;
+  padding: 10px 15px;
+}
+
+.highlightButton:hover {
+  background-color: #C0341C !important;
+  color: #ffffff;
+  text-decoration: none;
+}
+
 #btn-dl-nav:hover {
   background-color: #C0341C !important;
 }
