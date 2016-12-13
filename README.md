@@ -1,5 +1,5 @@
 # website
-New FAForever main website to replace http://faforever.com
+New Forged Alliance Forever main website to replace http://faforever.com
 
 Requires Node, Grunt, AND Yarn
 
