@@ -1,10 +1,10 @@
 # website
-New FAForever main website to replace http://faforever.com
+New Forged Alliance Forever main website to replace http://faforever.com
 
-Requires Node AND Grunt
+Requires Node, Grunt, AND Yarn
 
 1. Copy .env.example to .env and set to development or production
-2. npm install
+2. yarn install
 3. grunt sass:dev
 4. grunt serve:dev (development)
 

@@ -3,11 +3,14 @@ module.exports = {
 	debug: {
 		script: 'express.js',
 		options: {
-			nodeArgs: ['--debug'],
+			nodeArgs: ['--debug', '--inspect'],
+			args: ['development'],
 			open: true,
 			env: {
 				port: process.env.PORT || 3000
-			}
+			},
+			ignore: ['node_modules/**']
+
 		}
 	}
 };

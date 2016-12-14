@@ -1,0 +1,81 @@
+extends ../layouts/default
+
+block css
+	link(href="/styles/css/client.min.css", rel="stylesheet")
+
+block content
+	.container.text-center
+		.row
+			.col-md-12
+				h1.contribution-title Client Downloads
+				h4.contribution-subtitle.text-center In order to play Supreme Commander with other players, you must download one of
+					|  the following clients. As an open source community, we provide two different clients that provide SIMILAR functionality.
+					| Downlord's FAF client is a more active version of the client, and is still in ALPHA stages. Whereas, the Forged Alliance Forever client
+					| is not as active, but is stable. <strong>We currently recommend that you use the stable Forged Alliance Forever client.</strong>
+					br
+					br
+					p If you would like to know more specific information about what each client provides, then please view the official overview on Github.
+					p: a(href='https://github.com/FAForever/downlords-faf-client/wiki/Feature-Comparison') Official and Alpha Client Feature Comparison
+				hr
+		.row
+			table
+				colgroup
+				colgroup
+				colgroup
+
+				thead
+					tr
+						th &nbsp;
+						th
+							h2 Forged Alliance Forever Client
+							h3 (Official)
+							a(href=client_download_link) Download
+
+						th
+							h2 Downlord's FAF Client
+							h3 (Alpha)
+							a(href=downlords_faf_client_download_link) Download
+
+				tfoot
+					tr
+						th &nbsp;
+						td: a(href=client_download_link) Download
+						td: a(href=downlords_faf_client_download_link) Download
+
+				tbody
+					tr
+						th Modern UI
+						td: span.glyphicon.glyphicon-remove
+						td: span.glyphicon.glyphicon-ok
+					tr
+						th "Game Full" Notification
+						td: span.glyphicon.glyphicon-remove
+						td: span.glyphicon.glyphicon-ok
+					tr
+						th Achievements
+						td: span.glyphicon.glyphicon-remove
+						td: span.glyphicon.glyphicon-ok
+					tr
+						th Co-Op Gameplay
+						td: span.glyphicon.glyphicon-ok
+						td: span.glyphicon.glyphicon-remove
+					tr
+						th Custom Games
+						td: span.glyphicon.glyphicon-ok
+						td: span.glyphicon.glyphicon-ok
+					tr
+						th 1v1 Games
+						td: span.glyphicon.glyphicon-ok
+						td: span.glyphicon.glyphicon-ok
+					tr
+						th Map Vault
+						td: span.glyphicon.glyphicon-ok
+						td: span.glyphicon.glyphicon-ok
+					tr
+						th Mod Vault
+						td: span.glyphicon.glyphicon-ok
+						td: span.glyphicon.glyphicon-ok
+					tr
+						th Replays
+						td: span.glyphicon.glyphicon-ok
+						td: span.glyphicon.glyphicon-ok

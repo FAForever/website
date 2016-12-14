@@ -1,0 +1,40 @@
+mixin email
+	.form-group.has-feedback
+		label Email:
+			.input-group
+				input(type='email', name='email', required='required', value=formData['email']).form-control
+				span(aria-hidden='true').glyphicon.form-control-feedback
+				.help-block.with-errors
+
+mixin username
+	.form-group.has-feedback
+		label Username:
+			.input-group
+				input(type='text', name='username', required='required', value=formData['username'], data-minlength='3').form-control
+				span(aria-hidden='true').glyphicon.form-control-feedback
+				.help-block Minimum of 3 characters
+
+mixin confirm-password(passwordName,labelPassword)
+	- passwordName = passwordName || 'password'
+	- labelPassword = labelPassword || ''
+	.form-group.has-feedback
+		label #{labelPassword} Password:
+			.input-group
+				input(type='password', name=passwordName, required='required', id='inputPassword', data-minlength='6').form-control
+				span(aria-hidden='true').glyphicon.form-control-feedback
+				.help-block Minimum of 6 characters
+	.form-group.has-feedback
+		label Confirm #{labelPassword} Password:
+			.input-group
+				input(type='password', name=passwordName + '_confirm', required='required',data-match='#inputPassword', data-match-error='Passwords don\'t match. Please fix!', data-minlength='6').form-control
+				span(aria-hidden='true').glyphicon.form-control-feedback
+				.help-block.with-errors
+
+mixin oldPassword(labelPassword)
+	- labelPassword = labelPassword || ''
+	.form-group.has-feedback
+		label #{labelPassword} Password:
+			.input-group
+				input(type='password', name='old_password', required='required', id='oldPassword', data-minlength='6').form-control
+				span(aria-hidden='true').glyphicon.form-control-feedback
+				.help-block Minimum of 6 characters

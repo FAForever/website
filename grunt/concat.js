@@ -8,7 +8,7 @@ module.exports = {
             'public/js/calendar.min.js': [
                 'node_modules/moment/min/moment-with-locales.min.js',
                 'node_modules/fullcalendar/dist/fullcalendar.min.js',
-                'node_modules/fullcalendar/dist/lang-all.js',
+                'node_modules/fullcalendar/dist/locale-all.js',
                 'node_modules/fullcalendar/dist/gcal.js',
                 'node_modules/bootstrap-switch/dist/js/bootstrap-switch.min.js',
                 'public/js/app/calendar.js'
@@ -16,9 +16,15 @@ module.exports = {
             'public/js/leaderboards.min.js': [
                 'node_modules/awesomplete/awesomplete.js',
                 'node_modules/moment/min/moment-with-locales.min.js',
-                'node_modules/chart.js/dist/Chart.bundle.js',
+                'node_modules/highcharts/highcharts.js',
                 'public/js/jquery/jquery.animatedscroll-1.1.5.min.js',
                 'public/js/app/leaderboards.js'
+            ],
+            'public/js/account.min.js': [
+                'node_modules/bootstrap-validator/dist/validator.js'
+            ],
+            'public/js/blog.min.js': [
+                'public/js/app/blog.js'
             ]
         }
     }
