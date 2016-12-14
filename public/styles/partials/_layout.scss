@@ -2,6 +2,7 @@
 
 #body {
   margin-top: 46px;
+  padding-bottom: 20px;
 }
 
 h1 {
@@ -95,6 +96,8 @@ body {
   background-color: #F04124;
   color: #ffffff;
   padding: 10px 15px;
+  margin-top: 10px;
+  display: block;
 }
 
 .highlightButton:hover {
@@ -145,4 +148,8 @@ body {
 
 #social ul li a {
   display: inline-block;
+}
+
+.btn {
+  white-space: normal;
 }
