@@ -63,6 +63,8 @@ html
                                 ul.dropdown-menu(role="menu")
                                     li: a(href="http://wiki.faforever.com/index.php?title=Main_Page") Wiki
                                     li: a(href="http://www.faforever.com/faf/unitsDB/") Unit Database
+                            li: a(href='/calendar') Calendar
+                            li: a(href='/contribution') Contribute
                             li.dropdown
                                 a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Account
                                     span.caret
@@ -73,8 +75,6 @@ html
                                     li: a(href="/account/username/change") Change Username
                                     li: a(href="/account/email/change") Change Email
                                     li: a(href="/account/link") Link Account to Steam
-                            li: a(href='/calendar') Calendar
-                            li: a(href='/contribution') Contribute
                         ul.nav.navbar-nav.navbar-right
                             li: a(href='/client' id="btn-dl-nav") Download Client
                             if !username
