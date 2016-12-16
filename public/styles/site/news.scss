@@ -54,6 +54,16 @@
   overflow: auto;
   background-clip: padding-box;
   box-sizing: border-box;
+  text-align: left;
+  text-indent: 10px;
+}
+
+.newspanel .excerpt h1 {
+  text-align: center;
+}
+
+.newspanel .excerpt li {
+  text-indent: 0px;
 }
 
 .newspanel img {
@@ -63,6 +73,7 @@
   border-radius: 2px 2px 0 0;
   background-clip: padding-box;
   position: relative;
+  display: block;
 }
 
 .newspanel .footer {
