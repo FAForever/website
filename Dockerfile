@@ -14,10 +14,10 @@ RUN yarn
 ADD . /code/
 
 # Add crontab file in the cron directory
-ADD crontab /etc/cron.d/fetch-users
+ADD crontab /etc/cron.d/website-tasks
 
 # Give execution rights on the cron job
-RUN chmod 0644 /etc/cron.d/fetch-users
+RUN chmod 0644 /etc/cron.d/website-tasks
 
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
@@ -26,10 +26,10 @@ RUN npm install -g grunt-cli
 RUN grunt prod
 
 # Run the command on container startup
-CMD cron && tail -f /var/log/cron.log
 RUN node scripts/extractor.js
 RUN node scripts/getLatestClientRelease.js
+RUN /usr/bin/crontab /etc/cron.d/website-tasks
 
-CMD PORT=3000 npm start
+CMD cron && PORT=3000 npm start
 
 EXPOSE 3000

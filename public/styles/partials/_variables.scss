@@ -363,7 +363,7 @@ $navbar-margin-bottom:             $line-height-computed !default;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
-$navbar-collapse-max-height:       340px !default;
+$navbar-collapse-max-height:       inherit !default;
 
 $navbar-default-color:             #fff !default;
 $navbar-default-bg:                $gray-dark !default;
