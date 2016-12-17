@@ -1,2 +1,2 @@
-0 0 * * * /usr/local/bin/node scripts/extractor.js >> /var/log/cron.log 2>&1
-0 * * * * /usr/local/bin/node scripts/getLatestClientRelease.js >> /var/log/cron.log 2>&1
+0 0 * * * /usr/local/bin/node /code/scripts/extractor.js >> /var/log/cron.log 2>&1
+0 * * * * /usr/local/bin/node /code/scripts/getLatestClientRelease.js >> /var/log/cron.log 2>&1

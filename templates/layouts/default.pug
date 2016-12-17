@@ -31,57 +31,59 @@ html
 
     //- HTML BODY
     body
-        //- HEADER
-        #header: .container-fluid
+        if !removeNavigation
+            //- HEADER
+            #header: .container-fluid
 
-            //- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
-            //- ... or completely change this header to suit your design.
-            div(role="navigation").navbar.navbar-default.navbar-fixed-top
-                .container
-                    .navbar-header
-                        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                            span.sr-only Toggle navigation
-                            span.icon-bar
-                            span.icon-bar
-                            span.icon-bar
-                        a.navbar-brand(href='/')
-                            img(src="/images/faf_32x32.png")
-                    .collapse.navbar-collapse
-                        ul.nav.navbar-nav.navbar-left
-                            li: a(href='/news') News
-                            li: a(href='/competitive/tournaments') Competitive
-                            li.dropdown
-                                a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Community
-                                    span.caret
-                                ul.dropdown-menu
-                                    li: a(href="http://forums.faforever.com/") Forums
-                                    li: a(href="http://clans.faforever.com/") Clans
-                                    li: a(href="http://wiki.faforever.com/index.php?title=Voicechat_%28Mumble%29") Mumble
-                            li.dropdown
-                                a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Documentation
-                                    span.caret
-                                ul.dropdown-menu(role="menu")
-                                    li: a(href="http://wiki.faforever.com/index.php?title=Main_Page") Wiki
-                                    li: a(href="http://www.faforever.com/faf/unitsDB/") Unit Database
-                            li: a(href='/calendar') Calendar
-                            li: a(href='/contribution') Contribute
-                            li.dropdown
-                                a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Account
-                                    span.caret
-                                ul.dropdown-menu(role="menu")
-                                    li: a(href="/account/register") Register
-                                    li: a(href="/account/password/reset") Reset/Forgot Password
-                                    if username
-                                        li: a(href="/account/password/change") Change Password
-                                        li: a(href="/account/username/change") Change Username
-                                        li: a(href="/account/email/change") Change Email
-                                        li: a(href="/account/link") Link Account to Steam
-                        ul.nav.navbar-nav.navbar-right
-                            li: a(href='/client' id="btn-dl-nav") Download Client
-                            if !username
-                                li: a(href='/login') Log In
-                            else
-                                li: a(href='/logout') Log Out
+                //- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
+                //- ... or completely change this header to suit your design.
+                div(role="navigation").navbar.navbar-default.navbar-fixed-top
+                    .container
+                        .navbar-header
+                            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                                span.sr-only Toggle navigation
+                                span.icon-bar
+                                span.icon-bar
+                                span.icon-bar
+                            a.navbar-brand(href='/')
+                                img(src="/images/faf_32x32.png")
+                        .collapse.navbar-collapse
+                            ul.nav.navbar-nav.navbar-left
+                                li: a(href='/news') News
+                                li: a(href='/competitive/tournaments') Competitive
+                                li.dropdown
+                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Community
+                                        span.caret
+                                    ul.dropdown-menu
+                                        li: a(href="http://forums.faforever.com/") Forums
+                                        li: a(href="http://clans.faforever.com/") Clans
+                                        li: a(href="http://wiki.faforever.com/index.php?title=Voicechat_%28Mumble%29") Mumble
+                                li.dropdown
+                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Documentation
+                                        span.caret
+                                    ul.dropdown-menu(role="menu")
+                                        li: a(href="http://wiki.faforever.com/index.php?title=Main_Page") Wiki
+                                        li: a(href="http://www.faforever.com/faf/unitsDB/") Unit Database
+                                li: a(href='/calendar') Calendar
+                                li: a(href='/contribution') Contribute
+                                li.dropdown
+                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Account
+                                        span.caret
+                                    ul.dropdown-menu(role="menu")
+                                        li: a(href="/account/register") Register
+                                        li: a(href="/account/password/reset") Reset/Forgot Password
+                                        if username
+                                            li: a(href="/account/password/change") Change Password
+                                            li: a(href="/account/username/change") Change Username
+                                            li: a(href="/account/email/change") Change Email
+                                            li: a(href="/account/link") Link Account to Steam
+                            ul.nav.navbar-nav.navbar-right
+                                li: a(href='/client' id="btn-dl-nav") Download Client
+                                if !username
+                                    li: a(href='/login') Log In
+                                else
+                                    li: a(href='/logout') Log Out
+
         //- BODY
         #body
 

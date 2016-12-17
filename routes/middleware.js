@@ -37,3 +37,19 @@ exports.getLatestClientRelease = function(req, res, next) {
 	next();
 
 };
+
+exports.clientChecks = function(req, res, next) {
+
+    var locals = res.locals;
+    locals.removeNavigation = false;
+
+    if (req.query.page_id) {
+        res.redirect('/news');
+    }
+
+    if (req.headers['user-agent'] == 'FAF Client') {
+		locals.removeNavigation = true;
+    }
+
+    next();
+};
