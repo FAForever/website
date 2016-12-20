@@ -1,5 +1,7 @@
 var wp = require('../wp_connector');
 var moment = require('moment');
+var momentTimezone = require('moment-timezone');
+var ellipsis = require('html-ellipsis');
 
 exports = module.exports = function(req, res) {
 
@@ -13,6 +15,8 @@ exports = module.exports = function(req, res) {
 
 	//Moment is used for converting timestamp to January 1st 2016...
 	locals.moment = moment;
+	locals.momentTimezone = momentTimezone;
+	locals.ellipsis = ellipsis;
 
 	//Set the default page number if not specified to 1
 	var page = (req.params.page ? parseInt(req.params.page) : 1);
