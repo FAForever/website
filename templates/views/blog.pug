@@ -15,13 +15,13 @@ mixin post(post)
                 .panel-body
                     p.text-muted Posted
                         if post.date
-                            |  <span class="primary-color">#{moment(post.date).fromNow()}</span>
-                            | on <span class="primary-color">#{moment(post.date).format("MMMM Do YYYY")}</span>
+                            |  <span class="primary-color">#{momentTimezone.tz(post.date, 'America/Chicago').tz(momentTimezone.tz.guess()).fromNow()}</span>
+                            | on <span class="primary-color">#{momentTimezone.tz(post.date, 'America/Chicago').tz(momentTimezone.tz.guess()).format("MMMM Do YYYY")}</span>
                         if post.author
                             |  by&nbsp;
                             a.primary-color(href='/author/' + post._embedded.author[0].slug + '/page/1') #{post._embedded.author[0].name}
                     div.excerpt
-                        p!= post.excerpt.rendered
+                        p!= ellipsis(post.content.rendered, 300, true)
                     p.text-muted.footer
                         if post.categories && post.categories.length
                             each type, type_index in post._embedded["wp:term"]
