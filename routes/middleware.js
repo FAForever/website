@@ -53,3 +53,14 @@ exports.clientChecks = function(req, res, next) {
 
     next();
 };
+
+exports.username = function(req, res, next) {
+    var locals = res.locals;
+
+    if (req.isAuthenticated()) {
+        locals.username = req.user.data.attributes.login;
+        next();
+    }
+
+    next();
+};

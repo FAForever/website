@@ -17,6 +17,7 @@ var app = express();
 app.use(middleware.initLocals);
 app.use(middleware.getLatestClientRelease);
 app.use(middleware.clientChecks);
+app.use(middleware.username);
 
 //Set static public directory path
 app.use(express.static('public'));
@@ -32,8 +33,7 @@ app.use(expressValidator({
 app.use(require('express-session')({
 	secret: process.env.SESSION_SECRET_KEY,
 	resave: false,
-	saveUninitialized: true,
-    cookie: { secure: true }
+	saveUninitialized: false
 }));
 
 //Authentication on pages
@@ -57,7 +57,6 @@ function loggedIn(req, res, next) {
 	req.session.referral = fullUrl;
 
 	if (req.isAuthenticated()) {
-		res.locals.username = req.user.data.attributes.login;
 		next();
 	} else {
 		res.redirect('/login');
@@ -123,7 +122,6 @@ passport.use('faforever', new OAuthStrategy({
 			function (e, r, body) {
 				var user = JSON.parse(body);
 				user.data.attributes.token = token;
-				console.log(user);
 				return done(null, user);
 			}
 		);
