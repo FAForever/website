@@ -32,7 +32,8 @@ app.use(expressValidator({
 app.use(require('express-session')({
 	secret: process.env.SESSION_SECRET_KEY,
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: true,
+    cookie: { secure: true }
 }));
 
 //Authentication on pages
@@ -122,6 +123,7 @@ passport.use('faforever', new OAuthStrategy({
 			function (e, r, body) {
 				var user = JSON.parse(body);
 				user.data.attributes.token = token;
+				console.log(user);
 				return done(null, user);
 			}
 		);
