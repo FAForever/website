@@ -59,7 +59,6 @@ exports.username = function(req, res, next) {
 
     if (req.isAuthenticated()) {
         locals.username = req.user.data.attributes.login;
-        next();
     }
 
     next();

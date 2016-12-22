@@ -17,7 +17,6 @@ var app = express();
 app.use(middleware.initLocals);
 app.use(middleware.getLatestClientRelease);
 app.use(middleware.clientChecks);
-app.use(middleware.username);
 
 //Set static public directory path
 app.use(express.static('public'));
@@ -39,7 +38,7 @@ app.use(require('express-session')({
 //Authentication on pages
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(middleware.username);
 
 //Initialize values for default configs
 app.set('views', 'templates/views');
@@ -57,6 +56,7 @@ function loggedIn(req, res, next) {
 	req.session.referral = fullUrl;
 
 	if (req.isAuthenticated()) {
+		res.locals.username = req.user.data.attributes.login;
 		next();
 	} else {
 		res.redirect('/login');
