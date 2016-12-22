@@ -71,7 +71,7 @@ exports = module.exports = function(req, res) {
 			} else {
 				// Successfully reset password
 				flash.class = 'alert-success';
-				flash.messages = [{msg: 'Your password was reset successfully. Please use the new password to log in!'}];
+				flash.messages = [{msg: 'Your password is in the process of being reset, please reset your password by clicking on the link provided in an email.'}];
 				flash.type = 'Success!';
 
 				overallRes.render('account/resetPassword', {flash: flash});

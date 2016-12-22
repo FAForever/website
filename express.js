@@ -38,7 +38,7 @@ app.use(require('express-session')({
 //Authentication on pages
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(middleware.username);
 
 //Initialize values for default configs
 app.set('views', 'templates/views');
