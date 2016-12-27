@@ -83,6 +83,8 @@ app.post('/account/username/change', loggedIn, require(routes + 'accounts/post/c
 app.get('/account/email/change', loggedIn, require(routes + 'accounts/get/changEmail'));
 app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/changEmail'));
 
+app.get('/account_activated', require(routes + 'accounts/get/register'));
+app.get('/password_resetted', require(routes + 'accounts/get/resetPassword'));
 app.get('/client', require(routes + 'client'));
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/calendar', require(routes + 'calendar'));

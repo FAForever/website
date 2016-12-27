@@ -8,7 +8,17 @@ exports = module.exports = function(req, res) {
 
 	locals.formData = req.body || {};
 
+    var flash = null;
+
+    if (req.originalUrl == '/password_resetted') {
+        flash = {};
+
+        flash.class = 'alert-success';
+        flash.messages = [{msg: 'You have successfully reset your password! Please try to login with the new password.'}];
+        flash.type = 'Success!';
+    }
+
 	// Render the view
-	res.render('account/resetPassword');
+	res.render('account/resetPassword', {flash: flash});
 
 };
