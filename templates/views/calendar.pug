@@ -22,5 +22,6 @@ block content
 block js
 	script(type='text/javascript').
 		var calendar_key =!{JSON.stringify(calendar)};
+		var tournamentEvents =!{JSON.stringify(tournaments)};
 		var locale =!{JSON.stringify(locale)};
 	script(src='/js/calendar.min.js')
