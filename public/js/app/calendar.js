@@ -7,7 +7,7 @@ $(document).ready(function() {
 
         eventSources: [
             {
-                googleCalendarId: 'faforever.com_ohtfg7lf0pli9k9jj4jopb5i20@group.calendar.google.com',
+                events: tournamentEvents,
                 className: 'tournamentCalendar'
             },
             {

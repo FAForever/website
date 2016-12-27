@@ -1,4 +1,6 @@
 var locale = require("accept-language-parser");
+var challonge_config = require('../challonge_config');
+var request = require('request');
 
 exports = module.exports = function(req, res) {
 
@@ -18,7 +20,30 @@ exports = module.exports = function(req, res) {
 		locals.locale = 'en';
 	}
 
-	// Render the view
-	res.render('calendar');
+    request(challonge_config.getAuth() + '/tournaments.json', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var events = [];
+            var tournaments = JSON.parse(body);
+
+            for (tournament of tournaments) {
+				if (tournament.tournament.start_at || tournament.tournament.started_at) {
+                    events.push({
+                        id: tournament.tournament.id,
+                        title: tournament.tournament.name,
+                        start: tournament.tournament.start_at || tournament.tournament.started_at, // try timed. will fall back to all-day
+                        end: tournament.tournament.completed_at, // same
+                        url: tournament.tournament.full_challonge_url,
+                        description: tournament.tournament.tournament_type
+                    });
+                    locals.tournaments = events;
+				}
+            }
+        } else {
+            locals.error = true;
+        }
+
+        // Render the view
+        res.render('calendar');
+    });
 
 };

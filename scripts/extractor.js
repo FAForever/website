@@ -3,6 +3,8 @@ require('dotenv').load();
 var request = require('request');
 var fs = require('fs');
 
+var date = new Date();
+
 request(process.env.API_URL + '/leaderboards/global?filter[is_active]=true', function (error, response, body) {
     if (! error) {
         var users = JSON.parse(body);
@@ -24,7 +26,7 @@ request(process.env.API_URL + '/leaderboards/global?filter[is_active]=true', fun
             if (error) {
                 console.log(error);
             } else {
-                console.log('User file created successfully for global.');
+                console.log(date + ' - User file created successfully for global.');
             }
         });
 
@@ -52,7 +54,7 @@ request(process.env.API_URL + '/leaderboards/1v1?filter[is_active]=true', functi
             if (error) {
                 console.log(error);
             } else {
-                console.log('User file created successfully for 1v1.');
+                console.log(date + ' - User file created successfully for 1v1.');
             }
         });
 
