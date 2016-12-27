@@ -2,6 +2,7 @@ var GitHub = require('github-api');
 var fs = require('fs');
 
 var gh = new GitHub();
+var date = new Date();
 
 //Get main client
 gh.getRepo('faforever', 'client').getRelease('latest', function(err, release) {
@@ -22,7 +23,7 @@ gh.getRepo('faforever', 'client').getRelease('latest', function(err, release) {
                     if (error) {
                         console.log(error);
                     } else {
-                        console.log('Link file created successfully for latest client links.');
+                        console.log(date + ' - Link file created successfully for latest client links.');
                     }
                 });
             }
