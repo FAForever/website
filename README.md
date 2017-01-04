@@ -5,8 +5,11 @@ Requires Node, Grunt, AND Yarn
 
 1. Copy .env.example to .env and set to development or production
 2. yarn install
-3. grunt sass:dev
-4. grunt serve:dev (development)
+3. node scripts/extractor.js (Get all 1v1 and global members from FAForever API)
+4. node scripts/getLatestClientRelease.js (Get latest client releases from Github API)
+5. grunt serve
+6. npm rebuild node-sass (If you run into problems like - `Error: ENOENT: no such file or directory, scandir '/../node_modules/grunt-sass/node_modules/node-sass/vendor'
+)`)
 
 In order to install grunt for the command line, please follow this guide - http://gruntjs.com/getting-started
 
