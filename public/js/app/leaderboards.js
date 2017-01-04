@@ -1,8 +1,6 @@
 /*
-
  http://api.faforever.com/ranked1v1?page[size]=50&page[number]=1&filter[is_active]=true
  http://api.faforever.com/ranked1v1/500
-
  */
 
 var getPage = function(pageNumber, pageSize, id) {
@@ -14,16 +12,17 @@ var getPage = function(pageNumber, pageSize, id) {
   });
 };
 
-var renderPage = function (page, element, id) {
+var renderPage = function (page, element, playerId) {
   removeAllChildElements(element);
+
   for(var i = 0; i < page.data.length; i++) {
     var player = page.data[i];
     var tr = document.createElement("tr");
 
-      //If id, then only show that user
-      if (id && id != player.id) {
-          tr.className = 'hidden';
-      }
+    // Only show player with matching id when player_id is given.
+    if (playerId && playerId != player.id) {
+        tr.className = 'hidden';
+    }
 
     tr.setAttribute("id", "tr" + i);
     element.appendChild(tr);
@@ -56,72 +55,70 @@ var removeAllChildElements = function (element) {
 /* Page Onclick */
 
 $(".previous").click( function() {
-    if (currentPage === 1) {
-        return;
-    }
-    currentPage--;
-    getPage(currentPage, pageSize);
+  if (currentPage === 1) {
+    return;
+  }
+
+  currentPage--;
+  getPage(currentPage, pageSize);
 });
 
 $(".next").click( function() {
-    if (currentPage === lastPage) {
-        return;
-    }
-    currentPage++;
-    getPage(currentPage, pageSize);
+  if (currentPage === lastPage) {
+    return;
+  }
+
+  currentPage++;
+  getPage(currentPage, pageSize);
 });
 
 $(".first").click( function() {
-    currentPage = 1;
-    getPage(currentPage, pageSize);
+  currentPage = 1;
+  getPage(currentPage, pageSize);
 });
 
 $(".last").click( function() {
-    currentPage = lastPage;
-    getPage(currentPage, pageSize);
+  currentPage = lastPage;
+  getPage(currentPage, pageSize);
 });
 
 $("#forget-search").click( function() {
-    init();
-    if (chart.getInstance()) {
-        chart.getInstance().destroy();
-        $(".stats").width(0);
-    }
+  init();
+
+  if (chart.getInstance()) {
+    chart.getInstance().destroy();
+    $(".stats").width(0);
+  }
 });
 
 var searchbar = document.getElementById("searchbar");
 
 // Show label but insert value into the input:
 new Awesomplete(searchbar, {
-    list: JSON.parse(members)
+  list: JSON.parse(members)
 });
 
 searchbar.addEventListener('awesomplete-select', function(e){
-    var text = e.text;
-    currentPage = text.value.page;
-    getPage(text.value.page, 100, text.value.id);
+  var text = e.text;
+  currentPage = text.value.page;
+  getPage(text.value.page, 100, text.value.id);
 });
 
 searchbar.addEventListener('awesomplete-selectcomplete', function(e){
-    var text = e.text;
-    $("#searchbar").val(text.label);
+  var text = e.text;
+  $("#searchbar").val(text.label);
 });
 
 $(document).on('click', '.player', (function(){
-
-  var labels = [],
-  dataset = [];
-
+  var labels = [], dataset = [];
   var id = $(this).data('id');
   var name = $(this).data('name');
-
   var pastYear = moment().subtract(1, 'years').unix();
 
   $.ajax({
     url: apiURL + '/players/' + id + '/ratings/' + ratingType + '/history',
     success: function(result) {
       $.each(result.data.attributes.history, function(unixTime, values){
-
         //Only get information for past year for chart...
         if (unixTime > pastYear) {
           var date = moment.unix(unixTime).format('MMM D, YYYY');
@@ -133,58 +130,50 @@ $(document).on('click', '.player', (function(){
       });
 
       var data = {
-            title: {
-                text: name + ' Rating over the Past Year',
-                x: -20 //center
-            },
-            xAxis: {
-                categories: labels
-            },
-            yAxis: {
-                title: {
-                    text: 'Rating'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            series: [{
-                name: name + '\'s Rating',
-                data: dataset
-            }]
-        };
+        title: {
+          text: name + ' Rating over the Past Year',
+          x: -20 //center
+        },
+        xAxis: {
+          categories: labels
+        },
+        yAxis: {
+          title: {
+            text: 'Rating'
+          },
+          plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+          }]
+        },
+        series: [{
+          name: name + '\'s Rating',
+          data: dataset
+        }]
+      };
 
       chart.createChart(data);
-
       $("#stats").animatedScroll();
-
     }
   });
-
 }));
 
 var chart = {
-    chart: '',
-
-    getInstance: function() {
-        return this.chart;
-    },
-
-    createChart: function(data) {
-        this.chart = Highcharts.chart("stats", data);
-    }
+  chart: '',
+  getInstance: function() {
+    return this.chart;
+  },
+  createChart: function(data) {
+    this.chart = Highcharts.chart("stats", data);
+  }
 };
 
 /* Init */
 var pageSize = 100;
-
 var currentPage = 1;
-
 var init = function() {
-    getPage(1, 100);
+  getPage(1, 100);
 };
 
 init();
-

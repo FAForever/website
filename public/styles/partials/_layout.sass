@@ -1,0 +1,102 @@
+// Init
+
+#body.updatePage
+  margin-top: 0
+
+.updatePage .hero
+  margin-top: 0
+
+#body
+  margin-top: 46px
+  padding-bottom: 20px
+
+h1
+  font-family: 'Yanone Kaffeesatz', sans-serif
+  font-size: 50px
+
+h2
+  font-family: 'Yanone Kaffeesatz', sans-serif
+  font-size: 42px
+
+h3
+  font-family: 'Yanone Kaffeesatz', sans-serif
+  font-size: 36px
+
+.primary-color
+  color: $brand-primary
+
+.text-muted
+  font-size: 12px
+
+
+// Containers
+
+.container-fluid
+  padding: 0px
+
+// List-Group
+
+.list-group-horizontal .list-group-item
+  display: inline-block
+  margin-bottom: 0
+  margin-left: -4px
+  margin-right: 0
+
+  &:first-child
+    border-top-right-radius: 0
+    border-bottom-left-radius: 4px
+
+  &:last-child
+    border-top-right-radius: 4px
+    border-bottom-left-radius: 0
+
+// Social
+
+#social ul
+  list-style: none
+  padding: 0 0 0 40px
+
+  li
+    display: inline
+    margin-right: 20px
+
+    a
+      display: inline-block
+
+.btn
+  white-space: normal
+
+@media (max-width: 1330px)
+  .navbar-header
+    float: none
+
+  .navbar-left,.navbar-right
+    float: none !important
+
+  .navbar-toggle
+    display: block
+
+  .navbar-collapse
+    border-top: 1px solid transparent
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1)
+
+  .navbar-fixed-top
+    top: 0
+    border-width: 0 0 1px
+
+  .navbar-collapse.collapse
+    display: none!important
+
+  .navbar-nav
+    float: none!important
+    margin-top: 7.5px
+
+    & > li
+      float: none
+
+      & > a
+        padding-top: 10px
+        padding-bottom: 10px
+
+  .collapse.in
+    display:block !important
