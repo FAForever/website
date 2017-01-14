@@ -19,7 +19,7 @@ module.exports = {
 	},
 	sass: {
 		files: ['public/styles/**/*.{scss,sass}'],
-		tasks: ['sass:dev']
+		tasks: ['sass:dev', 'postcss:postcss']
 	},
 	livereload: {
 		files: [
