@@ -1,3 +1,25 @@
+$max-width: 1170px; // max container width
+
+// colors
+$red: #FF0400;
+
+// max-width
+$xlarge: 1200px;
+$large: 992px;
+$medium: 768px;
+$small: 480px;
+$xsmall: 320px;
+
+// min-width
+$xlarge-m: $xlarge + 1px;
+$large-m: $large + 1px;
+$medium-m: $medium + 1px;
+$small-m: $small + 1px;
+$xsmall-m: $xsmall + 1px;
+
+
+
+
 $bootstrap-sass-asset-helper: false !default;
 // Yeti 3.3.6
 // Variables

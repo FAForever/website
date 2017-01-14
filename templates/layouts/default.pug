@@ -87,7 +87,7 @@ html
                                 else
                                     li: a(href='/logout') Log Out
         //- BODY
-        #body(class=(removeNavigation? 'updatePage':undefined))
+        #body.content(class=(removeNavigation? 'updatePage':undefined))
 
             //- NOTE:
             //- There is no .container wrapping class around body blocks to allow more flexibility in design.
@@ -99,38 +99,48 @@ html
             //- The content block should contain the body of your template's content
             block content
 
-
-        //- FOOTER
-        #footer: .container
-            .col-md-4: .text-center
-                h3 Donate
-                .row
-                    .col-md-6
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                        <input type="hidden" name="cmd" value="_donations">
-                        <input type="hidden" name="business" value="visionik@pobox.com">
-                        <input type="hidden" name="lc" value="US">
-                        <input type="hidden" name="item_name" value="FAForever">
-                        <input type="hidden" name="no_note" value="0">
-                        <input type="hidden" name="currency_code" value="EUR">
-                        <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
-                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                        </form>
-                    .col-md-6
-                        a(class=" highlightButton", href="https://www.patreon.com/faf") Donate to Patreon
-            .col-md-4: .text-center
-                img.h1(src="/images/vector_faf_logo.png")
-            .col-md-4: .text-center
-                h3 Connect
-                div#social
-                    ul
-                        li: a(href="https://www.facebook.com/ForgedAllianceForever" title="Follow Forged Alliance Forever on Facebook" target="_blank")
-                            i.fa.fa-facebook.fa-3x
-                        li: a(href="https://www.youtube.com/c/ForgedAllianceForever" title="Follow Forged Alliance Forever on YouTube" target="_blank")
-                            i.fa.fa-youtube.fa-3x
-                        li: a(href="https://github.com/FAForever/" title="Follow Forged Alliance Forever on GitHub" target="_blank")
-                            i.fa.fa-github.fa-3x
+        #footer.footer-wrapper
+          .footer-top-wrapper
+            .footer-top
+              .footer-logo
+                img(src="/images/vector_faf_logo.png")
+              //-.footer-donate
+                //-h1
+                  //-Support us
+                //-.footer-paypal
+                  //-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  //-<input type="hidden" name="cmd" value="_donations">
+                  //-<input type="hidden" name="business" value="visionik@pobox.com">
+                  //-<input type="hidden" name="lc" value="US">
+                  //-<input type="hidden" name="item_name" value="FAForever">
+                  //-<input type="hidden" name="no_note" value="0">
+                  //-<input type="hidden" name="currency_code" value="EUR">
+                  //-<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+                  //-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  //-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  //-</form>
+                //-.footer-patreon
+                  //-a(class="highlightButton", href="https://www.patreon.com/faf") Donate to Patreon
+          .footer-bottom-wrapper
+            .footer-bottom
+              .footer-links
+                ul.footer-links
+                  li: a(href="http://forums.faforever.com/") Forums
+                  li: a(href="http://clans.faforever.com/") Clans
+                  li: a(href="http://wiki.faforever.com/index.php?title=Voicechat_%28Mumble%29") Mumble
+                  li: a(href="https://discord.gg/hgvj6Af") Discord
+                  li: a(href='/contribution') Contribute
+              .footer-social
+                ul.footer-social
+                  li
+                    a(href="https://www.facebook.com/ForgedAllianceForever" title="Follow Forged Alliance Forever on Facebook" target="_blank")
+                      i.fa.fa-facebook
+                  li
+                    a(href="https://www.youtube.com/c/ForgedAllianceForever" title="Follow Forged Alliance Forever on YouTube" target="_blank")
+                      i.fa.fa-youtube
+                  li
+                    a(href="https://github.com/FAForever/" title="Follow Forged Alliance Forever on GitHub" target="_blank")
+                      i.fa.fa-github
 
 
         //- JAVASCRIPT
