@@ -42,6 +42,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-express-server": "^0.5.3",
     "grunt-nodemon": "^0.4.2",
+    "grunt-postcss": "^0.8.0",
     "grunt-sass": "^1.0.0",
     "jshint-stylish": "^2.0.1",
     "load-grunt-configs": "^1.0.0",
