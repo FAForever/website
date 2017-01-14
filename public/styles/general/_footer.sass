@@ -1,14 +1,91 @@
-#footer
-  position: absolute
-  bottom: 0
-  width: 100%
-  height: 195px
-  background: rgb(53,53,53)
-  background: linear-gradient(45deg,  rgba(53,53,53,1) 0%,rgba(30,30,30,1) 0%,rgba(56,56,56,1) 100%)
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#383838',GradientType=1 )
-  box-shadow: 0px 0px 10px #000
+.footer-wrapper
+  background-color: #181818
+  color: white
 
-  .container
-    padding-top: 25px
-    margin-bottom: 0px
-    color: #777777
+.footer-top
+  padding: 25px
+
+.footer-top,
+.footer-bottom
+  max-width: $max-width
+  margin-left: auto
+  margin-right: auto
+
+.footer-bottom-wrapper
+  background-color: #111
+
+.footer-bottom
+  display: flex
+  justify-content: space-between
+  flex-flow: row wrap
+
+.footer-logo
+  text-align: center
+
+.footer-paypal,
+.footer-patreon
+  display: inline-block
+
+div.footer-links
+  @media (max-width: $medium)
+    width: 100%
+
+ul.footer-social,
+ul.footer-links
+  margin-left: auto
+  margin-right: auto
+  margin-bottom: 0 // bootstrap
+  text-align: center
+
+  li
+    display: inline-block
+
+  a
+    display: block
+    color: white
+
+div.footer-links
+  display: flex
+  align-items: center
+
+  a
+    position: relative
+    padding: 20px
+    font-size: 16px
+    
+    &:after
+      position: absolute
+      content: ''
+      left: 20px
+      right: 20px
+      bottom: 0px
+      height: 2px
+      margin-left: auto
+      margin-right: auto
+      background-color: white
+      width: 0%
+      transition: width 250ms
+
+    &:hover
+      text-decoration: none
+
+      &:after
+        width: calc(100% - 40px)
+
+div.footer-social
+  @media (max-width: $medium)
+    width: 100%
+
+ul.footer-social
+  text-align: center
+
+  a
+    padding: 10px
+    transition: transform 100ms
+    font-size: 30px
+
+    @media (max-width: $medium)
+      padding: 25px
+
+    &:hover
+      transform: scale(1.2)
