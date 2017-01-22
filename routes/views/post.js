@@ -20,6 +20,7 @@ exports = module.exports = function(req, res) {
 	//Grab data before rendering the page for SEO...
 	wp.connect().posts().slug(req.params.slug).embed().then(function( data ) {
 		locals.data.post = data[0];
+		locals.title = 'FAForever News: '.concat(data[0].title.rendered);
 		// do something with the returned posts
 
 		// Render the view

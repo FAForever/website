@@ -9,6 +9,7 @@ exports = module.exports = function(req, res) {
 
 	// Init locals
 	locals.section = 'blog';
+	locals.title = 'FAForever News';
 	locals.data = {
 		posts: []
 	};
