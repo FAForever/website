@@ -86,6 +86,7 @@ app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/chan
 app.get('/account_activated', require(routes + 'accounts/get/register'));
 app.get('/password_resetted', require(routes + 'accounts/get/resetPassword'));
 app.get('/client', require(routes + 'client'));
+app.get('/livestream', require(routes + 'livestream'));
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/calendar', require(routes + 'calendar'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
