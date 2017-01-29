@@ -6,6 +6,8 @@ section.navigation-wrapper
   &.unpinned
     transform: translateY(-120%)
     transition: transform 500ms
+    .nav-account-dropdown-menu
+      display: none
 
 div.top-navigation-wrapper
   background-color: #0F0F0D
@@ -57,6 +59,13 @@ nav.main-navigation
   background-color: rgba(white, 0.05)
   &:hover, &:focus, &:active
     background-color: rgba(white, 0.15)
+.nav-account-dropdown-menu
+  width: 229px
+  margin: 0
+  border: none !important
+  a
+    word-wrap: break-word
+    white-space: normal !important
 .nav-download-client,
 .nav-account-dropdown
   color: white
