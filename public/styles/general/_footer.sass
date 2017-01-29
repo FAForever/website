@@ -1,18 +1,21 @@
 .footer-wrapper
-  background-color: #181818
   color: white
+  background-color: black
+
+.site-footer
+  +container()
+  +background-image('footer.png')
+  padding-top: 150px
 
 .footer-top
   padding: 25px
 
-.footer-top,
-.footer-bottom
-  max-width: $max-width
-  margin-left: auto
-  margin-right: auto
+.footer-top-wrapper
+  padding-top: 75px
+  padding-bottom: 75px
 
 .footer-bottom-wrapper
-  background-color: #111
+  background-color: rgba(black, 0.75)
 
 .footer-bottom
   display: flex
@@ -26,12 +29,21 @@
 .footer-patreon
   display: inline-block
 
+div.footer-social
+  @media (max-width: $medium)
+    width: 100%
+    order: 1
+
 div.footer-links
   @media (max-width: $medium)
     width: 100%
+    order: 2
 
 ul.footer-social,
 ul.footer-links
+  margin: 0
+  padding: 0
+  list-style: none
   margin-left: auto
   margin-right: auto
   margin-bottom: 0 // bootstrap
@@ -42,7 +54,11 @@ ul.footer-links
 
   a
     display: block
-    color: white
+    transition: color 250ms
+    color: rgba(white, 0.7)
+
+    &:hover
+      color: rgba(white, 0.8)
 
 div.footer-links
   display: flex
@@ -52,29 +68,12 @@ div.footer-links
     position: relative
     padding: 20px
     font-size: 16px
+    color: rgba(white, 0.5)
+    transition: color 100ms
     
-    &:after
-      position: absolute
-      content: ''
-      left: 20px
-      right: 20px
-      bottom: 0px
-      height: 2px
-      margin-left: auto
-      margin-right: auto
-      background-color: white
-      width: 0%
-      transition: width 250ms
-
     &:hover
       text-decoration: none
-
-      &:after
-        width: calc(100% - 40px)
-
-div.footer-social
-  @media (max-width: $medium)
-    width: 100%
+      color: white
 
 ul.footer-social
   text-align: center
@@ -89,3 +88,41 @@ ul.footer-social
 
     &:hover
       transform: scale(1.2)
+
+.footer-support-us
+  display: inline-block
+
+  button
+    border: 0
+    background-color: #212121
+    color: white
+    font-weight: 600
+    display: inline-block
+    font-size: 16px
+    overflow: hidden
+    padding-left: 10px
+    padding-right: 10px
+    padding-top: 5px
+    padding-bottom: 5px
+    border-radius: 3px
+    position: relative
+    overflow: hidden
+    transition: background-color 100ms
+
+    @media (max-width: $medium)
+      padding: 15px 25px
+
+    &:hover, &:focus
+      background-color: lighten(#212121, 5%)
+
+  i
+    //display: inline-block
+    font-size: 18px
+    padding-right: 10px
+
+.footer-support-us-wrapper
+  @media (max-width: $medium)
+    display: block
+    width: 100%
+    text-align: center
+    margin-bottom: 20px

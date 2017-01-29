@@ -1,109 +1,134 @@
 doctype html
 html
+  //- HTML HEADER
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
 
-    //- HTML HEADER
-    head
-        meta(charset="utf-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title= title || 'Forged Alliance Forever'
+    link(rel="shortcut icon", href="/images/favicon.png", type="image/png")
 
-        title= title || 'Forged Alliance Forever'
-        link(rel="shortcut icon", href="/images/favicon.png", type="image/png")
+    // Fonts
+    link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
 
-        // Fonts
-        link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
+    //- Customise the stylesheet for your site by editing /public/styles/site.sass
+    link(href="/styles/css/site.css", rel="stylesheet")
 
-        //- Customise the stylesheet for your site by editing /public/styles/site.sass
-        link(href="/styles/css/site.css", rel="stylesheet")
+    //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    //- Safely remove this block if you are not targeting IE8
+    //-[if lt IE 9]
+      script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
+      script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
+    //-[endif]
 
-        //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-        //- Safely remove this block if you are not targeting IE8
-        //-[if lt IE 9]
-            script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
-            script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
-        //-[endif]
+    //- Include template-specific stylesheets by extending the css block
+    block css
 
-        //- Include template-specific stylesheets by extending the css block
-        block css
+    //- Add any other template-specific HEAD tags by extending the head block
+    block head
 
-        //- Add any other template-specific HEAD tags by extending the head block
-        block head
+  //- HTML BODY
+  body
+    .body-overlay
+    if !removeNavigation
+      section.navigation-wrapper
+        .top-navigation-wrapper
+          nav.top-navigation
+            ul.top-navigation
+              li: a(href="http://forums.faforever.com/") Forums
+              li: a(href="http://wiki.faforever.com/index.php?title=Main_Page") Wiki
+              li: a(href="http://direct.faforever.com/faf/unitsDB/") Unit Database
+              li: a(href="http://clans.faforever.com/") Clans
+              li: a(href="http://wiki.faforever.com/index.php?title=Voicechat_%28Mumble%29") Mumble
+              li: a(href="https://discord.gg/hgvj6Af") Discord
+              li: a.icon(href="https://www.youtube.com/c/ForgedAllianceForever")
+                i.fa.fa-youtube
+              li: a.icon(href="https://www.facebook.com/ForgedAllianceForever")
+                i.fa.fa-facebook
+              li
+                form.nav-support-us(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+                  input(type='hidden', name='cmd', value='_donations')
+                  input(type='hidden', name='business', value='visionik@pobox.com')
+                  input(type='hidden', name='lc', value='US')
+                  input(type='hidden', name='item_name', value='FAForever')
+                  input(type='hidden', name='no_note', value='0')
+                  input(type='hidden', name='currency_code', value='EUR')
+                  input(type='hidden', name='bn', value='PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest')
+                  button(type='submit', name='submit')
+                    i.fa.fa-paypal(aria-hidden='true')
+                    span Support us
+        .main-navigation-wrapper
+          nav.main-navigation
+            a(href="/", class="nav-logo")
+              img(src="/images/faf-logo.png")
+            ul.main-navigation
+              li.mobile-nav-logo-wrapper: a(href="/", class="mobile-nav-logo")
+                img(src="/images/faf-logo.png")
+              li: a(href='/news')
+                i.fa.fa-rss
+                span News
+              li: a(href='/competitive/tournaments')
+                i.fa.fa-trophy
+                span Competitive
+              li: a(href='/calendar')
+                i.fa.fa-calendar
+                span Calendar
+              li: a(href='/contribution')
+                i.fa.fa-heart
+                span Contribute
+              li.close-mobile-nav: button.toggle-nav
+                i.fa.fa-times
+                span Close menu
+            ul.main-navigation-right
+              li
+                a(href='/client' class='nav-download-client')
+                  i.fa.fa-download
+                  span Download
+              li.dropdown
+                a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button')
+                  i.fa.fa-user
+                  // Update fontawesome, uncomment below.
+                  //-if username
+                    //-i.fa.fa-user
+                  //-else
+                    //-i.fa.fa-user-o
+                  span.caret
+                ul.dropdown-menu.pull-right(role="menu")
+                  if username
+                    li: a(href="/account/password/change") Change Password
+                    li: a(href="/account/username/change") Change Username
+                    li: a(href="/account/email/change") Change Email
+                    li: a(href="/account/link") Link Account to Steam
+                    li: a(href='/logout') Log Out
+                  else
+                    li: a(href='/login') Log In
+                    li: a(href="/account/register") Register
+                    li: a(href="/account/password/reset") Reset/Forgot Password
+            button.toggle-nav.mobile-hamburger
+              i.fa.fa-bars(aria-hidden='true')
+      //- HEADER
+      #header: .container-fluid
+    .website
+      //- BODY
+      #body.content(class=(removeNavigation? 'updatePage':undefined))
 
-    //- HTML BODY
-    body
-        if !removeNavigation
-            //- HEADER
-            #header: .container-fluid
+          //- NOTE:
+          //- There is no .container wrapping class around body blocks to allow more flexibility in design.
+          //- Remember to include it in your templates when you override the intro and content blocks!
 
-                //- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
-                //- ... or completely change this header to suit your design.
-                div(role="navigation").navbar.navbar-default.navbar-fixed-top
-                    .container
-                        .navbar-header
-                            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                                span.sr-only Toggle navigation
-                                span.icon-bar
-                                span.icon-bar
-                                span.icon-bar
-                            a.navbar-brand(href='/')
-                                img(src="/images/faf_32x32.png")
-                        .collapse.navbar-collapse
-                            ul.nav.navbar-nav.navbar-left
-                                li: a(href='/news') News
-                                li: a(href='/competitive/tournaments') Competitive
-                                li.dropdown
-                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Community
-                                        span.caret
-                                    ul.dropdown-menu
-                                        li: a(href="http://forums.faforever.com/") Forums
-                                        li: a(href="http://clans.faforever.com/") Clans
-                                        li: a(href="http://wiki.faforever.com/index.php?title=Voicechat_%28Mumble%29") Mumble
-                                        li: a(href="https://discord.gg/hgvj6Af") Discord
-                                        li: a(href="https://www.youtube.com/c/ForgedAllianceForever") YouTube
-                                        li: a(href="https://www.facebook.com/ForgedAllianceForever") Facebook
-                                li.dropdown
-                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Documentation
-                                        span.caret
-                                    ul.dropdown-menu(role="menu")
-                                        li: a(href="http://wiki.faforever.com/index.php?title=Main_Page") Wiki
-                                        li: a(href="http://direct.faforever.com/faf/unitsDB/") Unit Database
-                                li: a(href='/calendar') Calendar
-                                li: a(href='/contribution') Contribute
-                                li.dropdown
-                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button") Account
-                                        span.caret
-                                    ul.dropdown-menu(role="menu")
-                                        li: a(href="/account/register") Register
-                                        li: a(href="/account/password/reset") Reset/Forgot Password
-                                        if username
-                                            li: a(href="/account/password/change") Change Password
-                                            li: a(href="/account/username/change") Change Username
-                                            li: a(href="/account/email/change") Change Email
-                                            li: a(href="/account/link") Link Account to Steam
-                            ul.nav.navbar-nav.navbar-right
-                                li: a(href='/client' id="btn-dl-nav") Download Client
-                                if !username
-                                    li: a(href='/login') Log In
-                                else
-                                    li: a(href='/logout') Log Out
-        //- BODY
-        #body.content(class=(removeNavigation? 'updatePage':undefined))
+          //- The Intro block appears above flash messages (used for temporary information display)
+          block intro
 
-            //- NOTE:
-            //- There is no .container wrapping class around body blocks to allow more flexibility in design.
-            //- Remember to include it in your templates when you override the intro and content blocks!
+          //- The content block should contain the body of your template's content
+          block content
 
-            //- The Intro block appears above flash messages (used for temporary information display)
-            block intro
-
-            //- The content block should contain the body of your template's content
-            block content
-
-        #footer.footer-wrapper
+      #footer.footer-wrapper
+        .site-footer
           .footer-top-wrapper
             .footer-top
-              .footer-logo
-                img(src="/images/vector_faf_logo.png")
+              //-.footer-logo
+                //-img(src="/images/vector_faf_logo.png")
               //-.footer-donate
                 //-h1
                   //-Support us
@@ -125,6 +150,18 @@ html
             .footer-bottom
               .footer-links
                 ul.footer-links
+                  li.footer-support-us-wrapper
+                    form.footer-support-us(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+                      input(type='hidden', name='cmd', value='_donations')
+                      input(type='hidden', name='business', value='visionik@pobox.com')
+                      input(type='hidden', name='lc', value='US')
+                      input(type='hidden', name='item_name', value='FAForever')
+                      input(type='hidden', name='no_note', value='0')
+                      input(type='hidden', name='currency_code', value='EUR')
+                      input(type='hidden', name='bn', value='PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest')
+                      button(type='submit', name='submit')
+                        i.fa.fa-paypal(aria-hidden='true')
+                        span Support us
                   li: a(href="http://forums.faforever.com/") Forums
                   li: a(href="http://clans.faforever.com/") Clans
                   li: a(href="http://wiki.faforever.com/index.php?title=Voicechat_%28Mumble%29") Mumble
@@ -143,16 +180,16 @@ html
                       i.fa.fa-github
 
 
-        //- JAVASCRIPT
+      //- JAVASCRIPT
 
-        //- jQuery 1.11.3 is included by default, and required by both Bootstrap
-        //- and the KeystoneJS Content Editor. If you are not targeting IE8,
-        //- you can upgrade to 2.1.4 (also bundled) for better performance.
-        //- Customise which Bootstrap javascript files are served by including
-        //- them specifically here, instead of bootstrap-3.3.5.min.js
-        script(src='/js/bottom.min.js')
+      //- jQuery 1.11.3 is included by default, and required by both Bootstrap
+      //- and the KeystoneJS Content Editor. If you are not targeting IE8,
+      //- you can upgrade to 2.1.4 (also bundled) for better performance.
+      //- Customise which Bootstrap javascript files are served by including
+      //- them specifically here, instead of bootstrap-3.3.5.min.js
+      script(src='/js/bottom.min.js')
 
-        //- Add scripts that are globally required by your site here.
+      //- Add scripts that are globally required by your site here.
 
-        //- Include template-specific javascript files by extending the js block
-        block js
+      //- Include template-specific javascript files by extending the js block
+      block js
