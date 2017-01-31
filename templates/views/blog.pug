@@ -12,8 +12,8 @@ mixin post(post)
                 .panel-body
                     p.text-muted Posted
                         if post.date
-                            |  <span class="primary-color">#{momentTimezone.tz(post.date, 'America/Chicago').tz(momentTimezone.tz.guess()).fromNow()}</span>
-                            | on <span class="primary-color">#{momentTimezone.tz(post.date, 'America/Chicago').tz(momentTimezone.tz.guess()).format("MMMM Do YYYY")}</span>
+                            |  <span class="primary-color">#{momentTimezone(post.date).tz(momentTimezone.tz.guess()).fromNow()}</span>
+                            | on <span class="primary-color">#{momentTimezone(post.date).tz(momentTimezone.tz.guess()).format("MMMM Do YYYY")}</span>
                         if post.author
                             |  by&nbsp;
                             a.primary-color(href='/author/' + post._embedded.author[0].slug + '/page/1') #{post._embedded.author[0].name}
