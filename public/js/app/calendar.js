@@ -19,6 +19,15 @@ $(document).ready(function() {
     },
     loading: function(bool) {
         $('#loading').toggle(bool);
+    },
+    eventAfterAllRender: function() {
+      if (! $(".toggleDeveloper").bootstrapSwitch('state')) {
+          $(".calendar .developerCalendar").hide();
+      }
+
+      if (! $(".toggleTournament").bootstrapSwitch('state')) {
+          $(".calendar .tournamentCalendar").hide();
+      }
     }
   });
 
