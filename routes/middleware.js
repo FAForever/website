@@ -28,14 +28,17 @@ exports.initLocals = function(req, res, next) {
 exports.getLatestClientRelease = function(req, res, next) {
 
 	var locals = res.locals;
+    var fs = require('fs');
+    var clientLink;
 
-	var clientLink = require('../link.json');
+    fs.readFile('link.json', 'utf8', function (err, data) {
+    	clientLink = JSON.parse(data);
 
-	locals.client_download_link = clientLink.client_link;
-	locals.downlords_faf_client_download_link = clientLink.downlords_faf_client_link;
+        locals.client_download_link = clientLink.client_link;
+        locals.downlords_faf_client_download_link = clientLink.downlords_faf_client_link;
 
-	next();
-
+        next();
+	});
 };
 
 exports.clientChecks = function(req, res, next) {
