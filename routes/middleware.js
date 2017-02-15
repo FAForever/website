@@ -36,9 +36,9 @@ exports.getLatestClientRelease = function(req, res, next) {
 
         locals.client_download_link = clientLink.client_link;
         locals.downlords_faf_client_download_link = clientLink.downlords_faf_client_link;
-	});
 
-    next();
+        next();
+	});
 };
 
 exports.clientChecks = function(req, res, next) {
