@@ -32,7 +32,7 @@ html
   body
     .body-overlay
     if !removeNavigation
-      section.navigation-wrapper
+      section.navigation-wrapper#header
         .top-navigation-wrapper
           nav.top-navigation
             ul.top-navigation
@@ -108,8 +108,6 @@ html
                     li: a(href="/account/password/reset") Reset/Forgot Password
             button.toggle-nav.mobile-hamburger
               i.fa.fa-bars(aria-hidden='true')
-      //- HEADER
-      #header: .container-fluid
     .website
       //- BODY
       #body.content(class=(removeNavigation? 'updatePage':undefined))
