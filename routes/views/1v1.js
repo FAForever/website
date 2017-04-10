@@ -1,6 +1,7 @@
 exports = module.exports = function(req, res) {
 
 	var locals = res.locals;
+    var fs = require('fs');
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
@@ -8,10 +9,13 @@ exports = module.exports = function(req, res) {
 	locals.cSection = '1v1';
 	locals.ratingType = '1v1';
 	locals.apiURL = process.env.API_URL;
-	locals.members = require('../../members/1v1.json');
-	locals.lastPage = Math.ceil(locals.members.length / 100);
 
-	// Render the view
-	res.render('leaderboards');
+    fs.readFile('members/1v1.json', 'utf8', function (err, data) {
+        locals.members = JSON.parse(data);
+        locals.lastPage = Math.ceil(locals.members.length / 100);
+
+        // Render the view
+        res.render('leaderboards');
+	});
 
 };
