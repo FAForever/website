@@ -3,6 +3,7 @@ var flash = {};
 
 exports = module.exports = function(req, res) {
 
+    locals.section = 'account';
 	var overallRes = res;
 
 	request.post({
