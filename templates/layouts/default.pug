@@ -66,16 +66,16 @@ html
             ul.main-navigation
               li.mobile-nav-logo-wrapper: a(href="/", class="mobile-nav-logo")
                 img(src="/images/faf-logo.png")
-              li: a(href='/news')
+              li(class=(section == 'news' ? 'active' : null)): a(href='/news')
                 i.fa.fa-rss
                 span News
-              li: a(href='/competitive/tournaments')
+              li(class=(section == 'competitive' ? 'active' : null)): a(href='/competitive/tournaments')
                 i.fa.fa-trophy
                 span Competitive
-              li: a(href='/calendar')
+              li(class=(section == 'calendar' ? 'active' : null)): a(href='/calendar')
                 i.fa.fa-calendar
                 span Calendar
-              li: a(href='/contribution')
+              li(class=(section == 'contribution' ? 'active' : null)): a(href='/contribution')
                 i.fa.fa-heart
                 span Contribute
               li.close-mobile-nav: button.toggle-nav
@@ -86,7 +86,7 @@ html
                 a(href='/client' class='nav-download-client')
                   i.fa.fa-download
                   span Download
-              li.dropdown
+              li(class=(section == 'account' ? 'active' : null)).dropdown
                 a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button')
                   i.fa.fa-user
                   // Update fontawesome, uncomment below.
