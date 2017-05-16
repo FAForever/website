@@ -18,7 +18,7 @@ exports = module.exports = function(req, res) {
 			body = JSON.parse(body);
 
 			if (body.steam_url) {
-				overallRes.redirect(body.steam_url);
+				return overallRes.redirect(body.steam_url);
 			}
 
             var errorMessages = [];

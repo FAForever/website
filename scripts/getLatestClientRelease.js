@@ -33,3 +33,25 @@ gh.getRepo('faforever', 'client').getRelease('latest', function(err, release) {
 }
 );
 
+//Try to read the file after creating it
+fs.readFile('link.json', 'utf8', function (err, data) {
+    try {
+        //Must of parsed out properly
+        clientLink = JSON.parse(data);
+    } catch (e) {
+        //Must not have...
+        console.log(date + ' - Link file incorrectly made. Data was - ' + data);
+        //Write default values to file...
+        data = {
+            client_link: 'https://github.com/FAForever/client/releases',
+            downlords_faf_client_link: 'https://github.com/FAForever/downlords-faf-client/releases'
+        };
+        fs.writeFile("link.json", JSON.stringify(data), function(error) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log(date + ' - Link file verified.');
+            }
+        });
+    }
+});
