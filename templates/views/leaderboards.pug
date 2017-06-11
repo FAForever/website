@@ -1,14 +1,13 @@
 extends competitive_nav
 
 mixin pagination
-  .row
-    .col-md-2.text-left.pagination
-      button(class="btn btn-primary first") First
-      button(class="btn btn-primary previous") Previous
-    .col-md-8
-    .col-md-2.text-right.pagination
-      button(class="btn btn-primary next") Next
-      button(class="btn btn-primary last") Last
+  .row.btn-top
+    .col-md-3.btn-top.pull-left.text-left.nopadding
+      button(class="btn btn-primary") First
+      button(class="btn btn-primary btn-spacing previous") Previous
+    .col-md-3.col-md-offset-6.btn-top.pull-right.text-right.nopadding
+      button(class="btn btn-primary") Next
+      button(class="btn btn-primary btn-spacing last") Last
 
 block cContent
 
@@ -18,30 +17,28 @@ block cContent
   
   br
   
-  .row
-    .col-md-2
-    .col-md-6
-        input(type="text" class="form-control" placeholder="Player name...")#searchbar
-    .col-md-2
-        button(class="btn btn-default" type="button" id="forget-search") Forget Search
-    .col-md-2
+  .featurette
+    .featurette-inner.text-center
+      form(role="form").search.has-button
+        .form-group
+          input(type="text" class="form-control" placeholder="Player name...")#searchbar
+          button(class="btn btn-default" type="button" id="forget-search") Forget Search
 
-  br
-  br
 
   #stats
   
   +pagination
-  
-  table.table.table-striped.table-hover
-    thead
-      tr
-        th #
-        th Player
-        th Rating
-        th Games
-        th Stats
-    tbody#players
+
+  .table-responsive
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th #
+          th Player
+          th Rating
+          th Games
+          th Stats
+      tbody#players
     
   +pagination
 
