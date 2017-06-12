@@ -14,14 +14,25 @@ exports = module.exports = function(req, res) {
 
 	if (req.query.steam_link_result) {
 		result = req.query.steam_link_result;
+		if (req.query.steam_link_msg) {
+			msg = req.query.steam_link_msg;
+		} else {
+			msg = null;
+		}
         var flash = {};
 		if (result == 'success') {
+			if (!msg) {
+				msg = 'Your steam account was successfully linked!';
+			}
 			flash.class = 'alert-success';
-			flash.messages = [{msg: 'Your steam account was successfully linked!'}];
+			flash.messages = [{msg: msg}];
 			flash.type = 'Success!';
 		} else {
+			if (!msg) {
+				msg = 'Your steam account was not successfully linked! Please verify you logged in correctly to steam and that your steam profile is public.';
+			}
 			flash.class = 'alert-danger';
-			flash.messages = [{msg: 'Your steam account was not successfully linked! Please verify you logged in correctly to steam.'}];
+			flash.messages = [{msg: msg}];
 			flash.type = 'Error!';
 		}
 	} else {
