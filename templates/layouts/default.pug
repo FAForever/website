@@ -87,16 +87,17 @@ html
                   i.fa.fa-download
                   span Download
               li(class=(section == 'account' ? 'active' : null)).dropdown
-                a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button')
-                  i.fa.fa-user
-                  // Update fontawesome, uncomment below.
-                  //-if username
-                    //-i.fa.fa-user
-                  //-else
-                    //-i.fa.fa-user-o
+                a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button' title=(username ? 'Welcome ' + username : undefined))
+                  if username
+                    i.fa.fa-user
+                      span.login-indicator-success
+                  else
+                    i.fa.fa-user-o
+                      span.login-indicator-false
                   span.caret
                 ul.dropdown-menu.nav-account-dropdown-menu.pull-right(role="menu")
                   if username
+                    li: span.welcome-text #{username}
                     li: a(href="/account/password/change") Change Password
                     li: a(href="/account/username/change") Change Username
                     li: a(href="/account/email/change") Change Email
