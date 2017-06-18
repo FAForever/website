@@ -4,6 +4,25 @@
  */
 
 var getPage = function(pageNumber, pageSize, id) {
+  if (pageNumber === 1) {
+      $(".first").addClass("disabled");
+      $(".previous").addClass("disabled");
+      $(".next").removeClass("disabled");
+      $(".last").removeClass("disabled");
+  } else {
+      $(".first").removeClass("disabled");
+      $(".previous").removeClass("disabled");
+      $(".next").removeClass("disabled");
+      $(".last").removeClass("disabled");
+  }
+
+  if (pageNumber === lastPage) {
+      $(".first").removeClass("disabled");
+      $(".previous").removeClass("disabled");
+      $(".next").addClass("disabled");
+      $(".last").addClass("disabled");
+  }
+
   $.ajax({
     url: apiURL + "/leaderboards/" + ratingType + "?page[size]=" + pageSize + "&page[number]=" + pageNumber + "&filter[is_active]=true",
     success: function (result) {
