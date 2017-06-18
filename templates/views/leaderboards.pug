@@ -3,10 +3,10 @@ extends competitive_nav
 mixin pagination
   .row.btn-top
     .col-md-3.btn-top.pull-left.text-left.nopadding
-      button(class="btn btn-primary") First
-      button(class="btn btn-primary btn-spacing previous") Previous
+      button(class="btn btn-primary first disabled") First
+      button(class="btn btn-primary btn-spacing previous disabled") Previous
     .col-md-3.col-md-offset-6.btn-top.pull-right.text-right.nopadding
-      button(class="btn btn-primary") Next
+      button(class="btn btn-primary next") Next
       button(class="btn btn-primary btn-spacing last") Last
 
 block cContent
