@@ -44,6 +44,15 @@ div.awesomplete
     margin-top: 5px
     width: 100%
 
+div.awesomplete > ul
+  text-align: left
+
+div.awesomplete > ul > li[aria-selected="true"]
+  background-color: #008cba
+
+div.awesomplete li[aria-selected="true"] mark, div.awesomplete li:hover mark, div.awesomplete mark
+  background: transparent
+
 @media (min-width: 480px)
   .featurette .search.has-button .form-group
     position: relative
