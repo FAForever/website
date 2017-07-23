@@ -30,9 +30,18 @@ exports.getLatestClientRelease = function(req, res, next) {
 	var locals = res.locals;
     var fs = require('fs');
     var clientLink;
+    var exec = require('child_process').exec;
 
     fs.readFile('link.json', 'utf8', function (err, data) {
-    	clientLink = JSON.parse(data);
+
+        try {
+            clientLink = JSON.parse(data);
+        } catch (e) {
+            exec('node scripts/getLatestClientRelease.js');
+            clientLink = {};
+            clientLink.client_link = 'https://github.com/FAForever/client/releases';
+            clientLink.downlords_faf_client_link = 'https://github.com/FAForever/downlords-faf-client/releases';
+        }
 
         locals.client_download_link = clientLink.client_link;
         locals.downlords_faf_client_download_link = clientLink.downlords_faf_client_link;

@@ -138,6 +138,9 @@ passport.use('faforever', new OAuthStrategy({
 		request.get(
 			{url: process.env.API_URL + '/players/me', headers: {'Authorization':'Bearer ' + token}},
 			function (e, r, body) {
+                if (r.statusCode != 200) {
+					return done(null);
+                }
 				var user = JSON.parse(body);
 				user.data.attributes.token = token;
 				return done(null, user);
