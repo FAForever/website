@@ -46,15 +46,14 @@ exports = module.exports = function(req, res) {
 			form : {name: username, pw_hash_old: oldPassword, pw_hash_new: newPassword}
 		}, function (err, res, body) {
 			//Check to see if valid user
-			if(body != 'ok') {
+			var resp = JSON.parse(body);
+			if(resp.response != 'ok') {
 				var errorMessages = [];
 
 				//Must not be valid, check to see if errors, otherwise return generic error.
 				try {
-					var errors = JSON.parse(body);
-
-					for(var i = 0; i < errors.errors.length; i++) {
-						var error = errors.errors[i];
+					for(var i = 0; i < resp.errors.length; i++) {
+						var error = resp.errors[i];
 
 						errorMessages.push({msg: error.detail});
 					}
