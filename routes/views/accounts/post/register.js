@@ -46,21 +46,27 @@ exports = module.exports = function(req, res) {
 			url: process.env.API_URL + '/users/register',
 			form : {name: username, email: email, pw_hash: password}
 		}, function (err, res, body) {
-			//Check to see if valid user
-			var resp = JSON.parse(body);
+
+            var errorMessages = [];
+
+            //Check to see if valid JSON response
+            try {
+                var resp = JSON.parse(body);
+            } catch(e) {
+                errorMessages.push({msg: 'Invalid registration sign up. Please try again later.'});
+                flash.class = 'alert-danger';
+                flash.messages = errorMessages;
+                flash.type = 'Error!';
+
+                return overallRes.render('account/register', {flash: flash});
+            }
+
 			if(resp.response != 'ok') {
-				var errorMessages = [];
+				// Failed registering user
+				for(var i = 0; i < resp.errors.length; i++) {
+					var error = resp.errors[i];
 
-				//Must not be valid, check to see if errors, otherwise return generic error.
-				try {
-
-					for(var i = 0; i < resp.errors.length; i++) {
-						var error = resp.errors[i];
-
-						errorMessages.push({msg: error.detail});
-					}
-				} catch(e) {
-					errorMessages.push({msg: 'Invalid registration sign up. Please try again later.'});
+					errorMessages.push({msg: error.detail});
 				}
 
 				flash.class = 'alert-danger';
