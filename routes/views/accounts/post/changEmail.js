@@ -37,21 +37,27 @@ exports = module.exports = function(req, res) {
 			headers: {'Authorization':'Bearer ' + req.user.data.attributes.token},
 			form : {new_email: email}
 		}, function (err, res, body) {
-			//Check to see if valid user
-			if(body != 'ok') {
-				var errorMessages = [];
 
-				//Must not be valid, check to see if errors, otherwise return generic error.
-				try {
-					var errors = JSON.parse(body);
+            var errorMessages = [];
 
-					for(var i = 0; i < errors.errors.length; i++) {
-						var error = errors.errors[i];
+			//Check to see if valid JSON response
+            try {
+                var resp = JSON.parse(body);
+            } catch(e) {
+                errorMessages.push({msg: 'Invalid email. Please try again later.'});
+                flash.class = 'alert-danger';
+                flash.messages = errorMessages;
+                flash.type = 'Error!';
 
-						errorMessages.push({msg: error.detail});
-					}
-				} catch(e) {
-					errorMessages.push({msg: 'Invalid email. Please try again later.'});
+                return overallRes.render('account/changEmail', {flash: flash});
+            }
+
+			if(resp.response != 'ok') {
+				// Failed changing email
+				for(var i = 0; i < resp.errors.length; i++) {
+					var error = resp.errors[i];
+
+					errorMessages.push({msg: error.detail});
 				}
 
 				flash.class = 'alert-danger';
@@ -60,7 +66,7 @@ exports = module.exports = function(req, res) {
 
 				overallRes.render('account/changEmail', {flash: flash});
 			} else {
-				// Successfully reset password
+				// Successfully changed email
 				flash.class = 'alert-success';
 				flash.messages = [{msg: 'Your email was set successfully. Please use the new email to log in!'}];
 				flash.type = 'Success!';
