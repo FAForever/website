@@ -1,4 +1,4 @@
-require('dotenv').load();
+require("dotenv-safe").config();
 
 var request = require('request');
 var fs = require('fs');
