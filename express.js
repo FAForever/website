@@ -13,21 +13,6 @@ var passport = require('passport'),
 
 var app = express();
 
-//Define environment variables with default values
-process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-process.env.WP_URL = process.env.WP_URL || 'http://direct.faforever.com/wp-json';
-process.env.CHALLONGE_USERNAME = process.env.CHALLONGE_USERNAME || 'joe';
-process.env.CHALLONGE_APIKEY = process.env.CHALLONGE_APIKEY || '12345';
-process.env.PORT = process.env.PORT || '4000';
-process.env.GOOGLE_CALENDAR_API_KEY = process.env.GOOGLE_CALENDAR_API_KEY || '12345';
-process.env.API_URL = process.env.API_URL || 'https://api.test.faforever.com';
-process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
-process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
-process.env.HOST = process.env.HOST || 'http://localhost';
-process.env.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '12345';
-process.env.TWITCH_CLIENT_ID = process.env.TWITCH_CLIENT_ID || '12345';
-process.env.TWITCH_LIVESTREAM_URL = process.env.TWITCH_LIVESTREAM_URL || 'https://api.twitch.tv/kraken/streams/?game=Supreme%20Commander:%20Forged%20Alliance';
-
 //Execute middleware before each request...
 app.use(middleware.initLocals);
 app.use(middleware.getLatestClientRelease);
