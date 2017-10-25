@@ -34,7 +34,10 @@ app.use(middleware.getLatestClientRelease);
 app.use(middleware.clientChecks);
 
 //Set static public directory path
-app.use(express.static('public'));
+app.use(express.static('public', {
+    immutable: true,
+    maxAge: 4 * 60 * 60 * 1000 // 4 hours
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator({
