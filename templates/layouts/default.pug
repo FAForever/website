@@ -44,20 +44,13 @@ html
               li: a(href="https://discord.gg/hgvj6Af") Discord
               li: a(href="/livestream") Live Streams
               li: a.icon(href="https://www.youtube.com/c/ForgedAllianceForever")
-                i.fa.fa-youtube
+                i.fab.fa-youtube
               li: a.icon(href="https://www.facebook.com/ForgedAllianceForever")
-                i.fa.fa-facebook
+                i.fab.fa-facebook-f
               li
-                form.nav-support-us(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
-                  input(type='hidden', name='cmd', value='_donations')
-                  input(type='hidden', name='business', value='visionik@pobox.com')
-                  input(type='hidden', name='lc', value='US')
-                  input(type='hidden', name='item_name', value='FAForever')
-                  input(type='hidden', name='no_note', value='0')
-                  input(type='hidden', name='currency_code', value='EUR')
-                  input(type='hidden', name='bn', value='PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest')
+                form.nav-support-us(action='https://www.patreon.com/faf', method='get', target='_top')
                   button(type='submit', name='submit')
-                    i.fa.fa-paypal(aria-hidden='true')
+                    i.fab.fa-patreon(aria-hidden='true')
                     span Support us
         .main-navigation-wrapper
           nav.main-navigation
@@ -67,32 +60,32 @@ html
               li.mobile-nav-logo-wrapper: a(href="/", class="mobile-nav-logo")
                 img(src="/images/faf-logo.png")
               li(class=(section == 'news' ? 'active' : null)): a(href='/news')
-                i.fa.fa-rss
+                i.fas.fa-rss
                 span News
               li(class=(section == 'competitive' ? 'active' : null)): a(href='/competitive/tournaments')
-                i.fa.fa-trophy
+                i.fas.fa-trophy
                 span Competitive
               li(class=(section == 'calendar' ? 'active' : null)): a(href='/calendar')
-                i.fa.fa-calendar
+                i.far.fa-calendar-alt
                 span Calendar
               li(class=(section == 'contribution' ? 'active' : null)): a(href='/contribution')
-                i.fa.fa-heart
+                i.fas.fa-heart
                 span Contribute
               li.close-mobile-nav: button.toggle-nav
-                i.fa.fa-times
+                i.fas.fa-times
                 span Close menu
             ul.main-navigation-right
               li
                 a(href='/client' class='nav-download-client')
-                  i.fa.fa-download
+                  i.fas.fa-download
                   span Download
               li(class=(section == 'account' ? 'active' : null)).dropdown
                 a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button' title=(username ? 'Welcome ' + username : undefined))
                   if username
-                    i.fa.fa-user
+                    i.fas.fa-user
                       span.login-indicator-success
                   else
-                    i.fa.fa-user-o
+                    i.far.fa-user
                       span.login-indicator-false
                   span.caret
                 ul.dropdown-menu.nav-account-dropdown-menu.pull-right(role="menu")
@@ -108,7 +101,7 @@ html
                     li: a(href="/account/register") Register
                     li: a(href="/account/password/reset") Reset/Forgot Password
             button.toggle-nav.mobile-hamburger
-              i.fa.fa-bars(aria-hidden='true')
+              i.fas.fa-bars(aria-hidden='true')
     .website
       //- BODY
       #body.content(class=(removeNavigation? 'updatePage':undefined))
@@ -151,16 +144,9 @@ html
               .footer-links
                 ul.footer-links
                   li.footer-support-us-wrapper
-                    form.footer-support-us(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
-                      input(type='hidden', name='cmd', value='_donations')
-                      input(type='hidden', name='business', value='visionik@pobox.com')
-                      input(type='hidden', name='lc', value='US')
-                      input(type='hidden', name='item_name', value='FAForever')
-                      input(type='hidden', name='no_note', value='0')
-                      input(type='hidden', name='currency_code', value='EUR')
-                      input(type='hidden', name='bn', value='PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest')
+                    form.footer-support-us(action='https://www.patreon.com/faf', method='get', target='_top')
                       button(type='submit', name='submit')
-                        i.fa.fa-paypal(aria-hidden='true')
+                        i.fab.fa-patreon(aria-hidden='true')
                         span Support us
                   li: a(href="http://forums.faforever.com/") Forums
                   li: a(href="http://clans.faforever.com/") Clans
@@ -171,13 +157,13 @@ html
                 ul.footer-social
                   li
                     a(href="https://www.facebook.com/ForgedAllianceForever" title="Follow Forged Alliance Forever on Facebook" target="_blank")
-                      i.fa.fa-facebook
+                      i.fab.fa-facebook-f
                   li
                     a(href="https://www.youtube.com/c/ForgedAllianceForever" title="Follow Forged Alliance Forever on YouTube" target="_blank")
-                      i.fa.fa-youtube
+                      i.fab.fa-youtube
                   li
                     a(href="https://github.com/FAForever/" title="Follow Forged Alliance Forever on GitHub" target="_blank")
-                      i.fa.fa-github
+                      i.fab.fa-github
 
 
       //- JAVASCRIPT
