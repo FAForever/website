@@ -60,7 +60,7 @@ exports = module.exports = function(req, res) {
 		// Render the view
 		res.render('blog');
 	}).catch(function( err ) {
-		// handle error
+		console.log('Error on loading news from wordpress: ' + err);
 	});
 
 };
