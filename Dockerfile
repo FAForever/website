@@ -1,7 +1,5 @@
-FROM node
-
-# Update and install cron
-RUN apt-get update && apt-get install -y cron
+# Use an ubuntu-image for building assets for use in a runtime image...
+FROM node as builder
 
 RUN mkdir code
 
@@ -9,27 +7,21 @@ RUN mkdir code
 ADD package.json /code
 WORKDIR /code
 RUN npm install -g yarn
+
 RUN yarn
 
-ADD . /code/
+ADD . /code
 
-# Add crontab file in the cron directory
-ADD crontab /etc/cron.d/website-tasks
+RUN ./node_modules/.bin/grunt prod
 
-# Give execution rights on the cron job
-RUN chmod 0644 /etc/cron.d/website-tasks
+# Slimmer runtime image without python/make/gcc etc.
+FROM node:alpine as runtime
 
-# Create the log file to be able to run tail
-RUN touch /var/log/cron.log
+# Only install runtime dependencies for the runtime image
+RUN yarn --prod
+COPY --from=builder /code /code
 
-RUN npm install -g grunt-cli
-RUN grunt prod
-
-# Run the command on container startup
-RUN node scripts/extractor.js
-RUN node scripts/getLatestClientRelease.js
-RUN /usr/bin/crontab /etc/cron.d/website-tasks
-
-CMD cron && PORT=3000 npm start
+WORKDIR /code
+CMD PORT=3000 npm start
 
 EXPOSE 3000

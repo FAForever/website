@@ -45,10 +45,12 @@ module.exports = function(grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-postcss');
+  if(process.env.NODE_ENV == "development") {
+	  grunt.loadNpmTasks('grunt-contrib-compass');
+	  grunt.loadNpmTasks('grunt-contrib-uglify');
+	  grunt.loadNpmTasks('grunt-sass');
+	  grunt.loadNpmTasks('grunt-contrib-concat');
+	  grunt.loadNpmTasks('grunt-contrib-jshint');
+	  grunt.loadNpmTasks('grunt-postcss');
+  }
 };

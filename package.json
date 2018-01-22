@@ -23,8 +23,6 @@
     "json2csv": "^3.7.0",
     "moment": "^2.14.1",
     "moment-timezone": "^0.5.10",
-    "node-sass": "^3.3.2",
-    "node-sass-middleware": "^0.10.0",
     "passport": "^0.3.2",
     "passport-oauth": "^1.0.0",
     "pug": "^2.0.0-beta3",
@@ -34,6 +32,7 @@
   },
   "devDependencies": {
     "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
     "grunt-concurrent": "^2.3.1",
     "grunt-contrib-compass": "^1.1.1",
     "grunt-contrib-concat": "^1.0.0",
@@ -48,6 +47,8 @@
     "jshint-stylish": "^2.0.1",
     "load-grunt-configs": "^1.0.0",
     "load-grunt-tasks": "^3.5.2",
+    "node-sass": "^3.3.2",
+    "node-sass-middleware": "^0.10.0",
     "open": "0.0.5",
     "time-grunt": "^1.4.0"
   },
