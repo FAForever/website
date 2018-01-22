@@ -1,2 +1,0 @@
-0 * * * * cd /code/ && /usr/local/bin/node /code/scripts/extractor.js >> /var/log/cron.log 2>&1
-*/15 * * * * cd /code/ && /usr/local/bin/node /code/scripts/getLatestClientRelease.js >> /var/log/cron.log 2>&1

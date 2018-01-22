@@ -181,6 +181,33 @@ if (process.env.NODE_ENV == 'development') {
 	});
 }
 
+let extractor = require("./scripts/extractor");
+let getLatestClientRelease = require("./scripts/getLatestClientRelease");
+
+// Run scripts initially on startup
+extractor.run();
+getLatestClientRelease.run();
+
+// Run leaderboard extractor every minute
+setTimeout(() => {
+	try {
+		extractor.run();
+	}
+	catch(e) {
+		console.error("Error while updating leaderboards!", e);
+	}
+}, 60 * 1000);
+
+// Run client release fetcher every 15 minutes
+setTimeout(() => {
+	try {
+		getLatestClientRelease.run();
+	}
+	catch(e) {
+		console.error("Error while fetching latest client release!", e);
+	}
+}, 15 * 60 * 1000);
+
 //Start and listen on port
 app.listen(process.env.PORT, function () {
 	console.log('Express listening on port ' + process.env.PORT);
