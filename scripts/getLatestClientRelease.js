@@ -6,8 +6,13 @@ var date = new Date();
 
 module.exports.run = function run() {
 	//Get main client
-	gh.getRepo('faforever', 'client').getRelease('latest', function(err, release) {
+	gh.getRepo('faforever', 'client').listReleases(function(err, releases) {
 		if (!err) {
+			var release = getPythonClientStableRelease(releases);
+			if (release === null) {
+				console.log("No Python client stable version was found!");
+				return;
+			}
 			var data = {client_link: release.assets[0].browser_download_url};
 
 			//Get downlords client releases
@@ -39,6 +44,18 @@ module.exports.run = function run() {
 			verifyOutput();
 		}
 	});
+
+	function getPythonClientStableRelease(releases) {
+		for (var i = 0; i < releases.length ; i++) {
+			//FIXME - use some semver parser for this
+			var version = releases[i].tag_name;
+			var minor_version = parseInt(version.split(".")[1]);
+			var is_stable = minor_version % 2 === 0;
+			if (is_stable)
+				return releases[i];
+		}
+		return null;
+	}
 
 	function verifyOutput()
 	{
