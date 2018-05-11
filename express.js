@@ -15,7 +15,7 @@ var app = express();
 
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-process.env.WP_URL = process.env.WP_URL || 'http://direct.faforever.com/wp-json';
+process.env.WP_URL = process.env.WP_URL || 'https://direct.faforever.com/wp-json';
 process.env.CHALLONGE_USERNAME = process.env.CHALLONGE_USERNAME || 'joe';
 process.env.CHALLONGE_APIKEY = process.env.CHALLONGE_APIKEY || '12345';
 process.env.PORT = process.env.PORT || '4000';
