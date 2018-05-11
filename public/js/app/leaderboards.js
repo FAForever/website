@@ -1,6 +1,5 @@
 /*
- http://api.faforever.com/ranked1v1?page[size]=50&page[number]=1&filter[is_active]=true
- http://api.faforever.com/ranked1v1/500
+ https://api.faforever.com/leaderboards/ladder1v1?page[size]=50&page[number]=1&filter[is_active]=true
  */
 
 var getPage = function(pageNumber, pageSize, id) {
