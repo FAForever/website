@@ -8,7 +8,7 @@ ADD package.json /code
 WORKDIR /code
 RUN npm install -g yarn
 
-RUN yarn
+RUN chmod +x /usr/local/bin/yarn && yarn
 
 ADD . /code
 

@@ -1,0 +1,26 @@
+dist: trusty
+
+services:
+  - docker
+
+script:
+  - docker build -t faf-website .
+
+after_success:
+  - export IMAGE_TAG=faf-website;
+  - export REPO=faforever/faf-website;
+  - if [ -n "${TRAVIS_TAG}" ]; then
+      docker build -t ${IMAGE_TAG} . &&
+      echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin &&
+      docker tag ${IMAGE_TAG} ${REPO}:${TRAVIS_TAG} &&
+      docker push ${REPO};
+    fi
+  - if [ "${TRAVIS_BRANCH}" == "develop" ]; then
+      docker build -t ${IMAGE_TAG} . &&
+      echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin &&
+      docker tag ${IMAGE_TAG} ${REPO}:${TRAVIS_BRANCH} &&
+      docker push ${REPO};
+    fi
+
+after_failure:
+  - docker logs faf-website
