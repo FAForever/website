@@ -1,17 +1,21 @@
 exports = module.exports = function(req, res) {
 
-	var locals = res.locals;
-	var fs = require('fs');
-	
-	// locals.section is used to set the currently selected
-	// item in the header navigation.
-	locals.section = 'home';
+  let locals = res.locals;
+  let fs = require('fs');
 
-	fs.readFile('members/top5.json', 'utf8', function (err, data) {
-		locals.topPlayers = JSON.parse(data);
+  // locals.section is used to set the currently selected
+  // item in the header navigation.
+  locals.section = 'home';
 
-		// Render the view
-		res.render('index');
-	});
-	
+  fs.readFile('members/top5.json', 'utf8', function (err, data) {
+    if(data) {
+      locals.topPlayers = JSON.parse(data);
+    }
+    else {
+      locals.topPlayers = {}
+    }
+    // Render the view
+    res.render('index');
+  });
+
 };
