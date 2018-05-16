@@ -7,7 +7,8 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'competitive';
   	locals.cSection = 'global';
-	locals.ratingType = 'Global';
+	locals.ratingTypeTitle = 'Global';
+	locals.ratingType = 'global';
 	locals.apiURL = process.env.API_URL;
     fs.readFile('members/global.json', 'utf8', function (err, data) {
         locals.members = JSON.parse(data);

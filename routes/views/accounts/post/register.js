@@ -1,10 +1,19 @@
-var flash = {};
-var request = require('request');
-var SHA256 = require("crypto-js/sha256");
+let flash = {};
+const request = require('request');
+const ClientOAuth2 = require('client-oauth2');
 
-exports = module.exports = function(req, res) {
+const apiAuth = new ClientOAuth2({
+	clientId: process.env.OAUTH_CLIENT_ID,
+	clientSecret: process.env.OAUTH_CLIENT_SECRET,
+	accessTokenUri: process.env.API_URL + '/oauth/token',
+	authorizationUri: process.env.API_URL + '/oauth/authorize',
+	redirectUri: process.env.HOST + '/callback',
+	scopes: ['create_user']
+});
 
-	var locals = res.locals;
+exports = module.exports = function (req, res) {
+
+	let locals = res.locals;
 
 	locals.formData = req.body || {};
 
@@ -18,7 +27,7 @@ exports = module.exports = function(req, res) {
 	req.checkBody('email', 'Email does not appear to be valid').isEmail();
 
 	// check the validation object for errors
-	var errors = req.validationErrors();
+	let errors = req.validationErrors();
 
 	//Must have client side errors to fix
 	if (errors) {
@@ -26,64 +35,63 @@ exports = module.exports = function(req, res) {
 		// failure
 		flash.class = 'alert-danger';
 		flash.messages = errors;
-        flash.type = 'Error!';
+		flash.type = 'Error!';
 
 		res.render('account/register', {flash: flash});
 
 	} else {
 
 		// pull the form variables off the request body
-		var username = req.body.username;
-		var email 	 = req.body.email;
+		let username = req.body.username;
+		let email = req.body.email;
+		let password = req.body.password
 
-		//Encrypt password before sending it off to endpoint
-		var password = SHA256(req.body.password).toString();
+		let overallRes = res;
 
-		var overallRes = res;
+		apiAuth.credentials.getToken()
+			.then(function (token) {
+				//Run post to register endpoint
+				let req = token.sign({
+					url: process.env.API_URL + '/users/register',
+					form: {username: username, email: email, password: password}
+				});
+				request.post(req, function (err, res, body) {
+					let resp;
+					let errorMessages = [];
 
-		//Run post to register endpoint
-		request.post({
-			url: process.env.API_URL + '/users/register',
-			form : {name: username, email: email, pw_hash: password}
-		}, function (err, res, body) {
+					if (res.statusCode !== 200) {
+						try {
+							resp = JSON.parse(body);
+						} catch (e) {
+							errorMessages.push({msg: 'Invalid registration sign up. Please try again later.'});
+							flash.class = 'alert-danger';
+							flash.messages = errorMessages;
+							flash.type = 'Error!';
 
-            var errorMessages = [];
+							return overallRes.render('account/register', {flash: flash});
+						}
 
-            //Check to see if valid JSON response
-            try {
-                var resp = JSON.parse(body);
-            } catch(e) {
-                errorMessages.push({msg: 'Invalid registration sign up. Please try again later.'});
-                flash.class = 'alert-danger';
-                flash.messages = errorMessages;
-                flash.type = 'Error!';
+						// Failed registering user
+						for (let i = 0; i < resp.errors.length; i++) {
+							let error = resp.errors[i];
 
-                return overallRes.render('account/register', {flash: flash});
-            }
+							errorMessages.push({msg: error.detail});
+						}
 
-			if(resp.response != 'ok') {
-				// Failed registering user
-				for(var i = 0; i < resp.errors.length; i++) {
-					var error = resp.errors[i];
+						flash.class = 'alert-danger';
+						flash.messages = errorMessages;
+						flash.type = 'Error!';
 
-					errorMessages.push({msg: error.detail});
-				}
+						return overallRes.render('account/register', {flash: flash});
+					}
 
-				flash.class = 'alert-danger';
-				flash.messages = errorMessages;
-                flash.type = 'Error!';
+					// Successfully registered user
+					flash.class = 'alert-success';
+					flash.messages = [{msg: 'Please check your email to verify your registration. Then you will be ready to log in!'}];
+					flash.type = 'Success!';
 
-				overallRes.render('account/register', {flash: flash});
-			} else {
-				// Successfully registered user
-				flash.class = 'alert-success';
-				flash.messages = [{msg: 'Please check your email to verify your registration. Then you will be ready to log in!'}];
-                flash.type = 'Success!';
-
-				overallRes.render('account/register', {flash: flash});
-			}
-		});
-
+					overallRes.render('account/register', {flash: flash});
+				});
+			});
 	}
-
 };

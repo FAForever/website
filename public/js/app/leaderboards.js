@@ -1,5 +1,5 @@
 /*
- https://api.faforever.com/leaderboards/ladder1v1?page[size]=50&page[number]=1&filter[is_active]=true
+ https://api.faforever.com/leaderboards/ladder1v1?page[size]=50&page[number]=1
  */
 
 var getPage = function(pageNumber, pageSize, id) {
@@ -23,7 +23,7 @@ var getPage = function(pageNumber, pageSize, id) {
   }
 
   $.ajax({
-    url: apiURL + "/leaderboards/" + ratingType + "?page[size]=" + pageSize + "&page[number]=" + pageNumber + "&filter[is_active]=true",
+    url: apiURL + "/leaderboards/" + ratingType + "?page[size]=" + pageSize + "&page[number]=" + pageNumber,
     success: function (result) {
       renderPage(result, document.getElementById("players"), id);
     }
@@ -46,19 +46,19 @@ var renderPage = function (page, element, playerId) {
     element.appendChild(tr);
     var rank = document.createElement("td");
     tr.appendChild(rank);
-    rank.innerHTML = player.attributes.ranking;
+    rank.innerHTML = player.attributes.rank;
     var name = document.createElement("td");
     tr.appendChild(name);
-    name.innerHTML = player.attributes.login;
+    name.innerHTML = player.attributes.name;
     var rating = document.createElement("td");
     tr.appendChild(rating);
     rating.innerHTML = player.attributes.rating;
     var games = document.createElement("td");
     tr.appendChild(games);
-    games.innerHTML = player.attributes.num_games;
+    games.innerHTML = player.attributes.numGames;
     var stats = document.createElement("td");
     tr.appendChild(stats);
-    stats.innerHTML = '<button class="player btn btn-primary" data-id="' + player.id + '" data-name="' + player.attributes.login + '">View</button>';
+    stats.innerHTML = '<button class="player btn btn-primary" data-id="' + player.id + '" data-name="' + player.attributes.name + '">View</button>';
   }
 };
 
@@ -133,15 +133,17 @@ $(document).on('click', '.player', (function(){
   var name = $(this).data('name');
   var pastYear = moment().subtract(1, 'years').unix();
 
+  let featuredMod = ratingType === '1v1' ? 'ladder1v1' : 'faf';
   $.ajax({
-    url: apiURL + '/players/' + id + '/ratings/' + ratingType + '/history',
+		url: apiURL + '/data/gamePlayerStats?filter=player.id==' + id + ';game.featuredMod.technicalName=' + featuredMod + '&fields[gamePlayerStats]=afterMean,afterDeviation,scoreTime',
     success: function(result) {
-      $.each(result.data.attributes.history, function(unixTime, values){
-        //Only get information for past year for chart...
+      $.each(result.data, function(stats){
+        // Only get information for past year for chart...
+				
         if (unixTime > pastYear) {
-          var date = moment.unix(unixTime).format('MMM D, YYYY');
-          var mean = values[0];
-          var deviation = values[1];
+          var date = moment(stats.attributes.scoreTime).format('MMM D, YYYY');
+          var mean = stats.attributes.afterMean;
+          var deviation = stats.attributes.afterDeviation;
           labels.push(date);
           dataset.push(Math.round(mean - 3 * deviation));
         }

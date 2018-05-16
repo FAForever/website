@@ -20,6 +20,13 @@ mixin username
                     | First character must be a letter
                 .help-block.with-errors
 
+mixin usernameOrEmail
+    .form-group
+        label Username or email:
+            .input-group
+                input(type='text', name='usernameOrEmail', required='required', value=formData['usernameOrEmail']).form-control
+                span(aria-hidden='true').glyphicon.form-control-feedback
+
 mixin confirm-password(passwordName,labelPassword)
     - passwordName = passwordName || 'password'
     - labelPassword = labelPassword || ''
@@ -44,3 +51,10 @@ mixin oldPassword(labelPassword)
                 input(type='password', name='old_password', required='required', id='oldPassword', data-minlength='6').form-control
                 span(aria-hidden='true').glyphicon.form-control-feedback
                 .help-block Minimum of 6 characters
+
+mixin currentPassword(labelPassword)
+    - labelPassword = labelPassword || ''
+    .form-group
+        label #{labelPassword} Password:
+            .input-group
+                input(type='password', name='password', required='required', id='password').form-control

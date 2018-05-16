@@ -2,16 +2,16 @@
 // customising the .env file in your project's root folder.
 require('dotenv').load();
 
-var express = require('express');
+let express = require('express');
 
-var middleware = require('./routes/middleware');
+let middleware = require('./routes/middleware');
 
-var expressValidator = require('express-validator');
-var bodyParser = require('body-parser');
-var passport = require('passport'),
-	OAuthStrategy = require('passport-oauth').OAuth2Strategy;
+let expressValidator = require('express-validator');
+let bodyParser = require('body-parser');
+let passport = require('passport');
+let OAuth2Strategy = require('passport-oauth2');
 
-var app = express();
+let app = express();
 
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
@@ -35,17 +35,17 @@ app.use(middleware.clientChecks);
 
 //Set static public directory path
 app.use(express.static('public', {
-    immutable: true,
-    maxAge: 4 * 60 * 60 * 1000 // 4 hours
+	immutable: true,
+	maxAge: 4 * 60 * 60 * 1000 // 4 hours
 }));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(expressValidator({
-    customValidators: {
-        isEqual: function(value1, value2) {
-            return value1 === value2;
-        }
-    }
+	customValidators: {
+		isEqual: function (value1, value2) {
+			return value1 === value2;
+		}
+	}
 }));
 app.use(require('express-session')({
 	secret: process.env.SESSION_SECRET_KEY,
@@ -64,13 +64,13 @@ app.set('view engine', 'pug');
 app.set('port', process.env.PORT);
 
 //Variable to hold routing path
-var routes = './routes/views/';
+let routes = './routes/views/';
 
 //Define routes
 app.get('/', require(routes + 'index'));
 
 function loggedIn(req, res, next) {
-	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+	let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 	req.session.referral = fullUrl;
 
 	if (req.isAuthenticated()) {
@@ -118,17 +118,20 @@ app.get('/author/:author/page/:page', require(routes + 'blog'));
 app.get('/news/page/:page', require(routes + 'blog'));
 app.get('/:year/:month/:slug', require(routes + 'post'));
 
-app.get('/logout', function(req, res) {
+app.get('/logout', function (req, res) {
 	req.logout();
 	res.redirect('/');
 });
 
-app.get('/login', passport.authenticate('faforever', { failureRedirect: '/login', failureFlash: true }), function(req, res) {
+app.get('/login', passport.authenticate('faforever', {
+	failureRedirect: '/login',
+	failureFlash: true
+}), function (req, res) {
 	req.logout();
 	res.redirect('/');
 });
 
-passport.use('faforever', new OAuthStrategy({
+passport.use('faforever', new OAuth2Strategy({
 		tokenURL: process.env.API_URL + '/oauth/token',
 		authorizationURL: process.env.API_URL + '/oauth/authorize',
 		clientID: process.env.OAUTH_CLIENT_ID,
@@ -136,45 +139,47 @@ passport.use('faforever', new OAuthStrategy({
 		callbackURL: process.env.HOST + '/callback',
 		scope: ['write_account_data', 'public_profile']
 	},
-	function(token, tokenSecret, profile, done) {
-		var request = require('request');
+	function (accessToken, refreshToken, profile, done) {
+		let request = require('request');
 		request.get(
-			{url: process.env.API_URL + '/players/me', headers: {'Authorization':'Bearer ' + token}},
+			{url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
 			function (e, r, body) {
-                if (r.statusCode != 200) {
+				if (r.statusCode != 200) {
 					return done(null);
-                }
-				var user = JSON.parse(body);
-				user.data.attributes.token = token;
+				}
+				let user = JSON.parse(body);
+				user.data.attributes.token = accessToken;
 				return done(null, user);
 			}
 		);
-
 	}
 ));
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
 	done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function (id, done) {
 	done(null, id);
 });
 
-app.get('/callback', passport.authenticate('faforever', { failureRedirect: '/login', failureFlash: true }), function (req, res, next) {
+app.get('/callback', passport.authenticate('faforever', {
+	failureRedirect: '/login',
+	failureFlash: true
+}), function (req, res, next) {
 	res.redirect(req.session.referral ? req.session.referral : '/');
 	req.session.referral = null;
 });
 
 //404 Error Handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 	res.status(404).render('errors/404');
 });
 
 //Display 500 Error Handler if in development mode.
-if (process.env.NODE_ENV == 'development') {
+if (process.env.NODE_ENV === 'development') {
 	app.enable('verbose errors');
-	
+
 	//500 Error Handler
 	app.use(function (err, req, res, next) {
 		res.status(500).render('errors/500', {error: err});
@@ -192,8 +197,7 @@ getLatestClientRelease.run();
 setTimeout(() => {
 	try {
 		extractor.run();
-	}
-	catch(e) {
+	} catch (e) {
 		console.error("Error while updating leaderboards!", e);
 	}
 }, 60 * 1000);
@@ -202,8 +206,7 @@ setTimeout(() => {
 setTimeout(() => {
 	try {
 		getLatestClientRelease.run();
-	}
-	catch(e) {
+	} catch (e) {
 		console.error("Error while fetching latest client release!", e);
 	}
 }, 15 * 60 * 1000);

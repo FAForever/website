@@ -1,23 +1,23 @@
 require('dotenv').load();
 
-var request = require('request');
-var fs = require('fs');
+let request = require('request');
+let fs = require('fs');
 
-var date = new Date();
+let date = new Date();
 
 module.exports.run = function run() {
-	request(process.env.API_URL + '/leaderboards/global?filter[is_active]=true', function (error, response, body) {
+	request(process.env.API_URL + '/leaderboards/global', function (error, response, body) {
 		if (! error) {
-			var users = JSON.parse(body);
+			let entries = JSON.parse(body);
 
-			var csvArray = [];
+			let csvArray = [];
 
-			for(var i = 0; i < users.data.length; i++) {
-				var user = users.data[i];
+			for(let i = 0; i < entries.data.length; i++) {
+				let entry = entries.data[i];
 
-				var data = {
-					label: user.attributes.login,
-					value: { id: user.id, page: Math.ceil((i+1) / 100) }
+				let data = {
+					label: entry.attributes.name,
+					value: {id: entry.id, page: Math.ceil((i + 1) / 100)}
 				};
 
 				csvArray.push(data);
@@ -34,43 +34,45 @@ module.exports.run = function run() {
 		}
 	});
 
-	request(process.env.API_URL + '/leaderboards/ladder1v1?filter[is_active]=true', function (error, response, body) {
-		if (!error) {
-			var users = JSON.parse(body);
-
-			var csvArray = [];
-
-			for (var i = 0; i < users.data.length; i++) {
-				var user = users.data[i];
-
-				var data = {
-					label: user.attributes.login,
-					value: {id: user.id, page: Math.ceil((i + 1) / 100)}
-				};
-
-				csvArray.push(data);
-			}
-
-			fs.writeFile("members/1v1.json", JSON.stringify(csvArray), function (error) {
-				if (error) {
-					console.log(error);
-				} else {
-					console.log(date + ' - User file created successfully for 1v1.');
-				}
-			});
-
-			processTopFivePlayers(users);
+	request(process.env.API_URL + '/leaderboards/ladder1v1', function (error, response, body) {
+		if (error) {
+			return;
 		}
+
+		let entries = JSON.parse(body);
+
+		let csvArray = [];
+
+		for (let i = 0; i < entries.data.length; i++) {
+			let entry = entries.data[i];
+
+			let data = {
+				label: entry.attributes.name,
+				value: {id: entry.id, page: Math.ceil((i + 1) / 100)}
+			};
+
+			csvArray.push(data);
+		}
+
+		fs.writeFile("members/1v1.json", JSON.stringify(csvArray), function (error) {
+			if (error) {
+				console.log(error);
+			} else {
+				console.log(date + ' - User file created successfully for 1v1.');
+			}
+		});
+
+		processTopFivePlayers(entries);
 	});
-}
+};
 
 function processTopFivePlayers(users) {
-	var topFive = [];
+	let topFive = [];
 
-	for(var i = 0; i < 5; i++) {
-		var user = users.data[i];
+	for(var i = 0; i < Math.min(users.length, 5); i++) {
+		let user = users.data[i];
 
-		var data = {
+		let data = {
 			name: user.attributes.name,
 			rank: user.attributes.mean
 		};

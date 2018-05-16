@@ -7,7 +7,8 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'competitive';
 	locals.cSection = '1v1';
-	locals.ratingType = '1v1';
+	locals.ratingTypeTitle = '1v1';
+	locals.ratingType = 'ladder1v1';
 	locals.apiURL = process.env.API_URL;
 
     fs.readFile('members/1v1.json', 'utf8', function (err, data) {

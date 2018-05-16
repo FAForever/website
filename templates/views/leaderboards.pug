@@ -13,7 +13,7 @@ block cContent
 
   br
   
-  h2.text-center #{ratingType} Leaderboards
+  h2.text-center #{ratingTypeTitle} Leaderboards
   
   br
   
@@ -47,7 +47,8 @@ block cContent
 block js
   script(type='text/javascript').
     var apiURL = !{JSON.stringify(apiURL)};
-    var ratingType = !{JSON.stringify(cSection)};
+    var ratingTypeTitle = !{JSON.stringify(ratingTypeTitle)};
+    var ratingType = !{JSON.stringify(ratingType)};
     var members = '!{JSON.stringify(members)}';
     var lastPage = !{JSON.stringify(lastPage)};
   script(src="/js/leaderboards.min.js")
