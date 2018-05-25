@@ -3,34 +3,34 @@ include ../../mixins/flash-messages
 include ../../mixins/form/account
 
 block content
-	.container.text-center
-		.row
-			.col-md-12
-				h1.account-title Register to Forged Alliance Forever
-				h4.account-subtitle.text-center Welcome to the Forged Alliance Forever registration page. To get started, please register with a unique username, email, and password.
-				p <strong>Important Account Rules:</strong>
-					ul.text-left
-						li <strong>You must link your account to Steam</strong> after registering or wait for 24 hours before you can play. This may be waived if a trusted member of the community can vouch for you.
-						li <strong>You may only register one account.</strong> Additional accounts will be banned. If you misbehave using multiple accounts, you may be banned completely.
-						li <strong>Your email address is the only way to regain access to your account.</strong> if you lose your password. If you lose both your password and your email, you will lose access to your account.
-						li <strong>Full FAF rules:</strong> <a href="https://forums.faforever.com/viewtopic.php?f=2&amp;t=581">FAF Lobby and Forum rules</a>
-				hr
+  .container.text-center
+    .row
+      .col-md-12
+        h1.account-title Register to Forged Alliance Forever
+        h4.account-subtitle.text-center Welcome to the Forged Alliance Forever registration page. To get started, please register with a unique username, email, and password.
+        p <strong>Important Account Rules:</strong>
+          ul.text-left
+            li <strong>You must link your account to Steam</strong> after registering or wait for 24 hours before you can play. This may be waived if a trusted member of the community can vouch for you.
+            li <strong>You may only register one account.</strong> Additional accounts will be banned. If you misbehave using multiple accounts, you may be banned completely.
+            li <strong>Your email address is the only way to regain access to your account.</strong> if you lose your password. If you lose both your password and your email, you will lose access to your account.
+            li <strong>Full FAF Social rules:</strong> <a href="https://forums.faforever.com/viewtopic.php?f=2&amp;t=581">FAF Lobby and Forum rules</a>
+        hr
 
-		.row
-			.col-md-offset-3.col-md-6
-				+flash-messages(flash)
-		.row
-			.col-md-offset-3.col-md-6
-				form(method='post',action="/account/register",data-toggle="validator")
-					+username
-					+email
-					+confirm-password
-					.form-group.has-feedback
-						label
-							.g-recaptcha(data-sitekey='6LctpD0UAAAAAAb4uwVXytn3faLRnUtEch8RimfC')
-					.form-actions
-						button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
+    .row
+      .col-md-offset-3.col-md-6
+        +flash-messages(flash)
+    .row
+      .col-md-offset-3.col-md-6
+        form(method='post',action="/account/register",data-toggle="validator")
+          +username
+          +email
+          +confirm-password
+          .form-group.has-feedback
+            label
+              .g-recaptcha(data-sitekey='6LctpD0UAAAAAAb4uwVXytn3faLRnUtEch8RimfC')
+          .form-actions
+            button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
 
 block js
-	script(src='/js/account.min.js')
-	script(src='//www.google.com/recaptcha/api.js')
+  script(src='/js/account.min.js')
+  script(src='//www.google.com/recaptcha/api.js')
