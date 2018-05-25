@@ -11,6 +11,9 @@ let bodyParser = require('body-parser');
 let passport = require('passport');
 let OAuth2Strategy = require('passport-oauth2');
 
+const showdown = require('showdown');
+const fs = require('fs');
+
 let app = express();
 
 //Define environment variables with default values
@@ -80,6 +83,16 @@ function loggedIn(req, res, next) {
 		res.redirect('/login');
 	}
 }
+
+// ToS and Privacy Statement
+function markdown(template) {
+  let html = new showdown.Converter().makeHtml(fs.readFileSync(template, 'utf-8'));
+  return (req, res) => {
+    res.render('markdown', {content: html});
+  }
+}
+app.get('/privacy', markdown("templates/views/privacy.md"))
+app.get('/tos', markdown("templates/views/tos.md"))
 
 //Account routes
 app.get('/account/register', require(routes + 'accounts/get/register'));
