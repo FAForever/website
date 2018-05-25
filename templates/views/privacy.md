@@ -28,7 +28,8 @@ When you create a new account, you agree to our collection of this User Personal
  - We will use your email address to communicate with you about important updates to our service.
  - We use your User Personal Information for internal purposes, such as moderation, maintaining logs for security purposes and for legal documentation.
  - If we need to use your User Personal Information for any reasons not listed here, we will ask for your permission before doing so.
- - Our legal basis for processing information
+
+## Our legal basis for processing information
 
 Under the GDPR, we’re required to notify you about the legal basis on which we process User Personal Information.
 
