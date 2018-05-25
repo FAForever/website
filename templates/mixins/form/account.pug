@@ -58,3 +58,15 @@ mixin currentPassword(labelPassword)
         label #{labelPassword} Password:
             .input-group
                 input(type='password', name='password', required='required', id='password').form-control
+
+mixin tosagree(checked)
+    - checked = checked || false
+    .form-group
+        label Agree to our Terms of Service:
+          .input-group
+            p I have read and agree with our <a href="https://faforever.com/tos" rel="_new">Terms of Service</a>
+            input(type='checkbox', name='tosagree', required='required')
+        label Agree to our Privacy Statement:
+          .input-group
+            p I have read and agree with our <a href="https://faforever.com/tos" rel="_new">Privacy Statement</a>
+            input(type='checkbox', name='privacyagree', required='required')
