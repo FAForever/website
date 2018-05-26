@@ -50,20 +50,6 @@ exports = module.exports = function (req, res) {
           return overallRes.render('account/resetPassword', {flash: flash});
         }
 
-        if (resp.response !== 'ok') {
-          // Failed resetting password
-          for (let i = 0; i < resp.errors.length; i++) {
-            let error = resp.errors[i];
-            errorMessages.push({msg: error.detail});
-          }
-
-          flash.class = 'alert-danger';
-          flash.messages = errorMessages;
-          flash.type = 'Error!';
-
-          return overallRes.render('account/resetPassword', {flash: flash});
-        }
-
         // Successfully reset password
         flash.class = 'alert-success';
         flash.messages = [{msg: 'Your password is in the process of being reset, please reset your password by clicking on the link provided in an email.'}];
