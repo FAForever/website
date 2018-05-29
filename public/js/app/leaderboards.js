@@ -133,7 +133,7 @@ $(document).on('click', '.player', (function(){
   var name = $(this).data('name');
   var pastYear = moment().subtract(1, 'years').unix();
 
-  let featuredMod = ratingType === '1v1' ? 'ladder1v1' : 'faf';
+  let featuredMod = ratingType === 'ladder1v1' ? 'ladder1v1' : 'faf';
   $.ajax({
 		url: apiURL + '/data/gamePlayerStats?filter=player.id==' + id + ';game.featuredMod.technicalName=' + featuredMod + '&fields[gamePlayerStats]=afterMean,afterDeviation,scoreTime',
     success: function(result) {
