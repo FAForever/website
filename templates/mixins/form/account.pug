@@ -8,6 +8,36 @@ mixin email
                     | Do not use a throwaway / temporary / anonymous email address or your signup may be rejected, or you may be banned later.
                 .help-block.with-errors
 
+mixin survey
+    .form-group.has-feedback
+        label Voluntary Survey
+            | This data is voluntary. You don't have to tell us if you don't want to
+            | We only use this data to inform internal development decisions
+            | This data will never be shared or distributed
+            | This data will not be attached to your account. It is completely anonymous.
+            .form-group.radio-inline
+                label What age are you?
+                    input(type='radio', name='survey_age', value='Under 13', checked='')#choice1
+                    input(type='radio', name='survey_age', value='13 - 17', checked='')#choice2
+                    input(type='radio', name='survey_age', value='18 - 25', checked='')#choice3
+                    input(type='radio', name='survey_age', value='25+', checked='')#choice4
+                    label(for='choice1') Under 13
+                    label(for='choice2') 13 - 17
+                    label(for='choice3') 18 - 25
+                    label(for='choice4') 25+
+            .form-group.radio-inline
+                label Where did you purchase Forged Alliance?
+                    input(type='radio', name='survey_source', value='Steam', checked='')#choice1
+                    input(type='radio', name='survey_source', value='GoodOldGames', checked='')#choice2
+                    input(type='radio', name='survey_source', value='HumbleBundle', checked='')#choice3
+                    input(type='radio', name='survey_source', value='Retail', checked='')#choice4
+                    input(type='radio', name='survey_source', value='Other', checked='')#choice5
+                    label(for='choice1') Steam
+                    label(for='choice2') GoodOldGames
+                    label(for='choice3') HumbleBundle
+                    label(for='choice4') Retail
+                    label(for='choice5') Other
+
 mixin username
     .form-group.has-feedback
         label Username:
