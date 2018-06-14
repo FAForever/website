@@ -47,7 +47,7 @@ This site may contain certain historical information. Historical information, ne
 
 Prices for our products are subject to change without notice.
 
-We reserve the right at any time to modify or discontinue the Service (or any part or content thereof) without notice at any time.
+We reserve the right at any time to modify or discontinue the Service (or any part or content thereof).
 
 We shall not be liable to you or to any third-party for any modification, price change, suspension or discontinuance of the Service.
 
