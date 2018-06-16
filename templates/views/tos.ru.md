@@ -1,4 +1,3 @@
-//DELETE THIS. CURRENTLY SPENT TIME - 240
 # Forged Alliance Forever: Условия предоставления услуг
 
 Дата вступления в силу: _25 Мая 2018 года_
