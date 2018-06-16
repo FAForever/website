@@ -46,5 +46,5 @@ block cContent
                         each tournament, i in data.upcomingTournaments
                             tr
                                 td= tournament.name
-                                td= (tournament.start_at == 'Thu, 01 Jan 1970 00:00:00 GMT' ? 'Undetermined' : tournament.start_at)
+                                td= (tournament.start_at == 'Thu, 01 Jan 1970 00:00:00 UTC' ? 'Undetermined' : tournament.start_at)
                                 td: a(href=tournament.full_challonge_url target="_blank")= tournament.full_challonge_url

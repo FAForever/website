@@ -21,7 +21,7 @@ exports = module.exports = function(req, res) {
 			for (tournament of tournaments) {
 				if (tournament.tournament.state === 'pending') {
 					var startDate = new Date(tournament.tournament.start_at);
-					tournament.tournament.start_at = startDate.toUTCString();
+					tournament.tournament.start_at = startDate.toUTCString().replace("GMT", "UTC");
 					locals.data.upcomingTournaments.push(tournament.tournament);
 				} else if (tournament.tournament.state === 'underway' || tournament.tournament.state === 'in_progress') {
 					locals.data.runningTournaments.push(tournament.tournament);
