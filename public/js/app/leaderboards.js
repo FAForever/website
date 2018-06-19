@@ -135,7 +135,7 @@ $(document).on('click', '.player', (function(){
 
   let featuredMod = ratingType === '1v1' ? 'ladder1v1' : 'faf';
   $.ajax({
-		url: apiURL + '/data/gamePlayerStats?filter=player.id==' + id + ';game.featuredMod.technicalName=' + featuredMod + '&fields[gamePlayerStats]=afterMean,afterDeviation,scoreTime',
+		url: apiURL + '/data/gamePlayerStats?filter=player.id==' + id + ';game.featuredMod.technicalName==' + featuredMod + '&fields[gamePlayerStats]=afterMean,afterDeviation,scoreTime',
     success: function(result) {
       $.each(result.data, function(stats){
         // Only get information for past year for chart...
