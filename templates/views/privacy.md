@@ -1,62 +1,75 @@
-# Forged Alliance Forever Privacy Statement
+# Déclaration de confidentialité de Forged Alliance Forever
+Date d'application : _25 Mai 2018_
 
-Effective date: _May 25, 2018_
+Merci d'avoir joué à Supreme Commander : Forged Alliance dans notre communauté. Nous voulons faire en sorte qu'il soit facile pour vous de conserver vos informations personnelles et contrôler votre identité virtuelle, et dans ce but, ce document présente dans quelle mesure nous collectons ces données et de quelle façon nous les traitons
 
-Thanks for playing Supreme Commander: Forged Alliance in our community. We want to make it easy for you to hold on to your private information and control your online identity, as such, this document outlines what private data we collect and how we process it.
+## Résumé
 
-## The short version
+Nous collectons les informations que vous choisissez de nous donner, en plus des autres informations techniques basiques concernant votre système. Nous traitons cette information avec votre accord lorsque vous créez un compte, ou sur une base légale lorsque ce n'est pas le cas. Nous ne demandons que le minimum de vos données personnelles qui nous est nécessaire pour vous identifier dans le cadre de l'interaction avec Nous, et nous ne vendons pas cette information à des tiers. Notre utilisation exacte de vos données personnelles est détaillée ci-dessous.
 
-We collect information that you choose to give us, along with other basic technical information about your system. We process this information with your consent when you create an account, or on another legal basis if you do not. We only require the minimum amount of personal information that is necessary to identify you for the purpose of your interaction with us, and we don’t sell it to third parties. Our exact use of your personal information is described in detail below.
+Nous traitons tous nos utilisateurs de la même manière, et chacun et concerné par la même politique de confidentialité quelque soit sa localisation.
 
-We treat all our users the same, and everyone is processed by the same privacy policy regardless of their geographical location.
+## Les informations que nous collectons et pourquoi
 
-## The information we collect and why
+Si vous ne faites que naviguer sur notre site (faforever.com, wiki.faforever.com, forums.faforever.com, ou tout site internet hébergé sur le domaine faforever.com), nous collectons la même quantité d'information basique que n'importe quel autre site internet. Cette information inclut le type de navigateur, les préférences linguistiques, le site qui vous y a amené et la date et l'heure de la requête internet. En plus de cela, nous collectons des informations possiblement personnellement-uniques comme les adresses IP. 
 
-If you’re just browsing our website (faforever.com, wiki.faforever.com, forums.faforever.com or any website hosted on the faforever.com domain), we collect the same basic information that most websites collect. This information includes browser type, language preference, referring website and the date and time of each web request. In addition, we collect potentially personally-identifying information like IP-addresses.
+Cette information est collectée dans le cadre d'analyses, à fin de mieux comprendre qui visite nos sites.
 
-This information is collected for the purpose of analytics, to better understand who visits our websites.
+## Si vous avez créé un compte et joué au jeu sur nos serveurs
 
-## If you’ve made an account and play the game on our servers
+Pour créer un compte sur Forged Alliance Forever, nous requerrons quelques informations basiques pour vous identifier. Nous demandons une adresse courriel unique, un pseudonyme et pour vérifier la propriété du compte, nous demandons également un mot de passe. Ces informations seront à présent nommées "Informations utilisateur personnelles".
 
-To create an account on Forged Alliance Forever, we require some basic information to identify you. We require a valid email address, a nickname and to verify ownership of the account, we also require a password. This information will be referred to below as “User Personal Information”.
+Lorsque vous créez un nouveau compte, vous donnez votre accord pour la collection de ces Informations utilisateur personnelles et leur traitement comme détaillé ici :
 
-When you create a new account, you agree to our collection of this User Personal Information and processing of it as detailed here:
+- Nous avons besoin de vos Informations utilisateur personnelles pour créer un compte et fournir le service d'hébergement et de connexion aux parties en ligne.
 
- - We need your User Personal Information to create your account and provide the service of hosting and joining online games.
- - We use your User Personal Information to identify you when you interact with us.
- - We will use your email address to communicate with you for the purposes of marketing, if you’ve said that’s okay.
- - We will use your email address to communicate with you about important updates to our service.
- - We use your User Personal Information for internal purposes, such as moderation, maintaining logs for security purposes and for legal documentation.
- - If we need to use your User Personal Information for any reasons not listed here, we will ask for your permission before doing so.
+- Nous utilisons votre Informations utilisateur personnelles pour vous identifier lorsque vous interagissez avec nous.
 
-## Our legal basis for processing information
+- Nous utiliserons votre adresse courriel pour communiquer avec vous à des fins commerciales, si vous avez donné votre accord pour cela.
 
-Under the GDPR, we’re required to notify you about the legal basis on which we process User Personal Information.
+- Nous utiliserons votre adresse email pour communiquer avec vous à propos d'importantes mises à jour du service.
 
-When you create an account, we require your user name and email address to enter into the [Terms of Service](https://www.faforever.com/tos) agreement with us, and we use this data as the basis of that contract. We also process your email address and user name on other legal bases.
-The remainder of information processing we do is necessary for the purposes of our legitimate interests. For example, for security purposes, we keep logs of hardware information unique to your machine, in order to identify malicious users trying to spoof their identify.
-If you would like to request erasure of your data, please email us at [admin@faforever.com](mailto:admin@faforever.com).
+- Nous utiliserons vos Informations utilisateur personnelles pour des raisons internes, comme la modération, la récupération de logs à des fins de sécurité et pour la documentation légale.
 
-## Sharing of information
-We do not share your private information with any third parties for any reason, however your nickname as provided during account creation and changeable on the website is considered public, and is thus shared with other users in several instances during your use of our service.
+- Si nous avons besoin d'utiliser vos Informations utilisateur personnelles pour toute raison non listée ici, nous vous demanderons votre permission avant tout.
 
-We do not disclose any private information unless legally compelled to do so.
+## Notre base légale pour le traitement de l'information
 
-We do not host advertising on FAForever.com, but we may occasionally embed content from third-party sites, which may contain ads. Any ads that appear on FAForever.com are not sponsored, tracked or authored by FAForever.
+Sous la RGPD, nous sommes obligés de vous informer à propos des implications légales de notre traitement de vos Informations utilisateur personnelles
 
-We may share User Personal information if we are involved in a merger, sale or acquisition. If such change of ownership happens, it will be under the terms of use described in this document.
+Lorsque vous créez un compte, nous requerrons votre nom d'utilisateur et adresse courriel afin d'accepter les [Conditions d'Utilisation] (https://www.faforever.com/tos), et nous utilisons ces données comme base de ce contrat. Nous traitons également avec votre adresse courriel et non d'utilisateur pour d'autres implications légales.
 
-## Security
-We take all reasonable measures to protect your User Personal Information, by using industry standard security technologies. In the event of a data breach, we will notify you promptly.
+Le reste du traitement des informations que nous effectuons est nécessaire dans le cadre de nos intérêts légitimes. Par exemple, pour des raisons de sécurité, nous devons conserver des traces des informations matérielles uniques de votre machine afin d'identifier des utilisateurs frauduleux tentant de masquer leur identité.
 
-## Resolving complaints
+Si vous voulez demander la destruction de vos données, veuillez nous envoyer un courriel à admin@faforever.com
 
-If you have any concerns about how FAForever is handling your User Personal Information, please let us know immediately at [admin@faforever.com](mailto:admin@faforever.com).
+## Partage d'information
 
-## Changes to our Privacy Statement
+Nous ne partageons pas votre information avec aucun tiers pour aucune raison, cependant votre pseudonyme tel que fourni lors de la création de compte et modifiable sur le site internet est à considérer comme public, et est donc partagé avec d'autres utilisateurs de plusieurs manières lors de votre utilisation du service.
 
-Most changes to this document are likely to be minor, but should they occur, we will notify you and provide at least 30 days of time prior to the changes taking effect.
+Nous ne divulguons aucune information personnelle à moins d'y être légalement forcés.
+
+Nous n’hébergeons pas de contenu publicitaire sur FAForever.com, mais nous pourrions éventuellement intégrer du contenu de sites tiers, qui pourraient contenir des publicités. Aucune publicité apparaissant sur FAForever.com n'est sponsorisée, gérée ou créée par FAForever.
+
+Nous pourrions partager vos Informations utilisateur personnelles si nous sommes impliqués dans une fusion, vente ou acquisition. Si un tel changement de propriété arrivait, il se produirait selon les conditions décrites dans ce document.
+
+## Sécurité
+
+Nous prenons toutes les mesures nécéssaires pour protéger vos Informations Utilisateur Personnelles, par l'utilisation des standards industriels pour la sécurité des technologies. En cas de brèche de données, nous vous en informerons rapidement.
+
+## Gestion des plaintes
+
+Si vous avez des plaintes concernant la façon dont FAForever gère vos Informations Utilisateur Personnelles, veuillez nous le faire savoir immédiatement à admin@faforever.com
+
+## Modifications de notre déclaration de confidentialité
+
+La plupart des changements de ce document ont de bonnes chances d'être très mineurs, mais s'il devaient se produire, vous en serez informés et disposerez d'au moins 30 jours de délai avant l'application desdits changements.
 
 ## License
 
-This Privacy Statement is licensed under the [Creative Commons Zero license](https://creativecommons.org/publicdomain/zero/1.0/).
+Cette déclaration de confidentialité est sous la license [Creative Commons Zero license](https://creativecommons.org/publicdomain/zero/1.0/).
+
+## Note
+
+Ce document a été traduit de l'anglais. En cas de litige, seul le document original [Anglais] fait foi. 
+Vous pouvez trouver le document dans sa version originale à l'adresse suivante : (https://faforever.com/privacy) 

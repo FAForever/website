@@ -1,179 +1,161 @@
-# Forged Alliance Forever Terms of Service
+# Conditions d'utilisations de Forged Alliance Forever
 
-Effective date: _May 25, 2018_
+Date d'application: _25 Mai 2018_
 
-## Short Version
+## Version courte
 
-Thanks for creating an account with Forged Alliance Forever. This document outlines our Terms of Service. In short:
+Ces conditions d'utilisations ont été traduites de l'anglais pour votre confort uniquement. En cas de litige, seul le document original (en anglais) fait foi. Vous pouvez trouver ce document ici : https://faforever.com/tos
 
- - We are a free service
- - We may terminate the service at any time for any reason
- - We may not always remain free
- - We are not liable for anything arising from your use of this service
+Merci d'avoir créé un compte sur Forged Alliance Forever. Ce document présente nos conditions d'utilisations. Pour résumer :
 
+- Ce service est gratuit
 
-## OVERVIEW
+- Ce service peut être amené à s'arrêter à tout moment, pour n'importe quelle raison
 
-This website is operated by Forged Alliance Forever LLC. Throughout the site, the terms “we”, “us” and “our” refer to Forged Alliance Forever LLC. Forged Alliance Forever LLC offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
+- Ce service pourrait ne pas rester gratuit
 
-By visiting our site and/ or purchasing something from us, you engage in our “Service” and agree to be bound by the following terms and conditions (“Terms of Service”, “Terms”), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply  to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/ or contributors of content.
+- Vous êtes responsable des conséquences de votre utilisation de ce service
 
-Please read these Terms of Service carefully before accessing or using our website. By accessing or using any part of the site, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any services. If these Terms of Service are considered an offer, acceptance is expressly limited to these Terms of Service.
+## RESUME
 
-Any new features or tools which are added to the current store shall also be subject to the Terms of Service. You can review the most current version of the Terms of Service at any time on this page. We reserve the right to update, change or replace any part of these Terms of Service by posting updates and/or changes to our website. It is your responsibility to check this page periodically for changes. Your continued use of or access to the website following the posting of any changes constitutes acceptance of those changes.
+Ce site internet est géré par Forged Alliance Forever LLC. A travers ce site, les termes "nous", "nôtre" se réfèrent à  Forged Alliance Forever LLC. Forged Alliance Forever LLC met ce site, ses informations, outils et services à la disposition de *vous*, l'utilisateur, sous réserve de votre acceptation de toutes les conditions et règles présentées ici.
 
-FAForever is physically hosted at hetzner.de.
+En visitant notre site et/ou en nous achetant un produit, vous utilisez notre "Service" et acceptez d'être lié par les termes et conditions suivantes ("Conditions d'utilisation"), ce qui inclut également toute condition ou terme référencés ici et/ou disponible par hyperlien. Ces conditions d'utilisation s'appliquent à tous les utilisateurs du site, y compris les utilisateurs représentant des usagers, vendeurs, clients, marchands et/ou contributeurs.
 
+Veuillez lire ces Conditions d'utilisation avec attention avant d'accéder à ou d'utiliser notre site internet. En accédant à ou utilisant une partie du site, vous acceptez d'être lié à ces conditions d'utilisation. Si vous vous refusez à accepter une ou plusieurs des conditions de cet accord, vous ne devez accéder ni le site ni aucun des services. Si ces conditions d'utilisations sont à considérer comme une offre, l'acceptation de cette offre se limite à ces conditions.
 
-## GENERAL CONDITIONS
+Toute nouvelle fonctionnalité ou outils ajouté au catalogue actuel est également sujet aux conditions d'utilisation. Vous pouvez consulter la version la plus à jour des conditions d'utilisation à tout moment sur cette page. Nous nous réservons le droit de mettre à jour, modifier ou remplacer n'importe quelle partie de ces Conditions d'utilisation par une modification du site lui-même. Il est de votre ressors de vérifier périodiquement cette page en quête de changements. Toute utilisation du site après modification de ces conditions d'utilisation constitue une acceptation de ces changements.
 
-We reserve the right to refuse service to anyone for any reason at any time.
+Forged Alliance Forever est physiquement hébergé à getzner.de
 
-You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.
+## CONDITIONS GENERALES
 
-You agree not to reproduce, duplicate, copy, sell, resell or exploit any portion of the Service, use of the Service, or access to the Service or any contact on the website through which the service is provided, without express written permission by us.
+Nous nous réservons le droit de clore le service à quiconque, à tout moment et pour n'importe quelle raison.
 
-The headings used in this agreement are included for convenience only and will not limit or otherwise affect these Terms.
+Vous considérez que vos informations (excepté informations bancaires) peuvent être transférées en clair et soient sujettes à (a) une transmission entre divers réseaux et (b) des changements visant à se conformer et s'adapter aux prérequis techniques nécessaires à la connexion à certains réseaux ou services. Les informations bancaires sont toujours chiffrées durant tout transfert sur le réseau.
 
+Vous acceptez de ne reproduire, dupliquer, copier, vendre, revendre ou exploiter aucune partie de ce Service, utilisation de ce Service, ni accès au Service ou moyen de contact du site à travers lequel le service est proposé, sans notre accord.
 
-## ACCURACY, COMPLETENESS AND TIMELINESS OF INFORMATION
+Les rubriques de cette section y sont inclues pour votre convenance uniquement et ne limitent ni n'affecte aucunement ces Conditions d'utilisation.
 
-We are not responsible if information made available on this site is not accurate, complete or current. The material on this site is provided for general information only and should not be relied upon or used as the sole basis for making decisions without consulting primary, more accurate, more complete or more timely sources of information. Any reliance on the material on this site is at your own risk.
+## PRECISION, EXHAUSTIVITE ET CONSERVATION DE L'INFORMATION
 
-This site may contain certain historical information. Historical information, necessarily, is not current and is provided for your reference only. We reserve the right to modify the contents of this site at any time, but we have no obligation to update any information on our site. You agree that it is your responsibility to monitor changes to our site.
+Nous ne sommes pas responsables de l’imprécision, de la non-exhaustivité ou de l'obsolescence du contenu du site. Le contenu que ce site fournit comprend des informations générales qui ne peuvent pas servir comme base unique d'une décision sans consultation d'une autre source primaire, plus précise, plus complète ou récente d'information. Tout repos sur les informations présentées sur ce site est à vos propres risques.
 
+Ce site peut contenir des informations datées. Ces informations datées ne sont, évidemment, pas à jour et sont fournies pour référenciation uniquement. Nous nous réservons le droit de modifier le contenu de ce site à tout moment, mais ne considérons aucune obligation de mettre à jour toute information de notre site. Vous acceptez qu'il est de votre responsabilité de vous tenir au courant des derniers changements du site.
 
-## MODIFICATIONS TO THE SERVICE AND PRICES
+## MODIFICATIONS DE SERVICE ET PRIX
 
-Prices for our products are subject to change without notice.
+Les prix de nos produits peuvent changer sans avertissement.
 
-We reserve the right at any time to modify or discontinue the Service (or any part or content thereof).
+Nous nous réservons le droit de modifier ou discontinuer le service (ou toute partie de celui-ci) sans avertissement et à tout moment.
 
-We shall not be liable to you or to any third-party for any modification, price change, suspension or discontinuance of the Service.
+Nous ne pourrions être tenus responsables par vous ou par un tiers quelconque d'une modification, d'un changement de prix, d'un arrêt temporaire ou définitif du service.
 
+## PRODUITS ET SERVICES (si appliquable)
 
-## PRODUCTS OR SERVICES (if applicable)
+Certains produits ou services ne peuvent être disponibles qu'en ligne à travers le site. Ces produits ou services peuvent être disponibles en quantité limité et sujets aux retours ou échanges selon notre Politique de retours.
 
-Certain products or services may be available exclusively online through the website. These products or services may have limited quantities and are subject to return or exchange only according to our Return Policy.
+Nous fournissons l'effort d'afficher aussi précisément que possible les couleurs et les images des produits apparaissant dans notre catalogue. Nous ne pouvons garantir que le dispositif d'affichage de votre ordinateur retranscrive les couleurs avec précision.
 
-We have made every effort to display as accurately as possible the colors and images of our products that appear at the store. We cannot guarantee that your computer monitor's display of any color will be accurate.
+Nous nous réservons le droit, sans s'y obliger pour autant, de limiter les ventes de nos produits ou services à toute personne, région géographique ou juridiction. Nous pouvons exercer ce droit au cas par cas. Nous nous réservons le droit de limiter les quantités des produits ou services que nous proposons. Toutes descriptions de produits ou prix de produits sont susceptibles de changer sans avertissement, à tout moment, à notre seule discrétion. Nous nous réservons le droit de discontinuer n'importe quel produit à tout moment. Toute offre pour un produit ou un service faite sur ce site est nulle si interdite dans le lieu concerné.
 
-We reserve the right, but are not obligated, to limit the sales of our products or Services to any person, geographic region or jurisdiction. We may exercise this right on a case-by-case basis. We reserve the right to limit the quantities of any products or services that we offer. All descriptions of products or product pricing are subject to change at anytime without notice, at the sole discretion of us. We reserve the right to discontinue any product at any time. Any offer for any product or service made on this site is void where prohibited.
+Nous ne garantissons pas que la qualité de nos produits, services, informations, ou autre produit acheté ou obtenu par nous ne remplira vos attentes, ou qu'aucune erreur dans le Service ne sera corrigée.
 
-We do not warrant that the quality of any products, services, information, or other material purchased or obtained by you will meet your expectations, or that any errors in the Service will be corrected.
+## PRÉCISION DE PAIEMENTS ET INFORMATIONS BANCAIRES
 
+Nous nous réservons le droit de refuser toute commande. Nous pourrions, à notre seule discrétion, limiter ou annuler des quantités achetées par personne, par foyer ou par commande. Ces restrictions peuvent inclure des commandes effectuées par la même carte de crédit et/ou les commandes utilisant la même adresse de livraison ou de paiement. S'il arrive que nous annulions ou modifions une commande, nous pourrions tenter de vous contacter par courriel et/ou adresse de facturation ou numéro de téléphone fourni lors de la commande. Nous nous réservons le droit de limiter ou interdire les commandes qui, selon nous, semblent avoir été effectuées par des revendeurs ou des distributeurs.
 
-## ACCURACY OF BILLING AND ACCOUNT INFORMATION
+Vous acceptez de fournir des informations complètes, récentes, et précises pour tout achat effectué dans notre boutique. Vous acceptez de rapidement mettre à jour votre compte et ces informations, y compris votre adresse de courriel et vos informations bancaires afin que nous puissions compléter vos commandes et vous contacter si nécessaire.
 
-We reserve the right to refuse any order you place with us. We may, in our sole discretion, limit or cancel quantities purchased per person, per household or per order. These restrictions may include orders placed by or under the same customer account, the same credit card, and/or orders that use the same billing and/or shipping address. In the event that we make a change to or cancel an order, we may attempt to notify you by contacting the e-mail and/or billing address/phone number provided at the time the order was made. We reserve the right to limit or prohibit orders that, in our sole judgment, appear to be placed by dealers, resellers or distributors.
+Pour plus de détails, veuillez voir notre Politique de retours.
 
-You agree to provide current, complete and accurate purchase and account information for all purchases made at our store. You agree to promptly update your account and other information, including your email address and credit card numbers and expiration dates, so that we can complete your transactions and contact you as needed.
+## OUTILS OPTIONNELS
 
-For more detail, please review our Returns Policy.
+Nous pourrions vous donner accès à des outils optionnels sur lesquels nous n'avons ni regard, ni contrôle, ni capacité d'action.
 
+Vous acceptez et confirmez que l'accès fourni à ces outils "tels quels" et "tels que disponibles" l'est sans garanties, conditions d'aucune sorte ni approbation de notre part. Nous ne saurions être tenus responsables des conséquences de votre utilisation de ces outils tiers.
 
-## OPTIONAL TOOLS
+Toute utilisation de votre part de ces outils optionnels proposés à travers le site est à vos propres risques et à votre discrétion, et vous devriez vous assurez de bien connaître et approuver les conditions d'utilisation selon lesquelles ces outils vous sont proposés par des fournisseurs tiers.
 
-We may provide you with access to third-party tools over which we neither monitor nor have any control nor input.
+Nous pourrions également, à l'avenir, offrir de nouveaux services et/ou fonctionnalités à travers le site (ce qui inclut la création de nouveaux outils et ressources). Ces nouvelles fonctionnalités seraient alors également sujettes aux présentes Conditions d'utilisations.
 
-You acknowledge and agree that we provide access to such tools ”as is” and “as available” without any warranties, representations or conditions of any kind and without any endorsement. We shall have no liability whatsoever arising from or relating to your use of optional third-party tools.
+## LIENS TIERS
 
-Any use by you of optional tools offered through the site is entirely at your own risk and discretion and you should ensure that you are familiar with and approve of the terms on which tools are provided by the relevant third-party provider(s).
+Certains contenus, produits et services disponibles via notre Service peuvent inclure des produits tiers.
 
-We may also, in the future, offer new services and/or features through the website (including, the release of new tools and resources). Such new features and/or services shall also be subject to these Terms of Service.
+Les liens tiers disponibles sur ce site peuvent vous rediriger vers des sites tiers qui ne nous sont pas apparentées. Nous ne sommes pas responsables de l'évaluation ou de l'examen de leur contenu ou de leur précision et ne garantissons aucun engagement quand à ces produits, sites, ou services tiers.
 
+Nous ne pouvons être tenus responsables de dommages causés par l'achat ou l'utilisation de biens, services, produits, contenus ou toute autre transaction faite en relation avec ces sites tiers. Veuillez examiner attentivement les conditions d'utilisations et les pratiques de ces services tiers, et soyez sûr de les comprendre avant d'initier une transaction. Les plaintes, réclamations, ou questions concernant les produits tiers doivent être adressées au tiers.
 
-## THIRD-PARTY LINKS
+## COMMENTAIRES UTILISATEURS, RETOURS ET AUTRES PROPOSITIONS
 
-Certain content, products and services available via our Service may include materials from third-parties.
+Si, à notre demande, vous effectuez certaines propositions spécifiques (par exemple, dans le cadre d'un concours) ou sans demande de notre part vous nous envoyez des idées, suggestions, propositions, plans ou autres produits, quce soit en ligne, par courriel, par courrier, ou autre (désignés sous le nom de "commentaires"), vous acceptez que nous pourrions, à tout moment, sans restriction, modifier, copier, publier, distribuer, traduire sinon utiliser dans tout medium tout commentaire que vous nous faites parvenir. Nous ne sommes et ne serions aucunement obligés de (1) maintenir n'importe lequel de ces commentaires dans le secret (2) offrir une compensation pour aucun de ces commentaires; ou (3) de répondre à aucun de ces commentaires.
 
-Third-party links on this site may direct you to third-party websites that are not affiliated with us. We are not responsible for examining or evaluating the content or accuracy and we do not warrant and will not have any liability or responsibility for any third-party materials or websites, or for any other materials, products, or services of third-parties.
+Nous pourrions, sans toutefois s'y obliger, surveiller, modifier ou retirer tout contenu que nous jugeons à notre seule discrétion illégal, offensant, menaçant, diffamatoire, pornographique, obscène ou autrement discutable ou enfreignant une propriété intellectuelle ou ces Conditions d'utilisation.
 
-We are not liable for any harm or damages related to the purchase or use of goods, services, resources, content, or any other transactions made in connection with any third-party websites. Please review carefully the third-party's policies and practices and make sure you understand them before you engage in any transaction. Complaints, claims, concerns, or questions regarding third-party products should be directed to the third-party.
+Vous acceptez que vos commentaires ne contreviendront à aucun droit d'aucun tiers, y compris les copyright, marques déposées, confidentialité, ou autres droits personnels ou de propriété. Vous acceptez également que vos commentaires ne contiennent pas de contenu illégal, abusif ou obscène, ou aucune sorte de virus informatique ou autre logiciel malveillant qui pourrait affecter le Service ou tout autre site affilié. Vous n'utiliserez pas d'adresse courriel erronée, ni ne prétendrez d'être quelqu'un d'autre que vous-même, ou d'aucune façon ne nous induirez-vous volontairement en erreur quant à l'origine de vos commentaires. Vous êtes le seul responsables de tout commentaire que vous faites et de sa précision. Nous ne sommes ni responsables ni garant des commentaires que vous ou qu'un tiers publie.
 
+## INFORMATIONS PERSONNELLES 
 
-## USER COMMENTS, FEEDBACK AND OTHER SUBMISSIONS
+Toute soumission d'information personnelle à travers la boutique est règlementée par notre Politique de Confidentialité. Vous pouvez accéder à cette Politique de confidentialité sur https://www.faforever.com/privacy .
 
-If, at our request, you send certain specific submissions (for example contest entries) or without a request from us you send creative ideas, suggestions, proposals, plans, or other materials, whether online, by email, by postal mail, or otherwise (collectively, 'comments'), you agree that we may, at any time, without restriction, edit, copy, publish, distribute, translate and otherwise use in any medium any comments that you forward to us. We are and shall be under no obligation (1) to maintain any comments in confidence; (2) to pay compensation for any comments; or (3) to respond to any comments.
+## ERREURS, IMPRÉCISIONS ET OMISSIONS
 
-We may, but have no obligation to, monitor, edit or remove content that we determine in our sole discretion are unlawful, offensive, threatening, libelous, defamatory, pornographic, obscene or otherwise objectionable or violates any party’s intellectual property or these Terms of Service.
+Occasionnellement, certaines informations sur notre site ou dans notre Service pourraient contenir des erreurs typographiques, imprécisions ou omissions dans le cadre de descriptions de produits, prix, promotions, offres, prix d'envoi, temps de transfert et disponibilité. Nous nous réservons le droit de corriger toute erreur, imprécision ou omission, et de modifier ou mettre à jour toute information ou d'annuler toute commande si une information dans notre Service ou dans tout autre site affilié se révèle être imprécise, à tout moment et sans avertissement préalable (y compris une fois la commande transmise)
 
-You agree that your comments will not violate any right of any third-party, including copyright, trademark, privacy, personality or other personal or proprietary right. You further agree that your comments will not contain libelous or otherwise unlawful, abusive or obscene material, or contain any computer virus or other malware that could in any way affect the operation of the Service or any related website. You may not use a false e-mail address, pretend to be someone other than yourself, or otherwise mislead us or third-parties as to the origin of any comments. You are solely responsible for any comments you make and their accuracy. We take no responsibility and assume no liability for any comments posted by you or any third-party.
+Nous ne sommes en aucun cas tenus de mettre à jour, de corriger ou de clarifier les informations venant du Service ou d'aucun site affilié, ce qui inclut mais pas seulement les prix, sauf ceux requis par la loi. Aucune mise à jour ou date de mise à jour appliquée au Service ou à aucun site affilié ne peut être prise pour preuve que les informations du Service ou d'aucun site affilié a été mise modifiée ou mise à jour.
 
+## USAGES PROHIBES
 
-## PERSONAL INFORMATION
+En addition à toute autre interdiction définie précédemment dans les Conditions d'utilisation, il vous est prohibé d'utiliser ce site ou son contenu : (a) à des fins illégales; (b) pour pousser d'autres à commettre ou à participer à des actions illégales; (c) afin d'enfreindre aucune loi internationale, fédérale, provinciale et/ou régulation, règle, loi ou ordonnance d'état ou locale; (d) afin d'enfreindre la propriété intellectuelle ou le droit à la propriété intellectuelle d'autres; (e) afin d'harceler, blesser, insulter, humilier, intimider, désavantager, calomnier ou discriminer en se basant sur le genre, l'orientation sexuelle, la religion, l’ethnie, la race, l'âge, l'origine ou le handicap; (f) pour soumettre des informations fausses ou erronées; (g) afin de téléverser ou transmettre des virus ou tout autre type de code malveillant qui pourrait être utilisé d'une quelconque manière pour affecter la fonctionnalité ou l'opération du Service, d'un site affilié, d'autres sites ou d'Internet; (h) afin de collecter ou poursuivre l'informations des autres; (i) afin de spammer, hameçonner, arnaquer, tromper, prétendre, renifler ou récupérer de grandes quantités de données personnelles ; ou (k) afin d'interférer avec ou de contourner les mesures de sécurité du Service ou d'un site affilié, d'autres sites,ou d'Internet. Nous nous réservons le droit de mettre fin à votre utilisation du Service ou d'un site affilié pour toute violation d'une ou plusieurs de ces conditions.
 
-Your submission of personal information through the store is governed by our Privacy Policy. To view our Privacy Policy visit https://www.faforever.com/privacy.
+## AVERTISSEMENT QUANT AUX GARANTIES; LIMITATIONS DE GARANTIE
 
+Nous ne pouvons pas garantir que votre utilisation du service se fera sans interruption, à tout moment, de façon sécurisée ou sans erreurs.
 
-## ERRORS, INACCURACIES AND OMISSIONS
+Nous ne pouvons pas garantir que les résultats obtenus par votre utilisation du service soit précis ou fidèles à vos attentes.
 
-Occasionally there may be information on our site or in the Service that contains typographical errors, inaccuracies or omissions that may relate to product descriptions, pricing, promotions, offers, product shipping charges, transit times and availability. We reserve the right to correct any errors, inaccuracies or omissions, and to change or update information or cancel orders if any information in the Service or on any related website is inaccurate at any time without prior notice (including after you have submitted your order).
+Vous acceptez qu'à tout moment nous puissions retirer le Service pour une durée indéterminée ou l'annuler complètement, sans vous prévenir. 
 
-We undertake no obligation to update, amend or clarify information in the Service or on any related website, including without limitation, pricing information, except as required by law. No specified update or refresh date applied in the Service or on any related website, should be taken to indicate that all information in the Service or on any related website has been modified or updated.
+Vous acceptez que votre utilisation de, ou votre incapacité à utiliser, le service est à vos risques. Le service et tous ses produits ou services qui vous sont offerts à travers le service sont (sauf mention contraire) proposés "tels quels" et "tels que disponibles" pour votre utilisation, sans aucune garantie ou condition d'aucune sorte, ni expresse ni implicite, incluant toute les garanties et conditions implicites liées au commerce, à la qualité mercantile, à la correspondance du produit pour une situation particulière, à la durabilité, au titre, et à la légalité.
 
+En aucun cas Forged Alliance Forever LLC, nos directeurs, officiers, employés, affiliées, agents, contractuels, stagiaires, fournisseurs, fournisseurs de service ou concédants ne peuvent être tenus responsables de blessures, pertes, réclamations, ou dommages directs, indirects, punitifs, particuliers, ou collatéraux d'aucune sorte, y compris mais pas uniquement, la perte de profits, de revenus, de données, les coûts de replacements, ou autres dommages similaires, qu'ils soient lié au contrat, tort (y compris négligence), responsabilité stricte ou non, ressortissant de n'importe laquelle de vos utilisations du service ou de produits obtenus par utilisation du service ou d'autres produits, y compris mais pas seulement, toute erreur ou omission d'aucun contenu, toute perte ou dommage d'aucune sorte résultant d'une utilisation du service ou de contenu (ou produit) publié, transmis, ou autrement rendu disponible via le service, même en en connaissant la possibilité. Parce que certains états ou juridictions n'autorisent pas l'exclusion de la limitation de responsabilité pour les conséquences ou dommages accidentels, dans de tels états ou juridictions, notre responsabilité est limitée par lesdites limitation.
 
+## INDEMNITES
 
-## PROHIBITED USES
+Vous acceptez d'indemniser, défendre et laisser Forged Alliance Forever LLC et ses parents, subsidaires, affiliés, partenaires, officiers, directeurs, agents, contractuels, fournisseurs de licence ou de services, sous-contractuels, stagiaires et employés exempts de toute réclamation ou demande, y compris frais d'avocats, faits par un tiers quelconque ou en conséquence d'une violation des Conditions d'utilisations de votre part ou des documents qui l'incorporent par référence, ou par votre violation d'aucune loi ou droits d'un tiers.
 
-In addition to other prohibitions as set forth in the Terms of Service, you are prohibited from using the site or its content: (a) for any unlawful purpose; (b) to solicit others to perform or participate in any unlawful acts; (c) to violate any international, federal, provincial or state regulations, rules, laws, or local ordinances; (d) to infringe upon or violate our intellectual property rights or the intellectual property rights of others; (e) to harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate based on gender, sexual orientation, religion, ethnicity, race, age, national origin, or disability; (f) to submit false or misleading information; (g) to upload or transmit viruses or any other type of malicious code that will or may be used in any way that will affect the functionality or operation of the Service or of any related website, other websites, or the Internet; (h) to collect or track the personal information of others; (i) to spam, phish, pharm, pretext, spider, crawl, or scrape; (j) for any obscene or immoral purpose; or (k) to interfere with or circumvent the security features of the Service or any related website, other websites, or the Internet. We reserve the right to terminate your use of the Service or any related website for violating any of the prohibited uses.
+## CLAUSE DE DIVISILIBITE
 
+Dans le cas où une quelconque partie de ces Conditions d'utilisations est déclarée comme illégale, nulle ou condamnable, cette déclaration ne peut s'appliquer automatiquement à l'entièreté des Conditions d'utilisation, et la partie précise à laquelle cette déclaration se rapporte est alors à considérer comme retirée des Conditions d'utilisation. La validité du reste du document n'est pas affectée.
 
-## DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY
+## RESILIATION
 
-We do not guarantee, represent or warrant that your use of our service will be uninterrupted, timely, secure or error-free.
+Les obligations et responsabilités des partis impliquées avant la date de la résiliation demeurent même après la résiliation de cet accord et pour toutes les utilisations.
 
-We do not warrant that the results that may be obtained from the use of the service will be accurate or reliable.
+Ces Conditions d'utilisation sont en application à moins que et jusqu'à ce qu'ils ne soient résiliés par nous ou vous. Vous pouvez résilier ces Conditions d'utilisations à tout moment en nous informant que vous ne souhaitez plus utiliser nos Services, ou lorsque vous cessez d'utiliser notre site.
 
-You agree that from time to time we may remove the service for indefinite periods of time or cancel the service at any time, without notice to you.
+Si à notre discrétion vous échouez, ou si nous vous suspectons d'avoir échoué, à vous conformer à aucun des termes ou règlements de ces Conditions d'utilisation, nous pourrions également résilier cet accord à tout moment sans avertissement et vous demeurerez responsable de tous les actes commis jusqu'à et y compris le jour de la date de résiliation; et/ou de ce fait pourrions vous refuser l'accès à nos Services (ou n'importe quelle partie de ces derniers)
 
-You expressly agree that your use of, or inability to use, the service is at your sole risk. The service and all products and services delivered to you through the service are (except as expressly stated by us) provided 'as is' and 'as available' for your use, without any representation, warranties or conditions of any kind, either express or implied, including all implied warranties or conditions of merchantability, merchantable quality, fitness for a particular purpose, durability, title, and non-infringement.
+## ACCORD COMPLET
 
-In no case shall Forged Alliance Forever LLC, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind, including, without limitation lost profits, lost revenue, lost savings, loss of data, replacement costs, or any similar damages, whether based in contract, tort (including negligence), strict liability or otherwise, arising from your use of any of the service or any products procured using the service, or for any other claim related in any way to your use of the service or any product, including, but not limited to, any errors or omissions in any content, or any loss or damage of any kind incurred as a result of the use of the service or any content (or product) posted, transmitted, or otherwise made available via the service, even if advised of their possibility. Because some states or jurisdictions do not allow the exclusion or the limitation of liability for consequential or incidental damages, in such states or jurisdictions, our liability shall be limited to the maximum extent permitted by law.
+Dans le cas où nous serions dans l'impossibilité d'exercer ou d'appliquer un droit ou règlement de ces Conditions d'utilisation, ce cas ne constituerai pas une renonciation à l'application des Conditions d'utilisation.
 
+Ces Conditions d'utilisation constitue, avec toute les autres chartes et règles publiées par nous sur ce site ou en respect du Service, l'accord dans son entièreté et réglemente votre utilisation du service, supplantant tout accord, communication et proposition, à l'oral ou à l'écrit, entre vous et nous faite auparavant (y compris, mais pas seulement, toute version antérieure des Conditions d'utilisation)
 
+Aucune ambiguïté dans l'interprétation de ces Conditions d'utilisation ne peut être portée à l'encontre de ses rédacteurs.
 
-## INDEMNIFICATION
+## LOIS APPLICABLES
 
-You agree to indemnify, defend and hold harmless Forged Alliance Forever LLC and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, service providers, subcontractors, suppliers, interns and employees, harmless from any claim or demand, including reasonable attorneys’ fees, made by any third-party due to or arising out of your breach of these Terms of Service or the documents they incorporate by reference, or your violation of any law or the rights of a third-party.
+Ces Conditions d'utilisation ainsi que tout accord supplémentaire obtenu pour l'obtention d'un accès aux Services est gouverné par et exprimé à travers l'accord avec les lois de Aarhus, Danemark.
 
+## MODIFICATIONS DES CONDITIONS D'UTILISATION
 
-## SEVERABILITY
+Vous pouvez accéder à la version la plus récente des Conditions d'utilisation à tout moment sur cette page.
 
-In the event that any provision of these Terms of Service is determined to be unlawful, void or unenforceable, such provision shall nonetheless be enforceable to the fullest extent permitted by applicable law, and the unenforceable portion shall be deemed to be severed from these Terms of Service, such determination shall not affect the validity and enforceability of any other remaining provisions.
+Nous nous réservons le droit de, à notre seule discrétion, modifier ou remplacer toute partie de ces Conditions d'utilisation en publiant des mises à jour et modifications à notre site internet. Il est de votre responsabilité de vérifier le site périodiquement en quête de changements. Votre utilisation prolongée du site ou du service après la publication de changements à ces Conditions d'utilisation constitue un accord desdits changements.
 
+## INFORMATIONS DE CONTACT
 
-## TERMINATION
-
-The obligations and liabilities of the parties incurred prior to the termination date shall survive the termination of this agreement for all purposes.
-
-These Terms of Service are effective unless and until terminated by either you or us. You may terminate these Terms of Service at any time by notifying us that you no longer wish to use our Services, or when you cease using our site.
-
-If in our sole judgment you fail, or we suspect that you have failed, to comply with any term or provision of these Terms of Service, we also may terminate this agreement at any time without notice and you will remain liable for all amounts due up to and including the date of termination; and/or accordingly may deny you access to our Services (or any part thereof).
-
-
-## ENTIRE AGREEMENT
-
-The failure of us to exercise or enforce any right or provision of these Terms of Service shall not constitute a waiver of such right or provision.
-
-These Terms of Service and any policies or operating rules posted by us on this site or in respect to The Service constitutes the entire agreement and understanding between you and us and govern your use of the Service, superseding any prior or contemporaneous agreements, communications and proposals, whether oral or written, between you and us (including, but not limited to, any prior versions of the Terms of Service).
-
-Any ambiguities in the interpretation of these Terms of Service shall not be construed against the drafting party.
-
-
-## GOVERNING LAW
-
-These Terms of Service and any separate agreements whereby we provide you Services shall be governed by and construed in accordance with the laws of Aarhus, Denmark.
-
-
-## CHANGES TO TERMS OF SERVICE
-
-You can review the most current version of the Terms of Service at any time at this page.
-
-We reserve the right, at our sole discretion, to update, change or replace any part of these Terms of Service by posting updates and changes to our website. It is your responsibility to check our website periodically for changes. Your continued use of or access to our website or the Service following the posting of any changes to these Terms of Service constitutes acceptance of those changes.
-
-
-## CONTACT INFORMATION
-
-Questions about the Terms of Service should be sent to us at admin@faforever.com.
-
+Toute question à propos des Conditions d'utilisation doit nous être adressée à admin@faforever.com
