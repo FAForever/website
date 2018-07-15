@@ -1,15 +1,21 @@
 # website
 New Forged Alliance Forever main website to replace http://faforever.com
 
-Requires Node, Grunt, AND Yarn
+Requires Node and NPM.
+To install it, follow these steps : 
 
-1. Copy .env.example to .env and set to development or production
-2. yarn install
-3. node scripts/extractor.js (Get all 1v1 and global members from FAForever API)
-4. node scripts/getLatestClientRelease.js (Get latest client releases from Github API)
-5. grunt serve
-6. npm rebuild node-sass (If you run into problems like - `Error: ENOENT: no such file or directory, scandir '/../node_modules/grunt-sass/node_modules/node-sass/vendor'
-)`)
+```
+git clone https://github.com/FAForever/website.git
+cd website
+sudo npm install -g yarn
+yarn install
+node_modules/.bin/grunt prod
+yarn --prod
+cp .env.example .env
+```
+
+Now you're ready to start the server. You can fire it using :
+`PORT=3000 npm start`
 
 In order to install grunt for the command line, please follow this guide - http://gruntjs.com/getting-started
 
