@@ -15,7 +15,7 @@ cp .env.example .env
 ```
 
 Now you're ready to start the server. You can fire it using :
-`PORT=3000 npm start`
+`PORT=3000 yarn start`
 
 In order to install grunt for the command line, please follow this guide - http://gruntjs.com/getting-started
 
