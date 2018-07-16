@@ -8,7 +8,7 @@ exports = module.exports = function(req, res) {
   // locals.section is used to set the currently selected
   // item in the header navigation.
   locals.section = 'calendar';
-
+  locals.tournaments = [];
   locals.calendar = process.env.GOOGLE_CALENDAR_API_KEY;
 
   let languages = locale.parse(req.headers["accept-language"]);
