@@ -135,18 +135,14 @@ $(document).on('click', '.player', (function(){
 
   let featuredMod = ratingType === 'ladder1v1' ? 'ladder1v1' : 'faf';
   $.ajax({
-		url: apiURL + '/data/gamePlayerStats?filter=player.id==' + id + ';game.featuredMod.technicalName==' + featuredMod + '&fields[gamePlayerStats]=afterMean,afterDeviation,scoreTime',
+		url: apiURL + '/data/gamePlayerStats?filter=player.id==' + id + ';game.featuredMod.technicalName==' + featuredMod + ';scoreTime=gt='+formatTime(pastYear)+';afterDeviation=isnull=false&fields[gamePlayerStats]=afterMean,afterDeviation,scoreTime',
     success: function(result) {
-      $.each(result.data, function(stats){
-        // Only get information for past year for chart...
-				
-        if (unixTime > pastYear) {
+       $.each(result.data, function(key, stats){
           var date = moment(stats.attributes.scoreTime).format('MMM D, YYYY');
           var mean = stats.attributes.afterMean;
           var deviation = stats.attributes.afterDeviation;
           labels.push(date);
           dataset.push(Math.round(mean - 3 * deviation));
-        }
       });
 
       var data = {
@@ -197,3 +193,10 @@ var init = function() {
 };
 
 init();
+
+
+// Formats a timestamp so that Elide JSON API can understand it
+function formatTime(unix_timestamp){
+    let d = moment(unix_timestamp*1000);
+    return d.format("YYYY-MM-DDTHH:mm:ss")+"Z";
+}
