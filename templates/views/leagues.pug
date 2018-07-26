@@ -1,0 +1,57 @@
+extends competitive_nav
+
+mixin pagination(category)
+  .row.btn-top
+    .col-md-3.btn-top.pull-left.text-left.nopadding
+      button(class="btn btn-primary first disabled", id="navigation-first-"+category) First
+      button(class="btn btn-primary btn-spacing previous disabled", id="navigation-previous-"+category) Previous
+    .col-md-3.col-md-offset-6.btn-top.pull-right.text-right.nopadding
+      button(class="btn btn-primary next", id="navigation-next-"+category) Next
+      button(class="btn btn-primary btn-spacing last", id="navigation-last-"+category) Last
+
+block cContent
+
+  br
+  
+  h2.text-center #{ratingTypeTitle} leaderboards
+  
+  case state
+    when -1
+        h3 #{ratingTypeTitle} has not started yet. 
+        p It will take place from #[b #{dates.from}] to #[b #{dates.to}].
+    when 0
+        h3 #{ratingTypeTitle} is live! 
+        p It will end #[b #{dates.to}].
+    when 1
+        h3 #{ratingTypeTitle} is finished. 
+        p It took place from #[b #{dates.from}] to #[b #{dates.to}]. The scores will stay here until a new ladder week starts.
+  
+  br
+
+  #stats
+  
+  each data,category in rankingCategories
+      h2.text-center #{data.categoryName}
+      .table-responsive
+        table.table.table-striped.table-hover
+          thead
+            tr
+              th #
+              th Player
+              th Rating
+              th Score
+              th W/L/D
+              th Hours played
+          tbody(id='players'+category)
+      +pagination(category)
+
+  br
+
+block js
+  script(type='text/javascript').
+    var apiURL = !{JSON.stringify(apiURL)};
+    var ratingTypeTitle = !{JSON.stringify(ratingTypeTitle)};
+    var ratingType = !{JSON.stringify(ratingType)};
+    var members = '!{JSON.stringify(members)}';
+    var rankingCategories = '!{JSON.stringify(rankingCategories)}';
+  script(src="/js/leagues.min.js")
