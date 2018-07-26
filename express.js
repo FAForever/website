@@ -123,6 +123,30 @@ app.get('/calendar', require(routes + 'calendar'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
 app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
 app.get('/competitive/leaderboards/global', require(routes + 'global'));
+app.get('/competitive/leaderboards/leagues', (function(){
+    let updateLeagues = require("./scripts/updateLeagues");
+    let ladderData = {};
+    let updateFunction = function(){
+        try {
+            updateLeagues.run(ladderData).then(function(ladderUpdatedData){
+                ladderData = ladderUpdatedData;
+            });
+        } catch (e) {
+            console.error("Error while updating ladder week!", e);
+        };
+    };
+    setInterval( 
+      updateFunction
+    , 60 * 60 * 1000); /// Every 60 minutes
+    
+    updateFunction();
+    
+    return function(res, req){ 
+        require(routes + 'leagues')(res, req, ladderData);
+    }
+})()
+);
+
 app.get('/news/', require(routes + 'blog'));
 app.get('/category/:category/page/:page', require(routes + 'blog'));
 app.get('/news/search/:search/page/:page', require(routes + 'blog'));
