@@ -60,10 +60,15 @@ var removeAllChildElements = function (element) {
 
 function formatTimePlayed(unix_timestamp){
      const time = unix_timestamp*1000;
+     const duration = moment.duration(time);
+     const hours = Math.floor(duration.asHours());
+     const minutes  = Math.floor(duration.asMinutes()) - hours * 60;
+     const seconds   = Math.floor(duration.asSeconds()) - hours * 60 * 60 - minutes * 60;
      const stringTime =  
-        moment.duration(time).hours()+"h "+
-        moment.duration(time).minutes()+"m "+
-        moment.duration(time).seconds()+"s";
+        hours+"h "+
+        minutes+"m "+
+        seconds+"s";
+  
      return stringTime;
 }
 
