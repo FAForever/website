@@ -60,10 +60,15 @@ var removeAllChildElements = function (element) {
 
 function formatTimePlayed(unix_timestamp){
      const time = unix_timestamp*1000;
-     return (
-        moment(time).hours()-1)+"h "+
-        moment(time).minutes()+"m "+
-        moment(time).seconds()+"s";
+     const duration = moment.duration(time);
+     const hours = Math.floor(duration.asHours());
+     const minutes  = Math.floor(duration.asMinutes()) - hours * 60;
+     const seconds   = Math.floor(duration.asSeconds()) - hours * 60 * 60 - minutes * 60;
+     const stringTime =  
+        hours+"h "+
+        minutes+"m "+
+        seconds+"s";
+     return stringTime;
 }
 
 function addCell(tr, content){
