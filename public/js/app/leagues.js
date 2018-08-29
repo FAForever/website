@@ -68,6 +68,7 @@ function formatTimePlayed(unix_timestamp){
         hours+"h "+
         minutes+"m "+
         seconds+"s";
+  
      return stringTime;
 }
 
