@@ -17,7 +17,7 @@ module.exports.run = async function run(leagueData) {
     while (!lastPageReached){
         const route = "/data/game?"+
                        "filter=featuredMod.id==6;endTime=isnull=false;validity=='VALID';endTime=ge="+formatTime(leaguesConfig.timeRange.from)+";endTime=le="+formatTime(leaguesConfig.timeRange.to)+"&"+
-                       "sort=-startTime&"+
+                       "sort=startTime&"+
                        "include=playerStats,playerStats.player&"+
                        "fields[game]=startTime,endTime&"+
                        "fields[gamePlayerStats]=beforeMean,beforeDeviation,score,player,game&"+
