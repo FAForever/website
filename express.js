@@ -53,7 +53,10 @@ app.use(expressValidator({
 app.use(require('express-session')({
 	secret: process.env.SESSION_SECRET_KEY,
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: false,
+  cookie: {
+    maxAge: 3600000 * 12 //an api token is valid for 12h
+  }
 }));
 
 //Authentication on pages
