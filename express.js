@@ -108,6 +108,9 @@ app.get('/account/connect', loggedIn, require(routes + 'accounts/get/connectStea
 app.get('/account/password/reset', require(routes + 'accounts/get/resetPassword'));
 app.post('/account/password/reset', require(routes + 'accounts/post/resetPassword'));
 
+app.get('/account/report', loggedIn, require(routes + 'accounts/get/report'));
+app.post('/account/report', loggedIn, require(routes + 'accounts/post/report'));
+
 app.get('/account/password/change', loggedIn, require(routes + 'accounts/get/changePassword'));
 app.post('/account/password/change', loggedIn, require(routes + 'accounts/post/changePassword'));
 
@@ -119,6 +122,7 @@ app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/chan
 
 app.get('/account_activated', require(routes + 'accounts/get/register'));
 app.get('/password_resetted', require(routes + 'accounts/get/resetPassword'));
+app.get('/report_submitted', require(routes + 'accounts/get/report'));
 app.get('/client', require(routes + 'client'));
 app.get('/livestream', require(routes + 'livestream'));
 app.get('/contribution', require(routes + 'contribution'));
