@@ -96,6 +96,7 @@ function markdown(template) {
 }
 app.get('/privacy', markdown("templates/views/privacy.md"))
 app.get('/tos', markdown("templates/views/tos.md"))
+app.get('/rules', markdown("templates/views/rules.md"))
 
 //Account routes
 app.get('/account/register', require(routes + 'accounts/get/register'));
