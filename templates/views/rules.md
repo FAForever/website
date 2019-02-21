@@ -3,7 +3,7 @@
 The rule changes below are not retroactive and are for the moment subject to change as we work towards improving and consolidating the rules. Keep in mind that lobby rules in essence apply not only to #aeolus but also to your in-game behavior. If you have any suggestions or concerns please contact the IRC moderator usergroup.
 
 To report infractions of other users, it is recommended to use this form:
-Mod Report Form: [link](http://bit.ly/2a9Yg5i)
+Mod Report Form: [link](/account/report)
 
 Contents:
 - Overview
@@ -143,4 +143,4 @@ The official way is to send a message to the moderation team via the forums, as 
 
 ## Reporting
 This link to the report form can be used to report other community members :
-[link](http://bit.ly/2a9Yg5i)
+[link](/account/report)
