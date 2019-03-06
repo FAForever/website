@@ -71,6 +71,7 @@ For example, sharing an account or playing with a banned user who is avoiding th
 - You will **not ruin the game intentionally** by any means.
 - You will not **reclaim or teamkill/friendly fire** allies.
 - You will **not slow or block the game from progressing.**
+- You will **not use macros which are forbidden. ** You can find the list of forbidden macros here: [macros](link)
 
 ## Communicating on FAF
 When communicating through FAF the following is prohibited:
