@@ -48,9 +48,8 @@ mixin oldPassword(labelPassword)
     .form-group.has-feedback
         label #{labelPassword} Password:
             .input-group
-                input(type='password', name='old_password', required='required', id='oldPassword', data-minlength='6').form-control
+                input(type='password', name='old_password', required='required', id='oldPassword').form-control
                 span(aria-hidden='true').glyphicon.form-control-feedback
-                .help-block Minimum of 6 characters
 
 mixin currentPassword(labelPassword)
     - labelPassword = labelPassword || ''
