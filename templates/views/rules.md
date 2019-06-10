@@ -71,6 +71,16 @@ For example, sharing an account or playing with a banned user who is avoiding th
 - You will **not ruin the game intentionally** by any means.
 - You will not **reclaim or teamkill/friendly fire** allies.
 - You will **not slow or block the game from progressing.**
+- You will **accept the Rules on UI mods subsection below.**
+
+## Rules on UI mods:
+
+We will list what sort of UI mods are not allowed here. This includes:
+- All reclaim macros
+- All autoclickers
+
+If you are unsure what you are using/developing is allowed, send a message to the moderation team and instructions on how to find said mod/a download link and a description and we will inform you as soon as possible.
+This list may change. 
 
 ## Communicating on FAF
 When communicating through FAF the following is prohibited:
