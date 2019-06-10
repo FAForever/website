@@ -79,7 +79,7 @@ We will list what sort of UI mods are not allowed here. This includes:
 - All reclaim macros
 - All autoclickers
 
-If you are unsure what you are using/developing is allowed, send a message to the moderation team and instructions on how to find said mod/a download link and a description and we will inform you as soon as possible.
+If you are unsure if what you are using/developing is allowed, send a message to the moderation team, which contains instructions on how to find said mod/a download link, a description and we will inform you as soon as possible.
 This list may change. 
 
 ## Communicating on FAF
