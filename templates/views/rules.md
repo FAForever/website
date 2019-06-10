@@ -71,7 +71,6 @@ For example, sharing an account or playing with a banned user who is avoiding th
 - You will **not ruin the game intentionally** by any means.
 - You will not **reclaim or teamkill/friendly fire** allies.
 - You will **not slow or block the game from progressing.**
-- You will **accept the Rules on UI mods subsection below.**
 
 ## Rules on UI mods:
 
