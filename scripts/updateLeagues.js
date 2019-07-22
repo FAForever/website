@@ -130,7 +130,7 @@ module.exports.run = async function run(leagueData) {
                         }
                         else if (game.winner == null){
                             player.wld.d ++;
-                            player.points += 1;
+                            player.points -= 1;
                         }
                         else{
                             player.wld.l ++;
