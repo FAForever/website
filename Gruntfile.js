@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json')
   };
 
-  var configs = require('load-grunt-configs')(grunt, options);
+  var configs = require('load-grunt-config')(grunt, options);
 	
   // Project configuration.
   grunt.initConfig(configs);
