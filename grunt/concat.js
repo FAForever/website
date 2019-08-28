@@ -30,7 +30,8 @@ module.exports = {
                 'public/js/app/leagues.js'
             ],
             'public/js/account.min.js': [
-                'node_modules/bootstrap-validator/dist/validator.js'
+                'node_modules/bootstrap-validator/dist/validator.js',
+                'public/js/app/validation.js'
             ],
             'public/js/blog.min.js': [
                 'public/js/app/blog.js'
