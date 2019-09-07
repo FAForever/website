@@ -10,6 +10,7 @@ let expressValidator = require('express-validator');
 let bodyParser = require('body-parser');
 let passport = require('passport');
 let OAuth2Strategy = require('passport-oauth2');
+let schedule = require('node-schedule');
 
 const showdown = require('showdown');
 const fs = require('fs');
@@ -238,23 +239,25 @@ let getLatestClientRelease = require("./scripts/getLatestClientRelease");
 extractor.run();
 getLatestClientRelease.run();
 
-// Run leaderboard extractor every minute
-setTimeout(() => {
+// Run leaderboard extractor every 15 minutes
+schedule.scheduleJob('*/15 * * * *', function myFunc() {
 	try {
+	  console.log("Updating leaderboards...");
 		extractor.run();
 	} catch (e) {
 		console.error("Error while updating leaderboards!", e);
 	}
-}, 60 * 1000);
+});
 
 // Run client release fetcher every 15 minutes
-setTimeout(() => {
+schedule.scheduleJob('*/15 * * * *', function myFunc() {
 	try {
-		getLatestClientRelease.run();
+    console.log("Updating client release...");
+    getLatestClientRelease.run();
 	} catch (e) {
 		console.error("Error while fetching latest client release!", e);
 	}
-}, 15 * 60 * 1000);
+});
 
 //Start and listen on port
 app.listen(process.env.PORT, function () {
