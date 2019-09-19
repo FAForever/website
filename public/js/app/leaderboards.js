@@ -113,7 +113,9 @@ var searchbar = document.getElementById("searchbar");
 
 // Show label but insert value into the input:
 new Awesomplete(searchbar, {
-  list: JSON.parse(members)
+    list: JSON.parse(members),
+	minChars: 0,
+	maxItems: 5
 });
 
 searchbar.addEventListener('awesomplete-select', function(e){
