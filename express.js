@@ -233,10 +233,12 @@ if (process.env.NODE_ENV === 'development') {
 
 let extractor = require("./scripts/extractor");
 let getLatestClientRelease = require("./scripts/getLatestClientRelease");
+let getRecentUsers = require("./scripts/getRecentUsers");
 
 // Run scripts initially on startup
 extractor.run();
 getLatestClientRelease.run();
+getRecentUsers.run();
 
 // Run leaderboard extractor every minute
 setTimeout(() => {
@@ -246,6 +248,15 @@ setTimeout(() => {
 		console.error("Error while updating leaderboards!", e);
 	}
 }, 60 * 1000);
+
+// Run recent players detection every 15 minutes
+setTimeout(() => {
+	try {
+        getRecentUsers.run();
+	} catch (e) {
+		console.error("Error while updating recent user list!", e);
+	}
+}, 15 * 60 * 1000);
 
 // Run client release fetcher every 15 minutes
 setTimeout(() => {

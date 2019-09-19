@@ -12,6 +12,10 @@ exports = module.exports = function(req, res) {
 	locals.formData = req.body || {};
     locals.game_id = req.query.game_id; // Game_id can be supplied as GET
     locals.offenders_names = req.query.offenders_names; // Offender name aswell
+    
+    var fs = require('fs');
+
+
 
     var flash = null;
 
@@ -93,7 +97,15 @@ exports = module.exports = function(req, res) {
                     'statusStyle':statusStyle
                 });
             }
-            res.render('account/report', {flash: flash});
+            
+            fs.readFile('members/recent.json', 'utf8', function (err, data) {
+                try{
+                    locals.reportable_members = JSON.parse(data);
+                }
+                catch{}
+                
+                res.render('account/report', {flash: flash});
+            });
         }
     )
 };

@@ -36,10 +36,11 @@ block content
                         span(aria-hidden='true').glyphicon.form-control-feedback
 
                     div.form-group
-                        label Offender(s)'s username:
-                        input(type='text', required='required', name='offenders', value=offenders_names, placeholder='FAF username(s) of the offender(s)').form-control
+                        label Offender username:
+                        input(type='text', required='required', class='offender_name', id='offender_0', name='offender_0', placeholder='FAF username(s) of the offender(s)').form-control
+                        button.form-control(data-validate="false", id="add_offender" type="button") Add one more offender
                         span(aria-hidden='true').glyphicon.form-control-feedback
-                        .help-block When reporting multiple people, separate their names with a blank space. Make sure to spell the names correctly and to respect the casing.
+                        .help-block Make sure to spell the names correctly and to respect the casing.
         
                     div.form-group
                         label Incident report:
@@ -97,4 +98,8 @@ block content
 
 
 block js
-    script(src='/js/account.min.js')
+  script(type='text/javascript').
+    const reportable_members = '!{JSON.stringify(reportable_members)}';
+    
+  script(src='/js/account.min.js')
+  script(src="/js/report.min.js")
