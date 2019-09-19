@@ -22,7 +22,11 @@ exports = module.exports = async function (req, res) {
   let overallRes = res;
 
   // validate the input
-  req.checkBody('offenders', 'Please indicate the player or players you\'re reporting').notEmpty();
+  let i = 0;
+  while(req.body["offender_"+i]){
+    req.checkBody("offender_"+i, 'Please indicate the player or players you\'re reporting').notEmpty();
+    i++;
+  }
   req.checkBody('report_description', 'Please describe the incident').notEmpty();
   if (req.body.game_id.length > 0){
     req.checkBody('game_id', 'Please enter a valid game ID, or nothing. The # is not needed.').optional().isDecimal();
@@ -48,7 +52,13 @@ exports = module.exports = async function (req, res) {
 
     const isGameReport = req.body.game_id != null;
 
-    const offenders = req.body.offenders.split(' ');
+    let offenders = [];
+    let j = 0;
+    while(req.body["offender_"+j]){
+        const offender = req.body["offender_"+j];
+        offenders.push(offender);
+        j++;
+    }
 
     // Let's check first that the users exist
     let filter = '';

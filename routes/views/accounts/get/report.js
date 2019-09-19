@@ -11,7 +11,11 @@ exports = module.exports = function(req, res) {
     locals.section = 'account';
 	locals.formData = req.body || {};
     locals.game_id = req.query.game_id; // Game_id can be supplied as GET
-    locals.offenders_names = req.query.offenders_names; // Offender name aswell
+    locals.offenders_names = []; // Offender name aswell
+    
+    if (req.query.offenders != undefined){
+        locals.offenders_names = req.query.offenders.split(" ");
+    }
     
     var fs = require('fs');
 
