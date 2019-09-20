@@ -28,8 +28,8 @@ module.exports.run = function run() {
                 for(let i = 0; i < entries.included.length; i++) {
                     let entry = entries.included[i];
                     if (entry.type != "player") continue;
-
-                    finalArray.push(entry.attribute.login);
+                    
+                    finalArray.push(entry.attributes.login);
                 }
 
                 fs.writeFile("members/recent.json", JSON.stringify(finalArray), function(error) {
