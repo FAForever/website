@@ -114,8 +114,8 @@ var searchbar = document.getElementById("searchbar");
 // Show label but insert value into the input:
 new Awesomplete(searchbar, {
     list: JSON.parse(members),
-	minChars: 0,
-	maxItems: 5
+    minChars: 0,
+    maxItems: 5
 });
 
 searchbar.addEventListener('awesomplete-select', function(e){
@@ -137,7 +137,7 @@ $(document).on('click', '.player', (function(){
 
   let featuredMod = ratingType === 'ladder1v1' ? 'ladder1v1' : 'faf';
   $.ajax({
-		url: apiURL + '/data/gamePlayerStats?filter=player.id==' + id + ';game.featuredMod.technicalName==' + featuredMod + ';scoreTime=gt='+formatTime(pastYear)+';afterDeviation=isnull=false&fields[gamePlayerStats]=afterMean,afterDeviation,scoreTime',
+        url: apiURL + '/data/gamePlayerStats?filter=player.id==' + id + ';game.featuredMod.technicalName==' + featuredMod + ';scoreTime=gt='+formatTime(pastYear)+';afterDeviation=isnull=false&fields[gamePlayerStats]=afterMean,afterDeviation,scoreTime',
     success: function(result) {
        $.each(result.data, function(key, stats){
           var date = moment(stats.attributes.scoreTime).format('MMM D, YYYY');
