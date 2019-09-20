@@ -1,8 +1,24 @@
 const delay = 1000;
-
-$("#game_counter").parent().hide().fadeIn();
             
-setInterval(function(){
+setInterval(updatePlayerCounter, delay);
+
+setTimeout(function(){
+    setInterval(updateGameCounter, delay);  
+}, delay/2);
+
+function updateGameCounter(){
+    $.get('lobby_api', { resource: "games"}, function (body) {
+        let games = body;
+        
+        if ($("#game_counter").text() == games.length.toString()) return;
+        
+        $("#game_counter").fadeOut('fast', function() {
+            $(this).text(games.length).fadeIn('fast');
+        })
+    });
+}
+
+function updatePlayerCounter(){
     $.get('lobby_api', { resource: "players"}, function (body) {
         let players = body;
         if ($("#player_counter").text() == players.length.toString()) return;
@@ -10,18 +26,17 @@ setInterval(function(){
             $(this).text(players.length).fadeIn('fast');
         })
     });
-}, delay);
+}
 
-setTimeout(function(){
-    setInterval(function(){
-        $.get('lobby_api', { resource: "games"}, function (body) {
-            let games = body;
-            
-            if ($("#game_counter").text() == games.length.toString()) return;
-            
-            $("#game_counter").fadeOut('fast', function() {
-                $(this).text(games.length).fadeIn('fast');
-            })
-        });
-    }, delay);  
-}, delay/2);
+updateGameCounter();
+updatePlayerCounter();
+
+const waitBeforeShowing = setInterval(
+    function(){
+        if ($("#player_counter").text() != '0' && $("#game_counter").text() != '0'){
+            $(".counters").css("opacity", 1);
+            clearInterval(waitBeforeShowing);
+        }
+    },
+    100
+);
