@@ -235,9 +235,13 @@ let extractor = require("./scripts/extractor");
 let getLatestClientRelease = require("./scripts/getLatestClientRelease");
 
 // Run scripts initially on startup
-extractor.run();
-getLatestClientRelease.run();
-
+try{
+    extractor.run();
+    getLatestClientRelease.run();
+}
+catch(e){
+    console.error("Error while running update scripts. Make sure the API is available. Those scripts will run again after some time - no need to restart the website.", e);
+}
 // Run leaderboard extractor every minute
 setTimeout(() => {
 	try {
