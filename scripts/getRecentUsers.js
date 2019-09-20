@@ -20,19 +20,19 @@ module.exports.run = function run() {
         requestUrl,        
         function (error, response, body) {
             if (! error) {
-                let entries = JSON.parse(body);
-                let finalArray = [];
+                let apiRecentPlayers = JSON.parse(body);
+                let recentPlayers = [];
 
-                if (entries.included == undefined) return;
+                if (apiRecentPlayers.included == undefined) return;
 
-                for(let i = 0; i < entries.included.length; i++) {
-                    let entry = entries.included[i];
+                for(let i = 0; i < apiRecentPlayers.included.length; i++) {
+                    let entry = apiRecentPlayers.included[i];
                     if (entry.type != "player") continue;
                     
-                    finalArray.push(entry.attributes.login);
+                    recentPlayers.push(entry.attributes.login);
                 }
 
-                fs.writeFile("members/recent.json", JSON.stringify(finalArray), function(error) {
+                fs.writeFile("members/recent.json", JSON.stringify(recentPlayers), function(error) {
                     if (error) {
                         console.log(error);
                     } else {
