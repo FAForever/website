@@ -56,6 +56,7 @@ exports = module.exports = async function (req, res) {
     let j = 0;
     while(req.body["offender_"+j]){
         const offender = req.body["offender_"+j];
+        if (offender.trim().length == 0) continue;
         offenders.push(offender);
         j++;
     }
