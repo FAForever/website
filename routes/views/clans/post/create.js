@@ -38,7 +38,7 @@ exports = module.exports = async function (req, res) {
     let buff = new Buffer(JSON.stringify(flash));  
     let data = buff.toString('base64');
 
-    return overallRes.redirect('clans/create?flash='+data);
+    return overallRes.redirect('create?flash='+data);
   } else {
 
     const clanName = req.body.clan_name;
@@ -51,7 +51,7 @@ exports = module.exports = async function (req, res) {
     let exists = true;
     try {
       const httpData = await promiseRequest(clanFetchRoute);
-      exists = JSON.parse(userFetch).data.length > 0;
+      exists = JSON.parse(httpData).data.length > 0;
     }
     catch(e){
       flash.class = 'alert-danger';
@@ -61,54 +61,37 @@ exports = module.exports = async function (req, res) {
       let buff = new Buffer(JSON.stringify(flash));  
       let data = buff.toString('base64');
 
-      return overallRes.redirect('clans/create?flash='+data);
+      return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
     }
     
-    
-    // Building report;
-    const player ={
-        'type':'player',
-        'id':''+userId
-    }
-
-    let relationShips = {
-      "founder": player,
-      "leader": player
-    };
-
-    // Making the clan query accordingly to what the API expects to receive
-    const query = 
-      {
-        "data": [
-          {
-            "type": "clan",
-            "attributes": {
-                "tag": clanTag,
-                "name": clanName,
-                "description": clanDescription
-            },
-            "relationships":relationShips
-          }
-        ]        
-      }
+    const queryUrl = 
+        process.env.API_URL 
+        + '/clans/create'
+        + '?name=' + encodeURIComponent(clanName)
+        + '&tag='+encodeURIComponent(clanTag)
+        + '&description='+encodeURIComponent(clanDescription)
     ;
-
-    //Run post to reset endpoint
+    
+    //Run post to endpoint
     request.post({
-      url: process.env.API_URL + '/data/clan',
-      body: JSON.stringify(report),
+      url: queryUrl,
+      body: "",
       headers: {
-        'Authorization': 'Bearer ' + req.user.data.attributes.token,
-        'Content-Type': 'application/vnd.api+json',
-        'Accept': 'application/vnd.api+json'
+        'Authorization': 'Bearer ' + req.user.data.attributes.token
       }
     }, function (err, res, body) {
 
       let resp;
       let errorMessages = [];
 
-      if (res.statusCode != 201) {
-          errorMessages.push({msg: 'Error while creating the clan'});
+      if (res.statusCode != 200) {
+          let msg = 'Error while creating the clan';
+          try{
+            
+            msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
+          }
+          catch{}
+          errorMessages.push({msg: msg});
           flash.class = 'alert-danger';
           flash.messages = errorMessages;
           flash.type = 'Error!';
@@ -116,11 +99,11 @@ exports = module.exports = async function (req, res) {
           let buff = new Buffer(JSON.stringify(flash));  
           let data = buff.toString('base64');
 
-          return overallRes.redirect('clans/create?flash='+data);
+          return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
       }
         
         // TO CHANGE
-      overallRes.redirect('clans/create');
+      overallRes.redirect('../clan_created');
     });
   }
 }
