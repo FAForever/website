@@ -43,7 +43,7 @@ exports = module.exports = async function (req, res) {
     const clanId = req.body.clan_id;    
     const userName = req.body.invited_player;
 
-    // Let's check first that the name or tag are not taken
+    // Let's check first that the player exists
     const fetchRoute = process.env.API_URL+'/data/player?filter=login=="'+userName+'"&fields[player]=id';
     
     let exists = true;

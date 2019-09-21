@@ -92,6 +92,7 @@ block content
                 h2.danger Danger zone
                 
                 form(method='post',action="/clans/transfer",data-toggle="validator", onsubmit="return confirm('ALL YOUR RIGHTS OVER THE CLAN WILL BE LOST. Press OK to confirm');")
+                    input(type='hidden', name='clan_id', value=clan_id)
                     h3 Transfer ownership
                     p.text-left This operation will transfer the leadership of your clan to a new member.
                     p.text-left After the Leadership transfer,
