@@ -156,8 +156,11 @@ app.get('/competitive/leaderboards/leagues', (function(){
 );
 
 app.get('/clans', require(routes + 'clans/get/index'));
+
 app.get('/clans/create', loggedIn, require(routes + 'clans/get/create'));
 app.post('/clans/create', loggedIn, require(routes + 'clans/post/create'));
+
+app.get('/clans/manage', loggedIn, require(routes + 'clans/get/manage'));
 
 
 app.get('/news/', require(routes + 'blog'));

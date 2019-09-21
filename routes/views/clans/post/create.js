@@ -102,8 +102,7 @@ exports = module.exports = async function (req, res) {
           return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
       }
         
-        // TO CHANGE
-      overallRes.redirect('../clan_created');
+      overallRes.redirect('/clans/manage');
     });
   }
 }
