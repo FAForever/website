@@ -91,8 +91,10 @@ exports = module.exports = async function (req, res) {
             "id": clanId,
             "relationships": {
                 "leader": {
-                    "id": playerId,
-                    "type": "player"
+                    "data":{
+                        "id": playerId,
+                        "type": "player"
+                    }
                 }
             }
         }
@@ -113,8 +115,6 @@ exports = module.exports = async function (req, res) {
             let errorMessages = [];
             let msg = 'Error during the ownership transfer';
             try{
-                console.log(JSON.stringify(newClanObject, null, 2));
-                console.log(JSON.parse(res.body));
                 msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
             }
             catch{}
