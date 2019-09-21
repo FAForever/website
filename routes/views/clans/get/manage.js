@@ -73,6 +73,10 @@ exports = module.exports = function(req, res) {
                         if (!members[player.id]) members[player.id] = {};
                         members[player.id].id = player.id;
                         members[player.id].name = player.attributes.login;
+                        
+                        if (clan.data.relationships.founder.data.id == player.id){
+                            locals.founder_name = player.attributes.login
+                        }
                         break;
                         
                     case "clanMembership":
