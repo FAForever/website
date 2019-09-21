@@ -64,6 +64,7 @@ exports = module.exports = function(req, res) {
             locals.my_membership = null;
             locals.clan_id = clan.data.id;
             locals.iAmMember = false;
+            locals.iAmLeader = false;
             
             let members = {};
             
@@ -91,6 +92,8 @@ exports = module.exports = function(req, res) {
                     
                 }
             }
+            
+            if (locals.iAmMember) locals.iAmLeader = locals.me && clan.data.relationships.leader.data.id;;
             
             locals.clan_members = members;
             

@@ -29,7 +29,14 @@ block content
                                     td #{member.name}
                                     td #{member.joinedAt}
 
-        if iAmMember
+        if iAmLeader
+            .row.centered-flex
+                .col-md-8                   
+                    h2.row.centered-flex
+                        a(href="/clans/manage")
+                            button(type='button', style="width:100%;background-color:white;border:1px solid #ddd;").btn.btn-lg Manage clan
+
+        else if iAmMember
             .row.centered-flex
                 .col-md-8                   
                     form(method='post',action="/clans/leave", onsubmit="return confirm('You will not be able to return in that clan unless invited again. Press OK to confim.');")
