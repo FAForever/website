@@ -25,7 +25,11 @@ exports = module.exports = function(req, res) {
         flash = {};
         flash.class = 'alert-success';
         flash.messages = [
-            {msg: "<a class='invite-link' href='"+process.env.HOST + "/clans/accept?token=" + req.query.invitation_token+ "'><b>Right click on me and copy link</b>, then send the link to the invited player</a>"}
+            {msg: 
+                "<a class='invite-link' href='"+process.env.HOST + "/clans/accept"
+                +"?token=" + req.query.invitation_token
+                +"&clan_id=" + req.query.clan_id 
+                +"'><b>Right click on me and copy link</b>, then send the link to the invited player</a>"}
         ];
         flash.type = 'Success!';
     }
@@ -56,6 +60,7 @@ exports = module.exports = function(req, res) {
             locals.clan_name = clan.data.attributes.name;
             locals.clan_tag = clan.data.attributes.tag; 
             locals.clan_description = clan.data.attributes.description; 
+            locals.clan_create_time = clan.data.attributes.createTime; 
             locals.me = req.user.data.id;
             locals.clan_id = clan.data.id;
             
@@ -81,7 +86,7 @@ exports = module.exports = function(req, res) {
                 }
             }
             
-            locals.clanMembers = members;
+            locals.clan_members = members;
 
             if (req.originalUrl == '/clan_created') {
                 flash = {};

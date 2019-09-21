@@ -1,5 +1,5 @@
 let flash = {};
-let request = require('request');
+const request = require('request');
 
 function promiseRequest(url) {
   return new Promise(function (resolve, reject) {
@@ -107,7 +107,7 @@ exports = module.exports = async function (req, res) {
           try{
             const token = JSON.parse(res.body).jwtToken;
             
-            return overallRes.redirect('manage?invitation_token='+token);
+            return overallRes.redirect('manage?invitation_token='+token+'&clan_id='+clanId);
           }
           catch (e){
             flash.class = 'alert-danger';

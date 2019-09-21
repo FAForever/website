@@ -1,0 +1,30 @@
+extends ../../layouts/default
+include ../../mixins/flash-messages
+include ../../mixins/form/account
+
+block content
+    .container.text-center
+        .row
+            .col-md-12
+                h1.account-title [#{clan_tag}] #{clan_name}
+                hr
+                p #{clan_description}
+                p Created in #{clan_create_time}
+                hr
+        .row
+            .col-md-offset-3.col-md-6
+                +flash-messages(flash)
+    
+        .row.centered-flex       
+            .col-md-10
+                .table-responsive
+                    table.table.table-striped.table-hover
+                        thead
+                            tr
+                                th.text-center Player
+                                th.text-center Joined
+                        tbody
+                            each member in clan_members
+                                tr(class=(member.isLeader ? "leader" : "")+" "+(member.id == me ? "me" : ""))
+                                    td #{member.name}
+                                    td #{member.joinedAt}

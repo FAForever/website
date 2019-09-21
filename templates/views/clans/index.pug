@@ -1,8 +1,11 @@
 extends ../../layouts/default
+include ../../mixins/flash-messages
 
 block content
     .intro
-        div.hero(style="background-image:url('images/spider.jpg');")
+        div(style="position:absolute;left:0;right:0;text-align:center;")
+            +flash-messages(flash)
+        div.hero(style="background-image:url('/images/spider.jpg');")
         .introtitle
             .hgroup
                 h1 Clan management

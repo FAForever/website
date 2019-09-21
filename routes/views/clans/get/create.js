@@ -28,6 +28,7 @@ exports = module.exports = function(req, res) {
             locals.clan_name = req.query.clan_name || "";
             locals.clan_tag = req.query.clan_tag || ""; 
             locals.clan_description = req.query.clan_description || ""; 
+            locals.clan_create_time = (new Date()).toUTCString(); 
 
             var flash = null;
             
