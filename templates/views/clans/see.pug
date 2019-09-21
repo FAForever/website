@@ -28,3 +28,13 @@ block content
                                 tr(class=(member.isLeader ? "leader" : "")+" "+(member.id == me ? "me" : ""))
                                     td #{member.name}
                                     td #{member.joinedAt}
+
+        if iAmMember
+            .row.centered-flex
+                .col-md-8                   
+                    form(method='post',action="/clans/leave", onsubmit="return confirm('You will not be able to return in that clan unless invited again. Press OK to confim.');")
+                        input(type='hidden', name='clan_id', value=clan_id)
+                        input(type='hidden', name='membership_id', value=my_membership)
+                        h2.row.centered-flex
+                            button(type='submit', style="width:100%;background-color:white;").danger.btn.btn-lg Leave clan
+                            

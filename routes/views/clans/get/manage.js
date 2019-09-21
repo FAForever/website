@@ -12,7 +12,6 @@ exports = module.exports = function(req, res) {
                 
     let clanMembershipId = null;
     try{
-        console.trace(req.user.data.relationships.clanMemberships);
         clanMembershipId = req.user.data.relationships.clanMemberships.data[0].id;
     }
     catch{
@@ -66,7 +65,7 @@ exports = module.exports = function(req, res) {
             
             if (clan.data.relationships.leader.data.id != req.user.data.id){
                 // Not the leader! Should'nt be able to manage shit
-                res.redirect('/clans/see?id='+clan.id);
+                res.redirect('/clans/see?id='+clan.data.id);
                 return;
             }
             
@@ -97,6 +96,7 @@ exports = module.exports = function(req, res) {
                         const member = membership.relationships.player.data;
                         if (!members[member.id]) members[member.id] = {};
                         members[member.id].id = member.id;
+                        members[member.id].membershipId = membership.id;
                         members[member.id].joinedAt = membership.attributes.createTime;
                         break;
                     

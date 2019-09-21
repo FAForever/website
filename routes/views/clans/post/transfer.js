@@ -45,9 +45,8 @@ exports = module.exports = async function (req, res) {
     const userName = req.body.transfer_to;
 
     // Let's check first that the player exists AND is part of this clan
-    const fetchRoute = process.env.API_URL+'/clan/'+clanId+'?include=memberships.player&fields[player]=login,id';
+    const fetchRoute = process.env.API_URL+'/data/clan/'+clanId+'?include=memberships.player&fields[player]=login,id';
     
-    let exists = true;
     let playerId = null;
     
     try {
@@ -63,9 +62,8 @@ exports = module.exports = async function (req, res) {
             if (record.type != "player") continue;
             members[record.attributes.login] = record.id;
         }
-      
+        
         if (!members[userName]) throw "User does not exist or is not part of the clan";
-      
         playerId = members[userName];
     }
     catch(e){
@@ -83,19 +81,20 @@ exports = module.exports = async function (req, res) {
     // Building update query
     const queryUrl = 
             process.env.API_URL 
-            + '/data/clan/' + req.body.clan_id
+            + '/data/clan/' + clanId
     ;
     
-    const newClanObject ={
+    const newClanObject =
+    {
       "data": {
             "type": "clan",
             "id": clanId,
             "relationships": {
-                "founder": {
+                "leader": {
                     "id": playerId,
                     "type": "player"
                 }
-            }  
+            }
         }
     };
     
@@ -105,8 +104,7 @@ exports = module.exports = async function (req, res) {
         body: JSON.stringify(newClanObject),
         headers: {
             'Authorization': 'Bearer ' + req.user.data.attributes.token,
-            'Content-Type': 'application/vnd.api+json',
-            'Accept': 'application/vnd.api+json'
+            'Content-Type': 'application/vnd.api+json'
         }
     }, function (err, res, body) {
 
@@ -115,6 +113,8 @@ exports = module.exports = async function (req, res) {
             let errorMessages = [];
             let msg = 'Error during the ownership transfer';
             try{
+                console.log(JSON.stringify(newClanObject, null, 2));
+                console.log(JSON.parse(res.body));
                 msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
             }
             catch{}

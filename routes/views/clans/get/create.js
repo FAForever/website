@@ -18,7 +18,7 @@ exports = module.exports = function(req, res) {
         function (err, childRes, body) {
             
             const clanInfo = JSON.parse(body);
-            
+            console.log(clanInfo);
             if (clanInfo.clan != null){
                 res.redirect('/clans/manage');
                 return;

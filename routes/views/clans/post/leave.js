@@ -27,9 +27,6 @@ exports = module.exports = async function (req, res) {
 
   // check the validation object for errors
   let errors = req.validationErrors();
-  
-  // Should not happen normally, but you never know
-  if (req.body.membership_id == req.user.data.relationships.clanMemberships.data.id) errors = [{msg: "You cannot kick yourself"}];
 
   //Must have client side errors to fix
   if (errors) {
@@ -40,7 +37,7 @@ exports = module.exports = async function (req, res) {
     let buff = new Buffer(JSON.stringify(flash));  
     let data = buff.toString('base64');
 
-    return overallRes.redirect('manage?flash='+data);
+    return overallRes.redirect('/clans?flash='+data);
   } else {
 
     // Building update query
@@ -54,7 +51,6 @@ exports = module.exports = async function (req, res) {
     //Run post to endpoint
     request.delete({
         url: queryUrl,
-        body: "",
         headers: {
             'Authorization': 'Bearer ' + req.user.data.attributes.token
         }
@@ -64,8 +60,7 @@ exports = module.exports = async function (req, res) {
         let errorMessages = [];
 
         if (res.statusCode != 204) {
-            console.log(body);
-              let msg = 'Error while removing the member';
+              let msg = 'Error while leaving the clan';
               try{
                   
                   msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
@@ -79,18 +74,38 @@ exports = module.exports = async function (req, res) {
               let buff = new Buffer(JSON.stringify(flash));  
               let data = buff.toString('base64');
 
-              return overallRes.redirect('manage?flash='+data);
+              return overallRes.redirect('/clans?flash='+data);
         }
         
         flash = {};
         flash.class = 'alert-success';
-        flash.messages = [{msg: 'The member was kicked'}];
+        flash.messages = [{msg: 'You left the clan'}];
         flash.type = 'Success!';
 
         let buff = new Buffer(JSON.stringify(flash));  
         let data = buff.toString('base64');
             
-        return overallRes.redirect('manage?flash='+data);
+        // Refreshing user
+        request.get({
+            url: process.env.API_URL + '/me',
+            headers: {
+                'Authorization': 'Bearer ' + req.user.data.attributes.token,
+            }
+        },
+            
+        function (err, res, body) {
+            try{
+                let user = JSON.parse(body);
+                user.data.attributes.token = req.user.data.attributes.token;
+                req.logIn(user, function(err){
+                    if (err) console.error(err);
+                    return overallRes.redirect('/clans?flash='+data);
+                });
+            }
+            catch{
+                console.error("There was an error updating a session after an user left a clan");
+            }
+        });
     });
   }
 }

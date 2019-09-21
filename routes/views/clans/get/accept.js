@@ -1,3 +1,5 @@
+const request = require('request');
+
 exports = module.exports = function(req, res) {
 
     let locals = res.locals;
@@ -7,6 +9,7 @@ exports = module.exports = function(req, res) {
     locals.section = 'clan';
     
     let flash = {};
+    const overallRes = res;
     
     if (!req.query.token || !req.query.clan_id){
         flash.type = 'Error!';
@@ -16,12 +19,12 @@ exports = module.exports = function(req, res) {
         let buff = new Buffer(JSON.stringify(flash));  
         let data = buff.toString('base64');
 
-        return overallRes.redirect('?flash='+data+'');
+        return overallRes.redirect('/clans?flash='+data+'');
     }
     
     const clanId = req.query.clan_id;
     
-    request.get(
+    request.post(
         {
             url: process.env.API_URL + '/clans/joinClan?token='+req.query.token,
             headers: {
@@ -39,14 +42,34 @@ exports = module.exports = function(req, res) {
                 let buff = new Buffer(JSON.stringify(flash));  
                 flashData = buff.toString('base64');
                 
-                return overallRes.redirect('see?id='+clanId+',flash='+flashData+'');
+                // Refreshing user
+                return request.get({
+                    url: process.env.API_URL + '/me',
+                    headers: {
+                        'Authorization': 'Bearer ' + req.user.data.attributes.token,
+                    }
+                },
+                    
+                function (err, res, body) {
+                    try{
+                        let user = JSON.parse(body);
+                        user.data.attributes.token = req.user.data.attributes.token;
+                        req.logIn(user, function(err){
+                            if (err) console.error(err);
+                            return overallRes.redirect('see?id='+clanId+'&flash='+flashData+'');
+                        });
+                    }
+                    catch{
+                        console.error("There was an error updating a session after an user left a clan");
+                    }
+                });
             }
             else{
                 flash.type = 'Error!';
                 flash.class = 'alert-danger';
-                let msg = 'The invitation is invalid or has expired';
+                let msg = 'The invitation is invalid or has expired, or you are already part of a clan';
                 try{
-                    msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
+                    msg += ': '+JSON.stringify(JSON.parse(childRes.body).errors[0].detail);
                 } catch{}
                   
                 flash.messages = [{msg: msg}];
@@ -54,13 +77,9 @@ exports = module.exports = function(req, res) {
                 let buff = new Buffer(JSON.stringify(flash));  
                 flashData = buff.toString('base64');
                 
-                return overallRes.redirect('?flash='+flashData+'');
+                return overallRes.redirect('/clans?flash='+flashData+'');
             }
             
         }
-    )
-    
-    
-    // Render the view
-    res.render('clans/index');
+    );
 };

@@ -160,6 +160,7 @@ app.get('/clans', require(routes + 'clans/get/index'));
 app.get('/clans/create', loggedIn, require(routes + 'clans/get/create'));
 app.get('/clans/manage', loggedIn, require(routes + 'clans/get/manage'));
 app.get('/clans/see', require(routes + 'clans/get/see'));
+app.get('/clans/accept', loggedIn, require(routes + 'clans/get/accept'));
 
 app.post('/clans/create', loggedIn, require(routes + 'clans/post/create'));
 app.post('/clans/destroy', loggedIn, require(routes + 'clans/post/destroy'));
@@ -167,8 +168,7 @@ app.post('/clans/invite', loggedIn, require(routes + 'clans/post/invite'));
 app.post('/clans/kick', loggedIn, require(routes + 'clans/post/kick'));
 app.post('/clans/transfer', loggedIn, require(routes + 'clans/post/transfer'));
 app.post('/clans/update', loggedIn, require(routes + 'clans/post/update'));
-app.post('/clans/accept', loggedIn, require(routes + 'clans/post/accept'));
-
+app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
 
 app.get('/news/', require(routes + 'blog'));
 app.get('/category/:category/page/:page', require(routes + 'blog'));
