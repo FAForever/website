@@ -83,6 +83,7 @@ block content
                                         if member.id != me
                                             form(method='post',action="/clans/kick")
                                                 input(type='hidden', name="id", value=member.id)
+                                                input(type='hidden', name='clan_id', value=clan_id)
                                                 button(type='submit').btn Kick
                                         else
                                             span  
@@ -110,6 +111,7 @@ block content
                         button(type='submit').btn-danger.btn Transfer
                         
                 form(method='post',action="/clans/destroy", onsubmit="return confirm('THIS OPERATION IS DEFINITIVE. Press OK to confirm');")
+                    input(type='hidden', name='clan_id', value=clan_id)
                     h3 Destroy the clan
                     p.text-left All memberships will be terminated and the clan will be removed. The name and tag of the clan will become free.
                     p.danger This operation 

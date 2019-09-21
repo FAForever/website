@@ -24,6 +24,7 @@ exports = module.exports = async function (req, res) {
 
   // validate the input
   req.checkBody('transfer_to', 'Please indicate the recipient name').notEmpty();
+  req.checkBody('clan_id', 'Internal error while processing your query: invalid clan ID').notEmpty();
 
   // check the validation object for errors
   let errors = req.validationErrors();
@@ -129,7 +130,27 @@ exports = module.exports = async function (req, res) {
             return overallRes.redirect('manage?flash='+data);
         }
         else{
-            return overallRes.redirect('see?id='+clanId);
+            // Refreshing user
+            request.get({
+                url: process.env.API_URL + '/me',
+                headers: {
+                    'Authorization': 'Bearer ' + req.user.data.attributes.token,
+                }
+            },
+                
+            function (err, res, body) {
+                try{
+                    let user = JSON.parse(body);
+                    user.data.attributes.token = req.user.data.attributes.token;
+                    req.logIn(user, function(err){
+                        if (err) console.error(err);
+                        return overallRes.redirect('see?id='+clanId);
+                    });
+                }
+                catch{
+                    console.error("There was an error updating a session after a clan transfer");
+                } 
+            });
         }
     });
   }

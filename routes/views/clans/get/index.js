@@ -14,7 +14,9 @@ exports = module.exports = function(req, res) {
         
         flash = JSON.parse(text);
     }
-            
+    
+    locals.has_clan = req.user && (!req.user.data.relationships.clanMemberships || req.user.data.relationships.clanMemberships.data.length = 0);
+    
     // Render the view
     res.render('clans/index', {flash:flash});
 };

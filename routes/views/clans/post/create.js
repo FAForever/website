@@ -81,28 +81,48 @@ exports = module.exports = async function (req, res) {
       }
     }, function (err, res, body) {
 
-      let resp;
-      let errorMessages = [];
+        let resp;
+        let errorMessages = [];
 
-      if (res.statusCode != 200) {
-          let msg = 'Error while creating the clan';
-          try{
-            
-            msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
-          }
-          catch{}
-          errorMessages.push({msg: msg});
-          flash.class = 'alert-danger';
-          flash.messages = errorMessages;
-          flash.type = 'Error!';
+        if (res.statusCode != 200) {
+              let msg = 'Error while creating the clan';
+              try{
+                
+                msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
+              }
+              catch{}
+              errorMessages.push({msg: msg});
+              flash.class = 'alert-danger';
+              flash.messages = errorMessages;
+              flash.type = 'Error!';
 
-          let buff = new Buffer(JSON.stringify(flash));  
-          let data = buff.toString('base64');
+              let buff = new Buffer(JSON.stringify(flash));  
+              let data = buff.toString('base64');
 
-          return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
-      }
-        
-      overallRes.redirect('/clans/manage');
+              return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
+        }
+         
+        // Refreshing user
+        request.get({
+            url: process.env.API_URL + '/me',
+            headers: {
+                'Authorization': 'Bearer ' + req.user.data.attributes.token,
+            }
+        },
+        function (err, res, body) {
+            try{
+                let user = JSON.parse(body);
+                user.data.attributes.token = req.user.data.attributes.token;
+                req.logIn(user, function(err){
+                    if (err) console.error(err);
+                    return overallRes.redirect('/clans/manage');
+                });
+            }
+            catch{
+                console.error("There was an error updating a session after a clan creation");
+            }
+        });
+      
     });
   }
 }

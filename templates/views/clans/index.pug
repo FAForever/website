@@ -10,8 +10,10 @@ block content
             .hgroup
                 h1 Clan management
                 h3 Create your own clan with your friends, or join a clan and find people to play with
-                a(class="btn btn-default btn-lg btn-outro btn-danger", href='clans/create') Create my clan
-                a(class="btn btn-default btn-lg btn-outro", href='clans/browse') Browse clans
+                if has_clan
+                    a(class="btn btn-default btn-lg btn-outro btn-danger", href='/clans/manage') Manage my clan
+                else
+                    a(class="btn btn-default btn-lg btn-outro btn-danger", href='/clans/create') Create my clan
     .the-project: .container
         .col-md-3
         .col-md-6

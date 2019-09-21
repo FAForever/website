@@ -12,6 +12,7 @@ exports = module.exports = function(req, res) {
                 
     let clanMembershipId = null;
     try{
+        console.trace(req.user.data.relationships.clanMemberships);
         clanMembershipId = req.user.data.relationships.clanMemberships.data[0].id;
     }
     catch{
@@ -50,6 +51,18 @@ exports = module.exports = function(req, res) {
         function (err, childRes, body) {
             
             const clan = JSON.parse(body);
+            
+            if (err || !clan.data){
+                flash = {};
+                flash.class = 'alert-danger';
+                flash.messages = [{msg: "Unknown error while retrieving your clan information"}];
+                flash.type = 'Error!';
+
+                let buff = new Buffer(JSON.stringify(flash));  
+                let data = buff.toString('base64');
+
+                return res.redirect('/clans?flash='+data);
+            }
             
             if (clan.data.relationships.leader.data.id != req.user.data.id){
                 // Not the leader! Should'nt be able to manage shit
