@@ -64,7 +64,6 @@ exports = module.exports = async function (req, res) {
         let errorMessages = [];
 
         if (res.statusCode != 204) {
-            console.log(body);
               let msg = 'Error while removing the member';
               try{
                   

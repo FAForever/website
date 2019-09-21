@@ -55,7 +55,7 @@ exports = module.exports = async function (req, res) {
     }
     catch(e){
       flash.class = 'alert-danger';
-      flash.messages = [{msg: 'Error while creating the clan '+e.toString()}];
+      flash.messages = [{msg: 'Error while creating the clan '+e}];
       flash.type = 'Error!';
 
       let buff = new Buffer(JSON.stringify(flash));  

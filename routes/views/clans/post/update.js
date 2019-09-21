@@ -51,36 +51,36 @@ exports = module.exports = async function (req, res) {
 
     // Is the name taken ?
     try {
-            let msg = null;
-            
-            flash.class = 'alert-danger';
-            flash.type = 'Error!';
+        let msg = null;
+        
+        flash.class = 'alert-danger';
+        flash.type = 'Error!';
 
-            if (oldName != newName){
-                  const fetchRoute = process.env.API_URL+'/data/clan?filter=name=="'+newName+'"';
-                  const data = await promiseRequest(fetchRoute);
-                  const exists = JSON.parse(data).data.length > 0;
-                  
-                  if (exists) msg = "This name is already taken: "+newName;
-            }
-            if (oldTag != newTag){
-                  const fetchRoute = process.env.API_URL+'/data/clan?filter=tag=="'+newTag+'"';
-                  const data = await promiseRequest(fetchRoute);
-                  const exists = JSON.parse(data).data.length > 0;
-                  
-                  if (exists) msg = "This tag is already taken: "+newTag;
-            }
-            
-            if (msg){
-                  flash.messages = [{msg: msg}];
-                  let buff = new Buffer(JSON.stringify(flash));  
-                  let data = buff.toString('base64');
-                  return overallRes.redirect('manage?flash='+data);        
+        if (oldName != newName){
+              const fetchRoute = process.env.API_URL+'/data/clan?filter=name=="'+encodeURIComponent(newName)+'"';
+              const data = await promiseRequest(fetchRoute);
+              const exists = JSON.parse(data).data.length > 0;
+              
+              if (exists) msg = "This name is already taken: "+newName;
+        }
+        if (oldTag != newTag){
+              const fetchRoute = process.env.API_URL+'/data/clan?filter=tag=="'+encodeURIComponent(newTag)+'"';
+              const data = await promiseRequest(fetchRoute);
+              const exists = JSON.parse(data).data.length > 0;
+              
+              if (exists) msg = "This tag is already taken: "+newTag;
+        }
+        
+        if (msg){
+              flash.messages = [{msg: msg}];
+              let buff = new Buffer(JSON.stringify(flash));  
+              let data = buff.toString('base64');
+              return overallRes.redirect('manage?flash='+data);        
             }        
     }
     catch(e){
             flash.class = 'alert-danger';
-            flash.messages = [{msg: 'Error while updating the clan '+e.toString()}];
+            flash.messages = [{msg: 'Error while updating the clan '+e}];
             flash.type = 'Error!';
 
             let buff = new Buffer(JSON.stringify(flash));  

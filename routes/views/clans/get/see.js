@@ -47,9 +47,6 @@ exports = module.exports = function(req, res) {
                 flash.class = 'alert-danger';
                 flash.messages = [{msg: 'The clan you want to see is invalid or does no longer exist'}];
 
-                console.log(clan);
-                console.log(queryUrl);
-
                 let buff = new Buffer(JSON.stringify(flash));  
                 let data = buff.toString('base64');
 

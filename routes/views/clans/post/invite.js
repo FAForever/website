@@ -57,7 +57,7 @@ exports = module.exports = async function (req, res) {
     }
     catch(e){
       flash.class = 'alert-danger';
-      flash.messages = [{msg: 'The player ' + userName + " doesn't seem to exist" + e.toString()}];
+      flash.messages = [{msg: 'The player ' + userName + " doesn't seem to exist" + e}];
       flash.type = 'Error!';
 
       let buff = new Buffer(JSON.stringify(flash));  
