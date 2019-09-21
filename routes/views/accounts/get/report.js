@@ -91,7 +91,7 @@ exports = module.exports = function(req, res) {
 
                 locals.reports.push({
                     'id':report.id,
-                    'offenders':offenders.join(','),
+                    'offenders':offenders.join(" "),
                     'creationTime':report.attributes.createTime,
                     'game': report.relationships.game.data != null ? '#'+report.relationships.game.data.id : '',
                     'lastModerator': moderator,
@@ -106,7 +106,10 @@ exports = module.exports = function(req, res) {
                 try{
                     locals.reportable_members = JSON.parse(data);
                 }
-                catch{}
+                catch(e){
+                    const moment = require('moment');
+                    console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + "The list of reportable members could not be read from the disk: "+e.toString());
+                }
                 
                 res.render('account/report', {flash: flash});
             });
