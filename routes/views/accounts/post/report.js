@@ -20,12 +20,14 @@ exports = module.exports = async function (req, res) {
   locals.formData = req.body || {};
 
   let overallRes = res;
+  
+  const bodyKeys =  Object.keys(req.body);
 
   // validate the input
-  let i = 0;
-  while(req.body["offender_"+i]){
-    req.checkBody("offender_"+i, 'Please indicate the player or players you\'re reporting').notEmpty();
-    i++;
+  for (i in bodyKeys){
+    const element = bodyKeys[i];
+    if (!element.startsWith("offender_")) continue;
+    req.checkBody(element, "Please indicate the player or players you're reporting").notEmpty();
   }
   req.checkBody('report_description', 'Please describe the incident').notEmpty();
   if (req.body.game_id.length > 0){
@@ -53,12 +55,15 @@ exports = module.exports = async function (req, res) {
     const isGameReport = req.body.game_id != null;
 
     let offenders = [];
-    let j = 0;
-    while(req.body["offender_"+j]){
-        const offender = req.body["offender_"+j];
+    
+    for (i in bodyKeys){
+        const key = bodyKeys[i];
+        if (!key.startsWith("offender_")) continue;
+        
+        const offender = req.body[key];
         if (offender.trim().length == 0) continue;
+        
         offenders.push(offender);
-        j++;
     }
 
     // Let's check first that the users exist

@@ -23,9 +23,12 @@ module.exports.run = function run() {
                 let apiRecentPlayers = JSON.parse(body);
                 let recentPlayers = [];
 
-                if (apiRecentPlayers.included == undefined) return;
+                if (apiRecentPlayers.included == undefined){
+                    console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - Tried to update the list of recent players, but there is no one.');
+                    return;
+                }
 
-                for(let i = 0; i < apiRecentPlayers.included.length; i++) {
+                for(i in apiRecentPlayers.included) {
                     let entry = apiRecentPlayers.included[i];
                     if (entry.type != "player") continue;
                     
