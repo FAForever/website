@@ -1,3 +1,5 @@
+const request = require('request');
+    
 exports = module.exports = function(req, res) {
 
     let locals = res.locals;
@@ -6,11 +8,11 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
     locals.section = 'clan';
     
-    const request = require('request');
+    let flash = null;
                 
-    let clanId = null;
+    let clanMembershipId = null;
     try{
-        clanId = req.user.data.relationships.clanMemberships.data[0].id;
+        clanMembershipId = req.user.data.relationships.clanMemberships.data[0].id;
     }
     catch{
         // The user doesnt belong to a clan
@@ -18,11 +20,21 @@ exports = module.exports = function(req, res) {
         return;
     }
     
+    // In case the user has just generated an invite link
+    if (req.query.invitation_token){
+        flash = {};
+        flash.class = 'alert-success';
+        flash.messages = [
+            {msg: "<a class='invite-link' href='"+process.env.HOST + "/clans/accept?token=" + req.query.invitation_token+ "'><b>Right click on me and copy link</b>, then send the link to the invited player</a>"}
+        ];
+        flash.type = 'Success!';
+    }
+    
     request.get(
         {
             url: 
                 process.env.API_URL 
-                + '/data/clanMembership/'+clanId+'/clan'
+                + '/data/clanMembership/'+clanMembershipId+'/clan'
                 + '?include=memberships.player'
                 + '&fields[clan]=createTime,description,name,tag,updateTime,websiteUrl,founder,leader'
                 + '&fields[player]=login,updateTime'
@@ -45,6 +57,7 @@ exports = module.exports = function(req, res) {
             locals.clan_tag = clan.data.attributes.tag; 
             locals.clan_description = clan.data.attributes.description; 
             locals.me = req.user.data.id;
+            locals.clan_id = clan.data.id;
             
             let members = {};
             
@@ -69,8 +82,6 @@ exports = module.exports = function(req, res) {
             }
             
             locals.clanMembers = members;
-
-            var flash = null;
 
             if (req.originalUrl == '/clan_created') {
                 flash = {};

@@ -158,9 +158,16 @@ app.get('/competitive/leaderboards/leagues', (function(){
 app.get('/clans', require(routes + 'clans/get/index'));
 
 app.get('/clans/create', loggedIn, require(routes + 'clans/get/create'));
-app.post('/clans/create', loggedIn, require(routes + 'clans/post/create'));
-
 app.get('/clans/manage', loggedIn, require(routes + 'clans/get/manage'));
+app.get('/clans/see', loggedIn, require(routes + 'clans/get/see'));
+
+app.post('/clans/create', loggedIn, require(routes + 'clans/post/create'));
+app.post('/clans/destroy', loggedIn, require(routes + 'clans/post/destroy'));
+app.post('/clans/invite', loggedIn, require(routes + 'clans/post/invite'));
+app.post('/clans/kick', loggedIn, require(routes + 'clans/post/kick'));
+app.post('/clans/transfer', loggedIn, require(routes + 'clans/post/transfer'));
+app.post('/clans/update', loggedIn, require(routes + 'clans/post/update'));
+app.post('/clans/accept', loggedIn, require(routes + 'clans/post/accept'));
 
 
 app.get('/news/', require(routes + 'blog'));
