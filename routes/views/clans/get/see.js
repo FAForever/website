@@ -93,7 +93,7 @@ exports = module.exports = function(req, res) {
                 }
             }
             
-            if (locals.iAmMember) locals.iAmLeader = locals.me && clan.data.relationships.leader.data.id;;
+            if (locals.iAmMember) locals.iAmLeader = locals.me == clan.data.relationships.leader.data.id;
             
             locals.clan_members = members;
             

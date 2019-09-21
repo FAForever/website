@@ -48,11 +48,12 @@ exports = module.exports = async function (req, res) {
     
     let exists = true;
     let playerData = null;
-    
+    let playerId = null;
     try {
       const httpData = await promiseRequest(fetchRoute);
       playerData = JSON.parse(httpData).data;
       exists = playerData.length > 0;
+      playerData = playerData[0].id;
     }
     catch(e){
       flash.class = 'alert-danger';
@@ -64,8 +65,6 @@ exports = module.exports = async function (req, res) {
 
       return overallRes.redirect('manage?flash='+data);
     }
-    
-    const playerId = playerData[0].id;
     
     const queryUrl = 
         process.env.API_URL 
