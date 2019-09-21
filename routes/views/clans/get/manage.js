@@ -94,7 +94,6 @@ exports = module.exports = function(req, res) {
 
             if (req.originalUrl == '/clan_created') {
                 flash = {};
-
                 flash.class = 'alert-success';
                 flash.messages = [{msg: 'You have successfully created your clan'}];
                 flash.type = 'Success!';

@@ -86,7 +86,7 @@ exports = module.exports = async function (req, res) {
       if (res.statusCode != 200) {
           
           let errorMessages = [];
-          let msg = 'Error while creating the clan';
+          let msg = 'Error while generating the invite link';
           try{
             
             msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);

@@ -29,17 +29,20 @@ block content
             h2 Manage clan
             .col-md-6
                 form(method='post',action="/clans/update",data-toggle="validator")
+                    input(type='hidden', name='clan_id', value=clan_id)
                     .row.inline-panel
                         .col-md-4
                             div.form-group
                                 label Name:
                                 input(type='text', name='clan_name', value=clan_name, placeholder='Clan name').form-control
+                                input(type='hidden', name='original_clan_name', value=clan_name)
                                 span(aria-hidden='true').glyphicon.form-control-feedback
                                 
                             div.form-group
                                 label Tag:
                                 p(style="font-size:2em") [
                                     input(type='text', required='required', name='clan_tag', value=clan_tag, placeholder='TAG', style="display:inline;margin-left:5px;margin-right:5px;width:5em;").form-control
+                                    input(type='hidden', name='original_clan_tag', value=clan_tag)
                                     | ]
                                 span(aria-hidden='true').glyphicon.form-control-feedback
 
