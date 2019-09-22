@@ -3,9 +3,9 @@ require('dotenv').load();
 let request = require('request');
 let fs = require('fs');
 
-let date = new Date();
 
 module.exports.run = function run() {
+    console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - Updating leaderboards...');
 	request(process.env.API_URL + '/leaderboards/global', function (error, response, body) {
 		if (! error) {
 			let entries = JSON.parse(body);
@@ -27,7 +27,7 @@ module.exports.run = function run() {
 				if (error) {
 					console.log(error);
 				} else {
-					console.log(date + ' - User file created successfully for global.');
+					console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - User file created successfully for global.');
 				}
 			});
 
@@ -58,7 +58,7 @@ module.exports.run = function run() {
 			if (error) {
 				console.log(error);
 			} else {
-				console.log(date + ' - User file created successfully for 1v1.');
+				console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - User file created successfully for 1v1.');
 			}
 		});
 
@@ -84,7 +84,7 @@ function processTopFivePlayers(users) {
 		if (error) {
 			console.log(error);
 		} else {
-			console.log(date + ' - User file created successfully for top five.');
+			console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - User file created successfully for top five.');
 		}
 	});
 }
