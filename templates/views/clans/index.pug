@@ -15,6 +15,25 @@ block content
                 else
                     a(class="btn btn-default btn-lg btn-outro btn-danger", href='/clans/create') Create my clan
     .the-project: .container
-        .col-md-3
-        .col-md-6
+        h1 Recently active clans
+        .table-responsive
+            table.table.table-striped.table-hover
+                thead
+                    tr
+                        th.text-center Name
+                        th.text-center Created at
+                        th.text-center Leader
+                        th.text-center Population
+                tbody
+                    each clan in clans
+                        tr(onclick="window.location='/clans/see?id=" + clan.id + "'", style="cursor:pointer;")
+                            td(style='font-weight:bold') [#{clan.tag}] #{clan.name}
+                            td #{clan.createTime}
+                            td #{clan.leader}
+                            td #{clan.population}
+                    tr
+                        td ...
+                        td ...
+                        td ...
+                        td ...
     .container
