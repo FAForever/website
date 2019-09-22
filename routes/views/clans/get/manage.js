@@ -74,6 +74,7 @@ exports = module.exports = function(req, res) {
             locals.clan_create_time = clan.data.attributes.createTime; 
             locals.me = req.user.data.id;
             locals.clan_id = clan.data.id;
+            locals.clan_link = process.env.HOST + "/clans/see?id="+clan.data.id;
             
             let members = {};
             

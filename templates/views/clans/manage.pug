@@ -33,13 +33,13 @@ block content
                     .row.inline-panel
                         .col-md-4
                             div.form-group
-                                label Name:
+                                label Name
                                 input(type='text', name='clan_name', value=clan_name, placeholder='Clan name').form-control
                                 input(type='hidden', name='original_clan_name', value=clan_name)
                                 span(aria-hidden='true').glyphicon.form-control-feedback
                                 
                             div.form-group
-                                label Tag:
+                                label Tag
                                 p(style="font-size:2em") [
                                     input(type='text', required='required', name='clan_tag', value=clan_tag, placeholder='TAG', style="display:inline;margin-left:5px;margin-right:5px;width:5em;").form-control
                                     input(type='hidden', name='original_clan_tag', value=clan_tag)
@@ -48,18 +48,26 @@ block content
 
                         .col-md-4
                             div.form-group
-                                label Founder:
+                                label Founder
                                 input(type='text', disabled='disabled', value=founder_name).form-control
                                 span(aria-hidden='true').glyphicon.form-control-feedback
                                 
                             div.form-group
-                                label Creation date:
+                                label Creation date
                                 input(type='text', disabled='disabled', value=clan_create_time).form-control
                                 span(aria-hidden='true').glyphicon.form-control-feedback
+                                
                     .row.inline-panel
                         .col-md-8
                             div.form-group
-                                label Clan description:
+                                label Clan link
+                                input(type='text', readonly, value=clan_link).form-control
+                                span(aria-hidden='true').glyphicon.form-control-feedback
+                                
+                    .row.inline-panel
+                        .col-md-8
+                            div.form-group
+                                label Clan description
                                 textarea(rows='8', name='clan_description', required='required', placeholder='Please provide a short description of your clan, and the kind of players you\'re looking for :)').form-control #{clan_description}
                                 span(aria-hidden='true').glyphicon.form-control-feedback
                                     
