@@ -28,7 +28,7 @@ block content
                                 tr(class=(member.isLeader ? "leader" : "")+" "+(member.id == me ? "me" : ""))
                                     td 
                                         if member.isLeader
-                                            | 👑 
+                                            abbr(title="Leader") 👑 
                                         | #{member.name}
                                     td #{member.joinedAt}
 

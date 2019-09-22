@@ -76,8 +76,11 @@ block content
                                 th.text-center  Kick member
                         tbody
                             each member in clan_members
-                                tr(class= member.id == me ? "leader" : "")
-                                    td #{member.name}
+                                tr(class= member.id == me ? "leader me" : "")
+                                    td 
+                                        if member.id == me
+                                            abbr(title="Leader") 👑 
+                                        | #{member.name}
                                     td #{member.joinedAt}
                                     td
                                         if member.id != me
@@ -88,6 +91,10 @@ block content
                                         else
                                             span  
     
+        .row
+            .col-md-12
+                hr
+                
         .row.centered-flex
             .col-md-8
                 h2.danger Danger zone
