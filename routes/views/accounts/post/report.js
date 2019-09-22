@@ -20,9 +20,15 @@ exports = module.exports = async function (req, res) {
   locals.formData = req.body || {};
 
   let overallRes = res;
+  
+  const bodyKeys =  Object.keys(req.body);
 
   // validate the input
-  req.checkBody('offenders', 'Please indicate the player or players you\'re reporting').notEmpty();
+  for (i in bodyKeys){
+    const element = bodyKeys[i];
+    if (!element.startsWith("offender_")) continue;
+    req.checkBody(element, "Please indicate the player or players you're reporting").notEmpty();
+  }
   req.checkBody('report_description', 'Please describe the incident').notEmpty();
   if (req.body.game_id.length > 0){
     req.checkBody('game_id', 'Please enter a valid game ID, or nothing. The # is not needed.').optional().isDecimal();
@@ -48,7 +54,17 @@ exports = module.exports = async function (req, res) {
 
     const isGameReport = req.body.game_id != null;
 
-    const offenders = req.body.offenders.split(' ');
+    let offenders = [];
+    
+    for (i in bodyKeys){
+        const key = bodyKeys[i];
+        if (!key.startsWith("offender_")) continue;
+        
+        const offender = req.body[key];
+        if (offender.trim().length == 0) continue;
+        
+        offenders.push(offender);
+    }
 
     // Let's check first that the users exist
     let filter = '';
