@@ -26,7 +26,10 @@ block content
                         tbody
                             each member in clan_members
                                 tr(class=(member.isLeader ? "leader" : "")+" "+(member.id == me ? "me" : ""))
-                                    td #{member.name}
+                                    td 
+                                        if member.isLeader
+                                            | 👑 
+                                        | #{member.name}
                                     td #{member.joinedAt}
 
         if iAmLeader

@@ -15,13 +15,7 @@ exports = module.exports = function(req, res) {
         let text = buff.toString('ascii');
         
         flash = JSON.parse(text);
-    }
-    
-    locals.has_clan = 
-        req.user && 
-        req.user.data.relationships.clanMemberships && 
-        req.user.data.relationships.clanMemberships.data.length > 0;
-        
+    }        
       
     // Fetch the clan list    
     const activityLimit = 3; // Every clan that was active in the last 1 month

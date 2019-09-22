@@ -92,6 +92,8 @@ html
                   if username
                     li: span.welcome-text #{username}
                     li: a(href="/account/report") Report player
+                    if hasClan
+                        li: a(href="/clans/manage") My clan
                     li: a(href="/account/password/change") Change Password
                     li: a(href="/account/username/change") Change Username
                     li: a(href="/account/email/change") Change Email
