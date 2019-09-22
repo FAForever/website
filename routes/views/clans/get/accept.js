@@ -38,6 +38,7 @@ exports = module.exports = function(req, res) {
     const invite = req.app.locals.clanInvitations[invitationId];
     const clanId = invite.clan;
     const token = invite.token;
+    delete req.app.locals.clanInvitations[invitationId];
     
     request.post(
         {
