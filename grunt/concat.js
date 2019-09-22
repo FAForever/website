@@ -34,6 +34,10 @@ module.exports = {
             ],
             'public/js/blog.min.js': [
                 'public/js/app/blog.js'
+            ],
+            'public/js/report.min.js': [
+                'node_modules/awesomplete/awesomplete.js',
+                'public/js/app/report.js'
             ]
         }
     }

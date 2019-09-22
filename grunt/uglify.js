@@ -10,7 +10,9 @@ module.exports = {
             'public/js/calendar.min.js': 'public/js/calendar.min.js',
             'public/js/leaderboard.min.js': 'public/js/leaderboard.min.js',
             'public/js/account.min.js': 'public/js/account.min.js',
-            'public/js/blog.min.js': 'public/js/blog.min.js'
+            'public/js/blog.min.js': 'public/js/blog.min.js',
+            'public/js/counter.min.js': 'public/js/counter.min.js',
+            'public/js/report.min.js': 'public/js/report.min.js'
         }
     },
     dist: {
@@ -23,7 +25,9 @@ module.exports = {
             'public/js/calendar.min.js': 'public/js/calendar.min.js',
             'public/js/leaderboard.min.js': 'public/js/leaderboard.min.js',
             'public/js/account.min.js': 'public/js/account.min.js',
-            'public/js/blog.min.js': 'public/js/blog.min.js'
+            'public/js/blog.min.js': 'public/js/blog.min.js',
+            'public/js/counter.min.js': 'public/js/counter.min.js',
+            'public/js/report.min.js': 'public/js/report.min.js'
         }
     }
 };
