@@ -10,7 +10,6 @@ let expressValidator = require('express-validator');
 let bodyParser = require('body-parser');
 let passport = require('passport');
 let OAuth2Strategy = require('passport-oauth2');
-let schedule = require('node-schedule');
 
 const showdown = require('showdown');
 const fs = require('fs');
@@ -56,7 +55,7 @@ app.use(require('express-session')({
 	resave: false,
 	saveUninitialized: false,
   cookie: {
-    maxAge: 3600000 * 12 //an api token is valid for 12h
+    maxAge: process.env.TOKEN_LIFESPAN * 1000
   }
 }));
 
@@ -146,7 +145,7 @@ app.get('/competitive/leaderboards/leagues', (function(){
     };
     setInterval( 
       updateFunction
-    , 60 * 60 * 1000); /// Every 60 minutes
+    ,   parseInt(process.env.LEAGUES_UPDATE_INTERVAL) * 1000);
     
     updateFunction();
     
@@ -234,30 +233,44 @@ if (process.env.NODE_ENV === 'development') {
 
 let extractor = require("./scripts/extractor");
 let getLatestClientRelease = require("./scripts/getLatestClientRelease");
+let getRecentUsers = require("./scripts/getRecentUsers");
 
 // Run scripts initially on startup
-extractor.run();
-getLatestClientRelease.run();
+try{
+    extractor.run();
+    getLatestClientRelease.run();
+    getRecentUsers.run();
+}
+catch(e){
+    console.error("Error while running update scripts. Make sure the API is available. Those scripts will run again after some time - no need to restart the website.", e);
+}
 
-// Run leaderboard extractor every 15 minutes
-schedule.scheduleJob('*/15 * * * *', function myFunc() {
+// Run leaderboard extractor every minute
+setInterval(() => {
 	try {
-	  console.log("Updating leaderboards...");
 		extractor.run();
 	} catch (e) {
 		console.error("Error while updating leaderboards!", e);
 	}
-});
+},  parseInt(process.env.LEADERBOARDS_UPDATE_INTERVAL) * 1000);
+
+// Run recent players detection every 15 minutes
+setInterval(() => {
+	try {
+        getRecentUsers.run();
+	} catch (e) {
+		console.error("Error while updating recent user list!", e);
+	}
+},  parseInt(process.env.RECENT_USERS_LIST_UPDATE_INTERVAL) * 1000);
 
 // Run client release fetcher every 15 minutes
-schedule.scheduleJob('*/15 * * * *', function myFunc() {
+setInterval(() => {
 	try {
-    console.log("Updating client release...");
-    getLatestClientRelease.run();
+		getLatestClientRelease.run();
 	} catch (e) {
 		console.error("Error while fetching latest client release!", e);
 	}
-});
+},  parseInt(process.env.CLIENT_RELEASE_FETCHING_INTERVAL) * 1000);
 
 //Start and listen on port
 app.listen(process.env.PORT, function () {
