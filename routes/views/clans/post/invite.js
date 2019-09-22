@@ -53,7 +53,7 @@ exports = module.exports = async function (req, res) {
       const httpData = await promiseRequest(fetchRoute);
       playerData = JSON.parse(httpData).data;
       exists = playerData.length > 0;
-      playerData = playerData[0].id;
+      playerId = playerData[0].id;
     }
     catch(e){
       flash.class = 'alert-danger';
