@@ -1,84 +1,92 @@
 extends ../layouts/default
 
 block content
-	.intro
-		div.hero
-		.introtitle
-			img(src="/images/vector_faf_logo.png")
-			.hgroup
-				h1 Forged Alliance Forever
-				h3 The Community Driven Lobby for </br> Supreme Commander: Forged Alliance
-			a(class="btn btn-default btn-lg btn-outro btn-danger", href='/client') Download Client
-	.the-project: .container
-		.col-md-3
-		.col-md-6
-			h1 The Project
-			p Forged Alliance Forever is a community-driven project designed to facilitate online play for Supreme Commander: Forged Alliance. Complete with chat, matchmaking, replay vaults, tournaments and ever evolving balance.
-			p If you want to experience Forged Alliance in its true glory together with thousands of other players of all skill levels, FAF is the place to be.
-	.features: .container
-		.row
-			.col-md-2
-			.col-md-4: .text-right
-				h3 Multiplayer
-				p Host and join teamgames with up to 16 players simultaneously or measure your skill against others in one versus one combat against players from all over the world.
-			.col-md-4
-				img(src="/images/multiplayer.png" class="img-responsive")
-		.row
-			.col-md-2
-			.col-md-4: .text-right
-				img(src="/images/coop.png" class="img-responsive")
-			.col-md-4
-				h3 Co-Op Campaign
-				p Enjoy the original Supreme Commander and Supreme Commander: Forged Alliance campaigns with up to 3 friends in addition to completely new custom made co-op campaign maps!
-		.row
-			.col-md-2
-			.col-md-4: .text-right
-				h3 Modding &amp; Map Making
-				p Experience countless variations on gameplay and thousands of player made maps to keep things fresh forever.
-			.col-md-4
-				img(src="/images/modding.png" class="img-responsive")
-		.row
-			.col-md-2
-			.col-md-4: .text-right
-				img(src="/images/community.png" class="img-responsive")
-			.col-md-4
-				h3 Community
-				p Meet casual to competitive gamers. Forged Alliance Forever is one of the best online gaming communities out there complete with forums, clans, wiki, and a supremely moderated global chat to enjoy between games.
-		.row
-			.col-md-2
-			.col-md-4: .text-right
-				h3 Competitive
-				p Compete against some of the top players in FAF.
-				ul.text-center.list-unstyled
-					each topPlayer in topPlayers
-						li= topPlayer.name + ' - ' + topPlayer.rank
-			.col-md-4
-				img(src="/images/compete.jpg" class="img-responsive")
-	.what-is: .container
-		.row
-			.col-md-3
-			.col-md-6.text-center
-				h1 What is Supreme Commander?
-		.row.text-center
-			.col-md-1
-			.col-md-3
-				img(src="/images/strategic-zoom.png" class="img-responsive")
-				h3 Genre-Defining Command & Control
-				p Control your units from any vantage point. Issue orders from the theater of war commander's view, or zoom down into the heart of the battle and adjust your strategies on the fly.
-			.col-md-4
-				img(src="/images/destruction.png" class="img-responsive")
-				h2 Destruction On An Unparalleled Scale
-				p Attack with unique land, sea, and air units, wage war across frozen tundras, scorching deserts and vast oceans. Devastating experimental units will finish the job.
-			.col-md-3
-				img(src="/images/fourfactions.png" class="img-responsive")
-				h3 Four Unique Factions
-				p Unleash the most powerful weapon in the galaxy, the Supreme Commander, in one of four diverse factions: The United Earth Federation, The Cybran Nation, The Aeon Illuminate or The Order (Seraphim).
-		.row.text-center.buy-now
-			hr
-			h3 In order to play Forged Alliance Forever, you must first install Supreme Commander: Forged alliance.  You can purchase it for less than $20, below:
-			.col-md-3
-			.col-md-3
-				a(href=" https://www.amazon.com/Supreme-Commander-Forged-Alliance-PC/dp/B000U8AYOO" class="btn btn-default btn-lg btn-outro btn-danger") Buy from Amazon
-			.col-md-3
-				a(href="https://store.steampowered.com/app/9420" class="btn btn-default btn-lg btn-outro btn-danger") Buy from Steam
-	.container
+    .intro
+        div.hero
+        .introtitle
+            img(src="/images/vector_faf_logo.png")
+            .hgroup
+                h1 Forged Alliance Forever
+                h3 The Community Driven Lobby for </br> Supreme Commander: Forged Alliance
+            p.counters Currently hosting 
+                span(id="player_counter").counter 0
+                |  players and running 
+                span(id="game_counter").counter 0
+                |  games
+            a(class="btn btn-default btn-lg btn-outro btn-danger", href='/client') Download Client
+    .the-project: .container
+        .col-md-3
+        .col-md-6
+            h1 The Project
+            p Forged Alliance Forever is a community-driven project designed to facilitate online play for Supreme Commander: Forged Alliance. Complete with chat, matchmaking, replay vaults, tournaments and ever evolving balance.
+            p If you want to experience Forged Alliance in its true glory together with thousands of other players of all skill levels, FAF is the place to be.
+    .features: .container
+        .row
+            .col-md-2
+            .col-md-4: .text-right
+                h3 Multiplayer
+                p Host and join teamgames with up to 16 players simultaneously or measure your skill against others in one versus one combat against players from all over the world.
+            .col-md-4
+                img(src="/images/multiplayer.png" class="img-responsive")
+        .row
+            .col-md-2
+            .col-md-4: .text-right
+                img(src="/images/coop.png" class="img-responsive")
+            .col-md-4
+                h3 Co-Op Campaign
+                p Enjoy the original Supreme Commander and Supreme Commander: Forged Alliance campaigns with up to 3 friends in addition to completely new custom made co-op campaign maps!
+        .row
+            .col-md-2
+            .col-md-4: .text-right
+                h3 Modding &amp; Map Making
+                p Experience countless variations on gameplay and thousands of player made maps to keep things fresh forever.
+            .col-md-4
+                img(src="/images/modding.png" class="img-responsive")
+        .row
+            .col-md-2
+            .col-md-4: .text-right
+                img(src="/images/community.png" class="img-responsive")
+            .col-md-4
+                h3 Community
+                p Meet casual to competitive gamers. Forged Alliance Forever is one of the best online gaming communities out there complete with forums, clans, wiki, and a supremely moderated global chat to enjoy between games.
+        .row
+            .col-md-2
+            .col-md-4: .text-right
+                h3 Competitive
+                p Compete against some of the top players in FAF.
+                ul.text-center.list-unstyled
+                    each topPlayer in topPlayers
+                        li= topPlayer.name + ' - ' + topPlayer.rank
+            .col-md-4
+                img(src="/images/compete.jpg" class="img-responsive")
+    .what-is: .container
+        .row
+            .col-md-3
+            .col-md-6.text-center
+                h1 What is Supreme Commander?
+        .row.text-center
+            .col-md-1
+            .col-md-3
+                img(src="/images/strategic-zoom.png" class="img-responsive")
+                h3 Genre-Defining Command & Control
+                p Control your units from any vantage point. Issue orders from the theater of war commander's view, or zoom down into the heart of the battle and adjust your strategies on the fly.
+            .col-md-4
+                img(src="/images/destruction.png" class="img-responsive")
+                h2 Destruction On An Unparalleled Scale
+                p Attack with unique land, sea, and air units, wage war across frozen tundras, scorching deserts and vast oceans. Devastating experimental units will finish the job.
+            .col-md-3
+                img(src="/images/fourfactions.png" class="img-responsive")
+                h3 Four Unique Factions
+                p Unleash the most powerful weapon in the galaxy, the Supreme Commander, in one of four diverse factions: The United Earth Federation, The Cybran Nation, The Aeon Illuminate or The Order (Seraphim).
+        .row.text-center.buy-now
+            hr
+            h3 In order to play Forged Alliance Forever, you must first install Supreme Commander: Forged alliance.  You can purchase it for less than $20, below:
+            .col-md-3
+            .col-md-3
+                a(href=" https://www.amazon.com/Supreme-Commander-Forged-Alliance-PC/dp/B000U8AYOO" class="btn btn-default btn-lg btn-outro btn-danger") Buy from Amazon
+            .col-md-3
+                a(href="https://store.steampowered.com/app/9420" class="btn btn-default btn-lg btn-outro btn-danger") Buy from Steam
+    .container
+
+block js
+  script(src="/js/app/counter.js")

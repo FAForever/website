@@ -154,6 +154,7 @@ app.get('/competitive/leaderboards/leagues', (function(){
     }
 })()
 );
+app.get('/lobby_api', require('./routes/lobby_api'));
 
 app.get('/news/', require(routes + 'blog'));
 app.get('/category/:category/page/:page', require(routes + 'blog'));
