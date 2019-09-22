@@ -56,7 +56,7 @@ exports = module.exports = function(req, res) {
                 flash.messages = [{msg: "Unknown error while retrieving your clan information"}];
                 flash.type = 'Error!';
 
-                let buff = new Buffer(JSON.stringify(flash));  
+                let buff = Buffer.from(JSON.stringify(flash));  
                 let data = buff.toString('base64');
 
                 return res.redirect('/clans?flash='+data);
@@ -111,7 +111,7 @@ exports = module.exports = function(req, res) {
                 flash.type = 'Success!';
             }
             else if (req.query.flash){
-                let buff = new Buffer(req.query.flash, 'base64');  
+                let buff = Buffer.from(req.query.flash, 'base64');  
                 let text = buff.toString('ascii');
                 try{
                     flash = JSON.parse(text);

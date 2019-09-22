@@ -16,7 +16,7 @@ exports = module.exports = function(req, res) {
         flash.class = 'alert-danger';
         flash.messages = [{msg: 'No clan ID specified'}];
 
-        let buff = new Buffer(JSON.stringify(flash));  
+        let buff = Buffer.from(JSON.stringify(flash));  
         let data = buff.toString('base64');
 
         return res.redirect('./?flash='+data);
@@ -47,7 +47,7 @@ exports = module.exports = function(req, res) {
                 flash.class = 'alert-danger';
                 flash.messages = [{msg: 'The clan you want to see is invalid or does no longer exist'}];
 
-                let buff = new Buffer(JSON.stringify(flash));  
+                let buff = Buffer.from(JSON.stringify(flash));  
                 let data = buff.toString('base64');
 
                 return res.redirect('./?flash='+data);
@@ -96,7 +96,7 @@ exports = module.exports = function(req, res) {
             
             
             if (req.query.flash){
-                let buff = new Buffer(req.query.flash, 'base64');  
+                let buff = Buffer.from(req.query.flash, 'base64');  
                 let text = buff.toString('ascii');
                 
                 try{

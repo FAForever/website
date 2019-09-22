@@ -23,7 +23,7 @@ exports = module.exports = function(req, res) {
         flash.type = 'Success!';
     }
     else if (req.query.flash){
-        let buff = new Buffer(req.query.flash, 'base64');  
+        let buff = Buffer.from(req.query.flash, 'base64');  
         let text = buff.toString('ascii');
         flash = JSON.parse(text);
     }

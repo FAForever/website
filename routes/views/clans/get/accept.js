@@ -16,7 +16,7 @@ exports = module.exports = function(req, res) {
         flash.class = 'alert-danger';
         flash.messages = [{msg: 'The invitation link is wrong or truncated. Key informations are missing.'}];
 
-        let buff = new Buffer(JSON.stringify(flash));  
+        let buff = Buffer.from(JSON.stringify(flash));  
         let data = buff.toString('base64');
 
         return overallRes.redirect('/clans?flash='+data+'');
@@ -29,7 +29,7 @@ exports = module.exports = function(req, res) {
         flash.class = 'alert-danger';
         flash.messages = [{msg: 'The invitation link is wrong or truncated. Key informations are missing.'}];
 
-        let buff = new Buffer(JSON.stringify(flash));  
+        let buff = Buffer.from(JSON.stringify(flash));  
         let data = buff.toString('base64');
 
         return overallRes.redirect('/clans?flash='+data+'');
@@ -54,7 +54,7 @@ exports = module.exports = function(req, res) {
                     {msg: "Welcome to your new clan!"}
                 ];
                 flash.type = 'Success!';
-                let buff = new Buffer(JSON.stringify(flash));  
+                let buff = Buffer.from(JSON.stringify(flash));  
                 flashData = buff.toString('base64');
                 
                 // Refreshing user
@@ -89,7 +89,7 @@ exports = module.exports = function(req, res) {
                   
                 flash.messages = [{msg: msg}];
 
-                let buff = new Buffer(JSON.stringify(flash));  
+                let buff = Buffer.from(JSON.stringify(flash));  
                 flashData = buff.toString('base64');
                 
                 return overallRes.redirect('/clans?flash='+flashData+'');

@@ -40,7 +40,7 @@ exports = module.exports = async function (req, res) {
     flash.messages = errors;
     flash.type = 'Error!';
 
-    let buff = new Buffer(JSON.stringify(flash));  
+    let buff = Buffer.from(JSON.stringify(flash));  
     let data = buff.toString('base64');
 
     return overallRes.redirect('report?flash='+data);
@@ -69,7 +69,7 @@ exports = module.exports = async function (req, res) {
       flash.messages = [{msg: 'Error while submitting the report form: '+e.toString()}];
       flash.type = 'Error!';
 
-      let buff = new Buffer(JSON.stringify(flash));  
+      let buff = Buffer.from(JSON.stringify(flash));  
       let data = buff.toString('base64');
 
       return overallRes.redirect('report?flash='+data);
@@ -98,7 +98,7 @@ exports = module.exports = async function (req, res) {
       flash.messages = [{"msg": "The following users could not be found : "+missing.join(',')}];
       flash.type = 'Error!';
 
-      let buff = new Buffer(JSON.stringify(flash));  
+      let buff = Buffer.from(JSON.stringify(flash));  
       let data = buff.toString('base64');
       
       return overallRes.redirect('report?flash='+data);
@@ -117,7 +117,7 @@ exports = module.exports = async function (req, res) {
         flash.messages = [{msg: 'The game could not be found. Please check the game ID you provided.'}];
         flash.type = 'Error!';
 
-        let buff = new Buffer(JSON.stringify(flash));  
+        let buff = Buffer.from(JSON.stringify(flash));  
         let data = buff.toString('base64');
 
         return overallRes.redirect('report?flash='+data);
@@ -179,7 +179,7 @@ exports = module.exports = async function (req, res) {
           flash.messages = errorMessages;
           flash.type = 'Error!';
 
-          let buff = new Buffer(JSON.stringify(flash));  
+          let buff = Buffer.from(JSON.stringify(flash));  
           let data = buff.toString('base64');
 
           return overallRes.redirect('report?flash='+data);

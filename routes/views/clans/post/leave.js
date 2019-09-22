@@ -34,7 +34,7 @@ exports = module.exports = async function (req, res) {
     flash.messages = errors;
     flash.type = 'Error!';
 
-    let buff = new Buffer(JSON.stringify(flash));  
+    let buff = Buffer.from(JSON.stringify(flash));  
     let data = buff.toString('base64');
 
     return overallRes.redirect('/clans?flash='+data);
@@ -71,7 +71,7 @@ exports = module.exports = async function (req, res) {
               flash.messages = errorMessages;
               flash.type = 'Error!';
 
-              let buff = new Buffer(JSON.stringify(flash));  
+              let buff = Buffer.from(JSON.stringify(flash));  
               let data = buff.toString('base64');
 
               return overallRes.redirect('/clans?flash='+data);
@@ -82,7 +82,7 @@ exports = module.exports = async function (req, res) {
         flash.messages = [{msg: 'You left the clan'}];
         flash.type = 'Success!';
 
-        let buff = new Buffer(JSON.stringify(flash));  
+        let buff = Buffer.from(JSON.stringify(flash));  
         let data = buff.toString('base64');
             
         // Refreshing user

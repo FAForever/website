@@ -11,7 +11,7 @@ exports = module.exports = function(req, res) {
     let flash = null;
     
     if (req.query.flash){
-        let buff = new Buffer(req.query.flash, 'base64');  
+        let buff = Buffer.from(req.query.flash, 'base64');  
         let text = buff.toString('ascii');
         
         try{
@@ -85,7 +85,7 @@ exports = module.exports = function(req, res) {
                 locals.clans = clans;
                 
                 if (req.query.flash){
-                    let buff = new Buffer(req.query.flash, 'base64');  
+                    let buff = Buffer.from(req.query.flash, 'base64');  
                     let text = buff.toString('ascii');
                     
                     flash = JSON.parse(text);

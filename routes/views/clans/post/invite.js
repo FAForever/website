@@ -34,7 +34,7 @@ exports = module.exports = async function (req, res) {
     flash.messages = errors;
     flash.type = 'Error!';
 
-    let buff = new Buffer(JSON.stringify(flash));  
+    let buff = Buffer.from(JSON.stringify(flash));  
     let data = buff.toString('base64');
     
     return overallRes.redirect('manage?flash='+data);
@@ -60,7 +60,7 @@ exports = module.exports = async function (req, res) {
       flash.messages = [{msg: 'The player ' + userName + " doesn't seem to exist" + e}];
       flash.type = 'Error!';
 
-      let buff = new Buffer(JSON.stringify(flash));  
+      let buff = Buffer.from(JSON.stringify(flash));  
       let data = buff.toString('base64');
 
       return overallRes.redirect('manage?flash='+data);
@@ -97,7 +97,7 @@ exports = module.exports = async function (req, res) {
           flash.messages = errorMessages;
           flash.type = 'Error!';
 
-          let buff = new Buffer(JSON.stringify(flash));  
+          let buff = Buffer.from(JSON.stringify(flash));  
           let data = buff.toString('base64');
           return overallRes.redirect('manage?flash='+data);
       }
@@ -118,7 +118,7 @@ exports = module.exports = async function (req, res) {
             flash.class = 'alert-danger';
             flash.messages = [{msg:"Unkown error while generating the invite link: "+e}];
             flash.type = 'Error!';
-            let buff = new Buffer(JSON.stringify(flash));  
+            let buff = Buffer.from(JSON.stringify(flash));  
             let data = buff.toString('base64');
             return overallRes.redirect('manage?flash='+data);
           }
