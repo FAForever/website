@@ -2,9 +2,9 @@ var GitHub = require('github-api');
 var fs = require('fs');
 
 var gh = new GitHub();
-var date = new Date();
 
 module.exports.run = function run() {
+    console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - Updating the client links...');
 	//Get main client
 	gh.getRepo('faforever', 'client').getRelease('latest', function(err, release) {
 		if (!err) {
@@ -25,7 +25,7 @@ module.exports.run = function run() {
 							console.log(err);
 							verifyOutput();
 						} else {
-							console.log(date + ' - Link file created successfully for latest client links.');
+							console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - Link file created successfully for latest client links.');
 						}
 					});
 				} else {
@@ -49,7 +49,7 @@ module.exports.run = function run() {
 				clientLink = JSON.parse(data);
 			} catch (e) {
 				//Must not have...
-				console.log(date + ' - Link file incorrectly made. Data was - ' + data);
+				console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - Link file incorrectly made. Data was - ' + data);
 				//Write default values to file...
 				data = {
 					client_link: 'https://github.com/FAForever/client/releases',
@@ -59,7 +59,7 @@ module.exports.run = function run() {
 					if (error) {
 						console.log(error);
 					} else {
-						console.log(date + ' - Link file verified.');
+						console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - Link file verified.');
 					}
 				});
 			}

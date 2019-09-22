@@ -5,6 +5,7 @@ let fs = require('fs');
 
 
 module.exports.run = function run() {
+    console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - Updating the recent users...');
     
     let date = new Date();
     date.setDate( date.getDate() - 1 ); // Remove one day

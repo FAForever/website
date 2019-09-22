@@ -241,7 +241,7 @@ getLatestClientRelease.run();
 getRecentUsers.run();
 
 // Run leaderboard extractor every minute
-setTimeout(() => {
+setInterval(() => {
 	try {
 		extractor.run();
 	} catch (e) {
@@ -250,7 +250,7 @@ setTimeout(() => {
 },  parseInt(process.env.LEADERBOARDS_UPDATE_INTERVAL) * 1000);
 
 // Run recent players detection every 15 minutes
-setTimeout(() => {
+setInterval(() => {
 	try {
         getRecentUsers.run();
 	} catch (e) {
@@ -259,7 +259,7 @@ setTimeout(() => {
 },  parseInt(process.env.RECENT_USERS_LIST_UPDATE_INTERVAL) * 1000);
 
 // Run client release fetcher every 15 minutes
-setTimeout(() => {
+setInterval(() => {
 	try {
 		getLatestClientRelease.run();
 	} catch (e) {
