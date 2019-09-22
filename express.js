@@ -15,6 +15,7 @@ const showdown = require('showdown');
 const fs = require('fs');
 
 let app = express();
+app.locals.clanInvitations = {};
 
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';

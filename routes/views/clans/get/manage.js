@@ -21,17 +21,16 @@ exports = module.exports = function(req, res) {
     }
     
     // In case the user has just generated an invite link
-    if (req.query.invitation_token){
+    if (req.query.invitation_id){
         flash = {};
         flash.class = 'alert-success';
         flash.messages = [
             {msg: 
                 "<a class='invite-link' href='"+process.env.HOST + "/clans/accept"
-                +"?token=" + req.query.invitation_token
-                +"&clan_id=" + req.query.clan_id 
-                +"'><b>Right click on me and copy link</b>, then send the link to the invited player</a>"}
+                +"?i=" + req.query.invitation_id
+                +"'><b>Right click on me and copy link</b>, then send it to the invited player</a>"}
         ];
-        flash.type = 'Success!';
+        flash.type = '';
     }
     
     request.get(

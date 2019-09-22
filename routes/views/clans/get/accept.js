@@ -11,7 +11,7 @@ exports = module.exports = function(req, res) {
     let flash = {};
     const overallRes = res;
     
-    if (!req.query.token || !req.query.clan_id){
+    if (!req.query.i){
         flash.type = 'Error!';
         flash.class = 'alert-danger';
         flash.messages = [{msg: 'The invitation link is wrong or truncated. Key informations are missing.'}];
@@ -22,11 +22,26 @@ exports = module.exports = function(req, res) {
         return overallRes.redirect('/clans?flash='+data+'');
     }
     
-    const clanId = req.query.clan_id;
+    const invitationId = req.query.i;
+    
+    if (!req.app.locals.clanInvitations[invitationId]){
+        flash.type = 'Error!';
+        flash.class = 'alert-danger';
+        flash.messages = [{msg: 'The invitation link is wrong or truncated. Key informations are missing.'}];
+
+        let buff = new Buffer(JSON.stringify(flash));  
+        let data = buff.toString('base64');
+
+        return overallRes.redirect('/clans?flash='+data+'');
+    }
+    
+    const invite = req.app.locals.clanInvitations[invitationId];
+    const clanId = invite.clan;
+    const token = invite.token;
     
     request.post(
         {
-            url: process.env.API_URL + '/clans/joinClan?token='+req.query.token,
+            url: process.env.API_URL + '/clans/joinClan?token='+token,
             headers: {
                 'Authorization': 'Bearer ' + req.user.data.attributes.token
             }

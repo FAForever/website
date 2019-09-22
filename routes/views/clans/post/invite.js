@@ -36,7 +36,7 @@ exports = module.exports = async function (req, res) {
 
     let buff = new Buffer(JSON.stringify(flash));  
     let data = buff.toString('base64');
-
+    
     return overallRes.redirect('manage?flash='+data);
   } else {
       
@@ -99,18 +99,24 @@ exports = module.exports = async function (req, res) {
 
           let buff = new Buffer(JSON.stringify(flash));  
           let data = buff.toString('base64');
-
           return overallRes.redirect('manage?flash='+data);
       }
       else{
           try{
             const token = JSON.parse(res.body).jwtToken;
             
-            return overallRes.redirect('manage?invitation_token='+token+'&clan_id='+clanId);
+            const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5).toUpperCase();
+            
+            req.app.locals.clanInvitations[id] = {
+                token:token,
+                clan:clanId
+            };
+            
+            return overallRes.redirect('manage?invitation_id='+id);
           }
           catch (e){
             flash.class = 'alert-danger';
-            flash.messages = "Unkown error while generating the invite link: "+e;
+            flash.messages = [{msg:"Unkown error while generating the invite link: "+e}];
             flash.type = 'Error!';
             let buff = new Buffer(JSON.stringify(flash));  
             let data = buff.toString('base64');
