@@ -23,8 +23,8 @@ exports = module.exports = async function (req, res) {
 
   // validate the input
   req.checkBody('clan_tag', 'Please indicate the clan tag - No special characters and 3 characters maximum').notEmpty().isLength({ max: 3 });
-  req.checkBody('clan_description', 'Please add a description for your clan').notEmpty();
-  req.checkBody('clan_name', "Please indicate your clan's name").notEmpty();
+  req.checkBody('clan_description', 'Please add a description for your clan').notEmpty().isLength({ max: 1000 };
+  req.checkBody('clan_name', "Please indicate your clan's name").notEmpty().isLength({ max: 64 };
   req.checkBody('clan_id', 'Internal error while processing your query: invalid clan ID').notEmpty();
 
   // check the validation object for errors
@@ -61,14 +61,14 @@ exports = module.exports = async function (req, res) {
               const data = await promiseRequest(fetchRoute);
               const exists = JSON.parse(data).data.length > 0;
               
-              if (exists) msg = "This name is already taken: "+newName;
+              if (exists) msg = "This name is already taken: "+encodeURIComponent(newName);
         }
         if (oldTag != newTag){
               const fetchRoute = process.env.API_URL+'/data/clan?filter=tag=="'+encodeURIComponent(newTag)+'"';
               const data = await promiseRequest(fetchRoute);
               const exists = JSON.parse(data).data.length > 0;
               
-              if (exists) msg = "This tag is already taken: "+newTag;
+              if (exists) msg = "This tag is already taken: "+encodeURIComponent(newTag);
         }
         
         if (msg){

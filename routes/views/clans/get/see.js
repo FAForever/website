@@ -99,7 +99,14 @@ exports = module.exports = function(req, res) {
                 let buff = new Buffer(req.query.flash, 'base64');  
                 let text = buff.toString('ascii');
                 
-                flash = JSON.parse(text);
+                try{
+                    flash = JSON.parse(text);
+                }
+                catch(e){
+                    console.err("Parsing error while trying to decode a flash error: "+text);
+                    console.err(e);
+                    flasg = [{msg: "Unknown error"}];
+                }
             }
             
             // Render the view
