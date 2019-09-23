@@ -78,7 +78,7 @@ var renderPage = function (entries, element, searchName) {
     for (k in entries.data){
         const record = entries.data[k];
         
-        if (record.relationships.memberships.data.length <= 1) continue; // Still not interested in hermitages
+        if (!searchName && record.relationships.memberships.data.length <= 1) continue; // Still not interested in hermitages
         
         clans.push({
             name: record.attributes.name,
