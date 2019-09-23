@@ -1,0 +1,52 @@
+extends ../../layouts/default
+include ../../mixins/flash-messages
+
+mixin pagination
+    .row
+        .col-md-3.btn-top.pull-left.text-left.nopadding
+            button(class="btn btn-primary first disabled") First
+            button(class="btn btn-primary btn-spacing previous disabled") Previous
+        .col-md-6
+            form(role="form").search.has-button
+                .form-group
+                    input(type="text" class="form-control" data-autofirst placeholder="Player name...")#searchbar
+        .col-md-3.col-md-offset-6.btn-top.pull-right.text-right.nopadding
+            button(class="btn btn-primary next") Next
+            button(class="btn btn-primary btn-spacing last") Last
+            
+
+
+block content
+    .container.text-center
+        .row
+            .col-md-12
+                h1.account-title Browse clans
+                hr
+                +pagination
+                hr
+        .row
+            .col-md-offset-3.col-md-6
+                +flash-messages(flash)
+    
+        .row.centered-flex       
+            .col-md-10
+                .table-responsive
+                    table.table.table-striped.table-hover
+                        thead
+                            tr
+                                th.text-center Clan
+                                th.text-center Created at
+                                th.text-center Leader
+                                th.text-center Population
+                        tbody#clans
+                            td(colspan="4")
+                                img(src="/images/loading.gif")
+    .container
+
+
+block js
+  script(type='text/javascript').
+    const clanList = !{JSON.stringify(clanList)};
+    const lastPage = !{lastPage};
+    const apiURL = !{JSON.stringify(apiURL)};
+  script(src="/js/browse_clans.min.js")

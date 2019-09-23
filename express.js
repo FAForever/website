@@ -162,6 +162,7 @@ app.get('/clans', require(routes + 'clans/get/index'));
 app.get('/clans/create', loggedIn, require(routes + 'clans/get/create'));
 app.get('/clans/manage', loggedIn, require(routes + 'clans/get/manage'));
 app.get('/clans/see', require(routes + 'clans/get/see'));
+app.get('/clans/browse', require(routes + 'clans/get/browse'));
 app.get('/clans/accept', loggedIn, require(routes + 'clans/get/accept'));
 
 app.post('/clans/create', loggedIn, require(routes + 'clans/post/create'));
@@ -251,12 +252,14 @@ if (process.env.NODE_ENV === 'development') {
 let extractor = require("./scripts/extractor");
 let getLatestClientRelease = require("./scripts/getLatestClientRelease");
 let getRecentUsers = require("./scripts/getRecentUsers");
+let getAllClans = require("./scripts/getAllClans");
 
 // Run scripts initially on startup
 try{
     extractor.run();
     getLatestClientRelease.run();
     getRecentUsers.run();
+    getAllClans.run();
 }
 catch(e){
     console.error("Error while running update scripts. Make sure the API is available. Those scripts will run again after some time - no need to restart the website.", e);
@@ -279,6 +282,15 @@ setInterval(() => {
 		console.error("Error while updating recent user list!", e);
 	}
 },  parseInt(process.env.RECENT_USERS_LIST_UPDATE_INTERVAL) * 1000);
+
+// Run recent players detection every 15 minutes
+setInterval(() => {
+	try {
+        getAllClans.run();
+	} catch (e) {
+		console.error("Error while updating the clan list!", e);
+	}
+},  parseInt(process.env.CLAN_LIST_UPDATE_INTERVAL) * 1000);
 
 // Run client release fetcher every 15 minutes
 setInterval(() => {
