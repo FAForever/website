@@ -18,8 +18,7 @@ module.exports.run = async function run(leagueData) {
                            "page[number]="+pageNumber;
                 
             await doRequest(process.env.API_URL + route, function (error, response, body) {
-            
-                if (error) {
+                if (error || response.statusCode > 210) {
                     console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - ERROR while fetching clans from the API page '+pageNumber+'. Returning truncated data.');
                     console.log(error);
                     return leagueData;

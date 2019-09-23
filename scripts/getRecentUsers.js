@@ -7,20 +7,22 @@ let fs = require('fs');
 module.exports.run = function run() {
     console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - Updating the recent users...');
     
-    let date = new Date();
-    date.setDate( date.getDate() - 1 ); // Remove one day
-    const requestUrl =
-        process.env.API_URL + '/data/game'+
-            '?filter=endTime=gt="'+date.toISOString()+'"'+
-            '&include=playerStats.player'+
-            '&fields[player]=login'+
-            '&sort=-endTime'
-        ;
-     
-	request(
-        requestUrl,        
-        function (error, response, body) {
-            if (! error) {
+    try{
+        let date = new Date();
+        date.setDate( date.getDate() - 1 ); // Remove one day
+        const requestUrl =
+            process.env.API_URL + '/data/game'+
+                '?filter=endTime=gt="'+date.toISOString()+'"'+
+                '&include=playerStats.player'+
+                '&fields[player]=login'+
+                '&sort=-endTime'
+            ;
+         
+        request(
+            requestUrl,        
+            function (error, response, body) {                
+                if (error || response.statusCode > 210) return;
+                
                 let apiRecentPlayers = JSON.parse(body);
                 let recentPlayers = [];
 
@@ -42,9 +44,12 @@ module.exports.run = function run() {
                     } else {
                         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - Recent players file created successfully');
                     }
-                });
-
+                });                
             }
-        }
-    );
+        );
+    }
+    catch(e){
+        console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - An error occured while getting the list of recent users:');
+        console.log(e);
+    }
 };
