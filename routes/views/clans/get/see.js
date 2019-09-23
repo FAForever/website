@@ -54,6 +54,7 @@ exports = module.exports = function(req, res) {
             }
             
             locals.clan_name = clan.data.attributes.name;
+            locals.clan_founder = "<unknown>";
             locals.clan_tag = clan.data.attributes.tag; 
             locals.clan_description = clan.data.attributes.description; 
             locals.clan_create_time = clan.data.attributes.createTime; 
@@ -75,6 +76,7 @@ exports = module.exports = function(req, res) {
                         members[player.id].isLeader = player.id == clan.data.relationships.leader.data.id;
                         
                         if (!locals.iAmMember) locals.iAmMember = locals.me ? player.id == locals.me : false;
+                        if (player.id == clan.data.relationships.founder.data.id) locals.clan_founder = player.attributes.login;
                         break;
                         
                     case "clanMembership":
