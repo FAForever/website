@@ -8,7 +8,7 @@ module.exports.run = function run() {
     console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - Updating leaderboards...');
     try{
         request(process.env.API_URL + '/leaderboards/global', function (error, response, body) {
-            if (!error || response.statusCode > 210){
+            if (error || response.statusCode > 210){
                 console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - There was an issue while fetching leaderboards 1v1:');
                 console.error(error);
                 console.trace(response.statusCode);
@@ -40,7 +40,7 @@ module.exports.run = function run() {
         });
 
         request(process.env.API_URL + '/leaderboards/ladder1v1', function (error, response, body) {
-            if (!error || response.statusCode > 210){
+            if (error || response.statusCode > 210){
                 console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - There was an issue while fetching leaderboards 1v1:');
                 console.error(error);
                 console.trace(response.statusCode);
