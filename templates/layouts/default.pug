@@ -13,7 +13,7 @@ html
     link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
 
     //- Customise the stylesheet for your site by editing /public/styles/site.sass
-    link(href="/styles/css/site.min.css", rel="stylesheet")
+    link(href="/styles/css/site.min.css?version="+Date.now(), rel="stylesheet")
 
     //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     //- Safely remove this block if you are not targeting IE8
@@ -39,7 +39,6 @@ html
               li: a(href="https://forums.faforever.com/") Forums
               li: a(href="https://wiki.faforever.com/index.php?title=Main_Page") Wiki
               li: a(href="http://direct.faforever.com/faf/unitsDB/") Unit Database
-              li: a(href="/clans") Clans
               li: a(href="https://wiki.faforever.com/index.php?title=Voicechat_%28Mumble%29") Mumble
               li: a(href="https://discord.gg/hgvj6Af") Discord
               li: a(href="/livestream") Live Streams
@@ -65,6 +64,9 @@ html
               li(class=(section == 'competitive' ? 'active' : null)): a(href='/competitive/tournaments')
                 i.fas.fa-trophy
                 span Competitive
+              li(class=(section == 'clan' ? 'active' : null)): a(href='/clans')
+                i.fas.fa-users
+                span Clans
               li(class=(section == 'calendar' ? 'active' : null)): a(href='/calendar')
                 i.far.fa-calendar-alt
                 span Calendar
