@@ -173,6 +173,13 @@ app.post('/clans/transfer', loggedIn, require(routes + 'clans/post/transfer'));
 app.post('/clans/update', loggedIn, require(routes + 'clans/post/update'));
 app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
 
+// Compatibility
+app.get('/clan/*', function (req, res){
+    const id = req.path.split("/").slice(-1)[0];
+    res.redirect('/clans/see?id='+id);
+    return;
+});
+
 app.get('/news/', require(routes + 'blog'));
 app.get('/category/:category/page/:page', require(routes + 'blog'));
 app.get('/news/search/:search/page/:page', require(routes + 'blog'));
