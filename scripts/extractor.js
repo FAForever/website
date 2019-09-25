@@ -11,7 +11,7 @@ module.exports.run = function run() {
             if (error || response.statusCode > 210){
                 console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - There was an issue while fetching leaderboards 1v1:');
                 console.error(error);
-                console.trace(response.statusCode);
+                if (response) console.trace(response.statusCode);
                 return;
             }
             
@@ -43,7 +43,7 @@ module.exports.run = function run() {
             if (error || response.statusCode > 210){
                 console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - There was an issue while fetching leaderboards 1v1:');
                 console.error(error);
-                console.trace(response.statusCode);
+                if (response) console.trace(response.statusCode);
                 return;
             }
 
