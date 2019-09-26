@@ -34,10 +34,14 @@ block content
                     table.table.table-striped.table-hover
                         thead
                             tr
-                                th.text-center Clan
-                                th.text-center Created at
-                                th.text-center Leader
-                                th.text-center Population
+                                th.text-center.sort-column#sort-name Clan
+                                    span#direction ⯅
+                                th.text-center.sort-column#sort-create Created at
+                                    span#direction
+                                th.text-center.sort-column#sort-leader Leader
+                                    span#direction
+                                th.text-center.sort-column#sort-population Population
+                                    span#direction
                         tbody#clans
                             td(colspan="4")
                                 img(src="/images/loading.gif")

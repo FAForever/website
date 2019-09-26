@@ -1,6 +1,11 @@
 
+let clans = [];
+let searchingName = null;
+    
 
-var getPage = function(pageNumber, pageSize, searchName) {
+var getPage = function(pageNumber, pageSize, searchName=null, sortBy="name,-createTime") {
+    searchingName = searchName;
+    
     if (pageNumber === 1) {
       $(".first").addClass("disabled");
       $(".previous").addClass("disabled");
@@ -39,7 +44,7 @@ var getPage = function(pageNumber, pageSize, searchName) {
     }
   
     const route = apiURL + "/data/clan?"+
-                   "sort=name,-createTime&"+
+                   "sort="+sortBy+"&"+
                    "include=leader&"+
                    "fields[clan]=name,tag,description,leader,memberships,createTime&"+
                    "fields[player]=login&"+
@@ -49,17 +54,16 @@ var getPage = function(pageNumber, pageSize, searchName) {
     $.ajax({
         url: route,
         success: function (result) {
-            renderPage(result, document.getElementById("clans"), searchName);
+            makeClans(result);
+            renderPage(document.getElementById("clans"), searchName);
         }
     });
 };
 
-var renderPage = function (entries, element, searchName) {
+const makeClans = function(entries){
     
-    removeAllChildElements(element);
-    
+    clans = [];
     let players = {};
-    let clans = [];
     
     // Getting all leader names
     for (k in entries.included){
@@ -78,7 +82,7 @@ var renderPage = function (entries, element, searchName) {
     for (k in entries.data){
         const record = entries.data[k];
         
-        if (!searchName && record.relationships.memberships.data.length <= 1) continue; // Still not interested in hermitages
+        if (!searchingName && record.relationships.memberships.data.length <= 1) continue; // Still not interested in hermitages
         
         clans.push({
             name: record.attributes.name,
@@ -89,7 +93,11 @@ var renderPage = function (entries, element, searchName) {
             id: record.id
         });
     }
+}
+
+var renderPage = function (element, searchName) {
     
+    removeAllChildElements(element);    
 
     for(k in clans) {
         const clan = clans[k];
@@ -171,6 +179,72 @@ $(".first").click( function() {
 $(".last").click( function() {
   currentPage = lastPage;
   getPage(currentPage, pageSize);
+});
+
+// Sorting
+const directions = {
+    leader: 1,
+    name: 1,
+    create: -1,
+    population: -1    
+};
+$("#sort-leader").click( function() {
+    clans.sort(function(a, b){
+        const nameA = a.leader.toLowerCase(), nameB=b.leader.toLowerCase()
+        
+        if (nameA < nameB) //sort string ascending
+            return -1 * directions["leader"]
+        if (nameA > nameB)
+            return 1 * directions["leader"]
+        
+        return 0 
+    })
+    $(".sort-column").find("#direction").text("");
+    $("#sort-leader").find("#direction").text( directions["leader"] > 0 ? "⯅" : "⯆" );
+    directions["leader"] *= -1;
+    renderPage(document.getElementById("clans"), searchingName);
+});
+
+$("#sort-name").click( function() {
+    clans.sort(function(a, b){
+        const nameA = a.name.toLowerCase(), nameB=b.name.toLowerCase()
+        
+        if (nameA < nameB) //sort string ascending
+            return -1 * directions["name"]
+        if (nameA > nameB)
+            return 1 * directions["name"]
+        
+        return 0 
+    })
+    $(".sort-column").find("#direction").text("");
+    $("#sort-name").find("#direction").text( directions["name"] > 0 ? "⯅" : "⯆" );
+    directions["name"] *= -1;
+    renderPage(document.getElementById("clans"), searchingName);
+});
+
+$("#sort-create").click( function() {
+    clans.sort(function(a, b){
+        const dateA = new Date(a.createTime);
+        const dateB = new Date(b.createTime);
+        
+        return (dateA - dateB)*directions["create"];
+    })
+    $(".sort-column").find("#direction").text("");
+    $("#sort-create").find("#direction").text( directions["create"] > 0 ? "⯅" : "⯆" );
+    directions["create"] *= -1;
+    renderPage(document.getElementById("clans"), searchingName);
+});
+
+
+
+$("#sort-population").click( function() {
+    clans.sort(function(a, b){
+        return (a.population - b.population)*directions["population"];
+    })
+    $(".sort-column").find("#direction").text("");
+    $("#sort-population").find("#direction").text( directions["population"] > 0 ? "⯅" : "⯆" );
+    directions["population"] *= -1;
+    renderPage(document.getElementById("clans"), searchingName);
 });
 
 var searchbar = document.getElementById("searchbar");
