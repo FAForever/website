@@ -28,6 +28,9 @@ var getPage = function(pageNumber, pageSize, searchName=null, sortBy="name,-crea
     
     let filter = "";
     
+    // Searchname will usually be [TAG] Name
+    // But it could also very well be just the name and nothing else
+    // So by checking the number of space separated elements it has we can know that
     if (searchName){
         const components = searchName.replace(/\[/gi, "").replace(/\]/gi, "").split(' ');
         const splitClan = [components.shift(), components.join(' ')];
