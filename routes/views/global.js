@@ -11,6 +11,7 @@ exports = module.exports = function(req, res) {
 	locals.ratingType = 'global';
 	locals.apiURL = process.env.API_URL;
   fs.readFile('members/global.json', 'utf8', function (err, data) {
+    if(err) return;
     locals.members = JSON.parse(data);
     locals.lastPage = Math.ceil(locals.members.length / 100);
 

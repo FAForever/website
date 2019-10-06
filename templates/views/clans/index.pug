@@ -1,0 +1,42 @@
+extends ../../layouts/default
+include ../../mixins/flash-messages
+
+block content
+    .intro
+        div(style="position:absolute;left:0;right:0;text-align:center;")
+            +flash-messages(flash)
+        div.hero(style="background-image:url('/images/spider.jpg');")
+        .introtitle
+            .hgroup
+                h1 Clan management
+                h3 Create your own clan with your friends, or join a clan and find people to play with
+                if hasClan
+                    a(class="btn btn-default btn-lg btn-outro btn-danger", href='/clans/manage') Manage my clan
+                else
+                    a(class="btn btn-default btn-lg btn-outro btn-danger", href='/clans/create') Create my clan
+                
+                a(class="btn btn-default btn-lg btn-outro", href='/clans/browse') Browse clans
+                
+    .the-project: .container
+        h1 Recently active clans
+        .table-responsive
+            table.table.table-striped.table-hover
+                thead
+                    tr
+                        th.text-center Name
+                        th.text-center Created at
+                        th.text-center Leader
+                        th.text-center Population
+                tbody
+                    each clan in clans
+                        tr(onclick="window.location='/clans/see?id=" + clan.id + "'", style="cursor:pointer;")
+                            td(style='font-weight:bold') [#{clan.tag}] #{clan.name}
+                            td #{clan.createTime}
+                            td #{clan.leader}
+                            td #{clan.population}
+                    tr
+                        td ...
+                        td ...
+                        td ...
+                        td ...
+    .container

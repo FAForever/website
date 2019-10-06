@@ -38,6 +38,10 @@ module.exports = {
             'public/js/report.min.js': [
                 'node_modules/awesomplete/awesomplete.js',
                 'public/js/app/report.js'
+            ],
+            'public/js/browse_clans.min.js': [
+                'node_modules/awesomplete/awesomplete.js',
+                'public/js/app/browse_clans.js'
             ]
         }
     }

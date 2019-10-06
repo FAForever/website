@@ -12,6 +12,7 @@ exports = module.exports = function(req, res) {
 	locals.apiURL = process.env.API_URL;
 
     fs.readFile('members/1v1.json', 'utf8', function (err, data) {
+        if(err) return;
         locals.members = JSON.parse(data);
         locals.lastPage = Math.ceil(locals.members.length / 100);
 
