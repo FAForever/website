@@ -1,10 +1,13 @@
 
 let clans = [];
 let searchingName = null;
-    
 
-var getPage = function(pageNumber, pageSize, searchName=null, sortBy="name,-createTime") {
+var getPage = function(pageNumber, pageSize, searchName=null) {
     searchingName = searchName;
+    sortingCriteria = $("#sort-criteria").val();
+    if (!sortingCriteria.includes("createTime")){
+        sortingCriteria += ",-createTime";
+    }
     
     if (pageNumber === 1) {
       $(".first").addClass("disabled");
@@ -47,7 +50,7 @@ var getPage = function(pageNumber, pageSize, searchName=null, sortBy="name,-crea
     }
   
     const route = apiURL + "/data/clan?"+
-                   "sort="+sortBy+"&"+
+                   "sort="+sortingCriteria+"&"+
                    "include=leader&"+
                    "fields[clan]=name,tag,description,leader,memberships,createTime&"+
                    "fields[player]=login&"+
@@ -160,7 +163,6 @@ $(".previous").click( function() {
   if (currentPage === 1) {
     return;
   }
-
   currentPage--;
   getPage(currentPage, pageSize);
 });
@@ -169,7 +171,6 @@ $(".next").click( function() {
   if (currentPage === lastPage) {
     return;
   }
-
   currentPage++;
   getPage(currentPage, pageSize);
 });
@@ -181,6 +182,15 @@ $(".first").click( function() {
 
 $(".last").click( function() {
   currentPage = lastPage;
+  getPage(currentPage, pageSize);
+});
+
+$(".last").click( function() {
+  currentPage = lastPage;
+  getPage(currentPage, pageSize);
+});
+
+$("#sort-criteria").change( function() {
   getPage(currentPage, pageSize);
 });
 

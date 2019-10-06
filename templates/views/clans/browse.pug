@@ -8,8 +8,15 @@ mixin pagination
             button(class="btn btn-primary btn-spacing previous disabled") Previous
         .col-md-6
             form(role="form").search.has-button
-                .form-group
-                    input(type="text" class="form-control" data-autofirst placeholder="Clan name or tag...")#searchbar
+                .form-group(style="display:flex;")
+                    input.form-control(type="text" data-autofirst placeholder="Clan name or tag..." style="min-width:350px;")#searchbar
+                    select.form-control(style="flex-basis: min-content;")#sort-criteria
+                        option(value="name") Name: A-Z
+                        option(value="-name") Name: Z-A
+                        option(value="tag") Tag: [A-Z]
+                        option(value="-tag") Tag: [Z-A]
+                        option(value="-createTime") Most recent
+                        option(value="createTime") Oldest
         .col-md-3.col-md-offset-6.btn-top.pull-right.text-right.nopadding
             button(class="btn btn-primary next") Next
             button(class="btn btn-primary btn-spacing last") Last
