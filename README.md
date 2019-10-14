@@ -10,14 +10,15 @@ cd website
 sudo npm install -g yarn
 yarn install
 node_modules/.bin/grunt prod
-yarn --prod
 cp .env.example .env
 ```
 
 Now you're ready to start the server. You can fire it using :
 `PORT=3000 yarn start`
 
-In order to install grunt for the command line, please follow this guide - http://gruntjs.com/getting-started
+In order to learn grunt and install cli, please follow this guide - http://gruntjs.com/getting-started
+
+If you did changes run `grunt prod`+`PORT=3000 yarn start` again to apply them.
 
 ## Docker Install Guide
 You will need to setup a default machine in a new terminal window. This can be accomplished by doing the following.
