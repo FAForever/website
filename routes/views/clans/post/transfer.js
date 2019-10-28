@@ -50,7 +50,7 @@ exports = module.exports = async function (req, res) {
     let playerId = null;
     
     try {
-        if (userName == req.user.data.attributes.login) throw "You cannot transfer your own clan to yourself";
+        if (userName === req.user.data.attributes.userName) throw "You cannot transfer your own clan to yourself";
         
         const httpData = await promiseRequest(fetchRoute);
         clanData = JSON.parse(httpData);
@@ -59,7 +59,7 @@ exports = module.exports = async function (req, res) {
       
         for (k in clanData.included){
             const record = clanData.included[k];
-            if (record.type != "player") continue;
+            if (record.type !== "player") continue;
             members[record.attributes.login] = record.id;
         }
         

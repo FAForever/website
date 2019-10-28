@@ -55,7 +55,7 @@ exports = module.exports = function(req, res) {
                     const offender = report.relationships.reportedUsers.data[l];
                     for (m in reports.included){
                         const user = reports.included[m];
-                        if (user.type == "player" && user.id == offender.id){
+                        if (user.type === "player" && user.id === offender.id){
                             offenders.push (user.attributes.login);
                         }
                     }

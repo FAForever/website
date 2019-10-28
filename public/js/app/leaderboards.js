@@ -38,7 +38,7 @@ var renderPage = function (page, element, playerId) {
     var tr = document.createElement("tr");
 
     // Only show player with matching id when player_id is given.
-    if (playerId && playerId != player.id) {
+    if (playerId && playerId !== player.id) {
         tr.className = 'hidden';
     }
 

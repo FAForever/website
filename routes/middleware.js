@@ -69,11 +69,9 @@ exports.username = function(req, res, next) {
     var locals = res.locals;
 
     if (req.isAuthenticated()) {
-        locals.username = req.user.data.attributes.login;    
+        locals.username = req.user.data.attributes.userName;    
         locals.hasClan = 
-            req.user && 
-            req.user.data.relationships.clanMemberships && 
-            req.user.data.relationships.clanMemberships.data.length > 0;
+            req.user && req.user.clan;
     }
 
     next();
