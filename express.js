@@ -81,7 +81,7 @@ function loggedIn(req, res, next) {
 	req.session.referral = fullUrl;
 
 	if (req.isAuthenticated()) {
-		res.locals.username = req.user.data.attributes.login;
+		res.locals.username = req.user.data.attributes.userName;
 		next();
 	} else {
 		res.redirect('/login');

@@ -75,7 +75,7 @@ const makeClans = function(entries){
     for (k in entries.included){
         const record = entries.included[k];
         
-        if (record.type != "player") continue;
+        if (record.type !== "player") continue;
         
         const playerId = record.id;
         players[playerId] = {
