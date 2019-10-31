@@ -1,3 +1,5 @@
+const sass = require('node-sass');
+
 module.exports = {
   dev: {
     options: {
@@ -10,6 +12,7 @@ module.exports = {
   },
   dist: {
     options: {
+      implementation: sass,
       style: 'compressed',
       compass: true
     },
