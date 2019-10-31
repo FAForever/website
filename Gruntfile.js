@@ -45,9 +45,9 @@ module.exports = function(grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  if(process.env.NODE_ENV == "development") {
+  if(process.env.NODE_ENV === "development") {
 	  grunt.loadNpmTasks('grunt-contrib-compass');
-	  grunt.loadNpmTasks('grunt-contrib-uglify');
+	  grunt.loadNpmTasks('grunt-contrib-uglify-es');
 	  grunt.loadNpmTasks('grunt-sass');
 	  grunt.loadNpmTasks('grunt-contrib-concat');
 	  grunt.loadNpmTasks('grunt-contrib-jshint');
