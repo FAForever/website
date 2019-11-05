@@ -29,7 +29,7 @@ exports = module.exports = async function (req, res) {
   let errors = req.validationErrors();
   
   // Should not happen normally, but you never know
-  if (req.body.membership_id == req.user.data.relationships.clanMemberships.data.id) errors = [{msg: "You cannot kick yourself"}];
+  if (req.body.membership_id == req.user.data.attributes.clan.membershipId) errors = [{msg: "You cannot kick yourself"}];
 
   //Must have client side errors to fix
   if (errors) {

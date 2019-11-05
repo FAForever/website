@@ -219,6 +219,7 @@ passport.use('faforever', new OAuth2Strategy({
 				}
 				let user = JSON.parse(body);
 				user.data.attributes.token = accessToken;
+                user.data.id = user.data.attributes.userId;
 				return done(null, user);
 			}
 		);

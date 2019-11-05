@@ -12,7 +12,7 @@ exports = module.exports = function(req, res) {
                 
     let clanMembershipId = null;
     try{
-        clanMembershipId = req.user.data.relationships.clanMemberships.data[0].id;
+        clanMembershipId = req.user.data.attributes.clan.membershipId;
     }
     catch{
         // The user doesnt belong to a clan

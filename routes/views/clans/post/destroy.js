@@ -94,6 +94,7 @@ exports = module.exports = async function (req, res) {
         function (err, res, body) {
             try{
                 let user = JSON.parse(body);
+                user.data.id = user.data.attributes.userId;
                 user.data.attributes.token = req.user.data.attributes.token;
                 req.logIn(user, function(err){
                     if (err) console.error(err);
