@@ -39,22 +39,22 @@ app.use(middleware.clientChecks);
 
 //Set static public directory path
 app.use(express.static('public', {
-	immutable: true,
-	maxAge: 4 * 60 * 60 * 1000 // 4 hours
+    immutable: true,
+    maxAge: 4 * 60 * 60 * 1000 // 4 hours
 }));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(expressValidator({
-	customValidators: {
-		isEqual: function (value1, value2) {
-			return value1 === value2;
-		}
-	}
+    customValidators: {
+        isEqual: function (value1, value2) {
+            return value1 === value2;
+        }
+    }
 }));
 app.use(require('express-session')({
-	secret: process.env.SESSION_SECRET_KEY,
-	resave: false,
-	saveUninitialized: false,
+    secret: process.env.SESSION_SECRET_KEY,
+    resave: false,
+    saveUninitialized: false,
   cookie: {
     maxAge: process.env.TOKEN_LIFESPAN * 1000
   }
@@ -77,15 +77,15 @@ let routes = './routes/views/';
 app.get('/', require(routes + 'index'));
 
 function loggedIn(req, res, next) {
-	let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-	req.session.referral = fullUrl;
+    let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    req.session.referral = fullUrl;
 
-	if (req.isAuthenticated()) {
-		res.locals.username = req.user.data.attributes.userName;
-		next();
-	} else {
-		res.redirect('/login');
-	}
+    if (req.isAuthenticated()) {
+        res.locals.username = req.user.data.attributes.userName;
+        next();
+    } else {
+        res.redirect('/login');
+    }
 }
 
 // ToS and Privacy Statement
@@ -189,71 +189,72 @@ app.get('/news/page/:page', require(routes + 'blog'));
 app.get('/:year/:month/:slug', require(routes + 'post'));
 
 app.get('/logout', function (req, res) {
-	req.logout();
-	res.redirect('/');
+    req.logout();
+    res.redirect('/');
 });
 
 app.get('/login', passport.authenticate('faforever', {
-	failureRedirect: '/login',
-	failureFlash: true
+    failureRedirect: '/login',
+    failureFlash: true
 }), function (req, res) {
-	req.logout();
-	res.redirect('/');
+    req.logout();
+    res.redirect('/');
 });
 
 passport.use('faforever', new OAuth2Strategy({
-		tokenURL: process.env.API_URL + '/oauth/token',
-		authorizationURL: process.env.API_URL + '/oauth/authorize',
-		clientID: process.env.OAUTH_CLIENT_ID,
-		clientSecret: process.env.OAUTH_CLIENT_SECRET,
-		callbackURL: process.env.HOST + '/callback',
-		scope: ['write_account_data', 'public_profile']
-	},
-	function (accessToken, refreshToken, profile, done) {
-		let request = require('request');
-		request.get(
-			{url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
-			function (e, r, body) {
-				if (r.statusCode != 200) {
-					return done(null);
-				}
-				let user = JSON.parse(body);
-				user.data.attributes.token = accessToken;
-				return done(null, user);
-			}
-		);
-	}
+        tokenURL: process.env.API_URL + '/oauth/token',
+        authorizationURL: process.env.API_URL + '/oauth/authorize',
+        clientID: process.env.OAUTH_CLIENT_ID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        callbackURL: process.env.HOST + '/callback',
+        scope: ['write_account_data', 'public_profile']
+    },
+    function (accessToken, refreshToken, profile, done) {
+        let request = require('request');
+        request.get(
+            {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
+            function (e, r, body) {
+                if (r.statusCode != 200) {
+                    return done(null);
+                }
+                let user = JSON.parse(body);
+                user.data.attributes.token = accessToken;
+                user.data.id = user.data.attributes.userId;
+                return done(null, user);
+            }
+        );
+    }
 ));
 
 passport.serializeUser(function (user, done) {
-	done(null, user);
+    done(null, user);
 });
 
 passport.deserializeUser(function (id, done) {
-	done(null, id);
+    done(null, id);
 });
 
 app.get('/callback', passport.authenticate('faforever', {
-	failureRedirect: '/login',
-	failureFlash: true
+    failureRedirect: '/login',
+    failureFlash: true
 }), function (req, res, next) {
-	res.redirect(req.session.referral ? req.session.referral : '/');
-	req.session.referral = null;
+    res.redirect(req.session.referral ? req.session.referral : '/');
+    req.session.referral = null;
 });
 
 //404 Error Handler
 app.use(function (req, res, next) {
-	res.status(404).render('errors/404');
+    res.status(404).render('errors/404');
 });
 
 //Display 500 Error Handler if in development mode.
 if (process.env.NODE_ENV === 'development') {
-	app.enable('verbose errors');
+    app.enable('verbose errors');
 
-	//500 Error Handler
-	app.use(function (err, req, res, next) {
-		res.status(500).render('errors/500', {error: err});
-	});
+    //500 Error Handler
+    app.use(function (err, req, res, next) {
+        res.status(500).render('errors/500', {error: err});
+    });
 }
 
 let extractor = require("./scripts/extractor");
@@ -274,41 +275,41 @@ catch(e){
 
 // Run leaderboard extractor every minute
 setInterval(() => {
-	try {
-		extractor.run();
-	} catch (e) {
-		console.error("Error while updating leaderboards!", e);
-	}
+    try {
+        extractor.run();
+    } catch (e) {
+        console.error("Error while updating leaderboards!", e);
+    }
 },  parseInt(process.env.LEADERBOARDS_UPDATE_INTERVAL) * 1000);
 
 // Run recent players detection every 15 minutes
 setInterval(() => {
-	try {
+    try {
         getRecentUsers.run();
-	} catch (e) {
-		console.error("Error while updating recent user list!", e);
-	}
+    } catch (e) {
+        console.error("Error while updating recent user list!", e);
+    }
 },  parseInt(process.env.RECENT_USERS_LIST_UPDATE_INTERVAL) * 1000);
 
 // Run recent players detection every 15 minutes
 setInterval(() => {
-	try {
+    try {
         getAllClans.run();
-	} catch (e) {
-		console.error("Error while updating the clan list!", e);
-	}
+    } catch (e) {
+        console.error("Error while updating the clan list!", e);
+    }
 },  parseInt(process.env.CLAN_LIST_UPDATE_INTERVAL) * 1000);
 
 // Run client release fetcher every 15 minutes
 setInterval(() => {
-	try {
-		getLatestClientRelease.run();
-	} catch (e) {
-		console.error("Error while fetching latest client release!", e);
-	}
+    try {
+        getLatestClientRelease.run();
+    } catch (e) {
+        console.error("Error while fetching latest client release!", e);
+    }
 },  parseInt(process.env.CLIENT_RELEASE_FETCHING_INTERVAL) * 1000);
 
 //Start and listen on port
 app.listen(process.env.PORT, function () {
-	console.log('Express listening on port ' + process.env.PORT);
+    console.log('Express listening on port ' + process.env.PORT);
 });

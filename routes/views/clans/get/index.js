@@ -40,7 +40,7 @@ exports = module.exports = function(req, res) {
                     + '?filter=memberships.player.updateTime=gt="'+showActiveClanPast.toISOString()+'"'
                     + '&include=founder,leader'
                     + '&fields[clan]=createTime,name,memberships,leader,tag'
-                    + '&fields[player]=login,clanMemberships'
+                    + '&fields[player]=login,clanMembership'
                     + '&sort=-leader.updateTime'
             },
             function (err, childRes, body) {

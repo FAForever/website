@@ -113,6 +113,7 @@ exports = module.exports = async function (req, res) {
             try{
                 let user = JSON.parse(body);
                 user.data.attributes.token = req.user.data.attributes.token;
+                user.data.id = user.data.attributes.userId;
                 req.logIn(user, function(err){
                     if (err) console.error(err);
                     return overallRes.redirect('/clans/manage');
