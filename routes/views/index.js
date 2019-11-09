@@ -14,8 +14,25 @@ exports = module.exports = function(req, res) {
     else {
       locals.topPlayers = {}
     }
+    
+    let flash = {};
+    
+    if (req.query.flash){
+        let buff = Buffer.from(req.query.flash, 'base64');  
+        let text = buff.toString('ascii');
+        
+        try{
+            flash = JSON.parse(text);
+        }
+        catch(e){
+            console.err("Parsing error while trying to decode a flash error: "+text);
+            console.err(e);
+            flasg = [{msg: "Unknown error"}];
+        }
+    }
+    
     // Render the view
-    res.render('index');
+    res.render('index', {flash: flash});
   });
 
 };
