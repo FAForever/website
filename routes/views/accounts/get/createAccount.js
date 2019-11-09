@@ -6,8 +6,8 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'account';
 
-    if (req.body.token){
-        locals.tokenURL = process.env.API_URL+"/users/activate?token="+ req.body.token
+    if (req.query.token){
+        locals.tokenURL = process.env.API_URL+"/users/activate?token="+ req.query.token
     }
     else{
         let flash = {};    
