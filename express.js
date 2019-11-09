@@ -99,9 +99,13 @@ app.get('/privacy', markdown("templates/views/privacy.md"))
 app.get('/tos', markdown("templates/views/tos.md"))
 app.get('/rules', markdown("templates/views/rules.md"))
 
-//Account routes
+/// Account routes
+// Registration
 app.get('/account/register', require(routes + 'accounts/get/register'));
 app.post('/account/register', require(routes + 'accounts/post/register'));
+
+// Callback for registration to create the account using a token
+app.get('/account/create', require(routes + 'accounts/get/createAccount'));
 
 app.get('/account/link', loggedIn, require(routes + 'accounts/get/linkSteam'));
 

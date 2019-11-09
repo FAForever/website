@@ -1,7 +1,10 @@
 extends ../layouts/default
+include ../mixins/flash-messages
 
 block content
     .intro
+        div(style="position:absolute;left:0;right:0;text-align:center;")
+            +flash-messages(flash)
         div.hero
         .introtitle
             img(src="/images/vector_faf_logo.png")
