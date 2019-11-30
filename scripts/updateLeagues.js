@@ -21,7 +21,7 @@ module.exports.run = async function run(leagueData) {
                            "sort=startTime&"+
                            "include=playerStats,playerStats.player&"+
                            "fields[game]=startTime,endTime&"+
-                           "fields[gamePlayerStats]=beforeMean,beforeDeviation,score,player,game&"+
+                           "fields[gamePlayerStats]=beforeMean,beforeDeviation,score,player,game,faction&"+
                            "fields[player]=login&"+
                            "page[number]="+pageNumber;
                 
@@ -69,11 +69,17 @@ module.exports.run = async function run(leagueData) {
                                 games[record.relationships.game.data.id].winner = pid;
                             }
                             if (players[pid] == undefined){
-                                players[pid] = {};
+                                players[pid] = {
+                                  factions:{}
+                                };
                             }
                             if (players[pid].rating == undefined){
                                 players[pid].rating = Math.ceil(record.attributes.beforeMean - 3*record.attributes.beforeDeviation);
                             }
+                            if (players[pid].factions[record.attributes.faction] == undefined){
+                                players[pid].factions[record.attributes.faction] = 0;
+                            }
+                            players[pid].factions[record.attributes.faction] ++;
                             games[record.relationships.game.data.id].participants.push(pid);
                             break;
                             
@@ -106,6 +112,7 @@ module.exports.run = async function run(leagueData) {
                                 'name': playerRecord.login,
                                 'rating': playerRecord.rating,
                                 'points': 0,
+                                'factions': playerRecord.factions,
                                 'wld': {"w":0, "l":0, "d":0},
                                 'secondsPlayed': timeElapsed
                             };

@@ -1,7 +1,4 @@
-/*
- https://api.faforever.com/leaderboards/ladder1v1?page[size]=50&page[number]=1
- */
- 
+
 const categories = JSON.parse(rankingCategories);
 
 var getPage = function(category, pageSize, id) {
@@ -47,6 +44,27 @@ var renderPage = function (category, element, playerId) {
     addCell(tr, player.points);
     addCell(tr, player.wld.w+"/"+player.wld.l+"/"+player.wld.d);
     addCell(tr, formatTimePlayed(player.secondsPlayed));
+    
+    // Favorite faction
+    let favoriteFaction = null;
+    let favoriteFactionPlayCount = 0;
+    let total = 0;
+    for(faction in player.factions){
+      if (faction < 1 || faction > 4) continue; // Ignoring "Random" and other invalid values*
+        if (player.factions[faction] >= favoriteFactionPlayCount){
+            favoriteFaction = faction;
+            favoriteFactionPlayCount = player.factions[faction];
+        }
+        total += player.factions[faction];
+    }
+        
+    const factionCell = addCell(tr, Math.round((favoriteFactionPlayCount/total)*100)+"%");
+    let img = document.createElement("img");
+    factionCell.appendChild(img);
+    img.src = "/images/"+getFaction(favoriteFaction).name.toLowerCase()+".png";
+    img.style.width = "24px";
+    factionCell.style.backgroundColor = getFaction(favoriteFaction).color;
+    factionCell.style.textAlign = "center";
   }
 };
 
@@ -76,6 +94,7 @@ function addCell(tr, content){
     var td = document.createElement("td");
     tr.appendChild(td);
     td.textContent = content;
+    return td;
 }
 
 /* Page Onclick */
@@ -108,6 +127,24 @@ for (let catName in categories){
       currentPage[catName] = lastPage[catName];
       getPage(catName, currentPage[catName], pageSize);
     });
+}
+
+function getFaction(identifier){
+  const i = parseInt(identifier);
+  switch (i){
+    case 1:
+      return {color:"#B2C2D6", name:"UEF"};
+      break;
+    case 2:
+      return {color:"#B6E0C3", name:"Aeon"};
+      break;
+    case 3:
+      return {color:"#FBCCD1", name:"Cybran"};
+      break;
+    case 4:
+      return {color:"#FFFFCF", name:"Seraphim"};
+      break;
+  }
 }
 
 /* Init */
