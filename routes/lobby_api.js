@@ -13,7 +13,20 @@ exports = module.exports = function(req, res) {
     }
     isFetching = true;
     request(process.env.LOBBY_API_URL + "/" + resource, function (error, response, body) {
-        const data = JSON.parse(body);
+        let data = [];
+
+        if (body) {
+            data = JSON.parse(body);
+        } else {
+            console.error(
+                "Error occured during parsing: ",
+                process.env.LOBBY_API_URL + "/" + resource,
+                "body: " ,body,
+                "error: ", error,
+                "response", response
+            );
+        }
+
         cache[resource] = {
             pollTime: Date.now(),
             count: data.length
