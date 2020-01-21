@@ -59,12 +59,31 @@ module.exports.run = async function run(leagueData) {
                     }
                 }
 
+                if (leagueData.games == undefined) leagueData.games = [];
+                if (leagueData.playerData == undefined) leagueData.playerData = [];
+
                 // Parsing player stats
                 for (let k in entries.included) {
                     const record = entries.included[k];
                     switch (record.type) {
                         case "gamePlayerStats":
                             const pid = record.relationships.player.data.id;
+
+                            // Let's check if we don't have that player already
+                            let already = false;
+                            for (category in leagueData.playerData) {
+                                if (!already) {
+                                    for (playerIndex in leagueData.playerData[category].data) {
+                                        const registeredPlayer = leagueData.playerData[category].data[playerIndex];
+                                        if (registeredPlayer.id == pid) {
+                                            players[pid] = registeredPlayer;
+                                            already = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
                             if (record.attributes.score > 0) {
                                 games[record.relationships.game.data.id].winner = pid;
                             }
@@ -92,9 +111,6 @@ module.exports.run = async function run(leagueData) {
                             break;
                     }
                 }
-
-                if (leagueData.games == undefined) leagueData.games = [];
-                if (leagueData.playerData == undefined) leagueData.playerData = [];
 
                 let categories = {};
 
