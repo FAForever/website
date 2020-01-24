@@ -53,7 +53,7 @@ module.exports.run = async function run(leagueData) {
                     const record = entries.data[k];
                     games[record.id] = {
                         'winner': null,
-                        'participants': [],
+                        'participants': {},
                         'startTimestamp': moment(record.attributes.startTime).unix(),
                         'endTimestamp': moment(record.attributes.endTime).unix()
                     }
@@ -68,24 +68,10 @@ module.exports.run = async function run(leagueData) {
                     switch (record.type) {
                         case "gamePlayerStats":
                             const pid = record.relationships.player.data.id;
-
-                            // Let's check if we don't have that player already
-                            let already = false;
-                            for (category in leagueData.playerData) {
-                                if (!already) {
-                                    for (playerIndex in leagueData.playerData[category].data) {
-                                        const registeredPlayer = leagueData.playerData[category].data[playerIndex];
-                                        if (registeredPlayer.id == pid) {
-                                            players[pid] = registeredPlayer;
-                                            already = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
+                            const gid = record.relationships.game.data.id;
 
                             if (record.attributes.score > 0) {
-                                games[record.relationships.game.data.id].winner = pid;
+                                games[gid].winner = pid;
                             }
                             if (players[pid] == undefined) {
                                 players[pid] = {
@@ -95,16 +81,14 @@ module.exports.run = async function run(leagueData) {
                             if (players[pid].rating == undefined) {
                                 players[pid].rating = Math.ceil(record.attributes.beforeMean - 3 * record.attributes.beforeDeviation);
                             }
-                            if (players[pid].factions[record.attributes.faction] == undefined) {
-                                players[pid].factions[record.attributes.faction] = 0;
-                            }
-                            players[pid].factions[record.attributes.faction]++;
-                            games[record.relationships.game.data.id].participants.push(pid);
+                            games[gid].participants[pid] = record.attributes.faction;
                             break;
 
                         case "player":
                             if (players[record.id] == undefined) {
-                                players[record.id] = {};
+                                players[record.id] = {
+                                    factions: {}
+                                };
                             }
                             players[record.id].login = record.attributes.login;
                             players[record.id].id = record.id;
@@ -122,7 +106,8 @@ module.exports.run = async function run(leagueData) {
                     const timeElapsed = game.endTimestamp - game.startTimestamp;
 
                     for (l in game.participants) {
-                        const playerRecord = players[game.participants[l]];
+                        const playerRecord = players[l];
+                        const playerFaction = game.participants[l];
                         let player = {
                             'id': playerRecord.id,
                             'name': playerRecord.login,
@@ -158,6 +143,12 @@ module.exports.run = async function run(leagueData) {
                             player.wld.l++;
                             player.points -= 1;
                         }
+
+                        if (player.factions[playerFaction] == undefined) {
+                            player.factions[playerFaction] = 0;
+                        }
+                        player.factions[playerFaction]++;
+
                         player.secondsPlayed += timeElapsed;
                         if (!already) {
                             const catName = getRangeName(leaguesConfig.ratingRange, player.rating);
