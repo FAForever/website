@@ -34,7 +34,17 @@ module.exports = {
             'public/js/browse_clans.min.js': [
                 'node_modules/awesomplete/awesomplete.js',
                 'public/js/app/browse_clans.js'
-            ]
+            ],
+          'public/js/world-map-dependencies.min.js': [
+            'public/armchart_4.1.12/armcharts4/core.js',
+            'public/armchart_4.1.12/armcharts4//maps.js',
+            'public/armchart_4.1.12/armcharts4-geodata/worldLow.js',
+            'public/armchart_4.1.12/armcharts4-geodata/continentsLow.js',
+            'public/armchart_4.1.12/armcharts4/themes/animated.js',
+          ],
+          'public/js/world-map.min.js': [
+            'public/js/app/world-map.js'
+          ]
         }
     }
 };
