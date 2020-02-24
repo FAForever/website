@@ -5,14 +5,18 @@ let isFetching = false;
 const PLAYER_COUNT_UPDATE_INTERVAL = parseInt(process.env.PLAYER_COUNT_UPDATE_INTERVAL) * 1000;
 
 exports = module.exports = function(req, res) {
-    const resource = req.query.resource;
+  let resource = req.query.resource;
     if (cache[resource]) {
         if (isFetching || Date.now() - cache[resource].pollTime < PLAYER_COUNT_UPDATE_INTERVAL) {
-            return res.send(cache[resource].count.toString());
+          return res.send(cache[resource].data);
         }
     }
     isFetching = true;
-    request(process.env.LOBBY_API_URL + "/" + resource, function (error, response, body) {
+  let queryResource = resource;
+  if (resource === "countries") {
+    queryResource = "players";
+  }
+  request(process.env.LOBBY_API_URL + "/" + queryResource, function (error, response, body) {
         let data = [];
 
         if (body) {
@@ -27,11 +31,26 @@ exports = module.exports = function(req, res) {
             );
         }
 
-        cache[resource] = {
+    cache[queryResource] = {
+      pollTime: Date.now(),
+      data: data.length.toString()
+    };
+    if (queryResource === "players") {
+      data = data.map(player => player.country);
+      const mapData = {};
+      data.forEach(value => {
+        if (mapData[value] !== undefined) {
+          mapData[value] = mapData[value] + 1;
+        } else {
+          mapData[value] = 1;
+        }
+      });
+      cache["countries"] = {
             pollTime: Date.now(),
-            count: data.length
-        };
+        data: mapData
+      };
+    }
         isFetching = false;
-        return res.send(cache[resource].count.toString());
+    return res.send(cache[resource].data);
     });
 };
