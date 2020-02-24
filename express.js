@@ -95,9 +95,10 @@ function markdown(template) {
     res.render('markdown', {content: html});
   }
 }
-app.get('/privacy', markdown("templates/views/privacy.md"))
-app.get('/tos', markdown("templates/views/tos.md"))
-app.get('/rules', markdown("templates/views/rules.md"))
+
+app.get('/privacy', markdown("templates/views/privacy.md"));
+app.get('/tos', markdown("templates/views/tos.md"));
+app.get('/rules', markdown("templates/views/rules.md"));
 
 /// Account routes
 // Registration
@@ -146,7 +147,7 @@ app.get('/competitive/leaderboards/leagues', (function(){
             });
         } catch (e) {
             console.error("Error while updating ladder week!", e);
-        };
+        }
     };
     setInterval( 
       updateFunction
@@ -160,6 +161,7 @@ app.get('/competitive/leaderboards/leagues', (function(){
 })()
 );
 app.get('/lobby_api', require('./routes/lobby_api'));
+app.get('/account/checkUsername', require('./routes/views/checkUsername'));
 
 app.get('/clans', require(routes + 'clans/get/index'));
 
@@ -181,7 +183,7 @@ app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
 app.get('/clan/*', function (req, res){
     const id = req.path.split("/").slice(-1)[0];
     res.redirect('/clans/see?id='+id);
-    return;
+
 });
 
 app.get('/news/', require(routes + 'blog'));
