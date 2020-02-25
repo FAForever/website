@@ -1,5 +1,5 @@
 /**
- * The following code inspired by https://www.amcharts.com/demos/rotating-globe-with-circles/
+ * The following code is inspired/copied from https://www.amcharts.com/demos/rotating-globe-with-circles/
  * @param data the list of players by country
  */
 function createMap(data) {
@@ -19,9 +19,8 @@ function createMap(data) {
       chart.raiseCriticalError(new Error("Map geodata could not be loaded. Please download the latest <a href=\"https://www.amcharts.com/download/download-v4/\">amcharts geodata</a> and extract its contents into the same directory as your amCharts files."));
     }
 
-
     var label = chart.createChild(am4core.Label);
-    label.text = "Players by country currently online";
+    label.text = "Players currently online by country";
     label.fontSize = 12;
     label.align = "left";
     label.valign = "bottom";
@@ -46,12 +45,12 @@ function createMap(data) {
     dataSource.marginLeft = 30;
     dataSource.marginTop = 30;
 
-// Set projection
+    // Set projection
     chart.projection = new am4maps.projections.Orthographic();
     chart.panBehavior = "rotateLongLat";
     chart.padding(20, 20, 20, 20);
 
-// Add zoom control
+    // Add zoom control
     chart.zoomControl = new am4maps.ZoomControl();
 
     var homeButton = new am4core.Button();
@@ -72,12 +71,12 @@ function createMap(data) {
     chart.deltaLongitude = 20;
     chart.deltaLatitude = -20;
 
-// limits vertical rotation
+    // limits vertical rotation
     chart.adapter.add("deltaLatitude", function (delatLatitude) {
       return am4core.math.fitToRange(delatLatitude, -90, 90);
     });
 
-// Create map polygon series
+    // Create map polygon series
 
     var shadowPolygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
     shadowPolygonSeries.geodata = am4geodata_continentsLow;
@@ -98,7 +97,7 @@ function createMap(data) {
     shadowPolygonSeries.fill = am4core.color("#000");
 
 
-// Create map polygon series
+    // Create map polygon series
     var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.useGeodata = true;
 
@@ -176,11 +175,8 @@ function createMap(data) {
           mapPolygon.tooltipText = mapPolygon.dataItem.dataContext.name + ": 0";
           mapPolygon.fillOpacity = 0.9;
         }
-
       });
     });
-
-
   });
 }
 
