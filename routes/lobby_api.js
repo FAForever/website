@@ -4,32 +4,32 @@ let isFetching = false;
 
 const PLAYER_COUNT_UPDATE_INTERVAL = parseInt(process.env.PLAYER_COUNT_UPDATE_INTERVAL) * 1000;
 
-exports = module.exports = function(req, res) {
+exports = module.exports = function (req, res) {
   let resource = req.query.resource;
-    if (cache[resource]) {
-        if (isFetching || Date.now() - cache[resource].pollTime < PLAYER_COUNT_UPDATE_INTERVAL) {
-          return res.send(cache[resource].data);
-        }
+  if (cache[resource]) {
+    if (isFetching || Date.now() - cache[resource].pollTime < PLAYER_COUNT_UPDATE_INTERVAL) {
+      return res.send(cache[resource].data);
     }
-    isFetching = true;
+  }
+  isFetching = true;
   let queryResource = resource;
   if (resource === "countries") {
     queryResource = "players";
   }
   request(process.env.LOBBY_API_URL + "/" + queryResource, function (error, response, body) {
-        let data = [];
+    let data = [];
 
-        if (body) {
-            data = JSON.parse(body);
-        } else {
-            console.error(
-                "Error occured during parsing: ",
-                process.env.LOBBY_API_URL + "/" + resource,
-                "body: " ,body,
-                "error: ", error,
-                "response", response
-            );
-        }
+    if (body) {
+      data = JSON.parse(body);
+    } else {
+      console.error(
+        "Error occured during parsing: ",
+        process.env.LOBBY_API_URL + "/" + resource,
+        "body: ", body,
+        "error: ", error,
+        "response", response
+      );
+    }
 
     cache[queryResource] = {
       pollTime: Date.now(),
@@ -46,11 +46,11 @@ exports = module.exports = function(req, res) {
         }
       });
       cache["countries"] = {
-            pollTime: Date.now(),
+        pollTime: Date.now(),
         data: mapData
       };
     }
-        isFetching = false;
+    isFetching = false;
     return res.send(cache[resource].data);
-    });
+  });
 };
