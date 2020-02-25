@@ -35,7 +35,7 @@ exports = module.exports = function (req, res) {
       pollTime: Date.now(),
       data: data.length.toString()
     };
-    if (queryResource === "players") {
+    if (resource === "countries") {
       data = data.map(player => player.country);
       const mapData = {};
       data.forEach(value => {
