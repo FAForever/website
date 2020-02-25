@@ -12,7 +12,7 @@ mixin username
     .form-group.has-feedback
         label Username:
             .input-group
-              input(type='text', name='username', required='required', value=formData['username'], data-minlength='3', maxlength='16', pattern='[A-Za-z]{1}[A-Za-z0-9_-]{2,15}$', data-minlength-error='The username is too short - must be at least 3 characters', data-error='Please check username requirements', data-remote="/account/checkUsername", data-remote-error="Username taken").form-control
+                input(type='text', name='username', required='required', value=formData['username'], data-minlength='3', maxlength='16', pattern='[A-Za-z]{1}[A-Za-z0-9_-]{2,15}$', data-minlength-error='The username is too short - must be at least 3 characters', data-error='Please check username requirements', data-remote="/account/checkUsername", data-remote-error="Username taken").form-control
                 span(aria-hidden='true').glyphicon.form-control-feedback
                 .help-block
                     | Must be between 3 and 16 characters <br>
