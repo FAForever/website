@@ -1,34 +1,61 @@
-extends ../layouts/default
+mixin div(title)
+  if block   
+    h1 #{ title }
+    div(style="border:1px solid black;padding:15px")
+      block
 
 mixin renderArticle(v)
-  b hi #{ v.title } x
-  img(src="/images/aeon.png", alt="")
-  p text desc
-
-
-block content
-
+  a(href=v.linkUrl) #{ v.title }
   br
   
-  h2.text-center Newshub
-
-  br
+  if v.category
+    p #{ v.category }
   
-  #stats
+  if v.imageUrl
+    img(src=v.imageUrl)
   
-  table 
-    tr
-      td#hero
-        +renderArticle(articles[0])
-      td
-        +renderArticle(articles[0])
+  if v.subtitle
+    p #{ v.subtitle }
+  
+  if v.paragraph
+    p #{ v.paragraph }
+  
+  if v.tags
+    p(style="color:red") Tags: #{ v.tags }
+  
+  hr
 
++div("TopBar")
+  p #{ content.topbar.title }
+  p #{ content.topbar.linkUrl }
+  p #{ content.topbar.backgroundcolor }
 
-block js
-  script(type='text/javascript').
-    var articles = '!{JSON.stringify(articles)}';
-  script(src="/js/leaderboards.min.js")
-  style(type='text/css').
-   td#hero { background-color:yellow }
-   h2 { color:red; }
-   h2 { color:blue; }
++div("Hero")
+  +renderArticle(content.hero)
+
++div("Col1")
+  for a in content.col1
+    +renderArticle(a)
+
++div("Col2")
+  h1 
+  for a in content.col2
+    +renderArticle(a)
+
++div("Col3")
+  for a in content.col3
+    +renderArticle(a)
+
++div("SidebarLeft")
+  img(src=content.sidebarLeft.imageUrl)
+  p #{ content.sidebarLeft.linkUrl }
+  p #{ content.sidebarLeft.backgroundcolor }
+
++div("sidebarMiddle")
+  img(src=content.sidebarMiddle.imageUrl)
+  p #{ content.sidebarMiddle.linkUrl }
+
++div("sidebarRight")
+  img(src=content.sidebarRight.imageUrl)
+  p #{ content.sidebarRight.linkUrl }
+  p #{ content.sidebarRight.backgroundcolor }
