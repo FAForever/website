@@ -1,0 +1,34 @@
+extends ../layouts/default
+
+mixin renderArticle(v)
+  b hi #{ v.title } x
+  img(src="/images/aeon.png", alt="")
+  p text desc
+
+
+block content
+
+  br
+  
+  h2.text-center Newshub
+
+  br
+  
+  #stats
+  
+  table 
+    tr
+      td#hero
+        +renderArticle(articles[0])
+      td
+        +renderArticle(articles[0])
+
+
+block js
+  script(type='text/javascript').
+    var articles = '!{JSON.stringify(articles)}';
+  script(src="/js/leaderboards.min.js")
+  style(type='text/css').
+   td#hero { background-color:yellow }
+   h2 { color:red; }
+   h2 { color:blue; }

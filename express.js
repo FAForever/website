@@ -134,6 +134,7 @@ app.get('/client', require(routes + 'client'));
 app.get('/livestream', require(routes + 'livestream'));
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/calendar', require(routes + 'calendar'));
+app.get('/newshub', require(routes + 'newshub'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
 app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
 app.get('/competitive/leaderboards/global', require(routes + 'global'));
