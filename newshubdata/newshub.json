@@ -1,0 +1,111 @@
+{
+    "topbar" : 
+    { 
+        "title":"Two days until Promotion Councilor Nominations close", 
+        "linkUrl": "https://forums.faforever.com/viewtopic.php?f=2&t=18999#p183736",
+        "backgroundcolor": "00963c"
+    },
+
+    "hero" : { 
+        "title":"Balance Patch 3714", 
+        "subtitle": "T2 Buff, Shielded CZAR, new Loyalist ability and more", 
+        "paragraph": "In the biggest patch in recent times, this patch focuses mainly on Aeon with buffs to the Czar, Spectre and Harbie. The Loyalist also gets a new suicide attack and T2 gets an much needed all-round buff.",
+        "imageUrl":"/images/newshubdemo/balancepatch3714.png",
+        "linkUrl": "https://forums.faforever.com/viewtopic.php?f=67&t=19195"
+    },
+
+    "col1" : [
+        { 
+            "title":"Opinion: Best UI Mods",
+            "category":"OPINION",
+            "paragraph":"Over 15 UI mods reviewed and explained by our resident Gamecilor, keyser",
+            "imageUrl":"/images/newshubdemo/cog.png",
+            "linkUrl": "https://forums.faforever.com/viewtopic.php?f=41&t=19207"
+        }
+    ],
+
+    "col2" : [
+        { 
+            "title":"Blitz Tournament Series", 
+            "paragraph":"A new tournament format has been introduced leading to a different points style never seen before", 
+            "imageUrl":"/images/newshubdemo/blitz.png", 
+            "linkUrl": "https://forums.faforever.com/viewtopic.php?f=26&t=19193" 
+        },
+        { 
+            "title":"5th Ladder League Season", 
+            "category":"LADDER", 
+            "paragraph":"ThomasHiatt has kicked off to an early lead ahead blazing ahead by 14 points already. Win prizes and avatars! Top the leaderboard. Win!", 
+            "imageUrl":"/images/newshubdemo/ladder.png", 
+            "linkUrl": "https://faforever.com/2020/05/may-faf-tournament-news",
+            "tags" : ["golden"]
+        },
+        { 
+            "title":"Promotions Councilor Nominations", 
+            "category":"FAF", 
+            "paragraph":"FAF is currently seeking a new Promotions Councillor. Could this be your chance to give back to the community that has given you so much?", 
+            "imageUrl":"/images/newshubdemo/promo.png", 
+            "linkUrl": "https://forums.faforever.com/viewtopic.php?f=2&t=18999#p183736" 
+        },
+        { 
+            "title":"Nomads Update", 
+            "category":"MODS", 
+            "paragraph":"See where they are at and help them out with your modelling skills", 
+            "imageUrl":"/images/newshubdemo/nomads.png", 
+            "linkUrl": "https://faforever.com/2020/05/nomads-dev-diaries-22" 
+        }
+    ],
+    
+    "col3" : [
+        { 
+            "title":"Blodir vs Turbo2 - 1v1 Ladder by Jagged Appliance", 
+            "category":"FEATURED CAST", 
+            "imageUrl":"/images/newshubdemo/cast.png", 
+            "linkUrl": "https://www.youtube.com/watch?v=eHZ92v6WIy0",
+            "tags" : ["golden"]
+        },
+        { 
+            "title":"FAF Wiki in need of some TLC", 
+            "category":"HOT TOPICS", 
+            "linkUrl": "https://forums.faforever.com/viewtopic.php?f=2&t=19178" 
+        },
+        { 
+            "title":"Concerns regarding faf promo", 
+            "linkUrl": "https://forums.faforever.com/viewtopic.php?f=2&t=19100" 
+        },
+        { 
+            "title":"Rating rework", 
+            "linkUrl": "https://forums.faforever.com/viewtopic.php?f=2&t=19147" 
+        },
+        { 
+            "title":"Interview: Ice Adapter", 
+            "linkUrl": "https://forums.faforever.com/viewtopic.php?f=3&t=18006&p=177541&hilit=ice+network#p177541" 
+        },
+        { 
+            "title":"Morax’s Norfair gets a hairdo", 
+            "imageUrl":"/images/newshubdemo/norfair.png", 
+            "linkUrl": "https://forums.faforever.com/viewtopic.php?f=53&t=13090&start=70#p183811" 
+        },
+        { 
+            "title":"Biass did something good", 
+            "imageUrl":"/images/newshubdemo/biass.png", 
+            "linkUrl": "https://forums.faforever.com/viewtopic.php?f=53&t=18520&start=30#p183800" 
+        }
+    ],
+
+    "sidebarLeft" : { 
+        "imageUrl":"/images/newshubdemo/sidebarLeft.png", 
+        "linkUrl": "https://forums.faforever.com/viewtopic.php?f=26&t=16077&p=162478&hilit=+king+of+uef#p162478",
+        "backgroundcolor": "5e52a6"
+    },
+
+    "sidebarMiddle" : { 
+        "imageUrl":"/images/newshubdemo/sidebarMiddle.png", 
+        "linkUrl": "https://forums.faforever.com/viewtopic.php?f=26&t=16077&p=162478&hilit=+king+of+uef#p162478"
+    },
+
+    "sidebarRight" : { 
+        "imageUrl":"/images/newshubdemo/sidebarRight.png", 
+        "linkUrl": "https://forums.faforever.com/viewtopic.php?f=26&t=16077&p=162478&hilit=+king+of+uef#p162478",
+        "backgroundcolor": "5e52a6"
+    }
+}
