@@ -1,3 +1,8 @@
+
+//- pre #{ JSON.stringify(data, null, '\t') }
+
+//- script !{ "var data = " + JSON.stringify(data, null, '\t') }
+
 mixin div(title)
   if block   
     h1 #{ title }
@@ -26,7 +31,7 @@ mixin renderArticle(v)
   hr
 
 +div("TopBar")
-  p #{ content.topbar.title }
+  p #{ content.topbar.paragraph }
   p #{ content.topbar.linkUrl }
   p #{ content.topbar.backgroundcolor }
 
