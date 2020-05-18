@@ -1,7 +1,8 @@
 {
     "topbar" : 
     { 
-        "title":"Two days until Promotion Councilor Nominations close", 
+        "title":"Newshub top bar", 
+        "paragraph":"<p>Two days until Promotion Councilor Nominations close</p>", 
         "linkUrl": "https://forums.faforever.com/viewtopic.php?f=2&t=18999#p183736",
         "backgroundcolor": "00963c"
     },
