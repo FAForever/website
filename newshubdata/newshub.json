@@ -37,7 +37,7 @@
             "paragraph":"<p><b>ThomasHiatt</b> has kicked off to an early lead ahead blazing ahead by 14 points already.</p><p>Win prizes and avatars! Top the leaderboard. Win!</p>", 
             "imageUrl":"/images/newshubdemo/ladder.png", 
             "linkUrl": "https://faforever.com/2020/05/may-faf-tournament-news",
-            "tags" : ["golden"]
+            "customStyle" : "golden"
         },
         { 
             "title":"Promotions Councilor Nominations", 
@@ -61,7 +61,7 @@
             "category":"FEATURED CAST", 
             "imageUrl":"/images/newshubdemo/cast.png", 
             "linkUrl": "https://www.youtube.com/watch?v=eHZ92v6WIy0",
-            "tags" : ["golden"]
+            "customStyle" : "golden"
         },
         { 
             "title":"FAF Wiki in need of some TLC", 
