@@ -31,9 +31,10 @@ mixin renderArticle(v)
   hr
 
 +div("TopBar")
-  p #{ content.topbar.paragraph }
-  p #{ content.topbar.linkUrl }
-  p #{ content.topbar.backgroundcolor }
+  if content.topbar
+    p #{ content.topbar.paragraph }
+    p #{ content.topbar.linkUrl }
+    p #{ content.topbar.backgroundcolor }
 
 +div("Hero")
   +renderArticle(content.hero)
@@ -52,15 +53,18 @@ mixin renderArticle(v)
     +renderArticle(a)
 
 +div("SidebarLeft")
-  img(src=content.sidebarLeft.imageUrl)
-  p #{ content.sidebarLeft.linkUrl }
-  p #{ content.sidebarLeft.backgroundcolor }
+  if content.sidebarLeft
+    img(src=content.sidebarLeft.imageUrl)
+    p #{ content.sidebarLeft.linkUrl }
+    p #{ content.sidebarLeft.backgroundcolor }
 
 +div("sidebarMiddle")
-  img(src=content.sidebarMiddle.imageUrl)
-  p #{ content.sidebarMiddle.linkUrl }
+  if content.sidebarMiddle
+    img(src=content.sidebarMiddle.imageUrl)
+    p #{ content.sidebarMiddle.linkUrl }
 
 +div("sidebarRight")
-  img(src=content.sidebarRight.imageUrl)
-  p #{ content.sidebarRight.linkUrl }
-  p #{ content.sidebarRight.backgroundcolor }
+  if content.sidebarRight
+    img(src=content.sidebarRight.imageUrl)
+    p #{ content.sidebarRight.linkUrl }
+    p #{ content.sidebarRight.backgroundcolor }

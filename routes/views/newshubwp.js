@@ -11,6 +11,8 @@ exports = module.exports = function(req, res) {
   locals.content = {};
 
   // todo: only get ones with my category
+  // todo: change blog page to filter out my category
+  // todo: ? should i filter out fields that arent used
   wp.connect()
     .posts()
     .embed()
