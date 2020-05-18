@@ -17,7 +17,7 @@
     "col1" : [
         { 
             "title":"Opinion: Best UI Mods",
-            "category":"OPINION",
+            "badge":"OPINION",
             "paragraph":"<p>Over 15 UI mods reviewed and explained by our resident Gamecilor, keyser</p>",
             "imageUrl":"/images/newshubdemo/cog.png",
             "linkUrl": "https://forums.faforever.com/viewtopic.php?f=41&t=19207"
@@ -33,7 +33,7 @@
         },
         { 
             "title":"5th Ladder League Season", 
-            "category":"LADDER", 
+            "badge":"LADDER", 
             "paragraph":"<p><b>ThomasHiatt</b> has kicked off to an early lead ahead blazing ahead by 14 points already.</p><p>Win prizes and avatars! Top the leaderboard. Win!</p>", 
             "imageUrl":"/images/newshubdemo/ladder.png", 
             "linkUrl": "https://faforever.com/2020/05/may-faf-tournament-news",
@@ -41,14 +41,14 @@
         },
         { 
             "title":"Promotions Councilor Nominations", 
-            "category":"FAF", 
+            "badge":"FAF", 
             "paragraph":"<p>FAF is currently seeking a new Promotions Councillor. Could this be your chance to give back to the community that has given you so much?</p>", 
             "imageUrl":"/images/newshubdemo/promo.png", 
             "linkUrl": "https://forums.faforever.com/viewtopic.php?f=2&t=18999#p183736" 
         },
         { 
             "title":"Nomads Update", 
-            "category":"MODS", 
+            "badge":"MODS", 
             "paragraph":"<p>See where they are at and help them out with your modelling skills</p>", 
             "imageUrl":"/images/newshubdemo/nomads.png", 
             "linkUrl": "https://faforever.com/2020/05/nomads-dev-diaries-22" 
@@ -58,14 +58,14 @@
     "col3" : [
         { 
             "title":"Blodir vs Turbo2 - 1v1 Ladder by Jagged Appliance", 
-            "category":"FEATURED CAST", 
+            "badge":"FEATURED CAST", 
             "imageUrl":"/images/newshubdemo/cast.png", 
             "linkUrl": "https://www.youtube.com/watch?v=eHZ92v6WIy0",
             "customStyle" : "golden"
         },
         { 
             "title":"FAF Wiki in need of some TLC", 
-            "category":"HOT TOPICS", 
+            "badge":"HOT TOPICS", 
             "linkUrl": "https://forums.faforever.com/viewtopic.php?f=2&t=19178" 
         },
         { 
