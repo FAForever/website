@@ -110,7 +110,7 @@ html
                     li: a(href="/account/password/reset") Reset/Forgot Password
             button.toggle-nav.mobile-hamburger
               i.fas.fa-bars(aria-hidden='true')
-    .website
+    .website(class=(removeNavigation? 'removeNavigation':undefined))
       //- BODY
       #body.content(class=(removeNavigation? 'updatePage':undefined))
 
