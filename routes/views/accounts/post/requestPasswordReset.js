@@ -1,5 +1,6 @@
 let flash = {};
 let request = require('request');
+let error = require('./error');
 
 exports = module.exports = function (req, res) {
 
@@ -31,25 +32,8 @@ exports = module.exports = function (req, res) {
       form: {identifier: identifier}
     }, function (err, res, body) {
 
-      let resp;
-      let errorMessages = [];
       if (res.statusCode !== 200) {
-        try {
-          resp = JSON.parse(body);
-          resp.errors.forEach(error => errorMessages.push({msg: error.detail}))
-        } catch (e) {
-          errorMessages.push({msg: 'An unknown error occurred. Please try again later or ask the support.'});
-        }
-        
-        if(errorMessages.length === 0) {
-          errorMessages.push({msg: 'An unknown error occurred. Please try again later or ask the support.'});
-        }
-
-        console.log(errorMessages);
-        flash.class = 'alert-danger';
-        flash.messages = errorMessages;
-        flash.type = 'Error!';
-
+        error.parseApiErrors(body, flash);
         return overallRes.render('account/requestPasswordReset', {flash: flash});
       }
 

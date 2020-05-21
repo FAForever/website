@@ -1,5 +1,6 @@
 let flash = {};
 let request = require('request');
+let error = require('./error');
 
 exports = module.exports = function (req, res) {
 
@@ -33,28 +34,19 @@ exports = module.exports = function (req, res) {
       form: {newPassword: newPassword}
     }, function (err, res, body) {
 
-      let resp;
-      let errorMessages = [];
-
       if (res.statusCode !== 200) {
-        try {
-          resp = JSON.parse(body);
-        } catch (e) {
-          errorMessages.push({msg: 'Invalid reset password. Please try again later.'});
-          flash.class = 'alert-danger';
-          flash.messages = errorMessages;
-          flash.type = 'Error!';
-
-          return overallRes.render('account/confirmPasswordReset', {flash: flash});
-        }
+        error.parseApiErrors(body, flash);        
+        return overallRes.render('account/confirmPasswordReset', {flash: flash});
       }
 
-      // Successfully reset password
-      flash.class = 'alert-success';
-      flash.messages = [{msg: 'Your password was changed successfully.'}];
-      flash.type = 'Success!';
+    // Successfully reset password
+    flash.class = 'alert-success';
+    flash.messages = [{msg: 'Your password was changed successfully.'}];
+    flash.type = 'Success!';
 
-      overallRes.render('account/confirmPasswordReset', {flash: flash});
-    });
+    overallRes.render('account/confirmPasswordReset', {flash: flash});
   }
-};
+);
+}
+}
+;
