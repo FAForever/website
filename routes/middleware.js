@@ -57,8 +57,9 @@ exports.clientChecks = function(req, res, next) {
     if (req.query.page_id) {
         res.redirect('/news');
     }
-
-    if (req.headers['user-agent'] == 'FAF Client') {
+ 
+    var userAgent = req.headers['user-agent'];
+    if (userAgent == 'FAF Client' || userAgent == 'downlords-faf-client') {
 		locals.removeNavigation = true;
     }
 
