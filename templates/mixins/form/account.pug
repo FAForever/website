@@ -27,12 +27,13 @@ mixin usernameOrEmail
                 input(type='text', name='usernameOrEmail', required='required', value=formData['usernameOrEmail']).form-control
                 span(aria-hidden='true').glyphicon.form-control-feedback
 
-mixin confirm-password(passwordName,labelPassword)
+mixin confirm-password(token,passwordName,labelPassword)
     - passwordName = passwordName || 'password'
     - labelPassword = labelPassword || ''
     .form-group.has-feedback
         label #{labelPassword} Password:
             .input-group
+                input(type='hidden', name='token', required='required', id='inputToken', value=token).form-control
                 input(type='password', name=passwordName, required='required', id='inputPassword', data-minlength='6').form-control
                 span(aria-hidden='true').glyphicon.form-control-feedback
                 .help-block Minimum of 6 characters

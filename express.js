@@ -112,8 +112,11 @@ app.get('/account/link', loggedIn, require(routes + 'accounts/get/linkSteam'));
 
 app.get('/account/connect', loggedIn, require(routes + 'accounts/get/connectSteam'));
 
-app.get('/account/password/reset', require(routes + 'accounts/get/resetPassword'));
-app.post('/account/password/reset', require(routes + 'accounts/post/resetPassword'));
+app.get('/account/password/reset', require(routes + 'accounts/get/requestPasswordReset'));
+app.post('/account/password/reset', require(routes + 'accounts/post/requestPasswordReset'));
+
+app.get('/account/password/confirmReset', require(routes + 'accounts/get/confirmPasswordReset'));
+app.post('/account/password/confirmReset', require(routes + 'accounts/post/confirmPasswordReset'));
 
 app.get('/account/report', loggedIn, require(routes + 'accounts/get/report'));
 app.post('/account/report', loggedIn, require(routes + 'accounts/post/report'));
@@ -128,7 +131,7 @@ app.get('/account/email/change', loggedIn, require(routes + 'accounts/get/changE
 app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/changEmail'));
 
 app.get('/account_activated', require(routes + 'accounts/get/register'));
-app.get('/password_resetted', require(routes + 'accounts/get/resetPassword'));
+app.get('/password_resetted', require(routes + 'accounts/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'accounts/get/report'));
 app.get('/client', require(routes + 'client'));
 app.get('/livestream', require(routes + 'livestream'));

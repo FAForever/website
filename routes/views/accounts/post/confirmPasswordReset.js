@@ -8,7 +8,6 @@ exports = module.exports = function (req, res) {
   locals.formData = req.body || {};
 
   // validate the input
-  req.checkBody('usernameOrEmail', 'Username or email is required').notEmpty();
   req.checkBody('password', 'Password is required').notEmpty();
   req.checkBody('password', 'Password must be six or more characters').isLength({min: 6});
   req.checkBody('password', 'Passwords don\'t match').isEqual(req.body.password_confirm);
@@ -22,17 +21,16 @@ exports = module.exports = function (req, res) {
     flash.messages = errors;
     flash.type = 'Error!';
 
-    res.render('account/resetPassword', {flash: flash});
+    res.render('account/confirmPasswordReset', {flash: flash});
   } else {
-    let identifier = req.body.usernameOrEmail;
     let newPassword = req.body.password;
 
     let overallRes = res;
 
     //Run post to reset endpoint
     request.post({
-      url: process.env.API_URL + '/users/resetPassword',
-      form: {identifier: identifier, newPassword: newPassword}
+      url: process.env.API_URL + '/users/performPasswordReset',
+      form: {newPassword: newPassword}
     }, function (err, res, body) {
 
       let resp;
@@ -47,16 +45,16 @@ exports = module.exports = function (req, res) {
           flash.messages = errorMessages;
           flash.type = 'Error!';
 
-          return overallRes.render('account/resetPassword', {flash: flash});
+          return overallRes.render('account/confirmPasswordReset', {flash: flash});
         }
       }
 
       // Successfully reset password
       flash.class = 'alert-success';
-      flash.messages = [{msg: 'Your password is in the process of being reset, please reset your password by clicking on the link provided in an email.'}];
+      flash.messages = [{msg: 'Your password was changed successfully.'}];
       flash.type = 'Success!';
 
-      overallRes.render('account/resetPassword', {flash: flash});
+      overallRes.render('account/confirmPasswordReset', {flash: flash});
     });
   }
 };

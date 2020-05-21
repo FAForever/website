@@ -1,5 +1,5 @@
 # website
-New Forged Alliance Forever main website to replace http://faforever.com
+FAForever main website on https://www.faforever.com
 
 Requires Node and NPM.
 To install it, follow these steps : 
@@ -14,7 +14,7 @@ cp .env.example .env
 ```
 
 Now you're ready to start the server. You can fire it using :
-`PORT=3000 yarn start`
+`yarn start`
 
 In order to learn grunt and install cli, please follow this guide - http://gruntjs.com/getting-started
 
