@@ -10,14 +10,12 @@ exports = module.exports = function(req, res) {
   locals.title = 'FAForever Newshub';
   locals.content = {};
 
-  // todo: only get ones with my category
-  // todo: change blog page to filter out my category
-  // todo: ? should i filter out fields that arent used
   wp.connect()
     .posts()
     .embed()
     .page(1)
     .perPage(100)
+    .categories(process.env.WP_NEWSHUB_CATEGORYID) // only show articles with newshub category
     .then(function(data) {
 
       var posts = data

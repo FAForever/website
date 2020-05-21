@@ -148,6 +148,7 @@ exports = module.exports = function(req, res) {
         .embed()
         .page(page)
         .perPage(itemsPerPage)
+        .excludeCategories(process.env.WP_NEWSHUB_CATEGORYID) // exclude articles with newshub category on blog
         .then(function(data) {
           locals.data.posts = data;
           res.render('blog');
