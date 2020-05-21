@@ -56,6 +56,7 @@ exports = module.exports = function(req, res) {
       .embed()
       .page(page)
       .perPage(itemsPerPage)
+      .excludeCategories(process.env.WP_NEWSHUB_CATEGORYID) // exclude articles with newshub category on blog
       .search(search)
       .then(function(data) {
         locals.data.posts = data;
@@ -90,7 +91,8 @@ exports = module.exports = function(req, res) {
             .categories(category.id)
             .embed()
             .page(page)
-            .perPage(itemsPerPage);
+            .perPage(itemsPerPage)
+            .excludeCategories(process.env.WP_NEWSHUB_CATEGORYID); // exclude articles with newshub category on blog
         })
         .then(function(data) {
           locals.data.posts = data;
@@ -112,7 +114,8 @@ exports = module.exports = function(req, res) {
             .tags(tag.id)
             .embed()
             .page(page)
-            .perPage(itemsPerPage);
+            .perPage(itemsPerPage)
+            .excludeCategories(process.env.WP_NEWSHUB_CATEGORYID); // exclude articles with newshub category on blog
         })
         .then(function(data) {
           locals.data.posts = data;
@@ -133,7 +136,8 @@ exports = module.exports = function(req, res) {
             .author(author.id)
             .embed()
             .page(page)
-            .perPage(itemsPerPage);
+            .perPage(itemsPerPage)
+            .excludeCategories(process.env.WP_NEWSHUB_CATEGORYID); // exclude articles with newshub category on blog
         })
         .then(function(data) {
           locals.data.posts = data;
