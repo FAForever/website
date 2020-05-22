@@ -127,8 +127,8 @@ app.post('/account/password/change', loggedIn, require(routes + 'accounts/post/c
 app.get('/account/username/change', loggedIn, require(routes + 'accounts/get/changeUsername'));
 app.post('/account/username/change', loggedIn, require(routes + 'accounts/post/changeUsername'));
 
-app.get('/account/email/change', loggedIn, require(routes + 'accounts/get/changEmail'));
-app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/changEmail'));
+app.get('/account/email/change', loggedIn, require(routes + 'accounts/get/changeEmail'));
+app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/changeEmail'));
 
 app.get('/account_activated', require(routes + 'accounts/get/register'));
 app.get('/password_resetted', require(routes + 'accounts/get/requestPasswordReset'));

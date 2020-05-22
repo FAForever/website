@@ -23,7 +23,7 @@ exports = module.exports = function (req, res) {
 		flash.messages = errors;
 		flash.type = 'Error!';
 
-		res.render('account/changEmail', {flash: flash});
+		res.render('account/changeEmail', {flash: flash});
 
 	} else {
 
@@ -41,7 +41,7 @@ exports = module.exports = function (req, res) {
 
 			if (res.statusCode !== 200) {
         error.parseApiErrors(body, flash);
-        return overallRes.render('account/changEmail', {flash: flash});
+        return overallRes.render('account/changeEmail', {flash: flash});
 			}
 
 			// Successfully changed email
@@ -49,7 +49,7 @@ exports = module.exports = function (req, res) {
 			flash.messages = [{msg: 'Your email was set successfully. Please use the new email to log in!'}];
 			flash.type = 'Success!';
 
-			overallRes.render('account/changEmail', {flash: flash});
+			overallRes.render('account/changeEmail', {flash: flash});
 		});
 	}
 };

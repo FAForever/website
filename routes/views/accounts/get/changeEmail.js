@@ -9,6 +9,6 @@ exports = module.exports = function(req, res) {
 	locals.formData = req.body || {};
 
 	// Render the view
-	res.render('account/changEmail');
+	res.render('account/changeEmail');
 
 };
