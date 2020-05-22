@@ -105,6 +105,9 @@ app.get('/rules', markdown("templates/views/rules.md"));
 app.get('/account/register', require(routes + 'accounts/get/register'));
 app.post('/account/register', require(routes + 'accounts/post/register'));
 
+app.get('/account/activate', require(routes + 'accounts/get/activate'));
+app.post('/account/activate', require(routes + 'accounts/post/activate'));
+
 // Callback for registration to create the account using a token
 app.get('/account/create', require(routes + 'accounts/get/createAccount'));
 

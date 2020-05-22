@@ -23,30 +23,30 @@ exports = module.exports = function (req, res) {
     flash.messages = errors;
     flash.type = 'Error!';
 
-    res.render('account/confirmPasswordReset', {flash: flash});
+    res.render('account/activate', {flash: flash});
   } else {
     let token = req.query.token;
-    let newPassword = req.body.password;
+    let password = req.body.password;
 
     let overallRes = res;
 
     //Run post to reset endpoint
     request.post({
-      url: process.env.API_URL + '/users/performPasswordReset',
-      form: {newPassword: newPassword, token: token}
+      url: process.env.API_URL + '/users/activate',
+      form: {password: password, token: token}
     }, function (err, res, body) {
 
       if (res.statusCode !== 200) {
         error.parseApiErrors(body, flash);        
-        return overallRes.render('account/confirmPasswordReset', {flash: flash});
+        return overallRes.render('account/activate', {flash: flash});
       }
 
     // Successfully reset password
     flash.class = 'alert-success';
-    flash.messages = [{msg: 'Your password was changed successfully.'}];
+    flash.messages = [{msg: 'Your account was created successfully.'}];
     flash.type = 'Success!';
 
-    overallRes.render('account/confirmPasswordReset', {flash: flash});
+    overallRes.render('account/activate', {flash: flash});
   }
 );
 }
