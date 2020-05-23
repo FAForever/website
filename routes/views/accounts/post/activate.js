@@ -6,6 +6,7 @@ exports = module.exports = function (req, res) {
 
   let locals = res.locals;
   locals.username = req.query.username
+  locals.token = req.query.token
 
   locals.formData = req.body || {};
 

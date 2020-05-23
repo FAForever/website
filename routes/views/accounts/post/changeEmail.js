@@ -46,7 +46,7 @@ exports = module.exports = function (req, res) {
 
 			// Successfully changed email
 			flash.class = 'alert-success';
-			flash.messages = [{msg: 'Your email was set successfully. Please use the new email to log in!'}];
+			flash.messages = [{msg: 'Your email was set successfully.'}];
 			flash.type = 'Success!';
 
 			overallRes.render('account/changeEmail', {flash: flash});

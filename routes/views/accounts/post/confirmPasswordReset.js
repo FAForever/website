@@ -6,6 +6,7 @@ exports = module.exports = function (req, res) {
 
   let locals = res.locals;
   locals.username = req.query.username
+  locals.token = req.query.token
 
   locals.formData = req.body || {};
 
@@ -21,7 +22,7 @@ exports = module.exports = function (req, res) {
   if (errors) {
     flash.class = 'alert-danger';
     flash.messages = errors;
-    flash.type = 'Error!';
+    flash.type = 'Error!'; 
 
     res.render('account/confirmPasswordReset', {flash: flash});
   } else {
