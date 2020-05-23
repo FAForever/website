@@ -105,6 +105,9 @@ app.get('/rules', markdown("templates/views/rules.md"));
 app.get('/account/register', require(routes + 'accounts/get/register'));
 app.post('/account/register', require(routes + 'accounts/post/register'));
 
+app.get('/account/activate', require(routes + 'accounts/get/activate'));
+app.post('/account/activate', require(routes + 'accounts/post/activate'));
+
 // Callback for registration to create the account using a token
 app.get('/account/create', require(routes + 'accounts/get/createAccount'));
 
@@ -112,8 +115,11 @@ app.get('/account/link', loggedIn, require(routes + 'accounts/get/linkSteam'));
 
 app.get('/account/connect', loggedIn, require(routes + 'accounts/get/connectSteam'));
 
-app.get('/account/password/reset', require(routes + 'accounts/get/resetPassword'));
-app.post('/account/password/reset', require(routes + 'accounts/post/resetPassword'));
+app.get('/account/password/reset', require(routes + 'accounts/get/requestPasswordReset'));
+app.post('/account/password/reset', require(routes + 'accounts/post/requestPasswordReset'));
+
+app.get('/account/password/confirmReset', require(routes + 'accounts/get/confirmPasswordReset'));
+app.post('/account/password/confirmReset', require(routes + 'accounts/post/confirmPasswordReset'));
 
 app.get('/account/report', loggedIn, require(routes + 'accounts/get/report'));
 app.post('/account/report', loggedIn, require(routes + 'accounts/post/report'));
@@ -124,11 +130,11 @@ app.post('/account/password/change', loggedIn, require(routes + 'accounts/post/c
 app.get('/account/username/change', loggedIn, require(routes + 'accounts/get/changeUsername'));
 app.post('/account/username/change', loggedIn, require(routes + 'accounts/post/changeUsername'));
 
-app.get('/account/email/change', loggedIn, require(routes + 'accounts/get/changEmail'));
-app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/changEmail'));
+app.get('/account/email/change', loggedIn, require(routes + 'accounts/get/changeEmail'));
+app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/changeEmail'));
 
 app.get('/account_activated', require(routes + 'accounts/get/register'));
-app.get('/password_resetted', require(routes + 'accounts/get/resetPassword'));
+app.get('/password_resetted', require(routes + 'accounts/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'accounts/get/report'));
 app.get('/client', require(routes + 'client'));
 app.get('/livestream', require(routes + 'livestream'));

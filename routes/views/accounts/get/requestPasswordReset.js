@@ -11,6 +11,6 @@ exports = module.exports = function (req, res) {
   var flash = null;
 
   // Render the view
-  res.render('account/register', {flash: flash});
+  res.render('account/requestPasswordReset', {flash: flash});
 
 };

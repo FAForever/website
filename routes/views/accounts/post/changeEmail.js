@@ -1,5 +1,6 @@
 let flash = {};
 let request = require('request');
+let error = require('./error');
 
 exports = module.exports = function (req, res) {
 
@@ -22,7 +23,7 @@ exports = module.exports = function (req, res) {
 		flash.messages = errors;
 		flash.type = 'Error!';
 
-		res.render('account/changEmail', {flash: flash});
+		res.render('account/changeEmail', {flash: flash});
 
 	} else {
 
@@ -38,41 +39,17 @@ exports = module.exports = function (req, res) {
 			form: {newEmail: email, currentPassword: password}
 		}, function (err, res, body) {
 
-			let resp;
-			let errorMessages = [];
-
 			if (res.statusCode !== 200) {
-				try {
-					resp = JSON.parse(body);
-				} catch (e) {
-					errorMessages.push({msg: 'Invalid email. Please try again later.'});
-					flash.class = 'alert-danger';
-					flash.messages = errorMessages;
-					flash.type = 'Error!';
-
-					return overallRes.render('account/changEmail', {flash: flash});
-				}
-
-				// Failed changing email
-				for (let i = 0; i < resp.errors.length; i++) {
-					let error = resp.errors[i];
-
-					errorMessages.push({msg: error.detail});
-				}
-
-				flash.class = 'alert-danger';
-				flash.messages = errorMessages;
-				flash.type = 'Error!';
-
-				return overallRes.render('account/changEmail', {flash: flash});
+        error.parseApiErrors(body, flash);
+        return overallRes.render('account/changeEmail', {flash: flash});
 			}
 
 			// Successfully changed email
 			flash.class = 'alert-success';
-			flash.messages = [{msg: 'Your email was set successfully. Please use the new email to log in!'}];
+			flash.messages = [{msg: 'Your email was set successfully.'}];
 			flash.type = 'Success!';
 
-			overallRes.render('account/changEmail', {flash: flash});
+			overallRes.render('account/changeEmail', {flash: flash});
 		});
 	}
 };

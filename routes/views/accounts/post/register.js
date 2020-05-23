@@ -20,9 +20,6 @@ exports = module.exports = function (req, res) {
 	// validate the input
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('username', 'Username must be three or more characters').isLength({min: 3});
-	req.checkBody('password', 'Password is required').notEmpty();
-	req.checkBody('password', 'Password must be six or more characters').isLength({min: 6});
-	req.checkBody('password', 'Passwords don\'t match').isEqual(req.body.password_confirm);
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email does not appear to be valid').isEmail();
 
