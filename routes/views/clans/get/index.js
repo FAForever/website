@@ -20,7 +20,7 @@ exports = module.exports = function(req, res) {
         catch(e){
             console.err("Parsing error while trying to decode a flash error: "+text);
             console.err(e);
-            flasg = [{msg: "Unknown error"}];
+            flash = [{msg: "Unknown error"}];
         }
     }        
       
@@ -37,11 +37,11 @@ exports = module.exports = function(req, res) {
                 url: 
                     process.env.API_URL 
                     + '/data/clan'
-                    + '?filter=memberships.player.updateTime=gt="'+showActiveClanPast.toISOString()+'"'
+                    + '?filter=createTime=gt="'+showActiveClanPast.toISOString()+'"'
                     + '&include=founder,leader'
                     + '&fields[clan]=createTime,name,memberships,leader,tag'
                     + '&fields[player]=login,clanMembership'
-                    + '&sort=-leader.updateTime'
+                    + '&sort=-createTime'
             },
             function (err, childRes, body) {
                 
@@ -58,7 +58,7 @@ exports = module.exports = function(req, res) {
                 for (k in clansData.included){
                     const record = clansData.included[k];
                     
-                    if (record.type != "player") continue;
+                    if (record.type !== "player") continue;
                     
                     const playerId = record.id;
                     players[playerId] = {
