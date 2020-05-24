@@ -7,14 +7,6 @@ module.exports = {
                 'public/js/app/headroom.min.js',
                 'public/js/app/navigation.js'
             ],
-            'public/js/calendar.min.js': [
-                'node_modules/moment/min/moment-with-locales.min.js',
-                'node_modules/fullcalendar/dist/fullcalendar.min.js',
-                'node_modules/fullcalendar/dist/locale-all.js',
-                'node_modules/fullcalendar/dist/gcal.js',
-                'node_modules/bootstrap-switch/dist/js/bootstrap-switch.min.js',
-                'public/js/app/calendar.js'
-            ],
             'public/js/leaderboards.min.js': [
                 'node_modules/awesomplete/awesomplete.js',
                 'node_modules/moment/min/moment-with-locales.min.js',

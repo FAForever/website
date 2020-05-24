@@ -23,7 +23,6 @@ process.env.WP_URL = process.env.WP_URL || 'https://direct.faforever.com/wp-json
 process.env.CHALLONGE_USERNAME = process.env.CHALLONGE_USERNAME || 'joe';
 process.env.CHALLONGE_APIKEY = process.env.CHALLONGE_APIKEY || '12345';
 process.env.PORT = process.env.PORT || '4000';
-process.env.GOOGLE_CALENDAR_API_KEY = process.env.GOOGLE_CALENDAR_API_KEY || '12345';
 process.env.API_URL = process.env.API_URL || 'https://api.test.faforever.com';
 process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
 process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
@@ -139,7 +138,6 @@ app.get('/report_submitted', require(routes + 'accounts/get/report'));
 app.get('/client', require(routes + 'client'));
 app.get('/livestream', require(routes + 'livestream'));
 app.get('/contribution', require(routes + 'contribution'));
-app.get('/calendar', require(routes + 'calendar'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
 app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
 app.get('/competitive/leaderboards/global', require(routes + 'global'));
