@@ -213,7 +213,7 @@ $("#sort-leader").click( function() {
         return 0 
     })
     $(".sort-column").find("#direction").text("");
-    $("#sort-leader").find("#direction").text( directions["leader"] > 0 ? "⯅" : "⯆" );
+    $("#sort-leader").find("#direction").text( directions["leader"] > 0 ? "▲" : "▼" );
     directions["leader"] *= -1;
     renderPage(document.getElementById("clans"), searchingName);
 });
@@ -230,7 +230,7 @@ $("#sort-name").click( function() {
         return 0 
     })
     $(".sort-column").find("#direction").text("");
-    $("#sort-name").find("#direction").text( directions["name"] > 0 ? "⯅" : "⯆" );
+    $("#sort-name").find("#direction").text( directions["name"] > 0 ?  "▲" : "▼" );
     directions["name"] *= -1;
     renderPage(document.getElementById("clans"), searchingName);
 });
@@ -243,7 +243,7 @@ $("#sort-create").click( function() {
         return (dateA - dateB)*directions["create"];
     })
     $(".sort-column").find("#direction").text("");
-    $("#sort-create").find("#direction").text( directions["create"] > 0 ? "⯅" : "⯆" );
+    $("#sort-create").find("#direction").text( directions["create"] > 0 ?  "▲" : "▼" );
     directions["create"] *= -1;
     renderPage(document.getElementById("clans"), searchingName);
 });
@@ -255,7 +255,7 @@ $("#sort-population").click( function() {
         return (a.population - b.population)*directions["population"];
     })
     $(".sort-column").find("#direction").text("");
-    $("#sort-population").find("#direction").text( directions["population"] > 0 ? "⯅" : "⯆" );
+    $("#sort-population").find("#direction").text( directions["population"] > 0 ?  "▲" : "▼" );
     directions["population"] *= -1;
     renderPage(document.getElementById("clans"), searchingName);
 });
