@@ -180,6 +180,8 @@ function createMap(data) {
   });
 }
 
-$.get("lobby_api", {resource: "countries"}, function (data) {
-  createMap(data);
-}, "json");
+window.addEventListener("load", () => {
+  $.get("lobby_api", {resource: "countries"}, function (data) {
+    createMap(data);
+  }, "json");
+});
