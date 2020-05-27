@@ -1,0 +1,77 @@
+extends ../layouts/default
+
+block content
+  .newshub_container
+    .newshub
+      
+      // sidebar left
+      if content.sidebarLeft
+        #sidebar_left(style="background:#" + content.sidebarLeft.backgroundcolor)
+          a(href=content.sidebarLeft.linkUrl)
+            img(src=content.sidebarLeft.imageUrl alt="")
+
+      // sidebar right
+      if content.sidebarRight
+        #sidebar_right(style="background:#" + content.sidebarRight.backgroundcolor)
+          a(href=content.sidebarRight.linkUrl)
+            img(src=content.sidebarRight.imageUrl alt="")
+
+      // top bar
+      if content.topbar
+        .announcement
+          a(href=content.topbar.linkUrl)
+            div(style="background:#" + content.topbar.backgroundcolor)
+              | !{ content.topbar.paragraph }
+
+      // normalArticles 
+      .column1
+      
+        for a in content.normalArticles
+
+          if (a.position=="hero") 
+            // large hero cell
+            .article_hero(class=a.customStyle)
+              if a.badge
+                .article_badge
+                  span #{ a.badge }
+              if a.imageUrl
+                a(href=a.linkUrl)
+                  img(src=a.imageUrl alt="")
+              a(href=a.linkUrl)
+                h2 #{ a.title }
+                if a.subtitle
+                  h3 #{ a.subtitle }
+              | !{ a.paragraph }
+
+          else
+            // normal cell
+            .article_common
+              .article_common_content(class=a.customStyle)
+                if a.badge
+                  .article_badge
+                    span #{ a.badge }
+                a(href=a.linkUrl)
+                  h3 #{ a.title }
+                if a.imageUrl
+                  a(href=a.linkUrl)
+                    img(src=a.imageUrl, alt="")
+                | !{ a.paragraph  }
+
+      // rightArticles
+      .column3
+        for a in content.rightArticles
+          .article_column3(class=a.customStyle)
+            if a.badge
+              .article_badge
+                span #{ a.badge }
+            if a.imageUrl
+              a(href=a.linkUrl) 
+                img(src=a.imageUrl, alt="")
+            a(href=a.linkUrl) #{ a.title }
+
+      // sidebar middle
+      if content.sidebarMiddle
+        #sidebar_middle
+          a(href=content.sidebarMiddle.linkUrl)
+            img(src=content.sidebarMiddle.imageUrl alt="")
+        .endline

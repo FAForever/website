@@ -11,6 +11,7 @@ html
 
     // Fonts
     link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css2?family=Electrolize&family=Russo+One&display=swap' rel='stylesheet' type='text/css')
 
     //- Customise the stylesheet for your site by editing /public/styles/site.sass
     link(href="/styles/css/site.min.css?version="+Date.now(), rel="stylesheet")
@@ -108,9 +109,9 @@ html
                     li: a(href="/account/password/reset") Reset/Forgot Password
             button.toggle-nav.mobile-hamburger
               i.fas.fa-bars(aria-hidden='true')
-    .website
+    .website(class=(removeNavigation && 'removeNavigation'))
       //- BODY
-      #body.content(class=(removeNavigation? 'updatePage':undefined))
+      #body.content(class=(removeNavigation && 'updatePage'))
 
           //- NOTE:
           //- There is no .container wrapping class around body blocks to allow more flexibility in design.
