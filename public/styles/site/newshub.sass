@@ -1,210 +1,193 @@
 $headerColour: #6990e0
-  
+$headerFont: 'Electrolize', sans-serif
+$badgeFont: 'Russo One', sans-serif
+
 .newshub_container
   min-height: calc(100vh)
   background-color: #212121
+  overflow: hidden
   
 .newshub
   max-width: 1270px
   margin: auto
   padding-top: 25px
   color: rgb(214, 214, 214)
-
+  position: relative
+  
 .newshub a
   text-decoration: none
   color: $headerColour
-.newshub h2
-  font-family: 'Electrolize', sans-serif
-.newshub h3
-  font-family: 'Electrolize', sans-serif
 
 //announcement  
 .announcement 
-  margin-bottom: 15px
-  width: 1265px
-  margin-left: 5px
-.announcement p
-  padding: 9px 15px
-  color: rgb(214, 214, 214)
-  font-family: 'Electrolize', sans-serif
+  max-width: 1260px
+  margin: 0px 0px 0px 10px
+  p
+    padding: 9px 15px
+    color: rgb(214, 214, 214)
+    font-family: $headerFont
+    
 
 //sidebars  
 #sidebar_left 
   width: 250px
-  height: 975px
-  margin-left: -258px
-  float: left
-  
+  left: -250px
+  top: 25px
+  position: absolute
 #sidebar_right 
   width: 250px
-  height: 975px
-  float: right
-  margin-right: -258px
-  top: 125px
+  right: -260px
+  top: 25px
+  position: absolute
+
+//columns flex    
+.newshub_flex
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+
+// all article cells
+.cell
+  margin: 0px 0px 10px 0px
+  overflow: hidden
+
+  &.hoverable:hover 
+    background-color: #282833
+    cursor: pointer
+  .articleBadge
+    background-color: rgb(147, 51, 51)
+    display: inline-block
+    padding: 1px 10px
+    min-width: 80px
+    text-align: center
+    margin: 0px 0px 5px 0px
+    font-size: 13px
+    font-family: $badgeFont
+  .articleTitle 
+    color: $headerColour
+    font-family: $headerFont
+    margin: 0px 0px 3px 0px
+  .articleSubtitle
+    display: none
+    color: $headerColour
+    font-family: $headerFont
+  .articleImage 
+    margin: 0px 10px 0px 0px
+
+  // nomads
+  &.styleNomads
+    .articleBadge
+      background-color: #dd7e2e
+
+  // golden
+  &.styleGolden
+    background: inherit url(/images/newshub-highlight.jpg) repeat-y 1px 0px
+    .articleBadge
+      background-color: rgb(215, 148, 6)
+    .articleTitle
+      color: rgb(255, 174, 0)
+    .articleSubtitle
+      color: rgb(255, 174, 0)
+    .articleParagraph
+      color: rgb(179, 178, 113)
+    a
+      color: rgb(255, 174, 0)
+      
+  // no titles
+  &.styleNoTitles
+    .articleTitle
+      display: none
+    .articleSubtitle
+      display: none
+
+// left column
+.column_left 
+  max-width: 744px
+
+  .cell
+    height: 170px
+    max-width: 372px
+    padding: 0px 0px 0px 10px
+    float: left
+
+    .articleTitle 
+      font-size: 17px
+    .articleImage 
+      max-width: 150px
+      float: left
+      img 
+        max-width: 150px
+    .articleSubtitle 
+      display: none
+    .articleParagraph 
+      margin: 0px 0px 10px 0px
+
+    &.styleHero
+      height: 530px
+      padding: 0px 10px 10px 10px
+      margin: 0px 0px 10px 0px
+      float: left
+      display: flex
+      flex-direction: column
+      align-items: baseline
+      .articleBadge
+        min-width: 80px
+      .articleTitle
+        font-size: 30px
+        margin: 0px 0px 3px 0px
+        order: 2
+      .articleImage
+        order: 1
+        img
+          max-width: 352px
+          order: 1
+      .articleSubtitle
+        display: block
+        font-size: 16px
+        margin: 0px 0px 2px 0px
+        order: 3
+      .articleParagraph
+        margin: 0px 0px 10px 0px
+        order: 4
+
+      &.styleNoTitles
+        .articleSubtitle
+          display: none
+
+@media screen and (max-width: 760px) 
+  .column_left 
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+
+// right column
+.column_right 
+  width: 227px
+
+  .cell
+    width: 227px
+    padding: 0px 10px 0px 10px
+    display: flex
+    flex-direction: column
+    align-items: baseline
+    .articleTitle
+      font-size: 15px
+      order: 2
+    .articleImage
+      order: 1
+      img
+        max-width: 189px
+    .articleSubtitle
+      order: none
+    .articleParagraph
+      display: none
+
+
 #sidebar_middle
   width: 299px
-  height: 602px
-  float: left
-
-//columns
-.column1 
-  max-width: 744px
-  float: left
-.column3 
-  width: 210px
-  overflow: hidden
-  margin-right: 15px
-  margin-left: 2px
-  font-size: 15px
-  float: left
-
-//badges
-.article_common_content span
-  background-color: rgb(147, 51, 51)
-  display: inline-block
-  padding: 1px 10px
-  min-width: 60px
-  text-align: center
-  margin-bottom: 5px
-  margin-left: 9px
-  font-size: 13px
-  font-family: 'Russo One', sans-serif
-  
-.article_column3 span
-  background-color: rgb(147, 51, 51)
-  display: inline-block
-  padding: 1px 10px
-  min-width: 60px
-  text-align: center
-  margin-bottom: 5px
-  margin-left: 9px
-  font-size: 13px
-  font-family: 'Russo One', sans-serif
-
-.golden
-  background-image: url(/images/newshub-highlight.jpg)
-  background-repeat: no-repeat
-    
-
-.golden p 
-  color: rgb(179, 178, 113)
-
-.golden h3
-  color: rgb(255, 174, 0)
-
-.golden span
-  background-color: rgb(215, 148, 6)
-  display: inline-block
-  padding: 1px 10px
-  min-width: 60px
-  text-align: center
-  margin-bottom: 5px
-  margin-left: 9px
-  font-size: 13px
-  color: white
-
-
-
-//hero
-.article_hero
-  //border-bottom: 1px solid #3e4040
-  height: 510px
-  padding-bottom: 0px
-  max-width: 360px
-  margin-bottom: 0px
-  margin-left: 5px
-  margin-right: 7px
-  overflow: hidden
-  float: left
-  clear: left
-.article_hero img
-  max-width: 100%
-.article_hero h2:hover
-  text-decoration: underline
-.article_hero h2
-  color: $headerColour
-  margin-top: 10px
-  margin-bottom: 1px
-  font-size: 30px
-.article_hero h3
-  color: $headerColour
-  margin-top: 4px
-  margin-bottom: 2px
-  font-size: 16px
-
-//badges
-.article_hero span
-  background-color: rgb(147, 51, 51)
-  display: inline-block
-  padding: 1px 10px
-  min-width: 60px
-  text-align: center
-  margin-bottom: 5px
-  font-size: 13px
-  font-family: 'Russo One', sans-serif
-  
-
-//common articles
-.article_common
-  height: 171px
-  width: 364px
-  margin-left: 0px
-  margin-right: 7px
-  overflow: hidden
-  float: left
-.article_common_content
-  float: left
-  width: 356px
-  height: 159px
-  margin-bottom: 8px
-  margin-left: 0px
-  overflow: hidden
-  font-size: 14px
-.article_common_content p
-  margin-top: 0px
-.article_common_content img
-  width: 150px
-  float: left
-  margin-right: 10px
-  margin-left: 9px
-.article_common h3:hover
-  text-decoration: underline
-.article_common h3
-  margin-top: 0px
-  margin-bottom: 5px
-  margin-left: 9px
-  font-size: 17px
-  font-weight: 100
- 
-//column3 articles
-.article_column3
-  margin-bottom: 10px
-.article_column3 a
-  color: $headerColour
-  display: block
-  margin-left: 9px
-.article_column3 img 
-  width: 100%
-.article_column3 a:hover 
-  text-decoration: underline
-.article_column3_h 
-  margin-bottom: 10px
-  background-image: url(/images/newshub-highlight.jpg)
-  background-repeat: no-repeat
-.article_column3_h a
-  color: rgb(226, 155, 4)
-  display: block
-  margin-left: 9px
-div.article_column3_h img 
-  width: 100%
-.article_column3_h a:hover
-  text-decoration: underline
-
-.golden a
-  color: rgb(255, 174, 0)
 
 .endline
-  width: 1270px
+  max-width: 1270px
   clear: both
   
   

@@ -1,21 +1,24 @@
 extends ../layouts/default
 
+mixin renderArticle(a)
+  - var hoverCssClass = a.linkUrl ? "hoverable" : "";
+  .cell(class=a.customStyle + " " + hoverCssClass, data-url=a.linkUrl)
+    if a.badge
+      .articleBadge !{ a.badge }
+    if a.title  
+      .articleTitle !{ a.title }
+    if a.imageUrl
+      .articleImage
+        img(src=a.imageUrl)
+    if a.subtitle  
+      .articleSubtitle !{ a.subtitle }
+    if a.paragraph  
+      .articleParagraph !{ a.paragraph }
+
 block content
   .newshub_container
     .newshub
-      
-      // sidebar left
-      if content.sidebarLeft
-        #sidebar_left(style="background:#" + content.sidebarLeft.backgroundcolor)
-          a(href=content.sidebarLeft.linkUrl)
-            img(src=content.sidebarLeft.imageUrl alt="")
-
-      // sidebar right
-      if content.sidebarRight
-        #sidebar_right(style="background:#" + content.sidebarRight.backgroundcolor)
-          a(href=content.sidebarRight.linkUrl)
-            img(src=content.sidebarRight.imageUrl alt="")
-
+    
       // top bar
       if content.topbar
         .announcement
@@ -23,55 +26,37 @@ block content
             div(style="background:#" + content.topbar.backgroundcolor)
               | !{ content.topbar.paragraph }
 
-      // normalArticles 
-      .column1
-      
-        for a in content.normalArticles
+      // sidebar left
+      if content.sidebarLeft
+        #sidebar_left(style="background:#" + content.sidebarLeft.backgroundcolor)
+          a(href=content.sidebarLeft.linkUrl)
+            img(src=content.sidebarLeft.imageUrl)
 
-          if (a.position=="hero") 
-            // large hero cell
-            .article_hero(class=a.customStyle)
-              if a.badge
-                .article_badge
-                  span #{ a.badge }
-              if a.imageUrl
-                a(href=a.linkUrl)
-                  img(src=a.imageUrl alt="")
-              a(href=a.linkUrl)
-                h2 #{ a.title }
-                if a.subtitle
-                  h3 #{ a.subtitle }
-              | !{ a.paragraph }
+      // sidebar right
+      if content.sidebarRight
+        #sidebar_right(style="background:#" + content.sidebarRight.backgroundcolor)
+          a(href=content.sidebarRight.linkUrl)
+            img(src=content.sidebarRight.imageUrl)
 
-          else
-            // normal cell
-            .article_common
-              .article_common_content(class=a.customStyle)
-                if a.badge
-                  .article_badge
-                    span #{ a.badge }
-                a(href=a.linkUrl)
-                  h3 #{ a.title }
-                if a.imageUrl
-                  a(href=a.linkUrl)
-                    img(src=a.imageUrl, alt="")
-                | !{ a.paragraph  }
+      .newshub_flex
 
-      // rightArticles
-      .column3
-        for a in content.rightArticles
-          .article_column3(class=a.customStyle)
-            if a.badge
-              .article_badge
-                span #{ a.badge }
-            if a.imageUrl
-              a(href=a.linkUrl) 
-                img(src=a.imageUrl, alt="")
-            a(href=a.linkUrl) #{ a.title }
+        // normalArticles 
+        .column_left
+          for a in content.normalArticles
+            +renderArticle(a)
+        
+        // rightArticles
+        .column_right
+          for a in content.rightArticles
+            +renderArticle(a)
 
-      // sidebar middle
-      if content.sidebarMiddle
-        #sidebar_middle
-          a(href=content.sidebarMiddle.linkUrl)
-            img(src=content.sidebarMiddle.imageUrl alt="")
-        .endline
+        // sidebar middle
+        if content.sidebarMiddle
+          #sidebar_middle
+            a(href=content.sidebarMiddle.linkUrl)
+              img(src=content.sidebarMiddle.imageUrl)
+          
+          .endline
+
+block js
+  script(src="/js/newshub.min.js")
