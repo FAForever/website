@@ -27,6 +27,9 @@ module.exports = {
             'public/js/blog.min.js': [
                 'public/js/app/blog.js'
             ],
+            'public/js/newshub.min.js': [
+                'public/js/app/newshub.js'
+            ],
             'public/js/report.min.js': [
                 'node_modules/awesomplete/awesomplete.js',
                 'public/js/app/report.js'
