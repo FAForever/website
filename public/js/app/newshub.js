@@ -9,13 +9,13 @@ $(document).ready(function() {
   $(".hoverable").click(function() {
 
     var url = $(this).attr("data-url");
-    if (typeof window.java !== 'undefined') 
-    {      
+    if (typeof window.java !== 'undefined')
+    {
       window.java.openUrl(url); // when hosted in java client, makes it launch in a new window
     }
     else
     {
-      window.location.href = url; // normal web browser change
+      window.open(url, "_blank"); // normal web browser change
     }
   });
 
