@@ -21,6 +21,7 @@ module.exports.run = async function run(leagueData) {
                 if (error || response.statusCode > 210) {
                     console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - ERROR while fetching clans from the API page '+pageNumber+'. Returning truncated data.');
                     console.log(error);
+                    lastPageReached = true;
                     return leagueData;
                 }
                 else{

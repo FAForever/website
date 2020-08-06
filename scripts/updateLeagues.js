@@ -30,6 +30,7 @@ module.exports.run = async function run(leagueData) {
                     if (error || response.statusCode > 210) {
                         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - ERROR while fetching Leagues data from the API page ' + pageNumber + '. Returning truncated data.');
                         console.log(error);
+                        lastPageReached = true;
                         return leagueData;
                     } else {
                         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - Leagues : Fetching page ' + pageNumber + '...');
@@ -179,6 +180,7 @@ module.exports.run = async function run(leagueData) {
                 } catch (e) {
                     console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - ERROR while fetching Leagues data from the API page ' + pageNumber + '. Returning truncated data.');
                     console.log(error);
+                    lastPageReached = true;
                     return leagueData;
                 }
             });
