@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
   // validate the input
   check('password', 'Password is required').notEmpty();
   check('password', 'Password must be six or more characters').isLength({min: 6});
-  check('password', 'Passwords don\'t match').isEqual(req.body.password_confirm);
+  check('password', 'Passwords don\'t match').equals(req.body.password_confirm);
 
   // check the validation object for errors
   let errors = validationResult(req);
