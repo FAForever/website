@@ -1,6 +1,7 @@
 let flash = {};
 const request = require('request');
 const ClientOAuth2 = require('client-oauth2');
+const {check, validationResult} = require('express-validator');
 
 const apiAuth = new ClientOAuth2({
 	clientId: process.env.OAUTH_CLIENT_ID,
@@ -12,31 +13,30 @@ const apiAuth = new ClientOAuth2({
 });
 
 exports = module.exports = function (req, res) {
+  let locals = res.locals;
 
-	let locals = res.locals;
+  locals.formData = req.body || {};
 
-	locals.formData = req.body || {};
+  // validate the input
+  check('username', 'Username is required').notEmpty();
+  check('username', 'Username must be three or more characters').isLength({min: 3});
+  check('email', 'Email is required').notEmpty();
+  check('email', 'Email does not appear to be valid').isEmail();
 
-	// validate the input
-	req.checkBody('username', 'Username is required').notEmpty();
-	req.checkBody('username', 'Username must be three or more characters').isLength({min: 3});
-	req.checkBody('email', 'Email is required').notEmpty();
-	req.checkBody('email', 'Email does not appear to be valid').isEmail();
+  // check the validation object for errors
+  let errors = validationResult(req);
 
-	// check the validation object for errors
-	let errors = req.validationErrors();
+  //Must have client side errors to fix
+  if (!errors.isEmpty()) {
 
-	//Must have client side errors to fix
-	if (errors) {
+    // failure
+    flash.class = 'alert-danger';
+    flash.messages = errors;
+    flash.type = 'Error!';
 
-		// failure
-		flash.class = 'alert-danger';
-		flash.messages = errors;
-		flash.type = 'Error!';
+    res.render('account/register', {flash: flash});
 
-		res.render('account/register', {flash: flash});
-
-	} else {
+  } else {
 
 		// pull the form variables off the request body
 		let username = req.body.username;

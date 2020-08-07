@@ -1,36 +1,37 @@
 let flash = {};
 let request = require('request');
 let error = require('./error');
+const {check, validationResult} = require('express-validator');
 
 exports = module.exports = function(req, res) {
 
-	let locals = res.locals;
+  let locals = res.locals;
 
-	locals.formData = req.body || {};
+  locals.formData = req.body || {};
 
-	// validate the input
-	req.checkBody('old_password', 'Old Password is required').notEmpty();
-	req.checkBody('old_password', 'Old Password must be six or more characters').isLength({min: 6});
-	req.checkBody('password', 'New Password is required').notEmpty();
-	req.checkBody('password', 'New Password must be six or more characters').isLength({min: 6});
-	req.checkBody('password', 'New Passwords don\'t match').isEqual(req.body.password_confirm);
-	req.checkBody('username', 'Username is required').notEmpty();
-	req.checkBody('username', 'Username must be three or more characters').isLength({min: 3});
+  // validate the input
+  check('old_password', 'Old Password is required').notEmpty();
+  check('old_password', 'Old Password must be six or more characters').isLength({min: 6});
+  check('password', 'New Password is required').notEmpty();
+  check('password', 'New Password must be six or more characters').isLength({min: 6});
+  check('password', 'New Passwords don\'t match').equals(req.body.password_confirm);
+  check('username', 'Username is required').notEmpty();
+  check('username', 'Username must be three or more characters').isLength({min: 3});
 
-	// check the validation object for errors
-	let errors = req.validationErrors();
+  // check the validation object for errors
+  let errors = validationResult(req);
 
-	//Must have client side errors to fix
-	if (errors) {
+  //Must have client side errors to fix
+  if (!errors.isEmpty()) {
 
-		// failure
-		flash.class = 'alert-danger';
-		flash.messages = errors;
-		flash.type = 'Error!';
+    // failure
+    flash.class = 'alert-danger';
+    flash.messages = errors;
+    flash.type = 'Error!';
 
-		res.render('account/changePassword', {flash: flash});
+    res.render('account/changePassword', {flash: flash});
 
-	} else {
+  } else {
 
 		//Encrypt password before sending it off to endpoint
 		let newPassword = req.body.password;

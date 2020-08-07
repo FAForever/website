@@ -1,17 +1,17 @@
 exports = module.exports = function(req, res, ladderData) {
+  var moment = require('moment-timezone')
+  var locals = res.locals;
+  var fs = require('fs');
 
-	var locals = res.locals;
-    var fs = require('fs');
-
-	// locals.section is used to set the currently selected
-	// item in the header navigation.
-	locals.section = 'competitive';
-	locals.cSection = 'leagues';
-	locals.ratingTypeTitle = 'Galaxy resistance';
-	locals.ratingType = 'ladder1v1';
-	locals.apiURL = process.env.API_URL;
-    locals.members = [];
-    locals.lastPage = [];
+  // locals.section is used to set the currently selected
+  // item in the header navigation.
+  locals.section = 'competitive';
+  locals.cSection = 'leagues';
+  locals.ratingTypeTitle = 'Galaxy resistance';
+  locals.ratingType = 'ladder1v1';
+  locals.apiURL = process.env.API_URL;
+  locals.members = [];
+  locals.lastPage = [];
     
     const settings = require(process.cwd()+'/configuration/leagues.json');
     locals.rankingCategories = ladderData.playerData || {};

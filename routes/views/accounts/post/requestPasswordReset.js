@@ -1,6 +1,7 @@
 let flash = {};
 let request = require('request');
 let error = require('./error');
+const {check, validationResult} = require('express-validator');
 
 exports = module.exports = function (req, res) {
 
@@ -9,13 +10,13 @@ exports = module.exports = function (req, res) {
   locals.formData = req.body || {};
 
   // validate the input
-  req.checkBody('usernameOrEmail', 'Username or email is required').notEmpty();
+  check('usernameOrEmail', 'Username or email is required').notEmpty();
 
   // check the validation object for errors
-  let errors = req.validationErrors();
+  let errors = validationResult(req);
 
   //Must have client side errors to fix
-  if (errors) {
+  if (!errors.isEmpty()) {
     flash.class = 'alert-danger';
     flash.messages = errors;
     flash.type = 'Error!';

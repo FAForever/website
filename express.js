@@ -1,12 +1,12 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
-require('dotenv').load();
+require('dotenv').config();
 
 let express = require('express');
+let expressValidator = require('express-validator');
 
 let middleware = require('./routes/middleware');
 
-let expressValidator = require('express-validator');
 let bodyParser = require('body-parser');
 let passport = require('passport');
 let OAuth2Strategy = require('passport-oauth2');
@@ -45,13 +45,6 @@ app.use(express.static('public', {
 }));
 
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(expressValidator({
-    customValidators: {
-        isEqual: function (value1, value2) {
-            return value1 === value2;
-        }
-    }
-}));
 app.use(require('express-session')({
     secret: process.env.SESSION_SECRET_KEY,
     resave: false,

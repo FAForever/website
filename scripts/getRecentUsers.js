@@ -1,4 +1,4 @@
-require('dotenv').load();
+require('dotenv').config();
 
 let request = require('request');
 let fs = require('fs');

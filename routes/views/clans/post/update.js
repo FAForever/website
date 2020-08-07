@@ -1,5 +1,6 @@
 let flash = {};
 let request = require('request');
+const {check, validationResult} = require('express-validator');
 
 function promiseRequest(url) {
   return new Promise(function (resolve, reject) {
@@ -22,24 +23,24 @@ exports = module.exports = async function (req, res) {
   let overallRes = res;
 
   // validate the input
-  req.checkBody('clan_tag', 'Please indicate the clan tag - No special characters and 3 characters maximum').notEmpty().isLength({ max: 3 });
-  req.checkBody('clan_description', 'Please add a description for your clan').notEmpty().isLength({ max: 1000 });
-  req.checkBody('clan_name', "Please indicate your clan's name").notEmpty().isLength({ max: 64 });
-  req.checkBody('clan_id', 'Internal error while processing your query: invalid clan ID').notEmpty();
+  check('clan_tag', 'Please indicate the clan tag - No special characters and 3 characters maximum').notEmpty().isLength({max: 3});
+  check('clan_description', 'Please add a description for your clan').notEmpty().isLength({max: 1000});
+  check('clan_name', "Please indicate your clan's name").notEmpty().isLength({max: 64});
+  check('clan_id', 'Internal error while processing your query: invalid clan ID').notEmpty();
 
   // check the validation object for errors
-  let errors = req.validationErrors();
+  let errors = validationResult(req);
 
   //Must have client side errors to fix
-  if (errors) {
+  if (!errors.isEmpty()) {
     flash.class = 'alert-danger';
     flash.messages = errors;
     flash.type = 'Error!';
 
-    let buff = Buffer.from(JSON.stringify(flash));  
+    let buff = Buffer.from(JSON.stringify(flash));
     let data = buff.toString('base64');
 
-    return overallRes.redirect('manage?flash='+data);
+    return overallRes.redirect('manage?flash=' + data);
   } else {
 
     const newName = req.body.clan_name;

@@ -1,5 +1,6 @@
 let flash = {};
 let request = require('request');
+const {check, validationResult} = require('express-validator');
 
 function promiseRequest(url) {
   return new Promise(function (resolve, reject) {
@@ -27,29 +28,29 @@ exports = module.exports = async function (req, res) {
   for (i in bodyKeys){
     const element = bodyKeys[i];
     if (!element.startsWith("offender_")) continue;
-    req.checkBody(element, "Please indicate the player or players you're reporting").notEmpty();
+    check(element, "Please indicate the player or players you're reporting").notEmpty();
   }
-  req.checkBody('report_description', 'Please describe the incident').notEmpty();
+  check('report_description', 'Please describe the incident').notEmpty();
   if (req.body.game_id.length > 0){
-    req.checkBody('game_id', 'Please enter a valid game ID, or nothing. The # is not needed.').optional().isDecimal();
+    check('game_id', 'Please enter a valid game ID, or nothing. The # is not needed.').optional().isDecimal();
   }
   else{
     req.body.game_id = null;
   }
 
   // check the validation object for errors
-  let errors = req.validationErrors();
+  let errors = validationResult(req);
 
   //Must have client side errors to fix
-  if (errors) {
+  if (!errors.isEmpty()) {
     flash.class = 'alert-danger';
     flash.messages = errors;
     flash.type = 'Error!';
 
-    let buff = Buffer.from(JSON.stringify(flash));  
+    let buff = Buffer.from(JSON.stringify(flash));
     let data = buff.toString('base64');
 
-    return overallRes.redirect('report?flash='+data);
+    return overallRes.redirect('report?flash=' + data);
   } else {
 
     const isGameReport = req.body.game_id != null;

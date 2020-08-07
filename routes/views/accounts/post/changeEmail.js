@@ -1,31 +1,32 @@
 let flash = {};
 let request = require('request');
 let error = require('./error');
+const {check, validationResult} = require('express-validator');
 
 exports = module.exports = function (req, res) {
 
-	let locals = res.locals;
+  let locals = res.locals;
 
-	locals.formData = req.body || {};
+  locals.formData = req.body || {};
 
-	// validate the input
-	req.checkBody('email', 'Email is required').notEmpty();
-	req.checkBody('email', 'Email does not appear to be valid').isEmail();
+  // validate the input
+  check('email', 'Email is required').notEmpty();
+  check('email', 'Email does not appear to be valid').isEmail();
 
-	// check the validation object for errors
-	let errors = req.validationErrors();
+  // check the validation object for errors
+  let errors = validationResult(req);
 
-	//Must have client side errors to fix
-	if (errors) {
+  //Must have client side errors to fix
+  if (!errors.isEmpty()) {
 
-		// failure
-		flash.class = 'alert-danger';
-		flash.messages = errors;
-		flash.type = 'Error!';
+    // failure
+    flash.class = 'alert-danger';
+    flash.messages = errors;
+    flash.type = 'Error!';
 
-		res.render('account/changeEmail', {flash: flash});
+    res.render('account/changeEmail', {flash: flash});
 
-	} else {
+  } else {
 
 		// pull the form variables off the request body
 		let email = req.body.email;
