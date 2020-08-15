@@ -12,7 +12,7 @@ We treat all our users the same, and everyone is processed by the same privacy p
 
 ## The information we collect and why
 
-If you’re just browsing our website (faforever.com, wiki.faforever.com, forums.faforever.com or any website hosted on the faforever.com domain), we collect the same basic information that most websites collect. This information includes browser type, language preference, referring website and the date and time of each web request. In addition, we collect potentially personally-identifying information like IP-addresses.
+If you’re just browsing our website (faforever.com, wiki.faforever.com, forum.faforever.com or any website hosted on the faforever.com domain), we collect the same basic information that most websites collect. This information includes browser type, language preference, referring website and the date and time of each web request. In addition, we collect potentially personally-identifying information like IP-addresses.
 
 This information is collected for the purpose of analytics, to better understand who visits our websites.
 

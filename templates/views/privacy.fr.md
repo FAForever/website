@@ -11,7 +11,7 @@ Nous traitons tous nos utilisateurs de la même manière, et chacun et concerné
 
 ## Les informations que nous collectons et pourquoi
 
-Si vous ne faites que naviguer sur notre site (faforever.com, wiki.faforever.com, forums.faforever.com, ou tout site internet hébergé sur le domaine faforever.com), nous collectons la même quantité d'information basique que n'importe quel autre site internet. Cette information inclut le type de navigateur, les préférences linguistiques, le site qui vous y a amené et la date et l'heure de la requête internet. En plus de cela, nous collectons des informations possiblement personnellement-uniques comme les adresses IP. 
+Si vous ne faites que naviguer sur notre site (faforever.com, wiki.faforever.com, forum.faforever.com, ou tout site internet hébergé sur le domaine faforever.com), nous collectons la même quantité d'information basique que n'importe quel autre site internet. Cette information inclut le type de navigateur, les préférences linguistiques, le site qui vous y a amené et la date et l'heure de la requête internet. En plus de cela, nous collectons des informations possiblement personnellement-uniques comme les adresses IP. 
 
 Cette information est collectée dans le cadre d'analyses, à fin de mieux comprendre qui visite nos sites.
 

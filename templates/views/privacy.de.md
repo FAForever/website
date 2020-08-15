@@ -15,7 +15,7 @@ Alle unsere Nutzer werden gleich behandelt, und unabhängig vom Standort werden 
 
 ## Warum wir welche Daten sammeln
 
-Auch wenn du nur unsere Webseiten besuchst (faforever.com, wiki.faforever.com, forums.faforever.com oder andere Seiten, die auf der faforever.com Domäne gehostet werden) sammeln wir dieselben grundlegenden Daten, die die meisten Seiten sammeln. 
+Auch wenn du nur unsere Webseiten besuchst (faforever.com, wiki.faforever.com, forum.faforever.com oder andere Seiten, die auf der faforever.com Domäne gehostet werden) sammeln wir dieselben grundlegenden Daten, die die meisten Seiten sammeln. 
 Diese Informationen beinhalten den von dir verwendeten Internetbrowser, deine Spracheinstellungen, die Webseite, von der du auf unsere Seite weitergeleitest wurdest und der Zeitpunkt von jeder Webanfrage. 
 Zusätzlich sammeln wir Daten wie IP-Adressen, mit deren Hilfe es potentiell möglich ist, dich zu identifizieren. 
 

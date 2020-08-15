@@ -28,7 +28,7 @@ This is a short overview of the rules. For any moderating purpose, only the comp
 - **Do not use FAF to violate any laws.**
 - **Do not abuse by using multiple accounts.**
 - **Do not manipulate your account information.**
-- **Do not abuse any game bugs and/or exploits.** [Exploits are listed here](http://forums.faforever.com/viewtopic.php?f=2&t=11322#p116202)
+- **Do not abuse any game bugs and/or exploits.** [Exploits are listed here](https://forums.faforever.com/viewtopic.php?f=2&t=11322#p116202)
 - **Do not discuss drugs, illegal content or pornography.**
 - **Do not spam nor impersonate any other user, or take bots names.**
 - **Do not friendly fire, reclaim or teamkill allies.**
@@ -63,9 +63,9 @@ For example, sharing an account or playing with a banned user who is avoiding th
 ## In-game Rules:
 **All of the rules for FAF apply ingame**, excluding the english language requirement.
 
-- You will **not exploit any bugs or loopholes** in any of the services. You can find a list of exploits here: [exploits](http://forums.faforever.com/viewtopic.php?f=2&t=11322)
+- You will **not exploit any bugs or loopholes** in any of the services. You can find a list of exploits here: [exploits](https://forums.faforever.com/viewtopic.php?f=2&t=11322)
 
-- If you discover any exploit report it to tech support: [tech support](http://forums.faforever.com/viewtopic.php?f=3&t=12531) 
+- If you discover any exploit report it to tech support: [tech support](https://forum.faforever.com/category/8/game-issues-and-gameplay-questions) 
 - You will not **lose on purpose** to lower your rating, your rating can be reset in addition to any other sanctions that may apply.
 - You will **not manipulate your rating** in any way.
 - You will **not ruin the game intentionally** by any means.
