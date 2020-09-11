@@ -106,6 +106,7 @@ app.post('/account/activate', require(routes + 'accounts/post/activate'));
 app.get('/account/create', require(routes + 'accounts/get/createAccount'));
 
 app.get('/account/link', loggedIn, require(routes + 'accounts/get/linkSteam'));
+app.get('/account/resync', loggedIn, require(routes + 'accounts/get/resync'));
 
 app.get('/account/connect', loggedIn, require(routes + 'accounts/get/connectSteam'));
 
