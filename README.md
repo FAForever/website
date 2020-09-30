@@ -1,4 +1,4 @@
-# website
+# website - An Amazing Project
 FAForever main website on https://www.faforever.com
 
 Requires Node and NPM.
