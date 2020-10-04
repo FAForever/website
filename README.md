@@ -21,7 +21,7 @@ In order to learn grunt and install cli, please follow this guide - http://grunt
 If you did changes run `grunt prod`+`PORT=3000 yarn start` again to apply them.
 
 ## Docker Install Guide
-You will need to setup a default machine in a new terminal window. This can be accomplished by doing the following.
+You will need to setup a default machine in a new terminal window. This can be accomplished by doing the following. The application is then running in production mode.
 
 1. Build docker image
 ```sh
