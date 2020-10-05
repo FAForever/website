@@ -21,17 +21,17 @@ In order to learn grunt and install cli, please follow this guide - http://grunt
 If you did changes run `grunt prod`+`PORT=3000 yarn start` again to apply them.
 
 ## Docker Install Guide
-You will need to setup a default machine in a new terminal window. This can be accomplished by doing the following.
+You will need to setup a default machine in a new terminal window. This can be accomplished by doing the following. The application is then running in production mode.
 
-2. Build docker image
+1. Build docker image
 ```sh
 → docker build -t faf-website .
 ```
-3. Run docker image
+2. Run docker image
 ```sh
 → docker run --name faf-website -p 3000:3000 -d faf-website
 ```
-4. Open the app in your browser
+3. Open the app in your browser
 ```sh
 → open http://$(docker-machine ip default):3000/
 ```
