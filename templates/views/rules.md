@@ -146,9 +146,7 @@ If the matter warrants it then you might also be reported to your ISP/appropriat
 ## Appealing bans & contacting moderation
 If you feel you have been mistreated or that your ban is unjustified, you can always appeal moderation decisions by contacting the moderation team. 
 You can also always contact a moderator via private messages, either via the forums or the chat in the client.
-The official way is to send a message to the moderation team via the forums, as shown in this picture: 
-
-![contact](https://i.imgur.com/5KPmGJx.png)
+The official way is to send a message to the moderation team via email to the following address: **moderation@faforever.com**
 
 ## Reporting
 This link to the report form can be used to report other community members :
