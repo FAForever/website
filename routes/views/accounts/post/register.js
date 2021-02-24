@@ -16,13 +16,12 @@ exports = module.exports = function (req, res) {
   let locals = res.locals;
 
   locals.formData = req.body || {};
-
   // validate the input
   check('username', 'Username is required').notEmpty();
   check('username', 'Username must be three or more characters').isLength({min: 3});
   check('email', 'Email is required').notEmpty();
   check('email', 'Email does not appear to be valid').isEmail();
-
+  
   // check the validation object for errors
   let errors = validationResult(req);
 
@@ -41,54 +40,50 @@ exports = module.exports = function (req, res) {
 		// pull the form variables off the request body
 		let username = req.body.username;
 		let email = req.body.email;
-		let password = req.body.password
+		let recaptchaResponse = req.body["g-recaptcha-response"]
 
 		let overallRes = res;
 
-		apiAuth.credentials.getToken()
-			.then(function (token) {
-				//Run post to register endpoint
-				let req = token.sign({
-					url: process.env.API_URL + '/users/register',
-					form: {username: username, email: email, password: password}
-				});
-				request.post(req, function (err, res, body) {
-					let resp;
-					let errorMessages = [];
+    //Run post to register endpoint
+    request.post({
+      url: process.env.API_URL + '/users/register',
+      form: {username: username, email: email, recaptchaResponse: recaptchaResponse}
+    }, function (err, res, body) {
+      let resp;
+      let errorMessages = [];
 
-					if (res.statusCode !== 200) {
-						try {
-							resp = JSON.parse(body);
-						} catch (e) {
-							errorMessages.push({msg: 'Invalid registration sign up. Please try again later.'});
-							flash.class = 'alert-danger';
-							flash.messages = errorMessages;
-							flash.type = 'Error!';
+      if (res.statusCode !== 200) {
+        try {
+          resp = JSON.parse(body);
+        } catch (e) {
+          errorMessages.push({msg: 'Invalid registration sign up. Please try again later.'});
+          flash.class = 'alert-danger';
+          flash.messages = errorMessages;
+          flash.type = 'Error!';
 
-							return overallRes.render('account/register', {flash: flash});
-						}
+          return overallRes.render('account/register', {flash: flash});
+        }
 
-						// Failed registering user
-						for (let i = 0; i < resp.errors.length; i++) {
-							let error = resp.errors[i];
+        // Failed registering user
+        for (let i = 0; i < resp.errors.length; i++) {
+          let error = resp.errors[i];
 
-							errorMessages.push({msg: error.detail});
-						}
+          errorMessages.push({msg: error.detail});
+        }
 
-						flash.class = 'alert-danger';
-						flash.messages = errorMessages;
-						flash.type = 'Error!';
+        flash.class = 'alert-danger';
+        flash.messages = errorMessages;
+        flash.type = 'Error!';
 
-						return overallRes.render('account/register', {flash: flash});
-					}
+        return overallRes.render('account/register', {flash: flash});
+      }
 
-					// Successfully registered user
-					flash.class = 'alert-success';
-					flash.messages = [{msg: 'Please check your email to verify your registration. Then you will be ready to log in!'}];
-					flash.type = 'Success!';
+      // Successfully registered user
+      flash.class = 'alert-success';
+      flash.messages = [{msg: 'Please check your email to verify your registration. Then you will be ready to log in!'}];
+      flash.type = 'Success!';
 
-					overallRes.render('account/register', {flash: flash});
-				});
-			});
+      overallRes.render('account/register', {flash: flash});
+    });
 	}
 };
