@@ -24,7 +24,7 @@ exports = module.exports = function (req, res) {
       }
 
       locals.steamReset = JSON.parse(body).steamUrl
-      overallRes.render('account/requestPasswordReset', {flash: flash});
+    overallRes.render('account/requestPasswordReset', {flash: flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
     }
   );
 
