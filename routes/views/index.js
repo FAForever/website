@@ -23,9 +23,9 @@ exports = module.exports = function(req, res) {
         try {
             flash = JSON.parse(text);
         } catch(e) {
-            console.err("Parsing error while trying to decode a flash error: "+text);
-            console.err(e);
-            flash = [{msg: "Unknown error"}];
+          console.error("Parsing error while trying to decode a flash error: " + text);
+          console.error(e);
+          flash = [{msg: "Unknown error"}];
         }
     }
     
