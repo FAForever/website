@@ -46,7 +46,7 @@ exports = module.exports = async function (req, res) {
     const userName = req.body.invited_player;
 
     // Let's check first that the player exists
-    const fetchRoute = process.env.API_URL+'/data/player?filter=login=="'+userName+'"&fields[player]=id';
+    const fetchRoute = process.env.API_URL + '/data/player?filter=login=="' + userName + '"&fields[player]=';
     
     let exists = true;
     let playerData = null;
