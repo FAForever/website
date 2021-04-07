@@ -85,17 +85,17 @@ exports = module.exports = async function (req, res) {
         let resp;
         let errorMessages = [];
 
-        if (res.statusCode != 200) {
-              let msg = 'Error while creating the clan';
-              try{
-                
-                msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
-              }
-              catch{}
-              errorMessages.push({msg: msg});
-              flash.class = 'alert-danger';
-              flash.messages = errorMessages;
-              flash.type = 'Error!';
+        if (res.statusCode !== 200) {
+          let msg = 'Error while creating the clan';
+          try {
+
+            msg += ': ' + JSON.stringify(JSON.parse(res.body).errors[0].detail);
+          } catch {
+          }
+          errorMessages.push({msg: msg});
+          flash.class = 'alert-danger';
+          flash.messages = errorMessages;
+          flash.type = 'Error!';
 
               let buff = Buffer.from(JSON.stringify(flash));  
               let data = buff.toString('base64');

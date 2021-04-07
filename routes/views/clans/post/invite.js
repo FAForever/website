@@ -8,6 +8,7 @@ function promiseRequest(url) {
       if (!error && res.statusCode < 300) {
         resolve(body);
       } else {
+        console.error("Call to " + url + " failed: " + error);
         reject(error);
       }
     });
@@ -83,17 +84,17 @@ exports = module.exports = async function (req, res) {
       }
     }, function (err, res, body) {
 
-      if (res.statusCode != 200) {
-          
-          let errorMessages = [];
-          let msg = 'Error while generating the invite link';
-          try{
-            
-            msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
-          }
-          catch{}
-          
-          errorMessages.push({msg: msg});
+      if (res.statusCode !== 200) {
+
+        let errorMessages = [];
+        let msg = 'Error while generating the invite link';
+        try {
+
+          msg += ': ' + JSON.stringify(JSON.parse(res.body).errors[0].detail);
+        } catch {
+        }
+
+        errorMessages.push({msg: msg});
           flash.class = 'alert-danger';
           flash.messages = errorMessages;
           flash.type = 'Error!';
