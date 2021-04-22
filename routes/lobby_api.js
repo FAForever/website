@@ -15,6 +15,8 @@ exports = module.exports = function (req, res) {
   let queryResource = resource;
   if (resource === "countries") {
     queryResource = "players";
+  } else if (resource === "lobby") {
+        queryResource = "games";
   }
   request(process.env.LOBBY_API_URL + "/" + queryResource, function (error, response, body) {
     let data = [];
@@ -31,11 +33,13 @@ exports = module.exports = function (req, res) {
       );
     }
 
-    cache[queryResource] = {
-      pollTime: Date.now(),
-      data: data.length.toString()
-    };
-    if (resource === "countries") {
+    
+	if (resource === "lobby") {
+        cache[resource] = {
+            pollTime: Date.now(),
+            data: body
+        };
+    } else if (resource === "countries") {
       data = data.map(player => player.country);
       const mapData = {};
       data.forEach(value => {
@@ -49,7 +53,12 @@ exports = module.exports = function (req, res) {
         pollTime: Date.now(),
         data: mapData
       };
-    }
+    } else {
+		cache[queryResource] = {
+		  pollTime: Date.now(),
+		  data: data.length.toString()
+		};
+	}
     isFetching = false;
     return res.send(cache[resource].data);
   });
