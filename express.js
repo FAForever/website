@@ -11,6 +11,7 @@ let bodyParser = require('body-parser');
 let passport = require('passport');
 let OAuth2Strategy = require('passport-oauth2');
 
+const cors = require('cors');
 const showdown = require('showdown');
 const fs = require('fs');
 
@@ -161,7 +162,7 @@ app.get('/competitive/leaderboards/leagues', (function(){
     }
 })()
 );
-app.get('/lobby_api', require('./routes/lobby_api'));
+app.get('/lobby_api', cors(), require('./routes/lobby_api'));
 app.get('/account/checkUsername', require('./routes/views/checkUsername'));
 
 app.get('/clans', require(routes + 'clans/get/index'));
