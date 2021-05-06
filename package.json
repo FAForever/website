@@ -29,7 +29,7 @@
     "pug": "3.0.1",
     "request": "2.88.2",
     "showdown": "1.9.1",
-    "underscore": "1.10.2",
+    "underscore": "1.12.1",
     "wpapi": "1.2.1"
   },
   "devDependencies": {
