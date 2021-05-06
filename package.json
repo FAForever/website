@@ -19,7 +19,7 @@
     "express-validator": "6.6.1",
     "fullcalendar": "5.2.0",
     "github-api": "3.3.0",
-    "highcharts": "8.1.2",
+    "highcharts": "9.0.0",
     "html-ellipsis": "1.1.1",
     "json2csv": "5.0.1",
     "moment": "2.27.0",
