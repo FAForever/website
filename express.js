@@ -12,6 +12,7 @@ let passport = require('passport');
 let OAuth2Strategy = require('passport-oauth2');
 
 const cors = require('cors');
+const helmet = require('helmet')
 const showdown = require('showdown');
 const fs = require('fs');
 
@@ -31,8 +32,9 @@ process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
 process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
 process.env.HOST = process.env.HOST || 'http://localhost';
 process.env.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '12345';
-process.env.TWITCH_CLIENT_ID = process.env.TWITCH_CLIENT_ID || '12345';
-process.env.TWITCH_LIVESTREAM_URL = process.env.TWITCH_LIVESTREAM_URL || 'https://api.twitch.tv/kraken/streams/?game=Supreme%20Commander:%20Forged%20Alliance';
+
+//X-Frame-Options
+app.use(helmet.frameguard({ action: 'SAMEORIGIN' }))
 
 //Execute middleware before each request...
 app.use(middleware.initLocals);
