@@ -1,7 +1,6 @@
 exports = module.exports = function(req, res, ladderData) {
-  var moment = require('moment-timezone')
+  var moment = require('moment-timezone');
   var locals = res.locals;
-  var fs = require('fs');
 
   // locals.section is used to set the currently selected
   // item in the header navigation.
@@ -13,12 +12,12 @@ exports = module.exports = function(req, res, ladderData) {
   locals.members = [];
   locals.lastPage = [];
     
-    const settings = require(process.cwd()+'/configuration/leagues.json');
+    const leaguesConfig = require(process.cwd()+'/configuration/leagues.json');
     locals.rankingCategories = ladderData.playerData || {};
-    locals.state = +(settings.timeRange.to < moment().unix()) - +(settings.timeRange.from > moment().unix());
+    locals.state = +(moment(leaguesConfig.timeRange.to).tz("Etc/GMT+0").isBefore(moment())) - +(moment(leaguesConfig.timeRange.from).tz("Etc/GMT+0").isAfter(moment()));
     locals.dates = {
-        "from": moment(settings.timeRange.from*1000).tz("Etc/GMT+0").format("dddd, MMMM Do YYYY, H:mm:ss"),
-        "to": moment(settings.timeRange.to*1000).tz("Etc/GMT+0").format("dddd, MMMM Do YYYY, H:mm:ss")
+        "from": moment(leaguesConfig.timeRange.from).tz("Etc/GMT+0").format("dddd, MMMM Do YYYY, H:mm:ss"),
+        "to": moment(leaguesConfig.timeRange.to).tz("Etc/GMT+0").format("dddd, MMMM Do YYYY, H:mm:ss")
         };
     for (const category in locals.rankingCategories){
         locals.members[category] = [];
