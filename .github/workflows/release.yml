@@ -1,0 +1,22 @@
+# This workflow will build a Java project with Gradle
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: Website Docker Release
+
+on: [ push, pull_request ]
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build and push Docker images
+        if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags')
+        uses: docker/build-push-action@v1.1.1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: faforever/faf-website
+          push: ${{ github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags') }}
+          tag_with_ref: true
