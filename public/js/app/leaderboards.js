@@ -1,64 +1,76 @@
-/*
- https://api.faforever.com/leaderboards/ladder1v1?page[size]=50&page[number]=1
- */
+var getPage = function (pageNumber, pageSize, id) {
 
-var getPage = function(pageNumber, pageSize, id) {
+  let pastMonth = moment().subtract(1, "months").format("YYYY-MM-DDTHH:mm:ss") + "Z";
+
   if (pageNumber === 1) {
-      $(".first").addClass("disabled");
-      $(".previous").addClass("disabled");
-      $(".next").removeClass("disabled");
-      $(".last").removeClass("disabled");
+    $(".first").addClass("disabled");
+    $(".previous").addClass("disabled");
+    $(".next").removeClass("disabled");
+    $(".last").removeClass("disabled");
   } else {
-      $(".first").removeClass("disabled");
-      $(".previous").removeClass("disabled");
-      $(".next").removeClass("disabled");
-      $(".last").removeClass("disabled");
+    $(".first").removeClass("disabled");
+    $(".previous").removeClass("disabled");
+    $(".next").removeClass("disabled");
+    $(".last").removeClass("disabled");
   }
 
   if (pageNumber === lastPage) {
-      $(".first").removeClass("disabled");
-      $(".previous").removeClass("disabled");
-      $(".next").addClass("disabled");
-      $(".last").addClass("disabled");
+    $(".first").removeClass("disabled");
+    $(".previous").removeClass("disabled");
+    $(".next").addClass("disabled");
+    $(".last").addClass("disabled");
   }
 
   $.ajax({
-    url: apiURL + "/leaderboards/" + ratingType + "?page[size]=" + pageSize + "&page[number]=" + pageNumber,
+    url: apiURL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.technicalName==" + ratingType + ";updateTime=ge=" +
+      pastMonth + "&page[size]=" + pageSize + "&page[number]=" + pageNumber,
     success: function (result) {
-      renderPage(result, document.getElementById("players"), id);
+      renderPage(result, document.getElementById("players"), id, pageSize, pageNumber);
     }
   });
 };
 
-var renderPage = function (page, element, playerId) {
+var renderPage = function (page, element, playerId, pageSize, pageNumber) {
   removeAllChildElements(element);
+  
+  let players = {};
+  
+  for (let k = 0; k < page.included.length; k++) {
+    if (page.included[k].type === "player") {
+      const player = page.included[k];
+      players[player.id] = player.attributes.login;
+    } 
+  }
 
-  for(var i = 0; i < page.data.length; i++) {
-    var player = page.data[i];
+  for (let i = 0; i < page.data.length; i++) {
+    var playerRating = page.data[i];
+    var ratedPlayerId = playerRating.relationships.player.data.id;
     var tr = document.createElement("tr");
+    
+    let playerName = players[ratedPlayerId];
 
     // Only show player with matching id when player_id is given.
-    if (playerId && playerId !== player.id) {
-        tr.className = 'hidden';
+    if (playerId && playerId !== ratedPlayerId) {
+      tr.className = 'hidden';
     }
 
     tr.setAttribute("id", "tr" + i);
     element.appendChild(tr);
     var rank = document.createElement("td");
     tr.appendChild(rank);
-    rank.innerHTML = player.attributes.rank;
+    rank.innerHTML = (i + 1 + pageSize * (pageNumber - 1)).toString();
     var name = document.createElement("td");
     tr.appendChild(name);
-    name.innerHTML = player.attributes.name;
+    name.innerHTML = playerName;
     var rating = document.createElement("td");
     tr.appendChild(rating);
-    rating.innerHTML = player.attributes.rating;
+    rating.innerHTML = Math.round(playerRating.attributes.rating);
     var games = document.createElement("td");
     tr.appendChild(games);
-    games.innerHTML = player.attributes.numGames;
+    games.innerHTML = playerRating.attributes.totalGames;
     var stats = document.createElement("td");
     tr.appendChild(stats);
-    stats.innerHTML = '<button class="player btn btn-primary" data-id="' + player.id + '" data-name="' + player.attributes.name + '">View</button>';
+    stats.innerHTML = '<button class="player btn btn-primary" data-id="' + ratedPlayerId + '" data-name="' + playerName + '">View</button>';
   }
 };
 
@@ -72,7 +84,7 @@ var removeAllChildElements = function (element) {
 
 /* Page Onclick */
 
-$(".previous").click( function() {
+$(".previous").click(function () {
   if (currentPage === 1) {
     return;
   }
@@ -81,7 +93,7 @@ $(".previous").click( function() {
   getPage(currentPage, pageSize);
 });
 
-$(".next").click( function() {
+$(".next").click(function () {
   if (currentPage === lastPage) {
     return;
   }
@@ -90,17 +102,17 @@ $(".next").click( function() {
   getPage(currentPage, pageSize);
 });
 
-$(".first").click( function() {
+$(".first").click(function () {
   currentPage = 1;
   getPage(currentPage, pageSize);
 });
 
-$(".last").click( function() {
+$(".last").click(function () {
   currentPage = lastPage;
   getPage(currentPage, pageSize);
 });
 
-$("#forget-search").click( function() {
+$("#forget-search").click(function () {
   init();
 
   if (chart.getInstance()) {
@@ -113,38 +125,37 @@ var searchbar = document.getElementById("searchbar");
 
 // Show label but insert value into the input:
 new Awesomplete(searchbar, {
-    list: JSON.parse(members),
-    minChars: 0,
-    maxItems: 5
+  list: JSON.parse(members),
+  minChars: 0,
+  maxItems: 5
 });
 
-searchbar.addEventListener('awesomplete-select', function(e){
+searchbar.addEventListener('awesomplete-select', function (e) {
   var text = e.text;
   currentPage = text.value.page;
   getPage(text.value.page, 100, text.value.id);
 });
 
-searchbar.addEventListener('awesomplete-selectcomplete', function(e){
+searchbar.addEventListener('awesomplete-selectcomplete', function (e) {
   var text = e.text;
   $("#searchbar").val(text.label);
 });
 
-$(document).on('click', '.player', (function(){
+$(document).on('click', '.player', (function () {
   var labels = [], dataset = [];
   var id = $(this).data('id');
   var name = $(this).data('name');
-  var pastYear = moment().subtract(1, 'years').unix();
-
-  let featuredMod = ratingType === 'ladder1v1' ? 'ladder1v1' : 'faf';
+  let pastYear = moment().subtract(1, 'years').format("YYYY-MM-DDTHH:mm:ss") + "Z";
+  
   $.ajax({
-        url: apiURL + '/data/gamePlayerStats?filter=player.id==' + id + ';game.featuredMod.technicalName==' + featuredMod + ';scoreTime=gt='+formatTime(pastYear)+';afterDeviation=isnull=false&fields[gamePlayerStats]=afterMean,afterDeviation,scoreTime',
-    success: function(result) {
-       $.each(result.data, function(key, stats){
-          var date = moment(stats.attributes.scoreTime).format('MMM D, YYYY');
-          var mean = stats.attributes.afterMean;
-          var deviation = stats.attributes.afterDeviation;
-          labels.push(date);
-          dataset.push(Math.round(mean - 3 * deviation));
+    url: apiURL + '/data/leaderboardRatingJournal?filter=gamePlayerStats.player.id==' + id + ';leaderboard.technicalName==' + ratingType + ';updateTime=ge=' + pastYear + ';deviationAfter=isnull=false&fields[leaderboardRatingJournal]=meanAfter,deviationAfter,updateTime',
+    success: function (result) {
+      $.each(result.data, function (key, stats) {
+        var date = moment(stats.attributes.updateTime).format('MMM D, YYYY');
+        var mean = stats.attributes.meanAfter;
+        var deviation = stats.attributes.deviationAfter;
+        labels.push(date);
+        dataset.push(Math.round(mean - 3 * deviation));
       });
 
       var data = {
@@ -179,10 +190,10 @@ $(document).on('click', '.player', (function(){
 
 var chart = {
   chart: '',
-  getInstance: function() {
+  getInstance: function () {
     return this.chart;
   },
-  createChart: function(data) {
+  createChart: function (data) {
     this.chart = Highcharts.chart("stats", data);
   }
 };
@@ -190,15 +201,8 @@ var chart = {
 /* Init */
 var pageSize = 100;
 var currentPage = 1;
-var init = function() {
+var init = function () {
   getPage(1, 100);
 };
 
 init();
-
-
-// Formats a timestamp so that Elide JSON API can understand it
-function formatTime(unix_timestamp){
-    let d = moment(unix_timestamp*1000);
-    return d.format("YYYY-MM-DDTHH:mm:ss")+"Z";
-}

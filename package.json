@@ -22,6 +22,7 @@
     "github-api": "3.3.0",
     "highcharts": "9.0.0",
     "html-ellipsis": "1.1.1",
+    "json-api-models": "^0.1.0-beta.4",
     "json2csv": "5.0.1",
     "moment": "2.27.0",
     "moment-timezone": "0.5.31",

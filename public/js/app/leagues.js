@@ -49,7 +49,7 @@ var renderPage = function (category, element, playerId) {
     let favoriteFaction = null;
     let favoriteFactionPlayCount = 0;
     let total = 0;
-    for(faction in player.factions){
+    for(var faction in player.factions){
       if (faction < 1 || faction > 4) continue; // Ignoring "Random" and other invalid values*
         if (player.factions[faction] >= favoriteFactionPlayCount){
             favoriteFaction = faction;
