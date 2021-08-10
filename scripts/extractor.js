@@ -73,7 +73,7 @@ module.exports.run = function run() {
 
       const ratings = models.sync(JSON.parse(body));
 
-      saveLeaderboardRatingsToFile(ratings, "members/qvq.json");
+      saveLeaderboardRatingsToFile(ratings, "members/1v1.json");
 
       processTopFivePlayers(ratings);
     });
