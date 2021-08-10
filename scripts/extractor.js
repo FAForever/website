@@ -5,6 +5,39 @@ let request = require("request");
 let fs = require('fs');
 
 
+function saveLeaderboardRatingsToFile(ratings, filename) {
+  ratings.sort((ratingA, ratingB) => {
+    if (ratingA.rating > ratingB.rating) {
+      return 1;
+    } else if (ratingA.rating < ratingB.rating) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+
+  let csvArray = [];
+
+  for (let i = 0; i < ratings.length; i++) {
+    let entry = ratings[i];
+
+    let data = {
+      label: entry.player.login,
+      value: {id: entry.player.id, page: Math.ceil((i + 1) / 100)}
+    };
+
+    csvArray.push(data);
+  }
+
+  fs.writeFile(filename, JSON.stringify(csvArray), function (error) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - User file created successfully for global.');
+    }
+  });
+}
+
 module.exports.run = function run() {
   console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + " - Updating leaderboards...");
   try {
@@ -24,36 +57,7 @@ module.exports.run = function run() {
 
       const ratings = models.sync(JSON.parse(body));
 
-      ratings.sort((ratingA, ratingB) => {
-        if (ratingA.rating > ratingB.rating) {
-          return 1;
-        } else if (ratingA.rating < ratingB.rating) {
-          return -1;
-        } else {
-          return 0;
-        }
-      });
-
-      let csvArray = [];
-
-      for (let i = 0; i < ratings.length; i++) {
-        let entry = ratings[i];
-
-        let data = {
-          label: entry.player.login,
-          value: {id: entry.player.id, page: Math.ceil((i + 1) / 100)}
-        };
-
-        csvArray.push(data);
-      }
-
-      fs.writeFile("members/global.json", JSON.stringify(csvArray), function (error) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - User file created successfully for global.');
-        }
-      });
+      saveLeaderboardRatingsToFile(ratings, "members/global.json");
     });
 
     models.reset();
@@ -68,37 +72,8 @@ module.exports.run = function run() {
       }
 
       const ratings = models.sync(JSON.parse(body));
-  
-      ratings.sort((ratingA, ratingB) => {
-        if (ratingA.rating > ratingB.rating) {
-          return 1;
-        } else if (ratingA.rating < ratingB.rating) {
-          return -1;
-        } else {
-          return 0;
-        }
-      });
 
-      let csvArray = [];
-
-      for (let i = 0; i < ratings.length; i++) {
-        let entry = ratings[i];
-
-        let data = {
-          label: entry.player.login,
-          value: {id: entry.player.id, page: Math.ceil((i + 1) / 100)}
-        };
-
-        csvArray.push(data);
-      }
-
-      fs.writeFile("members/1v1.json", JSON.stringify(csvArray), function (error) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - User file created successfully for 1v1.');
-        }
-      });
+      saveLeaderboardRatingsToFile(ratings, "members/qvq.json");
 
       processTopFivePlayers(ratings);
     });
