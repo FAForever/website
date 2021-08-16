@@ -19,12 +19,21 @@ exports = module.exports = function (req, res) {
       url: process.env.API_URL + '/users/buildSteamPasswordResetUrl',
     }, function (err, res, body) {
 
-      if (res.statusCode !== 200) {
-        error.parseApiErrors(body, flash);
+      if (err || res.statusCode !== 200) {
+        console.error(err);
+        if (res) {
+          error.parseApiErrors(body, flash);
+        } else {
+          flash.class = 'alert-danger';
+          flash.messages = err;
+          flash.type = 'Error!';
+        }
+        overallRes.render('account/requestPasswordReset', {flash: flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
+        return;
       }
 
-      locals.steamReset = JSON.parse(body).steamUrl
-    overallRes.render('account/requestPasswordReset', {flash: flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
+      locals.steamReset = JSON.parse(body).steamUrl;
+      overallRes.render('account/requestPasswordReset', {flash: flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
     }
   );
 
