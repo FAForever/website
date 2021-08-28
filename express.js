@@ -111,6 +111,9 @@ app.get('/account/resync', loggedIn, require(routes + 'accounts/get/resync'));
 
 app.get('/account/connect', loggedIn, require(routes + 'accounts/get/connectSteam'));
 
+app.get('/account/linkGog', loggedIn, require(routes + 'accounts/get/linkGog'));
+app.post('/account/linkGog', loggedIn, require(routes + 'accounts/post/linkGog'));
+
 app.get('/account/password/reset', require(routes + 'accounts/get/requestPasswordReset'));
 app.post('/account/password/reset', require(routes + 'accounts/post/requestPasswordReset'));
 
