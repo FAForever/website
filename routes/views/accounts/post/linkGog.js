@@ -12,7 +12,7 @@ exports = module.exports = function(req, res) {
   // validate the input
   check('gog_username', 'Username is required').notEmpty();
   check('gog_username', 'Username must be at least 3 characters').isLength({min: 3});
-  check('gog_username', 'Username must be at most 30 characters').isLength({max: 30});
+  check('gog_username', 'Username must be at most 100 characters').isLength({max: 100});
 
   // check the validation object for errors
   let errors = validationResult(req);
@@ -39,7 +39,7 @@ exports = module.exports = function(req, res) {
 			form: {gogUsername: gogUsername}
 		}, function (err, res, body) {
       
-			if (res.statusCode === 200) {
+			if (res !== undefined && res.statusCode === 200) {
         flash.class = 'alert-success';
         flash.messages = [{msg: 'Your accounts were linked successfully.'}];
         flash.type = 'Success!';
@@ -59,7 +59,7 @@ exports = module.exports = function(req, res) {
           form: {}
         }, function (err, res, body) {
           locals.gogToken = 'unable to obtain token';
-          if (res.statusCode !== 200) {
+          if (res === undefined || res.statusCode !== 200) {
             flash = {};
             error.parseApiErrors(body, flash);
             return overallRes.render('account/linkGog', {flash: flash});

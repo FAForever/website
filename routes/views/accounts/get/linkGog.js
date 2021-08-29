@@ -36,7 +36,7 @@ exports = module.exports = function (req, res) {
     form: {}
   }, function (err, res, body) {
     locals.gogToken = 'unable to obtain token';
-    if (res.statusCode !== 200) {
+    if (res === undefined || res.statusCode !== 200) {
       flash = {};
       error.parseApiErrors(body, flash);
       return overallRes.render('account/linkGog', {flash: flash});
