@@ -148,12 +148,23 @@ $(document).on('click', '.player', (function () {
   let pastYear = moment().subtract(1, 'years').format("YYYY-MM-DDTHH:mm:ss") + "Z";
   
   $.ajax({
-    url: apiURL + '/data/leaderboardRatingJournal?filter=gamePlayerStats.player.id==' + id + ';leaderboard.technicalName==' + ratingType + ';updateTime=ge=' + pastYear + ';deviationAfter=isnull=false&fields[leaderboardRatingJournal]=meanAfter,deviationAfter,updateTime',
+    url: apiURL + '/data/leaderboardRatingJournal?filter=gamePlayerStats.player.id==' + id + ';leaderboard.technicalName==' + ratingType + ';gamePlayerStats.scoreTime=ge=' + pastYear + ';deviationAfter=isnull=false&fields[leaderboardRatingJournal]=meanAfter,deviationAfter,gamePlayerStats&fields[gamePlayerStats]=scoreTime&include=gamePlayerStats',
     success: function (result) {
-      $.each(result.data, function (key, stats) {
-        var date = moment(stats.attributes.updateTime).format('MMM D, YYYY');
-        var mean = stats.attributes.meanAfter;
-        var deviation = stats.attributes.deviationAfter;
+
+      let gamePlayerStats = {};
+      
+      $.each(result.included, function (key, object) {
+        if (object.type === "gamePlayerStats") {
+          gamePlayerStats[object.id] = object;
+        }
+      });
+      
+      $.each(result.data, function (key, journal) {
+        var statsId = journal.relationships.gamePlayerStats.data.id;
+        var scoreTime = gamePlayerStats[statsId].attributes.scoreTime;
+        var date = moment(scoreTime).format('MMM D, YYYY');
+        var mean = journal.attributes.meanAfter;
+        var deviation = journal.attributes.deviationAfter;
         labels.push(date);
         dataset.push(Math.round(mean - 3 * deviation));
       });

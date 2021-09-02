@@ -49,7 +49,7 @@ module.exports.run = function run() {
     request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==1;updateTime=ge=" +
       pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z", function (error, response, body) {
       if (error || response.statusCode > 210) {
-        console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + " - There was an issue while fetching leaderboards 1v1:");
+        console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + " - There was an issue while fetching leaderboards global:");
         console.error(error);
         if (response) console.trace(response.statusCode);
         return;
