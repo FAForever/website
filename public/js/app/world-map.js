@@ -24,15 +24,15 @@ function createMap(data) {
     label.fontSize = 12;
     label.align = "left";
     label.valign = "bottom";
-    label.fill = am4core.color("#927459");
+    label.fill = am4core.color("#000000");
     label.background = new am4core.RoundedRectangle();
     label.background.cornerRadius(10, 10, 10, 10);
     label.padding(10, 10, 10, 10);
     label.marginLeft = 30;
     label.marginBottom = 30;
     label.background.strokeOpacity = 0.3;
-    label.background.stroke = am4core.color("#927459");
-    label.background.fill = am4core.color("#f9e3ce");
+    label.background.stroke = am4core.color("#ffffff");
+    label.background.fill = am4core.color("#d2d2d2");
     label.background.fillOpacity = 0.6;
 
     var dataSource = chart.createChild(am4core.TextLink);
@@ -40,7 +40,7 @@ function createMap(data) {
     dataSource.fontSize = 12;
     dataSource.align = "left";
     dataSource.valign = "top";
-    dataSource.fill = am4core.color("#927459");
+    dataSource.fill = am4core.color("#000000");
     dataSource.padding(10, 10, 10, 10);
     dataSource.marginLeft = 30;
     dataSource.marginTop = 30;
@@ -66,7 +66,7 @@ function createMap(data) {
     homeButton.parent = chart.zoomControl;
     homeButton.insertBefore(chart.zoomControl.plusButton);
 
-    chart.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#bfa58d");
+    chart.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#efefef");
     chart.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 1;
     chart.deltaLongitude = 20;
     chart.deltaLatitude = -20;
@@ -107,8 +107,8 @@ function createMap(data) {
 
     var template = polygonSeries.mapPolygons.template;
     template.nonScalingStroke = true;
-    template.fill = am4core.color("#f9e3ce");
-    template.stroke = am4core.color("#e2c9b0");
+    template.fill = am4core.color("#a1a1a1");
+    template.stroke = am4core.color("#2d2d2d");
 
     polygonSeries.calculateVisualCenter = true;
     template.propertyFields.id = "id";
@@ -128,25 +128,25 @@ function createMap(data) {
 
     var hs = polygonSeries.mapPolygons.template.states.create("hover");
     hs.properties.fillOpacity = 1;
-    hs.properties.fill = am4core.color("#deb7ad");
+    hs.properties.fill = am4core.color("#e0e0e0");
 
 
     var graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
-    graticuleSeries.mapLines.template.stroke = am4core.color("#fff");
+    graticuleSeries.mapLines.template.stroke = am4core.color("#5fff00");
     graticuleSeries.fitExtent = false;
     graticuleSeries.mapLines.template.strokeOpacity = 0.2;
-    graticuleSeries.mapLines.template.stroke = am4core.color("#fff");
+    graticuleSeries.mapLines.template.stroke = am4core.color("rgba(255,255,255,0)");
 
 
     var measelsSeries = chart.series.push(new am4maps.MapPolygonSeries());
     measelsSeries.tooltip.background.fillOpacity = 0;
     measelsSeries.tooltip.background.cornerRadius = 20;
     measelsSeries.tooltip.autoTextColor = false;
-    measelsSeries.tooltip.label.fill = am4core.color("#000");
+    measelsSeries.tooltip.label.fill = am4core.color("#2a2a2a");
     measelsSeries.tooltip.dy = -5;
 
     var measelTemplate = measelsSeries.mapPolygons.template;
-    measelTemplate.fill = am4core.color("#bf7569");
+    measelTemplate.fill = am4core.color("#d32a0e");
     measelTemplate.strokeOpacity = 0;
     measelTemplate.fillOpacity = 0.75;
     measelTemplate.tooltipPosition = "fixed";
@@ -154,7 +154,7 @@ function createMap(data) {
 
     var hs2 = measelsSeries.mapPolygons.template.states.create("hover");
     hs2.properties.fillOpacity = 1;
-    hs2.properties.fill = am4core.color("#86240c");
+    hs2.properties.fill = am4core.color("#ce715d");
 
     polygonSeries.events.on("inited", function () {
       polygonSeries.mapPolygons.each(function (mapPolygon) {
@@ -162,7 +162,7 @@ function createMap(data) {
 
         if (count > 0) {
           var polygon = measelsSeries.mapPolygons.create();
-          polygon.multiPolygon = am4maps.getCircle(mapPolygon.visualLongitude, mapPolygon.visualLatitude, Math.max(0.2, Math.log(count) * Math.LN10 / 10));
+          polygon.multiPolygon = am4maps.getCircle(mapPolygon.visualLongitude, mapPolygon.visualLatitude, Math.max(0.3, Math.log(count) * Math.LN10 / 5));
           polygon.tooltipText = mapPolygon.dataItem.dataContext.name + ": " + count;
           mapPolygon.dummyData = polygon;
           polygon.events.on("over", function () {
