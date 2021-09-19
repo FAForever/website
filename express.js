@@ -8,7 +8,7 @@ let middleware = require('./routes/middleware');
 
 let bodyParser = require('body-parser');
 let passport = require('passport');
-let OAuth2Strategy = require('passport-oauth2');
+let OidcStrategy = require('passport-openidconnect');
 
 const cors = require('cors');
 const showdown = require('showdown');
@@ -25,6 +25,7 @@ process.env.WP_NEWSHUBARCHIVE_CATEGORYID = process.env.WP_NEWSHUBARCHIVE_CATEGOR
 process.env.CHALLONGE_USERNAME = process.env.CHALLONGE_USERNAME || 'joe';
 process.env.CHALLONGE_APIKEY = process.env.CHALLONGE_APIKEY || '12345';
 process.env.PORT = process.env.PORT || '4000';
+process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
 process.env.API_URL = process.env.API_URL || 'https://api.test.faforever.com';
 process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
 process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
@@ -208,27 +209,29 @@ app.get('/login', passport.authenticate('faforever', {
     res.redirect('/');
 });
 
-passport.use('faforever', new OAuth2Strategy({
-        tokenURL: process.env.API_URL + '/oauth/token',
-        authorizationURL: process.env.API_URL + '/oauth/authorize',
-        clientID: process.env.OAUTH_CLIENT_ID,
-        clientSecret: process.env.OAUTH_CLIENT_SECRET,
-        callbackURL: process.env.HOST + '/callback',
-        scope: ['write_account_data', 'public_profile']
-    },
-    function (accessToken, refreshToken, profile, done) {
-        let request = require('request');
-        request.get(
-            {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
-            function (e, r, body) {
-                if (r.statusCode != 200) {
-                    return done(null);
-                }
-                let user = JSON.parse(body);
-                user.data.attributes.token = accessToken;
-                user.data.id = user.data.attributes.userId;
-                return done(null, user);
-            }
+passport.use('faforever', new OidcStrategy({
+    issuer: process.env.OAUTH_URL + '/',
+    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
+    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+    userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+    clientID: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    callbackURL: process.env.HOST + '/callback',
+    scope: ['openid', 'public_profile', 'write_account_data']
+  },
+  function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
+    let request = require('request');
+    request.get(
+      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
+      function (e, r, body) {
+        if (r.statusCode !== 200) {
+          return verified(null);
+        }
+        let user = JSON.parse(body);
+        user.data.attributes.token = accessToken;
+        user.data.id = user.data.attributes.userId;
+        return verified(null, user);
+      }
         );
     }
 ));
