@@ -1,7 +1,17 @@
 # website
 FAForever main website on https://www.faforever.com
 
-Requires Node and NPM.
+The Website Requires Yarn, Nodejs v12.13.0 or newer and Npm 
+To install Yarn, Nodejs and Npm, follow these steps :
+
+```
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+sudo apt install yarn
+```
+
+Now you have the required packages you can start grabing the faf website.
 To install it, follow these steps : 
 
 ```
