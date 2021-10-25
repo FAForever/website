@@ -15,13 +15,14 @@ exports.initLocals = function(req, res, next) {
 		{ label: 'Competitive',		key: 'competitive',		href: '/competitive/tournaments' }
 	];
 
-	locals.cNavLinks = [
+  locals.cNavLinks = [
 		{ label: 'Tournaments',		key: 'tournaments',		href: '/competitive/tournaments' },
 		{ label: '1v1 Leaderboards',		key: '1v1',		href: '/competitive/leaderboards/1v1' },
 		{ label: 'Global Leaderboards',		key: 'global',		href: '/competitive/leaderboards/global' },
-		{ label: 'Leagues',		key: 'leagues',		href: '/competitive/leaderboards/leagues' } 
+		{ label: 'Leagues',		key: 'leagues',		href: '/competitive/leaderboards/leagues' },
+    { label: '2v2 Leaderboards',		key: '2v2',		href: '/competitive/leaderboards/2v2' },
 	];
-
+  
 	next();
 
 };
