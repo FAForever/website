@@ -86,7 +86,7 @@ function markdown(template) {
   let html = new showdown.Converter().makeHtml(fs.readFileSync(template, 'utf-8'));
   return (req, res) => {
     res.render('markdown', {content: html});
-  };
+  }
 }
 
 app.get('/privacy', markdown("templates/views/privacy.md"));
@@ -157,7 +157,7 @@ app.get('/competitive/leaderboards/leagues', (function(){
     
     return function(res, req){ 
         require(routes + 'leagues')(res, req, ladderData);
-    };
+    }
 })()
 );
 app.get('/lobby_api', cors(), require('./routes/lobby_api'));
