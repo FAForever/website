@@ -20,7 +20,6 @@
     "express-validator": "6.12.1",
     "fullcalendar": "5.9.0",
     "github-api": "3.4.0",
-    "highcharts": "9.2.2",
     "html-ellipsis": "1.1.1",
     "json-api-models": "^0.1.0-beta.4",
     "json2csv": "5.0.6",
@@ -35,6 +34,8 @@
     "wpapi": "1.2.2"
   },
   "devDependencies": {
+    "dart-sass": "^1.25.0",
+    "dart-sass-middleware": "^0.1.0",
     "grunt": "1.4.1",
     "grunt-cli": "1.4.3",
     "grunt-concurrent": "3.0.0",
@@ -51,8 +52,6 @@
     "jshint-stylish": "2.2.1",
     "load-grunt-config": "4.0.1",
     "load-grunt-tasks": "5.1.0",
-    "node-sass": "6.0.1",
-    "node-sass-middleware": "0.11.0",
     "open": "8.2.1",
     "time-grunt": "2.0.0"
   },

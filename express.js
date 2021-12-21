@@ -31,8 +31,6 @@ process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
 process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
 process.env.HOST = process.env.HOST || 'http://localhost';
 process.env.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '12345';
-process.env.TWITCH_CLIENT_ID = process.env.TWITCH_CLIENT_ID || '12345';
-process.env.TWITCH_LIVESTREAM_URL = process.env.TWITCH_LIVESTREAM_URL || 'https://api.twitch.tv/kraken/streams/?game=Supreme%20Commander:%20Forged%20Alliance';
 
 //Execute middleware before each request...
 app.use(middleware.initLocals);
@@ -88,7 +86,7 @@ function markdown(template) {
   let html = new showdown.Converter().makeHtml(fs.readFileSync(template, 'utf-8'));
   return (req, res) => {
     res.render('markdown', {content: html});
-  }
+  };
 }
 
 app.get('/privacy', markdown("templates/views/privacy.md"));
@@ -132,8 +130,9 @@ app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/chan
 app.get('/account_activated', require(routes + 'accounts/get/register'));
 app.get('/password_resetted', require(routes + 'accounts/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'accounts/get/report'));
+
+
 app.get('/client', require(routes + 'client'));
-app.get('/livestream', require(routes + 'livestream'));
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/newshub', require(routes + 'newshub'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
@@ -152,15 +151,13 @@ app.get('/competitive/leaderboards/leagues', (function(){
             console.error("Error while updating ladder week!", e);
         }
     };
-    setInterval( 
-      updateFunction
-    ,   parseInt(process.env.LEAGUES_UPDATE_INTERVAL) * 1000);
+    setInterval( updateFunction ,parseInt(process.env.LEAGUES_UPDATE_INTERVAL) * 1000);
     
     updateFunction();
     
     return function(res, req){ 
         require(routes + 'leagues')(res, req, ladderData);
-    }
+    };
 })()
 );
 app.get('/lobby_api', cors(), require('./routes/lobby_api'));
