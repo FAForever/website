@@ -48,3 +48,7 @@ The purpose behind each one is for dev and prod. In prod, it will minify the CSS
 
 The same goes for Javascript. Any javascript needed will need to be registered under grunt/concat.js. This script 
 puts all Javascript in one file, and will minify it in PROD. 
+
+
+## To Do
+Remove the use of Node-SASS dependency due to depreciation and replace with Dart-SASS

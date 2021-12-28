@@ -1,5 +1,5 @@
 # Use an ubuntu-image for building assets for use in a runtime image...
-FROM node:14 as builder
+FROM node:lts as builder
 
 RUN mkdir code
 
@@ -13,7 +13,7 @@ RUN yarn install
 RUN ./node_modules/.bin/grunt prod
 
 # Slimmer runtime image without python/make/gcc etc.
-FROM node:14-alpine as runtime
+FROM node:lts-alpine as runtime
 
 COPY --from=builder /code /code
 
