@@ -131,7 +131,6 @@ app.get('/account_activated', require(routes + 'accounts/get/register'));
 app.get('/password_resetted', require(routes + 'accounts/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'accounts/get/report'));
 app.get('/client', require(routes + 'client'));
-app.get('/livestream', require(routes + 'livestream'));
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/newshub', require(routes + 'newshub'));
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
