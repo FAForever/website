@@ -1,3 +1,7 @@
+var request = require('request');
+    moment = require('moment');
+    momentTimezone = require('moment-timezone');
+
 var GitHub = require('github-api');
 var fs = require('fs');
 
