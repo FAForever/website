@@ -9,6 +9,7 @@ let middleware = require('./routes/middleware');
 let bodyParser = require('body-parser');
 let passport = require('passport');
 let OidcStrategy = require('passport-openidconnect');
+let flash = require('connect-flash');
 
 const cors = require('cors');
 const showdown = require('showdown');
@@ -56,6 +57,7 @@ app.use(require('express-session')({
 //Authentication on pages
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash())
 app.use(middleware.username);
 
 //Initialize values for default configs
