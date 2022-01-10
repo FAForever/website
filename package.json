@@ -12,6 +12,7 @@
     "bootstrap-validator": "0.11.9",
     "chart.js": "3.5.1",
     "client-oauth2": "4.3.3",
+    "connect-flash": "^0.1.1",
     "cors": "2.8.5",
     "crypto-js": "4.1.1",
     "dotenv": "10.0.0",
