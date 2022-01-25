@@ -145,11 +145,7 @@ html(lang='en')
                       button(type='submit', name='submit')
                         i.fab.fa-patreon(aria-hidden='true')
                         span Support us
-                  li.footer-support-us-wrapper
-                    form.footer-support-us(action='https://paypal.me/faforever', method='get', target='_top')
-                      button(type='submit', name='submit')
-                        i.fab.fa-paypal(aria-hidden='true')
-                        span Donate here
+                  li: a(href="https://paypal.me/faforever") PayPal Donations
                   li: a(href="https://forum.faforever.com") Forums
                   li: a(href='/contribution') Contribute
                   li: a(href='/rules') Rules
