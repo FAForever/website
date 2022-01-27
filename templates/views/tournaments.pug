@@ -5,14 +5,14 @@ block cContent
         h3 Error: No response from Challonge
     else
 
-    if data.runningTournaments.length == 0
+    if data.runningTournaments.length === 0
     else
     each tournament, i in data.runningTournaments
         h1.text-center= tournament.name
         br
-        <iframe class="tournament-live" src="https://challonge.com/#{tournament.url}/module?theme=3899" width="100%" height="900" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
+        iframe.tournament-live(src='https://challonge.com/#{tournament.url}/module?theme=3899' width='100%' height='900' frameborder='0' scrolling='auto' allowtransparency='true')
         button(data-toggle="collapse" data-target="##{tournament.url}") Description
-        if tournament.description == ""
+        if tournament.description === ""
             div(id="#{tournament.url}" class="collapse") Tournament has no description
         else
             div(id="#{tournament.url}" class="collapse") !{tournament.description}
@@ -27,7 +27,7 @@ block cContent
       h3 Error: No response from Challonge
     else
 
-    if data.upcomingTournaments.length == 0 && data.runningTournaments.length == 0
+    if data.upcomingTournaments.length === 0 && data.runningTournaments.length === 0
         p.text-center No upcoming tournaments have been registered
     else
         table.table.table-striped.table-hover
@@ -46,5 +46,5 @@ block cContent
                         each tournament, i in data.upcomingTournaments
                             tr
                                 td= tournament.name
-                                td= (tournament.start_at == 'Thu, 01 Jan 1970 00:00:00 UTC' ? 'Undetermined' : tournament.start_at)
+                                td= (tournament.start_at === 'Thu, 01 Jan 1970 00:00:00 UTC' ? 'Undetermined' : tournament.start_at)
                                 td: a(href=tournament.full_challonge_url target="_blank")= tournament.full_challonge_url
