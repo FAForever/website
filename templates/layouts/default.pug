@@ -68,19 +68,19 @@ html(lang='en')
             ul.main-navigation
               li.mobile-nav-logo-wrapper: a(href="/", class="mobile-nav-logo")
                 img(src="/images/faf-logo.png")
-              li(class=(section == 'news' ? 'active' : null)): a(href='/newshub')
+              li(class=(section === 'news' ? 'active' : null)): a(href='/newshub')
                 i.fas.fa-rss
                 span News
-              li(class=(section == 'competitive' ? 'active' : null)): a(href='/competitive/tournaments')
+              li(class=(section === 'competitive' ? 'active' : null)): a(href='/competitive/tournaments')
                 i.fas.fa-trophy
                 span Competitive
-              li(class=(section == 'clan' ? 'active' : null)): a(href='/clans')
+              li(class=(section === 'clan' ? 'active' : null)): a(href='/clans')
                 i.fas.fa-users
                 span Clans
-              li(class=(section == 'contribution' ? 'active' : null)): a(href='/contribution')
+              li(class=(section === 'contribution' ? 'active' : null)): a(href='/contribution')
                 i.fas.fa-heart
                 span Contribute
-              li(class=(section == "faq" ? 'active' : null)): a(href='https://forum.faforever.com/category/18/frequently-asked-questions')
+              li(class=(section === "faq" ? 'active' : null)): a(href='https://forum.faforever.com/category/18/frequently-asked-questions')
                 i.fas.fa-question-circle
                 span FAQ
               li.close-mobile-nav: button.toggle-nav
@@ -91,7 +91,7 @@ html(lang='en')
                 a(href='/client' class='nav-download-client')
                   i.fas.fa-download
                   span Download
-              li(class=(section == 'account' ? 'active' : null)).dropdown
+              li(class=(section === 'account' ? 'active' : null)).dropdown
                 a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button' title=(username ? 'Welcome ' + username : undefined))
                   if username
                     i.fas.fa-user
