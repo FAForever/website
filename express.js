@@ -136,6 +136,11 @@ app.get('/report_submitted', require(routes + 'accounts/get/report'));
 app.get('/client', require(routes + 'client'));
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/newshub', require(routes + 'newshub'));
+//  news redirect for legacy
+app.route('/news').get(function(req, res) {
+  res.redirect('/newshub');
+});
+
 app.get('/competitive/tournaments', require(routes + 'tournaments'));
 app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
 app.get('/competitive/leaderboards/2v2', require(routes + '2v2'));
@@ -188,14 +193,6 @@ app.get('/clan/*', function (req, res){
     res.redirect('/clans/see?id='+id);
 
 });
-
-app.get('/news/', require(routes + 'blog'));
-app.get('/category/:category/page/:page', require(routes + 'blog'));
-app.get('/news/search/:search/page/:page', require(routes + 'blog'));
-app.get('/tag/:tag/page/:page', require(routes + 'blog'));
-app.get('/author/:author/page/:page', require(routes + 'blog'));
-app.get('/news/page/:page', require(routes + 'blog'));
-app.get('/:year/:month/:slug', require(routes + 'post'));
 
 app.get('/logout', function (req, res) {
     req.logout();
