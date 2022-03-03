@@ -12,8 +12,6 @@ RUN yarn install
 
 RUN ./node_modules/.bin/grunt prod
 
-RUN cp .env.example .env
-
 # Slimmer runtime image without python/make/gcc etc.
 FROM node:lts-alpine as runtime
 
