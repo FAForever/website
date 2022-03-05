@@ -1,5 +1,31 @@
-# website
-FAForever main website on https://www.faforever.com
+This repository is the location of our main website at https://www.faforever.com
+
+#Development
+
+## Set up Local-Live Server
+
+Their are 3 ways of setting up a local-Live server of the website
+
+- Jetbrains Webstorm
+- Visual Studio 2022
+- Linux Virtual Machine (Requires Hardware support)
+
+
+
+
+
+### Jetbrains Webstorm
+
+![Imgur](https://i.imgur.com/cCEOMJO.png)
+
+### Visual Studio 2022
+
+
+
+
+
+
+
 
 Requires Node and NPM.
 To install it, follow these steps : 
