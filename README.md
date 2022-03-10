@@ -1,6 +1,5 @@
-[![GitHub license](https://img.shields.io/github/license/FAForever/website)](https://github.com/FAForever/website)
 [![Website Docker Release](https://github.com/FAForever/website/actions/workflows/release.yml/badge.svg?branch=develop)](https://github.com/FAForever/website/actions/workflows/release.yml)
-
+[![GitHub license](https://img.shields.io/github/license/FAForever/website)](https://github.com/FAForever/website)
 
 This repository is the location of our main website at https://www.faforever.com
 
