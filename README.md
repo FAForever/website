@@ -3,6 +3,7 @@
 
 This repository is the location of our main website at https://www.faforever.com
 
+
 Requires Node and NPM.
 To install it, follow these steps : 
 
@@ -28,4 +29,4 @@ You can register a new stylesheet by going to grunt/sass.js. You will need to ad
 The purpose behind each one is for dev and prod. In prod, it will minify the CSS, whereas DEV does not.
 
 The same goes for Javascript. Any javascript needed will need to be registered under grunt/concat.js. This script 
-puts all Javascript in one file, and will minify it in PROD. 
+puts all Javascript in one file, and will minify it in PROD.

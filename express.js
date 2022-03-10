@@ -57,7 +57,7 @@ app.use(require('express-session')({
 //Authentication on pages
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash())
+app.use(flash());
 app.use(middleware.username);
 
 //Initialize values for default configs
@@ -88,13 +88,13 @@ function markdown(template) {
   let html = new showdown.Converter().makeHtml(fs.readFileSync(template, 'utf-8'));
   return (req, res) => {
     res.render('markdown', {content: html});
-  }
+  };
 }
 
-app.get('/privacy', markdown("templates/views/privacy.md"));
-app.get('/tos', markdown("templates/views/tos.md"));
-app.get('/rules', markdown("templates/views/rules.md"));
-app.get('/coc', markdown("templates/views/coc.md"));
+app.get('/privacy', markdown('templates/views/privacy.md'));
+app.get('/tos', markdown('templates/views/tos.md'));
+app.get('/rules', markdown('templates/views/rules.md'));
+app.get('/coc', markdown('templates/views/coc.md'));
 
 /// Account routes
 // Registration
@@ -146,7 +146,7 @@ app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
 app.get('/competitive/leaderboards/2v2', require(routes + '2v2'));
 app.get('/competitive/leaderboards/global', require(routes + 'global'));
 app.get('/competitive/leaderboards/leagues', (function(){
-    let updateLeagues = require("./scripts/updateLeagues");
+    let updateLeagues = require('./scripts/updateLeagues');
     let ladderData = {};
     let updateFunction = function(){
         try {
@@ -154,18 +154,16 @@ app.get('/competitive/leaderboards/leagues', (function(){
                 ladderData = ladderUpdatedData;
             });
         } catch (e) {
-            console.error("Error while updating ladder week!", e);
+            console.error('Error while updating ladder week!', e);
         }
     };
-    setInterval( 
-      updateFunction
-    ,   parseInt(process.env.LEAGUES_UPDATE_INTERVAL) * 1000);
+    setInterval( updateFunction,parseInt(process.env.LEAGUES_UPDATE_INTERVAL) * 1000);
     
     updateFunction();
     
     return function(res, req){ 
         require(routes + 'leagues')(res, req, ladderData);
-    }
+    };
 })()
 );
 app.get('/lobby_api', cors(), require('./routes/lobby_api'));
@@ -189,7 +187,7 @@ app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
 
 // Compatibility
 app.get('/clan/*', function (req, res){
-    const id = req.path.split("/").slice(-1)[0];
+    const id = req.path.split('/').slice(-1)[0];
     res.redirect('/clans/see?id='+id);
 
 });
@@ -265,10 +263,10 @@ if (process.env.NODE_ENV === 'development') {
     });
 }
 
-let extractor = require("./scripts/extractor");
-let getLatestClientRelease = require("./scripts/getLatestClientRelease");
-let getRecentUsers = require("./scripts/getRecentUsers");
-let getAllClans = require("./scripts/getAllClans");
+let extractor = require('./scripts/extractor');
+let getLatestClientRelease = require('./scripts/getLatestClientRelease');
+let getRecentUsers = require('./scripts/getRecentUsers');
+let getAllClans = require('./scripts/getAllClans');
 
 // Run scripts initially on startup
 try{
@@ -278,7 +276,7 @@ try{
     getAllClans.run();
 }
 catch(e){
-    console.error("Error while running update scripts. Make sure the API is available. Those scripts will run again after some time - no need to restart the website.", e);
+    console.error('Error while running update scripts. Make sure the API is available. Those scripts will run again after some time - no need to restart the website.', e);
 }
 
 // Run leaderboard extractor every minute
@@ -286,7 +284,7 @@ setInterval(() => {
     try {
         extractor.run();
     } catch (e) {
-        console.error("Error while updating leaderboards!", e);
+        console.error('Error while updating leaderboards!', e);
     }
 },  parseInt(process.env.LEADERBOARDS_UPDATE_INTERVAL) * 1000);
 
@@ -295,7 +293,7 @@ setInterval(() => {
     try {
         getRecentUsers.run();
     } catch (e) {
-        console.error("Error while updating recent user list!", e);
+        console.error('Error while updating recent user list!', e);
     }
 },  parseInt(process.env.RECENT_USERS_LIST_UPDATE_INTERVAL) * 1000);
 
@@ -304,7 +302,7 @@ setInterval(() => {
     try {
         getAllClans.run();
     } catch (e) {
-        console.error("Error while updating the clan list!", e);
+        console.error('Error while updating the clan list!', e);
     }
 },  parseInt(process.env.CLAN_LIST_UPDATE_INTERVAL) * 1000);
 
@@ -313,7 +311,7 @@ setInterval(() => {
     try {
         getLatestClientRelease.run();
     } catch (e) {
-        console.error("Error while fetching latest client release!", e);
+        console.error('Error while fetching latest client release!', e);
     }
 },  parseInt(process.env.CLIENT_RELEASE_FETCHING_INTERVAL) * 1000);
 
