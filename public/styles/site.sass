@@ -1,36 +1,20 @@
-// variables & mixins
-@import general/variables
-@import general/mixins
 
-// fonts
-@import fonts/font-awesome/fontawesome
-@import general/_fonts
 
-// reset
-@import general/reset
 
-// bootstrap
-@import bootstrap/bootstrap
 
-// layout
-@import partials/layout
-
-// mobile (should remove this!)
-@import partials/mobile
 
 // general
-@import general/elements
-@import general/navigation
-@import general/footer
+@use 'general/navigation'
+
 
 // page-related
-@import site/account.sass
-@import site/client.sass
-@import site/contributions.sass
-@import site/index.sass
-@import site/leaderboards.sass
-@import site/news.sass
-@import site/newshub.sass
-@import site/post.sass
-@import site/clans.sass
+@use 'site/account.sass'
+@use 'site/client.sass'
+@use 'site/contributions.sass'
+@use 'site/index.sass'
+@use 'site/leaderboards.sass'
+@use 'site/news.sass'
+@use 'site/newshub.sass'
+@use 'site/post.sass'
+@use 'site/clans.sass'
 
