@@ -1,32 +1,33 @@
 [![Website Docker Release](https://github.com/FAForever/website/actions/workflows/release.yml/badge.svg?branch=develop)](https://github.com/FAForever/website/actions/workflows/release.yml)
 [![GitHub license](https://img.shields.io/github/license/FAForever/website)](https://github.com/FAForever/website)
 
-This repository is the location of our main website at https://www.faforever.com
+## About the FAForever Website
+
+![Imgur](https://imgur.com/rM2K5bG.png)
+
+This is the repository for our main website [FAForever.com](https://www.faforever.com)
+
+The Main Focus for what the primary purpose of the website is. The following was voted on at the FAForever Association general meeting as the 2 main purposes of the website.
+
+1. To Focus on Acquiring and On-boarding of new Player into FAForever (Registration of players, Documentation & Support)
+2. Promote The Community (Clans, Maps, Mods, Tournaments etc.)
 
 
-Requires Node and NPM.
-To install it, follow these steps : 
+## Project's Hub
 
-```
-git clone https://github.com/FAForever/website.git
-cd website
-sudo npm install -g yarn
-yarn install
-node_modules/.bin/grunt prod
-cp .env.example .env
-```
+The Association also voted on the Guidelines for adding Projects to the Website as a Standalone page.
+The Guidelines Can be found [here](https://github.com/FAForever/website/wiki/FAF-Project-Hub-Guidlines)
 
-Now you're ready to start the server. You can fire it using :
-`yarn start`
 
-In order to learn grunt and install cli, please follow this guide - http://gruntjs.com/getting-started
+## Developing the Website
+The Website is overseen currently by the Promotions Team.
 
-If you did changes run `grunt prod`+`PORT=3000 yarn start` again to apply them.
+The recommended 3 development environments to set up are listed below, the guide for each will outline what is needed, and what to configure.
 
-## Adding stylesheets and javascripts
-Since we are using grunt to handle all tasks, files must be registered in the correct grunt configurations. 
-You can register a new stylesheet by going to grunt/sass.js. You will need to add the sass file underneath each category. 
-The purpose behind each one is for dev and prod. In prod, it will minify the CSS, whereas DEV does not.
+- [JetBrains Webstorm](https://github.com/FAForever/website/wiki/Webstorm-Development-Enviroment)
+- [Visual Studio Code](https://github.com/FAForever/website/wiki/Visual-Studio-Develeopment-Enviroment)
+- [Oracle VM VirtualBox](https://github.com/FAForever/website/wiki/Oracle-VM-VirtualBox-Development-Enviroment)
 
-The same goes for Javascript. Any javascript needed will need to be registered under grunt/concat.js. This script 
-puts all Javascript in one file, and will minify it in PROD.
+Any pull requests made to the website will be verified via the Website Test Server before being merged into the website.
+
+As well as any Pull Requests made please make sure you detail in the comments on files/changes.
