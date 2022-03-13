@@ -1,451 +1,383 @@
-\:root
-  /* Colors
-  --color-black:#000000
-  --color-white:#FFFFFF
-  --color-white-gray:#c2c2c2
-  --color-gray:#5e5e5e
-  --color-dark-gray:#111111
-  --color-gold:#f7941d
-  --color-dark-gold:#c56e03
-  --color-light-gold:#ffc077
-
-  /* Fonts
-  --main-font-family:"Electrolize", "Orbitron", "Russo One"
-  --title-font-family:"Russo One", "Orbitron", "Electrolize"
-  --specific-font-family:"Orbitron", "Elecnptrolize"
-
-  /* Font sizes
-  --paragraph-font-size:1.4vw
-  --subtitle-font-size:2.5vw
-  --title-font-size:3vw
-
-/* Used as white text between stuff
-
-.responsiveTextTitle
-  font-family: var(--specific-font-family)
-  font-size: var(--subtitle-font-size)
-
-.responsiveText
-  font-size: var(--paragraph-font-size)
-  padding: 1.2em 0vw
-  line-height: 1.5em
-  color: var(--color-white)
-  font-family: var(--main-font-family)
-  direction: ltr
-
-.responsiveTextPadding
-  padding: 1.5em 10vw
-
-.responsiveTextNoPadding
-  font-size: var(--paragraph-font-size)
-  line-height: 1.5em
-  color: var(--color-white)
-  font-family: var(--main-font-family)
-  direction: ltr
-
-@media (max-width: 1600px)
-  \:root
-    --paragraph-font-size:2vw
-    --subtitle-font-size:3.5vw
-    --title-font-size:4vw
-
-@media (max-width: 800px)
-  \:root
-    --paragraph-font-size:2.5vw
-    --subtitle-font-size:3.5vw
-
-@media (max-width: 600px)
-  \:root
-    --paragraph-font-size:5vw
-    --subtitle-font-size:5.5vw
-    --title-font-size:7vw
-
-/*=============== Main HTML ===============
-
-html
-  font-family: var(--main-font-family)
-
-body
-  text-align: center
-  background-attachment: fixed
-  background-color: var(--color-dark-gray)
-  background-position: center center
-  margin: 0px 0px 0px 0px
-  padding: auto
-  padding-top: 0px
-  font-family: var(--main-font-family)
-  color: var(--color-white)
-
-a
-  &:link
-    text-decoration: none
-    color: var(--color-white-gray)
-    transition: 0.5s
-
-  &:visited
-    text-decoration: none
-    color: inherit
-
-  &:hover
-    color: var(--color-white)
-
-ul
-  padding: 0px
-  margin: 0px
-
-.indexButton
-  margin: 10vw
-  font-size: 4vw
-  padding: 5vw
-  background-color: var(--color-gold)
-  color: var(--color-white)
-  font-family: var(--title-font-family)
-  transition: 0.4s
-
-  &:hover
-    background-color: var(--color-dark-gold)
-    color: var(--color-white)
-
-/*===== Splat Starts =====
-
-.splat_main_container
-  display: grid
-  grid-template-columns: auto
-  position: relative
-  padding: 10px 0px 10px 0px
-  justify-items: center
-
-.splat_rotate
-  position: absolute
-  transform: rotate(0.5turn)
-  width: 100vw
-  z-index: 0
-  object-fit: contain
-
-.splat
-  position: absolute
+section.navigation-wrapper
+  position: fixed
+  z-index: 9999
   width: 100%
-  object-fit: cover
-  bottom: 0px
-  overflow: hidden
+  transition: transform 250ms
+  &.unpinned
+    transform: translateY(-120%)
+    transition: transform 500ms
+    .nav-account-dropdown-menu
+      display: none
 
-.splat_container
-  position: relative
-  width: 100%
-  grid-column: 1/-1
+div.top-navigation-wrapper
+  background-color: #0F0F0D
+  transition: transform 250ms
+  @media (max-width: 985px)
+    position: fixed
+    z-index:  10003
+    transform: translateY(-150%)
 
-.splat_black_background
-  background-color: var(--color-black)
+div.main-navigation-wrapper
+  background-color: #212121
+  font-family: 'Zeroes Three'
+  @media (min-width: 901px)
+    height: 60px
 
-.separationBar
-  padding: 20px
-  background-color: var(--color-dark-gray)
+.navigation-wrapper.opened
+  @media (max-width: 985px)
+    ul.main-navigation
+      transform: translateX(0)
+    .nav-logo
+      transform: translateY(-120%)
+      transition: transform 250ms
+    .mobile-hamburger
+      transform: translateX(120%)
+      transition: transform 250ms
+    .top-navigation-wrapper
+      transform: translateY(0)
 
-/*=============== Nav Bar ===============
-/*===== Top Navbar =====
+nav.top-navigation,
+nav.main-navigation
+  +container()
 
-.main_topnav_container
-  display: grid
-  grid-template-columns: repeat(12, max-content)
-  grid-template-rows: minmax(10px, 1fr)
-  color: var(--color-gray)
-  font-size: 0.8vw
-  background-color: var(--color-black)
-  padding: 0.3em
-  position: relative
-  justify-content: end
-  place-items: center
+nav.top-navigation
+  height: 43px
 
-.topnav_container
-  padding: 0px 0.5em
+nav.main-navigation
+  display: flex
+  justify-content: space-between
 
-.topnav_item
-  width: 100%
-  height: 100%
-  position: relative
-  transition: 0.5s
-  display: grid
-  place-items: center
-  cursor: pointer
-  justify-self: end
+nav.main-navigation
+  @media (max-width: 600px)
+    flex-flow: row wrap
 
-.topnav_hover:hover, .topnav_item a
-  color: var(--color-white)
-
-.fab
-  padding: 5%
-  font-size: 30px
-  height: 10px
-  width: 100%
-  text-align: center
-  text-decoration: none
-  color: var(--color-white-gray)
-  justify-self: end
-  transition: 0.5s
-
-  &:hover
-    color: var(--color-white)
-
-/*===== Regular navbar =====
-
-.main_nav_container
-  display: grid
-  grid-template-columns: max-content minmax(50px, auto) max-content max-content
-  grid-template-rows: auto
-  font-size: var(--paragraph-font-size)
-  background-color: var(--color-dark-gray)
-  color: var(--color-white-gray)
-  font-family: var(--main-font-family)
-  justify-items: center
-  padding: 10px 10px 0px 10px
-
-.nav_container
-  align-self: center
-  align-content: center
-
-.nav_item
-  width: 100%
-  height: 100%
-  position: relative
-  list-style-type: none
-  margin: 0px
-  padding: 0px
-  transition: 0.25s
-
-  li
-    display: inline-block
-    padding: 0px 20px
-
-.nav_image img
-  width: 80px
-  height: 100%
-  object-fit: contain
-  overflow: hidden
-  padding: 0px 0px 0px 20px
-  justify-self: center
-  place-self: center
-
-.nav_download
-  color: var(--color-white)
-  background-color: var(--color-gold)
-  border: 0.1em solid var(--color-dark-gold)
-  letter-spacing: 0.4px
-  margin-left: 20px
-  transition: 0.25s
-  color: var(--color-white)
-
-  &:hover
-    background-color: var(--color-dark-gold)
-
-.nav_link
-  padding: 10px
+.nav-download-client
+  background-color: $red
+  &:hover, &:focus, &:active
+    background-color: lighten($red, 5%)
+.nav-account-dropdown
+  background-color: rgba(white, 0.05)
+  &:hover, &:focus, &:active
+    background-color: rgba(white, 0.15)
+.nav-account-dropdown-menu
+  width: 229px
+  margin: 0
+  border: none !important
+  a
+    word-wrap: break-word
+    white-space: normal !important
+.nav-download-client,
+.nav-account-dropdown
   color: white
+  font-size: 18px
+  padding: 15px 15px
+  position: relative
+  overflow: hidden
+  transition: background-color 50ms
 
-.nav_end
-  justify-self: end
-  font-weight: 900
-  letter-spacing: 1px
+  &:hover, &:focus, &:active
+    text-decoration: none
+    outline: none
+    color: white
 
-/* This is the hover menu you see when you hover on GAME, COMMUNITY and so on
+  span
+    @media (max-width: 985px)
+      display: none
 
-.nav_absolute
-  position: absolute
-  z-index: 10
-  text-align: left
-  display: none
-  top: 1.2em
+  i
+    display: inline-block
+    font-size: 26px
+    padding-right: 10px
 
-  li
-    padding: 20px
-    display: block
-    background-color: var(--color-dark-gray)
-    transition: 0.25s
+    @media (max-width: 985px)
+      padding-right: 0
 
-    &:hover
-      color: var(--color-white)
-      background-color: var(--color-gray)
+.nav-support-us
+  button
+    border: 0
+    background-color: transparent
+    text-transform: uppercase
+    position: relative
+    overflow: hidden
+    transition: background-color 100ms
 
-.nav_list
-  &:hover
-    color: var(--color-white)
-    transition: 0.25s
+  i
+    font-size: 20px
+    padding-right: 10px
 
-  li
-    color: var(--color-white-gray)
+ul.top-navigation,
+ul.main-navigation,
+ul.main-navigation-right
+  list-style: none
+  margin: 0
+  padding: 0
+  display: inline-block
 
-.fa-caret-down
-  transition: 0.35s
+  li, a
+    display: inline-block
 
-.nav_list:hover .fa-caret-down
-  transform: rotate(-0.25turn)
+  .dropdown
+    li, a
+      display: block
 
-@media (max-width: 1200px)
-  .main_nav_container, .main_topnav_container
+  .close-mobile-nav,
+  .mobile-nav-logo-wrapper
+    @media (min-width: 901px)
+      display: none
+
+ul.main-navigation-right
+  @media (max-width: 985px)
     display: none
 
-/* Mobile navbar
+ul.main-navigation
+  text-align: center
 
-.mobilenav_sticky
-  position: sticky
-  display: none
-  top: 0
-  z-index: 100
-  background-color: var(--color-black)
-  border: 1px solid var(--color-white)
+  a, button
+    background-color: transparent
+    border: 0
+    color: white
+    font-size: 18px
+    padding: 15px 30px
+    position: relative
+    overflow: hidden
 
-.main_mobilenav_container
-  display: grid
-  grid-template-columns: 1fr
-  grid-template-rows: auto
-  justify-items: left
-  font-family: "Orbitron"
-  text-align: left
-  font-size: 25px
+    @media (max-width: 1140px)
+      padding-top: 10px
+      padding-bottom: 4px
+    @media (max-width: 985px)
+      &:hover, &:focus, &:active
+        background-color: lighten(#181818, 10%)
+    @media (max-width: 800px)
+      padding-left: 15px
+      padding-right: 15px
 
-#mobilenav_bars
-  padding: 10px
-  background-color: var(--color-dark-gray)
-  border: 1px solid var(--color-gray)
-  justify-self: right
+    &:after
+      position: absolute
+      content: ''
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      transition: transform 100ms
+      transform: translateY(105%)
+      background-color: lighten(#181818, 10%)
+      z-index: 10001
 
-.mobilenav_bar1, .mobilenav_bar2, .mobilenav_bar3
-  width: 35px
-  height: 5px
-  background-color: var(--color-white)
-  margin: 6px 0
-  transition: 0.4s
+    &:hover, &:focus, &:active
+      text-decoration: none
+      outline: none
 
-.mobilenav_change
-  .mobilenav_bar1
-    transform: rotate(-45deg) translate(-9px, 6px)
+      &:after
+        @media (min-width: 901px)
+          transform: translateY(0)
 
-  .mobilenav_bar2
-    opacity: 0
+  i, span
+    position: relative
+    z-index: 10002
 
-  .mobilenav_bar3
-    transform: rotate(45deg) translate(-8px, -8px)
+  span
+    @media (min-width: 901px) and (max-width: 1140px)
+      font-size: 14px
+      display: block
 
-.mobilenav_mobile
-  opacity: 0
-  height: 0
-  display: none
+  i
+    display: inline-block
+    font-size: 26px
+    padding-right: 10px
 
-.mobilenav_mobile_active
-  opacity: 100
-  height: 100%
-  transition: 1s
-  display: block
+    @media (min-width: 901px) and (max-width: 1140px)
+      font-size: 22px
+      padding-right: 0
+      padding-bottom: 5px
 
-#mobilenav_bg_sticky
-  position: sticky
-  top: 0
-  z-index: 9
+  li.nav-more
+    display: none
+    @media (max-width: 985px)
+      display: inline-block
 
-#mobilenav_bg
-  position: absolute
+  // mobile
+  .mobile-nav-logo
+    text-align: center
+    padding-top: 0
+    padding-bottom: 0
+    overflow: visible
+    background-color: transparent
+    transition: background-color 100ms
+    
+    &:hover, &:focus, &:active
+      background-color: lighten(#181818, 10%)
 
-.mobilenav_bg_active
-  background-color: var(--color-black)
-  width: 100vw
-  height: 100vh
-  opacity: 90%
-  transition: 0.5s
+    &:after
+      display: none
 
-.mobilenav_item
-  margin: 10px
-  padding: 25px 10px 0px 0px
+    img
+      position: relative
+      z-index: 10002
+      width: 160px
+      height: 160px
+      display: inline-block
+      margin-top: -5px
+      margin-bottom: -5px
 
-.mobilenav_login
-  margin: 10px
-  padding: 25px 10px 0px 0px
-  padding-top: 0px
+  @media (max-width: 985px)
+    background-color: #212121
+    position: fixed
+    top: 47px
+    left: 0
+    right: 0
+    bottom: 0
+    margin-bottom: -150px
+    width: 100%
+    z-index:  10003
+    transform: translateX(-105%)
+    transition: transform 250ms
+    overflow-y: auto
+    li, a, button
+      display: block
+      width: 100%
+      text-align: left
+    a, button
+      padding-top: 2vh
+      padding-bottom: 2vh
+    i
+      font-size: 38px
+      width: 60px
+      text-align: center
+    span
+      font-size: 28px
 
-.mobilenav_item ul
-  list-style-type: none
-  margin: 0px
-  padding-top: 10px
-
-.mobilenav_ul
-  display: none
-
-  li
-    padding: 15px 10px 15px 10px
-    color: var(--color-white-gray)
-
-.mobilenav_active
-  display: block
-
-.mobilenav_social li
-  display: inline-block
-  padding: 10px
-
-.mobilenav_caret .fa-caret-down
-  transform: rotate(-0.25turn)
-  transition: 0.5s
-  color: var(--color-white)
-
-/* Footer Navbar
-
-.mainFooterContainer
-  display: grid
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-  grid-template-rows: minmax(10px, 1fr)
-  gap: 5vw
-  color: var(--color-gray)
-  background: linear-gradient(180deg, black 0%, #222222 100%)
-  padding: 20px 10px 50px 10px
-  justify-content: center
-  text-align: left
-
-.footerContainer
-  padding: 0px 10px
-
-.footerItem
+ul.top-navigation
+  text-align: right
+  overflow: auto
   width: 100%
-  height: 100%
-  transition: 0.4s
-  cursor: pointer
-  line-height: 3em
+  max-width: 100vw
+  white-space: nowrap
+  @media (max-width: 985px)
+    min-width: 100vw
+  &:hover
+    a, button
+      color: rgba(white, 0.45)
+  
+  a, button
+    padding: 10px 15px
+    font-size: 14px
+    font-weight: 600
+    color: rgba(white, 0.5)
+    transition: color 50ms
+
+    @media (max-width: 985px)
+      font-size: 20px
+
+    &.icon
+      padding: 5px 8px
+      font-size: 22px
+      vertical-align: -7%
+
+    &:hover, &:focus, &:active
+      text-decoration: none
+      outline: none
+      color: rgba(white, 0.85)
+
+.nav-logo
+  position: relative
+  width: 120px
+  transition: transform 250ms 250ms
+
+  &:hover, &:focus, &:active
+    img
+      transform: scale(1.02)
+
+  @media (max-width: 985px)
+    width: 60px
+    height: 60px
+    display: block
 
   img
-    width: 70%
-    margin-top: 10%
-    margin-left: 10%
+    position: absolute
+    top: 0
+    left: 0
+    height: 110px
+    width: 110px
+    margin-top: -36px
+    border-radius: 50%
+    box-shadow: 0 0 25px rgba(black, 0.1)
+    transition: transform 500ms
 
-  ul
-    font-size: var(--paragraph-font-size)
-    font-family: var(--specific-font-family)
-    color: var(--color-white)
+    @media (max-width: 985px)
+      margin-top: -4px
+      height: 75px
+      width: 75px
 
-  li
-    list-style-type: none
-    margin-left: 1em
-    font-size: 0.8em
-    font-family: var(--main-font-family)
-    border: 1px solid var(--color-dark-gray)
-    color: var(--color-white-gray)
+    @media (max-width: 640px)
+      margin-top: 0
+      width: 64px
+      height: 64px
 
-    &:hover
-      color: var(--color-white)
-      transition: 0.4s
-      background-color: var(--color-dark-gray)
-      border: 1px solid var(--color-white-gray)
-
-  a
-    color: var(--color-white)
-
-@media (max-width: 800px)
-  .main_topnav_container
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
-
-@media (max-width: 1200px)
-  .mobilenav_sticky
+.mobile-hamburger
+  display: none
+  color: white
+  text-align: center
+  font-size: 18px
+  padding: 5px 15px
+  position: relative
+  overflow: hidden
+  border: none
+  background: transparent
+  transition: transform 250ms 250ms, background-color 100ms
+  @media (max-width: 985px)
     display: block
+    &:hover, &:focus, &:active
+      background-color: lighten(#181818, 10%)
+  &:after
+    position: absolute
+    content: ''
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    transition: transform 100ms
+    transform: translateY(105%)
+    background-color: lighten(#181818, 10%)
+    z-index: 10001
+  &:hover, &:focus, &:active
+    text-decoration: none
+    outline: none
+    &:after
+      @media (min-width: 901px)
+        transform: translateY(0)
+  i
+    position: relative
+    z-index: 10002
+    display: inline-block
+    font-size: 36px
+    padding-top: 4px
 
-@media (max-width: 1100px)
-  .mobilenav_sticky
-    display: block
+.navbar.navbar-default
+  margin: 0px
+  box-shadow: 0px 3px 10px #000
 
-@media (max-width: 1100px)
-  .main_nav_container, .main_topnav_container
-    display: none
+.navbar-brand
+  padding: 8px
+  margin-right: 5px
+
+#btn-dl-nav
+  background-color: #F04124
+
+.highlightButton
+  background-color: #F04124
+  color: #ffffff
+  padding: 10px 15px
+  margin-top: 10px
+  display: block
+
+  &:hover, &:focus
+    background-color: #C0341C !important
+    color: #ffffff
+    text-decoration: none
+    outline: none
+
+#btn-dl-nav:hover
+  background-color: #C0341C !important
+
+.competitive-nav
+  margin-top: 20px
