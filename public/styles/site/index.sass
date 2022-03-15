@@ -1,116 +1,694 @@
-// Top Section with big image 
-.intro
-  height: 800px
-  position: relative
-
-.hero 
-  background-image: url("../../images/index-background.jpg")
-  background-size: cover
+#main_banner_container
+  display: grid
+  grid-template-columns: repeat(1, autofit minmax(0px, 1fr))
   background-position: center
-  background-repeat: no-repeat
-  height: 800px
-  box-shadow: 0 0 15px #000000
+  background-size: cover
+  padding: 300px 0
+  font-size: 35px
+  letter-spacing: 1.2PX
+  text-shadow: 0 2px 4px black, 0 8px 16px black
 
-.hero:before
-  content: " "
+.banner_item
   width: 100%
-  height: 800px
-  z-index: 2
-  position: absolute
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.11+0,0.65+100 */
-  background: linear-gradient(to bottom,  rgba(0,0,0,0.11) 0%,rgba(0,0,0,0.65) 100%)
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c000000', endColorstr='#a6000000',GradientType=0 )
-
-.introtitle
+  height: 100%
   position: relative
-  top: -90%
-  z-index: 3
-  color: #fff
-  text-align: center
-  text-shadow: 1px 1px 0 rgba(0,0,0,.75)
+  text-transform: uppercase
+  display: grid
 
-.introtitle img
-  padding: 10px
+.banner_title
+  font-size: var(--subtitle-font-size)
+  font-family: "orbitron",sans-serif
+  font-weight: bolder
+  letter-spacing: 6px
+  padding: 20px 0
 
-.introtitle h1
-  font-size: 3em
-  padding: 0.2em
+.banner_subtitle
+  font-size: var(--paragraph-font-size)
+  font-family: "electrolize",sans-serif
+  font-weight: 600
+  padding: 20PX 0
 
-.introtitle h3
-  padding: 1em
-  color: #ccc
+.landingButton
+  color: var(--color-white)
+  background-color: var(--color-gold)
+  font-family: var(--specific-font-family)
+  border: 0.15em solid var(--color-dark-gold)
+  font-size: 0.7em
+  margin: 0.5em
+  padding: 0.5em
+  justify-self: center
+  transition: 0.4s
+  font-weight: bold
+  letter-spacing: 0.1em
+  cursor: pointer
 
-.introtitle a
-  text-shadow: none
+  &:hover
+    color: var(--color-white)
+    background-color: var(--color-dark-gold)
+    border: 0.15em solid var(--color-dark-gold)
 
-.btn-intro
-  background-color: transparent
-  color: white
-  margin: 1em
+/* banner variants of regular banner
 
-.btn-intro:hover
-  background-color: white
+.landingBanner
+  background-image: url("../../images/home1.jpg")
 
-/* What is Forged Alliance Forever? */
+.contentBanner
+  background-image: url("../../images/content-creator/creatorbg.jpg")
 
-.the-project
-  text-align: center
-  padding-top: 30px
-  padding-bottom: 50px
+.aiBanner
+  background-image: url("../../images/ai.jpg")
 
-.the-project h1
-  padding: 20px
+.devsBanner
+  background-image: url("../../images/devs.jpg")
 
-.the-project p
-  padding: 20px
+.endBanner
+  background-image: url("../../images/footerbanner.jpg")
 
-/* Features */
+/* Below Main page
+@media (max-width: 800px)
+  #main_banner_container
+    padding: 150px 10px
+    gap: 0
+    font-size: 10px
 
-.features
-  padding-top: 50px
-  padding-bottom: 50px
-  
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#353535+0,1e1e1e+0,383838+100 */
-  background: rgb(53,53,53) /* Old browsers */
-  background: linear-gradient(135deg,  rgba(53,53,53,1) 0%,rgba(30,30,30,1) 0%,rgba(56,56,56,1) 100%)
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#383838',GradientType=1 )
-  color: white
-  box-shadow: 0 0 15px #000
+  .banner_subtitle
+    font-size: 12px
+    padding: 5px
 
-.features .row
-  padding-top: 50px
-  padding-bottom: 50px
+  .banner_title
+    font-size: 20px
+    padding: 5px
 
-.features img
-  box-shadow: 0 0 15px #000
+@media (max-width: 400px)
+  #main_banner_container
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+    padding: 130px 0
+    gap: 0
 
-.features h3
-  margin-top: 10.5px
+  .banner_title
+    font-size: 18px
 
-/* What is Supreme Commander? */
+  .banner_subtitle
+    font-size: 12px
 
-.what-is
-  margin-top: 50px
-  margin-bottom: 50px
+/* Scroll container Container with the monkeylord below banner
 
-.what-is h1
-  margin-top: 20px
-  margin-bottom: 60px
+.scrollRelative
+  position: relative
+  padding: 50px
+  font-family: var(--title-font-family)
+  font-size: var(--title-font-size)
+  text-align: justify
+  text-justify: inter-word
 
-.what-is img
-  box-shadow: 0 0 15px #000
+.scroll_absolute
+  position: absolute
+  left: 5vw
 
-.buy-now
-  margin-top: 50px
+.mainScrollContainer
+  display: grid
+  grid-template-columns: repeat(1, auto-fit, minmax(100px, 1fr))
+  grid-template-rows: auto
+  background-image: url("../../images/blackbg.jpg")
+  background-size: cover
+  padding: 5%
 
-.buy-now h3
-  margin-top: 40px
-  line-height: 1.3em
+.scroll_container
+  justify-content: end
 
-.btn-outro
-  margin: 30px
+.scroll_item
+  overflow: hidden
+  object-fit: contain
+  display: grid
+  justify-self: end
 
-.counters
-  color: #dddddd
+.scrollText
+  font-size: var(--paragraph-font-size)
+  padding: 20px 8vw 20px 45vw
+  text-align: justify
+  line-height: 1.7em
+  transition: 1.5s
+
+.scroll_image
+  width: 60%
+  justify-self: end
+
+.scroll_item .scroll_image img
+  width: 80%
+  height: 100%
+  border-radius: 20px
+
+.scrollFade
   opacity: 0
-  transition: opacity 0.2s ease-out
+  transition: 0.5s
+
+/* Animation copied from Animista
+/* ----------------------------------------------
+ * * Generated by Animista on 2022-2-7 19:34:15
+ * * Licensed under FreeBSD License.
+ * * See http://animista.net/license for more info.
+ * * w: http://animista.net, t: @cssanimista
+ * * ----------------------------------------------
+
+.scrolled
+  opacity: 1
+  transition: 2s
+
+  &.animationRigth
+    animation: animationRigth 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both
+
+  &.animationLeft
+    animation: animationLeft 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both
+
+@-webkit-keyframes animationRigth
+  0%
+    transform: scale(0.5)
+    transform-origin: 100% 50%
+
+  100%
+    transform: scale(1)
+    transform-origin: 100% 50%
+
+@keyframes animationRigth
+  0%
+    transform: scale(0.5)
+    transform-origin: 100% 50%
+
+  100%
+    transform: scale(1)
+    transform-origin: 100% 50%
+
+@-webkit-keyframes animationLeft
+  0%
+    transform: scale(0.5)
+    transform-origin: 0 50%
+
+  100%
+    transform: scale(1)
+    transform-origin: 0 50%
+
+@keyframes animationLeft
+  0%
+    transform: scale(0.5)
+    transform-origin: 0 50%
+
+  100%
+    transform: scale(1)
+    transform-origin: 0 50%
+
+.animationFlip
+  animation: animationFlip 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) reverse both
+
+@-webkit-keyframes animationFlip
+  0%
+    transform: rotateX(0)
+
+  100%
+    transform: rotateX(-180deg)
+
+@keyframes animationFlip
+  0%
+    transform: rotateX(0)
+
+  100%
+    transform: rotateX(-180deg)
+
+/* Separating  banner with highlight gold
+
+.mainThinContainer
+  display: grid
+  grid-template-columns: auto
+  background-color: var(--color-dark-gray)
+  color: var(--color-white)
+  padding: 1em 0
+  font-size: var(--title-font-size)
+  letter-spacing: 1.2PX
+  border: 15px solid var(--color-black)
+  font-family: var(--title-font-family)
+
+.highlightText
+  color: var(--color-gold)
+
+/* MultiCategory Container
+
+.multipleBackground
+  background-image: url("../../images/fafbgpattern.jpg")
+  padding: 2.5vw 8vw
+
+.mainMultipleContainer
+  align-items: center
+  width: 100%
+  border: 0.25vw solid var(--color-white-gray)
+  border-radius: 1vw
+
+.multipleContainer
+  background-color: var(--color-dark-gray)
+  width: 100%
+  align-items: center
+  height: 100%
+  grid-column: span 12
+
+.multipleItem
+  padding: 0.5vw
+  margin: 1vw
+  font-size: var(--paragraph-font-size)
+  border: 0.1em solid var(--color-white-gray)
+  background-color: var(--color-dark-gray)
+  transition: 0.4s
+
+.multipleImage
+  display: none
+  opacity: 0
+  height: 100%
+  filter: brightness(0.4)
+
+.multipleItem:hover
+  border: 0.1em solid var(--color-dark-gold)
+  background-color: var(--color-gold)
+
+.multipleItemActive
+  border: 0.1em solid var(--color-gold)
+  background-color: var(--color-dark-gold)
+
+  &:hover
+    border: 0.1em solid var(--color-gold)
+    background-color: var(--color-dark-gold)
+
+.multipleRelative
+  position: relative
+
+.multipleAbsolute
+  position: absolute
+  font-size: var(--subtitle-font-size)
+  font-family: var(--specific-font-family)
+  text-shadow: 10px 2px 4px black, 0 8px 16px black
+  top: 10%
+  display: none
+
+.multipleText
+  font-size: var(--paragraph-font-size)
+  padding: 1vw 10vw
+  line-height: 1.5em
+  color: var(--color-white)
+  font-family: var(--main-font-family)
+
+.multipleImageActive
+  display: block
+  opacity: 1
+
+/* Content Creator variant of container
+
+.mainContentContainer
+  background-image: url("../../images/fafbgpattern.jpg")
+  padding: 2.5vw 6vw
+  grid-template-columns: 1fr 1fr
+
+.contentContainer
+  padding: 2vw 2vw
+  position: relative
+
+.contentAbsolute
+  position: absolute
+  bottom: 0
+  z-index: 100
+  color: white
+  width: 100%
+
+.contentImage
+  position: relative
+  display: inline-block
+
+  a
+    display: inline-block
+    font-size: var(--subtitle-font-size)
+    padding: 1vw
+    border-radius: 20%
+
+  img
+    border-radius: 10%
+    width: 80%
+
+.contentSocial
+  color: var(--color-white)
+
+  &:hover
+    transform: scale(1.2)
+
+.contentItem
+  width: 100%
+
+/* Container with multiple containers within it
+
+.arrowContainer
+  padding: 5vw 10vw
+  background-image: url("../../images/fafbgpattern.jpg")
+  position: relative
+  font-size: var(--subtitle-font-size)
+  z-index: 10
+  display: none
+
+.arrowItem
+  font-size: 2em
+  justify-self: center
+  color: var(--color-white-gray)
+  position: absolute
+  transition: 0.4s
+
+#arrowAbsoluteLeft
+  position: absolute
+  top: 50%
+  left: 5vw
+  transform: translate(-50%, -50%)
+  width: 5vw
+  height: 5vw
+
+.arrowItem:hover
+  color: var(--color-white)
+
+#arrowAbsoluteRight
+  position: absolute
+  top: 50%
+  left: 95vw
+  -webkit-transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%)
+  width: 5vw
+  height: 5vw
+
+.mainSplitContainer
+  display: grid
+  grid-template-columns: repeat(12, minmax(0px, 1fr))
+  grid-template-rows: repeat(1, minmax(0px, 1fr))
+  background-color: var(--color-black)
+  justify-items: center
+  gap: 0
+  overflow: hidden
+  position: relative
+
+.splitContainer
+  justify-items: center
+
+.columnfr
+  grid-column: 1fr
+
+.column2
+  grid-column: span 2
+
+.column3
+  grid-column: span 3
+
+.column4
+  grid-column: span 4
+
+.column5
+  grid-column: span 5
+
+.column6
+  grid-column: span 6
+
+.column7
+  grid-column: span 7
+
+.column8
+  grid-column: span 8
+
+.column9
+  grid-column: span 9
+
+.column10
+  grid-column: span 10
+
+.column12
+  grid-column: span 12
+
+.splitItem
+  position: relative
+  overflow: hidden
+  object-fit: contain
+  display: grid
+  justify-self: end
+
+.splitText
+  font-size: var(--paragraph-font-size)
+  opacity: 0
+  -webkit-transition: 0.4s
+  transition: 0.4s
+
+.splitImage
+  -webkit-transition: 1s
+  transition: 1s
+
+  img
+    width: 100%
+    height: 100%
+    object-fit: fill
+    overflow: hidden
+    transition: 0.4s
+
+.splitDark img
+  filter: brightness(0.5)
+  border-radius: 20px
+
+/* here you can find the slide variant and its thingies
+
+.mainSlideContainer
+  grid-template-columns: repeat(12, minmax(0px, 1fr))
+  font-size: var(--subtitle-font-size)
+
+.absoluteSlide
+  position: absolute
+  top: 0
+  left: 0
+  width: 50%
+  height: 100%
+  border-radius: 20px
+  z-index: 10
+  transition: 0.4s
+
+.splitAbsoluteText
+  font-size: var(--title-font-size)
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, 0)
+  text-align: center
+  text-shadow: 10px 2px 4px black, 0 8px 16px black
+  transition: 1s
+
+/* Here is the "rectangle" variant of splitImage
+
+.rectangleSpace
+  padding: 2vw 0 2vw 0
+  background-image: url("../../images/fafbgmasspattern.jpg")
+  direction: rtl
+
+.mainRectangleContainer
+  margin: 2vw 0 2vw 25vw
+  background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
+  gap: 10px
+  align-items: center
+  -webkit-transition: 0.4s
+  transition: 0.4s
+
+.mainRectangleContainerReverse
+  margin: 2vw 25vw 2vw 0
+  background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
+  gap: 10px
+  align-items: center
+  direction: ltr
+  transition: 0.4s
+
+.rectangleContainer
+  text-align: left
+  padding: 1em
+
+.rectangleItem
+  transition: 0.4s
+
+.rectangleImage
+  width: 100%
+
+#rectangleImage
+  transition: 1s
+
+/* Here you can find stuff related to splitImage containers but in regards to the factions
+
+.acuPadding
+  padding: 0
+  gap: 0
+  margin: 0
+  grid-template-rows: 1fr
+  position: relative
+
+#acuUEF
+  width: 25vw
+  height: 100%
+  background-image: url("../../images/acuUEF.jpg")
+  background-size: cover
+
+#acuSeraphim
+  width: 25vw
+  height: 100%
+  background-image: url("../../images/acuseraphim.jpg")
+  background-size: cover
+
+.acuCard
+  width: auto
+  position: relative
+  z-index: 1
+  transition: 0.4s
+  cursor: pointer
+
+  &:hover
+    filter: brightness(1.4)
+
+.acuAbsolute
+  position: absolute
+  height: 100%
+  width: 75%
+  right: 0
+
+.acuLeft
+  left: 0
+
+#acuBlankScreen
+  position: absolute
+  height: 100%
+  width: 100%
+  right: 0
+  z-index: 10
+  opacity: 0
+  cursor: pointer
+
+.factionAbsolute
+  position: absolute
+  object-fit: contain
+  padding: 0 0
+  opacity: 0
+  transition: 0.4s
+  top: 0
+  height: 100%
+  width: 100%
+
+.acuAbsoluteActive
+  z-index: 10
+  opacity: 1
+
+.displayNone
+  display: none
+
+.noOpacity
+  opacity: 0
+
+/* Media Changes
+@media (max-width: 1600px)
+  .scroll_absolute
+    position: relative
+
+  .scroll_container
+    justify-content: center
+
+  .scrollText
+    padding: 4%
+
+  .scrollRelative
+    padding: 10px
+    width: 600px
+
+@media (max-width: 800px)
+  .main_topnav_container
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
+
+  #main_banner_container
+    padding: 150px 10px
+    gap: 0
+    font-size: 10px
+
+  .banner_subtitle
+    font-size: 12px
+    padding: 5px
+
+  .banner_title
+    font-size: 20px
+    padding: 5px
+
+  .mainScrollContainer
+    justify-content: center
+    align-content: center
+
+  .scrollText
+    padding: 20px 10px
+    text-align: center
+    font-size: 18px
+
+  .scrollRelative
+    padding: 0
+    width: 100%
+    text-align: center
+
+  .scroll_image
+    justify-self: center
+    width: 90vw
+
+  .scroll_absolute
+    font-size: var(--title-font-size)
+    left: 0
+
+  .mainThinContainer
+    padding: 1.5em
+
+  .mainSplitContainer
+    margin: 0
+    font-size: 0.7em
+    padding: 0
+
+  .mainSlideContainer
+    grid-template-columns: repeat(6, minmax(0px, 1fr))
+
+  .absoluteSlide
+    width: 100%
+    font-size: 1em
+
+  .mainMultipleContainer
+    display: none
+
+  .arrowContainer
+    display: block
+
+@media (max-width: 600px)
+  .mainContentContainer, .mainRectangleContainer, .mainRectangleContainerReverse
+    grid-template-columns: 1fr
+
+  .mainSlideContainer
+    min-height: 100vw
+
+@media (max-width: 400px)
+  #main_banner_container
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+    padding: 130px 0
+    gap: 0
+
+  .banner_title
+    font-size: 18px
+
+  .banner_subtitle
+    font-size: 12px
+
+  .mainSplitContainer
+    font-size: 1em
+
+  .splitAbsoluteText
+    padding: 0
+
+@media (max-width: 1200px)
+  .mobilenav_sticky
+    display: block
+
+@media (max-width: 1100px)
+  .mobilenav_sticky
+    display: block
+
+@media (max-width: 1100px)
+  .main_nav_container, .main_topnav_container
+    display: none
+
+/*# sourceMappingURL=index.css.map
