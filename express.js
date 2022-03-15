@@ -133,50 +133,67 @@ app.post('/account/email/change', loggedIn, require(routes + 'accounts/post/chan
 app.get('/account_activated', require(routes + 'accounts/get/register'));
 app.get('/password_resetted', require(routes + 'accounts/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'accounts/get/report'));
+
+//All Pages
+// Client Download page
 app.get('/client', require(routes + 'client'));
-app.get('/contribution', require(routes + 'contribution'));
+// NewsHub Page With Legacy support
 app.get('/newshub', require(routes + 'newshub'));
-//  news redirect for legacy
 app.route('/news').get(function(req, res) {
   res.redirect('/newshub');
 });
+//Game pages
+app.get('/scfa-vs-faf', require(routes + 'scfa-vs-faf'));
+app.get('/tutorials-guides', require(routes + 'tutorials-guides'));
+app.get('/ai', require(routes + 'ai'));
+//Community pages
+app.get('/faf-teams', require(routes + 'faf-teams'));
+app.get('/contribution', require(routes + 'contribution'));
+app.get('/content-creators', require(routes + 'content-creators'));
+//Competitive pages
+app.get('/tournaments', require(routes + 'tournaments'));
+app.get('/training', require(routes + 'training'));
+app.get('/leaderboards', require(routes + 'leaderboards'));
 
-app.get('/competitive/tournaments', require(routes + 'tournaments'));
-app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
-app.get('/competitive/leaderboards/2v2', require(routes + '2v2'));
-app.get('/competitive/leaderboards/global', require(routes + 'global'));
-app.get('/competitive/leaderboards/leagues', (function(){
-    let updateLeagues = require('./scripts/updateLeagues');
-    let ladderData = {};
-    let updateFunction = function(){
-        try {
-            updateLeagues.run(ladderData).then(function(ladderUpdatedData){
-                ladderData = ladderUpdatedData;
-            });
-        } catch (e) {
-            console.error('Error while updating ladder week!', e);
-        }
-    };
-    setInterval( updateFunction,parseInt(process.env.LEAGUES_UPDATE_INTERVAL) * 1000);
-    
-    updateFunction();
-    
-    return function(res, req){ 
-        require(routes + 'leagues')(res, req, ladderData);
-    };
-})()
-);
+
+
+//app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
+//app.get('/competitive/leaderboards/2v2', require(routes + '2v2'));
+//app.get('/competitive/leaderboards/global', require(routes + 'global'));
+//app.get('/competitive/leaderboards/leagues', (function(){
+//    let updateLeagues = require('./scripts/updateLeagues');
+//   let ladderData = {};
+//   let updateFunction = function(){
+//        try {
+//            updateLeagues.run(ladderData).then(function(ladderUpdatedData){
+//                ladderData = ladderUpdatedData;
+//            });
+//        } catch (e) {
+//            console.error('Error while updating ladder week!', e);
+//        }
+//    };
+//    setInterval( updateFunction,parseInt(process.env.LEAGUES_UPDATE_INTERVAL) * 1000);
+//    
+//    updateFunction();
+//    
+//    return function(res, req){ 
+//        require(routes + 'leagues')(res, req, ladderData);
+//    };
+//})()
+//);
+
+
 app.get('/lobby_api', cors(), require('./routes/lobby_api'));
 app.get('/account/checkUsername', require('./routes/views/checkUsername'));
 
-app.get('/clans', require(routes + 'clans/get/index'));
 
+
+app.get('/clans', require(routes + 'clans/get/index'));
 app.get('/clans/create', loggedIn, require(routes + 'clans/get/create'));
 app.get('/clans/manage', loggedIn, require(routes + 'clans/get/manage'));
 app.get('/clans/see', require(routes + 'clans/get/see'));
 app.get('/clans/browse', require(routes + 'clans/get/browse'));
 app.get('/clans/accept', loggedIn, require(routes + 'clans/get/accept'));
-
 app.post('/clans/create', loggedIn, require(routes + 'clans/post/create'));
 app.post('/clans/destroy', loggedIn, require(routes + 'clans/post/destroy'));
 app.post('/clans/invite', loggedIn, require(routes + 'clans/post/invite'));
@@ -184,6 +201,10 @@ app.post('/clans/kick', loggedIn, require(routes + 'clans/post/kick'));
 app.post('/clans/transfer', loggedIn, require(routes + 'clans/post/transfer'));
 app.post('/clans/update', loggedIn, require(routes + 'clans/post/update'));
 app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
+
+
+
+
 
 // Compatibility
 app.get('/clan/*', function (req, res){
