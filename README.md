@@ -1,5 +1,4 @@
-[![Main Docker Release](https://github.com/FAForever/website/actions/workflows/release.yml/badge.svg?branch=develop)](https://github.com/FAForever/website/actions/workflows/release.yml)
-[![Frontend Release](https://github.com/FAForever/website/actions/workflows/release.yml/badge.svg?branch=New-Frontend)](https://github.com/FAForever/website/actions/workflows/release.yml)
+![Docker](https://github.com/FAForever/website/actions/workflows/release.yml/badge.svg?branch=develop)
 [![GitHub license](https://img.shields.io/github/license/FAForever/website)](https://github.com/FAForever/website)
 
 ## About the FAForever Website

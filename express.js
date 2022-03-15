@@ -264,13 +264,13 @@ passport.deserializeUser(function (id, done) {
 app.get('/callback', passport.authenticate('faforever', {
     failureRedirect: '/login',
     failureFlash: true
-}), function (req, res, next) {
+}), function (req, res) {
     res.redirect(req.session.referral ? req.session.referral : '/');
     req.session.referral = null;
 });
 
 //404 Error Handler
-app.use(function (req, res, next) {
+app.use(function (req, res) {
     res.status(404).render('errors/404');
 });
 
@@ -279,7 +279,7 @@ if (process.env.NODE_ENV === 'development') {
     app.enable('verbose errors');
 
     //500 Error Handler
-    app.use(function (err, req, res, next) {
+    app.use(function (err, req, res) {
         res.status(500).render('errors/500', {error: err});
     });
 }

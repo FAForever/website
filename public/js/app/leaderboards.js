@@ -1,5 +1,8 @@
-var getPage = function (pageNumber, pageSize, id) {
+let getPage = function (pageNumber, pageSize, id) {
+  let moment = require("moment");
+  let apiURL = process.env.API_URL;
 
+  
   let pastMonth = moment().subtract(1, "months").format("YYYY-MM-DDTHH:mm:ss") + "Z";
 
   if (pageNumber === 1) {

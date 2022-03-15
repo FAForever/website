@@ -2,10 +2,11 @@ require('dotenv').config();
 
 let request = require('request');
 let fs = require('fs');
+let moment = require('moment');
 
 
 module.exports.run = function run() {
-    console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - Updating the recent users...');
+    console.log(moment().format('DD-MM-YYYY - HH:mm:ss')  + ' - Updating the recent users...');
     
     try{
         let date = new Date();
@@ -26,30 +27,30 @@ module.exports.run = function run() {
                 let apiRecentPlayers = JSON.parse(body);
                 let recentPlayers = [];
 
-                if (apiRecentPlayers.included == undefined){
-                    console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - Tried to update the list of recent players, but there is no one.');
+                if (apiRecentPlayers.included === undefined){
+                    console.log(moment().format('DD-MM-YYYY - HH:mm:ss') + ' - Tried to update the list of recent players, but there is no one.');
                     return;
                 }
 
-                for(i in apiRecentPlayers.included) {
+                for(const i in apiRecentPlayers.included) {
                     let entry = apiRecentPlayers.included[i];
-                    if (entry.type != "player") continue;
+                    if (entry.type !== 'player') continue;
                     
                     recentPlayers.push(entry.attributes.login);
                 }
 
-                fs.writeFile("members/recent.json", JSON.stringify(recentPlayers), function(error) {
+                fs.writeFile('members/recent.json', JSON.stringify(recentPlayers), function(error) {
                     if (error) {
                         console.log(error);
                     } else {
-                        console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - Recent players file created successfully');
+                        console.log(moment().format('DD-MM-YYYY - HH:mm:ss') + ' - Recent players file created successfully');
                     }
                 });                
             }
         );
     }
     catch(e){
-        console.log(moment().format("DD-MM-YYYY - HH:mm:ss")  + ' - An error occured while getting the list of recent users:');
+        console.log(moment().format('DD-MM-YYYY - HH:mm:ss')  + ' - An error occured while getting the list of recent users:');
         console.log(e);
     }
 };

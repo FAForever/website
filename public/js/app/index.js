@@ -255,9 +255,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }, 400);
 
 
-      if (i == 1) {
+      if (i === 1) {
         acuUEF.style.backgroundImage = "url(/images/acuuef.jpg)";
-      } else if (i == 2) {
+      } else if (i === 2) {
         acuSeraphim.style.backgroundImage = "url(/images/acuseraphim.jpg)";
       }
     });
