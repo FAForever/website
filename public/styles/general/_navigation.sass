@@ -1,24 +1,54 @@
+/* SASS Variables
+/* Colors
+$black : #000000
+$white : #FFFFFF
+$white-gray : #c2c2c2
+$gray : #5e5e5e
+$dark-gray : #111111
+$gold : #f7941d
+$dark-gold : #c56e03
+$light-gold : #ffc077
+/* Fonts
+$main : "Electrolize", "Orbitron", "Russo One"
+$title : "Russo One", "Orbitron", "Electrolize"
+$specific : "Orbitron", "Elecnptrolize"
+
+/* Font Size
+$paragraph-font-size : 1.4
+$subtitle-font-size : 2.5
+$title-font-size : 3
+
+/* @media Defaults
+$paragraph-1600 : 2
+$subtitle-1600 : 3.5
+$title-1600 : 4
+$paragraph-800 : 2.5
+$subtitle-800 : 3.5
+$paragraph-600 : 5
+$subtitle-600 : 5.5
+$title-600 : 7
+
+/* setting css root variables  
 \:root
   /* Colors
-  --color-black:#000000
-  --color-white:#FFFFFF
-  --color-white-gray:#c2c2c2
-  --color-gray:#5e5e5e
-  --color-dark-gray:#111111
-  --color-gold:#f7941d
-  --color-dark-gold:#c56e03
-  --color-light-gold:#ffc077
+  --color-black: #{$black}
+  --color-white: #{$white}
+  --color-white-gray: #{$white-gray}
+  --color-gray: #{$gray}
+  --color-dark-gray: #{$dark-gray}
+  --color-gold: #{$gold}
+  --color-dark-gold: #{$dark-gold}
+  --color-light-gold: #{$light-gold}
 
   /* Fonts
-  --main-font-family:"Electrolize", "Orbitron", "Russo One"
-  --title-font-family:"Russo One", "Orbitron", "Electrolize"
-  --specific-font-family:"Orbitron", "Elecnptrolize"
+  --main-font-family: #{$main}
+  --title-font-family: #{$title}
+  --specific-font-family: #{$specific}
 
   /* Font sizes
-  --paragraph-font-size:1.4vw
-  --subtitle-font-size:2.5vw
-  --title-font-size:3vw
-
+  --paragraph-font-size: #{$paragraph-font-size}
+  --subtitle-font-size: #{$subtitle-font-size}
+  --title-font-size: #{$title-font-size}
 /* Used as white text between stuff
 
 .responsiveTextTitle
@@ -27,7 +57,7 @@
 
 .responsiveText
   font-size: var(--paragraph-font-size)
-  padding: 1.2em 0vw
+  padding: 1.2em 0
   line-height: 1.5em
   color: var(--color-white)
   font-family: var(--main-font-family)
@@ -45,20 +75,20 @@
 
 @media (max-width: 1600px)
   \:root
-    --paragraph-font-size:2vw
-    --subtitle-font-size:3.5vw
-    --title-font-size:4vw
+    --paragraph-font-size: #{$paragraph-1600}
+    --subtitle-font-size: #{$subtitle-1600}
+    --title-font-size: #{$title-1600}
 
 @media (max-width: 800px)
   \:root
-    --paragraph-font-size:2.5vw
-    --subtitle-font-size:3.5vw
+    --paragraph-font-size: #{$paragraph-800}
+    --subtitle-font-size: #{$subtitle-800}
 
 @media (max-width: 600px)
   \:root
-    --paragraph-font-size:5vw
-    --subtitle-font-size:5.5vw
-    --title-font-size:7vw
+    --paragraph-font-size: #{$paragraph-600}
+    --subtitle-font-size: #{$subtitle-600}
+    --title-font-size: #{$title-600}
 
 /*=============== Main HTML ===============
 
@@ -70,9 +100,9 @@ body
   background-attachment: fixed
   background-color: var(--color-dark-gray)
   background-position: center center
-  margin: 0px 0px 0px 0px
+  margin: 0 0 0 0
   padding: auto
-  padding-top: 0px
+  padding-top: 0
   font-family: var(--main-font-family)
   color: var(--color-white)
 
@@ -90,8 +120,8 @@ a
     color: var(--color-white)
 
 ul
-  padding: 0px
-  margin: 0px
+  padding: 0
+  margin: 0
 
 .indexButton
   margin: 10vw
@@ -112,7 +142,7 @@ ul
   display: grid
   grid-template-columns: auto
   position: relative
-  padding: 10px 0px 10px 0px
+  padding: 10px 0 10px 0
   justify-items: center
 
 .splat_rotate
@@ -126,7 +156,7 @@ ul
   position: absolute
   width: 100%
   object-fit: cover
-  bottom: 0px
+  bottom: 0
   overflow: hidden
 
 .splat_container
@@ -138,7 +168,7 @@ ul
   background-color: var(--color-black)
 
 .separationBar
-  padding: 20px 0px
+  padding: 20px 0
   background-color: var(--color-dark-gray)
 
 /*=============== Nav Bar ===============
@@ -157,7 +187,7 @@ ul
   place-items: center
 
 .topnav_container
-  padding: 0px 0.5em
+  padding: 0 0.5em
 
 .topnav_item
   width: 100%
@@ -197,7 +227,7 @@ ul
   color: var(--color-white-gray)
   font-family: var(--main-font-family)
   justify-items: center
-  padding: 10px 10px 0px 10px
+  padding: 10px 10px 0 10px
 
 .nav_container
   align-self: center
@@ -208,20 +238,20 @@ ul
   height: 100%
   position: relative
   list-style-type: none
-  margin: 0px
-  padding: 0px
+  margin: 0
+  padding: 0
   transition: 0.25s
 
   li
     display: inline-block
-    padding: 0px 20px
+    padding: 0 20px
 
 .nav_image img
   width: 80px
   height: 100%
   object-fit: contain
   overflow: hidden
-  padding: 0px 0px 0px 20px
+  padding: 0 0 0 20px
   justify-self: center
   place-self: center
 
@@ -232,7 +262,6 @@ ul
   letter-spacing: 0.4px
   margin-left: 20px
   transition: 0.25s
-  color: var(--color-white)
 
   &:hover
     background-color: var(--color-dark-gold)
@@ -298,7 +327,7 @@ ul
   grid-template-columns: 1fr
   grid-template-rows: auto
   justify-items: left
-  font-family: "Orbitron"
+  font-family: "Orbitron", serif
   text-align: left
   font-size: 25px
 
@@ -353,16 +382,16 @@ ul
 
 .mobilenav_item
   margin: 10px
-  padding: 25px 10px 0px 0px
+  padding: 25px 10px 0 0
 
 .mobilenav_login
   margin: 10px
-  padding: 25px 10px 0px 0px
-  padding-top: 0px
+  padding: 25px 10px 0 0
+  padding-top: 0
 
 .mobilenav_item ul
   list-style-type: none
-  margin: 0px
+  margin: 0
   padding-top: 10px
 
 .mobilenav_ul
@@ -371,81 +400,3 @@ ul
   li
     padding: 15px 10px 15px 10px
     color: var(--color-white-gray)
-
-.mobilenav_active
-  display: block
-
-.mobilenav_social li
-  display: inline-block
-  padding: 10px
-
-.mobilenav_caret .fa-caret-down
-  transform: rotate(-0.25turn)
-  transition: 0.5s
-  color: var(--color-white)
-
-/* Footer Navbar
-
-.mainFooterContainer
-  display: grid
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-  grid-template-rows: minmax(10px, 1fr)
-  gap: 2vw
-  color: var(--color-gray)
-  background: linear-gradient(180deg, black 0%, #222222 100%)
-  padding: 20px 10px 50px 10px
-  justify-content: center
-  text-align: left
-
-.footerContainer
-  padding: 0px 0px
-
-.footerItem
-  width: 100%
-  height: 100%
-  transition: 0.4s
-  cursor: pointer
-  line-height: 2.2em
-
-  img
-    width: 45%
-    margin-top: 10%
-    margin-left: 10%
-
-  ul
-    font-size: var(--paragraph-font-size)
-    font-family: var(--specific-font-family)
-    color: var(--color-white)
-
-  li
-    list-style-type: none
-    margin-left: 1em
-    font-size: 0.7em
-    font-family: var(--main-font-family)
-    border: 1px solid var(--color-dark-gray)
-    color: var(--color-white-gray)
-
-    &:hover
-      color: var(--color-white)
-      transition: 0.4s
-      background-color: var(--color-dark-gray)
-      border: 1px solid var(--color-white-gray)
-
-  a
-    color: var(--color-white)
-
-@media (max-width: 800px)
-  .main_topnav_container
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
-
-@media (max-width: 1200px)
-  .mobilenav_sticky
-    display: block
-
-@media (max-width: 1100px)
-  .mobilenav_sticky
-    display: block
-
-@media (max-width: 1100px)
-  .main_nav_container, .main_topnav_container
-    display: none
