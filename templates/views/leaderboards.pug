@@ -1,49 +1,12 @@
-extends competitive_nav
+extends ../layouts/default
 
-mixin pagination
-  .row.btn-top
-    .col-md-3.btn-top.pull-left.text-left.nopadding
-      button(class="btn btn-primary first disabled") First
-      button(class="btn btn-primary btn-spacing previous disabled") Previous
-    .col-md-3.col-md-offset-6.btn-top.pull-right.text-right.nopadding
-      button(class="btn btn-primary next") Next
-      button(class="btn btn-primary btn-spacing last") Last
-
-block cContent
-
-  br
+block Content
+  h1 Leaderboards Pages 
+  h2 In-Development
   
-  h2.text-center #{ratingTypeTitle} Leaderboards
   
-  br
   
-  .featurette
-    .featurette-inner.text-center
-      form(role="form").search.has-button
-        .form-group
-          input(type="text" class="form-control" data-autofirst placeholder="Player name...")#searchbar
-          button(class="btn btn-default" type="button" id="forget-search") Forget Search
-
-
-  #stats
   
-  +pagination
-
-  .table-responsive
-    table.table.table-striped.table-hover
-      thead
-        tr
-          th #
-          th Player
-          th Rating
-          th Games
-          th Stats
-      tbody#players
-    
-  +pagination
-
-  br
-
 block js
   script(type='text/javascript').
     var apiURL = !{JSON.stringify(apiURL)};
