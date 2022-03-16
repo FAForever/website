@@ -41,157 +41,61 @@ block content
         img(src='/images/blacksplat.png' alt='')
   // The bold white bar that separates containers
   .mainThinContainer
-    .thinContainer
-      .thinItem FAF IMPROVEMENTS ON 
-      .highlightText SUPREME COMMANDER
+    p FAF IMPROVEMENTS ON 
+    .highlightText SUPREME COMMANDER
   .splat_main_container.splat_black_background
     .splat_container
       .splat
         img(src='/images/blacksplat.png' alt='')
-  //Multiple choice container
-  .multipleBackground
-    .mainSplitContainer.mainMultipleContainer
-      .splitContainer.column3.multipleContainer
-        .splitItem.multipleItem.multipleItemActive Co-Op Campaign
-        .splitItem.multipleItem Quality of Life
-        .splitItem.multipleItem Matchmaking
-        .splitItem.multipleItem Map and Mod Vault
-        .splitItem.multipleItem Advanced AI
-        .splitItem.multipleItem Tournaments
-        .splitItem.multipleItem Player Statistics
-      .splitContainer.column9.multipleContainer
-        .mainSplitContainer
-          .splitContainer.column12.multipleRelative
-            .splitImage.multipleImage.multipleImageActive
-              img(src='/images/fafupdate.jpg' alt='')
-            .multipleAbsolute.multipleImageActive
-              |CO-OP CAMPAIGN
-              .multipleText Enjoy the complete campaign with friends and extra missions plus a new Seraphim Campaign!
-                br
-                button.landingButton Learn More
-            .splitImage.multipleImage
-              img(src='/images/fafquality.jpg' alt='')
-            .multipleAbsolute
-              |QUALITY OF LIFE
-              .multipleText Bugfixes, texture updates, gameplay improvements, better UI and client!
-                br
-                button.landingButton Learn More
-            .splitImage.multipleImage
-              img(src='/images/fafmatchmaking.jpg' alt='')
-            .multipleAbsolute
-              |MATCHMAKING
-              .multipleText Ranked matchmaking featuring queues for 1v1 duels, 2v2 duos and 4v4 teamgames! Plus custom game lobbies!
-                br
-                button.landingButton Learn More
-            .splitImage.multipleImage
-              img(src='/images/fafmapsmods.jpg' alt='')
-            .multipleAbsolute
-              |MAP AND MOD VAULT
-              .multipleText Featuring hundreds of new maps and mods made by the community! From updates to Supcom classics to news ones with high quality textures!
-                br
-                button.landingButton Learn More
-            .splitImage.multipleImage
-              img(src='/images/fafcompetitive.jpg' alt='')
-            .multipleAbsolute
-              |ADVANCED AI
-              .multipleText Community made AIs that can provide a real challenge! Each with a different specialization!
-                br
-                button.landingButton Learn More
-            .splitImage.multipleImage
-              img(src='/images/tournament.jpg' alt='')
-            .multipleAbsolute
-              |TOURNAMENTS
-              .multipleText From the yearly LoTS and Rainbow Cup, the classic King of Setons and King of Dual Gap to other cross-community tournaments!
-                br
-                button.landingButton Learn More
-            .splitImage.multipleImage
-              img(src='/images/fafstatistics.jpg' alt='')
-            .multipleAbsolute
-              |PLAYER STATISTICS
-              .multipleText Updated in-game statistics! See your rival or friend you play the most with, which map you have the highest win rate in or how much have you played a certain faction!
-                br
-                button.landingButton Learn More
-  //FAF IMPROVEMENTS ON SUPCOM
-  .arrowContainer
-    #arrowAbsoluteLeft.arrowItem
-      .fas.fa-chevron-left
-    #arrowAbsoluteRight.arrowItem
-      .fas.fa-chevron-right
-    .mainSplitContainer.mainSlideContainer
-      .splitContainer.column12
-        //a(href='/views/SCFA-vs-FAF.html' target='_blank') 
-        .splitItem.absoluteSlide
-          .splitImage.splitDark
-            img(src='/images/fafupdate.jpg' alt='')
-          .splitAbsoluteText Co-Op Campaign
-            .splitText Enjoy the complete campaign with friends and extra missions plus a new Seraphim Campaign!
-              br
-              button.landingButton Learn More
-      .splitContainer.column12
-        .splitItem.absoluteSlide
-          .splitImage.splitDark
-            img(src='/images/fafmatchmaking.jpg' alt='')
-          .splitAbsoluteText Matchmaking
-            .splitText Ranked matchmaking featuring queues for 1v1 duels, 2v2 duos and 4v4 teamgames! Plus custom game lobbies!
-              br
-              button.landingButton Learn More
-
-      .splitContainer.column12
-        .splitItem.absoluteSlide
-          .splitImage.splitDark
-            img(src='/images/fafmapsmods.jpg' alt='')
-          .splitAbsoluteText The Vault
-            .splitText Featuring hundreds of new maps and mods made by the community! From updates to Supcom classics to news ones with high quality textures!
-              br
-              button.landingButton Learn More
-
-      .splitContainer.column12
-        .splitItem.absoluteSlide
-          .splitImage.splitDark
-            img(src='/images/fafcompetitive.jpg' alt='')
-          .splitAbsoluteText Competitive AIs
-            .splitText Community made AIs that can provide a real challenge! Each with a different specialization!
-              br
-              button.landingButton Learn More
-
-
-      .splitContainer.column12
-        .splitItem.absoluteSlide
-          .splitImage.splitDark
-            img(src='/images/fafstatistics.jpg' alt='')
-          .splitAbsoluteText Player Statistics
-            .splitText See your rival or friend you play the most with, which map or faction you have the highest win rate with!
-              br
-              button.landingButton Learn More
-
-      .splitContainer.column12
-        .splitItem.absoluteSlide
-          .splitImage.splitDark
-            img(src='/images/faftournaments.jpg' alt='')
-          .splitAbsoluteText Tournaments
-            .splitText From the yearly LoTS and Rainbow Cup, the classic King of Setons and King of Dual Gap to other cross-community tournaments!
-              br
-              button.landingButton Learn More
-      .splitContainer.column12
-        .splitItem.absoluteSlide
-          .splitImage.splitDark
-            img(src='/images/fafclient.jpg' alt='')
-          .splitAbsoluteText Client
-            .splitText The FAF client takes all of these improvements and easily puts them together!
-              br
-              button.landingButton Learn More
-
-      // This empty box is made as a fake "sizing" for the sliders.
-      .splitContainer.column6.noOpacity
-        .splitItem
-          .splitImage.splitDark
-            img(src='/images/cybran.jpg' alt='')
-      .splitContainer.column6.noOpacity
-        .splitItem
-          .splitImage.splitDark
-            img(src='/images/cybran.jpg' alt='')
-
-
+        
+  
+  //New multiple choice container
+  .mainImprovementsContainer
+    .splitContainer
+      .splitImage.improvementImage
+        img(src='/images/fafupdate.jpg' alt='')
+      .responsiveTextTitle Co-Op Campaign 
+        .responsiveTextNoPadding Enjoy the complete campaign with friends and extra missions plus a new Seraphim Campaign!
+          br 
+          button.landingButton Learn More
+    .splitContainer
+      .splitImage.improvementImage
+        img(src='/images/fafmatchmaking.jpg' alt='')
+      .responsiveTextTitle Matchmaking
+        .responsiveTextNoPadding Ranked matchmaking featuring queues for 1v1 duels, 2v2 duos and 4v4 teamgames! Plus custom game lobbies!
+          br 
+          button.landingButton Learn More
+    .splitContainer
+      .splitImage.improvementImage
+        img(src='/images/fafmapsmods.jpg' alt='')
+      .responsiveTextTitle The Vault
+        .responsiveTextNoPadding Featuring hundreds of new maps and mods made by the community! From updates to Supcom classics to news ones with high quality textures!
+          br 
+          button.landingButton Learn More
+    .splitContainer
+      .splitImage.improvementImage
+        img(src='/images/fafai.jpg' alt='')
+      .responsiveTextTitle Advanced AIs 
+        .responsiveTextNoPadding Community made AIs that can provide a real challenge! Each with a different specialization!
+          br 
+          button.landingButton Learn More
+    .splitContainer
+      .splitImage.improvementImage
+        img(src='/images/fafstatistics.jpg' alt='')
+      .responsiveTextTitle Player Statistics
+        .responsiveTextNoPadding See your rival or friend you play the most with, which map or faction you have the highest win rate with!
+          br 
+          button.landingButton Learn More
+    .splitContainer
+      .splitImage.improvementImage
+        img(src='/images/faftournaments.jpg' alt='')
+      .responsiveTextTitle Tournaments
+        .responsiveTextNoPadding From the yearly LoTS and Rainbow Cup, the classic King of Setons and King of Dual Gap to other cross-community tournaments!
+          br 
+          button.landingButton Learn More
+    
+    
+  
     //Factions Start here
 
   .splat_main_container.splat_black_background
@@ -200,10 +104,8 @@ block content
         img(src='/images/blacksplat.png' alt='')
   // The bold white bar that separates containers
   .mainThinContainer
-    .thinContainer
-      .thinItem
-      .highlightText FOUR FACTIONS 
-      | OF ABSOLUTE DESTRUCTION
+    .highlightText FOUR FACTIONS 
+    p OF ABSOLUTE DESTRUCTION
   .splat_main_container.splat_black_background
     .splat_container
       .splat
@@ -277,35 +179,32 @@ block content
   //zoom start
   .rectangleSpace
     .mainSplitContainer.mainRectangleContainer
-      .splitContainer.column8
-        .responsiveTextTitle.highlightText.rectangleContainer
+      .splitContainer.column6.rectangleContainer
+        .responsiveTextTitle.highlightText
           | STRATEGIC ZOOM
-          .responsiveText.responsiveText
+          .responsiveText
             |Lead your armies and bases at the same time from afar with the strategic zoom. Have a clear look of what's happening everywhere in a matter of seconds!
-      .splitContainer.column4
-        .splitItem.rectangleItem
-          .splitImage.rectangleImage
-            img#rectangleImage(src='/images/zoomout0.jpg' alt='')
+      .splitContainer.column6
+        .splitImage.rectangleImage
+          img(src='/images/zoomout.jpg' alt='')
     .mainSplitContainer.mainRectangleContainerReverse
-      .splitContainer.column8
-        .responsiveTextTitle.highlightText.rectangleContainer
+      .splitContainer.column6.rectangleContainer
+        .responsiveTextTitle.highlightText
           | RESPONSIVE ECONOMY
-          .responsiveText.responsiveText
+          .responsiveText
             |With its flux econonomy system, get an economy that responds to your actions instantly and requires you to adapt to the changes in the battlefield!
-      .splitContainer.column4
-        .splitItem.rectangleItem
-          .splitImage#rectangleImage
-            img(src='/images/resources.jpg' alt='')
+      .splitContainer.column6
+        .splitImage.rectangleImage
+          img(src='/images/resources.jpg' alt='')
     .mainSplitContainer.mainRectangleContainer
-      .splitContainer.column8
-        .responsiveTextTitle.highlightText.rectangleContainer
+      .splitContainer.column6.rectangleContainer
+        .responsiveTextTitle.highlightText
           | LAND, AIR AND SEA
-          .responsiveText.responsiveText
+          .responsiveText
             |Flatten enemy armies with your bombers, raze their base with battleships and raid their every expansion with your army!
-      .splitContainer.column4
-        .splitItem.rectangleItem
-          .splitImage.rectangleImage
-            img(src='/images/techlevels.jpg' alt='')
+      .splitContainer.column6
+        .splitImage.rectangleImage
+          img(src='/images/techlevels.jpg' alt='')
 
 
   //ZOOM end
