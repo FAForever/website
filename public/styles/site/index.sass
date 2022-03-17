@@ -43,14 +43,12 @@
   cursor: pointer
 
   &:hover
-    color: var(--color-white)
     background-color: var(--color-dark-gold)
-    border: 0.15em solid var(--color-dark-gold)
 
 /* banner variants of regular banner
 
 .landingBanner
-  background-image: url("../../../../Github - Copy/public/images/home1.jpg")
+  background-image: url("/images/home1.jpg")
 
 .contentBanner
   background-image: url("/images/content-creator/creatorbg.jpg")
@@ -134,7 +132,7 @@
   justify-self: end
 
 .scroll_item .scroll_image img
-  width: 80%
+  width: 70%
   height: 100%
   border-radius: 20px
 
@@ -225,19 +223,36 @@
   letter-spacing: 1.2PX
   border: 15px solid var(--color-black)
   font-family: var(--title-font-family)
+  
+  .highlightText, p
+    z-index: 2
+    position: relative
+    margin: 0
 
+
+  
 .highlightText
   color: var(--color-gold)
 
 /* Improvement Container
 .mainImprovementsContainer 
   display: grid
+  grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr))
+  background-image: url("/images/fafbgpattern.jpg")
+  padding: 0 5vw 
   
   .splitContainer
     margin: 0vw 5vw
+    
+    .responsiveTextTitle
+      margin: 0.5em 0 1em 0 
+    
   
-.improvementImage 
+.improvementImage img
   align-self: center
+  border-radius: 1vw
+  
+
 
 /* MultiCategory Container
 
@@ -493,10 +508,10 @@
 
 .mainRectangleContainer
   margin: 2vw 0vw 2vw 25vw
+
   background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
   gap: 10px
   align-items: center
-  -webkit-transition: 0.4s
   transition: 0.4s
 
 .mainRectangleContainerReverse
@@ -509,13 +524,15 @@
 
 .rectangleContainer
   text-align: left
-  padding: 1em
+  .responsiveTextTitle
+    padding: 1em
+    
 
 .rectangleItem
   transition: 0.4s
+  
 
-.rectangleImage
-  width: 100%
+
 
 #rectangleImage
   transition: 1s
@@ -628,7 +645,7 @@
   .scrollText
     padding: 20px 10px
     text-align: center
-    font-size: 18px
+
 
   .scrollRelative
     padding: 0px
@@ -643,8 +660,7 @@
     font-size: var(--title-font-size)
     left: 0
 
-  .mainThinContainer
-    padding: 1.5em
+
 
   .mainSplitContainer
     margin: 0px
@@ -663,13 +679,19 @@
 
   .arrowContainer
     display: block
-
+  
+  .mainImprovementsContainer
+    grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr))
 @media (max-width: 600px)
   .mainContentContainer, .mainRectangleContainer, .mainRectangleContainerReverse
     grid-template-columns: 1fr
 
   .mainSlideContainer
     min-height: 100vw
+  
+  .mainImprovementsContainer
+    grid-template-columns: 1fr
+    margin: 0vw 2.5vw
 
 @media (max-width: 400px)
   #main_banner_container
@@ -688,6 +710,7 @@
 
   .splitAbsoluteText
     padding: 0px
+  
 
 @media (max-width: 1200px)
   .mobilenav_sticky

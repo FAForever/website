@@ -15,9 +15,9 @@
   --specific-font-family: "Orbitron", "Elecnptrolize"
 
   /* Font sizes
-  --paragraph-font-size: 1.4vw
-  --subtitle-font-size: 2.5vw
-  --title-font-size: 3vw
+  --paragraph-font-size: 1vw
+  --subtitle-font-size: 2vw
+  --title-font-size: 2.5vw
 
 /* Used as white text between stuff
 
@@ -45,20 +45,21 @@
 
 @media (max-width: 1600px)
   \:root
-    --paragraph-font-size: 2vw
-    --subtitle-font-size: 3.5vw
-    --title-font-size: 4vw
+    --paragraph-font-size: 1.5vw
+    --subtitle-font-size: 2.5vw
+    --title-font-size: 3vw
 
 @media (max-width: 800px)
   \:root
-    --paragraph-font-size: 2.5vw
-    --subtitle-font-size: 3.5vw
+    --paragraph-font-size: 2vw
+    --subtitle-font-size: 3vw
+    --title-font-size: 3.5vw
 
 @media (max-width: 600px)
   \:root
-    --paragraph-font-size: 5vw
-    --subtitle-font-size: 5.5vw
-    --title-font-size: 7vw
+    --paragraph-font-size: 4vw
+    --subtitle-font-size: 4.5vw
+    --title-font-size: 5vw
 
 /*=============== Main HTML ===============
 
@@ -122,6 +123,7 @@ ul
   z-index: 0
   object-fit: contain
 
+
 .splat
   position: absolute
   width: 100%
@@ -149,7 +151,7 @@ ul
   grid-template-columns: repeat(12, max-content)
   grid-template-rows: minmax(10px, 1fr)
   color: var(--color-gray)
-  font-size: calc(var(--paragraph-font-size) / 1.5)
+  font-size: calc(var(--paragraph-font-size) / 1.2)
   background-color: var(--color-black)
   padding: 0.6em
   position: relative
@@ -192,7 +194,7 @@ ul
   display: grid
   grid-template-columns: max-content minmax(50px, auto) max-content max-content
   grid-template-rows: auto
-  font-size: var(--paragraph-font-size)
+  font-size: calc(var(--subtitle-font-size) / 1.35)
   background-color: var(--color-dark-gray)
   color: var(--color-white-gray)
   font-family: var(--main-font-family)
@@ -409,7 +411,6 @@ ul
 
   img
     width: 45%
-    margin-top: 10%
     margin-left: 10%
 
   ul
@@ -420,7 +421,7 @@ ul
   li
     list-style-type: none
     margin-left: 1em
-    font-size: 0.7em
+    font-size: 0.8em
     font-family: var(--main-font-family)
     border: 1px solid var(--color-dark-gray)
     color: var(--color-white-gray)
