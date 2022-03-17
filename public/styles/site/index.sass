@@ -237,9 +237,9 @@
 /* Improvement Container
 .mainImprovementsContainer 
   display: grid
-  grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr))
-  background-image: url("/images/fafbgpattern.jpg")
-  padding: 0 5vw 
+  grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr))
+  background-image: url("../../images/fafbgpattern.jpg")
+  padding: 0 3vw 
   
   .splitContainer
     margin: 0vw 5vw
@@ -620,6 +620,8 @@
   .scrollRelative
     padding: 10px
     width: 600px
+  .mainImprovementsContainer
+    grid-template-columns: repeat(auto-fit, minmax(45vw, 1fr))
 
 @media (max-width: 800px)
   .main_topnav_container
@@ -680,8 +682,7 @@
   .arrowContainer
     display: block
   
-  .mainImprovementsContainer
-    grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr))
+ 
 @media (max-width: 600px)
   .mainContentContainer, .mainRectangleContainer, .mainRectangleContainerReverse
     grid-template-columns: 1fr
@@ -691,7 +692,10 @@
   
   .mainImprovementsContainer
     grid-template-columns: 1fr
-    margin: 0vw 2.5vw
+    padding: 0vw 2.5vw
+  .scroll_item .scroll_image img
+    width: 90%
+
 
 @media (max-width: 400px)
   #main_banner_container

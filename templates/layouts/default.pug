@@ -73,17 +73,16 @@ html(lang='en')
             | GAME
             .fas.fa-caret-down
             ul.nav_absolute
-              a(href='')
-                a(href='/SCFA-VS-FAF')
-                  li SC:FA vs FAF
-                a(href='/tutorials-guides')
-                  li Tutorials/Guides
-                a(href='https://kazbek.github.io/FAF-Analytics/')
-                  li Player Statistics
-                a(href='/ai')
-                  li Advanced AIs
-                a(href='https://unitdb.faforever.com/')
-                  li Unit Database
+              a(href='/scfa-vs-faf')
+                li SC:FA vs FAF
+              a(href='/tutorials-guides')
+                li Tutorials/Guides
+              a(href='https://kazbek.github.io/FAF-Analytics/')
+                li Player Statistics
+              a(href='/ai')
+                li Advanced AIs
+              a(href='https://unitdb.faforever.com/')
+                li Unit Database
           li.nav_list
             | COMMUNITY
             .fas.fa-caret-down
@@ -124,10 +123,14 @@ html(lang='en')
       #mobilenav_bg
     .mobilenav_sticky
       .main_mobilenav_container
+        .mobilenavContainer
+            a(href='/')
+              img(src='/images/faflogo.svg' alt='')
         #mobilenav_bars
           .mobilenav_bar1
           .mobilenav_bar2
           .mobilenav_bar3
+        
         .mobilenav_mobile
           .mobilenav_container
             // This login class is done just to takeout padding from Login
@@ -138,48 +141,50 @@ html(lang='en')
               .fas.fa-caret-down
               ul.mobilenav_ul
                 li.mobilenav_list
-                  a(href='')  Tutorials/Guides
+                  a(href='/tutorials-guides')  Tutorials/Guides
                 li.mobilenav_list
-                  a(href='')  SC:FA vs FAF 
+                  a(href='/scfa-vs-faf')  SC:FA vs FAF 
                 li.mobilenav_list
-                  a(href='')  Player Statistics
+                  a(href='https://kazbek.github.io/FAF-Analytics/')  Player Statistics
                 li.mobilenav_list
-                  a(href='')  Unit Database
+                  a(href='/ai')  Advanced AIs
+                li.mobilenav_list
+                  a(href='https://unitdb.faforever.com/')  Unit Database
           .mobilenav_container
             .mobilenav_item
               | COMMUNITY
               .fas.fa-caret-down
               ul.mobilenav_ul
                 li.mobilenav_list
-                  a(href='')  News
+                  a(href='/newshub')  News
                 li.mobilenav_list
-                  a(href='')  Forums
+                  a(href='https://forum.faforever.com/')  Forums
                 li.mobilenav_list
-                  a(href='')  Streamers and Casters
+                  a(href='/contribution')  Streamers and Casters
                 li.mobilenav_list
-                  a(href='')  Contributors and Developers
+                  a(href='/volunteer-positions')  Contributors and Developers
           .mobilenav_container
             .mobilenav_item
               | COMPETITIVE
               .fas.fa-caret-down
               ul.mobilenav_ul
                 li.mobilenav_list
-                  a(href='')  Tournaments
+                  a(href='/tournaments')  Tournaments
                 li.mobilenav_list
-                  a(href='')  Trainers
+                  a(href='/trainers')  Trainers
                 li.mobilenav_list
-                  a(href='')  League
+                  a(href='/league')  League
                 li.mobilenav_list
-                  a(href='')  Leaderboards 
+                  a(href='/leaderboards')  Leaderboards 
           .mobilenav_container
             .mobilenav_item
               | CONTRIBUTE
               .fas.fa-caret-down
               ul.mobilenav_ul
                 li.mobilenav_list
-                  a(href='') Donations
+                  a(href='https://www.patreon.com/faf') Donations
                 li.mobilenav_list
-                  a(href='')  Volunteer Positions
+                  a(href='/volunteer-positions')  Volunteer Positions
           .mobilenav_container
             .mobilenav_social
               ul
