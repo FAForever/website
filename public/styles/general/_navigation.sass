@@ -12,7 +12,7 @@
   /* Fonts
   --main-font-family: "Electrolize", "Orbitron", "Russo One"
   --title-font-family: "Russo One", "Orbitron", "Electrolize"
-  --specific-font-family: "Orbitron", "Elecnptrolize"
+  --specific-font-family: "Orbitron", "Electrolize"
 
   /* Font sizes
   --paragraph-font-size: 1vw
@@ -175,7 +175,7 @@ ul
   color: var(--color-white)
 
 .fab
-  padding: 5%
+  padding: 0.15em
   font-size: 30px
   height: 10px
   width: 100%
@@ -292,17 +292,28 @@ ul
   display: none
   top: 0
   z-index: 100
-  background-color: var(--color-black)
+  background-color: var(--color-dark-gray)
   border: 1px solid var(--color-white)
 
 .main_mobilenav_container
   display: grid
-  grid-template-columns: 1fr
+  grid-template-columns:  auto max-content
   grid-template-rows: auto
   justify-items: left
+  align-content: center
   font-family: "Orbitron"
   text-align: left
-  font-size: 25px
+  font-size: 24px
+  .mobilenavContainer
+    align-self: center
+    align-content: center
+    justify-self: center
+    img
+      text-align: center
+      padding: 0
+      width: 60px
+      height: 100%
+    
 
 #mobilenav_bars
   padding: 10px
@@ -347,15 +358,15 @@ ul
   position: absolute
 
 .mobilenav_bg_active
-  background-color: var(--color-black)
+  background-image: url("/images/fafbgpattern0.5.jpg")
   width: 100vw
   height: 100vh
-  opacity: 90%
+  opacity: 100%
   transition: 0.5s
 
 .mobilenav_item
   margin: 10px
-  padding: 25px 10px 0px 0px
+  padding: 45px 10px 0px 0px
 
 .mobilenav_login
   margin: 10px
