@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   for (let i = 0; i < navlist.length; i++) {
     navlist[i].addEventListener("mouseover", function () {
       navabsolute[i].classList.add("mobilenav_active");
+      
     });
 
     navlist[i].addEventListener("mouseout", function () {
@@ -116,112 +117,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     }
   }
-
-
-  //Function so multipleContainers work well and change tabs
-  let multipleItem = document.getElementsByClassName("multipleItem");
-  let multipleImage = document.getElementsByClassName("multipleImage");
-  let multipleAbsolute = document.getElementsByClassName("multipleAbsolute");
-
-
-  for (let i = 0; i < multipleItem.length; i++) {
-    multipleItem[i].addEventListener("click", function () {
-      for (let o = 0; o < multipleImage.length; o++) {
-        multipleImage[o].classList.remove("multipleImageActive");
-        multipleAbsolute[o].classList.remove("multipleImageActive");
-        multipleItem[o].classList.remove("multipleItemActive");
-      }
-      multipleImage[i].classList.add("multipleImageActive");
-      multipleAbsolute[i].classList.add("multipleImageActive");
-      multipleItem[i].classList.add("multipleItemActive");
-      setTimeout(fadeout, 100);
-      function fadeout() {
-
-      }
-
-    });
-  }
-
-
-  // Function so splitDarks will become black when hovering over text
-
-  let splitAbsoluteText = document.getElementsByClassName("splitAbsoluteText");
-  let splitText = document.getElementsByClassName("splitText");
-  let splitDark = document.getElementsByClassName("splitDark");
-  let absolute = document.getElementsByClassName("absoluteSlide");
-  let chevronRight = document.getElementById("arrowAbsoluteRight");
-  let chevronLeft = document.getElementById("arrowAbsoluteLeft");
-  let mql = window.matchMedia('(max-width: 800px)');
-  let a = 0;
-  var ab = 100;
-  //Checks if in phone or computer so slide absolute fits adequately
-  /*setInterval(checkMediaQuery, 1000);
-  function checkMediaQuery() {
-    if (mql.matches) {
-      ab = 100;
-    } else {
-      ab = 50;
-    }
-    for (let i = 0; i < absolute.length; i++) {
-      absolute[i].style.left = ab * i - ab * a + "%";
-    }
-  }
-  */
-  for (let i = 0; i < absolute.length; i++) {
-    absolute[i].style.left = ab * i - ab * a + "%";
-  }
-  chevronRight.addEventListener("click", () => {
-
-    if (a < 5) {
-      a++;
-    } else {
-      a = 0;
-    }
-
-    for (let i = 0; i < absolute.length; i++) {
-      absolute[i].style.left = ab * i - ab * a + "%";
-    }
-  });
-
-  chevronLeft.addEventListener("click", () => {
-    if (a > 0) {
-      a--;
-    } else {
-      a = 5;
-    }
-    for (let i = 0; i < absolute.length; i++) {
-      absolute[i].style.left = ab * i - ab * a + "%";
-    }
-  });
-
-
-  //absolute[i].style.left = 800*i - 800 + "px";    
-
-
-
-  //Animation for cards
-  for (let i = 0; i < splitAbsoluteText.length; i++) {
-    splitAbsoluteText[i].addEventListener("mouseover", () => {
-      splitDark[i].style.opacity = "0.5";
-      splitText[i].style.opacity = "1";
-      splitAbsoluteText[i].style.top = "20%";
-    });
-    splitDark[i].addEventListener("mouseover", () => {
-      splitText[i].style.opacity = "1";
-      splitDark[i].style.opacity = "0.5";
-      splitAbsoluteText[i].style.top = "20%";
-    });
-    splitAbsoluteText[i].addEventListener("mouseout", () => {
-      splitText[i].style.opacity = "0";
-      splitDark[i].style.opacity = "1";
-      splitAbsoluteText[i].style.top = "50%";
-    });
-    splitDark[i].addEventListener("mouseout", () => {
-      splitText[i].style.opacity = "0";
-      splitDark[i].style.opacity = "1";
-      splitAbsoluteText[i].style.top = "50%";
-    });
-  }
+  
 
 
   // stuff for the ACU faction cards
