@@ -1,6 +1,8 @@
+
+
 #main_banner_container
   display: grid
-  grid-template-columns: repeat(1, autofit minmax(0px, 1fr))
+  grid-template-columns: repeat(1, auto-fit minmax(0px, 1fr))
   background-position: center
   background-size: cover
   padding: 300px 0px
@@ -17,22 +19,22 @@
 
 .banner_title
   font-size: var(--subtitle-font-size)
-  font-family: "orbitron"
+  font-family: $family-subtitle
   font-weight: bolder
   letter-spacing: 6px
   padding: 20px 0px
 
 .banner_subtitle
   font-size: var(--paragraph-font-size)
-  font-family: "electrolize"
+  font-family: $family-paragraph
   font-weight: 600
   padding: 20PX 0px
 
 .landingButton
-  color: var(--color-white)
-  background-color: var(--color-gold)
-  font-family: var(--specific-font-family)
-  border: 0.15em solid var(--color-dark-gold)
+  color: $color-active
+  background-color: $button-inactive
+  font-family: $family-subtitle
+  border: 0.15em solid $button-active
   font-size: 0.7em
   margin: 0.5em
   padding: 0.5em
@@ -43,7 +45,7 @@
   cursor: pointer
 
   &:hover
-    background-color: var(--color-dark-gold)
+    background-color: $button-active
 
 /* banner variants of regular banner
 
@@ -94,7 +96,7 @@
 .scrollRelative
   position: relative
   padding: 50px
-  font-family: var(--title-font-family)
+  font-family: $family-title
   font-size: var(--title-font-size)
   text-align: justify
   text-justify: inter-word
@@ -216,13 +218,13 @@
 .mainThinContainer
   display: grid
   grid-template-columns: auto
-  background-color: var(--color-dark-gray)
-  color: var(--color-white)
+  background-color: $background-secondary
+  color: $color-active
   padding: 1em 0px
   font-size: var(--title-font-size)
   letter-spacing: 1.2PX
-  border: 15px solid var(--color-black)
-  font-family: var(--title-font-family)
+  border: 15px solid $background-primary
+  font-family: $family-title
   
   .highlightText, p
     z-index: 2
@@ -232,7 +234,7 @@
 
   
 .highlightText
-  color: var(--color-gold)
+  color: $button-inactive
 
 /* Improvement Container
 .mainImprovementsContainer 
@@ -254,72 +256,6 @@
   
 
 
-/* MultiCategory Container
-
-.multipleBackground
-  background-image: url("/images/fafbgpattern.jpg")
-  padding: 2.5vw 8vw
-
-.mainMultipleContainer
-  align-items: center
-  width: 100%
-  border: 0.25vw solid var(--color-white-gray)
-  border-radius: 1vw
-
-.multipleContainer
-  background-color: var(--color-dark-gray)
-  width: 100%
-  align-items: center
-  height: 100%
-  grid-column: span 12
-
-.multipleItem
-  padding: 0.5vw
-  margin: 1vw
-  font-size: var(--paragraph-font-size)
-  border: 0.1em solid var(--color-white-gray)
-  background-color: var(--color-dark-gray)
-  transition: 0.4s
-
-.multipleImage
-  display: none
-  opacity: 0
-  height: 100%
-  filter: brightness(0.4)
-
-.multipleItem:hover
-  border: 0.1em solid var(--color-dark-gold)
-  background-color: var(--color-gold)
-
-.multipleItemActive
-  border: 0.1em solid var(--color-gold)
-  background-color: var(--color-dark-gold)
-
-  &:hover
-    border: 0.1em solid var(--color-gold)
-    background-color: var(--color-dark-gold)
-
-.multipleRelative
-  position: relative
-
-.multipleAbsolute
-  position: absolute
-  font-size: var(--subtitle-font-size)
-  font-family: var(--specific-font-family)
-  text-shadow: 10px 2px 4px black, 0 8px 16px black
-  top: 10%
-  display: none
-
-.multipleText
-  font-size: var(--paragraph-font-size)
-  padding: 1vw 10vw
-  line-height: 1.5em
-  color: var(--color-white)
-  font-family: var(--main-font-family)
-
-.multipleImageActive
-  display: block
-  opacity: 1
 
 /* Content Creator variant of container
 
@@ -336,7 +272,7 @@
   position: absolute
   bottom: 0
   z-index: 100
-  color: white
+  color: $color-active
   width: 100%
 
 .contentImage
@@ -354,56 +290,19 @@
     width: 80%
 
 .contentSocial
-  color: var(--color-white)
+  color: $color-active
 
   &:hover
     transform: scale(1.2)
 
 .contentItem
   width: 100%
-
-/* Container with multiple containers within it
-
-.arrowContainer
-  padding: 5vw 10vw
-  background-image: url("/images/fafbgpattern.jpg")
-  position: relative
-  font-size: var(--subtitle-font-size)
-  z-index: 10
-  display: none
-
-.arrowItem
-  font-size: 2em
-  justify-self: center
-  color: var(--color-white-gray)
-  position: absolute
-  transition: 0.4s
-
-#arrowAbsoluteLeft
-  position: absolute
-  top: 50%
-  left: 5vw
-  transform: translate(-50%, -50%)
-  width: 5vw
-  height: 5vw
-
-.arrowItem:hover
-  color: var(--color-white)
-
-#arrowAbsoluteRight
-  position: absolute
-  top: 50%
-  left: 95vw
-  -webkit-transform: translate(-50%, -50%)
-  transform: translate(-50%, -50%)
-  width: 5vw
-  height: 5vw
-
+// Main Split Container (Base template used for all the grids, will be replaced once @mixins kick in)
 .mainSplitContainer
   display: grid
   grid-template-columns: repeat(12, minmax(0px, 1fr))
   grid-template-rows: repeat(1, minmax(0px, 1fr))
-  background-color: var(--color-black)
+  background-color: $background-primary
   justify-items: center
   gap: 0px
   overflow: hidden
@@ -473,31 +372,7 @@
   filter: brightness(0.5)
   border-radius: 20px
 
-/* here you can find the slide variant and its thingies
 
-.mainSlideContainer
-  grid-template-columns: repeat(12, minmax(0px, 1fr))
-  font-size: var(--subtitle-font-size)
-
-.absoluteSlide
-  position: absolute
-  top: 0
-  left: 0%
-  width: 50%
-  height: 100%
-  border-radius: 20px
-  z-index: 10
-  transition: 0.4s
-
-.splitAbsoluteText
-  font-size: var(--title-font-size)
-  position: absolute
-  left: 50%
-  top: 50%
-  transform: translate(-50%, 0)
-  text-align: center
-  text-shadow: 10px 2px 4px black, 0 8px 16px black
-  transition: 1s
 
 /* Here is the "rectangle" variant of splitImage
 

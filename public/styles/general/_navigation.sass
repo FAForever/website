@@ -1,18 +1,10 @@
-\:root
-  /* Colors
-  --color-black: #000000
-  --color-white: #FFFFFF
-  --color-white-gray: #c2c2c2
-  --color-gray: #5e5e5e
-  --color-dark-gray: #111111
-  --color-gold: #f7941d
-  --color-dark-gold: #c56e03
-  --color-light-gold: #ffc077
+@use 'mixins'
 
-  /* Fonts
-  --main-font-family: "Electrolize", "Orbitron", "Russo One"
-  --title-font-family: "Russo One", "Orbitron", "Electrolize"
-  --specific-font-family: "Orbitron", "Electrolize"
+ 
+
+/* Fonts
+\:root
+ 
 
   /* Font sizes
   --paragraph-font-size: 1vw
@@ -22,15 +14,15 @@
 /* Used as white text between stuff
 
 .responsiveTextTitle
-  font-family: var(--specific-font-family)
+  font-family: $family-subtitle
   font-size: var(--subtitle-font-size)
 
 .responsiveText
   font-size: var(--paragraph-font-size)
   padding: 1.2em 0vw
   line-height: 1.5em
-  color: var(--color-white)
-  font-family: var(--main-font-family)
+  color: $color-active
+  font-family: $family-paragraph
   direction: ltr
 
 .responsiveTextPadding
@@ -39,8 +31,8 @@
 .responsiveTextNoPadding
   font-size: var(--paragraph-font-size)
   line-height: 1.5em
-  color: var(--color-white)
-  font-family: var(--main-font-family)
+  color: $color-active
+  font-family: $family-paragraph
   direction: ltr
 
 @media (max-width: 1600px)
@@ -64,23 +56,23 @@
 /*=============== Main HTML ===============
 
 html
-  font-family: var(--main-font-family)
+  font-family: $family-paragraph
 
 body
   text-align: center
   background-attachment: fixed
-  background-color: var(--color-dark-gray)
+  background-color: $background-secondary
   background-position: center center
   margin: 0px 0px 0px 0px
   padding: auto
   padding-top: 0px
-  font-family: var(--main-font-family)
-  color: var(--color-white)
+  font-family: $family-paragraph
+  color: $color-active
 
 a
   &:link
     text-decoration: none
-    color: var(--color-white-gray)
+    color: $color-inactive
     transition: 0.5s
 
   &:visited
@@ -88,7 +80,7 @@ a
     color: inherit
 
   &:hover
-    color: var(--color-white)
+    color: $color-active
 
 ul
   padding: 0px
@@ -98,14 +90,14 @@ ul
   margin: 10vw
   font-size: 4vw
   padding: 5vw
-  background-color: var(--color-gold)
-  color: var(--color-white)
-  font-family: var(--title-font-family)
+  background-color: $button-inactive
+  color: $color-active
+  font-family: $family-title
   transition: 0.4s
 
   &:hover
-    background-color: var(--color-dark-gold)
-    color: var(--color-white)
+    background-color: $button-active
+    color: $color-active
 
 /*===== Splat Starts =====
 
@@ -137,11 +129,11 @@ ul
   grid-column: 1/-1
 
 .splat_black_background
-  background-color: var(--color-black)
+  background-color: $background-primary
 
 .separationBar
   padding: 20px 0px
-  background-color: var(--color-dark-gray)
+  background-color: $background-secondary
 
 /*=============== Nav Bar ===============
 /*===== Top Navbar =====
@@ -150,9 +142,9 @@ ul
   display: grid
   grid-template-columns: repeat(12, max-content)
   grid-template-rows: minmax(10px, 1fr)
-  color: var(--color-gray)
+  color: $color-inactive-plus
   font-size: calc(var(--paragraph-font-size))
-  background-color: var(--color-black)
+  background-color: $background-primary
   padding: 0.6em
   position: relative
   justify-content: end
@@ -172,7 +164,7 @@ ul
   justify-self: end
 
 .topnav_hover:hover, .topnav_item a
-  color: var(--color-white)
+  color: $color-active
 
 .fab
   padding: 0.15em
@@ -181,12 +173,12 @@ ul
   width: 100%
   text-align: center
   text-decoration: none
-  color: var(--color-white-gray)
+  color: $color-inactive
   justify-self: end
   transition: 0.5s
 
   &:hover
-    color: var(--color-white)
+    color: $color-active
 
 /*===== Regular navbar =====
 
@@ -195,9 +187,9 @@ ul
   grid-template-columns: max-content minmax(50px, auto) max-content max-content
   grid-template-rows: auto
   font-size: calc(var(--subtitle-font-size) / 1.35)
-  background-color: var(--color-dark-gray)
-  color: var(--color-white-gray)
-  font-family: var(--main-font-family)
+  background-color: $background-secondary
+  color: $color-inactive
+  font-family: $family-paragraph
   justify-items: center
   padding: 10px 10px 0px 10px
 
@@ -228,16 +220,16 @@ ul
   place-self: center
 
 .nav_download
-  color: var(--color-white)
-  background-color: var(--color-gold)
-  border: 0.1em solid var(--color-dark-gold)
+  color: $color-active
+  background-color: $button-inactive
+  border: 0.1em solid $button-active
   letter-spacing: 0.4px
   margin-left: 20px
   transition: 0.25s
-  color: var(--color-white)
+  color: $color-active
 
   &:hover
-    background-color: var(--color-dark-gold)
+    background-color: $button-active
 
 .nav_link
   padding: 10px
@@ -256,24 +248,25 @@ ul
   text-align: left
   display: none
   top: 1em
+  
 
   li
     padding: 20px
     display: block
-    background-color: var(--color-dark-gray)
+    background-color: $background-secondary
     transition: 0.25s
 
     &:hover
-      color: var(--color-white)
-      background-color: var(--color-gray)
+      color: $color-active
+      background-color: $color-inactive
 
 .nav_list
   &:hover
-    color: var(--color-white)
+    color: $color-active
     transition: 0.25s
 
   li
-    color: var(--color-white-gray)
+    color: $color-inactive
 
 .fa-caret-down
   transition: 0.35s
@@ -292,8 +285,8 @@ ul
   display: none
   top: 0
   z-index: 100
-  background-color: var(--color-dark-gray)
-  border: 1px solid var(--color-white)
+  background-color: $background-secondary
+  border: 1px solid $color-active
 
 .main_mobilenav_container
   display: grid
@@ -317,14 +310,14 @@ ul
 
 #mobilenav_bars
   padding: 10px
-  background-color: var(--color-dark-gray)
-  border: 1px solid var(--color-gray)
+  background-color: $background-secondary
+  border: 1px solid $color-inactive
   justify-self: right
 
 .mobilenav_bar1, .mobilenav_bar2, .mobilenav_bar3
   width: 35px
   height: 5px
-  background-color: var(--color-white)
+  background-color: $color-active
   margin: 6px 0
   transition: 0.4s
 
@@ -342,6 +335,7 @@ ul
   opacity: 0
   height: 0
   display: none
+  transition: 1s
 
 .mobilenav_mobile_active
   opacity: 100
@@ -361,7 +355,7 @@ ul
   background-image: url("/images/fafbgpattern0.5.jpg")
   width: 100vw
   height: 100vh
-  opacity: 100%
+
   transition: 0.5s
 
 .mobilenav_item
@@ -383,7 +377,7 @@ ul
 
   li
     padding: 15px 10px 15px 10px
-    color: var(--color-white-gray)
+    color: $color-inactive
 
 .mobilenav_active
   display: block
@@ -395,7 +389,7 @@ ul
 .mobilenav_caret .fa-caret-down
   transform: rotate(-0.25turn)
   transition: 0.5s
-  color: var(--color-white)
+  color: $color-active
 
 /* Footer Navbar
 
@@ -404,7 +398,7 @@ ul
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
   grid-template-rows: minmax(10px, 1fr)
   gap: 2vw
-  color: var(--color-gray)
+  color: $color-inactive
   background: linear-gradient(180deg, black 0%, #222222 100%)
   padding: 20px 10px 50px 10px
   justify-content: center
@@ -426,25 +420,25 @@ ul
 
   ul
     font-size: var(--paragraph-font-size)
-    font-family: var(--specific-font-family)
-    color: var(--color-white)
+    font-family: $family-subtitle
+    color: $color-active
 
   li
     list-style-type: none
     margin-left: 1em
     font-size: 0.8em
-    font-family: var(--main-font-family)
-    border: 1px solid var(--color-dark-gray)
-    color: var(--color-white-gray)
+    font-family: $family-paragraph
+    border: 1px solid $background-secondary
+    color: $color-inactive
 
     &:hover
-      color: var(--color-white)
+      color: $color-active
       transition: 0.4s
-      background-color: var(--color-dark-gray)
-      border: 1px solid var(--color-white-gray)
+      background-color: $background-secondary
+      border: 1px solid $color-inactive
 
   a
-    color: var(--color-white)
+    color: $color-active
 
 @media (max-width: 800px)
   .main_topnav_container
