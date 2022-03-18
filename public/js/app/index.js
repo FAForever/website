@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
 
-  //JS for mobile navbar, when clicking on stuff like GAME and it opens the menu
+  //JS for mobile navbar, when clicking the menus on the navbar, it shows of the contents inside of them. For example GAME > Tutorials, Advanced AI, etc.
   let blackitem = document.getElementsByClassName("mobilenav_item");
   let blackul = document.getElementsByClassName("mobilenav_ul");
 
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
 
-  //JS for the 3 white bars in the mobile nav bar that open said nav bar
+  //JS for the 3 white bars in the mobile nav bar that open said nav bar. You click the 3 bars and the mobile navbar is opened
   let blackmobile = document.getElementsByClassName("mobilenav_mobile");
   let blackbars = document.getElementById("mobilenav_bars");
   let blackbg = document.getElementById("mobilenav_bg");
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     blackbg.classList.toggle("mobilenav_bg_active");
   });
 
-  // JS for stuff appearing on scroll, not sure exactly how it works, would love if someone
+  // JS for stuff appearing on scroll (Some elements don't appear on-screen until you scroll down), not sure exactly how it works, would love if someone
   // can explain it for me.
 
   // https://webdesign.tutsplus.com/tutorials/animate-on-scroll-with-javascript--cms-36671
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-  //function to make highligthed text change colors/pulsate
+  //function to make highligthed text change colors/pulsate (it goes from white to gold and viceversa)
   let highlightText = document.getElementsByClassName("highlightText");
   let x = 0;
   setInterval(highlightPulse, 2000);
@@ -107,12 +107,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
       for (let i = 0; i < highlightText.length; i++) {
 
         highlightText[i].style.transition = "1s";
-        highlightText[i].style.color = "var(--color-white";
+        highlightText[i].style.color = "#FFFFFF";
       }
     } else {
       x--;
       for (let i = 0; i < highlightText.length; i++) {
-        highlightText[i].style.color = "var(--color-gold)";
+        highlightText[i].style.color = "#f7941d";
       }
 
     }
