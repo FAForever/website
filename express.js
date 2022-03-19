@@ -16,6 +16,13 @@ const showdown = require('showdown');
 const fs = require('fs');
 
 let app = express();
+const i18next = require('i18next');
+const i18nextMiddleware = require('i18next-http-middleware');
+const Backend =require('i18next-fs-backend');
+
+
+
+
 app.locals.clanInvitations = {};
 
 //Define environment variables with default values
@@ -42,6 +49,29 @@ app.use(middleware.clientChecks);
 app.use(express.static('public', {
     immutable: true,
     maxAge: 4 * 60 * 60 * 1000 // 4 hours
+}));
+
+// Initialise i18n
+
+i18next
+  .use(i18nextMiddleware.LanguageDetector)
+  .use(Backend)
+  .init({
+    backend: {
+      loadPath: __dirname + '/templates/locales/{{lng}}/{{ns}}.json',
+    },
+    debug: true,
+    detection: {
+      order: ['querystring', 'cookie'],
+      caches: ['cookie']
+    },
+    preload: ['en', 'ru'],
+    fallbackLng: 'en',
+  });
+
+app.use(i18nextMiddleware.handle(i18next,{
+  ignoreRoutes: ['foo'],
+  removeLngFromUrl: true
 }));
 
 app.use(bodyParser.urlencoded({extended: false}));
