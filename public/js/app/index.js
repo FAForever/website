@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let acuCard = document.getElementsByClassName("acuCard");
   let factionAbsolute = document.getElementsByClassName("factionAbsolute");
   let acuUEF = document.getElementById("acuUEF");
-  acuUEF.style.backgroundImage = "url(/images/acuuef.jpg)";
+  acuUEF.style.backgroundImage = "url(/../../images/acuuef.jpg)";
   let acuSeraphim = document.getElementById("acuSeraphim");
   let acuBlankScreen = document.getElementById("acuBlankScreen");
 
@@ -136,9 +136,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
       if (i == 1) {
-        acuUEF.style.backgroundImage = "url(/images/acucybran.jpg)";
+        acuUEF.style.backgroundImage = "url(/../../images/acucybran.jpg)";
       } else if (i == 2) {
-        acuSeraphim.style.backgroundImage = "url(/images/acuaeon.jpg)";
+        acuSeraphim.style.backgroundImage = "url(/../../images/acuaeon.jpg)";
       }
 
     });
@@ -152,9 +152,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
       if (i === 1) {
-        acuUEF.style.backgroundImage = "url(/images/acuuef.jpg)";
+        acuUEF.style.backgroundImage = "url(/../../images/acuuef.jpg)";
       } else if (i === 2) {
-        acuSeraphim.style.backgroundImage = "url(/images/acuseraphim.jpg)";
+        acuSeraphim.style.backgroundImage = "url(/../../images/acuseraphim.jpg)";
       }
     });
 
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   /*
     let setons = document.getElementById("rectangleImage");
-    let setonsPicture = '/images/zoomout';
+    let setonsPicture = '/../../images/zoomout';
     let counterA = 0;
     setInterval(changeImage, 1200);
     function changeImage() {
