@@ -1,11 +1,9 @@
-
-
-#main_banner_container
+.main_banner_container
   display: grid
-  grid-template-columns: repeat(1, auto-fit minmax(0px, 1fr))
+  grid-template-columns: repeat(1, minmax(0px, 1fr))
   background-position: center
   background-size: cover
-  padding: 300px 0px
+  padding: 300px 0
   font-size: 35px
   letter-spacing: 1.2PX
   text-shadow: 0 2px 4px black, 0 8px 16px black
@@ -22,13 +20,13 @@
   font-family: $family-subtitle
   font-weight: bolder
   letter-spacing: 6px
-  padding: 20px 0px
+  padding: 20px 0
 
 .banner_subtitle
   font-size: var(--paragraph-font-size)
   font-family: $family-paragraph
   font-weight: 600
-  padding: 20PX 0px
+  padding: 20PX 0
 
 .landingButton
   color: $color-active
@@ -50,25 +48,25 @@
 /* banner variants of regular banner
 
 .landingBanner
-  background-image: url("/images/home1.jpg")
+  background-image: url("/../../images/home1.jpg")
 
 .contentBanner
-  background-image: url("/images/content-creator/creatorbg.jpg")
+  background-image: url("/../../images/content-creator/creatorbg.jpg")
 
 .aiBanner
-  background-image: url("/images/ai.jpg")
+  background-image: url("/../../images/ai.jpg")
 
 .devsBanner
-  background-image: url("/images/devs.jpg")
+  background-image: url("/../../images/devs.jpg")
 
 .endBanner
-  background-image: url("/images/footerbanner.jpg")
+  background-image: url("/../../images/footerbanner.jpg")
 
 /* Below Main page
 @media (max-width: 800px)
-  #main_banner_container
+  .main_banner_container
     padding: 150px 10px
-    gap: 0px
+    gap: 0
     font-size: 10px
 
   .banner_subtitle
@@ -80,10 +78,10 @@
     padding: 5px
 
 @media (max-width: 400px)
-  #main_banner_container
+  .main_banner_container
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-    padding: 130px 0px
-    gap: 0px
+    padding: 130px 0
+    gap: 0
 
   .banner_title
     font-size: 18px
@@ -107,9 +105,9 @@
 
 .mainScrollContainer
   display: grid
-  grid-template-columns: repeat(1, auto-fit, minmax(100px, 1fr))
+  grid-template-columns: repeat(1,minmax(100px, 1fr))
   grid-template-rows: auto
-  background-image: url("/images/blackbg.jpg")
+  background-image: url("/../../images/blackbg.jpg")
   background-size: cover
   padding: 5%
 
@@ -181,20 +179,20 @@
 @-webkit-keyframes animationLeft
   0%
     transform: scale(0.5)
-    transform-origin: 0% 50%
+    transform-origin: 0 50%
 
   100%
     transform: scale(1)
-    transform-origin: 0% 50%
+    transform-origin: 0 50%
 
 @keyframes animationLeft
   0%
     transform: scale(0.5)
-    transform-origin: 0% 50%
+    transform-origin: 0 50%
 
   100%
     transform: scale(1)
-    transform-origin: 0% 50%
+    transform-origin: 0 50%
 
 .animationFlip
   animation: animationFlip 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) reverse both
@@ -220,7 +218,7 @@
   grid-template-columns: auto
   background-color: $background-secondary
   color: $color-active
-  padding: 1em 0px
+  padding: 1em 0
   font-size: var(--title-font-size)
   letter-spacing: 1.2PX
   border: 15px solid $background-primary
@@ -244,7 +242,7 @@
   padding: 0 3vw 
   
   .splitContainer
-    margin: 0vw 5vw
+    margin: 0 5vw
     
     .responsiveTextTitle
       margin: 0.5em 0 1em 0 
@@ -260,7 +258,7 @@
 /* Content Creator variant of container
 
 .mainContentContainer
-  background-image: url("/images/fafbgpattern.jpg")
+  background-image: url("/../../images/fafbgpattern.jpg")
   padding: 2.5vw 6vw
   grid-template-columns: 1fr 1fr
 
@@ -304,7 +302,7 @@
   grid-template-rows: repeat(1, minmax(0px, 1fr))
   background-color: $background-primary
   justify-items: center
-  gap: 0px
+  gap: 0
   overflow: hidden
   position: relative
 
@@ -312,7 +310,7 @@
   justify-items: center
 
 .columnfr
-  grid-column: 1fr
+  grid-column: 1fr 
 
 .column2
   grid-column: span 2
@@ -377,20 +375,19 @@
 /* Here is the "rectangle" variant of splitImage
 
 .rectangleSpace
-  padding: 2vw 0vw 2vw 0vw
-  background-image: url("/images/fafbgmasspattern.jpg")
+  padding: 2vw 0 2vw 0
+  background-image: url("/../../images/fafbgmasspattern.jpg")
   direction: rtl
 
 .mainRectangleContainer
-  margin: 2vw 0vw 2vw 25vw
-  
+  margin: 2vw 0 2vw 25vw
   background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
   gap: 10px
   align-items: center
   transition: 0.4s
 
 .mainRectangleContainerReverse
-  margin: 2vw 25vw 2vw 0vw
+  margin: 2vw 25vw 2vw 0
   background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
   gap: 10px
   align-items: center
@@ -408,9 +405,6 @@
 .rectangleItem
   transition: 0.4s
   
-
-
-
 .rectangleImage
   transition: 1s
 
@@ -418,22 +412,22 @@
 /* Here you can find stuff related to splitImage containers but in regards to the factions
 
 .acuPadding
-  padding: 0px
-  gap: 0px
-  margin: 0px
+  padding: 0
+  gap: 0
+  margin: 0
   grid-template-rows: 1fr
   position: relative
 
-#acuUEF
+.acuUEF
   width: 25vw
   height: 100%
-  background-image: url("/images/acuUEF.jpg")
+  background-image: url("../../../images/acuUEF.jpg")
   background-size: cover
 
-#acuSeraphim
+.acuSeraphim
   width: 25vw
   height: 100%
-  background-image: url("/images/acuseraphim.jpg")
+  background-image: url("/../../images/acuseraphim.jpg")
   background-size: cover
 
 .acuCard
@@ -455,7 +449,7 @@
 .acuLeft
   left: 0
 
-#acuBlankScreen
+.acuBlankScreen
   position: absolute
   height: 100%
   width: 100%
@@ -467,7 +461,7 @@
 .factionAbsolute
   position: absolute
   object-fit: contain
-  padding: 0px 0px
+  padding: 0 0
   opacity: 0
   transition: 0.4s
   top: 0
@@ -480,7 +474,6 @@
 
 .displayNone
   display: none
-
 .noOpacity
   opacity: 0
 
@@ -505,9 +498,9 @@
   .main_topnav_container
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
 
-  #main_banner_container
+  .main_banner_container
     padding: 150px 10px
-    gap: 0px
+    gap: 0
     font-size: 10px
 
   .banner_subtitle
@@ -526,9 +519,8 @@
     padding: 20px 10px
     text-align: center
 
-
   .scrollRelative
-    padding: 0px
+    padding: 0
     width: 100%
     text-align: center
 
@@ -543,9 +535,9 @@
 
 
   .mainSplitContainer
-    margin: 0px
+    margin: 0
     font-size: 0.7em
-    padding: 0px
+    padding: 0
 
   .mainSlideContainer
     grid-template-columns: repeat(6, minmax(0px, 1fr))
@@ -570,28 +562,24 @@
   
   .mainImprovementsContainer
     grid-template-columns: 1fr
-    padding: 0vw 2.5vw
+    padding: 0 2.5vw
   .scroll_item .scroll_image img
     width: 90%
 
 
 @media (max-width: 400px)
-  #main_banner_container
+  .main_banner_container
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-    padding: 130px 0px
-    gap: 0px
-
+    padding: 130px 0
+    gap: 0
   .banner_title
     font-size: 18px
-
   .banner_subtitle
     font-size: 12px
-
   .mainSplitContainer
     font-size: 1em
-
   .splitAbsoluteText
-    padding: 0px
+    padding: 0
   
 
 @media (max-width: 1200px)
