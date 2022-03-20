@@ -20,9 +20,6 @@ const i18next = require('i18next');
 const i18nextMiddleware = require('i18next-http-middleware');
 const Backend =require('i18next-fs-backend');
 
-
-
-
 app.locals.clanInvitations = {};
 
 //Define environment variables with default values
@@ -63,16 +60,18 @@ i18next
     debug: true,
     detection: {
       order: ['querystring', 'cookie'],
-      caches: ['cookie']
+      caches: ['cookie'],
     },
     preload: ['en', 'ru'],
     fallbackLng: 'en',
-  });
+});
 
 app.use(i18nextMiddleware.handle(i18next,{
   ignoreRoutes: ['foo'],
-  removeLngFromUrl: true
+  removeLngFromUrl: true,
 }));
+
+
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(require('express-session')({
@@ -176,6 +175,7 @@ app.route('/news').get(function(req, res) {
 app.get('/scfa-vs-faf', require(routes + 'scfa-vs-faf'));
 app.get('/tutorials-guides', require(routes + 'tutorials-guides'));
 app.get('/ai', require(routes + 'ai'));
+app.get('/patchnotes', require(routes + 'patchnotes'));
 //Community pages
 app.get('/faf-teams', require(routes + 'faf-teams'));
 app.get('/contribution', require(routes + 'contribution'));

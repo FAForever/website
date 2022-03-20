@@ -2,7 +2,7 @@ extends ../layouts/default
 include ../mixins/flash-messages
 
 block content
-  #main_banner_container.landingBanner
+  .main_banner_container.landingBanner
     .banner_container.banner_title
       .banner_item CONTINUE THE SUPCOM LEGACY IN
     .banner_container.banner_title
@@ -92,9 +92,7 @@ block content
       .responsiveTextTitle Tournaments
         .responsiveTextNoPadding From the yearly LoTS and Rainbow Cup, the classic King of Setons and King of Dual Gap to other cross-community tournaments!
           br 
-          button.landingButton Learn More
-    
-    
+          button.landingButton Learn More  
   
     //Factions Start here
 
@@ -111,7 +109,6 @@ block content
       .splat
         img(src='/images/blacksplat.png' alt='')
 
-
   //ACU Cards
   .mainSplitContainer
     .splitContainer.column12
@@ -120,43 +117,40 @@ block content
 
   .mainSplitContainer.acuPadding
     //UEF
-
     .splitContainer.column3
-      .splitItem.scrollFade.animationLeft#acuUEF.acuCard
+      .splitItem.scrollFade.animationLeft.acuUEF.acuCard
     .splitContainer.column9.acuAbsolute
       .splitItem.factionAbsolute
         .splitImage.scrollFade
-          img(src='/images/uefbg.jpg' alt='')
-
+          img(src='/../../images/uefbg.jpg' alt='')
     //CYBRAN
     .splitContainer.column3.acuCard
       .splitItem
         .splitImage.scrollFade.animationLeft
-          img(src='/images/acucybran.jpg' alt='')
+          img(src='/../../images/acucybran.jpg' alt='')
     .splitContainer.column9.acuAbsolute
       .splitItem.factionAbsolute
         .splitImage.scrollFade
-          img(src='/images/cybran.jpg' alt='')
+          img(src='/../../images/cybran.jpg' alt='')
     //AEON
     .splitContainer.column3.acuCard
       .splitItem
         .splitImage.scrollFade.animationRigth
-          img(src='/images/acuaeon.jpg' alt='')
+          img(src='/../../images/acuaeon.jpg' alt='')
     .splitContainer.column9.acuAbsolute.acuLeft
       .splitItem.factionAbsolute
         .splitImage.scrollFade
-          img(src='/images/aeon.jpg' alt='')
-
+          img(src='/../../images/aeon.jpg' alt='')
 
     //SERAPHIM
     .splitContainer.column3
-      .splitItem.scrollFade.animationRigth#acuSeraphim.acuCard
+      .splitItem.scrollFade.animationRigth.acuSeraphim.acuCard
     .splitContainer.column9.acuAbsolute.acuLeft
       .splitItem.factionAbsolute
         .splitImage.scrollFade
-          img(src='/images/seraphim.jpg' alt='')
+          img(src='/../../images/seraphim.jpg' alt='')
 
-    .splitContainer.column12#acuBlankScreen.displayNone
+    .splitContainer.column12.acuBlankScreen.displayNone
       .splitItem
         .splitImage.scrollFade
 
@@ -215,7 +209,7 @@ block content
       .splat_rotate
         img(src='/images/blacksplat.png' alt='')
 
-  #main_banner_container.endBanner
+  .main_banner_container.endBanner
     .banner_container.banner_title
       .banner_item.highlightText PLAY SUPREME COMMANDER
     .banner_container.banner_title
