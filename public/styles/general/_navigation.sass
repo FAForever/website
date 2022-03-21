@@ -1,8 +1,6 @@
 @use 'mixins'
 
- 
 
-/* Fonts
 \:root
  
 
@@ -14,15 +12,15 @@
 /* Used as white text between stuff
 
 .responsiveTextTitle
-  font-family: $family-subtitle
+  font-family: mixins.$family-subtitle
   font-size: var(--subtitle-font-size)
 
 .responsiveText
   font-size: var(--paragraph-font-size)
-  padding: 1.2em 0vw
+  padding: 1.2em 0
   line-height: 1.5em
-  color: $color-active
-  font-family: $family-paragraph
+  color: mixins.$color-active
+  font-family: mixins.$family-paragraph
   direction: ltr
 
 .responsiveTextPadding
@@ -31,8 +29,8 @@
 .responsiveTextNoPadding
   font-size: var(--paragraph-font-size)
   line-height: 1.5em
-  color: $color-active
-  font-family: $family-paragraph
+  color: mixins.$color-active
+  font-family: mixins.$family-paragraph
   direction: ltr
 
 @media (max-width: 1600px)
@@ -53,26 +51,24 @@
     --subtitle-font-size: 4.5vw
     --title-font-size: 5vw
 
-/*=============== Main HTML ===============
 
 html
-  font-family: $family-paragraph
+  font-family: mixins.$family-paragraph
 
 body
   text-align: center
   background-attachment: fixed
-  background-color: $background-secondary
+  background-color: mixins.$background-secondary
   background-position: center center
-  margin: 0px 0px 0px 0px
-  padding: auto
-  padding-top: 0px
-  font-family: $family-paragraph
-  color: $color-active
+  margin: 0 0 0 0
+  padding-top: 0
+  font-family: mixins.$family-paragraph
+  color: mixins.$color-active
 
 a
   &:link
     text-decoration: none
-    color: $color-inactive
+    color: mixins.$color-inactive
     transition: 0.5s
 
   &:visited
@@ -80,24 +76,24 @@ a
     color: inherit
 
   &:hover
-    color: $color-active
+    color: mixins.$color-active
 
 ul
-  padding: 0px
-  margin: 0px
+  padding: 0
+  margin: 0
 
 .indexButton
   margin: 10vw
   font-size: 4vw
   padding: 5vw
-  background-color: $button-inactive
-  color: $color-active
-  font-family: $family-title
+  background-color: mixins.$button-inactive
+  color: mixins.$color-active
+  font-family: mixins.$family-title
   transition: 0.4s
 
   &:hover
-    background-color: $button-active
-    color: $color-active
+    background-color: mixins.$button-active
+    color: mixins.$color-active
 
 /*===== Splat Starts =====
 
@@ -105,7 +101,7 @@ ul
   display: grid
   grid-template-columns: auto
   position: relative
-  padding: 10px 0px 10px 0px
+  padding: 10px 0 10px 0
   justify-items: center
 
 .splat_rotate
@@ -120,7 +116,7 @@ ul
   position: absolute
   width: 100%
   object-fit: cover
-  bottom: 0px
+  bottom: 0
   overflow: hidden
 
 .splat_container
@@ -129,11 +125,11 @@ ul
   grid-column: 1/-1
 
 .splat_black_background
-  background-color: $background-primary
+  background-color: mixins.$background-primary
 
 .separationBar
-  padding: 20px 0px
-  background-color: $background-secondary
+  padding: 20px 0
+  background-color: mixins.$background-secondary
 
 /*=============== Nav Bar ===============
 /*===== Top Navbar =====
@@ -142,16 +138,16 @@ ul
   display: grid
   grid-template-columns: repeat(12, max-content)
   grid-template-rows: minmax(10px, 1fr)
-  color: $color-inactive-plus
+  color: mixins.$color-inactive-plus
   font-size: calc(var(--paragraph-font-size))
-  background-color: $background-primary
+  background-color: mixins.$background-primary
   padding: 0.6em
   position: relative
   justify-content: end
   place-items: center
 
 .topnav_container
-  padding: 0px 0.5em
+  padding: 0 0.5em
 
 .topnav_item
   width: 100%
@@ -164,7 +160,7 @@ ul
   justify-self: end
 
 .topnav_hover:hover, .topnav_item a
-  color: $color-active
+  color: mixins.$color-active
 
 .fab
   padding: 0.15em
@@ -173,12 +169,12 @@ ul
   width: 100%
   text-align: center
   text-decoration: none
-  color: $color-inactive
+  color: mixins.$color-inactive
   justify-self: end
   transition: 0.5s
 
   &:hover
-    color: $color-active
+    color: mixins.$color-active
 
 /*===== Regular navbar =====
 
@@ -187,11 +183,11 @@ ul
   grid-template-columns: max-content minmax(50px, auto) max-content max-content
   grid-template-rows: auto
   font-size: calc(var(--subtitle-font-size) / 1.35)
-  background-color: $background-secondary
-  color: $color-inactive
-  font-family: $family-paragraph
+  background-color: mixins.$background-secondary
+  color: mixins.$color-inactive
+  font-family: mixins.$family-paragraph
   justify-items: center
-  padding: 10px 10px 0px 10px
+  padding: 10px 10px 0 10px
 
 .nav_container
   align-self: center
@@ -202,34 +198,33 @@ ul
   height: 100%
   position: relative
   list-style-type: none
-  margin: 0px
-  padding: 0px
+  margin: 0
+  padding: 0
   transition: 0.25s
 
   li
     display: inline-block
-    padding: 0px 20px
+    padding: 0 20px
 
 .nav_image img
   width: 80px
   height: 100%
   object-fit: contain
   overflow: hidden
-  padding: 0px 0px 0px 20px
+  padding: 0 0 0 20px
   justify-self: center
   place-self: center
 
 .nav_download
-  color: $color-active
-  background-color: $button-inactive
-  border: 0.1em solid $button-active
+  color: mixins.$color-active
+  background-color: mixins.$button-inactive
+  border: 0.1em solid mixins.$button-active
   letter-spacing: 0.4px
   margin-left: 20px
   transition: 0.25s
-  color: $color-active
 
   &:hover
-    background-color: $button-active
+    background-color: mixins.$button-active
 
 .nav_link
   padding: 10px
@@ -253,20 +248,20 @@ ul
   li
     padding: 20px
     display: block
-    background-color: $background-secondary
+    background-color: mixins.$background-secondary
     transition: 0.25s
 
     &:hover
-      color: $color-active
-      background-color: $color-inactive
+      color: mixins.$color-active
+      background-color: mixins.$color-inactive-plus
 
 .nav_list
   &:hover
-    color: $color-active
+    color: mixins.$color-active
     transition: 0.25s
 
   li
-    color: $color-inactive
+    color: mixins.$color-inactive
 
 .fa-caret-down
   transition: 0.35s
@@ -285,8 +280,8 @@ ul
   display: none
   top: 0
   z-index: 100
-  background-color: $background-secondary
-  border: 1px solid $color-active
+  background-color: mixins.$background-secondary
+  border: 1px solid mixins.$color-active
 
 .main_mobilenav_container
   display: grid
@@ -294,7 +289,7 @@ ul
   grid-template-rows: auto
   justify-items: left
   align-content: center
-  font-family: "Orbitron"
+  font-family: mixins.$family-subtitle
   text-align: left
   font-size: 24px
   .mobilenavContainer
@@ -310,14 +305,14 @@ ul
 
 #mobilenav_bars
   padding: 10px
-  background-color: $background-secondary
-  border: 1px solid $color-inactive
+  background-color: mixins.$background-secondary
+  border: 1px solid mixins.$color-inactive
   justify-self: right
 
 .mobilenav_bar1, .mobilenav_bar2, .mobilenav_bar3
   width: 35px
   height: 5px
-  background-color: $color-active
+  background-color: mixins.$color-active
   margin: 6px 0
   transition: 0.4s
 
@@ -360,16 +355,16 @@ ul
 
 .mobilenav_item
   margin: 10px
-  padding: 45px 10px 0px 0px
+  padding: 45px 10px 0 0
 
 .mobilenav_login
   margin: 10px
-  padding: 25px 10px 0px 0px
-  padding-top: 0px
+  padding: 25px 10px 0 0
+  padding-top: 0
 
 .mobilenav_item ul
   list-style-type: none
-  margin: 0px
+  margin: 0
   padding-top: 10px
 
 .mobilenav_ul
@@ -377,7 +372,7 @@ ul
 
   li
     padding: 15px 10px 15px 10px
-    color: $color-inactive
+    color: mixins.$color-inactive
 
 .mobilenav_active
   display: block
@@ -389,7 +384,7 @@ ul
 .mobilenav_caret .fa-caret-down
   transform: rotate(-0.25turn)
   transition: 0.5s
-  color: $color-active
+  color: mixins.$color-active
 
 /* Footer Navbar
 
@@ -398,14 +393,14 @@ ul
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
   grid-template-rows: minmax(10px, 1fr)
   gap: 2vw
-  color: $color-inactive
+  color: mixins.$color-inactive
   background: linear-gradient(180deg, black 0%, #222222 100%)
   padding: 20px 10px 50px 10px
   justify-content: center
   text-align: left
 
 .footerContainer
-  padding: 0px 0px
+  padding: 0
 
 .footerItem
   width: 100%
@@ -420,25 +415,25 @@ ul
 
   ul
     font-size: var(--paragraph-font-size)
-    font-family: $family-subtitle
-    color: $color-active
+    font-family: mixins.$family-subtitle
+    color: mixins.$color-active
 
   li
     list-style-type: none
     margin-left: 1em
     font-size: 0.8em
-    font-family: $family-paragraph
-    border: 1px solid $background-secondary
-    color: $color-inactive
+    font-family: mixins.$family-paragraph
+    border: 1px solid mixins.$background-secondary
+    color: mixins.$color-inactive
 
     &:hover
-      color: $color-active
+      color: mixins.$color-active
       transition: 0.4s
-      background-color: $background-secondary
-      border: 1px solid $color-inactive
+      background-color: mixins.$background-secondary
+      border: 1px solid mixins.$color-inactive
 
   a
-    color: $color-active
+    color: mixins.$color-active
 
 @media (max-width: 800px)
   .main_topnav_container

@@ -51,43 +51,43 @@ block content
   
   //New multiple choice container
   .mainImprovementsContainer
-    .splitContainer
-      .splitImage.improvementImage
+    .improvementContainer
+      .gridImage.improvementImage
         img(src='/images/fafupdate.jpg' alt='')
       .responsiveTextTitle Co-Op Campaign 
         .responsiveTextNoPadding Enjoy the complete campaign with friends and extra missions plus a new Seraphim Campaign!
           br 
           button.landingButton Learn More
-    .splitContainer
-      .splitImage.improvementImage
+    .improvementContainer
+      .gridImage.improvementImage
         img(src='/images/fafmatchmaking.jpg' alt='')
       .responsiveTextTitle Matchmaking
         .responsiveTextNoPadding Ranked matchmaking featuring queues for 1v1 duels, 2v2 duos and 4v4 teamgames! Plus custom game lobbies!
           br 
           button.landingButton Learn More
-    .splitContainer
-      .splitImage.improvementImage
+    .improvementContainer
+      .gridImage.improvementImage
         img(src='/images/fafmapsmods.jpg' alt='')
       .responsiveTextTitle The Vault
         .responsiveTextNoPadding Featuring hundreds of new maps and mods made by the community! From updates to Supcom classics to news ones with high quality textures!
           br 
           button.landingButton Learn More
-    .splitContainer
-      .splitImage.improvementImage
+    .improvementContainer
+      .gridImage.improvementImage
         img(src='/images/fafai.jpg' alt='')
       .responsiveTextTitle Advanced AIs 
         .responsiveTextNoPadding Community made AIs that can provide a real challenge! Each with a different specialization!
           br 
           button.landingButton Learn More
-    .splitContainer
-      .splitImage.improvementImage
+    .improvementContainer
+      .gridImage.improvementImage
         img(src='/images/fafstatistics.jpg' alt='')
       .responsiveTextTitle Player Statistics
         .responsiveTextNoPadding See your rival or friend you play the most with, which map or faction you have the highest win rate with!
           br 
           button.landingButton Learn More
-    .splitContainer
-      .splitImage.improvementImage
+    .improvementContainer
+      .gridImage.improvementImage
         img(src='/images/faftournaments.jpg' alt='')
       .responsiveTextTitle Tournaments
         .responsiveTextNoPadding From the yearly LoTS and Rainbow Cup, the classic King of Setons and King of Dual Gap to other cross-community tournaments!
@@ -110,49 +110,46 @@ block content
         img(src='/images/blacksplat.png' alt='')
 
   //ACU Cards
-  .mainSplitContainer
-    .splitContainer.column12
+  .gridMainContainer
+    .column12
       .responsiveText.responsiveTextPadding
         | Whether you are into the chunky UEF mechs and tanks, the Cybran stealthy spiderbots and walking ships, Aeon shielded hover units and donuts or Seraphim abstract alien mix of chickens. FAF has a faction for you to raze your opponents base to the ground.
 
-  .mainSplitContainer.acuPadding
-    //UEF
-    .splitContainer.column3
-      .splitItem.scrollFade.animationLeft#acuUEF.acuCard
-    .splitContainer.column9.acuAbsolute
-      .splitItem.factionAbsolute
-        .splitImage.scrollFade
+  .gridMainContainer.acuPadding
+    .column3
+      .gridItem.scrollFade.animationLeft#acuUEF.acuCard
+    .column9.acuAbsolute
+      .gridItem.factionAbsolute
+        .gridImage.scrollFade
           img(src='/../../images/uefbg.jpg' alt='')
-    //CYBRAN
-    .splitContainer.column3.acuCard
-      .splitItem
-        .splitImage.scrollFade.animationLeft
+    .column3.acuCard
+      .gridItem
+        .gridImage.scrollFade.animationLeft
           img(src='/../../images/acucybran.jpg' alt='')
-    .splitContainer.column9.acuAbsolute
-      .splitItem.factionAbsolute
-        .splitImage.scrollFade
+    .column9.acuAbsolute
+      .gridItem.factionAbsolute
+        .gridImage.scrollFade
           img(src='/../../images/cybran.jpg' alt='')
-    //AEON
-    .splitContainer.column3.acuCard
-      .splitItem
-        .splitImage.scrollFade.animationRigth
+    .column3.acuCard
+      .gridItem
+        .gridImage.scrollFade.animationRigth
           img(src='/../../images/acuaeon.jpg' alt='')
-    .splitContainer.column9.acuAbsolute.acuLeft
-      .splitItem.factionAbsolute
-        .splitImage.scrollFade
+    .column9.acuAbsolute.acuLeft
+      .gridItem.factionAbsolute
+        .gridImage.scrollFade
           img(src='/../../images/aeon.jpg' alt='')
 
     //SERAPHIM
-    .splitContainer.column3
-      .splitItem.scrollFade.animationRigth#acuSeraphim.acuCard
-    .splitContainer.column9.acuAbsolute.acuLeft
-      .splitItem.factionAbsolute
-        .splitImage.scrollFade
+    .column3
+      .gridItem.scrollFade.animationRigth#acuSeraphim.acuCard
+    .column9.acuAbsolute.acuLeft
+      .gridItem.factionAbsolute
+        .gridImage.scrollFade
           img(src='/../../images/seraphim.jpg' alt='')
 
-    .splitContainer.column12#acuBlankScreen.displayNone
-      .splitItem
-        .splitImage.scrollFade
+    .column12#acuBlankScreen.displayNone
+      .gridItem
+        .gridImage.scrollFade
 
   //This is where eco and zoom will go
   //splat start
@@ -170,32 +167,32 @@ block content
   //splat end
   //zoom start
   .rectangleSpace
-    .mainSplitContainer.mainRectangleContainer
-      .splitContainer.column8.rectangleContainer
+    .gridMainContainer.mainRectangleContainer
+      .column8.rectangleContainer
         .responsiveTextTitle.highlightText
           | STRATEGIC ZOOM
           .responsiveText
             |Lead your armies and bases at the same time from afar with the strategic zoom. Have a clear look of what's happening everywhere in a matter of seconds!
-      .splitContainer.column4
-        .splitImage.rectangleImage
+      .column4
+        .gridImage.rectangleImage
           img(src='/images/zoomout.jpg' alt='')
-    .mainSplitContainer.mainRectangleContainerReverse
-      .splitContainer.column8.rectangleContainer
+    .gridMainContainer.mainRectangleContainerReverse
+      .column8.rectangleContainer
         .responsiveTextTitle.highlightText
           | RESPONSIVE ECONOMY
           .responsiveText
             |With its flux econonomy system, get an economy that responds to your actions instantly and requires you to adapt to the changes in the battlefield!
-      .splitContainer.column4
-        .splitImage.rectangleImage
+      .column4
+        .gridImage.rectangleImage
           img(src='/images/resources.jpg' alt='')
-    .mainSplitContainer.mainRectangleContainer
-      .splitContainer.column8.rectangleContainer
+    .gridMainContainer.mainRectangleContainer
+      .column8.rectangleContainer
         .responsiveTextTitle.highlightText
           | LAND, AIR AND SEA
           .responsiveText
             |Flatten enemy armies with your bombers, raze their base with battleships and raid their every expansion with your army!
-      .splitContainer.column4
-        .splitImage.rectangleImage
+      .column4
+        .gridImage.rectangleImage
           img(src='/images/techlevels.jpg' alt='')
 
 
