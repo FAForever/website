@@ -1,3 +1,4 @@
+@use '../general/mixins'
 .main_banner_container
   display: grid
   grid-template-columns: repeat(1, minmax(0px, 1fr))
@@ -17,22 +18,22 @@
 
 .banner_title
   font-size: var(--subtitle-font-size)
-  font-family: $family-subtitle
+  font-family: mixins.$family-subtitle
   font-weight: bolder
   letter-spacing: 6px
   padding: 20px 0
 
 .banner_subtitle
   font-size: var(--paragraph-font-size)
-  font-family: $family-paragraph
+  font-family: mixins.$family-paragraph
   font-weight: 600
   padding: 20PX 0
 
 .landingButton
-  color: $color-active
-  background-color: $button-inactive
-  font-family: $family-subtitle
-  border: 0.15em solid $button-active
+  color: mixins.$color-active
+  background-color: mixins.$button-inactive
+  font-family: mixins.$family-subtitle
+  border: 0.15em solid mixins.$button-active
   font-size: 0.7em
   margin: 0.5em
   padding: 0.5em
@@ -43,7 +44,7 @@
   cursor: pointer
 
   &:hover
-    background-color: $button-active
+    background-color: mixins.$button-active
 
 /* banner variants of regular banner
 
@@ -89,12 +90,12 @@
   .banner_subtitle
     font-size: 12px
 
-/* Scroll container Container with the monkeylord below banner
+/* Scroll container Container with the monkey lord below banner
 
 .scrollRelative
   position: relative
   padding: 50px
-  font-family: $family-title
+  font-family: mixins.$family-title
   font-size: var(--title-font-size)
   text-align: justify
   text-justify: inter-word
@@ -216,13 +217,13 @@
 .mainThinContainer
   display: grid
   grid-template-columns: auto
-  background-color: $background-secondary
-  color: $color-active
+  background-color: mixins.$background-secondary
+  color: mixins.$color-active
   padding: 1em 0
   font-size: var(--title-font-size)
   letter-spacing: 1.2PX
-  border: 15px solid $background-primary
-  font-family: $family-title
+  border: 15px solid mixins.$background-primary
+  font-family: mixins.$family-title
   
   .highlightText, p
     z-index: 2
@@ -232,7 +233,7 @@
 
   
 .highlightText
-  color: $button-inactive
+  color: mixins.$button-inactive
 
 /* Improvement Container
 .mainImprovementsContainer 
@@ -241,7 +242,7 @@
   background-image: url("../../images/fafbgpattern.jpg")
   padding: 0 3vw 
   
-  .splitContainer
+  .improvementContainer
     margin: 0 5vw
     
     .responsiveTextTitle
@@ -270,7 +271,7 @@
   position: absolute
   bottom: 0
   z-index: 100
-  color: $color-active
+  color: mixins.$color-active
   width: 100%
 
 .contentImage
@@ -288,7 +289,7 @@
     width: 80%
 
 .contentSocial
-  color: $color-active
+  color: mixins.$color-active
 
   &:hover
     transform: scale(1.2)
@@ -296,84 +297,19 @@
 .contentItem
   width: 100%
 // Main Split Container (Base template used for all the grids, will be replaced once @mixins kick in)
-@mixin mainContainer
-  display: grid
-  grid-template-columns: repeat(12, minmax(0px, 1fr))
-  grid-template-rows: repeat(1, minmax(0px, 1fr))
-  background-color: $background-primary
-  justify-items: center
-  gap: 0
-  overflow: hidden
-  position: relative
-.mainSplitContainer
-  display: grid
-  grid-template-columns: repeat(12, 1fr)
-  grid-template-rows: 1fr
-  background-color: $background-primary
-  justify-items: center
-  gap: 0px
-  overflow: hidden
-  position: relative
 
-.splitContainer
-  justify-items: center
+.gridMainContainer
+  @include mixins.gridMainContainer
 
-.columnfr
-  grid-column: 1fr 
+.gridItem
+  @include mixins.gridItem
 
-.column2
-  grid-column: span 2
 
-.column3
-  grid-column: span 3
 
-.column4
-  grid-column: span 4
 
-.column5
-  grid-column: span 5
+.gridImage
+  @include mixins.gridImage
 
-.column6
-  grid-column: span 6
-
-.column7
-  grid-column: span 7
-
-.column8
-  grid-column: span 8
-
-.column9
-  grid-column: span 9
-
-.column10
-  grid-column: span 10
-
-.column12
-  grid-column: span 12
-
-.splitItem
-  position: relative
-  overflow: hidden
-  object-fit: contain
-  display: grid
-  justify-self: end
-
-.splitText
-  font-size: var(--paragraph-font-size)
-  opacity: 0
-  -webkit-transition: 0.4s
-  transition: 0.4s
-
-.splitImage
-  -webkit-transition: 1s
-  transition: 1s
-
-  img
-    width: 100%
-    height: 100%
-    object-fit: fill
-    overflow: hidden
-    transition: 0.4s
 
 .splitDark img
   filter: brightness(0.5)
@@ -468,6 +404,7 @@
   opacity: 0
   cursor: pointer
 
+
 .factionAbsolute
   position: absolute
   object-fit: contain
@@ -544,9 +481,8 @@
 
 
 
-  .mainSplitContainer
+  .mainRectangleContainer, .mainRectangleContainerReverse
     margin: 0
-    font-size: 0.7em
     padding: 0
 
   .mainSlideContainer
@@ -582,12 +518,7 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
     padding: 130px 0
     gap: 0
-  .banner_title
-    font-size: 18px
-  .banner_subtitle
-    font-size: 12px
-  .mainSplitContainer
-    font-size: 1em
+
   .splitAbsoluteText
     padding: 0
   
