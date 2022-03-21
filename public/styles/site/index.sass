@@ -296,13 +296,22 @@
 .contentItem
   width: 100%
 // Main Split Container (Base template used for all the grids, will be replaced once @mixins kick in)
-.mainSplitContainer
+@mixin mainContainer
   display: grid
   grid-template-columns: repeat(12, minmax(0px, 1fr))
   grid-template-rows: repeat(1, minmax(0px, 1fr))
   background-color: $background-primary
   justify-items: center
   gap: 0
+  overflow: hidden
+  position: relative
+.mainSplitContainer
+  display: grid
+  grid-template-columns: repeat(12, 1fr)
+  grid-template-rows: 1fr
+  background-color: $background-primary
+  justify-items: center
+  gap: 0px
   overflow: hidden
   position: relative
 
@@ -417,14 +426,15 @@
   margin: 0
   grid-template-rows: 1fr
   position: relative
+  
 
-.acuUEF
+#acuUEF
   width: 25vw
   height: 100%
-  background-image: url("../../../images/acuUEF.jpg")
+  background-image: url("/../../images/acuUEF.jpg")
   background-size: cover
 
-.acuSeraphim
+#acuSeraphim
   width: 25vw
   height: 100%
   background-image: url("/../../images/acuseraphim.jpg")
@@ -449,7 +459,7 @@
 .acuLeft
   left: 0
 
-.acuBlankScreen
+#acuBlankScreen
   position: absolute
   height: 100%
   width: 100%
