@@ -1,4 +1,5 @@
 @use '../general/mixins'
+
 .main_banner_container
   display: grid
   grid-template-columns: repeat(1, minmax(0px, 1fr))
@@ -18,7 +19,7 @@
 
 .banner_title
   font-size: var(--subtitle-font-size)
-  font-family: mixins.$family-subtitle
+  font-family: mixins.$family-subtitle                       
   font-weight: bolder
   letter-spacing: 6px
   padding: 20px 0
@@ -308,8 +309,12 @@
 
 
 .gridImage
-  @include mixins.gridImage
+  img
+    @include mixins.gridImg
 
+@for $i from 1 through 12
+  .column#{$i}
+    grid-column: span $i
 
 .splitDark img
   filter: brightness(0.5)

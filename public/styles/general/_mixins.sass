@@ -33,15 +33,15 @@ $button-active: #c56e03
   position: relative
   overflow: hidden
   object-fit: contain
+  display: grid
 
   
-@mixin gridImage
-  img
-    width: 100%
-    height: 100%
-    object-fit: fill
-    overflow: hidden
-    transition: 0.4s
+@mixin gridImg
+  width: 100%
+  height: 100%
+  object-fit: fill
+  overflow: hidden
+  transition: 0.4s
 
 //This creates 12 column classes ranging from column 1 to 12. Necessary since the base of every grid container is 12 columns. Done in order to be able to divide by 2,3,4 or 6 pieces (or other combinations such as 3 + 9), the column size doesnt matter as long as the combination of them equals 12).
 @for $i from 1 through 12 

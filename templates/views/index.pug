@@ -110,20 +110,18 @@ block content
         img(src='/images/blacksplat.png' alt='')
 
   //ACU Cards
-  .mainSplitContainer
+  .gridMainContainer
     .column12
       .responsiveText.responsiveTextPadding
         | Whether you are into the chunky UEF mechs and tanks, the Cybran stealthy spiderbots and walking ships, Aeon shielded hover units and donuts or Seraphim abstract alien mix of chickens. FAF has a faction for you to raze your opponents base to the ground.
 
-  .mainSplitContainer.acuPadding
-    //UEF
+  .gridMainContainer.acuPadding
     .column3
       .gridItem.scrollFade.animationLeft#acuUEF.acuCard
     .column9.acuAbsolute
       .gridItem.factionAbsolute
         .gridImage.scrollFade
           img(src='/../../images/uefbg.jpg' alt='')
-    //CYBRAN
     .column3.acuCard
       .gridItem
         .gridImage.scrollFade.animationLeft
@@ -132,7 +130,6 @@ block content
       .gridItem.factionAbsolute
         .gridImage.scrollFade
           img(src='/../../images/cybran.jpg' alt='')
-    //AEON
     .column3.acuCard
       .gridItem
         .gridImage.scrollFade.animationRigth
@@ -170,7 +167,7 @@ block content
   //splat end
   //zoom start
   .rectangleSpace
-    .mainSplitContainer.mainRectangleContainer
+    .gridMainContainer.mainRectangleContainer
       .column8.rectangleContainer
         .responsiveTextTitle.highlightText
           | STRATEGIC ZOOM
@@ -179,7 +176,7 @@ block content
       .column4
         .gridImage.rectangleImage
           img(src='/images/zoomout.jpg' alt='')
-    .mainSplitContainer.mainRectangleContainerReverse
+    .gridMainContainer.mainRectangleContainerReverse
       .column8.rectangleContainer
         .responsiveTextTitle.highlightText
           | RESPONSIVE ECONOMY
@@ -188,7 +185,7 @@ block content
       .column4
         .gridImage.rectangleImage
           img(src='/images/resources.jpg' alt='')
-    .mainSplitContainer.mainRectangleContainer
+    .gridMainContainer.mainRectangleContainer
       .column8.rectangleContainer
         .responsiveTextTitle.highlightText
           | LAND, AIR AND SEA
