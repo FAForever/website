@@ -99,23 +99,26 @@ ul
 
 .splat_main_container
   display: grid
-  grid-template-columns: auto
+  grid-template-columns: 1fr
   position: relative
   padding: 10px 0 10px 0
   justify-items: center
 
+
 .splat_rotate
   position: absolute
   transform: rotate(0.5turn)
-  width: 100vw
+  width: 100%
   z-index: 0
   object-fit: contain
+  overflow: hidden
+
 
 
 .splat
   position: absolute
   width: 100%
-  object-fit: cover
+  object-fit: contain
   bottom: 0
   overflow: hidden
 
@@ -162,20 +165,26 @@ ul
 .topnav_hover:hover, .topnav_item a
   color: mixins.$color-active
 
+
+
+  
 .fab
   padding: 0.15em
-  font-size: 30px
-  height: 10px
   width: 100%
   text-align: center
   text-decoration: none
   color: mixins.$color-inactive
   justify-self: end
   transition: 0.5s
+  font-size: var(--paragraph-font-size)
 
   &:hover
     color: mixins.$color-active
-
+    
+.fa-language
+  color: mixins.$color-active
+  font-size: calc(var(--paragraph-font-size) * 2)
+  padding: 0
 /*===== Regular navbar =====
 
 .main_nav_container
@@ -248,6 +257,7 @@ ul
   li
     padding: 20px
     display: block
+    //border: 1px solid mixins.$color-inactive
     background-color: mixins.$background-secondary
     transition: 0.25s
 
@@ -255,10 +265,20 @@ ul
       color: mixins.$color-active
       background-color: mixins.$color-inactive-plus
 
+.navLanguage
+  font-size: 0.6em
+  top: 1.5em
+  right: 0
+  font-family: mixins.$family-title
+  font-weight: 100
+  li
+    background-color: mixins.$background-primary
+
 .nav_list
   &:hover
     color: mixins.$color-active
     transition: 0.25s
+    cursor: pointer
 
   li
     color: mixins.$color-inactive

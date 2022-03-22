@@ -123,31 +123,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // stuff for the ACU faction cards
   let acuCard = document.getElementsByClassName("acuCard");
   let factionCard = document.getElementsByClassName("factionCard");
-
+  let xACU = 10;
+  
   for (let i = 0; i < acuCard.length; i++) {
-    let x = 10;
     acuCard[i].addEventListener("click", () => {
-      console.log("I'm i" + i);
-      if (x == i) {
-        
-        console.log("I'm if x" + x);
-        console.log("I'm if i" + i);
-        x = 10;
-        factionCard[i].classList.toggle("factionActive");
-        for (let i = 0; i < acuCard.length; i++) {
-          factionCard[i].classList.remove("factionActive");
-        }
-      } else {
-        x = i;
-        console.log("I'm else x" + x);
-        console.log("I'm else i" + i);
-        
-        for (let i = 0; i < acuCard.length; i++) {
-          factionCard[i].classList.remove("factionActive");
-        }
-        factionCard[i].classList.toggle("factionActive");
+      for (let i = 0; i < acuCard.length; i++) {
+        factionCard[i].classList.remove("factionActive");
+        acuCard[i].classList.remove("acuActive");
       }
-      
+      if (xACU == i) {
+        xACU = 5;
+      } else {
+        xACU = i;
+        factionCard[i].classList.toggle("factionActive");
+        acuCard[i].classList.toggle("acuActive");
+      }
       
     });
 
