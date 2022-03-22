@@ -2,40 +2,33 @@
 
 .main_banner_container
   display: grid
-  grid-template-columns: repeat(1, minmax(0px, 1fr))
+  grid-template-columns: 1fr
   background-position: center
   background-size: cover
   padding: 300px 0
-  font-size: 35px
   letter-spacing: 1.2PX
   text-shadow: 0 2px 4px black, 0 8px 16px black
 
-.banner_item
-  width: 100%
-  height: 100%
-  position: relative
-  text-transform: uppercase
-  display: grid
 
 .banner_title
   font-size: var(--subtitle-font-size)
   font-family: mixins.$family-subtitle                       
   font-weight: bolder
   letter-spacing: 6px
-  padding: 20px 0
+  padding: 0.5em 0
 
 .banner_subtitle
   font-size: var(--paragraph-font-size)
   font-family: mixins.$family-paragraph
   font-weight: 600
-  padding: 20PX 0
+  padding: 0.25em 0
 
 .landingButton
   color: mixins.$color-active
   background-color: mixins.$button-inactive
   font-family: mixins.$family-subtitle
   border: 0.15em solid mixins.$button-active
-  font-size: 0.7em
+  font-size: 0.8em
   margin: 0.5em
   padding: 0.5em
   justify-self: center
@@ -71,13 +64,6 @@
     gap: 0
     font-size: 10px
 
-  .banner_subtitle
-    font-size: 12px
-    padding: 5px
-
-  .banner_title
-    font-size: 20px
-    padding: 5px
 
 @media (max-width: 400px)
   .main_banner_container
@@ -85,11 +71,6 @@
     padding: 130px 0
     gap: 0
 
-  .banner_title
-    font-size: 18px
-
-  .banner_subtitle
-    font-size: 12px
 
 /* Scroll container Container with the monkey lord below banner
 
@@ -257,68 +238,10 @@
 
 
 
-/* Content Creator variant of container
 
-.mainContentContainer
-  background-image: url("/../../images/fafbgpattern.jpg")
-  padding: 2.5vw 6vw
-  grid-template-columns: 1fr 1fr
-
-.contentContainer
-  padding: 2vw 2vw
-  position: relative
-
-.contentAbsolute
-  position: absolute
-  bottom: 0
-  z-index: 100
-  color: mixins.$color-active
-  width: 100%
-
-.contentImage
-  position: relative
-  display: inline-block
-
-  a
-    display: inline-block
-    font-size: var(--subtitle-font-size)
-    padding: 1vw
-    border-radius: 20%
-
-  img
-    border-radius: 10%
-    width: 80%
-
-.contentSocial
-  color: mixins.$color-active
-
-  &:hover
-    transform: scale(1.2)
-
-.contentItem
-  width: 100%
 // Main Split Container (Base template used for all the grids, will be replaced once @mixins kick in)
 
-.gridMainContainer
-  @include mixins.gridMainContainer
 
-.gridItem
-  @include mixins.gridItem
-
-
-
-
-.gridImage
-  img
-    @include mixins.gridImg
-
-@for $i from 1 through 12
-  .column#{$i}
-    grid-column: span $i
-
-.splitDark img
-  filter: brightness(0.5)
-  border-radius: 20px
 
 
 
@@ -330,19 +253,17 @@
   direction: rtl
 
 .mainRectangleContainer
+  @include mixins.gridMainContainer
   margin: 2vw 0 2vw 25vw
   background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
   gap: 10px
-  align-items: center
-  transition: 0.4s
 
 .mainRectangleContainerReverse
+  @include mixins.gridMainContainer
   margin: 2vw 25vw 2vw 0
   background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
   gap: 10px
-  align-items: center
   direction: ltr
-  transition: 0.4s
 
 .rectangleContainer
   text-align: left
@@ -350,37 +271,21 @@
     padding: 0.75em
     .responsiveText
       padding: 0.25em 0
-    
-
-.rectangleItem
-  transition: 0.4s
   
-.rectangleImage
-  transition: 1s
 
 
 /* Here you can find stuff related to splitImage containers but in regards to the factions
-
-.acuPadding
-  padding: 0
-  gap: 0
-  margin: 0
-  grid-template-rows: 1fr
-  position: relative
+.factionMainContainer 
+  @include mixins.gridMainContainer
+  padding: 0 5vw
+  background-image: url("/../../images/fafbgmasspattern.jpg") 
   
+.factionCard 
+  display: none
 
-#acuUEF
-  width: 25vw
-  height: 100%
-  background-image: url("/../../images/acuUEF.jpg")
-  background-size: cover
-
-#acuSeraphim
-  width: 25vw
-  height: 100%
-  background-image: url("/../../images/acuseraphim.jpg")
-  background-size: cover
-
+.factionActive 
+  display: block
+  
 .acuCard
   width: auto
   position: relative
@@ -389,45 +294,8 @@
   cursor: pointer
 
   &:hover
-    filter: brightness(1.4)
+    filter: brightness(1.3)
 
-.acuAbsolute
-  position: absolute
-  height: 100%
-  width: 75%
-  right: 0
-
-.acuLeft
-  left: 0
-
-#acuBlankScreen
-  position: absolute
-  height: 100%
-  width: 100%
-  right: 0
-  z-index: 10
-  opacity: 0
-  cursor: pointer
-
-
-.factionAbsolute
-  position: absolute
-  object-fit: contain
-  padding: 0 0
-  opacity: 0
-  transition: 0.4s
-  top: 0
-  height: 100%
-  width: 100%
-
-.acuAbsoluteActive
-  z-index: 10
-  opacity: 1
-
-.displayNone
-  display: none
-.noOpacity
-  opacity: 0
 
 /* Media Changes
 @media (max-width: 1600px)
@@ -452,7 +320,6 @@
 
   .main_banner_container
     padding: 150px 10px
-    gap: 0
     font-size: 10px
 
   .banner_subtitle
@@ -490,26 +357,15 @@
     margin: 0
     padding: 0
 
-  .mainSlideContainer
-    grid-template-columns: repeat(6, minmax(0px, 1fr))
 
-  .absoluteSlide
-    width: 100%
-    font-size: 1em
 
-  .mainMultipleContainer
-    display: none
 
-  .arrowContainer
-    display: block
+
   
  
 @media (max-width: 600px)
   .mainContentContainer, .mainRectangleContainer, .mainRectangleContainerReverse
     grid-template-columns: 1fr
-
-  .mainSlideContainer
-    min-height: 100vw
   
   .mainImprovementsContainer
     grid-template-columns: 1fr

@@ -4,11 +4,11 @@ include ../mixins/flash-messages
 block content
   .main_banner_container.landingBanner
     .banner_container.banner_title
-      .banner_item CONTINUE THE SUPCOM LEGACY IN
+      .gridItem CONTINUE THE SUPCOM LEGACY IN
     .banner_container.banner_title
-      .banner_item FORGED ALLIANCE FOREVER
+      .gridItem FORGED ALLIANCE FOREVER
     .banner_container
-      .banner_item
+      .gridItem
         .banner_subtitle 837 ACUS ON THE BATTLEFIELD RIGHT NOW
         a(href='https://www.faforever.com/client')
           button.landingButton PLAY NOW
@@ -115,41 +115,43 @@ block content
       .responsiveText.responsiveTextPadding
         | Whether you are into the chunky UEF mechs and tanks, the Cybran stealthy spiderbots and walking ships, Aeon shielded hover units and donuts or Seraphim abstract alien mix of chickens. FAF has a faction for you to raze your opponents base to the ground.
 
-  .gridMainContainer.acuPadding
-    .column3
-      .gridItem.scrollFade.animationLeft#acuUEF.acuCard
-    .column9.acuAbsolute
-      .gridItem.factionAbsolute
-        .gridImage.scrollFade
-          img(src='/../../images/uefbg.jpg' alt='')
+  .factionMainContainer
     .column3.acuCard
       .gridItem
         .gridImage.scrollFade.animationLeft
-          img(src='/../../images/acucybran.jpg' alt='')
-    .column9.acuAbsolute
-      .gridItem.factionAbsolute
-        .gridImage.scrollFade
-          img(src='/../../images/cybran.jpg' alt='')
+          img(src='/../../images/ueflogo.jpg' alt='')
+    .column3.acuCard
+      .gridItem
+        .gridImage.scrollFade.animationLeft
+          img(src='/../../images/cybranlogo.jpg' alt='')
     .column3.acuCard
       .gridItem
         .gridImage.scrollFade.animationRigth
-          img(src='/../../images/acuaeon.jpg' alt='')
-    .column9.acuAbsolute.acuLeft
-      .gridItem.factionAbsolute
-        .gridImage.scrollFade
-          img(src='/../../images/aeon.jpg' alt='')
+          img(src='/../../images/aeonlogo.jpg' alt='')
+    
 
     //SERAPHIM
-    .column3
-      .gridItem.scrollFade.animationRigth#acuSeraphim.acuCard
-    .column9.acuAbsolute.acuLeft
-      .gridItem.factionAbsolute
+    .column3.acuCard
+      .gridItem
+        .gridImage.scrollFade.animationLeft
+          img(src='/../../images/seraphimlogo.jpg' alt='')
+    .column12.factionCard
+      .gridItem
+        .gridImage.scrollFade
+          img(src='/../../images/uefbg.jpg' alt='')
+    .column12.factionCard
+      .gridItem
+        .gridImage.scrollFade
+          img(src='/../../images/cybran.jpg' alt='')
+    .column12.factionCard
+      .gridItem
+        .gridImage.scrollFade
+          img(src='/../../images/aeon.jpg' alt='')
+    .column12.factionCard
+      .gridItem
         .gridImage.scrollFade
           img(src='/../../images/seraphim.jpg' alt='')
 
-    .column12#acuBlankScreen.displayNone
-      .gridItem
-        .gridImage.scrollFade
 
   //This is where eco and zoom will go
   //splat start
@@ -167,32 +169,32 @@ block content
   //splat end
   //zoom start
   .rectangleSpace
-    .gridMainContainer.mainRectangleContainer
+    .mainRectangleContainer
       .column8.rectangleContainer
         .responsiveTextTitle.highlightText
           | STRATEGIC ZOOM
           .responsiveText
             |Lead your armies and bases at the same time from afar with the strategic zoom. Have a clear look of what's happening everywhere in a matter of seconds!
       .column4
-        .gridImage.rectangleImage
+        .gridImage
           img(src='/images/zoomout.jpg' alt='')
-    .gridMainContainer.mainRectangleContainerReverse
+    .mainRectangleContainerReverse
       .column8.rectangleContainer
         .responsiveTextTitle.highlightText
           | RESPONSIVE ECONOMY
           .responsiveText
             |With its flux econonomy system, get an economy that responds to your actions instantly and requires you to adapt to the changes in the battlefield!
       .column4
-        .gridImage.rectangleImage
+        .gridImage
           img(src='/images/resources.jpg' alt='')
-    .gridMainContainer.mainRectangleContainer
+    .mainRectangleContainer
       .column8.rectangleContainer
         .responsiveTextTitle.highlightText
           | LAND, AIR AND SEA
           .responsiveText
             |Flatten enemy armies with your bombers, raze their base with battleships and raid their every expansion with your army!
       .column4
-        .gridImage.rectangleImage
+        .gridImage
           img(src='/images/techlevels.jpg' alt='')
 
 
@@ -208,11 +210,11 @@ block content
 
   .main_banner_container.endBanner
     .banner_container.banner_title
-      .banner_item.highlightText PLAY SUPREME COMMANDER
+      .gridItem.highlightText PLAY SUPREME COMMANDER
     .banner_container.banner_title
-      .banner_item THE WAY IT WAS INTENDED
+      .gridItem THE WAY IT WAS INTENDED
     .banner_container
-      .banner_item
+      .gridItem
         a(href="")
           button.landingButton PLAY NOW 
   .splat_main_container.splat_black_background

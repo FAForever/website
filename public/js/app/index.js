@@ -122,40 +122,33 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // stuff for the ACU faction cards
   let acuCard = document.getElementsByClassName("acuCard");
-  let factionAbsolute = document.getElementsByClassName("factionAbsolute");
-  let acuUEF = document.getElementById("acuUEF");
-  acuUEF.style.backgroundImage = "url(/../../images/acuuef.jpg)";
-  let acuSeraphim = document.getElementById("acuSeraphim");
-  let acuBlankScreen = document.getElementById("acuBlankScreen");
+  let factionCard = document.getElementsByClassName("factionCard");
 
   for (let i = 0; i < acuCard.length; i++) {
+    let x = 10;
     acuCard[i].addEventListener("click", () => {
-      factionAbsolute[i].classList.add("acuAbsoluteActive");
-      factionAbsolute[i].style.opacity = "1";
-      acuBlankScreen.style.display = "block";
-
-
-      if (i == 1) {
-        acuUEF.style.backgroundImage = "url(/../../images/acucybran.jpg)";
-      } else if (i == 2) {
-        acuSeraphim.style.backgroundImage = "url(/../../images/acuaeon.jpg)";
+      console.log("I'm i" + i);
+      if (x == i) {
+        
+        console.log("I'm if x" + x);
+        console.log("I'm if i" + i);
+        x = 10;
+        factionCard[i].classList.toggle("factionActive");
+        for (let i = 0; i < acuCard.length; i++) {
+          factionCard[i].classList.remove("factionActive");
+        }
+      } else {
+        x = i;
+        console.log("I'm else x" + x);
+        console.log("I'm else i" + i);
+        
+        for (let i = 0; i < acuCard.length; i++) {
+          factionCard[i].classList.remove("factionActive");
+        }
+        factionCard[i].classList.toggle("factionActive");
       }
-
-    });
-    acuBlankScreen.addEventListener("click", () => {
-
-      acuBlankScreen.style.display = "none";
-      factionAbsolute[i].style.opacity = "0";
-      setTimeout(() => {
-        factionAbsolute[i].classList.remove("acuAbsoluteActive");
-      }, 400);
-
-
-      if (i === 1) {
-        acuUEF.style.backgroundImage = "url(/../../images/acuuef.jpg)";
-      } else if (i === 2) {
-        acuSeraphim.style.backgroundImage = "url(/../../images/acuseraphim.jpg)";
-      }
+      
+      
     });
 
   }
