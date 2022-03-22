@@ -18,7 +18,7 @@ html(lang='en')
     //- Customise the stylesheet for your site by editing /public/styles/site.sass
     link(href="/styles/css/site.min.css?version="+Date.now(), rel="stylesheet")
     script(async, defer, data-domain="faforever.com", src="https://plausible.faforever.com/js/plausible.js")
-    script(src='https://kit.fontawesome.com/33e7e258d3.js' crossorigin='anonymous')
+    script(src="https://kit.fontawesome.com/33e7e258d3.js" crossorigin='anonymous')
 
 
     //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -37,7 +37,7 @@ html(lang='en')
   //- HTML BODY
   body
     .main_topnav_container
-      // this is the "thin" navbar that has forums, discord, youtube icons, etc.
+      // this is the "thin" navbar that has forums, discord, youtube icons, etc.  
       .topnav_container
         a.topnav_item.topnav_hover(href='https://forum.faforever.com/')  Forums
       .topnav_container
@@ -56,6 +56,20 @@ html(lang='en')
       .topnav_container
         a(href='https://github.com/FAForever')
           .fab.fa-github.fa-lg
+      ul.nav_item.topnav_container
+        li.nav_list
+          .fab.fas.fa-language
+            ul.nav_absolute.navLanguage
+              a(href='/')
+                li English
+              a(href='/')
+                li Pусский
+              a(href='/')
+                li Deutsch
+              a(href='/')
+                li Français
+              a(href='/')
+                li Español
     // Main Navbar with FAF NEWS, LOGIN AND DOWNLOAD. 
     .main_nav_container
       .nav_container

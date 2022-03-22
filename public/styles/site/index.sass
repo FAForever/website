@@ -28,7 +28,7 @@
   background-color: mixins.$button-inactive
   font-family: mixins.$family-subtitle
   border: 0.15em solid mixins.$button-active
-  font-size: 0.8em
+  font-size: 1em
   margin: 0.5em
   padding: 0.5em
   justify-self: center
@@ -220,15 +220,18 @@
 /* Improvement Container
 .mainImprovementsContainer 
   display: grid
-  grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr))
+  grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr))
   background-image: url("../../images/fafbgpattern.jpg")
-  padding: 0 3vw 
-  
+  padding: 0 7vw 
+  .responsiveText
+    grid-column: span 3
   .improvementContainer
-    margin: 0 5vw
+    margin: 0 3vw
     
     .responsiveTextTitle
       margin: 0.5em 0 1em 0 
+      .responsiveTextNoPadding
+        padding: 0.35em 0 0 0
     
   
 .improvementImage img
@@ -249,7 +252,7 @@
 
 .rectangleSpace
   padding: 2vw 0 2vw 0
-  background-image: url("/../../images/fafbgmasspattern.jpg")
+  background-image: url("/../../images/fafbgpattern.jpg")
   direction: rtl
 
 .mainRectangleContainer
@@ -277,7 +280,7 @@
 /* Here you can find stuff related to splitImage containers but in regards to the factions
 .factionMainContainer 
   @include mixins.gridMainContainer
-  padding: 0 5vw
+  padding: 0 15vw
   background-image: url("/../../images/fafbgmasspattern.jpg") 
   
 .factionCard 
@@ -295,6 +298,11 @@
 
   &:hover
     filter: brightness(1.3)
+    
+.acuActive
+  filter: brightness(0.55)
+  &:hover
+    filter: brightness(0.55)
 
 
 /* Media Changes
@@ -313,7 +321,8 @@
     width: 600px
   .mainImprovementsContainer
     grid-template-columns: repeat(auto-fit, minmax(45vw, 1fr))
-
+    .responsiveText
+      grid-column: span 2
 @media (max-width: 800px)
   .main_topnav_container
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
@@ -354,7 +363,7 @@
 
 
   .mainRectangleContainer, .mainRectangleContainerReverse
-    margin: 0
+    margin: 6vw 0
     padding: 0
 
 
