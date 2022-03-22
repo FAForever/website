@@ -28,12 +28,15 @@ $button-active: #c56e03
   gap: 0
   overflow: hidden
   position: relative
+  transition: 0.4s
+  align-items: center
 
 @mixin gridItem
   position: relative
   overflow: hidden
   object-fit: contain
   display: grid
+  transition: 0.4s
 
   
 @mixin gridImg
@@ -43,10 +46,24 @@ $button-active: #c56e03
   overflow: hidden
   transition: 0.4s
 
+//Classes used across multiple documents
+
+.gridMainContainer
+  @include gridMainContainer
+
+.gridItem
+  @include gridItem
+
+.gridImage
+  img
+    @include gridImg
 //This creates 12 column classes ranging from column 1 to 12. Necessary since the base of every grid container is 12 columns. Done in order to be able to divide by 2,3,4 or 6 pieces (or other combinations such as 3 + 9), the column size doesnt matter as long as the combination of them equals 12).
 @for $i from 1 through 12 
   .column#{$i}
     grid-column: span $i
+    
+    
+
     
     
 
