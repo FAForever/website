@@ -1,6 +1,7 @@
+
+@use '../abstracts/mixins'
+
 $headerColour: #6990e0
-$headerFont: 'Electrolize', sans-serif
-$badgeFont: 'Russo One', sans-serif
 
 .newshub_container
   min-height: calc(100vh)
@@ -25,7 +26,7 @@ $badgeFont: 'Russo One', sans-serif
   p
     padding: 9px 15px
     color: rgb(214, 214, 214)
-    font-family: $headerFont
+    font-family: mixins.$family-paragraph
     
 
 //sidebars  
@@ -62,15 +63,15 @@ $badgeFont: 'Russo One', sans-serif
     text-align: center
     margin: 0px 0px 5px 0px
     font-size: 13px
-    font-family: $badgeFont
+    font-family: mixins.$family-title
   .articleTitle 
     color: $headerColour
-    font-family: $headerFont
+    font-family: mixins.$family-paragraph
     margin: 0px 0px 3px 0px
   .articleSubtitle
     display: none
     color: $headerColour
-    font-family: $headerFont
+    font-family: mixins.$family-paragraph
   .articleImage 
     margin: 0px 10px 0px 0px
 
@@ -139,13 +140,7 @@ $badgeFont: 'Russo One', sans-serif
       margin: 0px 0px 10px 0px
 
     &.styleHero
-      height: 530px
-      padding: 0px 10px 10px 10px
-      margin: 0px 0px 10px 0px
-      float: left
-      display: flex
-      flex-direction: column
-      align-items: baseline
+
       .articleBadge
         min-width: 80px
       .articleTitle

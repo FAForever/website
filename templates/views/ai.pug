@@ -4,72 +4,64 @@ extends ../layouts/default
 block content
   .main_banner_container.aiBanner
     .banner_container.banner_title
-      .banner_item Improved AI's on
+      .banner_item IMPROVED AI'S ON
     .banner_container.banner_title
       .banner_item FORGED ALLIANCE FOREVER
     .banner_container
       .banner_item
-        .banner_subtitle Cold blooded machines that can kill even the top players
+        .banner_subtitle COLD BLOODED MACHINES THAT WILL NEVER STOP
   .splat_main_container.splat_black_background
     .splat_container
       .splat
         img(src='/images/blacksplat.png' alt='')
   .rectangleSpace
-    .responsiveText.responsiveTextPadding Here are the diverse AIs made by community members on FAF! Besides them being unique and different, they'll prove a challenge to all players! You can find these AIs on the mod vault inside the FAF client.
-    .gridMainContainer.mainRectangleContainer
-      .column9
-        .responsiveTextTitle.highlightText.rectangleContainer
+    .mainRectangleContainerReverse
+      .column4.rectangleContainer
+        .responsiveTextTitle.highlightText
           | M27AI by Maudlin27
-          .responsiveText.responsiveText
-            | Adaptive AI, particularly effective against turtles and on 5x5 and 10x10 chokepoint maps.  Currently estimated as a challenge for sub-400 ranked players 1v1!
+          .responsiveText
+            | Adaptive AI, particularly effective against turtles on small maps.  Currently estimated as a challenge for new 1v1 players!
             br
             a(href="https://forum.faforever.com/topic/2373/ai-development-guide-and-m27ai-v24-devlog" target = "_blank")
-              button.landingButton Learn More   
-      .column3
-        .gridItem.rectangleItem
-          .gridImage.rectangleImage
-            img(src='/images/ai/maudlin.jpg' alt='')
-
-    .gridMainContainer.mainRectangleContainerReverse
-      .column9
-        .responsiveTextTitle.highlightText.rectangleContainer
-          | RGNAI by Relent0r
+              button.smallButton Learn More   
+      .column2
+        .gridImage.rectangleImage
+          img(src='/images/ai/maudlin.jpg' alt='')
+      .column4.rectangleContainer
+        .responsiveTextTitle.highlightText
+          | RNGAI by Relent0r
           .responsiveText.responsiveText
-            | AI aimed at the players wanting to learn 1v1 gameplay. It provides player an avenue to play against something that emulates some of the methods ladder players use to challenge opponents in the first stages of a game!
+            | AI aimed at the players wanting to learn 1v1 gameplay. It provides an avenue to play against something that emulates some of the methods ladder players use!
             br
             a(href="https://forums.faforever.com/viewtopic.php?f=88&t=19149" target = "_blank")
-              button.landingButton Learn More
-      .column3
-        .gridItem.rectangleItem
-          .gridImage.rectangleImage
-            img(src='/images/ai/relentor.jpg' alt='')
+              button.smallButton Learn More
+      .column2
+        .gridImage.rectangleImage
+          img(src='/images/ai/relentor.jpg' alt='')
 
-    .gridMainContainer.mainRectangleContainer
-      .column9
-        .responsiveTextTitle.highlightText.rectangleContainer
+    .mainRectangleContainer
+      .column4.rectangleContainer
+        .responsiveTextTitle.highlightText
           | AI-Uveso by Uveso
           .responsiveText.responsiveText
             | Adaptive AI with multiple sub AIs in order for players to have control on the behavior of the AI! The sub AIs are Adaptive, Overwhelm, Rush, Experimental and Easy!
             br
             a(href="https://forum.faforever.com/topic/350/ai-uveso-v98-ai-mod-for-faforever" target = "_blank")
-              button.landingButton Learn More   
-      .column3
-        .gridItem.rectangleItem
-          .gridImage.rectangleImage
-            img(src='/images/ai/uveso.jpg' alt='')
-    .gridMainContainer.mainRectangleContainerReverse
-      .column9
-        .responsiveTextTitle.highlightText.rectangleContainer
+              button.smallButton Learn More   
+      .column2
+        .gridImage.rectangleImage
+          img(src='/images/ai/uveso.jpg' alt='')
+      .column4.rectangleContainer
+        .responsiveTextTitle.highlightText
           | AI-Swarm by AzraelianAngel
           .responsiveText.responsiveText
             | Swarm is a bit of a middle grounded AI, it is regarded as the most solid economic AI. It tends to be heavy on land but it adapts to air and naval situations!
             br
             a(href="https://forum.faforever.com/topic/53/ai-swarm-ai-mod-for-faforever?_=1646687814769" target = "_blank")
-              button.landingButton Learn More
-      .column3
-        .gridItem.rectangleItem
-          .gridImage.rectangleImage
-            img(src='/images/ai/azrael.jpg' alt='')
+              button.smallButton Learn More
+      .column2
+        .gridImage
+          img(src='/images/ai/azrael.jpg' alt='')
 
   .splat_main_container.splat_black_background
     .splat_container
@@ -87,18 +79,17 @@ block content
         img(src='/images/blacksplat.png' alt='')
   .rectangleSpace
     .responsiveText.responsiveTextPadding These Honorable Mentions are made in Supreme Commander:Forged Alliance but not part of FAF. Nonetheless, the amount of talent and work on them deserves a space in our community.
-    .gridMainContainer.mainRectangleContainer
-      .column9
-        .responsiveTextTitle.highlightText.rectangleContainer
+    .mainRectangleContainer
+      .column9.rectangleContainer
+        .responsiveTextTitle.highlightText
           | LOUD by Sprouto
           .responsiveText.responsiveText
             | Developed over the last 7 years, the LOUD Project is a complete reworking of the core code for Supreme Commander: Forged Alliance. Focusing specifically on improving not only the AI, but overall game performance - LOUD can now easily run games with 5000+ units, at normal speed, on 40k and larger maps. 
             br
             a(href="https://www.moddb.com/mods/loud-ai-supreme-commander-forged-alliance" target = "_blank")
-              button.landingButton Learn More   
+              button.smallButton Learn More   
       .column3
-        .gridItem.rectangleItem
-          .gridImage.rectangleImage
-            img(src='/images/ai/loud.jpg' alt='')
+        .gridImage.rectangleImage
+          img(src='/images/ai/loud.jpg' alt='')
 
 block js

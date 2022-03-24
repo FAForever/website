@@ -1,0 +1,97 @@
+// Background Colors 
+$background-primary: #000000
+$background-secondary: #111111
+
+/* Font Variables */
+
+// Font Color
+$color-active: #FFFFFF
+$color-inactive: #c2c2c2
+$color-inactive-plus: #5e5e5e
+
+// Font Family Styles
+$family-paragraph: "Electrolize", "Orbitron", "Russo One"
+$family-title: "Russo One", "Orbitron", "Electrolize"
+$family-subtitle: "Orbitron", "Electrolize", "Russo One"
+
+//Button Colors
+$button-inactive: #f7941d
+$button-active: #c56e03
+
+//Mixins
+
+@mixin gridMainContainer
+  display: grid
+  grid-template-columns: repeat(12, 1fr)
+  grid-template-rows: 1fr
+  background-color: $background-primary
+  gap: 0
+  overflow: hidden
+  position: relative
+  transition: 0.4s
+  align-items: center
+
+@mixin gridItem
+  position: relative
+  overflow: hidden
+  object-fit: contain
+  display: grid
+  transition: 0.4s
+
+  
+@mixin gridImg
+  width: 100%
+  height: 100%
+  object-fit: fill
+  overflow: hidden
+  transition: 0.4s
+
+@mixin button
+  color: $color-active
+  background-color: $button-inactive
+  font-family: $family-subtitle
+  border: 0.15em solid $button-active
+  font-size: 1em
+  margin: 0.5em
+  padding: 0.5em
+  justify-self: center
+  transition: 0.4s
+  font-weight: bold
+  letter-spacing: 0.1em
+  cursor: pointer
+
+  &:hover
+    background-color: $button-active
+
+//Classes used across multiple documents
+
+.gridMainContainer
+  @include gridMainContainer
+
+.gridItem
+  @include gridItem
+
+.gridImage
+  img
+    @include gridImg
+    
+.landingButton
+  @include button
+
+.smallButton
+  @include button
+  font-size: 0.75em
+  margin: 0.25em
+  padding: 0.25em
+//This creates 12 column classes ranging from column 1 to 12. Necessary since the base of every grid container is 12 columns. Done in order to be able to divide by 2,3,4 or 6 pieces (or other combinations such as 3 + 9), the column size doesnt matter as long as the combination of them equals 12).
+@for $i from 1 through 12 
+  .column#{$i}
+    grid-column: span $i
+    
+    
+
+    
+    
+
+
+
