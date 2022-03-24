@@ -3,7 +3,7 @@
 
 ## About the FAForever Website
 
-![Imgur](https://imgur.com/rM2K5bG.png)
+![Imgur](https://imgur.com/qU6OXoA.png)
 
 This is the repository for our main website [FAForever.com](https://www.faforever.com)
 
