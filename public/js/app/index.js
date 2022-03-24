@@ -2,24 +2,36 @@ document.addEventListener("DOMContentLoaded", function (event) {
   console.log("Lock and loaded!");
 
   //JS for the main navbar menus to open on hover and close when leaving (GAME, COMMUNITY, etc). It uses mobilenav-active because it just needs the display:block        
+  let topNavAbsolute = document.getElementsByClassName("topNavAbsolute");
+  let topNavList = document.getElementsByClassName("topNavList");
   let navlist = document.getElementsByClassName("nav_list");
   let navabsolute = document.getElementsByClassName("nav_absolute");
 
 
   for (let i = 0; i < navlist.length; i++) {
+    //When you mouseover/click, menu appears
     navlist[i].addEventListener("mouseover", function () {
       navabsolute[i].classList.add("mobilenav_active");
-      
     });
-
+    
+    //when you mouseout/leave, menu dissapears
     navlist[i].addEventListener("mouseout", function () {
       for (x = 0; x < navabsolute.length; x++) {
         navabsolute[x].classList.remove("mobilenav_active");
-
       }
     });
   }
-
+  //The mouseover here needs to change to click but by doing so, the mouseout triggers as soon as you  enter the list or leave the icon.
+  topNavList[0].addEventListener("mouseover", function () {
+    topNavAbsolute[0].classList.add("mobilenav_active");
+  });
+  topNavList[0].addEventListener("mouseout", function () {
+    for (x = 0; x < topNavAbsolute.length; x++) {
+      topNavAbsolute[x].classList.remove("mobilenav_active");
+    }
+  });
+  
+  
   //JS for mobile navbar, when clicking the menus on the navbar, it shows of the contents inside of them. For example GAME > Tutorials, Advanced AI, etc.
   let blackitem = document.getElementsByClassName("mobilenav_item");
   let blackul = document.getElementsByClassName("mobilenav_ul");

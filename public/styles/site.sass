@@ -1,33 +1,26 @@
-// variables & mixins
-@use 'general/variables'
-@use 'general/mixins'
+//All of these will be taken to site.min.css and get combined there into one minimized css file
 
-// fonts
-@use 'fonts/font-awesome/fontawesome'
-
-
-// reset
-@use 'general/reset'
-
-// layout
-@use 'partials/layout'
+// // Abstracts
+@use 'abstracts/variables'
+@use 'abstracts/mixins'
 
 
+// Layout
+@use 'layout/layout'
+@use 'layout/navigation'
 
-// general
-@use 'general/navigation'
+//Base (Used for higher support cross browser
+@use 'base/reset'
 
-
-// page-related
+// Page-related
 @use 'site/account.sass'
 @use 'site/client.sass'
 @use 'site/contributions.sass'
 @use 'site/index.sass'
 @use 'site/ai.sass'
+@use 'site/tutorials-guides.sass'
 @use 'site/content.sass'
 @use 'site/leaderboards.sass'
-@use 'site/news.sass'
 @use 'site/newshub.sass'
-@use 'site/post.sass'
 @use 'site/clans.sass'
 

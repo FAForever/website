@@ -12,6 +12,8 @@ html(lang='en')
 
     // Fonts
     link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css2?family=Electrolize&display=swap' rel='stylesheet')
+
     link(href='https://fonts.googleapis.com/css2?family=Electrolize&family=Russo+One&display=swap' rel='stylesheet' type='text/css')
     link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Orbitron&display=swap')
 
@@ -57,18 +59,18 @@ html(lang='en')
         a(href='https://github.com/FAForever')
           .fab.fa-github.fa-lg
       ul.nav_item.topnav_container
-        li.nav_list
+        li.topNavList
           .fab.fas.fa-language
-            ul.nav_absolute.navLanguage
-              a(href='/')
+            ul.topNavAbsolute
+              a(href='?lng=en')
                 li English
-              a(href='/')
+              a(href='?lng=ru')
                 li Pусский
-              a(href='/')
+              a(href='?lng=ge')
                 li Deutsch
-              a(href='/')
+              a(href='?lng=fr')
                 li Français
-              a(href='/')
+              a(href='?lng=es')
                 li Español
     // Main Navbar with FAF NEWS, LOGIN AND DOWNLOAD. 
     .main_nav_container
@@ -131,8 +133,7 @@ html(lang='en')
         a(href='/login')
           .nav_item LOGIN
       .nav_container.nav_end.nav_download
-        a(href='https://www.faforever.com/client')
-          .nav_link DOWNLOAD 
+        a(href='https://www.faforever.com/client') DOWNLOAD 
     // the mobilenav is the mobile navbar, it has two stickies, one of them is the sticky for the mobile menu (so it stays with the user) and the second one is the black backgroud (so when the user opens the mobile menu, everything else darkens.)
     #mobilenav_bg_sticky
       #mobilenav_bg
@@ -230,7 +231,7 @@ html(lang='en')
 
         //- The content block should contain the body of your template's content
     block content
-
+    
     .mainFooterContainer
       .footerContainer
         .footerItem
