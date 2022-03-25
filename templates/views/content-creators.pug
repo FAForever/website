@@ -1,4 +1,59 @@
 extends ../layouts/default
-
+block bannerData
+  - var bannerImage = "contentcreator"
+  - var bannerFirstTitle = " FROM ENTERTAINING CASTERS TO "
+  - var bannerSecondTitle = "TOP PLAYERS ANALYZING MATCHES"
+  - var bannerSubTitle = "EITHER LAUGH OR LEARN WITH THEM, MAYBE BOTH?"
 block content
-	h1 Content Creators
+  
+  .gridMainContainer.mainContentContainer
+    .gridContainer.column3.contentContainer
+      .gridImage.contentImage
+        .contentAbsolute
+          a(href='https://www.twitch.tv/faflive' target='_blank')
+            .fab.fa-twitch.fa-lg.contentSocial
+          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
+            .fab.fa-youtube.fa-lg.contentSocial
+        img(src='../../img/content-creator/willow.jpg' alt='')
+      .responsiveTextTitle Willows Duality 
+        .responsiveTextNoPadding FAF caster that has changed his logo about 4 times and plays really bad but is funny.
+    .gridContainer.column3.contentContainer
+      .gridImage.contentImage
+        .contentAbsolute
+          a(href='https://www.twitch.tv/faflive' target='_blank')
+            .fab.fa-twitch.fa-lg.contentSocial
+          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
+            .fab.fa-youtube.fa-lg.contentSocial
+        img(src='../../img/content-creator/derp.jpg' alt='')
+      .responsiveTextTitle Derp
+        .responsiveTextNoPadding King of supcom memes, casts a little bit of everything and his videos always have their meme edits.
+    .gridContainer.column3.contentContainer
+      .gridImage.contentImage
+        .contentAbsolute
+          a(href='https://www.twitch.tv/faflive' target='_blank')
+            .fab.fa-twitch.fa-lg.contentSocial
+          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
+            .fab.fa-youtube.fa-lg.contentSocial
+        img(src='../../img/content-creator/duelist.jpg' alt='')
+      .responsiveTextTitle The Duelist
+        .responsiveTextNoPadding TheDuelist creates casts, plays mid level ladder matches, and breaks down units and strategies mathematically.
+    .gridContainer.column3.contentContainer
+      .gridImage.contentImage
+        .contentAbsolute
+          a(href='https://www.twitch.tv/faflive' target='_blank')
+            .fab.fa-twitch.fa-lg.contentSocial
+          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
+            .fab.fa-youtube.fa-lg.contentSocial
+        img(src='../../img/content-creator/endranii.jpg' alt='')
+      .responsiveTextTitle Endranii
+        .responsiveTextNoPadding Angry european badger that casts games with his seductive bear voice
+    .gridContainer.column3.contentContainer
+      .gridImage.contentImage
+        .contentAbsolute
+          a(href='https://www.twitch.tv/faflive' target='_blank')
+            .fab.fa-twitch.fa-lg.contentSocial
+          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
+            .fab.fa-youtube.fa-lg.contentSocial
+        img(src='../../img/content-creator/tcop.jpg' alt='')
+      .responsiveTextTitle TCOP
+        .responsiveTextNoPadding Runs a primarily FAF YouTube (with a small variety of other games) where he uploads 3 to 4 times a week. 

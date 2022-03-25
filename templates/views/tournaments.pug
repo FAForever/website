@@ -1,5 +1,9 @@
 extends competitive_nav
-
+block bannerData
+  - var bannerImage = "tournament"
+  - var bannerFirstTitle = "WHERE THE BEST PLAYERS"
+  - var bannerSecondTitle = "BEAT EACH OTHER"
+  - var bannerSubTitle = "LET'S SEE WHO'S THE BEST"
 block cContent
     if error
         h3 Error: No response from Challonge

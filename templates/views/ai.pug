@@ -1,21 +1,14 @@
 extends ../layouts/default
+block bannerData
+  - var bannerImage = "ai"
+  - var bannerFirstTitle = "IMPROVED AI'S ON"
+  - var bannerSecondTitle = "FORGED ALLIANCE FOREVER"
+  - var bannerSubTitle = "COLD BLOODED MACHINES THAT WILL NEVER STOP"
 
+block content    
 
-block content
-  .main_banner_container.aiBanner
-    .banner_container.banner_title
-      .banner_item IMPROVED AI'S ON
-    .banner_container.banner_title
-      .banner_item FORGED ALLIANCE FOREVER
-    .banner_container
-      .banner_item
-        .banner_subtitle COLD BLOODED MACHINES THAT WILL NEVER STOP
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat
-        img(src='/images/blacksplat.png' alt='')
   .rectangleSpace
-    .mainRectangleContainerReverse
+    .mainRectangleContainerReverseAI
       .column4.rectangleContainer
         .responsiveTextTitle.highlightText
           | M27AI by Maudlin27
@@ -39,7 +32,7 @@ block content
         .gridImage.rectangleImage
           img(src='/images/ai/relentor.jpg' alt='')
 
-    .mainRectangleContainer
+    .mainRectangleContainerAI
       .column4.rectangleContainer
         .responsiveTextTitle.highlightText
           | AI-Uveso by Uveso
@@ -79,7 +72,7 @@ block content
         img(src='/images/blacksplat.png' alt='')
   .rectangleSpace
     .responsiveText.responsiveTextPadding These Honorable Mentions are made in Supreme Commander:Forged Alliance but not part of FAF. Nonetheless, the amount of talent and work on them deserves a space in our community.
-    .mainRectangleContainer
+    .mainRectangleContainerAI
       .column9.rectangleContainer
         .responsiveTextTitle.highlightText
           | LOUD by Sprouto

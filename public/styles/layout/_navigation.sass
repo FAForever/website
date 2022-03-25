@@ -1,5 +1,5 @@
+@use '../abstracts/variables'
 @use '../abstracts/mixins'
-
 
 \:root
  
@@ -12,15 +12,15 @@
 /* Used as white text between stuff
 
 .responsiveTextTitle
-  font-family: mixins.$family-subtitle
+  font-family: variables.$family-subtitle
   font-size: var(--subtitle-font-size)
 
 .responsiveText
   font-size: var(--paragraph-font-size)
   padding: 1.2em 0
   line-height: 1.5em
-  color: mixins.$color-active
-  font-family: mixins.$family-paragraph
+  color: variables.$color-active
+  font-family: variables.$family-paragraph
   direction: ltr
 
 .responsiveTextPadding
@@ -29,8 +29,8 @@
 .responsiveTextNoPadding
   font-size: var(--paragraph-font-size)
   line-height: 1.5em
-  color: mixins.$color-active
-  font-family: mixins.$family-paragraph
+  color: variables.$color-active
+  font-family: variables.$family-paragraph
   direction: ltr
 
 @media (max-width: 1600px)
@@ -53,22 +53,22 @@
 
 
 html
-  font-family: mixins.$family-paragraph
+  font-family: variables.$family-paragraph
 
 body
   text-align: center
   background-attachment: fixed
-  background-color: mixins.$background-secondary
+  background-color: variables.$background-secondary
   background-position: center center
   margin: 0 0 0 0
   padding-top: 0
-  font-family: mixins.$family-paragraph
-  color: mixins.$color-active
+  font-family: variables.$family-paragraph
+  color: variables.$color-active
 
 a
   &:link
     text-decoration: none
-    color: mixins.$color-inactive
+    color: variables.$color-inactive
     transition: 0.5s
 
   &:visited
@@ -76,7 +76,7 @@ a
     color: inherit
 
   &:hover
-    color: mixins.$color-active
+    color: variables.$color-active
 
 ul
   padding: 0
@@ -86,14 +86,14 @@ ul
   margin: 10vw
   font-size: 4vw
   padding: 5vw
-  background-color: mixins.$button-inactive
-  color: mixins.$color-active
-  font-family: mixins.$family-title
+  background-color: variables.$button-inactive
+  color: variables.$color-active
+  font-family: variables.$family-title
   transition: 0.4s
 
   &:hover
-    background-color: mixins.$button-active
-    color: mixins.$color-active
+    background-color: variables.$button-active
+    color: variables.$color-active
 
 /*===== Splat Starts =====
 
@@ -128,11 +128,11 @@ ul
   grid-column: 1/-1
 
 .splat_black_background
-  background-color: mixins.$background-primary
+  background-color: variables.$background-primary
 
 .separationBar
   padding: 20px 0
-  background-color: mixins.$background-secondary
+  background-color: variables.$background-secondary
 
 /*=============== Nav Bar ===============
 /*===== Top Navbar =====
@@ -141,14 +141,14 @@ ul
   display: grid
   grid-template-columns: repeat(12, max-content)
   grid-template-rows: minmax(10px, 1fr)
-  color: mixins.$color-inactive-plus
-  font-size: calc(var(--paragraph-font-size))
-  background-color: mixins.$background-primary
+  color: variables.$color-inactive-plus
+  font-size: calc(var(--paragraph-font-size) / 1.2)
+  background-color: variables.$background-primary
   padding: 0.3em
   position: relative
   justify-content: end
   place-items: center
-  font-family: mixins.$family-paragraph
+  font-family: variables.$family-paragraph
 
 .topnav_container
   padding: 0 0.5em
@@ -164,7 +164,7 @@ ul
   justify-self: end
 
 .topnav_hover:hover, .topnav_item a
-  color: mixins.$color-active
+  color: variables.$color-active
 
 
 
@@ -174,16 +174,16 @@ ul
   width: 100%
   text-align: center
   text-decoration: none
-  color: mixins.$color-inactive
+  color: variables.$color-inactive
   justify-self: end
   transition: 0.5s
   font-size: var(--paragraph-font-size)
 
   &:hover
-    color: mixins.$color-active
+    color: variables.$color-active
     
 .fa-language
-  color: mixins.$color-active
+  color: variables.$color-active
   font-size: calc(var(--paragraph-font-size) * 2)
   padding: 0
   
@@ -196,38 +196,38 @@ ul
   font-size: 0.6em
   top: 1.5em
   right: 0
-  font-family: mixins.$family-title
+  font-family: variables.$family-title
   font-weight: 100
   a
     li
       padding: 20px
       display: block
-      //border: 1px solid mixins.$color-inactive
-      background-color: mixins.$background-primary
+      //border: 1px solid variables.$color-inactive
+      background-color: variables.$background-primary
       transition: 0.25s
 
       &:hover
-        color: mixins.$color-active
-        background-color: mixins.$color-inactive-plus
+        color: variables.$color-active
+        background-color: variables.$color-inactive-plus
   
 .topNavList
   &:hover
-    color: mixins.$color-active
+    color: variables.$color-active
     transition: 0.25s
     cursor: pointer
 
   li
-    color: mixins.$color-inactive
+    color: variables.$color-inactive
 /*===== Regular navbar =====
 
 .main_nav_container
   display: grid
   grid-template-columns: max-content minmax(50px, auto) max-content max-content
   grid-template-rows: auto
-  font-size: calc(var(--subtitle-font-size) / 1.35)
-  background-color: mixins.$background-secondary
-  color: mixins.$color-inactive
-  font-family: mixins.$family-paragraph
+  font-size: calc(var(--subtitle-font-size) / 1.5)
+  background-color: variables.$background-secondary
+  color: variables.$color-inactive
+  font-family: variables.$family-paragraph
   justify-items: center
   padding: 10px 10px 0 10px
 
@@ -258,18 +258,18 @@ ul
   place-self: center
 
 .nav_download
-  background-color: mixins.$button-inactive
-  border: 0.1em solid mixins.$button-active
+  background-color: variables.$button-inactive
+  border: 0.1em solid variables.$button-active
   letter-spacing: 0.4px
   padding: 10px
   margin-left: 20px
   transition: 0.25s
   
   a
-    color: mixins.$color-active
+    color: variables.$color-active
 
   &:hover
-    background-color: mixins.$button-active
+    background-color: variables.$button-active
 
 
 
@@ -291,24 +291,24 @@ ul
   li
     padding: 20px
     display: block
-    //border: 1px solid mixins.$color-inactive
-    background-color: mixins.$background-secondary
+    //border: 1px solid variables.$color-inactive
+    background-color: variables.$background-secondary
     transition: 0.25s
 
     &:hover
-      color: mixins.$color-active
-      background-color: mixins.$color-inactive-plus
+      color: variables.$color-active
+      background-color: variables.$color-inactive-plus
 
 
 
 .nav_list
   &:hover
-    color: mixins.$color-active
+    color: variables.$color-active
     transition: 0.25s
     cursor: pointer
 
   li
-    color: mixins.$color-inactive
+    color: variables.$color-inactive
 
 .fa-caret-down
   transition: 0.35s
@@ -327,8 +327,8 @@ ul
   display: none
   top: 0
   z-index: 100
-  background-color: mixins.$background-secondary
-  border: 1px solid mixins.$color-active
+  background-color: variables.$background-secondary
+  border: 1px solid variables.$color-active
 
 .main_mobilenav_container
   display: grid
@@ -336,7 +336,7 @@ ul
   grid-template-rows: auto
   justify-items: left
   align-content: center
-  font-family: mixins.$family-subtitle
+  font-family: variables.$family-subtitle
   text-align: left
   font-size: 24px
   .mobilenavContainer
@@ -352,14 +352,14 @@ ul
 
 #mobilenav_bars
   padding: 10px
-  background-color: mixins.$background-secondary
-  border: 1px solid mixins.$color-inactive
+  background-color: variables.$background-secondary
+  border: 1px solid variables.$color-inactive
   justify-self: right
 
 .mobilenav_bar1, .mobilenav_bar2, .mobilenav_bar3
   width: 35px
   height: 5px
-  background-color: mixins.$color-active
+  background-color: variables.$color-active
   margin: 6px 0
   transition: 0.4s
 
@@ -418,7 +418,7 @@ ul
 
   li
     padding: 15px 10px 15px 10px
-    color: mixins.$color-inactive
+    color: variables.$color-inactive
 
 .mobilenav_active
   display: block
@@ -430,7 +430,7 @@ ul
 .mobilenav_caret .fa-caret-down
   transform: rotate(-0.25turn)
   transition: 0.5s
-  color: mixins.$color-active
+  color: variables.$color-active
 
 /* Footer Navbar
 
@@ -439,12 +439,16 @@ ul
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
   grid-template-rows: minmax(10px, 1fr)
   gap: 2vw
-  color: mixins.$color-inactive
+  color: variables.$color-inactive
   background: linear-gradient(180deg, black 0%, #222222 100%)
   padding: 20px 10px 50px 10px
   justify-content: center
   text-align: left
+  
 
+.endBanner
+  background-image: url("/../../images/footerbanner.jpg")
+  
 .footerContainer
   padding: 0
 
@@ -461,25 +465,26 @@ ul
 
   ul
     font-size: var(--paragraph-font-size)
-    font-family: mixins.$family-subtitle
-    color: mixins.$color-active
+    font-family: variables.$family-subtitle
+    color: variables.$color-active
 
   li
     list-style-type: none
     margin-left: 1em
     font-size: 0.8em
-    font-family: mixins.$family-paragraph
-    border: 1px solid mixins.$background-secondary
-    color: mixins.$color-inactive
+    
+    font-family: variables.$family-paragraph
+    border: 1px solid variables.$background-secondary
+    color: variables.$color-inactive
 
     &:hover
-      color: mixins.$color-active
+      color: variables.$color-active
       transition: 0.4s
-      background-color: mixins.$background-secondary
-      border: 1px solid mixins.$color-inactive
+      background-color: variables.$background-secondary
+      border: 1px solid variables.$color-inactive
 
   a
-    color: mixins.$color-active
+    color: variables.$color-active
 
 @media (max-width: 800px)
   .main_topnav_container

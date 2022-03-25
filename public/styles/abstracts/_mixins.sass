@@ -1,22 +1,4 @@
-// Background Colors 
-$background-primary: #000000
-$background-secondary: #111111
-
-/* Font Variables */
-
-// Font Color
-$color-active: #FFFFFF
-$color-inactive: #c2c2c2
-$color-inactive-plus: #5e5e5e
-
-// Font Family Styles
-$family-paragraph: "Electrolize", "Orbitron", "Russo One"
-$family-title: "Russo One", "Orbitron", "Electrolize"
-$family-subtitle: "Orbitron", "Electrolize", "Russo One"
-
-//Button Colors
-$button-inactive: #f7941d
-$button-active: #c56e03
+@use '../abstracts/variables'
 
 //Mixins
 
@@ -24,7 +6,7 @@ $button-active: #c56e03
   display: grid
   grid-template-columns: repeat(12, 1fr)
   grid-template-rows: 1fr
-  background-color: $background-primary
+  background-color: variables.$background-primary
   gap: 0
   overflow: hidden
   position: relative
@@ -47,11 +29,11 @@ $button-active: #c56e03
   transition: 0.4s
 
 @mixin button
-  color: $color-active
-  background-color: $button-inactive
-  font-family: $family-subtitle
-  border: 0.15em solid $button-active
-  font-size: 1em
+  color: variables.$color-active
+  background-color: variables.$button-inactive
+  font-family: variables.$family-subtitle
+  border: 0.15em solid variables.$button-active
+  font-size: 1.5em
   margin: 0.5em
   padding: 0.5em
   justify-self: center
@@ -61,7 +43,20 @@ $button-active: #c56e03
   cursor: pointer
 
   &:hover
-    background-color: $button-active
+    background-color: variables.$button-active
+    
+// Rectangle Mixins
+
+@mixin mainRectangleContainer
+  @include gridMainContainer
+  background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
+  gap: 10px
+
+@mixin mainRectangleContainerReverse
+  @include gridMainContainer
+  background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
+  gap: 10px
+  direction: ltr
 
 //Classes used across multiple documents
 

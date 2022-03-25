@@ -92,26 +92,26 @@ html(lang='en')
             ul.nav_absolute
               a(href='/scfa-vs-faf')
                 li SC:FA vs FAF
-              a(href='/tutorials-guides')
-                li Tutorials/Guides
-              a(href='https://kazbek.github.io/FAF-Analytics/')
-                li Player Statistics
               a(href='/ai')
                 li Advanced AIs
+              a(href='/tutorials-guides')
+                li Tutorials/Guides
               a(href='https://unitdb.faforever.com/')
                 li Unit Database
           li.nav_list
             | COMMUNITY
             .fas.fa-caret-down
             ul.nav_absolute
-              a(href='/streamers-and-casters')
-                li Streamers and Casters
+              a(href='/faf-teams')
+                li FAF Teams
+              a(href='/content-creators')
+                li Content Creators
 
               a(href='/contribution')
-                li  Contributors and Developers
-
-              a(href='/volunteer-positions')
-                li Volunteer Positions
+                li  Contribute to FAF
+              a(href='/donation')
+                li  Donate to FAF
+              
 
           li.nav_list
             | COMPETITIVE
@@ -222,14 +222,28 @@ html(lang='en')
       .splat_container
         .splat_rotate
           img(src='/images/splat.png' alt='')
-          //- NOTE:
-          //- There is no .container wrapping class around body blocks to allow more flexibility in design.
-          //- Remember to include it in your templates when you override the intro and content blocks!
+          
+    block bannerData    
+      - var bannerImage = "landing"
+      - var bannerFirstTitle = "CONTINUE THE SUPCOM LEGACY IN"
+      - var bannerSecondTitle = "FORGED ALLIANCE FOREVER"
+      - var bannerSubTitle = "837 ACUS ON THE BATTLEFIELD RIGHT NOW"
+    
+    block banner
+    mixin banner()
+      .mainBannerContainer(class= bannerImage + 'Banner')(style='background-image: url(../images/banner/' +bannerImage+ '.jpg);')
+        .bannerContainer.bannerTitle #{bannerFirstTitle}
+        .bannerContainer.bannerTitle #{bannerSecondTitle}
+        .bannerContainer.bannerSubtitle #{bannerSubTitle}
+        block bannerButton 
 
-          //- The Intro block appears above flash messages (used for temporary information display)
-    block intro
-
-        //- The content block should contain the body of your template's content
+    +banner()
+    .splat_main_container.splat_black_background
+      .splat_container
+        .splat
+          img(src='/images/blacksplat.png' alt='')
+      
+      //- The content block should contain the body of your template's content
     block content
     
     .mainFooterContainer
