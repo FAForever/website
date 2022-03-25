@@ -1,18 +1,11 @@
 extends ../layouts/default
-
+block bannerData
+  - var bannerImage = "tutorial"
+  - var bannerFirstTitle = "TIPS AND TRICKS TO "
+  - var bannerSecondTitle = "SURPASS YOUR OPPONENTS"
+  - var bannerSubTitle = "THEY'LL NEVER KNOW WHAT HIT THEM"
 block content
-  .main_banner_container.landingBanner
-    .banner_container.banner_title
-      .banner_item TIPS AND TRICKS TO 
-    .banner_container.banner_title
-      .banner_item SURPASS YOUR OPPONENTS
-    .banner_container
-      .banner_item
-        .banner_subtitle THEY'LL NEVER KNOW WHAT HIT THEM
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat
-        img(src='/images/blacksplat.png' alt='')
+
   .rectangleSpace
     .mainRectangleContainerReverse
       .column4.rectangleContainer

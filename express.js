@@ -173,6 +173,7 @@ app.route('/news').get(function(req, res) {
 });
 //Game pages
 app.get('/scfa-vs-faf', require(routes + 'scfa-vs-faf'));
+app.get('/donation', require(routes + 'donation'));
 app.get('/tutorials-guides', require(routes + 'tutorials-guides'));
 app.get('/ai', require(routes + 'ai'));
 app.get('/patchnotes', require(routes + 'patchnotes'));

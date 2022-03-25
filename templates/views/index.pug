@@ -1,24 +1,12 @@
 extends ../layouts/default
-include ../mixins/flash-messages
 
+block bannerButton
+  br
+  a(href='https://www.faforever.com/client')
+    button.landingButton PLAY NOW
 block content
-  .main_banner_container.landingBanner
-    .banner_container.banner_title
-      .gridItem CONTINUE THE SUPCOM LEGACY IN
-    .banner_container.banner_title
-      .gridItem FORGED ALLIANCE FOREVER
-    .banner_container
-      .gridItem
-        .banner_subtitle 837 ACUS ON THE BATTLEFIELD RIGHT NOW
-          br
-          a(href='https://www.faforever.com/client')
-            button.landingButton PLAY NOW
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat
-        img(src='/images/blacksplat.png' alt='')
-
-  // work in progress
+  
+  //Monkeylord Background 
   .mainScrollContainer
     .scroll_container.scrollRelative
       .scroll_absolute
@@ -78,7 +66,7 @@ block content
       .responsiveTextTitle Advanced AIs 
         .responsiveTextNoPadding Community made AIs that can provide a real challenge! Each with a different specialization!
           
-    .improvementContainer
+    //.improvementContainer
       .gridImage.improvementImage
         img(src='/images/fafstatistics.jpg' alt='')
       .responsiveTextTitle Player Statistics
@@ -89,6 +77,11 @@ block content
         img(src='/images/faftournaments.jpg' alt='')
       .responsiveTextTitle Tournaments
         .responsiveTextNoPadding From the yearly LoTS and Rainbow Cup, the classic King of Setons and King of Dual Gap to other cross-community tournaments!
+    .improvementContainer
+      .gridImage.improvementImage
+        img(src='/images/banner/donation.jpg' alt='')
+      .responsiveTextTitle Placeholder
+        .responsiveTextNoPadding What should be placed here? This poor sod doesn't know what to be :(
            
   
     //Factions Start here
@@ -166,30 +159,30 @@ block content
   //zoom start
   .rectangleSpace
     .mainRectangleContainer
-      .column8.rectangleContainer
+      .column7.rectangleContainer
         .responsiveTextTitle.highlightText
           | STRATEGIC ZOOM
           .responsiveText
             |Lead your armies and bases at the same time from afar with the strategic zoom. Have a clear look of what's happening everywhere in a matter of seconds!
-      .column4
+      .column5
         .gridImage
           img(src='/images/zoomout.jpg' alt='')
     .mainRectangleContainerReverse
-      .column8.rectangleContainer
+      .column7.rectangleContainer
         .responsiveTextTitle.highlightText
           | RESPONSIVE ECONOMY
           .responsiveText
             |With its flux econonomy system, get an economy that responds to your actions instantly and requires you to adapt to the changes in the battlefield!
-      .column4
+      .column5
         .gridImage
           img(src='/images/resources.jpg' alt='')
     .mainRectangleContainer
-      .column8.rectangleContainer
+      .column7.rectangleContainer
         .responsiveTextTitle.highlightText
           | LAND, AIR AND SEA
           .responsiveText
             |Flatten enemy armies with your bombers, raze their base with battleships and raid their every expansion with your army!
-      .column4
+      .column5
         .gridImage
           img(src='/images/techlevels.jpg' alt='')
 
@@ -204,16 +197,13 @@ block content
       .splat_rotate
         img(src='/images/blacksplat.png' alt='')
 
-  .main_banner_container.endBanner
-    .banner_container.banner_title
-      .gridItem.highlightText PLAY SUPREME COMMANDER
-    .banner_container.banner_title
-      .gridItem THE WAY IT WAS INTENDED
-    .banner_container
-      .gridItem.banner_subtitle
-        br
-        a(href='https://www.faforever.com/client')
-          button.landingButton PLAY NOW
+  .mainBannerContainer.endBanner
+    .bannerContainer.bannerTitle.highlightText PLAY SUPREME COMMANDER
+    .bannerContainer.bannerTitle THE WAY IT WAS INTENDED
+    .bannerContainer.bannerSubtitle
+      br
+      a(href='https://www.faforever.com/client')
+        button.landingButton PLAY NOW
   .splat_main_container.splat_black_background
     .splat_container
       .splat

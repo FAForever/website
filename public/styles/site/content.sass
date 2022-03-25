@@ -1,7 +1,10 @@
 @use '../abstracts/mixins'
+@use '../abstracts/variables'
 
 /* Content Creator variant of container
-
+.contentBanner
+  background-image: url("/../../images/content-creator/creatorbg.jpg")
+  
 .mainContentContainer
   background-image: url("/../../images/fafbgpattern.jpg")
   padding: 2.5vw 6vw
@@ -15,7 +18,7 @@
   position: absolute
   bottom: 0
   z-index: 100
-  color: mixins.$color-active
+  color: variables.$color-active
   width: 100%
 
 .contentImage
@@ -33,7 +36,7 @@
     width: 80%
 
 .contentSocial
-  color: mixins.$color-active
+  color: variables.$color-active
 
   &:hover
     transform: scale(1.2)

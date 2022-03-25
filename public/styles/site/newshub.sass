@@ -1,5 +1,6 @@
-
 @use '../abstracts/mixins'
+@use '../abstracts/variables'
+
 
 $headerColour: #6990e0
 
@@ -26,7 +27,7 @@ $headerColour: #6990e0
   p
     padding: 9px 15px
     color: rgb(214, 214, 214)
-    font-family: mixins.$family-paragraph
+    font-family: variables.$family-paragraph
     
 
 //sidebars  
@@ -63,15 +64,15 @@ $headerColour: #6990e0
     text-align: center
     margin: 0px 0px 5px 0px
     font-size: 13px
-    font-family: mixins.$family-title
+    font-family: variables.$family-title
   .articleTitle 
     color: $headerColour
-    font-family: mixins.$family-paragraph
+    font-family: variables.$family-paragraph
     margin: 0px 0px 3px 0px
   .articleSubtitle
     display: none
     color: $headerColour
-    font-family: mixins.$family-paragraph
+    font-family: variables.$family-paragraph
   .articleImage 
     margin: 0px 10px 0px 0px
 

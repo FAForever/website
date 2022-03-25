@@ -1,6 +1,7 @@
+@use '../abstracts/variables'
 @use '../abstracts/mixins'
 
-.main_banner_container
+.mainBannerContainer
   display: grid
   grid-template-columns: 1fr
   background-position: center
@@ -10,48 +11,31 @@
   text-shadow: 0 2px 4px black, 0 8px 16px black      
 
 
-.banner_title
+.bannerTitle
   font-size: var(--subtitle-font-size)
-  font-family: mixins.$family-subtitle                       
+  font-family: variables.$family-subtitle                       
   font-weight: bolder
   letter-spacing: 6px
   padding: 0.5em 0
 
-.banner_subtitle
+.bannerSubtitle
   font-size: var(--paragraph-font-size)
-  font-family: mixins.$family-paragraph
+  font-family: variables.$family-paragraph
   font-weight: 600
   padding: 0.25em 0
 
 
 
-/* banner variants of regular banner
-
-.landingBanner
-  background-image: url("/../../images/home1.jpg")
-
-.contentBanner
-  background-image: url("/../../images/content-creator/creatorbg.jpg")
-
-.aiBanner
-  background-image: url("/../../images/ai.jpg")
-
-.devsBanner
-  background-image: url("/../../images/devs.jpg")
-
-.endBanner
-  background-image: url("/../../images/footerbanner.jpg")
-
 /* Below Main page
 @media (max-width: 800px)
-  .main_banner_container
+  .mainBannerContainer
     padding: 150px 10px
     gap: 0
     font-size: 10px
 
 
 @media (max-width: 400px)
-  .main_banner_container
+  .mainBannerContainer
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
     padding: 130px 0
     gap: 0
@@ -62,7 +46,7 @@
 .scrollRelative
   position: relative
   padding: 50px
-  font-family: mixins.$family-title
+  font-family: variables.$family-title
   font-size: var(--title-font-size)
   text-align: justify
   text-justify: inter-word
@@ -90,7 +74,7 @@
 
 .scrollText
   font-size: var(--paragraph-font-size)
-  font-family: mixins.$family-paragraph
+  font-family: variables.$family-paragraph
   padding: 20px 8vw 20px 45vw
   text-align: justify
   line-height: 1.7em
@@ -185,13 +169,13 @@
 .mainThinContainer
   display: grid
   grid-template-columns: auto
-  background-color: mixins.$background-secondary
-  color: mixins.$color-active
+  background-color: variables.$background-secondary
+  color: variables.$color-active
   padding: 1em 0
   font-size: var(--title-font-size)
   letter-spacing: 1.2PX
-  border: 15px solid mixins.$background-primary
-  font-family: mixins.$family-title
+  border: 15px solid variables.$background-primary
+  font-family: variables.$family-title
   
   .highlightText, p
     z-index: 2
@@ -201,7 +185,7 @@
 
   
 .highlightText
-  color: mixins.$button-inactive
+  color: variables.$button-inactive
 
 /* Improvement Container
 .mainImprovementsContainer 
@@ -242,13 +226,13 @@
   direction: rtl
 
 .mainRectangleContainer
-  @include mixins.gridMainContainer
+  @include mixins.mainRectangleContainer
   margin: 2vw 0 2vw 25vw
   background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
   gap: 10px
 
 .mainRectangleContainerReverse
-  @include mixins.gridMainContainer
+  @include mixins.mainRectangleContainerReverse
   margin: 2vw 25vw 2vw 0
   background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
   gap: 10px
@@ -312,15 +296,15 @@
   .main_topnav_container
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
 
-  .main_banner_container
+  .mainBannerContainer
     padding: 150px 10px
     font-size: 10px
 
-  .banner_subtitle
+  .bannerSubtitle
     font-size: 12px
     padding: 5px
 
-  .banner_title
+  .bannerTitle
     font-size: 20px
     padding: 5px
 
@@ -371,7 +355,7 @@
 
 
 @media (max-width: 400px)
-  .main_banner_container
+  .mainBannerContainer
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
     padding: 130px 0
     gap: 0
