@@ -181,8 +181,16 @@
     z-index: 2
     position: relative
     margin: 0
-
-
+.thinContainer 
+  margin: 0.5vw 15vw
+  padding: 1vw
+  background-color: variables.$background-tertiary
+  border: 0.15em ridge variables.$background-primary
+  border-radius: 20px
+  z-index: 2
+@media (max-width: 800px)
+  .thinContainer
+    margin: 0.5vw 5vw
   
 .highlightText
   color: variables.$button-inactive

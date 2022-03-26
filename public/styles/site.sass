@@ -9,18 +9,29 @@
 @use 'layout/layout'
 @use 'layout/navigation'
 
-//Base (Used for higher support cross browser
+//Base (Used for higher support cross browser)
 @use 'base/reset'
 
 // Page-related
+@use 'site/index.sass'
+@use 'site/newshub.sass'
 @use 'site/account.sass'
 @use 'site/client.sass'
-@use 'site/contributions.sass'
-@use 'site/index.sass'
+
+//GAME
 @use 'site/ai.sass'
 @use 'site/tutorials-guides.sass'
-@use 'site/content.sass'
-@use 'site/leaderboards.sass'
-@use 'site/newshub.sass'
-@use 'site/clans.sass'
+@use 'site/scfa.sass'
 
+
+//COMMUNITY
+@use 'site/donation.sass'
+@use 'site/faf-teams.sass'
+@use 'site/clans.sass'
+@use 'site/content-creators.sass'
+@use 'site/contributions.sass'
+
+//COMPETITIVE
+@use 'site/training.sass'
+@use 'site/tournaments.sass'
+@use 'site/leaderboards.sass'
