@@ -1,0 +1,76 @@
+@use '../abstracts/mixins'
+@use '../abstracts/variables'
+
+/* Content Creator variant of container
+.contentBanner
+  background-image: url("/../../images/content-creator/creatorbg.jpg")
+  
+.mainContentContainer
+  @include mixins.gridMainContainer
+  background-image: url("/../../images/fafbgpattern.jpg")
+  padding: 2.5vw 8vw
+  grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr))
+  
+@media (max-width: 800px) 
+  .mainContentContainer
+    grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr))
+  @media (max-width: 800px)
+  .mainContentContainer
+    grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr))
+    margin: 4vw
+
+
+.contentContainer
+  padding: 1vw
+  position: relative
+
+  .responsiveTextTitle
+    background-color: variables.$background-tertiary
+    border: 0.25vw solid variables.$background-secondary
+    border-radius: 20px
+    padding: 0.25vw 0 0 0
+  .responsiveText
+    padding: 0.5vw 0
+
+.contentAbsolute
+  position: absolute
+  bottom: 0
+  z-index: 100
+  color: variables.$color-active
+  width: 100%
+  
+
+.contentImage
+  position: relative
+  display: inline-block
+  
+  
+
+  a
+    display: inline-block
+    font-size: var(--subtitle-font-size)
+    padding: 0.5vw
+    border-radius: 20%
+
+  img
+    border-radius: 10%
+    width: 50%
+
+.contentSocial
+  color: variables.$color-active
+
+  &:hover
+    transform: scale(1.2)
+
+.contentItem
+  width: 100%
+
+.countryFlag
+  width: 20%
+  position: absolute
+  top: 0
+  left: 20%
+  z-index: 100
+
+//.fa-twitch
+  color: #db80ff

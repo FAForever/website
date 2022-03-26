@@ -5,55 +5,190 @@ block bannerData
   - var bannerSecondTitle = "TOP PLAYERS ANALYZING MATCHES"
   - var bannerSubTitle = "EITHER LAUGH OR LEARN WITH THEM, MAYBE BOTH?"
 block content
-  
-  .gridMainContainer.mainContentContainer
-    .gridContainer.column3.contentContainer
-      .gridImage.contentImage
-        .contentAbsolute
-          a(href='https://www.twitch.tv/faflive' target='_blank')
+  .splat_main_container.splat_black_background
+    .splat_container
+      .splat_rotate
+        img(src='/images/blacksplat.png' alt='')
+  .mainThinContainer
+    .highlightText CASUAL/ENTERTAINING
+    p CONTENT CREATORS
+    .thinContainer
+      .gridItem.responsiveText These fellow casters and streamers below might not be the toughest of the pack but they sure know how to make up in entertainment value either through their words or their editing skills. Plus since they are fresh out of the oven, they won't make obscure references to the Zep or Visionik era.
+  .splat_main_container.splat_black_background
+    .splat_container
+      .splat
+        img(src='/images/blacksplat.png' alt='')
+        
+  //Data for content creator Container
+  - var ccCountryFlag = "" //usa or russia
+  - var ccTwitchLink = ""
+  - var ccYoutubeLink = ""
+  - var ccProfilePicture = ""
+  - var ccTitle = ""
+  - var ccParagraph = ""
+  mixin contentCreator
+    .contentImage 
+      .countryFlag
+        img(src='../../images/content-creator/'+ccCountryFlag+'.jpg' alt='')
+      .contentAbsolute
+        //If they don't have a twitch link ( "" ), it doesnt display anything.
+        //But if a link is imputed ( "https://..." ), it does display it
+        if ccTwitchLink == ""
+        else if ccTwitchLink !== "" 
+          a(href=''+ccTwitchLink+ '' target='_blank')
             .fab.fa-twitch.fa-lg.contentSocial
-          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
+        if ccYoutubeLink == "" 
+        else if ccYoutubehLink !== "" 
+          a(href=''+ccYoutubeLink+ '' target='_blank')
             .fab.fa-youtube.fa-lg.contentSocial
-        img(src='../../img/content-creator/willow.jpg' alt='')
-      .responsiveTextTitle Willows Duality 
-        .responsiveTextNoPadding FAF caster that has changed his logo about 4 times and plays really bad but is funny.
-    .gridContainer.column3.contentContainer
-      .gridImage.contentImage
-        .contentAbsolute
-          a(href='https://www.twitch.tv/faflive' target='_blank')
-            .fab.fa-twitch.fa-lg.contentSocial
-          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
-            .fab.fa-youtube.fa-lg.contentSocial
-        img(src='../../img/content-creator/derp.jpg' alt='')
-      .responsiveTextTitle Derp
-        .responsiveTextNoPadding King of supcom memes, casts a little bit of everything and his videos always have their meme edits.
-    .gridContainer.column3.contentContainer
-      .gridImage.contentImage
-        .contentAbsolute
-          a(href='https://www.twitch.tv/faflive' target='_blank')
-            .fab.fa-twitch.fa-lg.contentSocial
-          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
-            .fab.fa-youtube.fa-lg.contentSocial
-        img(src='../../img/content-creator/duelist.jpg' alt='')
-      .responsiveTextTitle The Duelist
-        .responsiveTextNoPadding TheDuelist creates casts, plays mid level ladder matches, and breaks down units and strategies mathematically.
-    .gridContainer.column3.contentContainer
-      .gridImage.contentImage
-        .contentAbsolute
-          a(href='https://www.twitch.tv/faflive' target='_blank')
-            .fab.fa-twitch.fa-lg.contentSocial
-          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
-            .fab.fa-youtube.fa-lg.contentSocial
-        img(src='../../img/content-creator/endranii.jpg' alt='')
-      .responsiveTextTitle Endranii
-        .responsiveTextNoPadding Angry european badger that casts games with his seductive bear voice
-    .gridContainer.column3.contentContainer
-      .gridImage.contentImage
-        .contentAbsolute
-          a(href='https://www.twitch.tv/faflive' target='_blank')
-            .fab.fa-twitch.fa-lg.contentSocial
-          a(href='https://www.youtube.com/c/ForgedAllianceForever' target='_blank')
-            .fab.fa-youtube.fa-lg.contentSocial
-        img(src='../../img/content-creator/tcop.jpg' alt='')
-      .responsiveTextTitle TCOP
-        .responsiveTextNoPadding Runs a primarily FAF YouTube (with a small variety of other games) where he uploads 3 to 4 times a week. 
+      img(src='../../images/content-creator/'+ccProfilePicture+'.jpg' alt='')
+    .responsiveTextTitle #{ccTitle}
+      .responsiveText #{ccParagraph}
+  .mainContentContainer
+    .contentContainer
+      - ccCountryFlag = "usa" 
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/c/SupremeCommanDerp"
+      - ccProfilePicture = "derp"
+      - ccTitle = "Derp"
+      - ccParagraph = "King of supcom memes, casts a little bit of everything and his videos always have their meme edits."
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "usa" 
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/c/WillowsDuality"
+      - ccProfilePicture = "willow"
+      - ccTitle = "Willow"
+      - ccParagraph = "FAF caster that has changed his logo about 4 times and plays really bad but is funny."
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "usa"
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/user/TheIronman268"
+      - ccProfilePicture = "duelist"
+      - ccTitle = "The Duelist"
+      - ccParagraph = "TheDuelist creates casts, plays mid level ladder matches, and breaks down units and strategies mathematically."
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "usa"
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/channel/UCdLZ0TooThIyWsYOYmwE3lw"
+      - ccProfilePicture = "endranii"
+      - ccTitle = "Endranii"
+      - ccParagraph = "Angry european badger that casts games with his seductive bear voice."
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "russia"
+      - ccTwitchLink = "https://www.twitch.tv/faf_putin"
+      - ccYoutubeLink = "https://www.youtube.com/channel/UC6XZnyeMNWLk7PmfexteI-A"
+      - ccProfilePicture = "fafputin"
+      - ccTitle = "FAF Putin"
+      - ccParagraph = "The Dual Gap Master! Plays DG every day every week."
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "russia"
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/channel/UCHWXYe53iUoYzcS7VVU2G2Q"
+      - ccProfilePicture = "lenkin"
+      - ccTitle = "Lenkin"
+      - ccParagraph = "The Dual Gap Apprentice! Plays DG and other maps sometimes."
+      +contentCreator 
+    .contentContainer
+      - ccCountryFlag = "russia"
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/channel/UCKucg78eVWN8ud_6dF-9D5w"
+      - ccProfilePicture = "yuri"
+      - ccTitle = "Yuri"
+      - ccParagraph = "Biiiig Russian streamer with very entertaining casts if you speak Russian (idk, I don't speak Russian xd)"
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "usa"
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/channel/UCQzBBDK8osGpVnRhCyGy63w"
+      - ccProfilePicture = "tcop"
+      - ccTitle = "TCOP"
+      - ccParagraph = "Runs a primarily FAF YouTube (with a small variety of other games) where he uploads 3 to 4 times a week."
+      +contentCreator
+    
+          
+          
+  //PRO CONTENT CREATORS
+  .splat_main_container.splat_black_background
+    .splat_container
+      .splat_rotate
+        img(src='/images/blacksplat.png' alt='')
+  .mainThinContainer
+    .highlightText PRO/TOP LEVEL
+    p CONTENT CREATORS
+    .thinContainer
+      .gridItem.responsiveText These fellow casters and streamers below are part of the toughest of the pack. They sure know how what they are doing and may provide sound advice. Plus some of them are actually entertaining too! If you want to watch some FAF while also learn, be sure to take a look at one of these individuals and even ask them questions on their stream!
+  .splat_main_container.splat_black_background
+    .splat_container
+      .splat
+        img(src='/images/blacksplat.png' alt='')
+  .mainContentContainer
+    .contentContainer
+      - ccCountryFlag = "usa"
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/channel/UCVukA3ixN8_ZNxnqxq3YD1g"
+      - ccProfilePicture = "jagged"
+      - ccTitle = "Jagged Appliance"
+      - ccParagraph = "Irish FAF veteran caster that streams constantly and participates on the top tourneys."
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "russia"
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/c/dimatularus"
+      - ccProfilePicture = "zlo"
+      - ccTitle = "ZLO"
+      - ccParagraph = "Funny Russian magician with unexpected maneuvers and meme plays."
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "usa"
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/c/dimatularus"
+      - ccProfilePicture = "harzer99"
+      - ccTitle = "Harzer99"
+      - ccParagraph = "German upcoming pro, grinds hard trying to reach the top of FAF tournaments."
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "russia"
+      - ccTwitchLink = ""
+      - ccYoutubeLink = "https://www.youtube.com/channel/UC6tdk6AOO32dY62wI022eCg"
+      - ccProfilePicture = "robogear"
+      - ccTitle = "Robogear"
+      - ccParagraph = "High-rated Russian Streamer."
+      +contentCreator 
+    .contentContainer
+      - ccCountryFlag = "russia"
+      - ccTwitchLink = "https://www.twitch.tv/yudi_dddddd"
+      - ccYoutubeLink = ""
+      - ccProfilePicture = "yudi"
+      - ccTitle = "Yudi"
+      - ccParagraph = "Setons Macro God, #1 FAF Gamer"
+      +contentCreator BC_Blackheart
+    .contentContainer
+      - ccCountryFlag = "usa"
+      - ccTwitchLink = "https://www.twitch.tv/stellartactician"
+      - ccYoutubeLink = ""
+      - ccProfilePicture = "farms"
+      - ccTitle = "Farms"
+      - ccParagraph = "FtXCommando's best friend and FAFLive #1 caster"
+      +contentCreator 
+    .contentContainer
+      - ccCountryFlag = "usa"
+      - ccTwitchLink = "https://www.twitch.tv/stellartactician"
+      - ccYoutubeLink = ""
+      - ccProfilePicture = "blackheart"
+      - ccTitle = "BC_Blackheart"
+      - ccParagraph = "Me"
+      +contentCreator
+    .contentContainer
+      - ccCountryFlag = "usa"
+      - ccTwitchLink = "https://www.twitch.tv/tagada14"
+      - ccYoutubeLink = ""
+      - ccProfilePicture = "tagada"
+      - ccTitle = "Tagada"
+      - ccParagraph = "Polish top player, some consider him the best player, great teacher!"
+      +contentCreator 
+    
