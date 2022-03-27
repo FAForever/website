@@ -1,6 +1,69 @@
 @use 'index'
+@use '../abstracts/mixins'
+@use '../abstracts/variables'
 
 
+.mainFlipContainer
+  @include mixins.gridMainContainer
+  grid-template-columns: repeat(auto-fit, minmax(24vw, 1fr))
+  padding: 2vw 10vw
+  background-image: url("/../../images/fafbgmasspattern.jpg")
+  direction: ltr
+
+@media (max-width: 800px)
+  .mainFlipContainer
+    grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr))
+    padding: 1vw 5vw
+    
+.flipContainer
+  background-color: variables.$background-tertiary
+  border: 0.5vw solid variables.$background-secondary
+  cursor: pointer
+  border-radius: 20px
+  padding: 1.25vw
+  margin: 1vw 2vw
+  min-height: 12vw
+  transition: 0.4s
+  &:hover
+    filter: brightness(1.5)
+  .responsiveTextTitle
+    padding: 0vw 0.5vw 0.25vw 0.5vw
+    font-family: variables.$family-title
+  .responsiveText
+    padding: 0vw 0.25vw
+  .gridImage img
+    width: 80%
+
+.flipInactive
+  display: none
+.flipAnimation 
+  animation: flipAnimation 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both
+  
+  .responsiveTextTitle, .responsiveText, p
+    transition-delay: 0.2s
+    transform: scale(-1, 1)
+
+@keyframes flipAnimation
+  0% 
+    transform: translateZ(0) rotateY(0)
+  
+  100% 
+    transform: translateZ(-260px) rotateY(-180deg)
+
+.flipAnimationBack
+  animation: flipAnimationBack 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both
+  .responsiveTextTitle, .responsiveText, p
+    transition-delay: 0.2s
+    transform: scale(1, 1)
+
+@keyframes flipAnimationBack
+  0%
+    transform: translateZ(-260px) rotateY(-180deg)
+  100%
+    transform: translateZ(0) rotateY(0)
+
+
+  
   
 
 

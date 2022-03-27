@@ -6,4 +6,105 @@ block bannerData
   - var bannerSecondTitle = "KEEPS FAF ORGANIZED"
   - var bannerSubTitle = "READY TO JOIN A TEAM AND HELP?"
 block content
+  .splat_main_container.splat_black_background
+    .splat_container
+      .splat_rotate
+        img(src='/images/blacksplat.png' alt='')
+ 
+  .mainThinContainer
+    .thinContainer
+      .gridItem.responsiveText The teams below are all key parts not only keeping FAF alive, but to continuously develop it, increase our community, create a competitive scene and many more things to improve the Supcom legacy! Click the button below to learn more about the teams and how to apply!
+        br
+        button.mediumButton Learn More
+  .splat_main_container.splat_black_background
+    .splat_container
+      .splat
+        img(src='/images/blacksplat.png' alt='')
+        
+        
+        
+        
+  - var fafTeamTitle = ""
+  - var fafTeamText = ""
+  //- var fafTeamLeader = ""
+  - var fafTeamColor = ""
+  mixin flipContainer
+    .responsiveTextTitle #{fafTeamTitle}
+    .responsiveTextTitle TEAM
+    .gridImage
+      img(src='/images/fafteams/'+fafTeamColor+'.png' alt='')
+    .responsiveText.flipText.flipInactive #{fafTeamText}
+      //br
+      //| Team Leader: #{fafTeamLeader}
+    
+  .rectangleSpace
+    .mainFlipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "TRAINER"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "white"
+        +flipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "COMMUNITY"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "green"
+        +flipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "PROMOTIONS"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "blue"
+        +flipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "TOURNAMENT"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "military"
+        +flipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "MATCHMAKING"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "mint"
+        +flipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "BALANCE"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "orange"
+        +flipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "GAMES"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "cyan"
+        +flipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "CREATIVE"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "pink"
+        +flipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "MODERATION"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "red"
+        +flipContainer
+      .flipContainer.flipAnimationBack
+        - var fafTeamTitle = "DEVOPS"
+        - var fafTeamText = "The community team consists of knowledgeable community members ready to communitize individuals who aspire to become better or part of the FAF community scene."
+        - var fafTeamLeader = ""
+        - var fafTeamColor = "purple"
+        +flipContainer
+
+        
+        
+        
+        
+   
+block js
+  script(src="../../js/app/faf-teams.js")
 

@@ -10,10 +10,12 @@
   background-image: url("/../../images/fafbgpattern.jpg")
   padding: 2.5vw 8vw
   grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr))
-  
+@media (max-width: 1200px)
+  .mainContentContainer
+    grid-template-columns: repeat(auto-fit, minmax(28vw, 1fr))
 @media (max-width: 800px) 
   .mainContentContainer
-    grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr))
+    grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr))
   @media (max-width: 800px)
   .mainContentContainer
     grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr))
