@@ -5,7 +5,5 @@ exports = module.exports = function(req, res) {
   // locals.section is used to set the currently selected
   // item in the header navigation.
   locals.section = 'home';
-  res.render('index');
-  
-
+  res.render('index', {flash: flash, refreshCountersSeconds: parseInt(process.env.PLAYER_COUNT_UPDATE_INTERVAL)});
 };
