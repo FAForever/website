@@ -3,7 +3,7 @@ require("dotenv").config();
 let jsonapi = require("json-api-models");
 let request = require("request");
 let fs = require('fs');
-
+let moment = require('moment');
 
 function saveLeaderboardRatingsToFile(ratings, filename) {
   ratings.sort((ratingA, ratingB) => {
@@ -20,10 +20,11 @@ function saveLeaderboardRatingsToFile(ratings, filename) {
 
   for (let i = 0; i < ratings.length; i++) {
     let entry = ratings[i];
-
+    //LABEL = name player and value is player ID
     let data = {
       label: entry.player.login,
-      value: {id: entry.player.id, page: Math.ceil((i + 1) / 100)}
+      value: {id: entry.player.id, rating: entry.rating, totalgames: entry.totalGames, wonGames: entry.wonGames, page: Math.ceil((i + 1) / 100)}
+      
     };
 
     csvArray.push(data);
@@ -62,7 +63,7 @@ module.exports.run = function run() {
 
     models.reset();
 
-    request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==2;updateTime=ge=" +
+    request(process.env.API_URL + "/data/leaderboardRating?sort=-rating&fields%5BleaderboardRating%5D=rating,totalGames,wonGames,player&include=player&filter=leaderboard.id==2;updateTime=ge=" +
       pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z", function (error, response, body) {
       if (error || response.statusCode > 210) {
         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - There was an issue while fetching leaderboards 1v1:');
