@@ -134,9 +134,11 @@ exports = module.exports = async function (req, res) {
 			// then discord and other messaging applications will destroy the link accidentally
 			// when pre-fetching the page. So we will delete it later. Regardless if the website is restarted all the links will be 
 			// killed instantly, which is fine. They are short lived by design.
+			const lifespan = process.env.CLAN_INVITES_LIFESPAN_DAYS * 24 * 3600 * 1000;
 			setLongTimeout(()=>{
-				delete req.app.locals.clanInvitations[id]
-			}, process.env.CLAN_INVITES_LIFESPAN_DAYS * 24 * 3600 * 1000);
+				delete req.app.locals.clanInvitations[id];
+				console.log(`Killed invitation with id ${id} after having waited ${lifespan} seconds (${process.env.CLAN_INVITES_LIFESPAN_DAYS} days)`);
+			}, lifespan);
 					
             return overallRes.redirect('manage?invitation_id='+id);
           }
