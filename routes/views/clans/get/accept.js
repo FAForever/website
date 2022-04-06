@@ -38,7 +38,14 @@ exports = module.exports = function(req, res) {
     const invite = req.app.locals.clanInvitations[invitationId];
     const clanId = invite.clan;
     const token = invite.token;
-    delete req.app.locals.clanInvitations[invitationId];
+	
+	// We use timeout here because if we delete the invite link whenver the page is GET,
+	// then discord and other messaging applications will destroy the link accidentally
+	// when pre-fetching the page. So we will delete it later. Regardless if the website is restarted all the links will be 
+	// killed instantly, which is fine. They are short lived by design.
+	setTimeout(()=>{
+		delete req.app.locals.clanInvitations[invitationId]
+	}, process.env.CLAN_INVITES_LIFESPAN_DAYS * 24 * 3600 * 1000);
     
     request.post(
         {
