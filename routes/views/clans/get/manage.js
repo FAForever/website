@@ -26,9 +26,9 @@ exports = module.exports = function(req, res) {
         flash.class = 'alert-success';
         flash.messages = [
             {msg: 
-                "<a class='invite-link' href='"+process.env.HOST + "/clans/accept"
+                "<p><a class='invite-link' onclick='return false' href='"+process.env.HOST + "/clans/accept_invite"
                 +"?i=" + req.query.invitation_id
-                +"'><b>Right click on me and copy link</b>, then send it to the invited player</a>"}
+                +"'><b>Right click on me and copy link</b>, then send it to the invited player</a></p><p>Note: The link is <b>short-lived</b> and <b>one use only</b>. It will automatically expire after <b>"+process.env.CLAN_INVITES_LIFESPAN_DAYS+"</b>  days regardless of use."}
         ];
         flash.type = '';
     }

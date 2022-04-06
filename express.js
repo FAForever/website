@@ -175,7 +175,7 @@ app.get('/clans/create', loggedIn, require(routes + 'clans/get/create'));
 app.get('/clans/manage', loggedIn, require(routes + 'clans/get/manage'));
 app.get('/clans/see', require(routes + 'clans/get/see'));
 app.get('/clans/browse', require(routes + 'clans/get/browse'));
-app.get('/clans/accept', loggedIn, require(routes + 'clans/get/accept'));
+app.get('/clans/accept_invite', loggedIn, require(routes + 'clans/get/accept_invite'));
 
 app.post('/clans/create', loggedIn, require(routes + 'clans/post/create'));
 app.post('/clans/destroy', loggedIn, require(routes + 'clans/post/destroy'));
@@ -184,6 +184,7 @@ app.post('/clans/kick', loggedIn, require(routes + 'clans/post/kick'));
 app.post('/clans/transfer', loggedIn, require(routes + 'clans/post/transfer'));
 app.post('/clans/update', loggedIn, require(routes + 'clans/post/update'));
 app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
+app.post('/clans/join', loggedIn, require(routes + 'clans/post/join'));
 
 // Compatibility
 app.get('/clan/*', function (req, res){
