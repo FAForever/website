@@ -8,7 +8,7 @@ function promiseRequest(url) {
       if (!error && res.statusCode < 300) {
         resolve(body);
       } else {
-        reject(error);
+        reject(error || `Unexpected status code ${res.statusCode}`);
       }
     });
   });
@@ -46,7 +46,7 @@ exports = module.exports = async function (req, res) {
     const userName = req.body.transfer_to;
 
     // Let's check first that the player exists AND is part of this clan
-    const fetchRoute = process.env.API_URL+'/data/clan/'+clanId+'?include=memberships.player&fields[player]=login,id';
+    const fetchRoute = process.env.API_URL+'/data/clan/'+clanId+'?include=memberships.player&fields[player]=login';
     
     let playerId = null;
     
