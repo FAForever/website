@@ -1,0 +1,8504 @@
+{
+  "data": [
+    {
+      "type": "ladder1v1Rating",
+      "id": "44898",
+      "attributes": {
+        "numberOfGames": 1425,
+        "rating": 2481.7,
+        "wonGames": 771
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "44898"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "94871",
+      "attributes": {
+        "numberOfGames": 827,
+        "rating": 2399.62,
+        "wonGames": 471
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "94871"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "648",
+      "attributes": {
+        "numberOfGames": 1670,
+        "rating": 2352.7,
+        "wonGames": 937
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "648"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "121266",
+      "attributes": {
+        "numberOfGames": 1671,
+        "rating": 2267.11,
+        "wonGames": 903
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "121266"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "89695",
+      "attributes": {
+        "numberOfGames": 2950,
+        "rating": 2232.79,
+        "wonGames": 1397
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "89695"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "203172",
+      "attributes": {
+        "numberOfGames": 1240,
+        "rating": 2221.55,
+        "wonGames": 547
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "203172"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "189718",
+      "attributes": {
+        "numberOfGames": 2815,
+        "rating": 2188.62,
+        "wonGames": 993
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "189718"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "20519",
+      "attributes": {
+        "numberOfGames": 575,
+        "rating": 2182.32,
+        "wonGames": 357
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "20519"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "21139",
+      "attributes": {
+        "numberOfGames": 1466,
+        "rating": 2147.73,
+        "wonGames": 895
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "21139"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "83878",
+      "attributes": {
+        "numberOfGames": 703,
+        "rating": 2135.4,
+        "wonGames": 326
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "83878"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "25711",
+      "attributes": {
+        "numberOfGames": 3979,
+        "rating": 2131.12,
+        "wonGames": 1966
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "25711"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "115624",
+      "attributes": {
+        "numberOfGames": 5996,
+        "rating": 2091.7,
+        "wonGames": 2946
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "115624"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "118147",
+      "attributes": {
+        "numberOfGames": 3004,
+        "rating": 2075.04,
+        "wonGames": 1501
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "118147"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "157638",
+      "attributes": {
+        "numberOfGames": 1063,
+        "rating": 2071.39,
+        "wonGames": 514
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "157638"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "145",
+      "attributes": {
+        "numberOfGames": 3797,
+        "rating": 2070.93,
+        "wonGames": 2058
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "145"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "85039",
+      "attributes": {
+        "numberOfGames": 1568,
+        "rating": 2066.26,
+        "wonGames": 838
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "85039"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "132546",
+      "attributes": {
+        "numberOfGames": 1725,
+        "rating": 2048.85,
+        "wonGames": 851
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "132546"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "136480",
+      "attributes": {
+        "numberOfGames": 3495,
+        "rating": 2048.39,
+        "wonGames": 1946
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "136480"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "63950",
+      "attributes": {
+        "numberOfGames": 474,
+        "rating": 2033.77,
+        "wonGames": 293
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "63950"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "44479",
+      "attributes": {
+        "numberOfGames": 3728,
+        "rating": 2032.98,
+        "wonGames": 2019
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "44479"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "227319",
+      "attributes": {
+        "numberOfGames": 73,
+        "rating": 2019.35,
+        "wonGames": 60
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "227319"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "213434",
+      "attributes": {
+        "numberOfGames": 1575,
+        "rating": 2012.12,
+        "wonGames": 850
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "213434"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "184113",
+      "attributes": {
+        "numberOfGames": 1076,
+        "rating": 2009.76,
+        "wonGames": 513
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "184113"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "70689",
+      "attributes": {
+        "numberOfGames": 460,
+        "rating": 2003.72,
+        "wonGames": 185
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "70689"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "206383",
+      "attributes": {
+        "numberOfGames": 1231,
+        "rating": 1984.18,
+        "wonGames": 599
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "206383"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "111358",
+      "attributes": {
+        "numberOfGames": 1746,
+        "rating": 1979.63,
+        "wonGames": 836
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "111358"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "270014",
+      "attributes": {
+        "numberOfGames": 825,
+        "rating": 1970.77,
+        "wonGames": 260
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "270014"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "147260",
+      "attributes": {
+        "numberOfGames": 2811,
+        "rating": 1942.56,
+        "wonGames": 1151
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "147260"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "132565",
+      "attributes": {
+        "numberOfGames": 1265,
+        "rating": 1941.98,
+        "wonGames": 664
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "132565"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "900",
+      "attributes": {
+        "numberOfGames": 2716,
+        "rating": 1935.45,
+        "wonGames": 1538
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "900"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "214616",
+      "attributes": {
+        "numberOfGames": 300,
+        "rating": 1927.04,
+        "wonGames": 105
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "214616"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "44051",
+      "attributes": {
+        "numberOfGames": 978,
+        "rating": 1925.02,
+        "wonGames": 528
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "44051"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "373105",
+      "attributes": {
+        "numberOfGames": 311,
+        "rating": 1917.65,
+        "wonGames": 194
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "373105"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "195740",
+      "attributes": {
+        "numberOfGames": 500,
+        "rating": 1913.07,
+        "wonGames": 257
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "195740"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "222410",
+      "attributes": {
+        "numberOfGames": 146,
+        "rating": 1910.17,
+        "wonGames": 71
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "222410"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "262950",
+      "attributes": {
+        "numberOfGames": 605,
+        "rating": 1906.37,
+        "wonGames": 226
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "262950"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "350664",
+      "attributes": {
+        "numberOfGames": 968,
+        "rating": 1904.6,
+        "wonGames": 513
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "350664"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "144839",
+      "attributes": {
+        "numberOfGames": 2035,
+        "rating": 1898.18,
+        "wonGames": 795
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "144839"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "196191",
+      "attributes": {
+        "numberOfGames": 4018,
+        "rating": 1865.8,
+        "wonGames": 1954
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "196191"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "179714",
+      "attributes": {
+        "numberOfGames": 1172,
+        "rating": 1849.32,
+        "wonGames": 646
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "179714"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "160729",
+      "attributes": {
+        "numberOfGames": 713,
+        "rating": 1837.93,
+        "wonGames": 355
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "160729"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "170506",
+      "attributes": {
+        "numberOfGames": 395,
+        "rating": 1831.36,
+        "wonGames": 225
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "170506"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "302176",
+      "attributes": {
+        "numberOfGames": 554,
+        "rating": 1829.95,
+        "wonGames": 105
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "302176"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "245523",
+      "attributes": {
+        "numberOfGames": 214,
+        "rating": 1822.09,
+        "wonGames": 143
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "245523"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "64928",
+      "attributes": {
+        "numberOfGames": 4641,
+        "rating": 1819.72,
+        "wonGames": 2229
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "64928"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "139758",
+      "attributes": {
+        "numberOfGames": 1441,
+        "rating": 1819.09,
+        "wonGames": 714
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "139758"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "908",
+      "attributes": {
+        "numberOfGames": 1786,
+        "rating": 1817.93,
+        "wonGames": 872
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "908"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "165353",
+      "attributes": {
+        "numberOfGames": 785,
+        "rating": 1816.62,
+        "wonGames": 452
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "165353"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "180720",
+      "attributes": {
+        "numberOfGames": 374,
+        "rating": 1814.17,
+        "wonGames": 218
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "180720"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "156219",
+      "attributes": {
+        "numberOfGames": 3758,
+        "rating": 1812.56,
+        "wonGames": 1481
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "156219"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "359230",
+      "attributes": {
+        "numberOfGames": 138,
+        "rating": 1810.8,
+        "wonGames": 86
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "359230"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "108922",
+      "attributes": {
+        "numberOfGames": 1648,
+        "rating": 1807.75,
+        "wonGames": 842
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "108922"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "119070",
+      "attributes": {
+        "numberOfGames": 666,
+        "rating": 1787.34,
+        "wonGames": 395
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "119070"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "32970",
+      "attributes": {
+        "numberOfGames": 144,
+        "rating": 1785.44,
+        "wonGames": 81
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "32970"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "67509",
+      "attributes": {
+        "numberOfGames": 458,
+        "rating": 1772.77,
+        "wonGames": 290
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "67509"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "238571",
+      "attributes": {
+        "numberOfGames": 254,
+        "rating": 1769.3,
+        "wonGames": 104
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "238571"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "395695",
+      "attributes": {
+        "numberOfGames": 121,
+        "rating": 1757.23,
+        "wonGames": 68
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "395695"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "203068",
+      "attributes": {
+        "numberOfGames": 660,
+        "rating": 1755.66,
+        "wonGames": 355
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "203068"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "114281",
+      "attributes": {
+        "numberOfGames": 989,
+        "rating": 1716.2,
+        "wonGames": 499
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "114281"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "142219",
+      "attributes": {
+        "numberOfGames": 1057,
+        "rating": 1711.82,
+        "wonGames": 538
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "142219"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "116867",
+      "attributes": {
+        "numberOfGames": 1201,
+        "rating": 1707.44,
+        "wonGames": 562
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "116867"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "192491",
+      "attributes": {
+        "numberOfGames": 363,
+        "rating": 1705.19,
+        "wonGames": 161
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "192491"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "291802",
+      "attributes": {
+        "numberOfGames": 26,
+        "rating": 1705.18,
+        "wonGames": 19
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "291802"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "18481",
+      "attributes": {
+        "numberOfGames": 1673,
+        "rating": 1704.72,
+        "wonGames": 933
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "18481"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "33632",
+      "attributes": {
+        "numberOfGames": 7377,
+        "rating": 1701.11,
+        "wonGames": 3668
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "33632"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "184737",
+      "attributes": {
+        "numberOfGames": 388,
+        "rating": 1695.61,
+        "wonGames": 198
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "184737"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "163594",
+      "attributes": {
+        "numberOfGames": 395,
+        "rating": 1691.81,
+        "wonGames": 250
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "163594"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "227812",
+      "attributes": {
+        "numberOfGames": 137,
+        "rating": 1681.35,
+        "wonGames": 77
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "227812"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "43366",
+      "attributes": {
+        "numberOfGames": 1711,
+        "rating": 1681.15,
+        "wonGames": 886
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "43366"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "161595",
+      "attributes": {
+        "numberOfGames": 803,
+        "rating": 1679.68,
+        "wonGames": 297
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "161595"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "167501",
+      "attributes": {
+        "numberOfGames": 2723,
+        "rating": 1679.5,
+        "wonGames": 1212
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "167501"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "182719",
+      "attributes": {
+        "numberOfGames": 227,
+        "rating": 1672.06,
+        "wonGames": 142
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "182719"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "31333",
+      "attributes": {
+        "numberOfGames": 3631,
+        "rating": 1658.59,
+        "wonGames": 1917
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "31333"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "354734",
+      "attributes": {
+        "numberOfGames": 265,
+        "rating": 1653.27,
+        "wonGames": 172
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "354734"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "176620",
+      "attributes": {
+        "numberOfGames": 195,
+        "rating": 1644.63,
+        "wonGames": 111
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "176620"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "275960",
+      "attributes": {
+        "numberOfGames": 303,
+        "rating": 1643.57,
+        "wonGames": 184
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "275960"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "79737",
+      "attributes": {
+        "numberOfGames": 174,
+        "rating": 1640.26,
+        "wonGames": 106
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "79737"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "80090",
+      "attributes": {
+        "numberOfGames": 453,
+        "rating": 1637.78,
+        "wonGames": 279
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "80090"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "174348",
+      "attributes": {
+        "numberOfGames": 50,
+        "rating": 1635.65,
+        "wonGames": 27
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "174348"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "168955",
+      "attributes": {
+        "numberOfGames": 247,
+        "rating": 1632.7,
+        "wonGames": 155
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "168955"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "133327",
+      "attributes": {
+        "numberOfGames": 1726,
+        "rating": 1632.04,
+        "wonGames": 840
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "133327"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "291136",
+      "attributes": {
+        "numberOfGames": 1558,
+        "rating": 1631.96,
+        "wonGames": 639
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "291136"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "18253",
+      "attributes": {
+        "numberOfGames": 719,
+        "rating": 1627.89,
+        "wonGames": 405
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "18253"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "130",
+      "attributes": {
+        "numberOfGames": 409,
+        "rating": 1627.77,
+        "wonGames": 189
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "130"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "241137",
+      "attributes": {
+        "numberOfGames": 2531,
+        "rating": 1624.12,
+        "wonGames": 1087
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "241137"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "26704",
+      "attributes": {
+        "numberOfGames": 184,
+        "rating": 1622.7,
+        "wonGames": 103
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "26704"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "67961",
+      "attributes": {
+        "numberOfGames": 714,
+        "rating": 1621.95,
+        "wonGames": 416
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "67961"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "282886",
+      "attributes": {
+        "numberOfGames": 819,
+        "rating": 1621.76,
+        "wonGames": 408
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "282886"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "364130",
+      "attributes": {
+        "numberOfGames": 167,
+        "rating": 1614.72,
+        "wonGames": 107
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "364130"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "66471",
+      "attributes": {
+        "numberOfGames": 331,
+        "rating": 1606.5,
+        "wonGames": 187
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "66471"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "191696",
+      "attributes": {
+        "numberOfGames": 498,
+        "rating": 1599.3,
+        "wonGames": 161
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "191696"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "92766",
+      "attributes": {
+        "numberOfGames": 1809,
+        "rating": 1579.97,
+        "wonGames": 990
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "92766"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "23178",
+      "attributes": {
+        "numberOfGames": 285,
+        "rating": 1576.03,
+        "wonGames": 154
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "23178"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "229724",
+      "attributes": {
+        "numberOfGames": 1231,
+        "rating": 1575.92,
+        "wonGames": 501
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "229724"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "250677",
+      "attributes": {
+        "numberOfGames": 1061,
+        "rating": 1573.17,
+        "wonGames": 546
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "250677"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "224412",
+      "attributes": {
+        "numberOfGames": 186,
+        "rating": 1565.59,
+        "wonGames": 64
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "224412"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "177588",
+      "attributes": {
+        "numberOfGames": 2753,
+        "rating": 1562.39,
+        "wonGames": 1143
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "177588"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "82362",
+      "attributes": {
+        "numberOfGames": 414,
+        "rating": 1555.52,
+        "wonGames": 235
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "82362"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "162237",
+      "attributes": {
+        "numberOfGames": 4345,
+        "rating": 1555.37,
+        "wonGames": 2139
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "162237"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "578",
+      "attributes": {
+        "numberOfGames": 121,
+        "rating": 1555.09,
+        "wonGames": 68
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "578"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "384381",
+      "attributes": {
+        "numberOfGames": 797,
+        "rating": 1549.25,
+        "wonGames": 445
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "384381"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "36854",
+      "attributes": {
+        "numberOfGames": 2169,
+        "rating": 1545.67,
+        "wonGames": 1127
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "36854"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "256949",
+      "attributes": {
+        "numberOfGames": 2748,
+        "rating": 1545.5,
+        "wonGames": 1398
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "256949"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "222894",
+      "attributes": {
+        "numberOfGames": 178,
+        "rating": 1542.95,
+        "wonGames": 99
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "222894"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "53655",
+      "attributes": {
+        "numberOfGames": 1371,
+        "rating": 1539.81,
+        "wonGames": 665
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "53655"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "250231",
+      "attributes": {
+        "numberOfGames": 178,
+        "rating": 1538.2,
+        "wonGames": 115
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "250231"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "145606",
+      "attributes": {
+        "numberOfGames": 993,
+        "rating": 1537.72,
+        "wonGames": 594
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "145606"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "171633",
+      "attributes": {
+        "numberOfGames": 419,
+        "rating": 1532.74,
+        "wonGames": 224
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "171633"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "15964",
+      "attributes": {
+        "numberOfGames": 82,
+        "rating": 1531.85,
+        "wonGames": 45
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "15964"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "3355",
+      "attributes": {
+        "numberOfGames": 213,
+        "rating": 1531.16,
+        "wonGames": 98
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "3355"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "334834",
+      "attributes": {
+        "numberOfGames": 339,
+        "rating": 1530.16,
+        "wonGames": 190
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "334834"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "424031",
+      "attributes": {
+        "numberOfGames": 82,
+        "rating": 1529.93,
+        "wonGames": 50
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "424031"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "19844",
+      "attributes": {
+        "numberOfGames": 5639,
+        "rating": 1529.76,
+        "wonGames": 2758
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "19844"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "409589",
+      "attributes": {
+        "numberOfGames": 720,
+        "rating": 1528.12,
+        "wonGames": 392
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "409589"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "304205",
+      "attributes": {
+        "numberOfGames": 2133,
+        "rating": 1524.08,
+        "wonGames": 857
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "304205"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "177117",
+      "attributes": {
+        "numberOfGames": 508,
+        "rating": 1519.08,
+        "wonGames": 278
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "177117"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "226514",
+      "attributes": {
+        "numberOfGames": 290,
+        "rating": 1516.02,
+        "wonGames": 92
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "226514"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "168110",
+      "attributes": {
+        "numberOfGames": 380,
+        "rating": 1510.27,
+        "wonGames": 199
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "168110"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "189387",
+      "attributes": {
+        "numberOfGames": 67,
+        "rating": 1504.07,
+        "wonGames": 38
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "189387"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "372216",
+      "attributes": {
+        "numberOfGames": 932,
+        "rating": 1503.6,
+        "wonGames": 510
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "372216"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "791",
+      "attributes": {
+        "numberOfGames": 2042,
+        "rating": 1498.65,
+        "wonGames": 929
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "791"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "177063",
+      "attributes": {
+        "numberOfGames": 595,
+        "rating": 1494.45,
+        "wonGames": 357
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "177063"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "1877",
+      "attributes": {
+        "numberOfGames": 859,
+        "rating": 1489.4,
+        "wonGames": 451
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "1877"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "107042",
+      "attributes": {
+        "numberOfGames": 1194,
+        "rating": 1489.26,
+        "wonGames": 577
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "107042"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "32238",
+      "attributes": {
+        "numberOfGames": 140,
+        "rating": 1482.4,
+        "wonGames": 83
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "32238"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "131692",
+      "attributes": {
+        "numberOfGames": 344,
+        "rating": 1481.85,
+        "wonGames": 206
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "131692"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "163357",
+      "attributes": {
+        "numberOfGames": 425,
+        "rating": 1481.12,
+        "wonGames": 222
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "163357"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "172610",
+      "attributes": {
+        "numberOfGames": 228,
+        "rating": 1478.58,
+        "wonGames": 101
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "172610"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "67782",
+      "attributes": {
+        "numberOfGames": 352,
+        "rating": 1477.88,
+        "wonGames": 179
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "67782"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "22745",
+      "attributes": {
+        "numberOfGames": 1563,
+        "rating": 1475.18,
+        "wonGames": 735
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "22745"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "217769",
+      "attributes": {
+        "numberOfGames": 106,
+        "rating": 1472.1,
+        "wonGames": 73
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "217769"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "306860",
+      "attributes": {
+        "numberOfGames": 80,
+        "rating": 1471.42,
+        "wonGames": 57
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "306860"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "363087",
+      "attributes": {
+        "numberOfGames": 238,
+        "rating": 1471.21,
+        "wonGames": 137
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "363087"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "123626",
+      "attributes": {
+        "numberOfGames": 419,
+        "rating": 1469.52,
+        "wonGames": 245
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "123626"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "20576",
+      "attributes": {
+        "numberOfGames": 7968,
+        "rating": 1468.93,
+        "wonGames": 4356
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "20576"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "52130",
+      "attributes": {
+        "numberOfGames": 213,
+        "rating": 1467.42,
+        "wonGames": 110
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "52130"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "165736",
+      "attributes": {
+        "numberOfGames": 557,
+        "rating": 1461.6,
+        "wonGames": 222
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "165736"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "195232",
+      "attributes": {
+        "numberOfGames": 325,
+        "rating": 1461.33,
+        "wonGames": 173
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "195232"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "200229",
+      "attributes": {
+        "numberOfGames": 176,
+        "rating": 1460.29,
+        "wonGames": 89
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "200229"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "50643",
+      "attributes": {
+        "numberOfGames": 3029,
+        "rating": 1460.08,
+        "wonGames": 1502
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "50643"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "314481",
+      "attributes": {
+        "numberOfGames": 59,
+        "rating": 1457.86,
+        "wonGames": 41
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "314481"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "70686",
+      "attributes": {
+        "numberOfGames": 4692,
+        "rating": 1457.7,
+        "wonGames": 2365
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "70686"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "185047",
+      "attributes": {
+        "numberOfGames": 337,
+        "rating": 1456.39,
+        "wonGames": 201
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "185047"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "312065",
+      "attributes": {
+        "numberOfGames": 251,
+        "rating": 1454.98,
+        "wonGames": 137
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "312065"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "87215",
+      "attributes": {
+        "numberOfGames": 547,
+        "rating": 1452.51,
+        "wonGames": 322
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "87215"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "282023",
+      "attributes": {
+        "numberOfGames": 185,
+        "rating": 1448.32,
+        "wonGames": 115
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "282023"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "378017",
+      "attributes": {
+        "numberOfGames": 305,
+        "rating": 1447.66,
+        "wonGames": 182
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "378017"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "636",
+      "attributes": {
+        "numberOfGames": 715,
+        "rating": 1447.49,
+        "wonGames": 302
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "636"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "58915",
+      "attributes": {
+        "numberOfGames": 1497,
+        "rating": 1443.2,
+        "wonGames": 760
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "58915"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "287686",
+      "attributes": {
+        "numberOfGames": 4293,
+        "rating": 1442.68,
+        "wonGames": 1602
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "287686"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "277925",
+      "attributes": {
+        "numberOfGames": 951,
+        "rating": 1440.47,
+        "wonGames": 518
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "277925"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "90475",
+      "attributes": {
+        "numberOfGames": 3591,
+        "rating": 1439.26,
+        "wonGames": 1674
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "90475"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "340626",
+      "attributes": {
+        "numberOfGames": 877,
+        "rating": 1438.89,
+        "wonGames": 438
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "340626"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "259",
+      "attributes": {
+        "numberOfGames": 2126,
+        "rating": 1438.65,
+        "wonGames": 1104
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "259"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "55",
+      "attributes": {
+        "numberOfGames": 148,
+        "rating": 1436.78,
+        "wonGames": 104
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "55"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "102532",
+      "attributes": {
+        "numberOfGames": 1623,
+        "rating": 1436.28,
+        "wonGames": 801
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "102532"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "219084",
+      "attributes": {
+        "numberOfGames": 970,
+        "rating": 1435.41,
+        "wonGames": 440
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "219084"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "65341",
+      "attributes": {
+        "numberOfGames": 1857,
+        "rating": 1435.19,
+        "wonGames": 866
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "65341"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "227580",
+      "attributes": {
+        "numberOfGames": 20,
+        "rating": 1431.41,
+        "wonGames": 15
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "227580"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "32621",
+      "attributes": {
+        "numberOfGames": 1969,
+        "rating": 1429.1,
+        "wonGames": 1082
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "32621"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "125495",
+      "attributes": {
+        "numberOfGames": 785,
+        "rating": 1428.87,
+        "wonGames": 390
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "125495"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "113933",
+      "attributes": {
+        "numberOfGames": 3316,
+        "rating": 1426.88,
+        "wonGames": 1660
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "113933"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "341007",
+      "attributes": {
+        "numberOfGames": 313,
+        "rating": 1424.15,
+        "wonGames": 178
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "341007"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "416203",
+      "attributes": {
+        "numberOfGames": 85,
+        "rating": 1419.27,
+        "wonGames": 48
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "416203"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "124626",
+      "attributes": {
+        "numberOfGames": 569,
+        "rating": 1416.46,
+        "wonGames": 335
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "124626"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "13839",
+      "attributes": {
+        "numberOfGames": 949,
+        "rating": 1415.11,
+        "wonGames": 489
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "13839"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "311993",
+      "attributes": {
+        "numberOfGames": 530,
+        "rating": 1414.53,
+        "wonGames": 266
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "311993"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "82240",
+      "attributes": {
+        "numberOfGames": 763,
+        "rating": 1412.55,
+        "wonGames": 381
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "82240"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "204960",
+      "attributes": {
+        "numberOfGames": 779,
+        "rating": 1411.31,
+        "wonGames": 442
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "204960"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "284907",
+      "attributes": {
+        "numberOfGames": 213,
+        "rating": 1410.71,
+        "wonGames": 151
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "284907"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "376334",
+      "attributes": {
+        "numberOfGames": 55,
+        "rating": 1409.24,
+        "wonGames": 29
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "376334"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "18746",
+      "attributes": {
+        "numberOfGames": 5507,
+        "rating": 1408.72,
+        "wonGames": 2741
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "18746"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "278877",
+      "attributes": {
+        "numberOfGames": 32,
+        "rating": 1406.57,
+        "wonGames": 14
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "278877"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "316438",
+      "attributes": {
+        "numberOfGames": 310,
+        "rating": 1401.3,
+        "wonGames": 190
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "316438"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "234259",
+      "attributes": {
+        "numberOfGames": 332,
+        "rating": 1400.95,
+        "wonGames": 189
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "234259"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "226508",
+      "attributes": {
+        "numberOfGames": 292,
+        "rating": 1400.46,
+        "wonGames": 174
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "226508"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "250246",
+      "attributes": {
+        "numberOfGames": 79,
+        "rating": 1397.38,
+        "wonGames": 54
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "250246"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "366754",
+      "attributes": {
+        "numberOfGames": 115,
+        "rating": 1397.34,
+        "wonGames": 67
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "366754"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "206267",
+      "attributes": {
+        "numberOfGames": 160,
+        "rating": 1393.54,
+        "wonGames": 82
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "206267"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "102889",
+      "attributes": {
+        "numberOfGames": 1306,
+        "rating": 1392.24,
+        "wonGames": 618
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "102889"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "308555",
+      "attributes": {
+        "numberOfGames": 621,
+        "rating": 1388.13,
+        "wonGames": 323
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "308555"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "62288",
+      "attributes": {
+        "numberOfGames": 273,
+        "rating": 1387.19,
+        "wonGames": 131
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "62288"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "297885",
+      "attributes": {
+        "numberOfGames": 338,
+        "rating": 1384.69,
+        "wonGames": 137
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "297885"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "353955",
+      "attributes": {
+        "numberOfGames": 96,
+        "rating": 1383.32,
+        "wonGames": 67
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "353955"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "18220",
+      "attributes": {
+        "numberOfGames": 419,
+        "rating": 1379.64,
+        "wonGames": 198
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "18220"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "37947",
+      "attributes": {
+        "numberOfGames": 99,
+        "rating": 1378.82,
+        "wonGames": 61
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "37947"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "144921",
+      "attributes": {
+        "numberOfGames": 187,
+        "rating": 1376.92,
+        "wonGames": 120
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "144921"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "90618",
+      "attributes": {
+        "numberOfGames": 24,
+        "rating": 1376.57,
+        "wonGames": 13
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "90618"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "252643",
+      "attributes": {
+        "numberOfGames": 236,
+        "rating": 1376.2,
+        "wonGames": 120
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "252643"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "67287",
+      "attributes": {
+        "numberOfGames": 690,
+        "rating": 1375.11,
+        "wonGames": 393
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "67287"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "251459",
+      "attributes": {
+        "numberOfGames": 542,
+        "rating": 1371.94,
+        "wonGames": 304
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "251459"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "7417",
+      "attributes": {
+        "numberOfGames": 4706,
+        "rating": 1371.55,
+        "wonGames": 2333
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "7417"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "157943",
+      "attributes": {
+        "numberOfGames": 159,
+        "rating": 1370.24,
+        "wonGames": 99
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "157943"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "122186",
+      "attributes": {
+        "numberOfGames": 375,
+        "rating": 1369.41,
+        "wonGames": 204
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "122186"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "241",
+      "attributes": {
+        "numberOfGames": 919,
+        "rating": 1367.94,
+        "wonGames": 411
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "241"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "192564",
+      "attributes": {
+        "numberOfGames": 369,
+        "rating": 1365.19,
+        "wonGames": 154
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "192564"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "113989",
+      "attributes": {
+        "numberOfGames": 394,
+        "rating": 1364.51,
+        "wonGames": 230
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "113989"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "270180",
+      "attributes": {
+        "numberOfGames": 144,
+        "rating": 1362.36,
+        "wonGames": 56
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "270180"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "30361",
+      "attributes": {
+        "numberOfGames": 528,
+        "rating": 1361.32,
+        "wonGames": 251
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "30361"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "232330",
+      "attributes": {
+        "numberOfGames": 289,
+        "rating": 1360.25,
+        "wonGames": 158
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "232330"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "47480",
+      "attributes": {
+        "numberOfGames": 996,
+        "rating": 1354.74,
+        "wonGames": 466
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "47480"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "20508",
+      "attributes": {
+        "numberOfGames": 4502,
+        "rating": 1354.38,
+        "wonGames": 2219
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "20508"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "306428",
+      "attributes": {
+        "numberOfGames": 513,
+        "rating": 1353.87,
+        "wonGames": 296
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "306428"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "185780",
+      "attributes": {
+        "numberOfGames": 989,
+        "rating": 1343.77,
+        "wonGames": 502
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "185780"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "222107",
+      "attributes": {
+        "numberOfGames": 303,
+        "rating": 1343.45,
+        "wonGames": 131
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "222107"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "242272",
+      "attributes": {
+        "numberOfGames": 578,
+        "rating": 1340.49,
+        "wonGames": 203
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "242272"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "85633",
+      "attributes": {
+        "numberOfGames": 134,
+        "rating": 1340.48,
+        "wonGames": 60
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "85633"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "153749",
+      "attributes": {
+        "numberOfGames": 1081,
+        "rating": 1339.46,
+        "wonGames": 350
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "153749"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "305402",
+      "attributes": {
+        "numberOfGames": 130,
+        "rating": 1339.23,
+        "wonGames": 62
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "305402"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "108558",
+      "attributes": {
+        "numberOfGames": 32,
+        "rating": 1337.43,
+        "wonGames": 20
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "108558"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "254192",
+      "attributes": {
+        "numberOfGames": 635,
+        "rating": 1335.1,
+        "wonGames": 301
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "254192"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "363298",
+      "attributes": {
+        "numberOfGames": 132,
+        "rating": 1333.92,
+        "wonGames": 79
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "363298"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "248737",
+      "attributes": {
+        "numberOfGames": 107,
+        "rating": 1329.89,
+        "wonGames": 63
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "248737"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "41102",
+      "attributes": {
+        "numberOfGames": 19,
+        "rating": 1328.47,
+        "wonGames": 9
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "41102"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "1283",
+      "attributes": {
+        "numberOfGames": 586,
+        "rating": 1324.14,
+        "wonGames": 212
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "1283"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "418998",
+      "attributes": {
+        "numberOfGames": 43,
+        "rating": 1322.25,
+        "wonGames": 29
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "418998"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "43142",
+      "attributes": {
+        "numberOfGames": 39,
+        "rating": 1321.17,
+        "wonGames": 22
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "43142"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "20967",
+      "attributes": {
+        "numberOfGames": 597,
+        "rating": 1317.49,
+        "wonGames": 294
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "20967"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "183682",
+      "attributes": {
+        "numberOfGames": 75,
+        "rating": 1313.87,
+        "wonGames": 35
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "183682"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "177382",
+      "attributes": {
+        "numberOfGames": 308,
+        "rating": 1313.84,
+        "wonGames": 153
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "177382"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "259951",
+      "attributes": {
+        "numberOfGames": 227,
+        "rating": 1312.77,
+        "wonGames": 133
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "259951"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "132870",
+      "attributes": {
+        "numberOfGames": 2634,
+        "rating": 1305.96,
+        "wonGames": 1293
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "132870"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "250167",
+      "attributes": {
+        "numberOfGames": 138,
+        "rating": 1305.73,
+        "wonGames": 85
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "250167"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "37396",
+      "attributes": {
+        "numberOfGames": 433,
+        "rating": 1303.66,
+        "wonGames": 220
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "37396"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "231084",
+      "attributes": {
+        "numberOfGames": 356,
+        "rating": 1303.56,
+        "wonGames": 193
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "231084"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "266101",
+      "attributes": {
+        "numberOfGames": 7,
+        "rating": 1303.24,
+        "wonGames": 7
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "266101"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "86218",
+      "attributes": {
+        "numberOfGames": 557,
+        "rating": 1300.81,
+        "wonGames": 315
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "86218"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "355072",
+      "attributes": {
+        "numberOfGames": 586,
+        "rating": 1299.92,
+        "wonGames": 353
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "355072"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "100107",
+      "attributes": {
+        "numberOfGames": 122,
+        "rating": 1297.56,
+        "wonGames": 76
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "100107"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "177414",
+      "attributes": {
+        "numberOfGames": 2323,
+        "rating": 1296.95,
+        "wonGames": 1028
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "177414"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "63622",
+      "attributes": {
+        "numberOfGames": 159,
+        "rating": 1296.68,
+        "wonGames": 80
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "63622"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "247029",
+      "attributes": {
+        "numberOfGames": 1482,
+        "rating": 1296.28,
+        "wonGames": 670
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "247029"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "46610",
+      "attributes": {
+        "numberOfGames": 113,
+        "rating": 1294.58,
+        "wonGames": 66
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "46610"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "3160",
+      "attributes": {
+        "numberOfGames": 710,
+        "rating": 1293.27,
+        "wonGames": 381
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "3160"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "33631",
+      "attributes": {
+        "numberOfGames": 1204,
+        "rating": 1293.21,
+        "wonGames": 636
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "33631"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "211732",
+      "attributes": {
+        "numberOfGames": 944,
+        "rating": 1293.18,
+        "wonGames": 400
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "211732"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "356856",
+      "attributes": {
+        "numberOfGames": 5,
+        "rating": 1289.75,
+        "wonGames": 5
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "356856"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "205607",
+      "attributes": {
+        "numberOfGames": 608,
+        "rating": 1288.9,
+        "wonGames": 277
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "205607"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "32797",
+      "attributes": {
+        "numberOfGames": 787,
+        "rating": 1287.53,
+        "wonGames": 403
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "32797"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "62848",
+      "attributes": {
+        "numberOfGames": 3781,
+        "rating": 1285.7,
+        "wonGames": 1988
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "62848"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "267291",
+      "attributes": {
+        "numberOfGames": 90,
+        "rating": 1285.53,
+        "wonGames": 49
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "267291"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "59364",
+      "attributes": {
+        "numberOfGames": 2408,
+        "rating": 1285.17,
+        "wonGames": 1250
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "59364"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "145899",
+      "attributes": {
+        "numberOfGames": 265,
+        "rating": 1283.46,
+        "wonGames": 148
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "145899"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "14923",
+      "attributes": {
+        "numberOfGames": 994,
+        "rating": 1280.49,
+        "wonGames": 541
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "14923"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "84698",
+      "attributes": {
+        "numberOfGames": 1321,
+        "rating": 1280.11,
+        "wonGames": 643
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "84698"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "241892",
+      "attributes": {
+        "numberOfGames": 161,
+        "rating": 1280.09,
+        "wonGames": 65
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "241892"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "95954",
+      "attributes": {
+        "numberOfGames": 438,
+        "rating": 1278.84,
+        "wonGames": 250
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "95954"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "248806",
+      "attributes": {
+        "numberOfGames": 112,
+        "rating": 1277.68,
+        "wonGames": 54
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "248806"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "100416",
+      "attributes": {
+        "numberOfGames": 643,
+        "rating": 1276.04,
+        "wonGames": 363
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "100416"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "776",
+      "attributes": {
+        "numberOfGames": 837,
+        "rating": 1275.89,
+        "wonGames": 379
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "776"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "233941",
+      "attributes": {
+        "numberOfGames": 621,
+        "rating": 1275.18,
+        "wonGames": 296
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "233941"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "6579",
+      "attributes": {
+        "numberOfGames": 142,
+        "rating": 1274.31,
+        "wonGames": 93
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "6579"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "44594",
+      "attributes": {
+        "numberOfGames": 196,
+        "rating": 1273.73,
+        "wonGames": 103
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "44594"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "322928",
+      "attributes": {
+        "numberOfGames": 263,
+        "rating": 1273.65,
+        "wonGames": 148
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "322928"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "167554",
+      "attributes": {
+        "numberOfGames": 899,
+        "rating": 1271.95,
+        "wonGames": 454
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "167554"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "104945",
+      "attributes": {
+        "numberOfGames": 267,
+        "rating": 1271.11,
+        "wonGames": 164
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "104945"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "381129",
+      "attributes": {
+        "numberOfGames": 789,
+        "rating": 1270.59,
+        "wonGames": 447
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "381129"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "46179",
+      "attributes": {
+        "numberOfGames": 790,
+        "rating": 1268.89,
+        "wonGames": 378
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "46179"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "435",
+      "attributes": {
+        "numberOfGames": 10261,
+        "rating": 1268.68,
+        "wonGames": 4828
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "435"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "39244",
+      "attributes": {
+        "numberOfGames": 220,
+        "rating": 1266.71,
+        "wonGames": 120
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "39244"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "1499",
+      "attributes": {
+        "numberOfGames": 3254,
+        "rating": 1266.06,
+        "wonGames": 1472
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "1499"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "62008",
+      "attributes": {
+        "numberOfGames": 516,
+        "rating": 1265.89,
+        "wonGames": 293
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "62008"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "283477",
+      "attributes": {
+        "numberOfGames": 370,
+        "rating": 1264.08,
+        "wonGames": 204
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "283477"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "361563",
+      "attributes": {
+        "numberOfGames": 84,
+        "rating": 1263.11,
+        "wonGames": 46
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "361563"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "140150",
+      "attributes": {
+        "numberOfGames": 81,
+        "rating": 1262.83,
+        "wonGames": 48
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "140150"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "1961",
+      "attributes": {
+        "numberOfGames": 45,
+        "rating": 1262.45,
+        "wonGames": 15
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "1961"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "354277",
+      "attributes": {
+        "numberOfGames": 145,
+        "rating": 1261.65,
+        "wonGames": 86
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "354277"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "282629",
+      "attributes": {
+        "numberOfGames": 487,
+        "rating": 1260.6,
+        "wonGames": 284
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "282629"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "200177",
+      "attributes": {
+        "numberOfGames": 178,
+        "rating": 1256.82,
+        "wonGames": 106
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "200177"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "376123",
+      "attributes": {
+        "numberOfGames": 654,
+        "rating": 1256.14,
+        "wonGames": 360
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "376123"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "1438",
+      "attributes": {
+        "numberOfGames": 426,
+        "rating": 1253.46,
+        "wonGames": 234
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "1438"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "202713",
+      "attributes": {
+        "numberOfGames": 1806,
+        "rating": 1250.39,
+        "wonGames": 808
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "202713"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "309803",
+      "attributes": {
+        "numberOfGames": 337,
+        "rating": 1249.88,
+        "wonGames": 186
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "309803"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "380088",
+      "attributes": {
+        "numberOfGames": 876,
+        "rating": 1248.72,
+        "wonGames": 476
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "380088"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "298933",
+      "attributes": {
+        "numberOfGames": 80,
+        "rating": 1244.73,
+        "wonGames": 52
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "298933"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "172085",
+      "attributes": {
+        "numberOfGames": 53,
+        "rating": 1243.93,
+        "wonGames": 33
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "172085"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "174709",
+      "attributes": {
+        "numberOfGames": 679,
+        "rating": 1243.14,
+        "wonGames": 347
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "174709"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "220041",
+      "attributes": {
+        "numberOfGames": 608,
+        "rating": 1241.09,
+        "wonGames": 249
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "220041"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "189864",
+      "attributes": {
+        "numberOfGames": 83,
+        "rating": 1240.23,
+        "wonGames": 48
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "189864"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "209481",
+      "attributes": {
+        "numberOfGames": 313,
+        "rating": 1236.47,
+        "wonGames": 185
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "209481"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "193295",
+      "attributes": {
+        "numberOfGames": 723,
+        "rating": 1235.83,
+        "wonGames": 193
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "193295"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "16370",
+      "attributes": {
+        "numberOfGames": 10280,
+        "rating": 1235.77,
+        "wonGames": 4834
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "16370"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "276093",
+      "attributes": {
+        "numberOfGames": 311,
+        "rating": 1234.85,
+        "wonGames": 146
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "276093"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "67905",
+      "attributes": {
+        "numberOfGames": 1118,
+        "rating": 1234.69,
+        "wonGames": 596
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "67905"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "257827",
+      "attributes": {
+        "numberOfGames": 196,
+        "rating": 1233.75,
+        "wonGames": 68
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "257827"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "78539",
+      "attributes": {
+        "numberOfGames": 507,
+        "rating": 1233.36,
+        "wonGames": 288
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "78539"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "347570",
+      "attributes": {
+        "numberOfGames": 312,
+        "rating": 1232.16,
+        "wonGames": 191
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "347570"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "179737",
+      "attributes": {
+        "numberOfGames": 414,
+        "rating": 1231.21,
+        "wonGames": 256
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "179737"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "132108",
+      "attributes": {
+        "numberOfGames": 557,
+        "rating": 1229.69,
+        "wonGames": 210
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "132108"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "36525",
+      "attributes": {
+        "numberOfGames": 24,
+        "rating": 1229.68,
+        "wonGames": 13
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "36525"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "32444",
+      "attributes": {
+        "numberOfGames": 898,
+        "rating": 1228.28,
+        "wonGames": 503
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "32444"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "369572",
+      "attributes": {
+        "numberOfGames": 7,
+        "rating": 1224.5,
+        "wonGames": 7
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "369572"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "345439",
+      "attributes": {
+        "numberOfGames": 448,
+        "rating": 1224.35,
+        "wonGames": 244
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "345439"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "38166",
+      "attributes": {
+        "numberOfGames": 947,
+        "rating": 1223.65,
+        "wonGames": 480
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "38166"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "383847",
+      "attributes": {
+        "numberOfGames": 5,
+        "rating": 1219.73,
+        "wonGames": 5
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "383847"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "269178",
+      "attributes": {
+        "numberOfGames": 636,
+        "rating": 1217.94,
+        "wonGames": 192
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "269178"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "75195",
+      "attributes": {
+        "numberOfGames": 254,
+        "rating": 1216.72,
+        "wonGames": 132
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "75195"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "259687",
+      "attributes": {
+        "numberOfGames": 124,
+        "rating": 1216.29,
+        "wonGames": 77
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "259687"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "69807",
+      "attributes": {
+        "numberOfGames": 131,
+        "rating": 1213.94,
+        "wonGames": 72
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "69807"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "49139",
+      "attributes": {
+        "numberOfGames": 14,
+        "rating": 1213.3,
+        "wonGames": 8
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "49139"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "87650",
+      "attributes": {
+        "numberOfGames": 538,
+        "rating": 1212.76,
+        "wonGames": 316
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "87650"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "98956",
+      "attributes": {
+        "numberOfGames": 1194,
+        "rating": 1212.74,
+        "wonGames": 656
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "98956"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "14756",
+      "attributes": {
+        "numberOfGames": 1680,
+        "rating": 1211.75,
+        "wonGames": 759
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "14756"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "14492",
+      "attributes": {
+        "numberOfGames": 12392,
+        "rating": 1211.43,
+        "wonGames": 6027
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "14492"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "363939",
+      "attributes": {
+        "numberOfGames": 504,
+        "rating": 1209.05,
+        "wonGames": 282
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "363939"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "22547",
+      "attributes": {
+        "numberOfGames": 1520,
+        "rating": 1207.72,
+        "wonGames": 776
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "22547"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "322629",
+      "attributes": {
+        "numberOfGames": 383,
+        "rating": 1207.72,
+        "wonGames": 212
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "322629"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "461",
+      "attributes": {
+        "numberOfGames": 186,
+        "rating": 1205.08,
+        "wonGames": 82
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "461"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "606",
+      "attributes": {
+        "numberOfGames": 4143,
+        "rating": 1204.42,
+        "wonGames": 1878
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "606"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "215785",
+      "attributes": {
+        "numberOfGames": 342,
+        "rating": 1203.99,
+        "wonGames": 156
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "215785"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "190544",
+      "attributes": {
+        "numberOfGames": 195,
+        "rating": 1203.69,
+        "wonGames": 108
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "190544"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "98276",
+      "attributes": {
+        "numberOfGames": 403,
+        "rating": 1201.55,
+        "wonGames": 156
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "98276"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "366228",
+      "attributes": {
+        "numberOfGames": 251,
+        "rating": 1199.35,
+        "wonGames": 154
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "366228"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "48507",
+      "attributes": {
+        "numberOfGames": 124,
+        "rating": 1198.8,
+        "wonGames": 83
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "48507"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "266441",
+      "attributes": {
+        "numberOfGames": 128,
+        "rating": 1198.77,
+        "wonGames": 41
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "266441"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "203836",
+      "attributes": {
+        "numberOfGames": 819,
+        "rating": 1198.68,
+        "wonGames": 356
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "203836"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "127320",
+      "attributes": {
+        "numberOfGames": 4530,
+        "rating": 1198.39,
+        "wonGames": 2267
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "127320"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "193678",
+      "attributes": {
+        "numberOfGames": 64,
+        "rating": 1198.26,
+        "wonGames": 35
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "193678"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "168261",
+      "attributes": {
+        "numberOfGames": 31,
+        "rating": 1197.67,
+        "wonGames": 21
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "168261"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "276634",
+      "attributes": {
+        "numberOfGames": 278,
+        "rating": 1197.62,
+        "wonGames": 112
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "276634"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "3949",
+      "attributes": {
+        "numberOfGames": 48,
+        "rating": 1196.23,
+        "wonGames": 26
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "3949"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "303364",
+      "attributes": {
+        "numberOfGames": 154,
+        "rating": 1195.64,
+        "wonGames": 73
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "303364"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "298849",
+      "attributes": {
+        "numberOfGames": 1168,
+        "rating": 1194.84,
+        "wonGames": 466
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "298849"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "214971",
+      "attributes": {
+        "numberOfGames": 571,
+        "rating": 1192.7,
+        "wonGames": 313
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "214971"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "208967",
+      "attributes": {
+        "numberOfGames": 229,
+        "rating": 1192.01,
+        "wonGames": 54
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "208967"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "195207",
+      "attributes": {
+        "numberOfGames": 1412,
+        "rating": 1191.96,
+        "wonGames": 631
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "195207"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "334086",
+      "attributes": {
+        "numberOfGames": 177,
+        "rating": 1191.09,
+        "wonGames": 105
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "334086"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "275175",
+      "attributes": {
+        "numberOfGames": 414,
+        "rating": 1190.29,
+        "wonGames": 172
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "275175"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "175041",
+      "attributes": {
+        "numberOfGames": 121,
+        "rating": 1189.72,
+        "wonGames": 68
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "175041"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "92240",
+      "attributes": {
+        "numberOfGames": 4919,
+        "rating": 1188.54,
+        "wonGames": 2080
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "92240"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "20535",
+      "attributes": {
+        "numberOfGames": 1424,
+        "rating": 1188.39,
+        "wonGames": 760
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "20535"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "5147",
+      "attributes": {
+        "numberOfGames": 10591,
+        "rating": 1187.67,
+        "wonGames": 5169
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "5147"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "37401",
+      "attributes": {
+        "numberOfGames": 471,
+        "rating": 1187.29,
+        "wonGames": 268
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "37401"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "321539",
+      "attributes": {
+        "numberOfGames": 55,
+        "rating": 1186.64,
+        "wonGames": 29
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "321539"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "399592",
+      "attributes": {
+        "numberOfGames": 92,
+        "rating": 1186.28,
+        "wonGames": 53
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "399592"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "124787",
+      "attributes": {
+        "numberOfGames": 433,
+        "rating": 1186.23,
+        "wonGames": 266
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "124787"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "127751",
+      "attributes": {
+        "numberOfGames": 392,
+        "rating": 1183.36,
+        "wonGames": 199
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "127751"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "9196",
+      "attributes": {
+        "numberOfGames": 397,
+        "rating": 1182.78,
+        "wonGames": 204
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "9196"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "25489",
+      "attributes": {
+        "numberOfGames": 113,
+        "rating": 1181.68,
+        "wonGames": 67
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "25489"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "3970",
+      "attributes": {
+        "numberOfGames": 55,
+        "rating": 1181.16,
+        "wonGames": 29
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "3970"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "110779",
+      "attributes": {
+        "numberOfGames": 304,
+        "rating": 1178.56,
+        "wonGames": 122
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "110779"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "374202",
+      "attributes": {
+        "numberOfGames": 129,
+        "rating": 1176.3,
+        "wonGames": 77
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "374202"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "328357",
+      "attributes": {
+        "numberOfGames": 750,
+        "rating": 1174.3,
+        "wonGames": 394
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "328357"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "67579",
+      "attributes": {
+        "numberOfGames": 338,
+        "rating": 1173.48,
+        "wonGames": 217
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "67579"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "25055",
+      "attributes": {
+        "numberOfGames": 154,
+        "rating": 1173.23,
+        "wonGames": 88
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "25055"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "26928",
+      "attributes": {
+        "numberOfGames": 168,
+        "rating": 1172.77,
+        "wonGames": 104
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "26928"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "409896",
+      "attributes": {
+        "numberOfGames": 11,
+        "rating": 1171.51,
+        "wonGames": 11
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "409896"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "180523",
+      "attributes": {
+        "numberOfGames": 8,
+        "rating": 1169.38,
+        "wonGames": 8
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "180523"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "196057",
+      "attributes": {
+        "numberOfGames": 50,
+        "rating": 1169.23,
+        "wonGames": 25
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "196057"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "69094",
+      "attributes": {
+        "numberOfGames": 1936,
+        "rating": 1168.16,
+        "wonGames": 964
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "69094"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "348758",
+      "attributes": {
+        "numberOfGames": 467,
+        "rating": 1167.96,
+        "wonGames": 256
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "348758"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "172063",
+      "attributes": {
+        "numberOfGames": 149,
+        "rating": 1167.63,
+        "wonGames": 77
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "172063"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "282003",
+      "attributes": {
+        "numberOfGames": 13,
+        "rating": 1167.09,
+        "wonGames": 10
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "282003"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "129746",
+      "attributes": {
+        "numberOfGames": 79,
+        "rating": 1166.31,
+        "wonGames": 48
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "129746"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "81723",
+      "attributes": {
+        "numberOfGames": 860,
+        "rating": 1165.62,
+        "wonGames": 413
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "81723"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "100950",
+      "attributes": {
+        "numberOfGames": 2818,
+        "rating": 1164.64,
+        "wonGames": 1232
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "100950"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "48747",
+      "attributes": {
+        "numberOfGames": 52,
+        "rating": 1163.31,
+        "wonGames": 32
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "48747"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "143455",
+      "attributes": {
+        "numberOfGames": 317,
+        "rating": 1161.52,
+        "wonGames": 149
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "143455"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "304515",
+      "attributes": {
+        "numberOfGames": 78,
+        "rating": 1160.71,
+        "wonGames": 20
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "304515"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "12614",
+      "attributes": {
+        "numberOfGames": 127,
+        "rating": 1159.83,
+        "wonGames": 66
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "12614"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "301747",
+      "attributes": {
+        "numberOfGames": 278,
+        "rating": 1158.89,
+        "wonGames": 154
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "301747"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "164801",
+      "attributes": {
+        "numberOfGames": 2939,
+        "rating": 1157.88,
+        "wonGames": 1296
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "164801"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "252521",
+      "attributes": {
+        "numberOfGames": 627,
+        "rating": 1157.33,
+        "wonGames": 278
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "252521"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "101807",
+      "attributes": {
+        "numberOfGames": 146,
+        "rating": 1155.07,
+        "wonGames": 90
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "101807"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "415058",
+      "attributes": {
+        "numberOfGames": 32,
+        "rating": 1152.53,
+        "wonGames": 15
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "415058"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "59382",
+      "attributes": {
+        "numberOfGames": 229,
+        "rating": 1151.91,
+        "wonGames": 119
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "59382"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "291407",
+      "attributes": {
+        "numberOfGames": 136,
+        "rating": 1149.04,
+        "wonGames": 53
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "291407"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "204820",
+      "attributes": {
+        "numberOfGames": 1069,
+        "rating": 1145.87,
+        "wonGames": 426
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "204820"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "64606",
+      "attributes": {
+        "numberOfGames": 1497,
+        "rating": 1145.4,
+        "wonGames": 748
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "64606"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "379741",
+      "attributes": {
+        "numberOfGames": 71,
+        "rating": 1144.24,
+        "wonGames": 43
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "379741"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "4502",
+      "attributes": {
+        "numberOfGames": 2677,
+        "rating": 1144.05,
+        "wonGames": 1286
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "4502"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "225318",
+      "attributes": {
+        "numberOfGames": 78,
+        "rating": 1143.93,
+        "wonGames": 45
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "225318"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "332647",
+      "attributes": {
+        "numberOfGames": 232,
+        "rating": 1142.2,
+        "wonGames": 137
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "332647"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "352507",
+      "attributes": {
+        "numberOfGames": 30,
+        "rating": 1141.81,
+        "wonGames": 20
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "352507"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "327149",
+      "attributes": {
+        "numberOfGames": 41,
+        "rating": 1140.77,
+        "wonGames": 25
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "327149"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "385168",
+      "attributes": {
+        "numberOfGames": 284,
+        "rating": 1139.32,
+        "wonGames": 164
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "385168"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "1102",
+      "attributes": {
+        "numberOfGames": 629,
+        "rating": 1139.22,
+        "wonGames": 302
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "1102"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "385028",
+      "attributes": {
+        "numberOfGames": 9,
+        "rating": 1138.57,
+        "wonGames": 8
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "385028"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "123464",
+      "attributes": {
+        "numberOfGames": 77,
+        "rating": 1137.87,
+        "wonGames": 37
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "123464"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "156821",
+      "attributes": {
+        "numberOfGames": 132,
+        "rating": 1137.68,
+        "wonGames": 86
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "156821"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "308648",
+      "attributes": {
+        "numberOfGames": 1099,
+        "rating": 1137.61,
+        "wonGames": 424
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "308648"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "4256",
+      "attributes": {
+        "numberOfGames": 284,
+        "rating": 1135.78,
+        "wonGames": 148
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "4256"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "76890",
+      "attributes": {
+        "numberOfGames": 72,
+        "rating": 1135.76,
+        "wonGames": 51
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "76890"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "334310",
+      "attributes": {
+        "numberOfGames": 83,
+        "rating": 1133.91,
+        "wonGames": 49
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "334310"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "270612",
+      "attributes": {
+        "numberOfGames": 189,
+        "rating": 1132.67,
+        "wonGames": 93
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "270612"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "42612",
+      "attributes": {
+        "numberOfGames": 465,
+        "rating": 1131.48,
+        "wonGames": 242
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "42612"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "223224",
+      "attributes": {
+        "numberOfGames": 162,
+        "rating": 1131.47,
+        "wonGames": 95
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "223224"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "408706",
+      "attributes": {
+        "numberOfGames": 188,
+        "rating": 1129.73,
+        "wonGames": 122
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "408706"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "47605",
+      "attributes": {
+        "numberOfGames": 318,
+        "rating": 1129.57,
+        "wonGames": 177
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "47605"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "37910",
+      "attributes": {
+        "numberOfGames": 3452,
+        "rating": 1129.29,
+        "wonGames": 1799
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "37910"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "145245",
+      "attributes": {
+        "numberOfGames": 8944,
+        "rating": 1128.95,
+        "wonGames": 4150
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "145245"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "161614",
+      "attributes": {
+        "numberOfGames": 166,
+        "rating": 1127.53,
+        "wonGames": 104
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "161614"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "182262",
+      "attributes": {
+        "numberOfGames": 64,
+        "rating": 1123.47,
+        "wonGames": 30
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "182262"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "1309",
+      "attributes": {
+        "numberOfGames": 620,
+        "rating": 1120.89,
+        "wonGames": 306
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "1309"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "69036",
+      "attributes": {
+        "numberOfGames": 466,
+        "rating": 1118.97,
+        "wonGames": 226
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "69036"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "178230",
+      "attributes": {
+        "numberOfGames": 296,
+        "rating": 1118.69,
+        "wonGames": 115
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "178230"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "13043",
+      "attributes": {
+        "numberOfGames": 7026,
+        "rating": 1117.75,
+        "wonGames": 3422
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "13043"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "307673",
+      "attributes": {
+        "numberOfGames": 524,
+        "rating": 1117.55,
+        "wonGames": 267
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "307673"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "158187",
+      "attributes": {
+        "numberOfGames": 50,
+        "rating": 1116.95,
+        "wonGames": 27
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "158187"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "25477",
+      "attributes": {
+        "numberOfGames": 714,
+        "rating": 1116.67,
+        "wonGames": 383
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "25477"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "324811",
+      "attributes": {
+        "numberOfGames": 71,
+        "rating": 1116.49,
+        "wonGames": 43
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "324811"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "67680",
+      "attributes": {
+        "numberOfGames": 52,
+        "rating": 1113.68,
+        "wonGames": 30
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "67680"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "90633",
+      "attributes": {
+        "numberOfGames": 247,
+        "rating": 1112.86,
+        "wonGames": 134
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "90633"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "23997",
+      "attributes": {
+        "numberOfGames": 2904,
+        "rating": 1112.03,
+        "wonGames": 1428
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "23997"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "368796",
+      "attributes": {
+        "numberOfGames": 148,
+        "rating": 1111.79,
+        "wonGames": 92
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "368796"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "492",
+      "attributes": {
+        "numberOfGames": 722,
+        "rating": 1111.47,
+        "wonGames": 336
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "492"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "99843",
+      "attributes": {
+        "numberOfGames": 284,
+        "rating": 1107.82,
+        "wonGames": 166
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "99843"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "233457",
+      "attributes": {
+        "numberOfGames": 225,
+        "rating": 1107.53,
+        "wonGames": 129
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "233457"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "137182",
+      "attributes": {
+        "numberOfGames": 2376,
+        "rating": 1107.45,
+        "wonGames": 1194
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "137182"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "411915",
+      "attributes": {
+        "numberOfGames": 22,
+        "rating": 1107,
+        "wonGames": 13
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "411915"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "145693",
+      "attributes": {
+        "numberOfGames": 197,
+        "rating": 1106.85,
+        "wonGames": 115
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "145693"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "203062",
+      "attributes": {
+        "numberOfGames": 1434,
+        "rating": 1106.43,
+        "wonGames": 697
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "203062"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "281",
+      "attributes": {
+        "numberOfGames": 310,
+        "rating": 1106.22,
+        "wonGames": 157
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "281"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "244367",
+      "attributes": {
+        "numberOfGames": 947,
+        "rating": 1105.94,
+        "wonGames": 426
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "244367"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "336269",
+      "attributes": {
+        "numberOfGames": 280,
+        "rating": 1105.8,
+        "wonGames": 153
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "336269"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "27060",
+      "attributes": {
+        "numberOfGames": 247,
+        "rating": 1104.54,
+        "wonGames": 158
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "27060"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "345882",
+      "attributes": {
+        "numberOfGames": 96,
+        "rating": 1102.26,
+        "wonGames": 60
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "345882"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "29514",
+      "attributes": {
+        "numberOfGames": 278,
+        "rating": 1098.48,
+        "wonGames": 155
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "29514"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "177371",
+      "attributes": {
+        "numberOfGames": 571,
+        "rating": 1097.65,
+        "wonGames": 232
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "177371"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "14627",
+      "attributes": {
+        "numberOfGames": 210,
+        "rating": 1096.41,
+        "wonGames": 94
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "14627"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "416029",
+      "attributes": {
+        "numberOfGames": 10,
+        "rating": 1095.47,
+        "wonGames": 8
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "416029"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "25208",
+      "attributes": {
+        "numberOfGames": 424,
+        "rating": 1094.42,
+        "wonGames": 165
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "25208"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "406023",
+      "attributes": {
+        "numberOfGames": 78,
+        "rating": 1093.59,
+        "wonGames": 47
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "406023"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "45574",
+      "attributes": {
+        "numberOfGames": 139,
+        "rating": 1092.88,
+        "wonGames": 82
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "45574"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "198994",
+      "attributes": {
+        "numberOfGames": 3,
+        "rating": 1091.38,
+        "wonGames": 3
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "198994"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "302750",
+      "attributes": {
+        "numberOfGames": 370,
+        "rating": 1089.97,
+        "wonGames": 144
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "302750"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "261673",
+      "attributes": {
+        "numberOfGames": 22,
+        "rating": 1089.39,
+        "wonGames": 11
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "261673"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "142438",
+      "attributes": {
+        "numberOfGames": 58,
+        "rating": 1088.77,
+        "wonGames": 33
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "142438"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "117575",
+      "attributes": {
+        "numberOfGames": 177,
+        "rating": 1088.36,
+        "wonGames": 103
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "117575"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "3823",
+      "attributes": {
+        "numberOfGames": 1903,
+        "rating": 1086.59,
+        "wonGames": 964
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "3823"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "101561",
+      "attributes": {
+        "numberOfGames": 1234,
+        "rating": 1085.13,
+        "wonGames": 623
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "101561"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "32418",
+      "attributes": {
+        "numberOfGames": 257,
+        "rating": 1084.14,
+        "wonGames": 127
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "32418"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "155740",
+      "attributes": {
+        "numberOfGames": 350,
+        "rating": 1083.23,
+        "wonGames": 198
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "155740"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "355446",
+      "attributes": {
+        "numberOfGames": 234,
+        "rating": 1082.14,
+        "wonGames": 140
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "355446"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "247776",
+      "attributes": {
+        "numberOfGames": 291,
+        "rating": 1081.2,
+        "wonGames": 156
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "247776"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "29748",
+      "attributes": {
+        "numberOfGames": 221,
+        "rating": 1080.73,
+        "wonGames": 117
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "29748"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "289601",
+      "attributes": {
+        "numberOfGames": 84,
+        "rating": 1080.38,
+        "wonGames": 18
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "289601"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "118213",
+      "attributes": {
+        "numberOfGames": 8498,
+        "rating": 1080.15,
+        "wonGames": 4194
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "118213"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "32258",
+      "attributes": {
+        "numberOfGames": 92,
+        "rating": 1080.12,
+        "wonGames": 53
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "32258"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "71606",
+      "attributes": {
+        "numberOfGames": 938,
+        "rating": 1079.94,
+        "wonGames": 404
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "71606"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "352639",
+      "attributes": {
+        "numberOfGames": 499,
+        "rating": 1079.42,
+        "wonGames": 276
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "352639"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "127117",
+      "attributes": {
+        "numberOfGames": 2138,
+        "rating": 1075.9,
+        "wonGames": 1123
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "127117"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "122807",
+      "attributes": {
+        "numberOfGames": 227,
+        "rating": 1074.71,
+        "wonGames": 122
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "122807"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "340382",
+      "attributes": {
+        "numberOfGames": 828,
+        "rating": 1074.63,
+        "wonGames": 430
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "340382"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "327289",
+      "attributes": {
+        "numberOfGames": 19,
+        "rating": 1074.48,
+        "wonGames": 10
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "327289"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "402839",
+      "attributes": {
+        "numberOfGames": 5,
+        "rating": 1073.09,
+        "wonGames": 5
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "402839"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "382801",
+      "attributes": {
+        "numberOfGames": 21,
+        "rating": 1071.76,
+        "wonGames": 16
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "382801"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "164291",
+      "attributes": {
+        "numberOfGames": 394,
+        "rating": 1071.46,
+        "wonGames": 217
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "164291"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "346621",
+      "attributes": {
+        "numberOfGames": 334,
+        "rating": 1071.42,
+        "wonGames": 181
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "346621"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "368284",
+      "attributes": {
+        "numberOfGames": 323,
+        "rating": 1070.88,
+        "wonGames": 182
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "368284"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "17172",
+      "attributes": {
+        "numberOfGames": 228,
+        "rating": 1070.66,
+        "wonGames": 131
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "17172"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "189301",
+      "attributes": {
+        "numberOfGames": 332,
+        "rating": 1070.3,
+        "wonGames": 180
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "189301"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "286213",
+      "attributes": {
+        "numberOfGames": 171,
+        "rating": 1069.73,
+        "wonGames": 85
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "286213"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "105703",
+      "attributes": {
+        "numberOfGames": 25,
+        "rating": 1067.43,
+        "wonGames": 16
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "105703"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "405076",
+      "attributes": {
+        "numberOfGames": 101,
+        "rating": 1067.34,
+        "wonGames": 54
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "405076"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "277149",
+      "attributes": {
+        "numberOfGames": 692,
+        "rating": 1066.95,
+        "wonGames": 373
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "277149"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "72762",
+      "attributes": {
+        "numberOfGames": 261,
+        "rating": 1066.88,
+        "wonGames": 153
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "72762"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "353917",
+      "attributes": {
+        "numberOfGames": 423,
+        "rating": 1066.45,
+        "wonGames": 227
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "353917"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "346285",
+      "attributes": {
+        "numberOfGames": 71,
+        "rating": 1066.08,
+        "wonGames": 41
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "346285"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "295089",
+      "attributes": {
+        "numberOfGames": 351,
+        "rating": 1065.07,
+        "wonGames": 129
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "295089"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "286556",
+      "attributes": {
+        "numberOfGames": 43,
+        "rating": 1064.56,
+        "wonGames": 18
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "286556"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "371875",
+      "attributes": {
+        "numberOfGames": 29,
+        "rating": 1062.77,
+        "wonGames": 19
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "371875"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "252416",
+      "attributes": {
+        "numberOfGames": 233,
+        "rating": 1062.52,
+        "wonGames": 102
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "252416"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "214190",
+      "attributes": {
+        "numberOfGames": 79,
+        "rating": 1062.1,
+        "wonGames": 44
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "214190"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "133180",
+      "attributes": {
+        "numberOfGames": 52,
+        "rating": 1062,
+        "wonGames": 28
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "133180"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "390662",
+      "attributes": {
+        "numberOfGames": 390,
+        "rating": 1061.44,
+        "wonGames": 213
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "390662"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "330894",
+      "attributes": {
+        "numberOfGames": 14,
+        "rating": 1060.3,
+        "wonGames": 9
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "330894"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "211779",
+      "attributes": {
+        "numberOfGames": 396,
+        "rating": 1060.05,
+        "wonGames": 175
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "211779"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "68525",
+      "attributes": {
+        "numberOfGames": 249,
+        "rating": 1059.61,
+        "wonGames": 140
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "68525"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "83982",
+      "attributes": {
+        "numberOfGames": 37,
+        "rating": 1058.45,
+        "wonGames": 22
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "83982"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "185631",
+      "attributes": {
+        "numberOfGames": 298,
+        "rating": 1058.29,
+        "wonGames": 178
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "185631"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "408199",
+      "attributes": {
+        "numberOfGames": 90,
+        "rating": 1057.92,
+        "wonGames": 58
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "408199"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "78476",
+      "attributes": {
+        "numberOfGames": 822,
+        "rating": 1057.92,
+        "wonGames": 446
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "78476"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "200794",
+      "attributes": {
+        "numberOfGames": 160,
+        "rating": 1057.78,
+        "wonGames": 92
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "200794"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "38512",
+      "attributes": {
+        "numberOfGames": 10151,
+        "rating": 1057.7,
+        "wonGames": 5129
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "38512"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "118579",
+      "attributes": {
+        "numberOfGames": 242,
+        "rating": 1057.56,
+        "wonGames": 96
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "118579"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "369445",
+      "attributes": {
+        "numberOfGames": 960,
+        "rating": 1056.49,
+        "wonGames": 513
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "369445"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "67291",
+      "attributes": {
+        "numberOfGames": 1093,
+        "rating": 1056.27,
+        "wonGames": 536
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "67291"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "231270",
+      "attributes": {
+        "numberOfGames": 2006,
+        "rating": 1055.31,
+        "wonGames": 878
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "231270"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "70594",
+      "attributes": {
+        "numberOfGames": 2075,
+        "rating": 1055.24,
+        "wonGames": 899
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "70594"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "82514",
+      "attributes": {
+        "numberOfGames": 1703,
+        "rating": 1054.29,
+        "wonGames": 874
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "82514"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "375102",
+      "attributes": {
+        "numberOfGames": 45,
+        "rating": 1053.85,
+        "wonGames": 27
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "375102"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "406684",
+      "attributes": {
+        "numberOfGames": 184,
+        "rating": 1053.83,
+        "wonGames": 109
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "406684"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "158627",
+      "attributes": {
+        "numberOfGames": 224,
+        "rating": 1053.75,
+        "wonGames": 93
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "158627"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "127667",
+      "attributes": {
+        "numberOfGames": 377,
+        "rating": 1052.98,
+        "wonGames": 144
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "127667"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "342522",
+      "attributes": {
+        "numberOfGames": 117,
+        "rating": 1049.92,
+        "wonGames": 72
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "342522"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "99826",
+      "attributes": {
+        "numberOfGames": 941,
+        "rating": 1049.37,
+        "wonGames": 335
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "99826"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "193297",
+      "attributes": {
+        "numberOfGames": 1801,
+        "rating": 1049.18,
+        "wonGames": 731
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "193297"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "245663",
+      "attributes": {
+        "numberOfGames": 275,
+        "rating": 1048.75,
+        "wonGames": 137
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "245663"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "396062",
+      "attributes": {
+        "numberOfGames": 50,
+        "rating": 1046.56,
+        "wonGames": 30
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "396062"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "18450",
+      "attributes": {
+        "numberOfGames": 1143,
+        "rating": 1046.36,
+        "wonGames": 519
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "18450"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "205000",
+      "attributes": {
+        "numberOfGames": 486,
+        "rating": 1046.35,
+        "wonGames": 253
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "205000"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "141777",
+      "attributes": {
+        "numberOfGames": 311,
+        "rating": 1046.33,
+        "wonGames": 171
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "141777"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "321969",
+      "attributes": {
+        "numberOfGames": 405,
+        "rating": 1046.16,
+        "wonGames": 223
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "321969"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "377366",
+      "attributes": {
+        "numberOfGames": 679,
+        "rating": 1046.11,
+        "wonGames": 367
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "377366"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "344331",
+      "attributes": {
+        "numberOfGames": 502,
+        "rating": 1045.69,
+        "wonGames": 273
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "344331"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "13857",
+      "attributes": {
+        "numberOfGames": 1749,
+        "rating": 1045.53,
+        "wonGames": 896
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "13857"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "423784",
+      "attributes": {
+        "numberOfGames": 13,
+        "rating": 1045.07,
+        "wonGames": 11
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "423784"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "317981",
+      "attributes": {
+        "numberOfGames": 130,
+        "rating": 1044.93,
+        "wonGames": 77
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "317981"
+          }
+        }
+      }
+    },
+    {
+      "type": "ladder1v1Rating",
+      "id": "45743",
+      "attributes": {
+        "numberOfGames": 204,
+        "rating": 1043.5,
+        "wonGames": 89
+      },
+      "relationships": {
+        "player": {
+          "data": {
+            "type": "player",
+            "id": "45743"
+          }
+        }
+      }
+    }
+  ]
+}

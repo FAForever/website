@@ -1,17 +1,39 @@
 extends ../layouts/default
+block bannerData
+  - var bannerImage = "leaderboards"
+  - var bannerFirstTitle = "FAF LEADERBOARDS"
+  - var bannerSecondTitle = "LOOK AT THE TOP PLAYERS*"
+  - var bannerSubTitle = "*OF THE LAST MONTH, NEXUS NOT INCLUDED"
+block content
 
-block Content
-  h1 Leaderboards Pages 
-  h2 In-Development
-  
-  
-  
-  
+  .mainLeaderboardContainer
+    .leaderboardContainer.column12
+     .responsiveTextTitle 1v1
+    .leaderboardContainer.column1
+      .leaderboardItem
+        ul.responsiveText Rank
+          li.responsiveText #1
+    .leaderboardContainer.column2
+      .leaderboardItem
+        ul.responsiveText Player
+          li.responsiveText Tex
+    .leaderboardContainer.column2
+      .leaderboardItem
+        ul.responsiveText Rating
+          li.responsiveText 2301
+    .leaderboardContainer.column2
+      .leaderboardItem
+        ul.responsiveText Win Rate
+          li.responsiveText 50%
+    .leaderboardContainer.column1
+      .leaderboardItem
+        ul.responsiveText Total Games
+          li.responsiveText 3745
+    .leaderboardContainer.column1
+      .leaderboardItem
+        ul.responsiveText Faction Pick
+          li.responsiveText Cybran
+          
+    
 block js
-  script(type='text/javascript').
-    var apiURL = !{JSON.stringify(apiURL)};
-    var ratingTypeTitle = !{JSON.stringify(ratingTypeTitle)};
-    var ratingType = !{JSON.stringify(ratingType)};
-    var members = '!{JSON.stringify(members)}';
-    var lastPage = !{JSON.stringify(lastPage)};
-  script(src="/js/leaderboards.min.js")
+  script(type='module' src="../../js/app/leaderboards.js")
