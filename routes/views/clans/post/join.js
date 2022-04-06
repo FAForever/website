@@ -11,41 +11,19 @@ exports = module.exports = function(req, res) {
     let flash = {};
     const overallRes = res;
     
-    if (!req.query.i){
+    if (!req.query.token || !req.query.clan_id){
         flash.type = 'Error!';
         flash.class = 'alert-danger';
-        flash.messages = [{msg: 'The invitation link is wrong or truncated. Key informations are missing.'}];
+        flash.messages = [{msg: 'The invitation link is invalid!'}];
 
         let buff = Buffer.from(JSON.stringify(flash));  
         let data = buff.toString('base64');
 
-        return overallRes.redirect('/clans?flash='+data+'');
+        return res.redirect('/clans?flash='+data+'');
     }
     
-    const invitationId = req.query.i;
-    
-    if (!req.app.locals.clanInvitations[invitationId]){
-        flash.type = 'Error!';
-        flash.class = 'alert-danger';
-        flash.messages = [{msg: 'The invitation link is wrong or truncated. Key informations are missing.'}];
-
-        let buff = Buffer.from(JSON.stringify(flash));  
-        let data = buff.toString('base64');
-
-        return overallRes.redirect('/clans?flash='+data+'');
-    }
-    
-    const invite = req.app.locals.clanInvitations[invitationId];
-    const clanId = invite.clan;
-    const token = invite.token;
-	
-	// We use timeout here because if we delete the invite link whenver the page is GET,
-	// then discord and other messaging applications will destroy the link accidentally
-	// when pre-fetching the page. So we will delete it later. Regardless if the website is restarted all the links will be 
-	// killed instantly, which is fine. They are short lived by design.
-	setTimeout(()=>{
-		delete req.app.locals.clanInvitations[invitationId]
-	}, process.env.CLAN_INVITES_LIFESPAN_DAYS * 24 * 3600 * 1000);
+    const token = req.query.token;
+	const clanId = req.query.clan_id;
     
     request.post(
         {
