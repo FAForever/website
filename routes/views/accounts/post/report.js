@@ -124,7 +124,7 @@ exports = module.exports = async function (req, res) {
 
     // Checking the game exists
     if (isGameReport){
-      const gameFetchRoute = process.env.API_URL+'/data/game?filter=id=='+req.body.game_id+'&fields[game]=id';
+      const gameFetchRoute = process.env.API_URL+'/data/game?filter=id=='+req.body.game_id+'&fields[game]='; /* empty field here to fetch nothing but ID */
       try {
         const gameFetch = await promiseRequest(gameFetchRoute);
         const gameData = JSON.parse(gameFetch);
