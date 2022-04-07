@@ -5,7 +5,8 @@ async function fetchMoviesJSON() {
   console.log(data);
   return data;
 }
-fetchMoviesJSON().then(data => {
-  data; // fetched data
+fetchMoviesJSON()
+  .then(data => {
+    data; // fetched data
 
 });

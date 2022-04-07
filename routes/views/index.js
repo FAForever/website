@@ -24,3 +24,4 @@ exports = module.exports = function(req, res) {
   res.render('index', {flash: flash, refreshCountersSeconds: parseInt(process.env.PLAYER_COUNT_UPDATE_INTERVAL)});
 
 };
+
