@@ -229,18 +229,14 @@ html(lang='en')
           img(src='/images/splat.png' alt='')
           
     block bannerData    
-      - var bannerImage = "landing"
-      - var bannerFirstTitle = "CONTINUE THE SUPCOM LEGACY IN"
-      - var bannerSecondTitle = "FORGED ALLIANCE FOREVER"
-      - var bannerSubTitle = "ACUS ON THE BATTLEFIELD RIGHT NOW"
-      //- var bannerplayer_counter = 
+
     
     block banner
       mixin banner()
         .mainBannerContainer(class= bannerImage + 'Banner')(style='background-image: url(../images/banner/' +bannerImage+ '.jpg);')
           .bannerContainer.bannerTitle #{bannerFirstTitle}
           .bannerContainer.bannerTitle #{bannerSecondTitle}
-          .bannerContainer.bannerSubtitle#player_counter.counter #{bannerSubTitle}
+          .bannerContainer.bannerSubtitle #{bannerSubTitle}
           block bannerButton 
 
     +banner()
