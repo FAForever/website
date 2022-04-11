@@ -39,7 +39,7 @@ module.exports.run = function run() {
                     recentPlayers.push(entry.attributes.login);
                 }
 
-                fs.writeFile('members/recent.json', JSON.stringify(recentPlayers), function(error) {
+                fs.writeFile('public/js/app/members/recent.json', JSON.stringify(recentPlayers), function(error) {
                     if (error) {
                         console.log(error);
                     } else {

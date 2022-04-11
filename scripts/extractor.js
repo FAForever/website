@@ -58,12 +58,12 @@ module.exports.run = function run() {
 
       const ratings = models.sync(JSON.parse(body));
 
-      saveLeaderboardRatingsToFile(ratings, "members/global.json");
+      saveLeaderboardRatingsToFile(ratings, "public/js/app/members/global.json");
     });
 
     models.reset();
 
-    request(process.env.API_URL + "/data/leaderboardRating?sort=-rating&fields%5BleaderboardRating%5D=rating,totalGames,wonGames,player&include=player&filter=leaderboard.id==2;updateTime=ge=" +
+    request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==2;updateTime=ge=" +
       pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z", function (error, response, body) {
       if (error || response.statusCode > 210) {
         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - There was an issue while fetching leaderboards 1v1:');
@@ -74,7 +74,7 @@ module.exports.run = function run() {
 
       const ratings = models.sync(JSON.parse(body));
 
-      saveLeaderboardRatingsToFile(ratings, "members/1v1.json");
+      saveLeaderboardRatingsToFile(ratings, "public/js/app/members/1v1.json");
     });
 
     models.reset();
@@ -90,7 +90,7 @@ module.exports.run = function run() {
 
       const ratings = models.sync(JSON.parse(body));
 
-      saveLeaderboardRatingsToFile(ratings, "members/2v2.json");
+      saveLeaderboardRatingsToFile(ratings, "public/js/app/members/2v2.json");
     });
 
   } catch (e) {

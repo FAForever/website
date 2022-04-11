@@ -1,9 +1,19 @@
 extends ../layouts/default
-
-block bannerButton
-  br
-  a(href='https://www.faforever.com/client')
-    button.landingButton PLAY NOW
+block bannerData    
+  - var bannerImage = "landing"
+  - var bannerFirstTitle = "CONTINUE THE SUPCOM LEGACY IN"
+  - var bannerSecondTitle = "FORGED ALLIANCE FOREVER"
+  - var bannerSubTitle = "" + " " + "ACUS ON THE BATTLEFIELD RIGHT NOW"
+block banner
+  mixin banner()
+    .mainBannerContainer(class= bannerImage + 'Banner')(style='background-image: url(../images/banner/' + bannerImage + '.jpg);')
+      .bannerContainer.bannerTitle #{bannerFirstTitle}
+      .bannerContainer.bannerTitle #{bannerSecondTitle}
+      .bannerContainer.bannerSubtitle#playerCounter #{bannerSubTitle}
+      block bannerButton
+        br
+        a(href='https://www.faforever.com/client')
+          button.landingButton PLAY NOW
 block content
   
   //Monkeylord Background 
@@ -210,5 +220,7 @@ block content
         img(src='/images/blacksplat.png' alt='')
 
 block js
-  script const refreshCountersSeconds = !{refreshCountersSeconds};
-  script(src="/js/app/counter.js")
+
+  //script const refreshCountersSeconds = !{refreshCountersSeconds};
+  //script(src="/js/app/counter.js")
+
