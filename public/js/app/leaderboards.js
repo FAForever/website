@@ -4,7 +4,7 @@ async function leaderboard1v1JSON() {
 
   console.log(data.length);
   return data;
-}
+} //I accidentally pushed to the wrong branch and now I have to make a comment or I can't push.
 leaderboard1v1JSON()
   .then(data => {
     data;
