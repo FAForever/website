@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   console.log("Lock and loaded!");
+
   async function playerCounterJSON() {
     const response = await fetch('js/app/members/recent.json');
     const data = await response.json();
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       data;
       document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", data.length);// fetched data
     });
+
 
   //JS for the main navbar menus to open on hover and close when leaving (GAME, COMMUNITY, etc). It uses mobilenav-active because it just needs the display:block        
   let topNavAbsolute = document.getElementsByClassName("topNavAbsolute");

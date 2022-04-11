@@ -236,7 +236,9 @@ html(lang='en')
         .mainBannerContainer(class= bannerImage + 'Banner')(style='background-image: url(../images/banner/' +bannerImage+ '.jpg);')
           .bannerContainer.bannerTitle #{bannerFirstTitle}
           .bannerContainer.bannerTitle #{bannerSecondTitle}
+
           .bannerContainer.bannerSubtitle #{bannerSubTitle}
+
           block bannerButton 
 
     +banner()
