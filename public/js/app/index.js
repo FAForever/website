@@ -1,18 +1,16 @@
-document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", () => {
   console.log("Lock and loaded!");
 
-  async function playerCounterJSON() {
+ async function playerCounterJSON() {
     const response = await fetch('js/app/members/recent.json');
     const data = await response.json();
-    
-    console.log(data.length);
     return data;
   }
   playerCounterJSON()
-    .then(data => {
-      data;
-      document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", data.length);// fetched data
+    .then((data) => {
+      document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", data.length);
     });
+
 
 
   //JS for the main navbar menus to open on hover and close when leaving (GAME, COMMUNITY, etc). It uses mobilenav-active because it just needs the display:block        
@@ -24,22 +22,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   for (let i = 0; i < navlist.length; i++) {
     //When you mouseover/click, menu appears
-    navlist[i].addEventListener("mouseover", function () {
+    navlist[i].addEventListener("mouseover", () => {
       navabsolute[i].classList.add("mobilenav_active");
     });
     
     //when you mouseout/leave, menu dissapears
-    navlist[i].addEventListener("mouseout", function () {
+    navlist[i].addEventListener("mouseout", () => {
       for (x = 0; x < navabsolute.length; x++) {
         navabsolute[x].classList.remove("mobilenav_active");
       }
     });
   }
   //The mouseover here needs to change to click but by doing so, the mouseout triggers as soon as you  enter the list or leave the icon.
-  topNavList[0].addEventListener("mouseover", function () {
+  topNavList[0].addEventListener("mouseover", () => {
     topNavAbsolute[0].classList.add("mobilenav_active");
   });
-  topNavList[0].addEventListener("mouseout", function () {
+  topNavList[0].addEventListener("mouseout", () => {
     for (x = 0; x < topNavAbsolute.length; x++) {
       topNavAbsolute[x].classList.remove("mobilenav_active");
     }
@@ -51,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let blackul = document.getElementsByClassName("mobilenav_ul");
 
   for (let i = 0; i < blackitem.length; i++) {
-    blackitem[i].addEventListener("click", function () {
+    blackitem[i].addEventListener("click", () => {
       listopen(i);
     });
   }
@@ -75,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let blackmobile = document.getElementsByClassName("mobilenav_mobile");
   let blackbars = document.getElementById("mobilenav_bars");
   let blackbg = document.getElementById("mobilenav_bg");
-  blackbars.addEventListener("click", function () {
+  blackbars.addEventListener("click", () => {
     blackmobile[0].classList.toggle("mobilenav_mobile_active");
     blackbars.classList.toggle("mobilenav_change");
     blackbg.classList.toggle("mobilenav_bg_active");

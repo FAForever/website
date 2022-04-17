@@ -7,32 +7,39 @@ block bannerData
 block content
 
   .mainLeaderboardContainer
-    .leaderboardContainer.column12
-     .responsiveTextTitle 1v1
+    .leaderboardContainer.leaderboardCategory.column12
+      ul
+        li#globalLeaderboard Global
+        li#oneLeaderboard.activeLeaderboard 1v1
+        li#twoLeaderboard 2v2
+        li#noShareLeaderboard 4v4 No share
+        li#fullShareLeaderboard 4v4 Fullshare
+    .leaderboardContainer.leaderboardCategory.column12
+      ul
+        li#nextLeaderboard Next
+        li#previousLeaderboard Previous
     .leaderboardContainer.column1
       .leaderboardItem
         ul.responsiveText Rank
-          li#1v1Rank
-    .leaderboardContainer.column2
+          li#oneRank
+    .leaderboardContainer.column3
       .leaderboardItem
-        ul.responsiveText Player
-          li#1v1Player
-    .leaderboardContainer.column2
+        ul.responsiveText#spawnPlayer Player
+          li#onePlayer
+          
+    .leaderboardContainer.column3
       .leaderboardItem
         ul.responsiveText Rating
-          li#1v1Rating
+          li#oneRating
     .leaderboardContainer.column2
       .leaderboardItem
         ul.responsiveText Win Rate
-          li#1v1Won
-    .leaderboardContainer.column2
+          li#oneWon
+    .leaderboardContainer.column3
       .leaderboardItem
         ul.responsiveText Total Games
-          li#1v1GamesAmount
-    .leaderboardContainer.column1
-      .leaderboardItem
-        ul.responsiveText Faction Pick
-          li.responsiveText Cybran
+          li#oneGamesAmount
+
           
     
 block js
