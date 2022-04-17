@@ -15,7 +15,7 @@ module.exports.run = async function run(leagueData) {
 
   let lastPageReached = false; // Breaks the fetching loop once there is no more data to reach
   let pageNumber = 1;
-
+  
   try {
     while (!lastPageReached) {
       const route = '/data/game?' +
