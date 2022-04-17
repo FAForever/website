@@ -11,5 +11,31 @@
     
 
 .leaderboardContainer
-  padding: 1em
-  
+  padding: 0em
+
+
+
+.leaderboardCategory
+  padding: 2em
+  display: inline-block
+  place-items: start
+  font-family: variables.$family-paragraph
+  font-weight: 1000
+  letter-spacing: 0.1em
+  ul
+    li
+      display: inline-block
+      padding: 1em 2em
+      border: 0.05em solid variables.$color-inactive
+      background-color: variables.$background-tertiary
+      cursor: pointer
+      transition: 0.4s
+      &:hover
+        border: 0.05em solid variables.$color-active
+        filter: brightness(2)
+    .activeLeaderboard
+      border: 0.05em solid variables.$color-active
+      background-color: variables.$color-inactive-plus
+      &:hover
+        filter: brightness(1)
+
