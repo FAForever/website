@@ -34,7 +34,7 @@ exports = module.exports = function(req, res) {
     let overallRes = res;
 		
 		request.post({
-			url: process.env.API_URL + '/users/linkGog',
+			url: process.env.API_URL + '/users/linkToGog',
 			headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
 			form: {gogUsername: gogUsername}
 		}, function (err, res, body) {
@@ -54,7 +54,7 @@ exports = module.exports = function(req, res) {
         // this code literally does the same as linkGog.js, but due to the architectural structure of this application
         // it's not possible to extract it into a separate function while saving any code
         request.get({
-          url: process.env.API_URL + '/users/obtainGogToken',
+          url: process.env.API_URL + '/users/buildGogProfileToken',
           headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
           form: {}
         }, function (err, res, body) {
