@@ -31,7 +31,7 @@ exports = module.exports = function (req, res) {
   let overallRes = res;
 
   request.get({
-    url: process.env.API_URL + '/users/obtainGogToken',
+    url: process.env.API_URL + '/users/buildGogProfileToken',
     headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
     form: {}
   }, function (err, res, body) {
