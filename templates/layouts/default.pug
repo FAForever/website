@@ -240,12 +240,12 @@ html(lang='en')
           .bannerContainer.bannerSubtitle #{bannerSubTitle}
 
           block bannerButton 
-
-    +banner()
-    .splat_main_container.splat_black_background
-      .splat_container
-        .splat
-          img(src='/images/blacksplat.png' alt='')
+    block bannerMixin
+      +banner()
+      .splat_main_container.splat_black_background
+        .splat_container
+          .splat
+            img(src='/images/blacksplat.png' alt='')
       
       //- The content block should contain the body of your template's content
     block content

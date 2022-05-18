@@ -8,7 +8,24 @@
   --paragraph-font-size: 1vw
   --subtitle-font-size: 2vw
   --title-font-size: 2.5vw
+  
+@media (max-width: 1600px)
+  \:root
+    --paragraph-font-size: 1.5vw
+    --subtitle-font-size: 2.5vw
+    --title-font-size: 3vw
 
+@media (max-width: 800px)
+  \:root
+    --paragraph-font-size: 2vw
+    --subtitle-font-size: 3vw
+    --title-font-size: 3.5vw
+
+@media (max-width: 600px)
+  \:root
+    --paragraph-font-size: 4vw
+    --subtitle-font-size: 4.5vw
+    --title-font-size: 5vw
 /* Used as white text between stuff
 
 .responsiveTextTitle
@@ -33,23 +50,7 @@
   font-family: variables.$family-paragraph
   direction: ltr
 
-@media (max-width: 1600px)
-  \:root
-    --paragraph-font-size: 1.5vw
-    --subtitle-font-size: 2.5vw
-    --title-font-size: 3vw
 
-@media (max-width: 800px)
-  \:root
-    --paragraph-font-size: 2vw
-    --subtitle-font-size: 3vw
-    --title-font-size: 3.5vw
-
-@media (max-width: 600px)
-  \:root
-    --paragraph-font-size: 4vw
-    --subtitle-font-size: 4.5vw
-    --title-font-size: 5vw
 
 
 html
@@ -142,7 +143,7 @@ ul
   grid-template-columns: repeat(12, max-content)
   grid-template-rows: minmax(10px, 1fr)
   color: variables.$color-inactive-plus
-  font-size: calc(var(--paragraph-font-size) / 1.2)
+  font-size: calc(var(--paragraph-font-size) / 1.4)
   background-color: variables.$background-primary
   padding: 0.15em
   position: relative
@@ -224,7 +225,7 @@ ul
   display: grid
   grid-template-columns: max-content minmax(50px, auto) max-content max-content
   grid-template-rows: auto
-  font-size: calc(var(--subtitle-font-size) / 1.5)
+  font-size: calc(var(--subtitle-font-size) / 1.65)
   background-color: variables.$background-secondary
   color: variables.$color-inactive
   font-family: variables.$family-paragraph

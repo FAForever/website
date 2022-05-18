@@ -1,31 +1,73 @@
 @use '../abstracts/variables'
 @use '../abstracts/mixins'
 
-.mainLeaderboardContainer
-  @include mixins.gridMainContainer
-  padding: 2.5vw 10vw 
+.leaderboardBackground
+  padding: 7.5vw 11vw
+  background-image: url("/../../images/fafbgpattern0.5.jpg")
   ul
     list-style: none
-    li 
+    li
       padding: 0.5em 0
-    
+
+      
+input 
+  margin: 1em 1em 2px 1em
+  background-color: variables.$background-tertiary
+  color: variables.$color-active
+  font-size: var(--paragraph-font-size)
+  border: 0.5em solid variables.$background-secondary
+  border-radius: 10px
+  z-index: 2
+  position: relative
+
+.mainLeaderboardContainer
+  @include mixins.gridMainContainer
+  padding: 0
+  ul
+    list-style: none
+    direction: rtl
+
+    li
+      padding: 0.8em 0
+      // This is in here for the js
+      transform: rotate(180deg)
+
+
+  
+.leaderboardBorder
+  border: 1px solid variables.$color-active
+  padding: 0px
+  background-color: variables.$background-primary
+
+  
 
 .leaderboardContainer
+  font-family: variables.$family-paragraph
   padding: 0em
+  .responsiveText 
+    padding: 1em 0 0 0
 
 
+.greyLeaderboard
+  background-color: mix(variables.$background-tertiary, variables.$background-primary, 20%)
+  
+
+.darkGreyLeaderboard
+  background-color: variables.$background-secondary
 
 .leaderboardCategory
-  padding: 2em
+  padding: 1em 0.25em 
   display: inline-block
   place-items: start
   font-family: variables.$family-paragraph
-  font-weight: 1000
-  letter-spacing: 0.1em
+  font-size: var(--paragraph-font-size)
+  letter-spacing: 0em
   ul
+    // This is in here for the js
+    transform: rotate(180deg)
     li
       display: inline-block
-      padding: 1em 2em
+      padding: 0.6em 1em
       border: 0.05em solid variables.$color-inactive
       background-color: variables.$background-tertiary
       cursor: pointer
@@ -35,7 +77,75 @@
         filter: brightness(2)
     .activeLeaderboard
       border: 0.05em solid variables.$color-active
-      background-color: variables.$color-inactive-plus
+      background-color: mix(variables.$color-inactive-plus, variables.$background-primary, 80%)
+      cursor: default
       &:hover
         filter: brightness(1)
+    .exhaustedLeaderboard
+      border: 0.05em solid variables.$color-inactive
+      background-color: variables.$background-secondary
+      color: variables.$color-inactive-plus
+      pointer-events: none
+      cursor: default 
+      &:hover
+        border: 0.05em solid variables.$color-inactive
+        filter: brightness(1)
+
+#searchResults
+  margin: 1em 0 0 0
+.appearWhenSearching
+  display: none
+  
+.centerYourself
+  display: grid
+  justify-items: center
+  position: relative
+
+.searchBar
+  ul
+    background-color: variables.$background-secondary
+    color: variables.$color-inactive
+    font-size: calc(var(--paragraph-font-size) * 0.9)
+    border-radius:  0  0 10px 10px
+    text-align: left
+    
+    li 
+      padding: 0.5em 1em
+     
+
+  
+ 
+.clearButton
+  li
+    cursor: pointer
+    margin: 1em 1em 0 1em 
+    border-radius: 10px
+    background-color: variables.$background-tertiary
+    color: variables.$color-inactive
+    transition: 0.4s
+    &:hover
+      background-color: variables.$color-inactive-plus
+      color: variables.$color-active
+  .fa-trash-alt
+    padding: 0.5em
+  .fa-search
+    padding: 0.5em
+  
+    
+  
+@media (max-width: 800px)
+  .clearButton
+    left: 90%
+    top: 68%
+  .leaderboardBackground
+    padding: 1vw
+  .leaderboardCategory
+    padding: 1vw
+    font-size: var(--paragraph-font-size)
+    ul
+      li
+        padding: 0.65em
+    
+    
+ 
 
