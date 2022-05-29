@@ -144,9 +144,10 @@ app.route('/news').get(function(req, res) {
   res.redirect('/newshub');
 });
 
-app.get('/competitive/tournaments', require(routes + 'tournaments'));
+//app.get('/competitive/tournaments', require(routes + 'tournaments'));
 app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
 app.get('/competitive/leaderboards/2v2', require(routes + '2v2'));
+app.get('/competitive/leaderboards/4v4', require(routes + '4v4'));
 app.get('/competitive/leaderboards/global', require(routes + 'global'));
 app.get('/competitive/leaderboards/leagues', (function(){
     let updateLeagues = require('./scripts/updateLeagues');
