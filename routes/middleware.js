@@ -10,18 +10,12 @@ exports.initLocals = function(req, res, next) {
 
 	var locals = res.locals;
 
-	locals.navLinks = [
-		{ label: 'News',		key: 'blog',		href: '/news' },
-		{ label: 'Competitive',		key: 'competitive',		href: '/competitive/tournaments' }
-	];
-
-  locals.cNavLinks = [
-		{ label: 'Tournaments',		key: 'tournaments',		href: '/competitive/tournaments' },
-		{ label: '1v1 Leaderboards',		key: '1v1',		href: '/competitive/leaderboards/1v1' },
-		{ label: 'Global Leaderboards',		key: 'global',		href: '/competitive/leaderboards/global' },
-		{ label: 'Leagues',		key: 'leagues',		href: '/competitive/leaderboards/leagues' },
+	locals.cNavLinks = [
+    { label: 'Global Leaderboards',		key: 'global',		href: '/competitive/leaderboards/global' },
+    { label: '1v1 Leaderboards',		key: '1v1',		href: '/competitive/leaderboards/1v1' },
     { label: '2v2 Leaderboards',		key: '2v2',		href: '/competitive/leaderboards/2v2' },
-	];
+    { label: '4v4 Full Share Leaderboards',		key: '4v4',		href: '/competitive/leaderboards/4v4' },
+  ];
   
 	next();
 
@@ -60,7 +54,7 @@ exports.clientChecks = function(req, res, next) {
     }
  
     var userAgent = req.headers['user-agent'];
-    if (userAgent == 'FAF Client' || userAgent == 'downlords-faf-client') {
+    if (userAgent === 'FAF Client' || userAgent === 'downlords-faf-client') {
         locals.removeNavigation = true;
     }
 

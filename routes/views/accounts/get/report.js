@@ -13,7 +13,7 @@ exports = module.exports = function (req, res) {
   locals.game_id = req.query.game_id; // Game_id can be supplied as GET
   locals.offenders_names = []; // Offender name aswell
 
-  if (req.query.offenders != undefined) {
+  if (req.query.offenders !== undefined) {
     locals.offenders_names = req.query.offenders.split(" ");
   }
 
@@ -22,7 +22,7 @@ exports = module.exports = function (req, res) {
 
   var flash = null;
 
-  if (req.originalUrl == '/report_submitted') {
+  if (req.originalUrl === '/report_submitted') {
     flash = {};
 
     flash.class = 'alert-success';
@@ -63,7 +63,7 @@ exports = module.exports = function (req, res) {
         if (report.relationships.lastModerator.data) {
           for (l in reports.included) {
             const user = reports.included[l];
-            if (user.type == "player" && user.id == report.relationships.lastModerator.data.id) {
+            if (user.type === "player" && user.id === report.relationships.lastModerator.data.id) {
               moderator = user.attributes.login;
               break;
             }

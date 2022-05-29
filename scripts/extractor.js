@@ -2,7 +2,8 @@ require("dotenv").config();
 
 let jsonapi = require("json-api-models");
 let request = require("request");
-let fs = require('fs');
+let fs = require("fs");
+let moment = require("moment");
 
 
 function saveLeaderboardRatingsToFile(ratings, filename) {
@@ -90,6 +91,22 @@ module.exports.run = function run() {
       const ratings = models.sync(JSON.parse(body));
 
       saveLeaderboardRatingsToFile(ratings, "members/2v2.json");
+    });
+    
+    models.reset();
+
+    request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==4;updateTime=ge=" +
+      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z", function (error, response, body) {
+      if (error || response.statusCode > 210) {
+        console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - There was an issue while fetching leaderboards 4v4:');
+        console.error(error);
+        if (response) console.trace(response.statusCode);
+        return;
+      }
+
+      const ratings = models.sync(JSON.parse(body));
+
+      saveLeaderboardRatingsToFile(ratings, "members/4v4.json");
     });
 
   } catch (e) {

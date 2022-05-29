@@ -1,7 +1,8 @@
-require('dotenv').config();
+require("dotenv").config();
 
-let request = require('request');
-let fs = require('fs');
+let request = require("request");
+let fs = require("fs");
+let moment = require("moment");
 
 module.exports.run = async function run(leagueData) {
     console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - Updating clan list...');
