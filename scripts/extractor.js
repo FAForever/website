@@ -23,7 +23,8 @@ function saveLeaderboardRatingsToFile(ratings, filename) {
     //LABEL = name player and value is player ID
     let data = {
       label: entry.player.login,
-      value: {id: entry.player.id, rating: entry.rating, totalgames: entry.totalGames, wonGames: entry.wonGames, page: Math.ceil((i + 1) / 100)}
+      value: {id: entry.player.id, rating: entry.rating, totalgames: entry.totalGames, wonGames: entry.wonGames},
+      date: entry.player.updateTime
       
     };
 
@@ -34,7 +35,9 @@ function saveLeaderboardRatingsToFile(ratings, filename) {
     if (error) {
       console.log(error);
     } else {
+      var pastMonth = moment().subtract(1, 'months');
       console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - User file created successfully for global.');
+      console.log(`This is the date requested ${pastMonth.format("YYYY-MM-DDTHH:mm:ss")}`);
     }
   });
 }
@@ -45,10 +48,10 @@ module.exports.run = function run() {
 
     const models = new jsonapi.Store();
 
-    var pastMonth = moment().subtract(1, 'months');
+    var pastMonth = moment().subtract(3, 'months');
 
     request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==1;updateTime=ge=" +
-      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z", function (error, response, body) {
+      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=5000', function (error, response, body) {
       if (error || response.statusCode > 210) {
         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + " - There was an issue while fetching leaderboards global:");
         console.error(error);
@@ -64,7 +67,7 @@ module.exports.run = function run() {
     models.reset();
 
     request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==2;updateTime=ge=" +
-      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z", function (error, response, body) {
+      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=5000', function (error, response, body) {
       if (error || response.statusCode > 210) {
         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - There was an issue while fetching leaderboards 1v1:');
         console.error(error);
@@ -80,7 +83,7 @@ module.exports.run = function run() {
     models.reset();
 
     request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==3;updateTime=ge=" +
-      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z", function (error, response, body) {
+      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=5000', function (error, response, body) {
       if (error || response.statusCode > 210) {
         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - There was an issue while fetching leaderboards 2v2:');
         console.error(error);
@@ -91,6 +94,23 @@ module.exports.run = function run() {
       const ratings = models.sync(JSON.parse(body));
 
       saveLeaderboardRatingsToFile(ratings, "public/js/app/members/2v2.json");
+    });
+    
+    models.reset();
+
+    request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==4;updateTime=ge=" +
+      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=5000', function (error, response, body) {
+      if (error || response.statusCode > 210) {
+        
+        console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - There was an issue while fetching leaderboards 4v4:');
+        console.error(error);
+        if (response) console.trace(response.statusCode);
+        return;
+      }
+
+      const ratings = models.sync(JSON.parse(body));
+
+      saveLeaderboardRatingsToFile(ratings, "public/js/app/members/4v4.json");
     });
 
   } catch (e) {

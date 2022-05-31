@@ -1,46 +1,95 @@
 extends ../layouts/default
-block bannerData
-  - var bannerImage = "leaderboards"
-  - var bannerFirstTitle = "FAF LEADERBOARDS"
-  - var bannerSecondTitle = "LOOK AT THE TOP PLAYERS*"
-  - var bannerSubTitle = "*OF THE LAST MONTH, NEXUS NOT INCLUDED"
-block content
+block bannerMixin
 
-  .mainLeaderboardContainer
-    .leaderboardContainer.leaderboardCategory.column12
-      ul
-        li#globalLeaderboard Global
-        li#oneLeaderboard.activeLeaderboard 1v1
-        li#twoLeaderboard 2v2
-        li#noShareLeaderboard 4v4 No share
-        li#fullShareLeaderboard 4v4 Fullshare
-    .leaderboardContainer.leaderboardCategory.column12
-      ul
-        li#nextLeaderboard Next
-        li#previousLeaderboard Previous
-    .leaderboardContainer.column1
-      .leaderboardItem
-        ul.responsiveText Rank
-          li#oneRank
-    .leaderboardContainer.column3
-      .leaderboardItem
-        ul.responsiveText#spawnPlayer Player
-          li#onePlayer
+block content
+  script(type='module' src="../../js/app/leaderboards.js")
+  .leaderboardBackground
+    .mainLeaderboardContainer
+      .leaderboardContainer.column12.centerYourself
+        
+        .responsiveText Search for a player in the selected leaderboard
+          #errorLog
+        
+        input#input(onkeyup=`pressEnter(event)` type='text' placeholder='Player Name')
+        
+        #searchbar
+          .searchBar
+            ul
+              #placeMe
+        ul#clearSearch.clearButton.appearWhenSearching
+          li.fas.fa-trash-alt
+          //li#search.fas.fa-search
+      
+        
+
+
+    .mainLeaderboardContainer.leaderboardBorder#searchResults.appearWhenSearching
+      .leaderboardContainer.column1
+        .leaderboardItem
+          ul.responsiveText Rank
+            li#oneRankSearch 
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul.responsiveText Player
+            li#onePlayerSearch 
+    
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul.responsiveText Rating
+            li#oneRatingSearch 
+      .leaderboardContainer.column2
+        .leaderboardItem
+          ul.responsiveText Win Rate
+            li#oneWonSearch 
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul.responsiveText Total Games
+            li#oneGamesAmountSearch
+    .mainLeaderboardContainer
+      .leaderboardContainer.leaderboardCategory.column6
+        ul
+          //li#leaderboardGlobal Global
+          li#leaderboard1v1.activeLeaderboard 1v1
+          li#leaderboard2v2 2v2
+          li#leaderboard4v4 4v4
+      .leaderboardContainer.leaderboardCategory.column3
+        ul
+          li#firstPage.exhaustedLeaderboard First
+          li#lastPage Last 
+      .leaderboardContainer.leaderboardCategory.column3
+        ul
+          li#nextPage Next
+          li#previousPage.exhaustedLeaderboard Previous 
           
-    .leaderboardContainer.column3
-      .leaderboardItem
-        ul.responsiveText Rating
-          li#oneRating
-    .leaderboardContainer.column2
-      .leaderboardItem
-        ul.responsiveText Win Rate
-          li#oneWon
-    .leaderboardContainer.column3
-      .leaderboardItem
-        ul.responsiveText Total Games
-          li#oneGamesAmount
+      
+    .mainLeaderboardContainer.leaderboardBorder
+     
+      .leaderboardContainer.column1
+        .leaderboardItem
+          ul.responsiveText Rank
+            li#oneRank
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul.responsiveText#spawnPlayer Player
+            li#onePlayer
+            
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul.responsiveText Rating
+            li#oneRating
+      .leaderboardContainer.column2
+        .leaderboardItem
+          ul.responsiveText Win Rate
+            li#oneWon
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul.responsiveText Total Games
+            li#oneGamesAmount
+      
 
           
     
 block js
-  script(type='module' src="../../js/app/leaderboards.js")
+
+  script( src="../../js/app/leaderboards.js")
+  
