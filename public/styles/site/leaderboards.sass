@@ -1,6 +1,7 @@
 @use '../abstracts/variables'
 @use '../abstracts/mixins'
 
+// Background of the whole thing
 .leaderboardBackground
   padding: 7.5vw 11vw
   background-image: url("/../../images/fafbgpattern0.5.jpg")
@@ -9,7 +10,7 @@
     li
       padding: 0.5em 0
 
-      
+// This is the searchbar input form
 input 
   margin: 1em 1em 2px 1em
   background-color: variables.$background-tertiary
@@ -25,21 +26,32 @@ input
   padding: 0
   ul
     list-style: none
-    direction: rtl
-
     li
       padding: 0.8em 0
-      // This is in here for the js
+
+.leaderboardFilter
+  border: 1px solid white
+  font-family: variables.$family-paragraph
+  font-size: var(--paragraph-font-size)
+  color: variables.$color-active
+  background-color: variables.$background-tertiary
+  padding: 0.5em 0 0.5em 0.5em
+  margin: 0 0.8em 
+  text-align: center
+  option
+    color: variables.$color-active
+    background-color: variables.$background-secondary
+      
+// This is in here for the js since the leaderboard is actually starting from 100 to 1. So it needs to be displayed in reverse.
+.rotateMe180
+  ul
+    li
       transform: rotate(180deg)
 
-
-  
 .leaderboardBorder
   border: 1px solid variables.$color-active
   padding: 0px
   background-color: variables.$background-primary
-
-  
 
 .leaderboardContainer
   font-family: variables.$family-paragraph
@@ -63,8 +75,6 @@ input
   font-size: var(--paragraph-font-size)
   letter-spacing: 0em
   ul
-    // This is in here for the js
-    transform: rotate(180deg)
     li
       display: inline-block
       padding: 0.6em 1em
@@ -75,21 +85,13 @@ input
       &:hover
         border: 0.05em solid variables.$color-active
         filter: brightness(2)
-    .activeLeaderboard
-      border: 0.05em solid variables.$color-active
-      background-color: mix(variables.$color-inactive-plus, variables.$background-primary, 80%)
-      cursor: default
-      &:hover
-        filter: brightness(1)
-    .exhaustedLeaderboard
+    .exhaustedButton
       border: 0.05em solid variables.$color-inactive
       background-color: variables.$background-secondary
       color: variables.$color-inactive-plus
       pointer-events: none
       cursor: default 
-      &:hover
-        border: 0.05em solid variables.$color-inactive
-        filter: brightness(1)
+      
 
 #searchResults
   margin: 1em 0 0 0
@@ -128,8 +130,7 @@ input
       color: variables.$color-active
   .fa-trash-alt
     padding: 0.5em
-  .fa-search
-    padding: 0.5em
+
   
     
   

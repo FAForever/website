@@ -18,11 +18,8 @@ block content
               #placeMe
         ul#clearSearch.clearButton.appearWhenSearching
           li.fas.fa-trash-alt
-          //li#search.fas.fa-search
       
         
-
-
     .mainLeaderboardContainer.leaderboardBorder#searchResults.appearWhenSearching
       .leaderboardContainer.column1
         .leaderboardItem
@@ -46,50 +43,62 @@ block content
           ul.responsiveText Total Games
             li#oneGamesAmountSearch
     .mainLeaderboardContainer
-      .leaderboardContainer.leaderboardCategory.column6
+
+      .leaderboardContainer.leaderboardCategory.column4
+        select.leaderboardFilter(onchange='changeLeaderboard(this.value)')
+          option(value='1v1') 1v1
+          option(value='2v2') 2v2
+          option(value='4v4') 4v4
+        select.leaderboardFilter(onchange='timeCheck(this.value)')
+          option(value='6') 6 Months
+          option(value='3') 3 Months
+          option(value='1') 1 Month
+          
+      .leaderboardContainer.leaderboardCategory.column4
         ul
-          //li#leaderboardGlobal Global
-          li#leaderboard1v1.activeLeaderboard 1v1
-          li#leaderboard2v2 2v2
-          li#leaderboard4v4 4v4
-      .leaderboardContainer.leaderboardCategory.column3
+          li(onclick= `pageChange(0)`).pageButton.exhaustedButton First
+          li(onclick= `pageChange(lastPage)`).pageButton Last 
+      .leaderboardContainer.leaderboardCategory.column4
         ul
-          li#firstPage.exhaustedLeaderboard First
-          li#lastPage Last 
-      .leaderboardContainer.leaderboardCategory.column3
-        ul
-          li#nextPage Next
-          li#previousPage.exhaustedLeaderboard Previous 
+          li(onclick= `pageChange(pageNumber + 1)`).pageButton Next
+          li(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous 
           
       
     .mainLeaderboardContainer.leaderboardBorder
-     
       .leaderboardContainer.column1
-        .leaderboardItem
+        .leaderboardItem.rotateMe180
           ul.responsiveText Rank
             li#oneRank
       .leaderboardContainer.column3
-        .leaderboardItem
+        .leaderboardItem.rotateMe180
           ul.responsiveText#spawnPlayer Player
             li#onePlayer
             
       .leaderboardContainer.column3
-        .leaderboardItem
+        .leaderboardItem.rotateMe180
           ul.responsiveText Rating
             li#oneRating
       .leaderboardContainer.column2
-        .leaderboardItem
+        .leaderboardItem.rotateMe180
           ul.responsiveText Win Rate
             li#oneWon
       .leaderboardContainer.column3
-        .leaderboardItem
+        .leaderboardItem.rotateMe180
           ul.responsiveText Total Games
             li#oneGamesAmount
-      
+    .mainLeaderboardContainer
+      .leaderboardContainer.leaderboardCategory.column6
+        ul
+          li(onclick= `pageChange(0)`).pageButton.exhaustedButton First
+          li(onclick= `pageChange(lastPage)`).pageButton Last 
+      .leaderboardContainer.leaderboardCategory.column6
+        ul
+          li(onclick= `pageChange(pageNumber + 1)`).pageButton Next
+          li(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous 
 
           
     
 block js
 
-  script( src="../../js/app/leaderboards.js")
+  script( src="../../js/app/leaderboards.js" )
   

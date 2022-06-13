@@ -43,3 +43,40 @@ As of March 2022 the main 4 Languages that are set up on POEditor are:
 - Russian
 - French
 - German
+
+
+# Code Guidelines
+
+## How does the website currently operate?
+Hello! This is a small introductory paragraph on how the website is organized. Specifically regarding adding or deleting PUG, SASS or JS.
+
+### Adding PUG
+
+PUG in the website is localized in templates > views. However, before adding a new PUG page, make sure to go to routes > views and make a js file with the exact name of your PUG page. Just copy another JS file and copy paste your new name.
+
+### Adding SASS
+
+Go to  public > styles > site.sass and add a line for your SASS page which should go in the site folder.
+
+### Adding JS
+Now name your JS file the same as your SASS and PUG file and place it under the app folder.
+
+## Styling Guidelines (CSS/SASS)
+
+With the creation of the FAF Website 4.0, we strive to make the new code far more compact. That is the keyword you want to use when creating CSS. Thanks to SASS, we can re-use and repeat the same styles and when needed, modify it on a specific page.
+
+Currently, CSS Grid is the core of the website. With almost all (if not all) elements being inside a grid. This is done since CSS Grid offers insane flexibility and its very responsive to changes in screen size.
+
+### Mixins and Variables
+
+Currently, we use the _mixins.sass and _variables.sass to store these elements. Please, try using the already stablished colors and see if a previous mixin by serve your need. The previous website makers did not think about this and so they left 900 lines of variables... Re-using variables will not only do more with less code, but allow us for an easier change in color or adding accesibility buttons (since if we only need to change the color of 3-5 variables, its much easier to install color changing features than lets say 20-30 variables).
+
+If you believe a variable or mixin could be written better, feel free to play with them. Just make sure your changes work well/don't break responsiveness.
+
+### Colors and Aesthetics
+
+Currently, we want the FAF website to have a very gray, black and mute color scheme. With our "highlight" color being the "gold" seen in the buttons. Remember what FAF stands for: Big robots, war, strategy, total control, community, muteness/unsaturated colors, etc. Ergo, try avoiding using flashy colors. 
+
+### Artistic Freedom
+
+Don't feel scared or worry about making changes. The FAF website needs as much help as it can get. 

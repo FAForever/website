@@ -48,10 +48,10 @@ module.exports.run = function run() {
 
     const models = new jsonapi.Store();
 
-    var pastMonth = moment().subtract(3, 'months');
+    var pastMonth = moment().subtract(6, 'months');
 
     request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==1;updateTime=ge=" +
-      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=5000', function (error, response, body) {
+      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=9499', function (error, response, body) {
       if (error || response.statusCode > 210) {
         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + " - There was an issue while fetching leaderboards global:");
         console.error(error);
@@ -67,7 +67,7 @@ module.exports.run = function run() {
     models.reset();
 
     request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==2;updateTime=ge=" +
-      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=5000', function (error, response, body) {
+      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=9499', function (error, response, body) {
       if (error || response.statusCode > 210) {
         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - There was an issue while fetching leaderboards 1v1:');
         console.error(error);
@@ -83,7 +83,7 @@ module.exports.run = function run() {
     models.reset();
 
     request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==3;updateTime=ge=" +
-      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=5000', function (error, response, body) {
+      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=9499', function (error, response, body) {
       if (error || response.statusCode > 210) {
         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - There was an issue while fetching leaderboards 2v2:');
         console.error(error);
@@ -99,7 +99,7 @@ module.exports.run = function run() {
     models.reset();
 
     request(process.env.API_URL + "/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==4;updateTime=ge=" +
-      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=5000', function (error, response, body) {
+      pastMonth.format("YYYY-MM-DDTHH:mm:ss") + "Z" + '&page[size]=9499', function (error, response, body) {
       if (error || response.statusCode > 210) {
         
         console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - There was an issue while fetching leaderboards 4v4:');
@@ -114,7 +114,7 @@ module.exports.run = function run() {
     });
 
   } catch (e) {
-    console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - An error occured while extracting leaderboards:');
+    console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + ' - An error occured while extracting 4v4 leaderboards:');
     console.log(e);
   }
 };
