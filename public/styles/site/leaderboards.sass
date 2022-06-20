@@ -41,12 +41,8 @@ input
   option
     color: variables.$color-active
     background-color: variables.$background-secondary
-      
 // This is in here for the js since the leaderboard is actually starting from 100 to 1. So it needs to be displayed in reverse.
-.rotateMe180
-  ul
-    li
-      transform: rotate(180deg)
+
 
 .leaderboardBorder
   border: 1px solid variables.$color-active
@@ -56,19 +52,15 @@ input
 .leaderboardContainer
   font-family: variables.$family-paragraph
   padding: 0em
-  .responsiveText 
+  .responsiveText
     padding: 1em 0 0 0
-
-
-.greyLeaderboard
-  background-color: mix(variables.$background-tertiary, variables.$background-primary, 20%)
-  
-
-.darkGreyLeaderboard
-  background-color: variables.$background-secondary
-
+.leaderboardItem
+  li:nth-child(odd)
+    background-color: mix(variables.$background-tertiary, variables.$background-primary, 20%)
+  li:nth-child(even)
+    background-color: variables.$background-secondary
 .leaderboardCategory
-  padding: 1em 0.25em 
+  padding: 1em 0.25em
   display: inline-block
   place-items: start
   font-family: variables.$family-paragraph
@@ -90,14 +82,12 @@ input
       background-color: variables.$background-secondary
       color: variables.$color-inactive-plus
       pointer-events: none
-      cursor: default 
-      
+      cursor: default
 
 #searchResults
   margin: 1em 0 0 0
 .appearWhenSearching
   display: none
-  
 .centerYourself
   display: grid
   justify-items: center
@@ -110,17 +100,13 @@ input
     font-size: calc(var(--paragraph-font-size) * 0.9)
     border-radius:  0  0 10px 10px
     text-align: left
-    
-    li 
+    li
       padding: 0.5em 1em
-     
-
-  
- 
+      
 .clearButton
   li
     cursor: pointer
-    margin: 1em 1em 0 1em 
+    margin: 1em 1em 0 1em
     border-radius: 10px
     background-color: variables.$background-tertiary
     color: variables.$color-inactive
@@ -131,9 +117,6 @@ input
   .fa-trash-alt
     padding: 0.5em
 
-  
-    
-  
 @media (max-width: 800px)
   .clearButton
     left: 90%
@@ -149,4 +132,3 @@ input
     
     
  
-
