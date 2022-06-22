@@ -16,9 +16,9 @@ const showdown = require('showdown');
 const fs = require('fs');
 
 let app = express();
-const i18next = require('i18next');
-const i18nextMiddleware = require('i18next-http-middleware');
-const Backend =require('i18next-fs-backend');
+//const i18next = require('i18next');
+//const i18nextMiddleware = require('i18next-http-middleware');
+//const Backend =require('i18next-fs-backend');
 
 app.locals.clanInvitations = {};
 
@@ -50,7 +50,7 @@ app.use(express.static('public', {
 
 // Initialise i18n
 
-i18next
+/*i18next
   .use(i18nextMiddleware.LanguageDetector)
   .use(Backend)
   .init({
@@ -71,7 +71,7 @@ app.use(i18nextMiddleware.handle(i18next,{
   removeLngFromUrl: true,
 }));
 
-
+*/
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(require('express-session')({
