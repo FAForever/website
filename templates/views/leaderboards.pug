@@ -6,89 +6,88 @@ block content
   .leaderboardBackground
     .mainLeaderboardContainer
       .leaderboardContainer.column12.centerYourself
-        
         .responsiveText Search for a player in the selected leaderboard
           #errorLog
-        
         input#input(onkeyup=`pressEnter(event)` type='text' placeholder='Player Name')
-        
         #searchbar
           .searchBar
             ul
               #placeMe
         ul#clearSearch.clearButton.appearWhenSearching
           li.fas.fa-trash-alt
-          //li#search.fas.fa-search
-      
-        
-
-
     .mainLeaderboardContainer.leaderboardBorder#searchResults.appearWhenSearching
       .leaderboardContainer.column1
         .leaderboardItem
           ul.responsiveText Rank
-            li#oneRankSearch 
+            li#leaderboardRankSearch
       .leaderboardContainer.column3
         .leaderboardItem
           ul.responsiveText Player
-            li#onePlayerSearch 
-    
+            li#leaderboardPlayerSearch
       .leaderboardContainer.column3
         .leaderboardItem
           ul.responsiveText Rating
-            li#oneRatingSearch 
+            li#leaderboardRatingSearch
       .leaderboardContainer.column2
         .leaderboardItem
           ul.responsiveText Win Rate
-            li#oneWonSearch 
+            li#leaderboardWonSearch
       .leaderboardContainer.column3
         .leaderboardItem
           ul.responsiveText Total Games
-            li#oneGamesAmountSearch
+            li#leaderboardGamesAmountSearch
+    .mainLeaderboardContainer
+
+      .leaderboardContainer.leaderboardCategory.column4
+        select.leaderboardFilter(onchange='changeLeaderboard(this.value)')
+          option(value='1v1') 1v1
+          option(value='2v2') 2v2
+          option(value='4v4') 4v4
+        select.leaderboardFilter(onchange='timeCheck(this.value)')
+          option(value='6') 6 Months
+          option(value='3') 3 Months
+          option(value='1') 1 Month
+      //DO NOT Change the order of these without changing the js. For them to work, they need to be in this specific order
+      .leaderboardContainer.leaderboardCategory.column4
+        ul
+          li(onclick= `pageChange(0)`).pageButton.exhaustedButton First
+          li(onclick= `pageChange(lastPage)`).pageButton Last 
+      .leaderboardContainer.leaderboardCategory.column4
+        ul
+          li(onclick= `pageChange(pageNumber + 1)`).pageButton Next
+          li(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous 
+
+    .mainLeaderboardContainer.leaderboardBorder
+      .leaderboardContainer.column1
+        .leaderboardItem.rotateMe180
+          ul.responsiveText Rank
+            li#leaderboardRank
+      .leaderboardContainer.column3
+        .leaderboardItem.rotateMe180
+          ul.responsiveText#spawnPlayer Player
+            li#leaderboardPlayer
+      .leaderboardContainer.column3
+        .leaderboardItem.rotateMe180
+          ul.responsiveText Rating
+            li#leaderboardRating
+      .leaderboardContainer.column2
+        .leaderboardItem.rotateMe180
+          ul.responsiveText Win Rate
+            li#leaderboardWon
+      .leaderboardContainer.column3
+        .leaderboardItem.rotateMe180
+          ul.responsiveText Total Games
+            li#leaderboardGamesAmount
     .mainLeaderboardContainer
       .leaderboardContainer.leaderboardCategory.column6
         ul
-          //li#leaderboardGlobal Global
-          li#leaderboard1v1.activeLeaderboard 1v1
-          li#leaderboard2v2 2v2
-          li#leaderboard4v4 4v4
-      .leaderboardContainer.leaderboardCategory.column3
+          li(onclick= `pageChange(0)`).pageButton.exhaustedButton First
+          li(onclick= `pageChange(lastPage)`).pageButton Last 
+      .leaderboardContainer.leaderboardCategory.column6
         ul
-          li#firstPage.exhaustedLeaderboard First
-          li#lastPage Last 
-      .leaderboardContainer.leaderboardCategory.column3
-        ul
-          li#nextPage Next
-          li#previousPage.exhaustedLeaderboard Previous 
-          
-      
-    .mainLeaderboardContainer.leaderboardBorder
-     
-      .leaderboardContainer.column1
-        .leaderboardItem
-          ul.responsiveText Rank
-            li#oneRank
-      .leaderboardContainer.column3
-        .leaderboardItem
-          ul.responsiveText#spawnPlayer Player
-            li#onePlayer
-            
-      .leaderboardContainer.column3
-        .leaderboardItem
-          ul.responsiveText Rating
-            li#oneRating
-      .leaderboardContainer.column2
-        .leaderboardItem
-          ul.responsiveText Win Rate
-            li#oneWon
-      .leaderboardContainer.column3
-        .leaderboardItem
-          ul.responsiveText Total Games
-            li#oneGamesAmount
-      
+          li(onclick= `pageChange(pageNumber + 1)`).pageButton Next
+          li(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous 
 
-          
-    
 block js
 
   script( src="../../js/app/leaderboards.js")

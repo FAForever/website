@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Lock and loaded!");
 
- async function playerCounterJSON() {
+ /*async function playerCounterJSON() {
     const response = await fetch('js/app/members/recent.json');
     const data = await response.json();
     return data;
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   playerCounterJSON()
     .then((data) => {
       document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", data.length);
-    });
+    }); */
 
 
 
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener('scroll', () => {
     handleScrollAnimation();
-    console.log("You scrolled!");
+    //console.log("You scrolled!");
   });
 
 
