@@ -1,8 +1,8 @@
 extends ../layouts/default
 block bannerData    
   - var bannerImage = "landing"
-  - var bannerFirstTitle = "CONTINUE THE SUPCOM LEGACY IN"
-  - var bannerSecondTitle = "FORGED ALLIANCE FOREVER"
+  - var bannerFirstTitle = "AN RTS CLASSIC REFORGED"
+  - var bannerSecondTitle = "PLAY SUPCOM THE WAY IT WAS INTENDED"
   - var bannerSubTitle = "" + " " + "ACUS ON THE BATTLEFIELD RIGHT NOW"
 block banner
   mixin banner()
@@ -12,8 +12,9 @@ block banner
       .bannerContainer.bannerSubtitle#playerCounter #{bannerSubTitle}
       block bannerButton
         br
-        a(href='https://www.faforever.com/client')
-          button.landingButton PLAY NOW
+        
+        button.landingButton PLAY NOW
+          a(href='https://www.faforever.com/client')
 block content
   
   //Monkeylord Background 

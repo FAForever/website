@@ -50,6 +50,25 @@
   font-family: variables.$family-paragraph
   direction: ltr
 
+//scroll Bar
+
+/* width */
+::-webkit-scrollbar 
+  width: 8px
+  height: 0px
+
+
+/* Track */
+::-webkit-scrollbar-track 
+  background: variables.$background-primary
+
+/* Handle */
+::-webkit-scrollbar-thumb
+  background: variables.$color-inactive-plus
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+  background: variables.$color-inactive 
 
 
 
@@ -59,7 +78,7 @@ html
 body
   text-align: center
   background-attachment: fixed
-  background-color: variables.$background-secondary
+  background-color: variables.$background-primary
   background-position: center center
   margin: 0 0 0 0
   padding-top: 0
@@ -74,7 +93,7 @@ a
 
   &:visited
     text-decoration: none
-    color: inherit
+    color: variables.$color-inactive
 
   &:hover
     color: variables.$color-active
@@ -97,13 +116,15 @@ ul
     color: variables.$color-active
 
 /*===== Splat Starts =====
-
 .splat_main_container
   display: grid
   grid-template-columns: 1fr
   position: relative
-  padding: 5px 0 5px 0
+  padding: 0
   justify-items: center
+  width: 100%
+  height: 10px
+  background: linear-gradient(to right, #8e0800, #f4b905)
 
 
 .splat_rotate
@@ -138,11 +159,10 @@ ul
 /*=============== Nav Bar ===============
 /*===== Top Navbar =====
 
-.main_topnav_container
+.mainTopNavContainer
   display: grid
   grid-template-columns: repeat(12, max-content)
   grid-template-rows: minmax(10px, 1fr)
-  color: variables.$color-inactive-plus
   font-size: calc(var(--paragraph-font-size) / 1.4)
   background-color: variables.$background-primary
   padding: 0.15em
@@ -151,27 +171,20 @@ ul
   place-items: center
   font-family: variables.$family-paragraph
 
-.topnav_container
-  padding: 0 0.5em
+.topNavContainer
+  padding: 0.5em 0.75em
 
-.topnav_item
-  width: 100%
-  height: 100%
+.topNavItem
   position: relative
   transition: 0.5s
   display: grid
   place-items: center
   cursor: pointer
   justify-self: end
-
-.topnav_hover:hover, .topnav_item a
-  color: variables.$color-active
-
-
-
-  
+  &:hover
+    color: variables.$color-active
+    
 .fab
-  padding: 0.15em
   width: 100%
   text-align: center
   text-decoration: none
@@ -179,13 +192,12 @@ ul
   justify-self: end
   transition: 0.5s
   font-size: var(--paragraph-font-size)
-
   &:hover
     color: variables.$color-active
     
 .fa-language
   color: variables.$color-active
-  font-size: calc(var(--paragraph-font-size) * 2)
+  font-size: calc(var(--paragraph-font-size) *1.5)
   padding: 0
   
   
@@ -221,22 +233,22 @@ ul
     color: variables.$color-inactive
 /*===== Regular navbar =====
 
-.main_nav_container
+.mainNavContainer
   display: grid
   grid-template-columns: max-content minmax(50px, auto) max-content max-content
   grid-template-rows: auto
   font-size: calc(var(--subtitle-font-size) / 1.65)
-  background-color: variables.$background-secondary
+  background-color: variables.$background-primary
   color: variables.$color-inactive
   font-family: variables.$family-paragraph
   justify-items: center
   padding: 5px 10px 0 10px
 
-.nav_container
+.navContainer
   align-self: center
   align-content: center
 
-.nav_item
+.navItem
   width: 100%
   height: 100%
   position: relative
@@ -245,80 +257,82 @@ ul
   padding: 0
   transition: 0.25s
 
-  li
-    display: inline-block
-    padding: 0 20px
 
-.nav_image img
-  width: 80px
-  height: 100%
-  object-fit: contain
-  overflow: hidden
-  padding: 0 0 0 20px
-  justify-self: center
-  place-self: center
 
-.nav_download
+.navLogo 
+  img
+    width: 80px
+    height: 100%
+    object-fit: contain
+    overflow: hidden
+    padding: 0 0 0 20px
+    justify-self: center
+    place-self: center
+
+.navDownload
   background-color: variables.$button-inactive
-  border: 0.1em solid variables.$button-active
+  border: 0.2em solid variables.$button-active
+  font-weight: 600
   letter-spacing: 0.4px
   padding: 5px
   margin-left: 20px
   transition: 0.25s
-  
   a
     color: variables.$color-active
-
   &:hover
     background-color: variables.$button-active
 
 
 
-.nav_end
+.navEnd
   justify-self: end
-  font-weight: 900
   letter-spacing: 1px
+  transition: 0.25s
+  margin: 0 0.5em
 
 /* This is the hover menu you see when you hover on GAME, COMMUNITY and so on
 
-.nav_absolute
+.navAbsolute
   position: absolute
   z-index: 10
   text-align: left
   display: none
+  opacity: 0
   top: 1em
-  
-
   li
     padding: 20px
     display: block
     //border: 1px solid variables.$color-inactive
     background-color: variables.$background-secondary
+    color: variables.$color-inactive
     transition: 0.25s
 
     &:hover
       color: variables.$color-active
-      background-color: variables.$color-inactive-plus
+      background-color: variables.$background-tertiary
 
+.navAbsoluteActive
+  display: block
+  transition: 0.25s
+  
 
-
-.nav_list
+.navList
+  display: inline-block
+  margin: 0 20px
   &:hover
     color: variables.$color-active
     transition: 0.25s
     cursor: pointer
+    .fa-caret-down
+      transform: rotate(-0.25turn)
 
-  li
-    color: variables.$color-inactive
 
-.fa-caret-down
-  transition: 0.35s
+  .fa-caret-down
+    transition: 0.25s
 
-.nav_list:hover .fa-caret-down
-  transform: rotate(-0.25turn)
 
 @media (max-width: 1200px)
-  .main_nav_container, .main_topnav_container
+  .mainNavContainer, .mainTopNavContainer
     display: none
 
 /* Mobile navbar
@@ -488,7 +502,7 @@ ul
     color: variables.$color-active
 
 @media (max-width: 800px)
-  .main_topnav_container
+  .mainTopNavContainer
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
 
 @media (max-width: 1100px)
@@ -500,5 +514,5 @@ ul
     display: block
 
 @media (max-width: 1100px)
-  .main_nav_container, .main_topnav_container
+  .mainNavContainer, .mainTopNavContainer
     display: none

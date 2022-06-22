@@ -38,27 +38,27 @@ html(lang='en')
 
   //- HTML BODY
   body
-    .main_topnav_container
+    .mainTopNavContainer
       // this is the "thin" navbar that has forums, discord, youtube icons, etc.  
-      .topnav_container
-        a.topnav_item.topnav_hover(href='https://forum.faforever.com/')  Forums
-      .topnav_container
-        a.topnav_item.topnav_hover(href='https://www.patreon.com/faf')  Support FAF
-      .topnav_container
-        a.topnav_item.topnav_hover(href='https://wiki.faforever.com/en/home')  Official Wiki
-      .topnav_container
+      .topNavContainer
+        a.topnav_item(href='https://forum.faforever.com/')  Forums
+      //.topNavContainer
+        a.topnav_item(href='https://www.patreon.com/faf')  Support FAF
+      .topNavContainer
+        a.topnav_item(href='https://wiki.faforever.com/en/home')  FAF Wiki
+      .topNavContainer
         a(href='https://discord.gg/mXahVSKGVb')
           .fab.fa-discord.fa-lg
-      .topnav_container
+      .topNavContainer
         a(href='https://www.youtube.com/c/ForgedAllianceForever')
           .fab.fa-youtube.fa-lg
-      .topnav_container
+      .topNavContainer
         a(href='https://www.twitch.tv/faflive')
           .fab.fa-twitch.fa-lg
-      .topnav_container
+      .topNavContainer
         a(href='https://github.com/FAForever')
           .fab.fa-github.fa-lg
-      ul.nav_item.topnav_container
+      //ul.navItem.topNavContainer
         li.topNavList
           .fab.fas.fa-language
             ul.topNavAbsolute
@@ -73,23 +73,23 @@ html(lang='en')
               a(href='?lng=es')
                 li Español
     // Main Navbar with FAF NEWS, LOGIN AND DOWNLOAD. 
-    .main_nav_container
-      .nav_container
-        .nav_item
-          .nav_image
+    .mainNavContainer
+      .navContainer
+        .navItem
+          .navLogo
             a(href='/')
               img(src='/images/faflogo.svg' alt='')
-      .nav_container
-        ul.nav_item
+      .navContainer
+        ul.navItem
           a(href='/newshub')
-            li.nav_list
-              | FAF NEWS
+            li.navList
+              | NEWS
               //this nav_absolute is here for the JS to not open any menus when FAF news is clicked
-              ul.nav_absolute
-          li.nav_list
+              ul.navAbsolute
+          li.navList
             | GAME
             .fas.fa-caret-down
-            ul.nav_absolute
+            ul.navAbsolute
               a(href='/tutorials-guides')
                 li Tutorials/Guides
               a(href='https://unitdb.faforever.com/' target='_blank')
@@ -101,10 +101,10 @@ html(lang='en')
 
 
 
-          li.nav_list
+          li.navList
             | COMMUNITY
             .fas.fa-caret-down
-            ul.nav_absolute
+            ul.navAbsolute
           
               a(href='/content-creators')
                 li Content Creators
@@ -117,10 +117,10 @@ html(lang='en')
                 li FAF Teams
               
 
-          li.nav_list
+          li.navList
             | COMPETITIVE
             .fas.fa-caret-down
-            ul.nav_absolute
+            ul.navAbsolute
               a(href='/leaderboards')
                 li Leaderboards
               a(href='/tournaments')
@@ -129,16 +129,13 @@ html(lang='en')
               a(href='/trainers')
                 li Trainers
 
-              a(href='/league')
-                li League
 
 
-
-      .nav_container.nav_end
-        a(href='/login')
-          .nav_item LOGIN
-      .nav_container.nav_end.nav_download
-        a(href='https://www.faforever.com/client') PLAY NOW 
+      .navContainer.navEnd
+        a(href='https://www.faforever.com/client') DOWNLOAD
+      .navContainer.navEnd
+        a(href='/login') LOGIN
+      
     // the mobilenav is the mobile navbar, it has two stickies, one of them is the sticky for the mobile menu (so it stays with the user) and the second one is the black backgroud (so when the user opens the mobile menu, everything else darkens.)
     #mobilenav_bg_sticky
       #mobilenav_bg
@@ -222,11 +219,11 @@ html(lang='en')
                   a(href='https://github.com/FAForever')
                     .fab.fa-github.fa-lg
       // A splat is those bars between tthe banners (those shattered particles)
-
-    .splat_main_container.emptyBlackGreyPadding
-      .splat_container
+    
+    .splat_main_container
+      //.splat_container
         .splat_rotate
-          img(src='/images/splat.png' alt='')
+          img(src='/images/blacksplat.png' alt='')
           
     block bannerData    
 
@@ -236,14 +233,14 @@ html(lang='en')
         .mainBannerContainer(class= bannerImage + 'Banner')(style='background-image: url(../images/banner/' +bannerImage+ '.jpg);')
           .bannerContainer.bannerTitle #{bannerFirstTitle}
           .bannerContainer.bannerTitle #{bannerSecondTitle}
-
           .bannerContainer.bannerSubtitle #{bannerSubTitle}
 
           block bannerButton 
     block bannerMixin
       +banner()
-      .splat_main_container.splat_black_background
-        .splat_container
+      .splat_main_container
+      //.splat_black_background
+      //  .splat_container
           .splat
             img(src='/images/blacksplat.png' alt='')
       
@@ -292,14 +289,8 @@ html(lang='en')
               li ASSOCIATION  
 
 
-      //- JAVASCRIPT
 
-      //- jQuery 1.11.3 is included by default, and required by both Bootstrap
-      //- and the KeystoneJS Content Editor. If you are not targeting IE8,
-      //- you can upgrade to 2.1.4 (also bundled) for better performance.
-      //- Customise which Bootstrap javascript files are served by including
-      //- them specifically here, instead of bootstrap-3.3.5.min.js
-      script(src='/js/bottom.min.js')
+      
 
       //- Add scripts that are globally required by your site here.
       script(src="../../js/app/index.js")

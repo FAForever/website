@@ -11,28 +11,42 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", data.length);
     });
 
+  let lavaCode = document.querySelectorAll(".splat_main_container");
+  
 
+  
 
   //JS for the main navbar menus to open on hover and close when leaving (GAME, COMMUNITY, etc). It uses mobilenav-active because it just needs the display:block        
   let topNavAbsolute = document.getElementsByClassName("topNavAbsolute");
   let topNavList = document.getElementsByClassName("topNavList");
-  let navlist = document.getElementsByClassName("nav_list");
-  let navabsolute = document.getElementsByClassName("nav_absolute");
+  let navList = document.getElementsByClassName("navList");
+  let navAbsolute = document.querySelectorAll(".navAbsolute");
+  let stillHere = 0;
 
-
-  for (let i = 0; i < navlist.length; i++) {
+  for (let i = 0; i < navList.length; i++) {
     //When you mouseover/click, menu appears
-    navlist[i].addEventListener("mouseover", () => {
-      navabsolute[i].classList.add("mobilenav_active");
+    navList[i].addEventListener("mouseout", () => {
+      stillHere = 1;
+      navAbsolute[i].classList.remove("navAbsoluteActive");
+      setTimeout( () => {
+        if (stillHere === 1) {
+          navAbsolute.forEach(list => list.style.opacity = "0%");
+        }
+      }, 0);
+      
     });
-    
+    navList[i].addEventListener("mouseover", () => {
+      stillHere = 0;
+      navAbsolute[i].classList.add("navAbsoluteActive");
+      setTimeout( () => {
+        navAbsolute[i].style.opacity = "100%";
+      }, 10);
+    });
     //when you mouseout/leave, menu dissapears
-    navlist[i].addEventListener("mouseout", () => {
-      for (x = 0; x < navabsolute.length; x++) {
-        navabsolute[x].classList.remove("mobilenav_active");
-      }
-    });
+
   }
+  
+  /*
   //The mouseover here needs to change to click but by doing so, the mouseout triggers as soon as you  enter the list or leave the icon.
   topNavList[0].addEventListener("mouseover", () => {
     topNavAbsolute[0].classList.add("mobilenav_active");
@@ -43,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
+ */
   
   //JS for mobile navbar, when clicking the menus on the navbar, it shows of the contents inside of them. For example GAME > Tutorials, Advanced AI, etc.
   let blackitem = document.getElementsByClassName("mobilenav_item");
