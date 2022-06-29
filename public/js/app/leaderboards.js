@@ -35,7 +35,7 @@ function leaderboardUpdate() {
   });
 
   //determines the current page, whether to add or substract the missing players in case we pressed next or previous then it will add or substract players
-  let playerIndex = (playerList.length - 101) - (pageNumber * 100); //- addNextPlayer;
+  let playerIndex = (playerList.length - 100) - (pageNumber * 100); //- addNextPlayer;
   let next100Players = playerList.length  - (pageNumber * 100);
   for (playerIndex; playerIndex < next100Players; playerIndex++) {
     if (playerIndex < 0) {
@@ -60,15 +60,15 @@ function pageChange(newPageNumber) {
   if (pageNumber === 0) {
     //You see 4-7 pageButton because there are a total of 8 buttons counting the ones at the bottom of the page
     pageButton[0].classList.add('exhaustedButton');
-    pageButton[3].classList.add('exhaustedButton');
+    pageButton[2].classList.add('exhaustedButton');
     pageButton[4].classList.add('exhaustedButton');
-    pageButton[7].classList.add('exhaustedButton');
+    pageButton[6].classList.add('exhaustedButton');
   }
   if (pageNumber === lastPage) {
     pageButton[1].classList.add('exhaustedButton');
-    pageButton[2].classList.add('exhaustedButton');
+    pageButton[3].classList.add('exhaustedButton');
     pageButton[5].classList.add('exhaustedButton');
-    pageButton[6].classList.add('exhaustedButton');
+    pageButton[7].classList.add('exhaustedButton');
   }
   leaderboardUpdate();
 }
@@ -95,7 +95,6 @@ function timeCheck(timeSelected) {
       timedOutPlayers.push(playerList[i]);
       playerList.splice(i, 1);
     }
-
   }
   pageChange(0);
 }

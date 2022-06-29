@@ -5,27 +5,27 @@
  
 
   /* Font sizes
-  --paragraph-font-size: 0.85vw
-  --subtitle-font-size: 1.75vw
-  --title-font-size: 2.25vw
+  --paragraph-font-size: 1vw
+  --subtitle-font-size: 2vw
+  --title-font-size: 2.5vw
   
 @media (max-width: 1600px)
   \:root
-    --paragraph-font-size: 1.3vw
-    --subtitle-font-size: 2.25vw
-    --title-font-size: 2.75vw
+    --paragraph-font-size: 1.5vw
+    --subtitle-font-size: 2.5vw
+    --title-font-size: 3vw
 
 @media (max-width: 800px)
   \:root
-    --paragraph-font-size: 1.6vw
-    --subtitle-font-size: 2.75vw
-    --title-font-size: 3.25vw
+    --paragraph-font-size: 2vw
+    --subtitle-font-size: 3vw
+    --title-font-size: 3.5vw
 
 @media (max-width: 600px)
   \:root
-    --paragraph-font-size: 2.8vw
-    --subtitle-font-size: 3.75vw
-    --title-font-size: 4.5vw
+    --paragraph-font-size: 4vw
+    --subtitle-font-size: 4.5vw
+    --title-font-size: 5vw
 /* Used as white text between stuff
 
 .responsiveTextTitle
@@ -50,6 +50,21 @@
   font-family: variables.$family-paragraph
   direction: ltr
 
+//scroll Bar
+
+/* width */
+::-webkit-scrollbar 
+  width: 8px
+  height: 0px
+/* Track */
+::-webkit-scrollbar-track 
+  background: variables.$background-primary
+/* Handle */
+::-webkit-scrollbar-thumb
+  background: variables.$color-inactive-plus
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+  background: variables.$color-inactive 
 
 
 
@@ -59,7 +74,7 @@ html
 body
   text-align: center
   background-attachment: fixed
-  background-color: variables.$background-secondary
+  background-color: variables.$background-primary
   background-position: center center
   margin: 0 0 0 0
   padding-top: 0
@@ -74,7 +89,7 @@ a
 
   &:visited
     text-decoration: none
-    color: inherit
+    color: variables.$color-inactive
 
   &:hover
     color: variables.$color-active
@@ -97,13 +112,70 @@ ul
     color: variables.$color-active
 
 /*===== Splat Starts =====
-
-.splat_main_container
+.splatForgedBorder
   display: grid
   grid-template-columns: 1fr
   position: relative
-  padding: 5px 0 5px 0
+  padding: 0
   justify-items: center
+  width: 100%
+  height: 10px
+  background-image: url("/../../images/metal.jpg")
+
+.transformationReverse
+  transform: scaleX(-1)
+
+.movingBackground1
+  background: linear-gradient(to right, #8e0800, #ffa300,  #8e0800)
+  background-size: 200%
+  animation: gradientBar1 8s infinite linear
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 1
+  
+  
+@keyframes gradientBar1 
+  0%
+    background-position: left
+  50%
+    background-position: right
+    opacity: 1
+  50.1%
+    opacity: 0
+  100%
+    opacity: 0
+    
+.movingBackground2
+  background: linear-gradient(to right, #ffa300, #8e0800, #ffa300)
+  background-size: 200%
+  animation: gradientBar2 8s infinite linear
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 2
+
+
+@keyframes gradientBar2
+  0%
+    opacity: 0
+  50%
+    opacity: 0
+  50.1%
+    background-position: left
+    opacity: 1
+  100%
+    background-position: right
+    
+  
+  
+  
+
+  
 
 
 .splat_rotate
@@ -138,12 +210,11 @@ ul
 /*=============== Nav Bar ===============
 /*===== Top Navbar =====
 
-.main_topnav_container
+.mainTopNavContainer
   display: grid
   grid-template-columns: repeat(12, max-content)
   grid-template-rows: minmax(10px, 1fr)
-  color: variables.$color-inactive-plus
-  font-size: calc(var(--paragraph-font-size) / 1.2)
+  font-size: calc(var(--paragraph-font-size) / 1.4)
   background-color: variables.$background-primary
   padding: 0.15em
   position: relative
@@ -151,27 +222,20 @@ ul
   place-items: center
   font-family: variables.$family-paragraph
 
-.topnav_container
-  padding: 0 0.5em
+.topNavContainer
+  padding: 0.5em 0.75em
 
-.topnav_item
-  width: 100%
-  height: 100%
+.topNavItem
   position: relative
   transition: 0.5s
   display: grid
   place-items: center
   cursor: pointer
   justify-self: end
-
-.topnav_hover:hover, .topnav_item a
-  color: variables.$color-active
-
-
-
-  
+  &:hover
+    color: variables.$color-active
+    
 .fab
-  padding: 0.15em
   width: 100%
   text-align: center
   text-decoration: none
@@ -179,13 +243,12 @@ ul
   justify-self: end
   transition: 0.5s
   font-size: var(--paragraph-font-size)
-
   &:hover
     color: variables.$color-active
     
 .fa-language
   color: variables.$color-active
-  font-size: calc(var(--paragraph-font-size) * 1.5)
+  font-size: calc(var(--paragraph-font-size) *1.5)
   padding: 0
   
   
@@ -201,7 +264,7 @@ ul
   font-weight: 100
   a
     li
-      padding: 0.8em
+      padding: 20px
       display: block
       //border: 1px solid variables.$color-inactive
       background-color: variables.$background-primary
@@ -221,22 +284,22 @@ ul
     color: variables.$color-inactive
 /*===== Regular navbar =====
 
-.main_nav_container
+.mainNavContainer
   display: grid
   grid-template-columns: max-content minmax(50px, auto) max-content max-content
   grid-template-rows: auto
   font-size: calc(var(--subtitle-font-size) / 1.65)
-  background-color: variables.$background-secondary
+  background-color: variables.$background-primary
   color: variables.$color-inactive
   font-family: variables.$family-paragraph
   justify-items: center
-  padding: 5px 10px 0 10px
+  padding: 10px
 
-.nav_container
+.navContainer
   align-self: center
   align-content: center
 
-.nav_item
+.navItem
   width: 100%
   height: 100%
   position: relative
@@ -245,260 +308,267 @@ ul
   padding: 0
   transition: 0.25s
 
-  li
-    display: inline-block
-    padding: 0 20px
 
-.nav_image img
-  width: 80px
-  height: 100%
-  object-fit: contain
-  overflow: hidden
-  padding: 0 0 0 20px
-  justify-self: center
-  place-self: center
 
-.nav_download
+.navLogo 
+  img
+    width: 80px
+    height: 100%
+    object-fit: contain
+    overflow: hidden
+    padding: 0 0 0 20px
+    justify-self: center
+    place-self: center
+
+.navDownload
   background-color: variables.$button-inactive
-  border: 0.1em solid variables.$button-active
+  border: 0.2em solid variables.$button-active
+  font-weight: 600
   letter-spacing: 0.4px
   padding: 5px
   margin-left: 20px
   transition: 0.25s
-  
   a
     color: variables.$color-active
-
   &:hover
     background-color: variables.$button-active
 
 
 
-.nav_end
+.navEnd
   justify-self: end
-  font-weight: 900
   letter-spacing: 1px
+  transition: 0.25s
+  margin: 0 0.5em
 
 /* This is the hover menu you see when you hover on GAME, COMMUNITY and so on
 
-.nav_absolute
+.navAbsolute
   position: absolute
   z-index: 10
   text-align: left
   display: none
+  opacity: 0
   top: 1em
-  
-
   li
     padding: 20px
     display: block
-    //border: 1px solid variables.$color-inactive
     background-color: variables.$background-secondary
+    color: variables.$color-inactive
     transition: 0.25s
-
     &:hover
       color: variables.$color-active
-      background-color: variables.$color-inactive-plus
+      background-color: variables.$background-tertiary
 
+.navAbsoluteActive
+  display: block
+  transition: 0.25s
 
-
-.nav_list
+.navList
+  display: inline-block
+  margin: 0 20px
   &:hover
     color: variables.$color-active
     transition: 0.25s
     cursor: pointer
+    .fa-caret-down
+      transform: rotate(-0.25turn)
+      transition: 0.25s
 
-  li
-    color: variables.$color-inactive
-
-.fa-caret-down
-  transition: 0.35s
-
-.nav_list:hover .fa-caret-down
-  transform: rotate(-0.25turn)
-
-@media (max-width: 1200px)
-  .main_nav_container, .main_topnav_container
-    display: none
 
 /* Mobile navbar
 
-.mobilenav_sticky
-  position: sticky
+// The black bar with 3 white bars that allow us to enter the mobile nav bar
+.mobileTransition
   display: none
-  top: 0
-  z-index: 100
-  background-color: variables.$background-secondary
-  border: 1px solid variables.$color-active
-
-.main_mobilenav_container
-  display: grid
+  position: sticky
   grid-template-columns:  auto max-content
   grid-template-rows: auto
   justify-items: left
   align-content: center
-  font-family: variables.$family-subtitle
-  text-align: left
-  font-size: 24px
-  .mobilenavContainer
+  padding:  0.5em 0.5em 0.25em 0.5em
+  top: 0
+  z-index: 5
+  transition: 0.5s
+  background-color: variables.$background-secondary
+  border: 0.5em solid variables.$background-primary
+  font-size: 28px
+  .mobileTransitionContainer
     align-self: center
     align-content: center
     justify-self: center
     img
-      text-align: center
-      padding: 0
-      width: 60px
+      width: 46px
       height: 100%
-    
+.fa-caret-down
+  transition: 0.5s
+  
+// Here to make the body non scrollable while the mobile nav bar is active
+.stopScroll
+  overflow: hidden
 
-#mobilenav_bars
-  padding: 10px
-  background-color: variables.$background-secondary
-  border: 1px solid variables.$color-inactive
-  justify-self: right
-
-.mobilenav_bar1, .mobilenav_bar2, .mobilenav_bar3
-  width: 35px
-  height: 5px
-  background-color: variables.$color-active
-  margin: 6px 0
-  transition: 0.4s
-
-.mobilenav_change
-  .mobilenav_bar1
-    transform: rotate(-45deg) translate(-9px, 6px)
-
-  .mobilenav_bar2
-    opacity: 0
-
-  .mobilenav_bar3
-    transform: rotate(45deg) translate(-8px, -8px)
-
-.mobilenav_mobile
-  opacity: 0
-  height: 0
+//the actual mobile nav bar we see with links and other elements
+.mobileNavBar
+  @include mixins.gridMainContainer
   display: none
-  transition: 1s
-
-.mobilenav_mobile_active
-  opacity: 100
-  height: 100%
-  transition: 1s
-  display: block
-
-#mobilenav_bg_sticky
   position: sticky
+  opacity: 0
   top: 0
-  z-index: 9
-
-#mobilenav_bg
-  position: absolute
-
-.mobilenav_bg_active
-  background-image: url("/public/images/fafbgpattern0.5.jpg")
+  left: 0
   width: 100vw
   height: 100vh
-
+  overflow-y: auto
+  z-index: 100
+  align-items: start
+  background-image: url("../../images/fafbgpatternMobile.jpg")
+  font-family: variables.$family-subtitle
+  font-size: 17px
+  //font-size: calc(var(--title-font-size) * 1.1)
+  color: variables.$color-active
   transition: 0.5s
+  .gridItem
+    align-items: start
+    a
+      display: inline
+      color: variables.$color-active
+  img
+    height: 40px
+    padding: 1em 0
+    margin-left: auto
+    margin-right: auto
+    display: inline
+  .mobileNavUl, ul
+    background-color: variables.$background-secondary
+    border: 2px solid variables.$background-primary
+    padding: 1em
+    text-align: left
+    list-style: none
+  .mobileNavLi
+    display: none
+    background-color: variables.$background-primary
+    padding: 0 1em
+    li
+      padding: 0.8em
+      a
+        color: variables.$color-inactive
 
-.mobilenav_item
-  margin: 10px
-  padding: 45px 10px 0 0
+.absoluteBottom
+  position: absolute
+  bottom: 0
 
-.mobilenav_login
-  margin: 10px
-  padding: 25px 10px 0 0
-
-.mobilenav_item ul
-  list-style-type: none
-  margin: 0
-  padding-top: 10px
-
-.mobilenav_ul
-  display: none
-
-  li
-    padding: 15px 10px 15px 10px
-    color: variables.$color-inactive
-
-.mobilenav_active
-  display: block
-
-.mobilenav_social li
-  display: inline-block
-  padding: 10px
-
-.mobilenav_caret .fa-caret-down
+.mobileCaretActive
   transform: rotate(-0.25turn)
   transition: 0.5s
+  
+// the X we see to close the navbar
+.fa-times
+  font-size: 30px
   color: variables.$color-active
+  z-index: 100
+  position: absolute
+  opacity: 0.8
+  top: 35px
+  right: 25px
 
-/* Footer Navbar
+  
+// the social media down below
+.mobileSocialMedia
+  padding: 1em 0
+  a
+    .fab
+      display: inline
+      font-size: 25px
+      padding: 18px
+      color: variables.$color-active
+
+
+      
+.mobileOtherLinks
+  a
+    padding: 0 1em
+    font-size: 14px
+
+// Footer Navbar
 
 .mainFooterContainer
-  display: grid
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-  grid-template-rows: minmax(10px, 1fr)
-  gap: 2vw
+  @include mixins.gridMainContainer
   color: variables.$color-inactive
-  background: linear-gradient(180deg, black 0%, #222222 100%)
-  padding: 20px 10px 50px 10px
+  //background-image: url("../../images/fafbgpatternMobile.jpg")
+  background-color: variables.$background-secondary
+  padding: 1em
   justify-content: center
-  text-align: left
+  text-align: center
   
-
-.endBanner
-  background-image: url("/../../images/footerbanner.jpg")
-  
-.footerContainer
-  padding: 0
-
+  .absoluteACU
+    display: block
+    position: absolute
+    top: 20%
+    opacity: 0.3
+    z-index: 1
+    img
+      width: 50%
+      z-index: 1
+  .footerAeon
+    right: 0
+  .footerUEF
+    left: 0
+      
 .footerItem
-  width: 100%
-  height: 100%
+  z-index: 10
+  display: block
   transition: 0.4s
-  cursor: pointer
   line-height: 2.2em
-
+  font-family: variables.$family-subtitle
+  p
+    font-size: var(--subtitle-font-size)
+    font-family: variables.$family-title
+    color: variables.$color-active
+    margin: 0
+    padding: 0.25em
   img
-    width: 45%
-    margin-left: 10%
+    width: 125px
 
   ul
     font-size: var(--paragraph-font-size)
-    font-family: variables.$family-subtitle
     color: variables.$color-active
-
+    padding: 1em
+    display: inline-block
+    
   li
     list-style-type: none
-    margin-left: 1em
     font-size: 0.8em
-    
     font-family: variables.$family-paragraph
-    border: 1px solid variables.$background-secondary
+  a
     color: variables.$color-inactive
-
     &:hover
       color: variables.$color-active
       transition: 0.4s
-      background-color: variables.$background-secondary
-      border: 1px solid variables.$color-inactive
+      
+.backToTop
+  font-size: 18px
+  padding: 1em
+  border: 10px solid variables.$background-secondary
+  background-color: variables.$background-tertiary
 
-  a
-    color: variables.$color-active
-
+@media (min-width: 1201px)
+  .mobileTransition
+    display: none
+    
+@media (max-width: 1200px)
+  .mainNavContainer, .mainTopNavContainer
+    display: none
+  .mobileTransition
+    display: grid
+    
 @media (max-width: 800px)
-  .main_topnav_container
+  .mainTopNavContainer
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
 
 @media (max-width: 1100px)
-  .mobilenav_sticky
+  .mobileNavSticky
     display: block
 
-@media (max-width: 1100px)
-  .mobilenav_sticky
-    display: block
 
 @media (max-width: 1100px)
-  .main_nav_container, .main_topnav_container
+  .mainNavContainer, .mainTopNavContainer
     display: none

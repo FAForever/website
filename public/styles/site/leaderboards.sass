@@ -32,7 +32,7 @@ input
 .leaderboardFilter
   border: 1px solid white
   font-family: variables.$family-paragraph
-  font-size: var(--paragraph-font-size)
+  font-size: 16px
   color: variables.$color-active
   background-color: variables.$background-tertiary
   padding: 0.5em 0 0.5em 0.5em
@@ -52,11 +52,16 @@ input
 .leaderboardContainer
   font-family: variables.$family-paragraph
   padding: 0em
-  .responsiveText
-    padding: 1em 0 0 0
+  ul
+    font-size: 16px
+    padding: 1em 0
+    li
+      font-size: 16px
+      padding: 1em 0
 .leaderboardItem
+    
   li:nth-child(odd)
-    background-color: mix(variables.$background-tertiary, variables.$background-primary, 20%)
+    background-color: mix(variables.$background-tertiary, variables.$background-primary, 50%)
   li:nth-child(even)
     background-color: variables.$background-secondary
 .leaderboardCategory
@@ -67,6 +72,7 @@ input
   font-size: var(--paragraph-font-size)
   letter-spacing: 0em
   ul
+    padding: 0.5em
     li
       display: inline-block
       padding: 0.6em 1em
@@ -118,6 +124,18 @@ input
     padding: 0.5em
 
 @media (max-width: 800px)
+  .leaderboardFilter
+    font-size: 12px
+  .leaderboardContainer
+    ul
+      font-size: 12px
+      padding: 1em 0 0 0
+      
+      li
+        text-overflow: ellipsis
+        font-size: 12px
+        padding: 1em 0
+  
   .clearButton
     left: 90%
     top: 68%
@@ -130,5 +148,4 @@ input
       li
         padding: 0.65em
     
-    
- 
+

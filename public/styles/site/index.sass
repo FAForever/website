@@ -6,7 +6,7 @@
   grid-template-columns: 1fr
   background-position: center
   background-size: cover
-  padding: 300px 0
+  padding: 12.5% 0
   letter-spacing: 1.2PX
   text-shadow: 0 2px 4px black, 0 8px 16px black      
 
@@ -27,18 +27,6 @@
 
 
 /* Below Main page
-@media (max-width: 800px)
-  .mainBannerContainer
-    padding: 150px 10px
-    gap: 0
-    font-size: 10px
-
-
-@media (max-width: 400px)
-  .mainBannerContainer
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-    padding: 130px 0
-    gap: 0
 
 
 /* Scroll container Container with the monkey lord below banner
@@ -171,23 +159,22 @@
   grid-template-columns: auto
   background-color: variables.$background-secondary
   color: variables.$color-active
-  padding: 1em 0
+  padding: 1em
   font-size: var(--title-font-size)
   letter-spacing: 1.2PX
-  border: 15px solid variables.$background-primary
   font-family: variables.$family-title
-  
+
   .highlightText, p
     z-index: 2
     position: relative
     margin: 0
+    transition: 1s
 .thinContainer 
   margin: 0.5vw 15vw
   padding: 1vw
   background-color: variables.$background-tertiary
   border: 0.15em ridge variables.$background-primary
   border-radius: 20px
-  z-index: 2
 @media (max-width: 800px)
   .thinContainer
     margin: 0.5vw 5vw
@@ -199,8 +186,8 @@
 .mainImprovementsContainer 
   display: grid
   grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr))
-  background-image: url("../../images/fafbgpattern.jpg")
-  padding: 0 7vw 
+  background-image: url("/../../images/fafbgpattern0.5.jpg")
+  padding: 2vw 7vw 
   .responsiveText
     grid-column: span 3
   .improvementContainer
@@ -230,7 +217,7 @@
 
 .rectangleSpace
   padding: 2vw 0 2vw 0
-  background-image: url("/../../images/fafbgpattern.jpg")
+  background-image: url("/../../images/fafbgpattern0.5.jpg")
   direction: rtl
 
 .mainRectangleContainer
@@ -259,7 +246,7 @@
 .factionMainContainer 
   @include mixins.gridMainContainer
   padding: 0 15vw
-  background-image: url("/../../images/fafbgmasspattern.jpg") 
+  background-image: url("/../../images/fafbgmasspattern0.5.jpg") 
   
 .factionCard 
   display: none
@@ -304,9 +291,7 @@
   .main_topnav_container
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
 
-  .mainBannerContainer
-    padding: 150px 10px
-    font-size: 10px
+
 
   .bannerSubtitle
     font-size: 12px
@@ -347,7 +332,8 @@
   .acuCard
     grid-column: span 6
 
-
+.endBanner
+  background-image: url("/../../images/footerbanner.jpg")
 
   
  
@@ -363,10 +349,6 @@
 
 
 @media (max-width: 400px)
-  .mainBannerContainer
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-    padding: 130px 0
-    gap: 0
 
   .splitAbsoluteText
     padding: 0
