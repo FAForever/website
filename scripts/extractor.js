@@ -1,6 +1,9 @@
+
 require("dotenv").config();
-const fetch = require('node-fetch');
+
 const fs = require('fs');
+const fetch = require('node-fetch');
+
 let d = new Date();
 let timeFilter = 6;
 let minusTimeFilter = d.setMonth(d.getMonth() - timeFilter);

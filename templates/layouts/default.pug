@@ -38,27 +38,27 @@ html(lang='en')
 
   //- HTML BODY
   body
-    .main_topnav_container
+    .mainTopNavContainer
       // this is the "thin" navbar that has forums, discord, youtube icons, etc.  
-      .topnav_container
-        a.topnav_item.topnav_hover(href='https://forum.faforever.com/')  Forums
-      .topnav_container
-        a.topnav_item.topnav_hover(href='https://www.patreon.com/faf')  Support FAF
-      .topnav_container
-        a.topnav_item.topnav_hover(href='https://wiki.faforever.com/en/home')  Official Wiki
-      .topnav_container
+      .topNavContainer
+        a.topnav_item(href='https://forum.faforever.com/')  Forums
+      //.topNavContainer
+        a.topnav_item(href='https://www.patreon.com/faf')  Support FAF
+      .topNavContainer
+        a.topnav_item(href='https://wiki.faforever.com/en/home')  FAF Wiki
+      .topNavContainer
         a(href='https://discord.gg/mXahVSKGVb')
           .fab.fa-discord.fa-lg
-      .topnav_container
+      .topNavContainer
         a(href='https://www.youtube.com/c/ForgedAllianceForever')
           .fab.fa-youtube.fa-lg
-      .topnav_container
+      .topNavContainer
         a(href='https://www.twitch.tv/faflive')
           .fab.fa-twitch.fa-lg
-      .topnav_container
+      .topNavContainer
         a(href='https://github.com/FAForever')
           .fab.fa-github.fa-lg
-      ul.nav_item.topnav_container
+      //ul.navItem.topNavContainer
         li.topNavList
           .fab.fas.fa-language
             ul.topNavAbsolute
@@ -73,160 +73,126 @@ html(lang='en')
               a(href='?lng=es')
                 li Español
     // Main Navbar with FAF NEWS, LOGIN AND DOWNLOAD. 
-    .main_nav_container
-      .nav_container
-        .nav_item
-          .nav_image
+    .mainNavContainer
+      .navContainer
+        .navItem
+          .navLogo
             a(href='/')
               img(src='/images/faflogo.svg' alt='')
-      .nav_container
-        ul.nav_item
+      .navContainer
+        ul.navItem
           a(href='/newshub')
-            li.nav_list
-              | FAF NEWS
+            li.navList
+              | NEWS
               //this nav_absolute is here for the JS to not open any menus when FAF news is clicked
-              ul.nav_absolute
-          li.nav_list
+              ul.navAbsolute
+          li.navList
             | GAME
             .fas.fa-caret-down
-            ul.nav_absolute
+            ul.navAbsolute
               a(href='/tutorials-guides')
                 li Tutorials/Guides
-              a(href='https://unitdb.faforever.com/' target='_blank')
-                li Unit Database
               a(href='/ai')
-                li Advanced AIs
+                li AI/Co-op Play
               a(href='/scfa-vs-faf')
-                li SC:FA vs FAF
-
-
-
-          li.nav_list
+                li  SC:FA vs FAF
+          li.navList
             | COMMUNITY
             .fas.fa-caret-down
-            ul.nav_absolute
-          
+            ul.navAbsolute
               a(href='/content-creators')
                 li Content Creators
-
               a(href='/contribution')
                 li  Contribute to FAF
               a(href='/donation')
                 li  Donate to FAF
               a(href='/faf-teams')
                 li FAF Teams
-              
-
-          li.nav_list
+          li.navList
             | COMPETITIVE
             .fas.fa-caret-down
-            ul.nav_absolute
+            ul.navAbsolute
               a(href='/leaderboards')
                 li Leaderboards
               a(href='/tournaments')
                 li Tournaments
 
-              a(href='/trainers')
-                li Trainers
-
-              a(href='/league')
-                li League
 
 
-
-      .nav_container.nav_end
-        a(href='/login')
-          .nav_item LOGIN
-      .nav_container.nav_end.nav_download
-        a(href='https://www.faforever.com/client') PLAY NOW 
+      .navContainer.navEnd
+        a(href='https://www.faforever.com/client') DOWNLOAD
+      .navContainer.navEnd
+        a(href='/login') LOGIN
+      
     // the mobilenav is the mobile navbar, it has two stickies, one of them is the sticky for the mobile menu (so it stays with the user) and the second one is the black backgroud (so when the user opens the mobile menu, everything else darkens.)
-    #mobilenav_bg_sticky
-      #mobilenav_bg
-    .mobilenav_sticky
-      .main_mobilenav_container
-        .mobilenavContainer
-            a(href='/')
-              img(src='/images/faflogo.svg' alt='')
-        #mobilenav_bars
-          .mobilenav_bar1
-          .mobilenav_bar2
-          .mobilenav_bar3
-        
-        .mobilenav_mobile
-          .mobilenav_container
-            // This login class is done just to takeout padding from Login
-            .mobilenav_login LOGIN
-          .mobilenav_container
-            .mobilenav_item
-              | GAME
-              .fas.fa-caret-down
-              ul.mobilenav_ul
-                li.mobilenav_list
-                  a(href='/tutorials-guides')  Tutorials/Guides
-                li.mobilenav_list
-                  a(href='/scfa-vs-faf')  SC:FA vs FAF 
-                li.mobilenav_list
-                  a(href='https://kazbek.github.io/FAF-Analytics/')  Player Statistics
-                li.mobilenav_list
-                  a(href='/ai')  Advanced AIs
-                li.mobilenav_list
-                  a(href='https://unitdb.faforever.com/')  Unit Database
-          .mobilenav_container
-            .mobilenav_item
-              | COMMUNITY
-              .fas.fa-caret-down
-              ul.mobilenav_ul
-                li.mobilenav_list
-                  a(href='/newshub')  News
-                li.mobilenav_list
-                  a(href='https://forum.faforever.com/')  Forums
-                li.mobilenav_list
-                  a(href='/contribution')  Streamers and Casters
-                li.mobilenav_list
-                  a(href='/volunteer-positions')  Contributors and Developers
-          .mobilenav_container
-            .mobilenav_item
-              | COMPETITIVE
-              .fas.fa-caret-down
-              ul.mobilenav_ul
-                li.mobilenav_list
-                  a(href='/tournaments')  Tournaments
-                li.mobilenav_list
-                  a(href='/trainers')  Trainers
-                li.mobilenav_list
-                  a(href='/league')  League
-                li.mobilenav_list
-                  a(href='/leaderboards')  Leaderboards 
-          .mobilenav_container
-            .mobilenav_item
-              | CONTRIBUTE
-              .fas.fa-caret-down
-              ul.mobilenav_ul
-                li.mobilenav_list
-                  a(href='https://www.patreon.com/faf') Donations
-                li.mobilenav_list
-                  a(href='/volunteer-positions')  Volunteer Positions
-          .mobilenav_container
-            .mobilenav_social
-              ul
-                li
-                  a(href='https://discord.gg/mXahVSKGVb')
-                    .fab.fa-discord.fa-lg
-                li
-                  a(href='https://www.twitch.tv/faflive')
-                    .fab.fa-twitch.fa-lg
-                li
-                  a(href='https://www.youtube.com/c/ForgedAllianceForever')
-                    .fab.fa-youtube.fa-lg
-                li
-                  a(href='https://github.com/FAForever')
-                    .fab.fa-github.fa-lg
-      // A splat is those bars between tthe banners (those shattered particles)
 
-    .splat_main_container.emptyBlackGreyPadding
-      .splat_container
-        .splat_rotate
-          img(src='/images/splat.png' alt='')
+
+    .mobileTransition
+      .mobileTransitionContainer
+          img(src='/images/faflogo.svg' alt='')
+      .fas.fa-bars
+
+    
+    .gridMainContainer.mobileNavBar
+      i.fas.fa-times
+      .gridItem.column12
+        .splatForgedBorder
+          .movingBackground1
+          .movingBackground2
+        img(src='/images/faflogo.svg' alt='')
+        
+        ul
+          a(href='/') Home
+        ul
+          a(href='/newshub') News
+        .mobileNavUl Game
+            .fas.fa-caret-down.mobileCaret
+        ul.mobileNavLi
+          li
+            a(href='/tutorials-guides') Tutorials/Guides
+          li
+            a(href='/ai') AI/Co-op Play
+          li
+            a(href='/scfa-vs-faf') SC:FA vs FAF
+        .mobileNavUl Community
+          .fas.fa-caret-down.mobileCaret
+        ul.mobileNavLi
+          li
+            a(href='/content-creators') Content Creators
+          li
+            a(href='/donation') Donate to FAF
+          li
+            a(href='/contribution') Contribute to FAF
+          li
+            a(href='/faf-teams') FAF Teams
+        .mobileNavUl Competitive
+            .fas.fa-caret-down.mobileCaret
+        ul.mobileNavLi
+          li
+            a(href='/leaderboards') Leaderboards
+          li
+            a(href='/tournaments') Tournaments
+        .mobileSocialMedia
+          a(href='https://discord.gg/mXahVSKGVb') 
+            .fab.fa-discord
+          a(href='https://www.twitch.tv/faflive')
+            .fab.fa-twitch
+          a(href='https://www.youtube.com/c/ForgedAllianceForever')
+            .fab.fa-youtube
+          a(href='https://github.com/FAForever')
+            .fab.fa-github
+        .mobileOtherLinks
+          a(href='https://forum.faforever.com/') Forums
+          a(href='https://wiki.faforever.com/en/home') FAF Wiki
+      .splatForgedBorder.transformationReverse.absoluteBottom
+        .movingBackground1
+        .movingBackground2 
+  
+    
+    .splatForgedBorder
+      .movingBackground1
+      .movingBackground2
+
           
     block bannerData    
 
@@ -236,70 +202,60 @@ html(lang='en')
         .mainBannerContainer(class= bannerImage + 'Banner')(style='background-image: url(../images/banner/' +bannerImage+ '.jpg);')
           .bannerContainer.bannerTitle #{bannerFirstTitle}
           .bannerContainer.bannerTitle #{bannerSecondTitle}
-
           .bannerContainer.bannerSubtitle #{bannerSubTitle}
 
           block bannerButton 
     block bannerMixin
       +banner()
-      .splat_main_container.splat_black_background
-        .splat_container
-          .splat
-            img(src='/images/blacksplat.png' alt='')
+      .splatForgedBorder.transformationReverse
+        .movingBackground1
+        .movingBackground2
+ 
       
       //- The content block should contain the body of your template's content
     block content
-    
+    .splatForgedBorder.transformationReverse
+      .movingBackground1
+      .movingBackground2
+        
     .mainFooterContainer
-      .footerContainer
+      .footerContainer.column12
         .footerItem
-          a(href='/')
-            img(src='/images/faflogo.svg' alt='')
-      .footerContainer
+          //.backToTop Back to Top
+      .footerContainer.column12
+        .footerItem
+          img(src='/images/faflogo.svg' alt='')
+          p FORGED ALLIANCE FOREVER
+      .footerContainer.column12
         .footerItem
           ul ETIQUETTE
-            a(href='/rules')
-              li RULES
-            a(href='/coc')
-              li CODE OF CONDUCT
-
-
-      .footerContainer
-        .footerItem
+            li
+              a(href='/coc') CODE OF CONDUCT
+            li
+              a(href='/rules') RULES
+            
           ul CONTRIBUTE  
-            a(href='https://www.patreon.com/faf')
-              li DONATIONS
-            a(href='/contribution')
-              li VOLUNTEER POSITIONS
-
-      .footerContainer
-        .footerItem
+            li
+              a(href='/contribution') VOLUNTEER POSITIONS
+            li
+              a(href='https://www.patreon.com/faf') DONATIONS
+            
           ul LEGAL
-            a(href='/tos')
-              li TERMS OF SERVICE
-            a(href='/privacy')
-              li PRIVACY STATEMENT          
-            a(href='https://github.com/FAForever')
-              li FAF ASSOCIATION
-
-      .footerContainer
-        .footerItem
+            li
+              a(href='/privacy') PRIVACY STATEMENT  
+            li
+              a(href='/tos') TERMS OF SERVICE
+                    
           ul CONTACT US
-            a(href='https://github.com/FAForever')
-              li DISCORD
+            li
+              a(href='mailto: admin@faforever.com') ASSOCIATION
+            li
+              a(href='https://discord.gg/mXahVSKGVb') DISCORD
+            
 
-            a(href='https://github.com/FAForever')
-              li ASSOCIATION  
 
 
-      //- JAVASCRIPT
-
-      //- jQuery 1.11.3 is included by default, and required by both Bootstrap
-      //- and the KeystoneJS Content Editor. If you are not targeting IE8,
-      //- you can upgrade to 2.1.4 (also bundled) for better performance.
-      //- Customise which Bootstrap javascript files are served by including
-      //- them specifically here, instead of bootstrap-3.3.5.min.js
-      script(src='/js/bottom.min.js')
+      
 
       //- Add scripts that are globally required by your site here.
       script(src="../../js/app/index.js")
