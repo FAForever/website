@@ -1,7 +1,7 @@
 extends ../layouts/default
 block bannerData    
   - var bannerImage = "landing"
-  - var bannerFirstTitle = "CONTINUE THE SUPCOM LEGACY IN"
+  - var bannerFirstTitle = "AN RTS CLASSIC REFORGED"
   - var bannerSecondTitle = "FORGED ALLIANCE FOREVER"
   - var bannerSubTitle = "" + " " + "ACUS ON THE BATTLEFIELD RIGHT NOW"
 block banner
@@ -12,8 +12,9 @@ block banner
       .bannerContainer.bannerSubtitle#playerCounter #{bannerSubTitle}
       block bannerButton
         br
-        a(href='https://www.faforever.com/client')
-          button.landingButton PLAY NOW
+        
+        button.landingButton PLAY NOW
+          a(href='https://www.faforever.com/client')
 block content
   
   //Monkeylord Background 
@@ -34,18 +35,16 @@ block content
           img(src='/images/intro.jpg' alt='')
 
 
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat_rotate
-        img(src='/images/blacksplat.png' alt='')
+  .splatForgedBorder
+    .movingBackground1
+    .movingBackground2
   // The bold white bar that separates containers
   .mainThinContainer
     p FAF IMPROVEMENTS ON 
     .highlightText SUPREME COMMANDER
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat
-        img(src='/images/blacksplat.png' alt='')
+  .splatForgedBorder.transformationReverse
+    .movingBackground1
+    .movingBackground2
         
   
   //New multiple choice container
@@ -96,18 +95,16 @@ block content
   
     //Factions Start here
 
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat_rotate
-        img(src='/images/blacksplat.png' alt='')
+  .splatForgedBorder
+    .movingBackground1
+    .movingBackground2
   // The bold white bar that separates containers
   .mainThinContainer
     .highlightText FOUR FACTIONS 
     p OF ABSOLUTE DESTRUCTION
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat
-        img(src='/images/blacksplat.png' alt='')
+  .splatForgedBorder.transformationReverse
+    .movingBackground1
+    .movingBackground2
 
   //ACU Cards
   .factionMainContainer
@@ -154,17 +151,15 @@ block content
 
   //This is where eco and zoom will go
   //splat start
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat_rotate
-        img(src='/images/blacksplat.png' alt='')
+  .splatForgedBorder
+    .movingBackground1
+    .movingBackground2
   .mainThinContainer
     p TOTAL CONTROL
     .highlightText SUPREME COMMANDING
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat
-        img(src='/images/blacksplat.png' alt='')
+  .splatForgedBorder.transformationReverse
+    .movingBackground1
+    .movingBackground2
   //splat end
   //zoom start
   .rectangleSpace
@@ -202,10 +197,9 @@ block content
 
   //end banner start
 
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat_rotate
-        img(src='/images/blacksplat.png' alt='')
+  .splatForgedBorder
+    .movingBackground1
+    .movingBackground2
 
   .mainBannerContainer.endBanner
     .bannerContainer.bannerTitle.highlightText PLAY SUPREME COMMANDER
@@ -214,10 +208,7 @@ block content
       br
       a(href='https://www.faforever.com/client')
         button.landingButton PLAY NOW
-  .splat_main_container.splat_black_background
-    .splat_container
-      .splat
-        img(src='/images/blacksplat.png' alt='')
+  
 
 block js
 
