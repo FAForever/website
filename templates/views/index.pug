@@ -2,8 +2,8 @@ extends ../layouts/default
 block bannerData    
   - var bannerImage = "landing"
   - var bannerFirstTitle = "AN RTS CLASSIC REFORGED"
-  - var bannerSecondTitle = "FORGED ALLIANCE FOREVER"
-  - var bannerSubTitle = "" + " " + "ACUS ON THE BATTLEFIELD RIGHT NOW"
+  - var bannerSecondTitle = "THE ULTIMATE WARFARE EXPERIENCE"
+  - var bannerSubTitle = "" + " " + "COMMANDERS PLAYING RIGHT NOW"
 block banner
   mixin banner()
     .mainBannerContainer(class= bannerImage + 'Banner')(style='background-image: url(../images/banner/' + bannerImage + '.jpg);')
@@ -18,9 +18,16 @@ block banner
 block content
   
   //Monkeylord Background 
-  .mainScrollContainer
+  .mainIntroduction
+    .introductionContainer.column12
+      h2.highlightText JOIN THOUSANDS
+      h1 IN THE BATTLEFIELD
+      p Forged Alliance Forever (FAF) is a community-driven project that continues the development of Supreme Commander: FA. Bringing this classic RTS to the modern world with well deserved quality of life updates. Ranging from co-op campaigns, matchmaking, smarter AIs, new gamemodes, easy to install mods and maps, up to 16 player teamgames and a competitive 1v1 ladder. Join one of the biggest RTS communities and deliver absolute warfare!
+    //.introductionContainer.column6
+      img(src='/images/aeon.jpg' alt='')
+  //.mainScrollContainer
     .scroll_container.scrollRelative
-      .scroll_absolute
+      h1
         .highlightText JOIN THOUSANDS
         | IN MONUMENTAL
         br
@@ -28,7 +35,7 @@ block content
     .scroll_container
       .scroll_item
         .scrollText.scrollFade.animationRigth
-          | FAF is a community-driven project that continues the development of SupCom:FA. Completing it with a Co-Op campaign, matchmaking, visual and balance updates, advanced AIs, new gamemodes, mods, UI customization, 16 player matches plus tournaments. Join one of the biggest RTS communities and deliver absolute warfare with friends against other players or exciting co-op missions or survival!
+          | FAF is a community-driven project that continues the development of Supreme Commander: FA. Completing it with a Co-Op campaign, matchmaking, visual and balance updates, advanced AIs, new gamemodes, mods, UI customization, 16 player matches plus tournaments. Join one of the biggest RTS communities and deliver absolute warfare with friends against other players or exciting co-op missions or survival!
     .scroll_container
       .scroll_item
         .scroll_image.scrollFade.animationRigth
@@ -39,175 +46,112 @@ block content
     .movingBackground1
     .movingBackground2
   // The bold white bar that separates containers
-  .mainThinContainer
-    p FAF IMPROVEMENTS ON 
-    .highlightText SUPREME COMMANDER
-  .splatForgedBorder.transformationReverse
-    .movingBackground1
-    .movingBackground2
-        
-  
-  //New multiple choice container
-  .mainImprovementsContainer
-    //.responsiveText Thanks to the many developers and contributors in the community, we have been able to continue the development of Forged Alliance. Delivering many necessary quality of life features.
 
-    .improvementContainer
-      .gridImage.improvementImage
-        img(src='/images/fafupdate.jpg' alt='')
-      .responsiveTextTitle Co-Op Campaign 
-        .responsiveTextNoPadding Enjoy the complete campaign with friends and extra missions plus a new Seraphim Campaign!
-          
-    .improvementContainer
-      .gridImage.improvementImage
-        img(src='/images/fafmatchmaking.jpg' alt='')
-      .responsiveTextTitle Matchmaking
-        .responsiveTextNoPadding Ranked matchmaking featuring queues for 1v1 duels, 2v2 duos and 4v4 teamgames! Plus custom game lobbies!
-          
-    .improvementContainer
-      .gridImage.improvementImage
-        img(src='/images/fafmapsmods.jpg' alt='')
-      .responsiveTextTitle The Vault
-        .responsiveTextNoPadding Featuring hundreds of new maps and mods made by the community! From updates to Supcom classics to news ones with high quality textures!
-          
-    .improvementContainer
-      .gridImage.improvementImage
-        img(src='/images/fafai.jpg' alt='')
-      .responsiveTextTitle Advanced AIs 
-        .responsiveTextNoPadding Community made AIs that can provide a real challenge! Each with a different specialization!
-          
-    //.improvementContainer
-      .gridImage.improvementImage
-        img(src='/images/fafstatistics.jpg' alt='')
-      .responsiveTextTitle Player Statistics
-        .responsiveTextNoPadding See your rival or friend you play the most with, which map or faction you have the highest win rate with!
-         
-    .improvementContainer
-      .gridImage.improvementImage
-        img(src='/images/faftournaments.jpg' alt='')
-      .responsiveTextTitle Tournaments
-        .responsiveTextNoPadding From the yearly LoTS and Rainbow Cup, the classic King of Setons and King of Dual Gap to other cross-community tournaments!
-    .improvementContainer
-      .gridImage.improvementImage
-        img(src='/images/banner/donation.jpg' alt='')
-      .responsiveTextTitle Placeholder
-        .responsiveTextNoPadding What should be placed here? This poor sod doesn't know what to be :(
-           
   
+      
+  .showcaseBackground
+    .mainShowcase
+      .showcaseContainer.column6
+        h2.highlightText Better Together
+        h1 Co-Op Campaign & New Missions
+        p Enjoy the complete Supreme Commander:FA campaign with up to four players, a FAF-made Seraphim Campaign with 6 new challenging missions and new standalone hardcore missions for the PVE war veterans that want the AI to absolutely destroy them with the toughest battles.
+        a(href='/')
+          button Campaign Overview
+      .showcaseImage.campaignBG.column6
+    .mainShowcaseReverse
+      .showcaseImage.communityBG.column6
+      .showcaseContainer.column6
+        h2.highlightText Thriving Community
+        h1 Make New Friends or Foes
+        p Our diverse playerbase makes sure you have a spot in our community. Whether you want to experience surviving against waves of enemy AI, play teamgames with up to 16 players, rise in the competitive 1v1 ladder or just have fun with friends, FAF has a space for you.
+        a(href='/')
+          button Join our Discord
+        a(href='/')
+          button FAF Forums
+    .mainShowcase
+      .showcaseContainer.column6
+        h2.highlightText Strategic Choices
+        h1 Macro Over Micro
+        p FAF is a game about making the correct decisions in the fog of battle, adjusting to the ever-changing warfare and chaos, not who can click faster. Your macro skills will matter a lot more to your armies than how well you can micro your individual units.
+        a(href='/')
+          button How to Play
+      .showcaseImage.strategicBG.column6
+    .mainShowcaseReverse
+      .showcaseImage.destructionBG.column6
+      .showcaseContainer.column6
+        h2.highlightText Colossal Destruction
+        h1  Conquer Every Front
+        p Whether you want to crush your opponents in the skies and bomb them back to the stone age, attack with huge land armies or siege your opponents with your battleships. All three theaters of war influence the outcome of battle.
+        a(href='/')
+          button Gameplay
+        a(href='/')
+          button Gallery
+
     //Factions Start here
 
-  .splatForgedBorder
+  .splatForgedBorder.transformationReverse
     .movingBackground1
     .movingBackground2
   // The bold white bar that separates containers
-  .mainThinContainer
-    .highlightText FOUR FACTIONS 
-    p OF ABSOLUTE DESTRUCTION
-  .splatForgedBorder.transformationReverse
-    .movingBackground1
-    .movingBackground2
 
+    
+  //Whether you are into the chunky UEF mechs and tanks, the Cybran stealthy spiderbots and walking ships, Aeon shielded donuts or Seraphim abstract art chickens. FAF has a faction for you to raze your opponents base to the ground
   //ACU Cards
   .factionMainContainer
-    .column12
-      .responsiveText
-        | Whether you are into the chunky UEF mechs and tanks, the Cybran stealthy spiderbots and walking ships, Aeon shielded hover units and donuts or Seraphim abstract alien mix of chickens. FAF has a faction for you to raze your opponents base to the ground.
-    //UEF
-    .column3.acuCard
-      .gridItem
-        .gridImage.scrollFade.animationLeft
-          img(src='/../../images/ueflogo.jpg' alt='')
-    //CYBRAN
-    .column3.acuCard
-      .gridItem
-        .gridImage.scrollFade.animationLeft
-          img(src='/../../images/cybranlogo.jpg' alt='')
-    //AEON
-    .column3.acuCard
-      .gridItem
-        .gridImage.scrollFade.animationRigth
-          img(src='/../../images/aeonlogo.jpg' alt='')
-    //SERAPHIM
-    .column3.acuCard
-      .gridItem
-        .gridImage.scrollFade.animationLeft
-          img(src='/../../images/seraphimlogo.jpg' alt='')
-    .column12.factionCard
-      .gridItem
-        .gridImage.scrollFade
-          img(src='/../../images/uefbg.jpg' alt='')
-    .column12.factionCard
-      .gridItem
-        .gridImage.scrollFade
-          img(src='/../../images/cybran.jpg' alt='')
-    .column12.factionCard
-      .gridItem
-        .gridImage.scrollFade
-          img(src='/../../images/aeon.jpg' alt='')
-    .column12.factionCard
-      .gridItem
-        .gridImage.scrollFade
-          img(src='/../../images/seraphim.jpg' alt='')
-
-
-  //This is where eco and zoom will go
-  //splat start
-  .splatForgedBorder
-    .movingBackground1
-    .movingBackground2
-  .mainThinContainer
-    p TOTAL CONTROL
-    .highlightText SUPREME COMMANDING
-  .splatForgedBorder.transformationReverse
-    .movingBackground1
-    .movingBackground2
+    .factionTitle.column12
+      h1.highlightText FOUR FACTIONS 
+      h1 OF ABSOLUTE DESTRUCTION
+    
+    .factionContainer.column3.UEF
+      img(src='/../../images/factionuef.svg' alt='')
+      h1 UEF
+        p Chunky mechs and tanks, jets and all the other classic war toys. For those that love vanilla-warfare.
+      a(href='/')
+        button UEF Guide
+        
+    .factionContainer.column3.Cybran
+      img(src='/../../images/factioncybran.svg' alt='')
+      h1 Cybran
+        p Stealthy and fast spiderbots, walking ships and pointy structures. You like being the edgy guy with spikes.
+      a(href='/')
+        button Cybran Guide
+    .factionContainer.column3.Aeon
+      img(src='/../../images/factionaeon.svg' alt='')
+      h1 Aeon
+        p Floating alien tanks, shields on everything and space donuts. You want to sweat microing your units.
+      a(href='/')
+        button Aeon Guide
+    .factionContainer.column3.Seraphim
+      img(src='/../../images/factionseraphim.svg' alt='')
+      h1 Seraphim
+        p Chicken ACU, chicken assault bots and chicken experimental. You want a balanced army of chickens.
+      a(href='/')
+        button Sera Guide
+    
+   
   //splat end
   //zoom start
-  .rectangleSpace
-    .mainRectangleContainer
-      .column7.rectangleContainer
-        .responsiveTextTitle.highlightText
-          | STRATEGIC ZOOM
-          .responsiveText
-            |Lead your armies and bases at the same time from afar with the strategic zoom. Have a clear look of what's happening everywhere in a matter of seconds!
-      .column5
-        .gridImage
-          img(src='/images/zoomout.jpg' alt='')
-    .mainRectangleContainerReverse
-      .column7.rectangleContainer
-        .responsiveTextTitle.highlightText
-          | RESPONSIVE ECONOMY
-          .responsiveText
-            |With its flux econonomy system, get an economy that responds to your actions instantly and requires you to adapt to the changes in the battlefield!
-      .column5
-        .gridImage
-          img(src='/images/resources.jpg' alt='')
-    .mainRectangleContainer
-      .column7.rectangleContainer
-        .responsiveTextTitle.highlightText
-          | LAND, AIR AND SEA
-          .responsiveText
-            |Flatten enemy armies with your bombers, raze their base with battleships and raid their every expansion with your army!
-      .column5
-        .gridImage
-          img(src='/images/techlevels.jpg' alt='')
-
-
-  //ZOOM end
-  //eco start
-
+  
   //end banner start
 
   .splatForgedBorder
     .movingBackground1
     .movingBackground2
 
-  .mainBannerContainer.endBanner
-    .bannerContainer.bannerTitle.highlightText PLAY SUPREME COMMANDER
-    .bannerContainer.bannerTitle THE WAY IT WAS INTENDED
-    .bannerContainer.bannerSubtitle
-      br
+  .endBanner
+    .bannerContainer.column12
+      h2 Ready to Play?
+      h1.highlightText EXPERIENCE SUPREME COMMANDER
+      h1 THE WAY IT WAS INTENDED
+    .bannerContainer.column12
       a(href='https://www.faforever.com/client')
-        button.landingButton PLAY NOW
+        button PLAY NOW
+      a(href='https://discord.gg/mXahVSKGVb')
+        button Join our Discord
+      //a(href='https://www.faforever.com/client')
+        button.buyButton FA on GOG
+
+      
   
 
 block js
