@@ -6,6 +6,7 @@
   display: grid
   grid-template-columns: repeat(12, 1fr)
   grid-template-rows: 1fr
+  
   gap: 0
   overflow: hidden
   position: relative
@@ -28,13 +29,12 @@
   transition: 0.4s
 
 @mixin button
-  color: variables.$color-active
+  color: variables.$background-primary
+  border: 0px solid variables.$background-secondary
   background-color: variables.$button-inactive
   font-family: variables.$family-subtitle
-  border: 0.15em solid variables.$button-active
+  border-radius: 20px
   font-size: 1.5em
-  margin: 0.5em
-  padding: 0.5em
   justify-self: center
   transition: 0.4s
   font-weight: bold
@@ -42,6 +42,7 @@
   cursor: pointer
 
   &:hover
+    color: variables.$color-active
     background-color: variables.$button-active
     
 // Rectangle Mixins
@@ -70,18 +71,30 @@
     @include gridImg
     
 .landingButton
-  @include button
+  font-size: 1.5em
+  margin: 0.2em 1em
+  padding: 0.8em
+@media (max-width: 800px)
+  .landingButton
+    margin: 8px
+    font-size: 14px
+    padding: 0.6em
 
-.mediumButton
+button
   @include button
-  font-size: 0.85em
-  margin: 1.5em 0.5em 0em 0.5em
-  padding: 0.5em
+  font-size: 1em
+  margin: 0.2em 1em
+  padding: 0.8em
+@media (max-width: 800px)
+  button
+    margin: 0px 8px 8px 8px
+    font-size: 12px
+    padding: 0.6em
 .smallButton
   @include button
   font-size: 0.75em
   margin: 0.25em
-  padding: 0.25em
+  padding: 0.5em
 //This creates 12 column classes ranging from column 1 to 12. Necessary since the base of every grid container is 12 columns. Done in order to be able to divide by 2,3,4 or 6 pieces (or other combinations such as 3 + 9), the column size doesnt matter as long as the combination of them equals 12).
 @for $i from 1 through 12 
   .column#{$i}

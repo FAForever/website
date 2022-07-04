@@ -6,26 +6,26 @@
 
   /* Font sizes
   --paragraph-font-size: 1vw
-  --subtitle-font-size: 2vw
-  --title-font-size: 2.5vw
+  --subtitle-font-size: 1.5vw
+  --title-font-size: 2vw
   
 @media (max-width: 1600px)
   \:root
     --paragraph-font-size: 1.5vw
-    --subtitle-font-size: 2.5vw
-    --title-font-size: 3vw
+    --subtitle-font-size: 2vw
+    --title-font-size: 2.5vw
 
 @media (max-width: 800px)
   \:root
-    --paragraph-font-size: 2vw
-    --subtitle-font-size: 3vw
-    --title-font-size: 3.5vw
+    --paragraph-font-size: 14px
+    --subtitle-font-size: 18px
+    --title-font-size: 24px
 
 @media (max-width: 600px)
   \:root
-    --paragraph-font-size: 4vw
-    --subtitle-font-size: 4.5vw
-    --title-font-size: 5vw
+    --paragraph-font-size: 12px
+    --subtitle-font-size: 16px
+    --title-font-size: 20px
 /* Used as white text between stuff
 
 .responsiveTextTitle
@@ -80,7 +80,19 @@ body
   padding-top: 0
   font-family: variables.$family-paragraph
   color: variables.$color-active
-
+p, h3, h2, h1
+  font-family: variables.$family-paragraph
+  margin: 0
+p
+  font-family: variables.$family-paragraph
+  font-size: var(--paragraph-font-size)
+h1
+  font-family: variables.$family-title
+  font-size: var(--title-font-size)
+h2
+  font-family: variables.$family-subtitle
+  font-size: var(--subtitle-font-size)
+  
 a
   &:link
     text-decoration: none
@@ -120,7 +132,6 @@ ul
   justify-items: center
   width: 100%
   height: 10px
-  background-image: url("/../../images/metal.jpg")
 
 .transformationReverse
   transform: scaleX(-1)
@@ -288,7 +299,7 @@ ul
   display: grid
   grid-template-columns: max-content minmax(50px, auto) max-content max-content
   grid-template-rows: auto
-  font-size: calc(var(--subtitle-font-size) / 1.65)
+  font-size: calc(var(--paragraph-font-size))
   background-color: variables.$background-primary
   color: variables.$color-inactive
   font-family: variables.$family-paragraph
@@ -312,11 +323,12 @@ ul
 
 .navLogo 
   img
-    width: 80px
+    
+    width: 100px
     height: 100%
+    padding: 0 20px
     object-fit: contain
     overflow: hidden
-    padding: 0 0 0 20px
     justify-self: center
     place-self: center
 
@@ -439,7 +451,7 @@ ul
     display: inline
   .mobileNavUl, ul
     background-color: variables.$background-secondary
-    border: 2px solid variables.$background-primary
+    border: 4px solid variables.$background-primary
     padding: 1em
     text-align: left
     list-style: none
@@ -493,37 +505,18 @@ ul
 .mainFooterContainer
   @include mixins.gridMainContainer
   color: variables.$color-inactive
-  //background-image: url("../../images/fafbgpatternMobile.jpg")
   background-color: variables.$background-secondary
   padding: 1em
   justify-content: center
   text-align: center
-  
-  .absoluteACU
-    display: block
-    position: absolute
-    top: 20%
-    opacity: 0.3
-    z-index: 1
-    img
-      width: 50%
-      z-index: 1
-  .footerAeon
-    right: 0
-  .footerUEF
-    left: 0
+
       
 .footerItem
-  z-index: 10
-  display: block
   transition: 0.4s
   line-height: 2.2em
   font-family: variables.$family-subtitle
-  p
-    font-size: var(--subtitle-font-size)
-    font-family: variables.$family-title
+  h1
     color: variables.$color-active
-    margin: 0
     padding: 0.25em
   img
     width: 125px
