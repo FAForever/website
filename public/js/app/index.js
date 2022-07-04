@@ -80,56 +80,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500); 
   });
   
-
-
-  // JS for stuff appearing on scroll (Some elements don't appear on-screen until you scroll down), not sure exactly how it works, would love if someone can explain it for me.
-
-  // https://webdesign.tutsplus.com/tutorials/animate-on-scroll-with-javascript--cms-36671
-  const scrollElements = document.querySelectorAll(".scrollFade");
-
-
-  const elementInView = (el = 1) => {
-    const elementTop = el.getBoundingClientRect().top;
-    return (
-      elementTop <= (window.innerHeight || document.documentElement.clientHeight)
-    );
-  };
-
-  const elementOutofView = (el) => {
-    const elementTop = el.getBoundingClientRect().top;
-    return (
-      elementTop > (window.innerHeight || document.documentElement.clientHeight)
-    );
-  };
-
-  const handleScrollAnimation = () => {
-    scrollElements.forEach((el) => {
-      if (elementInView(el, 1.25)) {
-        el.classList.add("scrolled");
-      } else {
-        el.classList.remove("scrolled");
-      }
-    });
-  };
-
-  window.addEventListener('scroll', () => {
-    handleScrollAnimation();
-    console.log("You scrolled!");
-  });
-
+  
 
   //function to make highligthed text change colors/pulsate (it goes from white to gold and viceversa)
   let highlightText = document.querySelectorAll(".highlightText");
-  let x = 0;
+  let highLigthCounter = 0;
 
   function highlightPulse() {
-    if (x < 1) {
-      x++;
+    if (highLigthCounter < 1) {
+      highLigthCounter++;
       highlightText.forEach(element => element.style.transition = "1s");
       highlightText.forEach(element => element.style.color = "#FFFFFF");
     } else {
-      x--;
+      highLigthCounter--;
       highlightText.forEach(element => element.style.color = "#f7941d");
+      
     }
   }
 

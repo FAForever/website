@@ -41,6 +41,8 @@ html(lang='en')
     .mainTopNavContainer
       // this is the "thin" navbar that has forums, discord, youtube icons, etc.  
       .topNavContainer
+        a(href='https://www.faforever.com/client') Download FAF
+      .topNavContainer
         a.topnav_item(href='https://forum.faforever.com/')  Forums
       //.topNavContainer
         a.topnav_item(href='https://www.patreon.com/faf')  Support FAF
@@ -81,10 +83,13 @@ html(lang='en')
               img(src='/images/faflogo.svg' alt='')
       .navContainer
         ul.navItem
+          a(href='/')
+            li.navList
+              | HOME
+              ul.navAbsolute
           a(href='/newshub')
             li.navList
               | NEWS
-              //this nav_absolute is here for the JS to not open any menus when FAF news is clicked
               ul.navAbsolute
           li.navList
             | GAME
@@ -96,6 +101,8 @@ html(lang='en')
                 li AI/Co-op Play
               a(href='/scfa-vs-faf')
                 li  SC:FA vs FAF
+              a(href='/')
+                li  Download FAF
           li.navList
             | COMMUNITY
             .fas.fa-caret-down
@@ -116,11 +123,6 @@ html(lang='en')
                 li Leaderboards
               a(href='/tournaments')
                 li Tournaments
-
-
-
-      .navContainer.navEnd
-        a(href='https://www.faforever.com/client') DOWNLOAD
       .navContainer.navEnd
         a(href='/login') LOGIN
       
@@ -225,7 +227,7 @@ html(lang='en')
       .footerContainer.column12
         .footerItem
           img(src='/images/faflogo.svg' alt='')
-          p FORGED ALLIANCE FOREVER
+          h1 FORGED ALLIANCE FOREVER
       .footerContainer.column12
         .footerItem
           ul ETIQUETTE
@@ -248,9 +250,9 @@ html(lang='en')
                     
           ul CONTACT US
             li
-              a(href='mailto: admin@faforever.com') ASSOCIATION
-            li
               a(href='https://discord.gg/mXahVSKGVb') DISCORD
+            li
+              a(href='https://forum.faforever.com/')  FORUMS
             
 
 
