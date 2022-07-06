@@ -16,9 +16,6 @@ const showdown = require('showdown');
 const fs = require('fs');
 
 let app = express();
-//const i18next = require('i18next');
-//const i18nextMiddleware = require('i18next-http-middleware');
-//const Backend =require('i18next-fs-backend');
 
 app.locals.clanInvitations = {};
 
@@ -47,31 +44,6 @@ app.use(express.static('public', {
     immutable: true,
     maxAge: 4 * 60 * 60 * 1000 // 4 hours
 }));
-
-// Initialise i18n
-
-/*i18next
-  .use(i18nextMiddleware.LanguageDetector)
-  .use(Backend)
-  .init({
-    backend: {
-      loadPath: __dirname + '/templates/locales/{{lng}}/{{ns}}.json',
-    },
-    debug: true,
-    detection: {
-      order: ['querystring', 'cookie'],
-      caches: ['cookie'],
-    },
-    preload: ['en', 'ru'],
-    fallbackLng: 'en',
-});
-
-app.use(i18nextMiddleware.handle(i18next,{
-  ignoreRoutes: ['foo'],
-  removeLngFromUrl: true,
-}));
-
-*/
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(require('express-session')({
@@ -186,38 +158,8 @@ app.get('/tournaments', require(routes + 'tournaments'));
 app.get('/training', require(routes + 'training'));
 app.get('/leaderboards', require(routes + 'leaderboards'));
 
-
-
-//app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
-//app.get('/competitive/leaderboards/2v2', require(routes + '2v2'));
-//app.get('/competitive/leaderboards/global', require(routes + 'global'));
-//app.get('/competitive/leaderboards/leagues', (function(){
-//    let updateLeagues = require('./scripts/updateLeagues');
-//   let ladderData = {};
-//   let updateFunction = function(){
-//        try {
-//            updateLeagues.run(ladderData).then(function(ladderUpdatedData){
-//                ladderData = ladderUpdatedData;
-//            });
-//        } catch (e) {
-//            console.error('Error while updating ladder week!', e);
-//        }
-//    };
-//    setInterval( updateFunction,parseInt(process.env.LEAGUES_UPDATE_INTERVAL) * 1000);
-//    
-//    updateFunction();
-//    
-//    return function(res, req){ 
-//        require(routes + 'leagues')(res, req, ladderData);
-//    };
-//})()
-//);
-
-
 app.get('/lobby_api', cors(), require('./routes/lobby_api'));
 app.get('/account/checkUsername', require('./routes/views/checkUsername'));
-
-
 
 app.get('/clans', require(routes + 'clans/get/index'));
 app.get('/clans/create', loggedIn, require(routes + 'clans/get/create'));
@@ -232,10 +174,6 @@ app.post('/clans/kick', loggedIn, require(routes + 'clans/post/kick'));
 app.post('/clans/transfer', loggedIn, require(routes + 'clans/post/transfer'));
 app.post('/clans/update', loggedIn, require(routes + 'clans/post/update'));
 app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
-
-
-
-
 
 // Compatibility
 app.get('/clan/*', function (req, res){

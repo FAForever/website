@@ -1,9 +1,24 @@
-.account-title
-  margin-top: 50px
+@use '../abstracts/variables'
+@use '../abstracts/mixins'
 
-.account-subtitle
-  margin-bottom: 50px
-  line-height: 30px
+.mainBannerContainer
+  padding: 2.5% 0
 
-.flash-errors li
-  list-style: none
+.accountInfoContainer
+  @include mixins.mainRectangleContainer
+  padding: 1%
+  h2
+    line-height: 1.25em
+
+.accountForm
+  @include mixins.mainRectangleContainer
+  padding: 1%
+  li
+    line-height: 1.25em
+
+.flashMessage
+  padding: 5%
+
+
+.passResetSteam
+  padding: 5%
