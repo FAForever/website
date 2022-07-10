@@ -141,6 +141,7 @@ app.route('/news').get(function(req, res) {
 });
 
 //Game pages
+app.get('/campaign-missions', require(routes + 'campaign-missions'));
 app.get('/scfa-vs-faf', require(routes + 'scfa-vs-faf'));
 app.get('/donation', require(routes + 'donation'));
 app.get('/tutorials-guides', require(routes + 'tutorials-guides'));
