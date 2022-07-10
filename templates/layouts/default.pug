@@ -101,8 +101,42 @@ html(lang='en')
                 li Leaderboards
               a(href='/tournaments')
                 li Tournaments
+          li.navList
+            a(href='/play')
+              li.navList
+                | Play FAF
+                ul.navAbsolute
+          
       .navContainer.navEnd
-        a(href='/login') LOGIN
+        ul.navItem
+          a(href='/login')
+            li.navList
+              | Login
+            li.navAbsolute
+              li(class=(section === 'account' ? 'active' : null)).dropdown
+                a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button' title=(username ? 'Welcome ' + username : undefined))
+                  if username
+                    span.login-indicator-success
+                  else
+                    span.login-indicator-false
+                  span.caret
+                ul.dropdown-menu.nav-account-dropdown-menu.pull-right(role='menu')
+                  if username
+                    li: span.welcome-text #{username}
+                    li: a(href="/account/report") Report Player
+                    if hasClan
+                      li: a(href="/clans/manage") My Clan
+                    li: a(href="/account/password/change") Change Password
+                    li: a(href="/account/username/change") Change Username
+                    li: a(href="/account/email/change") Change Email
+                    li: a(href="/account/link") Link Account to Steam
+                    li: a(href="/account/linkGog") Link Account to GOG
+                    li: a(href="/account/resync") Resync account
+                    li: a(href='/logout') Log Out
+          a(href="/account/register")
+            li.navList
+            | Register
+            ul.navAbsolute
       
     // the mobilenav is the mobile navbar, it has two stickies, one of them is the sticky for the mobile menu (so it stays with the user) and the second one is the black backgroud (so when the user opens the mobile menu, everything else darkens.)
 
