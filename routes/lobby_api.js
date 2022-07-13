@@ -25,7 +25,7 @@ exports = module.exports = function (req, res) {
       data = JSON.parse(body);
     } else {
       console.error(
-        "Error occured during parsing: ",
+        "Error occurred during parsing: ",
         process.env.LOBBY_API_URL + "/" + resource,
         "body: ", body,
         "error: ", error,
