@@ -1,12 +1,7 @@
 exports = module.exports = function(req, res) {
 
-  var locals = res.locals;
-
-	// locals.section is used to set the currently selected
-	// item in the header navigation.
+  let locals = res.locals;
+  // locals.section is used to set the currently selected	item in the header navigation.
 	locals.section = 'contribution';
-
-	// Render the view
 	res.render('contribution');
-
 };

@@ -2,62 +2,64 @@ extends ../layouts/default
 
 block bannerData
   - var bannerImage = "Play"
-  - var bannerFirstTitle = "Play, Concore, Destory"
-  - var bannerSecondTitle = "Join the FAForever Community"
-  - var bannerSubTitle = "Placeholder text"
+  - var bannerFirstTitle = "Play, Conquer, Destroy"
+  - var bannerSubTitle = "Join the FAForever Community Today!"
 
 block content
   .playContainer
     .playInfo.column12
       h1 Play on FAF
-      h2.highlightText Join other Commanders on the battlefiled
+      h2.highlightText Join other Commanders on the battlefield
       p should work on 
       img(src='/images/linux-icon.svg' alt='Linux Logo')
       img(src='/images/windows-icon.svg' alt='Linux Logo')
-      |
-      |
-      |
+      br 
+      br
       h2 Owning The game
-      p Before being able to use FAForever Client you need to own the Game via Steam or GOG. <br> This is due to Needing to link your steam or gog accout to verify that your own the game.<br> If you dont own the game you can use one of the following links.
+      p Before being able to use FAForever Client you need to own the Game via Steam or GOG. <br> This is due to Needing to link your steam or gog account to verify that your own the game.<br> If you dont own the game you can use one of the following links.
       br
       a(href='https://store.steampowered.com/app/9420/Supreme_Commander_Forged_Alliance')
         button Steam
       a(href='https://www.gog.com/en/game/supreme_commander_gold_edition')
         button GOG
+
     .playPrep
       h1 Prep before client install
-      p Before we get started make sure that you have doen thise thing first befoer installing the client.
+      p Before we get started make sure that you have complete a few things first before installing the client.
       li Installed the Game Via Steam or GOG.
-      li Create a FAF Account and Linked it to the platfrom where you owned the game.
+      li Create a FAF Account and Linked it to the platform where you owned the game.
+
     .playStep1
       h1 1. Downloding the Client
       p <b>First</b> we need to download the client installer.
       a(href=fafClientDownloadLink)
-        button <img src='/images/windows-icon.svg'> Download <b>Windows</b> Installer
+        button <img src='/images/windows-icon.svg'> Download <strong>Windows</strong> Installer
+      //a(href=#)
+        button <img src='/images/windows-icon.svg'> Download <strong>Linux</strong> Installer
+
     .playStep2
-      h1 run the installer
+      h1 2. Running the installer
       p
     
     .playStep3
-      h1 login to the client
+      h1 3. login to the client
       p
       
-    .playSet4
-      h1 Playing First game
+    .playStep4
+      h1 4. Playing First game
       p
       
     .playStep5
-      h1 downloading mods
+      h1 Optional. Downloading Maps & Mods
       p
-      br
-      br
-      h1 downloding maps
-      p
-      
+           
     .playDiscord
-      img(src='discord.png')
-      h1 We highly recomend that you join out Discord
-      a(href='')
+      img(src='/images/discord.svg')
+      h2 We highly recommend that you join out Discord
+      br
+      a(href='https://discord.gg/kTsxKu52WU')
         button Join the FAF Discord Community
-      p the discore is the best place to get all the informaaiton you need.
-      p to keep uptodate with developemtn of the project follow #X and #Y
+      br
+      br
+      p The discord is the best place to get all the information you need.
+      p to keep updated with development of the project follow #X and #Y

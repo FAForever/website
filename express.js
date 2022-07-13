@@ -162,7 +162,7 @@ app.get('/leaderboards', require(routes + 'leaderboards'));
 app.get('/play', require(routes + 'play'));
 
 app.get('/lobby_api', cors(), require('./routes/lobby_api'));
-app.get('/account/checkUsername', require('./routes/views/checkUsername'));
+app.get('/account/checkUsername', require('./routes/views/accounts/get/checkUsername'));
 
 // Clans
 app.get('/clans', require(routes + 'clans/get/index'));
