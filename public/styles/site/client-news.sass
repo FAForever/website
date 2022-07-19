@@ -1,0 +1,237 @@
+@use '../abstracts/variables'
+@use '../abstracts/mixins'
+
+.clientMainNav
+  @include mixins.gridMainContainer
+  overflow: visible
+  justify-items: end
+  background-color: variables.$background-secondary
+  .clientNavContainer
+    position: relative
+    display: inline-block
+    font-size: 14px
+    font-family: variables.$family-paragraph
+    a
+      color: variables.$color-active
+      &:hover
+        filter: brightness(0.8)
+    li
+      display: inline-block
+      padding: 1em 1em
+      transition: 0.4s
+      img
+        height: 1em
+        padding: 0 5px
+
+    .clientTwitchStream
+      font-family: variables.$family-title
+      background-color: mediumpurple
+    .clientYoutubeStream
+      font-family: variables.$family-title
+      background-color: #db7070
+    .clientDiscordJoin
+      font-family: variables.$family-title
+      background-color: #7095db
+      border: 1px solid #32559a
+
+    .clientList
+      position: relative
+      border: 0.1em solid variables.$background-primary
+      &:hover
+        color: variables.$color-active
+        transition: 0.25s
+        cursor: pointer
+        .fa-caret-down
+          transform: rotate(-0.25turn)
+          transition: 0.25s
+    
+      .clientAbsolute
+        position: absolute
+        z-index: 100
+        text-align: left
+        display: none
+        top: 2em
+        li
+          z-index: 100
+          padding: 1em
+          display: block
+          background-color: variables.$background-secondary
+          color: variables.$color-inactive
+          transition: 0.25s
+          &:hover
+            color: variables.$color-active
+            background-color: variables.$background-tertiary
+    
+
+.clientBackground
+  background-image: url("../../images/newshub.jpg")
+  background-size: cover
+  background-position: center
+  padding: 1.5vw
+.clientMainFeature
+  @include mixins.gridMainContainer
+  grid-template-rows: 350px
+  gap: 10px
+  padding: 5px
+  margin: 5px 20px
+  text-align: left
+  .featureSubGrid
+    @include mixins.gridMainContainer
+    padding: 1px
+    height: 100%
+    background-color: variables.$background-secondary
+    border: 0.20em solid variables.$button-active
+    &:hover
+      border: 0.20em solid variables.$button-inactive
+      background-color: variables.$background-primary
+.featureContainer
+  transition: 0.4s
+  height: 100%
+  .featureImage
+    background-image: url("/../../images/coop.jpg")
+    background-size: cover
+    background-position: center
+    padding: 1px
+    width: 100%
+    height: 100%
+  .featureText
+    padding: 1em
+    p
+      display: inline-block
+
+    h1
+      text-transform: uppercase
+      display: inline-block
+      
+      padding: 0.25em
+    button
+      display: inline-block
+      font-size: 14px
+      padding: 0.75em
+
+
+
+.clientRecentNews
+  h2
+    text-align: left
+.clientNewsRequest
+  @include mixins.gridMainContainer
+  height: 100%
+  text-align: center
+  background-color: variables.$button-inactive
+  transition: 0.4s
+  color: white
+  &:hover
+    background-color: variables.$button-active
+    
+
+  
+#clientMain
+  padding: 5px 25px
+  @include mixins.gridMainContainer
+  grid-template-columns: repeat(10, 15vw)
+  overflow: hidden
+  gap: 15px
+  text-align: left
+
+#clientSpawn
+  padding: 5px 25px
+  @include mixins.gridMainContainer
+  grid-template-columns: repeat(10, 15vw)
+  overflow: visible
+  gap: 15px
+  text-align: left
+  .clientContainer
+    height: 100%
+    background-color: variables.$background-secondary
+    border: 0.20em solid variables.$button-active
+    transition: 0.4s
+    &:hover
+      filter: brightness(1.1) 
+      background-color: variables.$background-primary
+      border: 0.20em solid variables.$button-inactive
+    .clientImage
+      background-image: url("/../../images/coop.jpg")
+      background-size: cover
+      background-position: center
+      padding: 4vw 
+    .clientText
+      padding: 0.5em 0.5em 0 0.5em
+      p
+        font-size: 13px
+        padding: 0.5em
+      h1
+        font-size: 16px
+        padding: 0.25em 0.25em 0 0.25em
+      button
+        font-size: 10px
+        padding: 0.75em
+@mixin clientArrow
+  @include mixins.gridMainContainer
+  grid-template-columns: 2em
+  background-color: variables.$background-primary
+  height: 100%
+  cursor: pointer
+  position: absolute
+  top: 0
+  text-align: center
+  font-size: 25px
+  &:hover
+    background-color: variables.$color-inactive
+    color: variables.$background-primary
+#clientArrowRigth
+  @include clientArrow
+  right: 0
+
+#clientArrowLeft
+  @include clientArrow
+  left: 0
+.socialMedia
+  text-align: right
+  padding: 2VW 4vw
+  a
+    padding: 1em
+    font-size: 20px
+    display: inline-block
+    button
+      font-size: 16px
+      margin: 0
+
+      
+      
+@media (max-width: 1400px)
+  #clientSpawn
+    grid-template-columns: repeat(10, 30vw)
+  .clientMainFeature
+    margin: 20px 0
+    .featureContainer
+      .featureText
+        padding: 1em
+        p
+          font-size: 14px
+        h1
+          font-size: 18px
+          padding: 0.25em 0.25em 0 0.25em
+        button
+          font-size: 12px
+          padding: 0.75em
+  .featureAbsolute
+    position: relative
+    a
+      padding: 25px
+
+
+@media (max-width: 800px)
+  #clientSpawn
+    grid-template-columns: repeat(10, 40vw)
+
+      
+
+@media (max-width: 500px)
+  #clientSpawn
+    grid-template-columns: repeat(10, 40vw)
+
+
+
+// Javi is the coolest
+

@@ -21,8 +21,10 @@ app.locals.clanInvitations = {};
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 process.env.WP_URL = process.env.WP_URL || 'https://direct.faforever.com/wp-json';
+
 process.env.WP_NEWSHUB_CATEGORYID = process.env.WP_NEWSHUB_CATEGORYID || '0';
 process.env.WP_NEWSHUBARCHIVE_CATEGORYID = process.env.WP_NEWSHUBARCHIVE_CATEGORYID || '0';
+
 process.env.PORT = process.env.PORT || '4000';
 process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
 process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
@@ -135,10 +137,8 @@ app.get('/report_submitted', require(routes + 'accounts/get/report'));
 //All Pages
 
 // NewsHub Page With Legacy support
+app.get('/client-news', require(routes + 'client-news'));
 app.get('/newshub', require(routes + 'newshub'));
-app.route('/news').get(function(req, res) {
-  res.redirect('/newshub');
-});
 
 //Game pages
 app.get('/campaign-missions', require(routes + 'campaign-missions'));
