@@ -2,22 +2,36 @@ extends ../../layouts/default
 include ../../mixins/flash-messages
 include ../../mixins/form/account
 
-block content
-  .container.text-center
-    .row
-      .col-md-12
-        h1.account-title Complete registration on FAForever
-        h4.account-subtitle.text-center Hello #{username}, please define your password in order to create your account.
+block bannerData
+  - var bannerImage = "activate"
+  - var bannerFirstTitle = "Complete FAForever Registration"
+  - var bannerSubTitle = `Hello ${username}, please define your password in order to create your account.`
 
-    .row
-      .col-md-offset-3.col-md-6
-        +flash-messages(flash)
-    .row
-      .col-md-offset-3.col-md-6
-        form(method='post',action="/account/activate?username="+username+"&token="+token,data-toggle="validator")
-          +confirm-password
-          .form-actions
-            button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
+block content
+  .activationContainer
+    br
+    .column12
+      +flash-messages(flash)
+      br
+      form(method='post',action="/account/activate?username="+username+"&token="+token,data-toggle="validator")
+        - passwordName = passwordName || 'password'
+        - labelPassword = labelPassword || ''
+        .form-group.has-feedback
+          label #{labelPassword} Password:
+            .input-group
+              input(type='password', name=passwordName, required='required', id='inputPassword', data-minlength='6').form-control
+              span(aria-hidden='true').glyphicon.form-control-feedback
+              .help-block Minimum of 6 characters
+        br
+        .form-group.has-feedback
+          label Confirm #{labelPassword} Password:
+            .input-group
+              input(type='password', name=passwordName + '_confirm', required='required',data-match='#inputPassword', data-match-error="Passwords don't match. Please fix!", data-minlength='6').form-control
+              span(aria-hidden='true').glyphicon.form-control-feedback
+              .help-block.with-errors
+        .form-actions
+          br
+          button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
 
 block js
   script(src='/js/account.min.js')

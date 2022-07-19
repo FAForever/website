@@ -16,20 +16,18 @@ const showdown = require('showdown');
 const fs = require('fs');
 
 let app = express();
-//const i18next = require('i18next');
-//const i18nextMiddleware = require('i18next-http-middleware');
-//const Backend =require('i18next-fs-backend');
-
 app.locals.clanInvitations = {};
 
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 process.env.WP_URL = process.env.WP_URL || 'https://direct.faforever.com/wp-json';
-process.env.CHALLONGE_USERNAME = process.env.CHALLONGE_USERNAME || 'joe';
-process.env.CHALLONGE_APIKEY = process.env.CHALLONGE_APIKEY || '12345';
+
+process.env.WP_NEWSHUB_CATEGORYID = process.env.WP_NEWSHUB_CATEGORYID || '0';
+process.env.WP_NEWSHUBARCHIVE_CATEGORYID = process.env.WP_NEWSHUBARCHIVE_CATEGORYID || '0';
+
 process.env.PORT = process.env.PORT || '4000';
 process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
-process.env.API_URL = process.env.API_URL || 'https://api.test.faforever.com';
+process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
 process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
 process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
 process.env.HOST = process.env.HOST || 'http://localhost';
@@ -45,31 +43,6 @@ app.use(express.static('public', {
     immutable: true,
     maxAge: 4 * 60 * 60 * 1000 // 4 hours
 }));
-
-// Initialise i18n
-
-/*i18next
-  .use(i18nextMiddleware.LanguageDetector)
-  .use(Backend)
-  .init({
-    backend: {
-      loadPath: __dirname + '/templates/locales/{{lng}}/{{ns}}.json',
-    },
-    debug: true,
-    detection: {
-      order: ['querystring', 'cookie'],
-      caches: ['cookie'],
-    },
-    preload: ['en', 'ru'],
-    fallbackLng: 'en',
-});
-
-app.use(i18nextMiddleware.handle(i18next,{
-  ignoreRoutes: ['foo'],
-  removeLngFromUrl: true,
-}));
-
-*/
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(require('express-session')({
@@ -162,62 +135,36 @@ app.get('/password_resetted', require(routes + 'accounts/get/requestPasswordRese
 app.get('/report_submitted', require(routes + 'accounts/get/report'));
 
 //All Pages
-// Client Download page
-app.get('/client', require(routes + 'client'));
+
 // NewsHub Page With Legacy support
 app.get('/client-news', require(routes + 'client-news'));
 app.get('/newshub', require(routes + 'newshub'));
-/*app.route('/news').get(function(req, res) {
-  res.redirect('/newshub');
-}); */
+
 //Game pages
+app.get('/campaign-missions', require(routes + 'campaign-missions'));
 app.get('/scfa-vs-faf', require(routes + 'scfa-vs-faf'));
 app.get('/donation', require(routes + 'donation'));
 app.get('/tutorials-guides', require(routes + 'tutorials-guides'));
 app.get('/ai', require(routes + 'ai'));
 app.get('/patchnotes', require(routes + 'patchnotes'));
+
 //Community pages
 app.get('/faf-teams', require(routes + 'faf-teams'));
 app.get('/contribution', require(routes + 'contribution'));
 app.get('/content-creators', require(routes + 'content-creators'));
+
 //Competitive pages
 app.get('/tournaments', require(routes + 'tournaments'));
 app.get('/training', require(routes + 'training'));
 app.get('/leaderboards', require(routes + 'leaderboards'));
 
-
-
-//app.get('/competitive/leaderboards/1v1', require(routes + '1v1'));
-//app.get('/competitive/leaderboards/2v2', require(routes + '2v2'));
-//app.get('/competitive/leaderboards/global', require(routes + 'global'));
-//app.get('/competitive/leaderboards/leagues', (function(){
-//    let updateLeagues = require('./scripts/updateLeagues');
-//   let ladderData = {};
-//   let updateFunction = function(){
-//        try {
-//            updateLeagues.run(ladderData).then(function(ladderUpdatedData){
-//                ladderData = ladderUpdatedData;
-//            });
-//        } catch (e) {
-//            console.error('Error while updating ladder week!', e);
-//        }
-//    };
-//    setInterval( updateFunction,parseInt(process.env.LEAGUES_UPDATE_INTERVAL) * 1000);
-//    
-//    updateFunction();
-//    
-//    return function(res, req){ 
-//        require(routes + 'leagues')(res, req, ladderData);
-//    };
-//})()
-//);
-
+// Play on faf
+app.get('/play', require(routes + 'play'));
 
 app.get('/lobby_api', cors(), require('./routes/lobby_api'));
-app.get('/account/checkUsername', require('./routes/views/checkUsername'));
+app.get('/account/checkUsername', require('./routes/views/accounts/get/checkUsername'));
 
-
-
+// Clans
 app.get('/clans', require(routes + 'clans/get/index'));
 app.get('/clans/create', loggedIn, require(routes + 'clans/get/create'));
 app.get('/clans/manage', loggedIn, require(routes + 'clans/get/manage'));
@@ -231,10 +178,6 @@ app.post('/clans/kick', loggedIn, require(routes + 'clans/post/kick'));
 app.post('/clans/transfer', loggedIn, require(routes + 'clans/post/transfer'));
 app.post('/clans/update', loggedIn, require(routes + 'clans/post/update'));
 app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
-
-
-
-
 
 // Compatibility
 app.get('/clan/*', function (req, res){
