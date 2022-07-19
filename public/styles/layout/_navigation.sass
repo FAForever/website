@@ -83,15 +83,24 @@ body
 p, h3, h2, h1
   font-family: variables.$family-paragraph
   margin: 0
+  padding: 0.8em
 p
   font-family: variables.$family-paragraph
   font-size: var(--paragraph-font-size)
 h1
   font-family: variables.$family-title
   font-size: var(--title-font-size)
+  padding: 1.4em 0.8em
 h2
   font-family: variables.$family-subtitle
   font-size: var(--subtitle-font-size)
+  padding: 1em 0.8em
+h3,h4
+  font-family: variables.$family-subtitle
+  font-size: calc(var(--paragraph-font-size)*1.2)
+  padding: 1em 0.8em
+  
+  
   
 a
   &:link
@@ -182,41 +191,6 @@ ul
   100%
     background-position: right
     
-  
-  
-  
-
-  
-
-
-.splat_rotate
-  position: absolute
-  transform: rotate(0.5turn)
-  width: 100%
-  z-index: 0
-  object-fit: contain
-  overflow: hidden
-
-
-
-.splat
-  position: absolute
-  width: 100%
-  object-fit: contain
-  bottom: 0
-  overflow: hidden
-
-.splat_container
-  position: relative
-  width: 100%
-  grid-column: 1/-1
-
-.splat_black_background
-  background-color: variables.$background-primary
-
-.separationBar
-  padding: 20px 0
-  background-color: variables.$background-secondary
 
 /*=============== Nav Bar ===============
 /*===== Top Navbar =====
@@ -332,21 +306,6 @@ ul
     justify-self: center
     place-self: center
 
-.navDownload
-  background-color: variables.$button-inactive
-  border: 0.2em solid variables.$button-active
-  font-weight: 600
-  letter-spacing: 0.4px
-  padding: 5px
-  margin-left: 20px
-  transition: 0.25s
-  a
-    color: variables.$color-active
-  &:hover
-    background-color: variables.$button-active
-
-
-
 .navEnd
   justify-self: end
   letter-spacing: 1px
@@ -363,7 +322,7 @@ ul
   opacity: 0
   top: 1em
   li
-    padding: 20px
+    padding: 1em
     display: block
     background-color: variables.$background-secondary
     color: variables.$color-inactive
@@ -378,7 +337,7 @@ ul
 
 .navList
   display: inline-block
-  margin: 0 20px
+  margin: 0 30px
   &:hover
     color: variables.$color-active
     transition: 0.25s
@@ -505,8 +464,10 @@ ul
 .mainFooterContainer
   @include mixins.gridMainContainer
   color: variables.$color-inactive
-  background-color: variables.$background-secondary
-  padding: 1em
+  background-image: url("../../images/black1.jpg")
+  background-position: center
+  background-size: cover
+  padding: 4em 2em
   justify-content: center
   text-align: center
 
@@ -518,8 +479,9 @@ ul
   h1
     color: variables.$color-active
     padding: 0.25em
+    font-size: var(--subtitle-font-size)
   img
-    width: 125px
+    width: 150px
 
   ul
     font-size: var(--paragraph-font-size)
@@ -529,6 +491,7 @@ ul
     
   li
     list-style-type: none
+    padding: 1em 0.5em 0em 0.5em
     font-size: 0.8em
     font-family: variables.$family-paragraph
   a
@@ -537,11 +500,7 @@ ul
       color: variables.$color-active
       transition: 0.4s
       
-.backToTop
-  font-size: 18px
-  padding: 1em
-  border: 10px solid variables.$background-secondary
-  background-color: variables.$background-tertiary
+
 
 @media (min-width: 1201px)
   .mobileTransition

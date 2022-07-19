@@ -1,205 +1,105 @@
 @use '../abstracts/mixins'
 @use '../abstracts/variables'
 
-
-$headerColour: #6990e0
-
-.newshub_container
-  min-height: calc(100vh)
-  background-color: #212121
-  overflow: hidden
-  
-.newshub
-  max-width: 1270px
-  margin: auto
-  padding-top: 25px
-  color: rgb(214, 214, 214)
-  position: relative
-  
-.newshub a
-  text-decoration: none
-  color: $headerColour
-
-//announcement  
-.announcement 
-  max-width: 1260px
-  margin: 0px 0px 0px 10px
-  p
-    padding: 9px 15px
-    color: rgb(214, 214, 214)
-    font-family: variables.$family-paragraph
-    
-
-//sidebars  
-#sidebar_left 
-  width: 250px
-  left: -250px
-  top: 25px
-  position: absolute
-#sidebar_right 
-  width: 250px
-  right: -260px
-  top: 25px
-  position: absolute
-
-//columns flex    
-.newshub_flex
-  display: flex
-  justify-content: center
-  flex-wrap: wrap
-
-// all article cells
-.cell
-  margin: 0px 0px 10px 0px
-  overflow: hidden
-
-  &.hoverable:hover 
-    background-color: #282833
-    cursor: pointer
-  .articleBadge
-    background-color: rgb(147, 51, 51)
-    display: inline-block
-    padding: 1px 10px
-    min-width: 80px
+#articleMain
+  @include mixins.gridMainContainer
+  gap: 40px 
+  background-image: url("../../images/factionpattern.jpg")
+  padding: 2vw 8vw
+  text-align: left
+  .articleTopTitle
     text-align: center
-    margin: 0px 0px 5px 0px
-    font-size: 13px
-    font-family: variables.$family-title
-  .articleTitle 
-    color: $headerColour
-    font-family: variables.$family-paragraph
-    margin: 0px 0px 3px 0px
-  .articleSubtitle
-    display: none
-    color: $headerColour
-    font-family: variables.$family-paragraph
-  .articleImage 
-    margin: 0px 10px 0px 0px
-
-  // nomads
-  &.styleNomads
-    .articleBadge
-      background-color: #dd7e2e
-  
-  // Twitch
-  &.styleTwitch
-    .articleBadge
-      background-color: #9932CC
-  
-  // Youtube
-  &.styleYoutube
-    .articleBadge
-      background-color: #228B22
-  
-  // Tournament
-  &.styleTournaments
-    .articleBadge
-      background-color: #ffae00
-      color: black 
-  
-  // golden
-  &.styleGolden
-    background: inherit url(/images/newshub-highlight.jpg) repeat-y 1px 0px
-    .articleBadge
-      background-color: rgb(215, 148, 6)
-    .articleTitle
-      color: rgb(255, 174, 0)
-    .articleSubtitle
-      color: rgb(255, 174, 0)
-    .articleParagraph
-      color: rgb(179, 178, 113)
-    a
-      color: rgb(255, 174, 0)
-      
-  // no titles
-  &.styleNoTitles
-    .articleTitle
-      display: none
-    .articleSubtitle
-      display: none
-
-// left column
-.column_left 
-  max-width: 744px
-
-  .cell
-    height: 170px
-    max-width: 372px
-    padding: 0px 0px 0px 10px
-    float: left
-
-    .articleTitle 
-      font-size: 17px
-    .articleImage 
-      max-width: 150px
-      float: left
-      img 
-        max-width: 150px
-    .articleSubtitle 
-      display: none
-    .articleParagraph 
-      margin: 0px 0px 10px 0px
-
-    &.styleHero
-
-      .articleBadge
-        min-width: 80px
-      .articleTitle
-        font-size: 30px
-        margin: 0px 0px 3px 0px
-        order: 2
-      .articleImage
-        order: 1
-        img
-          max-width: 352px
-          order: 1
-      .articleSubtitle
-        display: block
-        font-size: 16px
-        margin: 0px 0px 2px 0px
-        order: 3
-      .articleParagraph
-        margin: 0px 0px 10px 0px
-        order: 4
-
-      &.styleNoTitles
-        .articleSubtitle
-          display: none
-
-@media screen and (max-width: 760px) 
-  .column_left 
-    display: flex
-    justify-content: center
-    flex-wrap: wrap
-
-// right column
-.column_right 
-  width: 227px
-
-  .cell
-    width: 227px
-    padding: 0px 10px 0px 10px
-    display: flex
-    flex-direction: column
-    align-items: baseline
-    .articleTitle
-      font-size: 15px
-      order: 2
+    letter-spacing: 0.25em
+  .articleContainer
+    height: 100%
+    background-color: variables.$background-secondary
+    border: 0.25em solid variables.$button-active
+    transition: 0.4s
+    &:hover
+      filter: brightness(1.2) contrast(1.05)
     .articleImage
-      order: 1
-      img
-        max-width: 189px
-    .articleSubtitle
-      order: none
-    .articleParagraph
-      display: none
+      cursor: pointer
+      background-image: url("/../../images/coop.jpg")
+      background-size: cover
+      background-position: center
+      padding: 10vw
+    .articleText
+      padding: 1em
+      p
+        padding: 0.5em
+      h2 
+        font-size: var(--paragraph-font-size)
 
-
-#sidebar_middle
-  width: 299px
-
-.endline
-  max-width: 1270px
-  clear: both
+#newsMain
   
+  @include mixins.gridMainContainer
+  background-image: url("../../images/blackasf.jpg")
+  background-repeat: no-repeat
+  background-attachment: fixed
+  background-position: center
+  background-size: cover
+  opacity: 1
+  display: none
+  padding: 5vw 10vw
+  line-height: 2em
+  text-align: left
+  .newsAbsolute
+    position: sticky
+    top: 0
+    left: 0
+  .newsContainer
+    padding: 1em
+    display: inline-block
+    h2
+      padding: 1.5em 0.8em
+    h3,h4,h5
+      font-family: variables.$family-subtitle
+      font-size: calc(var(--paragraph-font-size)*1.2)
+      padding: 1em 0.8em
+      margin: 0
+    
+    img
+      width: 70%
+      height: 70%
+      border-radius: 20px
+    figcaption
+      font-family: variables.$family-paragraph
+      font-size: var(--paragraph-font-size)
+      
+    li
+      list-style: none
+      font-size: var(--paragraph-font-size)
+      font-family: variables.$family-paragraph
+      padding: 0.5em 3em
+    .wp-block-preformatted
+      font-size: var(--paragraph-font-size)
+      text-transform: uppercase
+      font-family: variables.$family-paragraph
+      padding: 1em 2em
+      line-height: 1.5em
+      
+    
+@media (max-width: 1200px)
+  #articleMain
+    padding: 4vw
+    gap: 20px
+    .column8
+      grid-column: span 4
+
+@media (max-width: 800px)
+  #articleMain
+    padding: 4vw
+    gap: 20px
+    .column4, .column8
+      grid-column: span 6
+
+@media (max-width: 500px)
+  #articleMain
+    padding: 4vw
+    gap: 20px
+    .column4, .column8
+      grid-column: span 12
+    
+      
   
+// Javi is the coolest

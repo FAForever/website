@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   //JS for the main navbar menus to open on hover and close when leaving (GAME, COMMUNITY, etc). It uses mobilenav-active because it just needs the display:block        
-  let topNavAbsolute = document.getElementsByClassName("topNavAbsolute");
-  let topNavList = document.getElementsByClassName("topNavList");
+
   let navList = document.getElementsByClassName("navList");
   let navAbsolute = document.querySelectorAll(".navAbsolute");
   let stillHere = 0;
@@ -99,28 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setInterval(highlightPulse, 2000);
-
-
-  // stuff for the ACU faction cards
-  let acuCard = document.getElementsByClassName("acuCard");
-  let factionCard = document.getElementsByClassName("factionCard");
-  let xACU = 10;
-
-  for (let i = 0; i < acuCard.length; i++) {
-    acuCard[i].addEventListener("click", () => {
-      for (let i = 0; i < acuCard.length; i++) {
-        factionCard[i].classList.remove("factionActive");
-        acuCard[i].classList.remove("acuActive");
-      }
-      if (xACU == i) {
-        xACU = 5;
-      } else {
-        xACU = i;
-        factionCard[i].classList.toggle("factionActive");
-        acuCard[i].classList.toggle("acuActive");
-      }
-    });
-  }
+  
 });
 
 async function playerCounterJSON() {

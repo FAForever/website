@@ -4,8 +4,8 @@ exports = module.exports = function(req, res) {
 
   // locals.section is used to set the currently selected
   // item in the header navigation.
-  locals.section = 'newshub';
-  res.render('newshub');
+  locals.section = 'client-news';
+  res.render('client-news');
 
 
 };

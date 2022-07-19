@@ -25,8 +25,6 @@ app.locals.clanInvitations = {};
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 process.env.WP_URL = process.env.WP_URL || 'https://direct.faforever.com/wp-json';
-process.env.WP_NEWSHUB_CATEGORYID = process.env.WP_NEWSHUB_CATEGORYID || '0';
-process.env.WP_NEWSHUBARCHIVE_CATEGORYID = process.env.WP_NEWSHUBARCHIVE_CATEGORYID || '0';
 process.env.CHALLONGE_USERNAME = process.env.CHALLONGE_USERNAME || 'joe';
 process.env.CHALLONGE_APIKEY = process.env.CHALLONGE_APIKEY || '12345';
 process.env.PORT = process.env.PORT || '4000';
@@ -167,10 +165,11 @@ app.get('/report_submitted', require(routes + 'accounts/get/report'));
 // Client Download page
 app.get('/client', require(routes + 'client'));
 // NewsHub Page With Legacy support
+app.get('/client-news', require(routes + 'client-news'));
 app.get('/newshub', require(routes + 'newshub'));
-app.route('/news').get(function(req, res) {
+/*app.route('/news').get(function(req, res) {
   res.redirect('/newshub');
-});
+}); */
 //Game pages
 app.get('/scfa-vs-faf', require(routes + 'scfa-vs-faf'));
 app.get('/donation', require(routes + 'donation'));

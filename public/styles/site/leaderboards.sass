@@ -32,7 +32,7 @@ input
 .leaderboardFilter
   border: 1px solid white
   font-family: variables.$family-paragraph
-  font-size: 16px
+  font-size: var(--paragraph-font-size)
   color: variables.$color-active
   background-color: variables.$background-tertiary
   padding: 0.5em 0 0.5em 0.5em
@@ -53,15 +53,15 @@ input
   font-family: variables.$family-paragraph
   padding: 0em
   ul
-    font-size: 16px
+    font-size: var(--paragraph-font-size)
     padding: 1em 0
     li
-      font-size: 16px
+      font-size: var(--paragraph-font-size)
       padding: 1em 0
 .leaderboardItem
     
   li:nth-child(odd)
-    background-color: mix(variables.$background-tertiary, variables.$background-primary, 50%)
+    background-color: mix(variables.$background-tertiary, variables.$background-primary, 25%)
   li:nth-child(even)
     background-color: variables.$background-secondary
 .leaderboardCategory
@@ -149,3 +149,11 @@ input
         padding: 0.65em
     
 
+@media (max-width: 1600px)
+  .leaderboardContainer
+    ul
+      font-size: 14px
+      li
+        font-size: 14px
+  .leaderboardFilter
+    font-size: 14px
