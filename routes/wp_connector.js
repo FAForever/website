@@ -1,4 +1,4 @@
-var WP = require( 'wpapi' );
+let WP = require( 'wpapi' );
 
 module.exports = {
     connect: function () {

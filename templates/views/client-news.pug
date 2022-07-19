@@ -1,0 +1,121 @@
+doctype html
+html(lang='en')
+  //- HTML HEADER
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="description" content="FAF Community Website")
+
+    title= title || 'Forged Alliance Forever'
+    link(rel="shortcut icon", href="/images/favicon-package/favicon.ico", type="image/png")
+
+    // Fonts
+    link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css2?family=Electrolize&display=swap' rel='stylesheet')
+
+    link(href='https://fonts.googleapis.com/css2?family=Electrolize&family=Russo+One&display=swap' rel='stylesheet' type='text/css')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Orbitron&display=swap')
+
+    //- Customise the stylesheet for your site by editing /public/styles/site.sass
+    link(href="/styles/css/site.min.css?version="+Date.now(), rel="stylesheet")
+    script(async, defer, data-domain="faforever.com", src="https://plausible.faforever.com/js/plausible.js")
+    script(src="https://kit.fontawesome.com/33e7e258d3.js" crossorigin='anonymous')
+body
+  
+  .clientMainNav
+    ul.clientNavContainer.column12
+      li.clientList NEW PLAYERS
+        .fas.fa-caret-down
+        ul.clientAbsolute
+          a(href='https://forum.faforever.com/category/18/frequently-asked-questions')
+            li FAQ
+          a(href='https://wiki.faforever.com/en/Learning-SupCom')
+            li Join our Discord
+          a(href='https://wiki.faforever.com/en/Learning-SupCom')
+            li Community Guides
+      li.clientList COMMUNITY TOOLS
+        .fas.fa-caret-down
+        ul.clientAbsolute
+          a(href='https://discord.gg/mXahVSKGVb')
+            li FAF Forums
+          a(href='https://wiki.faforever.com/en/Vault-Rules')
+            li Vault Rules
+          a(href='https://kazbek.github.io/FAF-Analytics/')
+            li FAF Analytics
+      li
+      li DISCORD
+        li
+        a(href='https://discord.gg/mXahVSKGVb')
+          li.clientDiscordJoin ENGLISH
+        a(href='https://discord.gg/rW6AHqr')
+          li.clientDiscordJoin РУССКИЙ
+      li
+      li LIVE STREAMS
+        li
+        a(href='https://www.twitch.tv/directory/game/Supreme%20Commander%3A%20Forged%20Alliance')
+          li.clientTwitchStream TWITCH
+            img(src='/../../images/twitch.png' alt='')
+        a(href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw')
+          li.clientYoutubeStream YOUTUBE
+            img(src='/../../images/youtube.png' alt='')
+      
+
+          
+     
+  .clientBackground
+    .clientMainFeature
+      .featureSubGrid.column10
+        .featureContainer.column4
+          .featureImage
+        .featureContainer.column8
+          .featureText
+            h1.featureTitle
+            .featureContent
+            .featureButton
+ 
+       
+        
+    .clientRecentNews
+      h2 Recent News
+    #clientMain
+      #clientSpawn
+        
+        .clientContainer.column1
+          a(href='https://forms.gle/yCTimUxqRbmYhvKc9')
+            .clientNewsRequest 
+          
+              h1.column12 Request a News Post
+
+      #clientArrowLeft
+        .fas.fa-chevron-left
+      #clientArrowRigth
+        .fas.fa-chevron-right
+
+    .socialMedia
+      a(href='https://discord.gg/mXahVSKGVb')
+        .fab.fa-discord.fa-lg
+      a(href='https://www.youtube.com/c/ForgedAllianceForever')
+        .fab.fa-youtube.fa-lg
+      a(href='https://www.twitch.tv/faflive')
+        .fab.fa-twitch.fa-lg
+      a(href='https://github.com/FAForever')
+        .fab.fa-github.fa-lg
+      a(href='https://www.patreon.com/faf')
+        button Support FAF
+  .splatForgedBorder
+    .movingBackground1
+    .movingBackground2
+        
+    
+      
+
+        
+
+ 
+
+
+script(src="../../js/app/client-news.js")
+  //script const refreshCountersSeconds = !{refreshCountersSeconds};
+  //script(src="/js/app/counter.js")
+

@@ -30,11 +30,9 @@ exports = module.exports = function(app) {
 
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/news/', routes.views.blog);
 	app.get('/category/:category/page/:page', routes.views.blog);
 	app.get('/tag/:tag/page/:page', routes.views.blog);
 	app.get('/author/:author/page/:page', routes.views.blog);
-	app.get('/news/page/:page', routes.views.blog);
 	app.get('/:year/:month/:slug', routes.views.post);
 	app.get('/contribution', routes.views.contribution);
 	app.get('/competitive/tournaments', routes.views.tournaments);

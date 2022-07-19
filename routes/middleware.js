@@ -41,10 +41,10 @@ exports.getLatestClientRelease = function(req, res, next) {
         } catch (e) {
             exec('node scripts/getLatestClientRelease.js');
             clientLink = {};
-            clientLink.downlords_faf_client_link = 'https://github.com/FAForever/downlords-faf-client/releases';
+            clientLink.fafClientLink = 'https://github.com/FAForever/downlords-faf-client/releases';
         }
 
-        locals.downlords_faf_client_download_link = clientLink.downlords_faf_client_link;
+        locals.fafClientDownloadLink = clientLink.fafClientLink;
 
         next();
 	});
@@ -54,13 +54,9 @@ exports.clientChecks = function(req, res, next) {
 
     var locals = res.locals;
     locals.removeNavigation = false;
-
-    if (req.query.page_id) {
-        res.redirect('/news');
-    }
  
     var userAgent = req.headers['user-agent'];
-    if (userAgent == 'FAF Client' || userAgent == 'downlords-faf-client') {
+    if (userAgent === 'downlords-faf-client') {
         locals.removeNavigation = true;
     }
 

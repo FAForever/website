@@ -1,61 +1,48 @@
 extends ../layouts/default
-
-mixin renderArticle(a)
-  - var hoverCssClass = a.linkUrl ? "hoverable" : "";
-  .cell(class=a.customStyle + " " + hoverCssClass, data-url=a.linkUrl)
-    if a.badge
-      .articleBadge !{ a.badge }
-    if a.title  
-      .articleTitle !{ a.title }
-    if a.imageUrl
-      .articleImage
-        img(src=a.imageUrl)
-    if a.subtitle  
-      .articleSubtitle !{ a.subtitle }
-    if a.paragraph  
-      .articleParagraph !{ a.paragraph }
-
+block bannerMixin
+  
 block content
-  .newshub_container
-    .newshub
-      // top bar
-      if content.topbar
-        .announcement
-          a(href=content.topbar.linkUrl)
-            div(style="background:#" + content.topbar.backgroundcolor)
-              | !{ content.topbar.paragraph }
+  #articleMain
+    .articleTopTitle.column12
+      h2 Recent
+      h1.highlightText News
+    .articleContainer.column8
+      .articleImage(onclick=`articleActivate(0)`)
+      .articleText
+        h2.articleAuthorDate
+        h1.articleTitle
+        .articleContent
+        button(onclick=`articleActivate(0)`) Learn More
+    .articleContainer.column4
+      .articleImage(onclick=`articleActivate(1)`)
+      .articleText
+        h2.articleAuthorDate
+        h1.articleTitle
+        .articleContent
+        button(onclick=`articleActivate(1)`) Learn More
+    .articleContainer.column4
+      .articleImage(onclick=`articleActivate(2)`)
+      .articleText
+        h2.articleAuthorDate
+        h1.articleTitle
+        .articleContent
+        button(onclick=`articleActivate(2)`) Learn More
 
-      // sidebar left
-      if content.sidebarLeft
-        #sidebar_left(style="background:#" + content.sidebarLeft.backgroundcolor)
-          a(href=content.sidebarLeft.linkUrl)
-            img(src=content.sidebarLeft.imageUrl)
 
-      // sidebar right
-      if content.sidebarRight
-        #sidebar_right(style="background:#" + content.sidebarRight.backgroundcolor)
-          a(href=content.sidebarRight.linkUrl)
-            img(src=content.sidebarRight.imageUrl)
 
-      .newshub_flex
 
-        // normalArticles 
-        .column_left
-          for a in content.normalArticles
-            +renderArticle(a)
-        
-        // rightArticles
-        .column_right
-          for a in content.rightArticles
-            +renderArticle(a)
-
-        // sidebar middle
-        if content.sidebarMiddle
-          #sidebar_middle
-            a(href=content.sidebarMiddle.linkUrl)
-              img(src=content.sidebarMiddle.imageUrl)
-          
-          .endline
-
+  #newsMain
+    .newsAbsolute
+      button(onclick=`returnNewshub()`) Back to News page
+    .newsContainer.column12
+      h1#title
+    .newsContainer.column12
+      #featuredImage
+    .newsContainer.column12
+      h1#authorDate
+    .newsContainer.column12
+      #content
+    .newsAbsolute
+      button(onclick=`returnNewshub()`) Back to News page
 block js
-  script(src="/js/newshub.min.js")
+  script( src="../../js/app/newshub.js")

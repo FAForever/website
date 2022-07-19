@@ -22,16 +22,9 @@ html(lang='en')
     script(async, defer, data-domain="faforever.com", src="https://plausible.faforever.com/js/plausible.js")
     script(src="https://kit.fontawesome.com/33e7e258d3.js" crossorigin='anonymous')
 
-
-    //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-    //- Safely remove this block if you are not targeting IE8
-    //-[if lt IE 9]
-      script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
-      script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
-    //-[endif]
-
     //- Include template-specific stylesheets by extending the css block
     block css
+
 
     //- Add any other template-specific HEAD tags by extending the head block
     block head
@@ -41,39 +34,21 @@ html(lang='en')
     .mainTopNavContainer
       // this is the "thin" navbar that has forums, discord, youtube icons, etc.  
       .topNavContainer
-        a(href='https://www.faforever.com/client') Download FAF
+        a.topnav_item(href='https://forum.faforever.com/') Forums
       .topNavContainer
-        a.topnav_item(href='https://forum.faforever.com/')  Forums
-      //.topNavContainer
-        a.topnav_item(href='https://www.patreon.com/faf')  Support FAF
-      .topNavContainer
-        a.topnav_item(href='https://wiki.faforever.com/en/home')  FAF Wiki
+        a.topnav_item(href='https://wiki.faforever.com/en/home') Wiki
       .topNavContainer
         a(href='https://discord.gg/mXahVSKGVb')
           .fab.fa-discord.fa-lg
       .topNavContainer
         a(href='https://www.youtube.com/c/ForgedAllianceForever')
-          .fab.fa-youtube.fa-lg
+          .fab.fa-youtube.fa-lg 
       .topNavContainer
         a(href='https://www.twitch.tv/faflive')
           .fab.fa-twitch.fa-lg
       .topNavContainer
         a(href='https://github.com/FAForever')
           .fab.fa-github.fa-lg
-      //ul.navItem.topNavContainer
-        li.topNavList
-          .fab.fas.fa-language
-            ul.topNavAbsolute
-              a(href='?lng=en')
-                li English
-              a(href='?lng=ru')
-                li Pусский
-              a(href='?lng=ge')
-                li Deutsch
-              a(href='?lng=fr')
-                li Français
-              a(href='?lng=es')
-                li Español
     // Main Navbar with FAF NEWS, LOGIN AND DOWNLOAD. 
     .mainNavContainer
       .navContainer
@@ -85,14 +60,14 @@ html(lang='en')
         ul.navItem
           a(href='/')
             li.navList
-              | HOME
+              | Home
               ul.navAbsolute
           a(href='/newshub')
             li.navList
-              | NEWS
+              | News
               ul.navAbsolute
           li.navList
-            | GAME
+            | Game
             .fas.fa-caret-down
             ul.navAbsolute
               a(href='/tutorials-guides')
@@ -100,11 +75,11 @@ html(lang='en')
               a(href='/ai')
                 li AI/Co-op Play
               a(href='/scfa-vs-faf')
-                li  SC:FA vs FAF
-              a(href='/')
-                li  Download FAF
+                li SC:FA vs FAF
+              a(href='/campaign-missions')
+                li Campaign & Missions
           li.navList
-            | COMMUNITY
+            | Community
             .fas.fa-caret-down
             ul.navAbsolute
               a(href='/content-creators')
@@ -116,15 +91,48 @@ html(lang='en')
               a(href='/faf-teams')
                 li FAF Teams
           li.navList
-            | COMPETITIVE
+            | Competitive
             .fas.fa-caret-down
             ul.navAbsolute
               a(href='/leaderboards')
                 li Leaderboards
               a(href='/tournaments')
                 li Tournaments
+          a(href='/play')
+            li.navList
+              | Download
+              ul.navAbsolute
+          
       .navContainer.navEnd
-        a(href='/login') LOGIN
+        ul.navItem
+          a(href='/login')
+            li.navList
+              | Login
+            li.navAbsolute
+              li(class=(section === 'account' ? 'active' : null)).dropdown
+                a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button' title=(username ? 'Welcome ' + username : undefined))
+                  if username
+                    span.login-indicator-success
+                  else
+                    span.login-indicator-false
+                  span.caret
+                ul.dropdown-menu.nav-account-dropdown-menu.pull-right(role='menu')
+                  if username
+                    li: span.welcome-text #{username}
+                    li: a(href="/account/report") Report Player
+                    if hasClan
+                      li: a(href="/clans/manage") My Clan
+                    li: a(href="/account/password/change") Change Password
+                    li: a(href="/account/username/change") Change Username
+                    li: a(href="/account/email/change") Change Email
+                    li: a(href="/account/link") Link Account to Steam
+                    li: a(href="/account/linkGog") Link Account to GOG
+                    li: a(href="/account/resync") Resync account
+                    li: a(href='/logout') Log Out
+          a(href="/account/register")
+            li.navList
+            | Register
+            ul.navAbsolute
       
     // the mobilenav is the mobile navbar, it has two stickies, one of them is the sticky for the mobile menu (so it stays with the user) and the second one is the black backgroud (so when the user opens the mobile menu, everything else darkens.)
 

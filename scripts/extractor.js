@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 
 const fs = require('fs');
@@ -21,15 +20,56 @@ async function getLeaderboards(leaderboardID) {
   }));
 
   let playerValues = dataObjectToArray[0].map(item => ({
-    rating: item.attributes.rating, totalgames: item.attributes.totalGames, wonGames: item.attributes.wonGames,
-    date: item.attributes.updateTime
+    rating: item.attributes.rating,
+    totalgames: item.attributes.totalGames,
+    wonGames: item.attributes.wonGames,
+    date: item.attributes.updateTime,
   }));
   const combineArrays = (array1, array2) => array1.map((x, i) => [x, array2[i]]);
-  let leaderboardData =  combineArrays(playerLogin, playerValues);
+  let leaderboardData = combineArrays(playerLogin, playerValues);
   leaderboardData.sort((playerA, playerB) => playerA[1].rating - playerB[1].rating);
   return await leaderboardData;
 }
+
+async function getNewshub() {
+  let response = await fetch(`https://direct.faforever.com/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,content.rendered,date,categories&categories=587`);
+  let data = await response.json();
+  //Now we get a js array rather than a js object. Otherwise we can't sort it out.
+  let dataObjectToArray = Object.values(data);
+  let newshubData = dataObjectToArray.map(item => ({
+    date: item.date,
+    title: item.title.rendered,
+    content: item.content.rendered,
+    author: item._embedded.author[0].name,
+    media: item._embedded['wp:featuredmedia'][0].source_url,
+  }));
+  return await newshubData;
+}
+
+
+async function getClientNews() {
+  let response = await fetch(`https://direct.faforever.com/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,newshub_externalLinkUrl,newshub_sortIndex,content.rendered,date,categories&categories=283`);
+  let data = await response.json();
+  //Now we get a js array rather than a js object. Otherwise we can't sort it out.
+  let dataObjectToArray = Object.values(data);
+  let clientNewsData = dataObjectToArray.map(item => ({
+    sortIndex: item.newshub_sortIndex,
+    link: item.newshub_externalLinkUrl,
+    date: item.date,
+    title: item.title.rendered,
+    content: item.content.rendered,
+    author: item._embedded.author[0].name,
+    media: item._embedded['wp:featuredmedia'][0].source_url,
+  }));
+  clientNewsData.sort((articleA, articleB) => articleB.sortIndex - articleA.sortIndex);
+  return await clientNewsData;
+}
+//process.on('warning', (warning) => {
+  //console.log(warning.stack);
+//});
+
 module.exports.run = function run() {
+  //we start at 2 because we want the ID starting on 2
   for (let i = 2; i < 5; i++) {
     getLeaderboards(i)
       .then(leaderboardData => {
@@ -42,4 +82,28 @@ module.exports.run = function run() {
         });
       });
   }
+
+  getNewshub()
+    .then(newshubData => {
+      fs.writeFile(`public/js/app/members/newshub.json`, JSON.stringify(newshubData), error => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(`${currentDate} - NewsHub file created successfully.`);
+        }
+      });
+    });
+  getClientNews()
+    .then(clientNewsData => {
+      fs.writeFile(`public/js/app/members/client-news.json`, JSON.stringify(clientNewsData), error => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(`${currentDate} - Client News file created successfully.`);
+        }
+      });
+    });
+
 };
+
+
