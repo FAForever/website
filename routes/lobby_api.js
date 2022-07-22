@@ -32,8 +32,6 @@ exports = module.exports = function (req, res) {
         "response", response
       );
     }
-
-    
 	if (resource === "lobby") {
         cache[resource] = {
             pollTime: Date.now(),
@@ -49,7 +47,7 @@ exports = module.exports = function (req, res) {
           mapData[value] = 1;
         }
       });
-      cache["countries"] = {
+      cache.countries = {
         pollTime: Date.now(),
         data: mapData
       };

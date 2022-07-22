@@ -18,28 +18,16 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-var middleware = require('./middleware');
+let middleware = require('./middleware');
 
 // Import Route Controllers
-var routes = {
+let routes = {
 	views: importRoutes('./views')
 };
-
 // Setup Route Bindings
 exports = module.exports = function(app) {
-
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/category/:category/page/:page', routes.views.blog);
-	app.get('/tag/:tag/page/:page', routes.views.blog);
-	app.get('/author/:author/page/:page', routes.views.blog);
-	app.get('/:year/:month/:slug', routes.views.post);
-	app.get('/contribution', routes.views.contribution);
-	app.get('/competitive/tournaments', routes.views.tournaments);
-	app.get('/competitive/leaderboards', routes.views.leaderboards);
-	app.all('/contact', routes.views.contact);
-
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
-
 };

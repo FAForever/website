@@ -5,37 +5,20 @@
 	the navigation in the header, you may wish to change this array
 	or replace it with your own templates / logic.
 */
-
 exports.initLocals = function(req, res, next) {
-
-	var locals = res.locals;
-
-	locals.navLinks = [
-		{ label: 'News',		key: 'blog',		href: '/news' },
-		{ label: 'Competitive',		key: 'competitive',		href: '/competitive/tournaments' }
-	];
-
-  locals.cNavLinks = [
-		{ label: 'Tournaments',		key: 'tournaments',		href: '/competitive/tournaments' },
-		{ label: '1v1 Leaderboards',		key: '1v1',		href: '/competitive/leaderboards/1v1' },
-		{ label: 'Global Leaderboards',		key: 'global',		href: '/competitive/leaderboards/global' },
-		{ label: 'Leagues',		key: 'leagues',		href: '/competitive/leaderboards/leagues' },
-    { label: '2v2 Leaderboards',		key: '2v2',		href: '/competitive/leaderboards/2v2' },
-	];
-  
-	next();
-
+	let locals = res.locals;
+	locals.navLinks = [];
+  locals.cNavLinks = [];
+  next();
 };
-
 exports.getLatestClientRelease = function(req, res, next) {
 
-	var locals = res.locals;
-    var fs = require('fs');
-    var clientLink;
-    var exec = require('child_process').exec;
+	let locals = res.locals;
+    const fs = require('fs');
+    let clientLink;
+    let exec = require('child_process').exec;
 
     fs.readFile('link.json', 'utf8', function (err, data) {
-
         try {
             clientLink = JSON.parse(data);
         } catch (e) {
@@ -43,34 +26,27 @@ exports.getLatestClientRelease = function(req, res, next) {
             clientLink = {};
             clientLink.fafClientLink = 'https://github.com/FAForever/downlords-faf-client/releases';
         }
-
         locals.fafClientDownloadLink = clientLink.fafClientLink;
-
         next();
 	});
 };
 
 exports.clientChecks = function(req, res, next) {
-
-    var locals = res.locals;
+    let locals = res.locals;
     locals.removeNavigation = false;
  
-    var userAgent = req.headers['user-agent'];
+    let userAgent = req.headers['user-agent'];
     if (userAgent === 'downlords-faf-client') {
         locals.removeNavigation = true;
     }
-
     next();
 };
-
 exports.username = function(req, res, next) {
-    var locals = res.locals;
-
+    let locals = res.locals;
     if (req.isAuthenticated()) {
         locals.username = req.user.data.attributes.userName;    
         locals.hasClan = 
             req.user && req.user.data.attributes.clan;
     }
-
     next();
 };
