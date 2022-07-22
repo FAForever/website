@@ -69,3 +69,11 @@ mixin tosagree(checked)
           .input-group
             p I have read and agree with our <a href="https://faforever.com/privacy" rel="_new">Privacy Statement</a>
             input(type='checkbox', name='privacyagree', required='required')
+
+mixin gogUsername
+  .form-group.has-feedback
+    label GOG account name:
+      .input-group
+        input(type='text', name='gog_username', id='gogUsername', required='required', data-minlength='3', maxlength='100', pattern='[A-Za-z]{1}[A-Za-z0-9_-]{2,15}$').form-control
+        span(aria-hidden='true').glyphicon.form-control-feedback
+        .help-block.with-errors

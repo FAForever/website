@@ -1,0 +1,35 @@
+extends ../../layouts/default
+include ../../mixins/flash-messages
+include ../../mixins/form/account
+
+block content
+  .container.text-center
+    .row
+      .col-md-12
+        h1.account-title Link Account to GOG
+        h4.account-subtitle The GOG account needs to own Forged Alliance. It doesn't need to be installed. You need to set your profile page as well as your game library to "all visitors" in the Privacy section of the Settings panel. You can set them back to private after linking. Once your account is tied to GOG, you can't unlink it! For details please see this <a href="https://imgur.com/a/enuUlAb">GOG linking guide with pictures!</a>
+        hr
+    .row
+      h4.account-subtitle.text-center To prove ownership of the account, you need to set the status of your profile ("About you") to the following token:
+      h2 #{gogToken}
+      p You can reset this after successfully linking your account.
+      hr
+
+    .row
+      .col-md-12
+        h4.account-subtitle.text-center After entering the displayed token on your profile and setting profile and games list visibility to all, enter your GOG account name below to link the accounts:
+
+    .row
+      .col-md-12
+        +flash-messages(flash)
+
+    .row
+      .col-md-12
+        form(method='post',action="/account/linkGog",data-toggle="validator")
+          +gogUsername
+          .form-actions
+            button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Link accounts
+
+
+block js
+  script(src='/js/account.min.js')
