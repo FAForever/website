@@ -59,15 +59,12 @@ html(lang='en')
       .navContainer
         ul.navItem
           a(href='/')
-            li.navList
-              | Home
+            li.navList HOME
               ul.navAbsolute
           a(href='/newshub')
-            li.navList
-              | News
+            li.navList NEWS
               ul.navAbsolute
-          li.navList
-            | Game
+          li.navList GAME
             .fas.fa-caret-down
             ul.navAbsolute
               a(href='/tutorials-guides')
@@ -78,8 +75,7 @@ html(lang='en')
                 li SC:FA vs FAF
               a(href='/campaign-missions')
                 li Campaign & Missions
-          li.navList
-            | Community
+          li.navList COMMUNITY
             .fas.fa-caret-down
             ul.navAbsolute
               a(href='/content-creators')
@@ -90,8 +86,7 @@ html(lang='en')
                 li  Donate to FAF
               a(href='/faf-teams')
                 li FAF Teams
-          li.navList
-            | Competitive
+          li.navList COMPETITIVE
             .fas.fa-caret-down
             ul.navAbsolute
               a(href='/leaderboards')
@@ -99,23 +94,16 @@ html(lang='en')
               a(href='/tournaments')
                 li Tournaments
           a(href='/play')
-            li.navList
-              | Download
+            li.navList DOWNLOAD
               ul.navAbsolute
           
       .navContainer.navEnd
         ul.navItem
           a(href='/login')
-            li.navList
-              | Login
+            li.navList LOGIN
             li.navAbsolute
               li(class=(section === 'account' ? 'active' : null)).dropdown
                 a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button' title=(username ? 'Welcome ' + username : undefined))
-                  if username
-                    span.login-indicator-success
-                  else
-                    span.login-indicator-false
-                  span.caret
                 ul.dropdown-menu.nav-account-dropdown-menu.pull-right(role='menu')
                   if username
                     li: span.welcome-text #{username}
@@ -129,9 +117,10 @@ html(lang='en')
                     li: a(href="/account/linkGog") Link Account to GOG
                     li: a(href="/account/resync") Resync account
                     li: a(href='/logout') Log Out
+      .navContainer.navEnd
+        ul.navItem
           a(href="/account/register")
-            li.navList
-            | Register
+            li.navList REGISTER
             ul.navAbsolute
       
     // the mobilenav is the mobile navbar, it has two stickies, one of them is the sticky for the mobile menu (so it stays with the user) and the second one is the black backgroud (so when the user opens the mobile menu, everything else darkens.)

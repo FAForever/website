@@ -1,68 +1,6 @@
 @use '../abstracts/variables'
 @use '../abstracts/mixins'
 
-.clientMainNav
-  @include mixins.gridMainContainer
-  overflow: visible
-  justify-items: end
-  background-color: variables.$background-secondary
-  .clientNavContainer
-    position: relative
-    display: inline-block
-    font-size: 14px
-    font-family: variables.$family-paragraph
-    a
-      color: variables.$color-active
-      &:hover
-        filter: brightness(0.8)
-    li
-      display: inline-block
-      padding: 1em 1em
-      transition: 0.4s
-      img
-        height: 1em
-        padding: 0 5px
-
-    .clientTwitchStream
-      font-family: variables.$family-title
-      background-color: mediumpurple
-    .clientYoutubeStream
-      font-family: variables.$family-title
-      background-color: #db7070
-    .clientDiscordJoin
-      font-family: variables.$family-title
-      background-color: #7095db
-      border: 1px solid #32559a
-
-    .clientList
-      position: relative
-      border: 0.1em solid variables.$background-primary
-      &:hover
-        color: variables.$color-active
-        transition: 0.25s
-        cursor: pointer
-        .fa-caret-down
-          transform: rotate(-0.25turn)
-          transition: 0.25s
-    
-      .clientAbsolute
-        position: absolute
-        z-index: 100
-        text-align: left
-        display: none
-        top: 2em
-        li
-          z-index: 100
-          padding: 1em
-          display: block
-          background-color: variables.$background-secondary
-          color: variables.$color-inactive
-          transition: 0.25s
-          &:hover
-            color: variables.$color-active
-            background-color: variables.$background-tertiary
-    
-
 .clientBackground
   background-image: url("../../images/newshub.jpg")
   background-size: cover
@@ -70,102 +8,106 @@
   padding: 1.5vw
 .clientMainFeature
   @include mixins.gridMainContainer
-  grid-template-rows: 350px
-  gap: 10px
-  padding: 5px
-  margin: 5px 20px
+  grid-template-rows: 20vw
   text-align: left
+  margin: 20px 0
+  gap: 10px
   .featureSubGrid
+    color: variables.$color-active
     @include mixins.gridMainContainer
-    padding: 1px
     height: 100%
     background-color: variables.$background-secondary
-    border: 0.20em solid variables.$button-active
     &:hover
-      border: 0.20em solid variables.$button-inactive
       background-color: variables.$background-primary
 .featureContainer
   transition: 0.4s
   height: 100%
+  align-items: center
   .featureImage
     background-image: url("/../../images/coop.jpg")
     background-size: cover
     background-position: center
-    padding: 1px
+    padding: 0px
     width: 100%
     height: 100%
   .featureText
     padding: 1em
     p
+      font-size: 16px
       display: inline-block
-
     h1
+      font-size: 24px
       text-transform: uppercase
       display: inline-block
-      
       padding: 0.25em
-    button
-      display: inline-block
-      font-size: 14px
-      padding: 0.75em
-
-
-
-.clientRecentNews
-  h2
-    text-align: left
-.clientNewsRequest
-  @include mixins.gridMainContainer
-  height: 100%
-  text-align: center
-  background-color: variables.$button-inactive
-  transition: 0.4s
-  color: white
-  &:hover
-    background-color: variables.$button-active
+  a
+    background-color: #1f2349
+    display: inline-block    
+    width: 100%
+    height: 33%
+    text-align: center
+    color: variables.$color-active
     
+    img
+      height: 1em
+      padding: 0 1em
+.clientBackground
+  .clientMainFeature
+    .featureLink
+      align-items: center
+.clientContainer
+  height: 100%
+  .clientNewsRequest
+    @include mixins.gridMainContainer
+    height: 100%
+    text-align: center
+    background-color: variables.$button-inactive
+    transition: 0.4s
+    color: white
+    &:hover
+      background-color: variables.$button-active
+      
 
   
 #clientMain
-  padding: 5px 25px
   @include mixins.gridMainContainer
   grid-template-columns: repeat(10, 15vw)
   overflow: hidden
   gap: 15px
   text-align: left
-
+  padding: 0 20px
 #clientSpawn
   padding: 5px 25px
   @include mixins.gridMainContainer
   grid-template-columns: repeat(10, 15vw)
   overflow: visible
-  gap: 15px
+  gap: 25px
   text-align: left
-  .clientContainer
+  a
     height: 100%
-    background-color: variables.$background-secondary
-    border: 0.20em solid variables.$button-active
-    transition: 0.4s
-    &:hover
-      filter: brightness(1.1) 
-      background-color: variables.$background-primary
-      border: 0.20em solid variables.$button-inactive
-    .clientImage
-      background-image: url("/../../images/coop.jpg")
-      background-size: cover
-      background-position: center
-      padding: 4vw 
-    .clientText
-      padding: 0.5em 0.5em 0 0.5em
-      p
-        font-size: 13px
-        padding: 0.5em
-      h1
-        font-size: 16px
-        padding: 0.25em 0.25em 0 0.25em
-      button
-        font-size: 10px
-        padding: 0.75em
+    .clientContainer
+      height: 100%
+      background-color: variables.$background-secondary
+      color: variables.$color-active
+      transition: 0.4s
+      &:hover
+        filter: brightness(1.1) 
+        background-color: variables.$background-primary
+
+      .clientImage
+        background-image: url("/../../images/coop.jpg")
+        background-size: cover
+        background-position: center
+        padding: 6vw 
+      .clientText
+        padding: 0.5em 0.5em 0 0.5em
+        p
+          font-size: 13px
+          padding: 0.5em
+        h1
+          font-size: 16px
+          padding: 0.25em 0.25em 0 0.25em
+
 @mixin clientArrow
   @include mixins.gridMainContainer
   grid-template-columns: 2em
@@ -186,22 +128,12 @@
 #clientArrowLeft
   @include clientArrow
   left: 0
-.socialMedia
-  text-align: right
-  padding: 2VW 4vw
-  a
-    padding: 1em
-    font-size: 20px
-    display: inline-block
-    button
-      font-size: 16px
-      margin: 0
 
       
       
 @media (max-width: 1400px)
   #clientSpawn
-    grid-template-columns: repeat(10, 30vw)
+    grid-template-columns: repeat(10, 20vw)
   .clientMainFeature
     margin: 20px 0
     .featureContainer
@@ -223,7 +155,7 @@
 
 @media (max-width: 800px)
   #clientSpawn
-    grid-template-columns: repeat(10, 40vw)
+    grid-template-columns: repeat(10, 30vw)
 
       
 

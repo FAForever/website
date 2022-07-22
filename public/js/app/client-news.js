@@ -8,10 +8,7 @@ async function getNewshub() {
 let dataLength = 0;
 let clientSpawn = document.getElementById('clientSpawn');
 let clientContainer = document.querySelectorAll('.clientContainer');
-let featureImage = document.querySelectorAll('.featureImage');
-let featureTitle = document.querySelectorAll('.featureTitle');
-let featureContent = document.querySelectorAll('.featureContent');
-let featureButton = document.querySelectorAll('.featureButton');
+let clientMainFeature = document.querySelectorAll('.clientMainFeature');
 
 function createArticles() {
   getNewshub()
@@ -19,16 +16,29 @@ function createArticles() {
       dataLength = data.length;
       let fixedLinkingOrder = data.length - 1;
       for (let i = 0; i < data.length - 1; i++) {
-        clientSpawn.insertAdjacentHTML('afterbegin', `<div class="clientContainer column1">
-    <div class="clientImage"></div>
-    <div class="clientText">
-        <h1 class="clientTitle"></h1>
-        <div class="clientContent"></div>
-            <a href="${data[fixedLinkingOrder].link}"><button>Learn More</button></a>
+        clientSpawn.insertAdjacentHTML('afterbegin', `<a href="${data[fixedLinkingOrder].link}">
+    <div class="clientContainer column1">
+        <div class="clientImage"></div>
+        <div class="clientText">
+            <h1 class="clientTitle"></h1>
+            <div class="clientContent"></div>
+        </div>
     </div>
-</div>`);
+</a>`);
+        
         fixedLinkingOrder--;
       }
+      clientMainFeature[0].insertAdjacentHTML('afterbegin', `<a class="featureSubGrid column9" href="${data[0].link}">
+    <div class="featureContainer column4">
+        <div class="featureImage"></div>
+    </div>
+    <div class="featureContainer column8">
+        <div class="featureText">
+            <h1 class="featureTitle"></h1>
+            <div class="featureContent"></div>
+        </div>
+    </div>
+</a>`);
       return data;
     }).then(data => {
     
@@ -41,11 +51,14 @@ function createArticles() {
       clientTitle[i].innerHTML = `${data[i + 1].title}`;
       clientContent[i].innerHTML = `${content.substring(0, 200)}`;
     }
+    let featureImage = document.querySelectorAll('.featureImage');
+    let featureTitle = document.querySelectorAll('.featureTitle');
+    let featureContent = document.querySelectorAll('.featureContent');
     let content = data[0].content;
     featureImage[0].style.backgroundImage = `url("${data[0].media}")`;
     featureTitle[0].innerHTML = `${data[0].title}`;
     featureContent[0].innerHTML = `${content.substring(0, 400)}`;
-    featureButton[0].innerHTML = `<a href="${data[0].link}"><button>Learn More</button></a>`;
+    
   });
 }
 
@@ -74,24 +87,10 @@ arrowLeft.addEventListener('click', () => {
   }else {
     newsLimit--;
     newsPosition = newsPosition + newsMove;
-    clientSpawn.style.transform = `translateX(${newsPosition}px)`;
+    clientSpawn.style.transform = `translateX(${newsPosition + 20}px)`;
   }
   
 
 });
 
-
-let clientList = document.querySelectorAll(".clientList");
-let clientAbsolute = document.querySelectorAll(".clientAbsolute");
-//When you mouseover/click, menu appears
-clientList.forEach((element, index) => element.addEventListener("mouseover", () => {
-  clientAbsolute[index].style.display = 'block';
-  console.log('mouseout');
-}));
-clientList.forEach((element, index) => element.addEventListener("mouseout", () => {
-  clientAbsolute[index].style.display = 'none';
-  console.log('mouseover');
-}));
-
-//https://codepen.io/thenutz/pen/VwYeYEE?editors=1111
 
