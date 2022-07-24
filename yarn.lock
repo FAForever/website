@@ -196,7 +196,7 @@ autoprefixer@^10.4.7:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
-awesomplete@^1.1.5:
+awesomplete@1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/awesomplete/-/awesomplete-1.1.5.tgz#1b2b5dd106d3955595619c03da472a1dc0faf0af"
   integrity sha512-UFw1mPW8NaSECDSTC36HbAOTpF9JK2wBUJcNn4MSvlNtK7SZ9N72gB+ajHtA6D1abYXRcszZnBA4nHBwvFwzHw==
@@ -423,7 +423,7 @@ cli@~1.0.0:
     exit "0.1.2"
     glob "^7.1.1"
 
-client-oauth2@^4.3.3:
+client-oauth2@4.3.3:
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/client-oauth2/-/client-oauth2-4.3.3.tgz#7a700e6f4bf412c1f96da0d6b50e07676561e086"
   integrity sha512-k8AvUYJon0vv75ufoVo4nALYb/qwFFicO3I0+39C6xEdflqVtr+f9cy+0ZxAduoVSTfhP5DX2tY2XICAd5hy6Q==
@@ -564,7 +564,7 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
   integrity sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==
 
-cors@^2.8.5:
+cors@2.8.5:
   version "2.8.5"
   resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
   integrity sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
@@ -1109,7 +1109,7 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-github-api@^3.4.0:
+github-api@3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/github-api/-/github-api-3.4.0.tgz#5da2f56442d4839d324e9faf0ffb2cf30f7650b8"
   integrity sha512-2yYqYS6Uy4br1nw0D3VrlYWxtGTkUhIZrumBrcBwKdBOzMT8roAe8IvI6kjIOkxqxapKR5GkEsHtz3Du/voOpA==
@@ -1186,7 +1186,7 @@ graceful-fs@^4.1.2, graceful-fs@^4.2.6:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
-grunt-cli@^1.4.3, grunt-cli@~1.4.3:
+grunt-cli@1.4.3, grunt-cli@~1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/grunt-cli/-/grunt-cli-1.4.3.tgz#22c9f1a3d2780bf9b0d206e832e40f8f499175ff"
   integrity sha512-9Dtx/AhVeB4LYzsViCjUQkd0Kw0McN2gYpdmGYKtE2a5Yt7v1Q+HYZVWhqXc/kGnxlMtqKDxSwotiGeFmkrCoQ==
@@ -1197,7 +1197,7 @@ grunt-cli@^1.4.3, grunt-cli@~1.4.3:
     nopt "~4.0.1"
     v8flags "~3.2.0"
 
-grunt-concurrent@^3.0.0:
+grunt-concurrent@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/grunt-concurrent/-/grunt-concurrent-3.0.0.tgz#643e72b1110ca70d1dbcc52fc540c429456097cb"
   integrity sha512-AgXtjUJESHEGeGX8neL3nmXBTHSj1QC48ABQ3ng2/vjuSBpDD8gKcVHSlXP71pFkIR8TQHf+eomOx6OSYSgfrA==
@@ -1207,7 +1207,7 @@ grunt-concurrent@^3.0.0:
     indent-string "^4.0.0"
     pad-stream "^2.0.0"
 
-grunt-contrib-compass@^1.1.1:
+grunt-contrib-compass@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/grunt-contrib-compass/-/grunt-contrib-compass-1.1.1.tgz#3c25d209e018825aac9fa82315bbe6dfc1c636dc"
   integrity sha512-R6LS6rfQgMbjhil4mYwLT72wN+Zup1pusXI/t1gGfdGVXcwlBZEKfcelfNpeuVjMzaLsmPB1tTpbTDhsnG3QbA==
@@ -1282,7 +1282,7 @@ grunt-legacy-util@~2.0.1:
     underscore.string "~3.3.5"
     which "~2.0.2"
 
-grunt-postcss@^0.9.0:
+grunt-postcss@0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/grunt-postcss/-/grunt-postcss-0.9.0.tgz#fbe5934a6be9eac893af6d057e2318c97fae9da3"
   integrity sha512-lglLcVaoOIqH0sFv7RqwUKkEFGQwnlqyAKbatxZderwZGV1nDyKHN7gZS9LUiTx1t5GOvRBx0BEalHMyVwFAIA==
@@ -1291,7 +1291,7 @@ grunt-postcss@^0.9.0:
     diff "^3.0.0"
     postcss "^6.0.11"
 
-grunt-sass@^3.1.0:
+grunt-sass@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/grunt-sass/-/grunt-sass-3.1.0.tgz#a5936cc2a80ec08092d9f31c101dc307d1e4f71c"
   integrity sha512-90s27H7FoCDcA8C8+R0GwC+ntYD3lG6S/jqcavWm3bn9RiJTmSfOvfbFa1PXx4NbBWuiGQMLfQTj/JvvqT5w6A==
@@ -1396,7 +1396,7 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
   integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
-html-ellipsis@^2.0.4:
+html-ellipsis@2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/html-ellipsis/-/html-ellipsis-2.0.4.tgz#9a2d42974f863c3f7fef5967ac4b365a252facaf"
   integrity sha512-Q/bjPmURZpFnBYAbxOmSiQxFUdi7/GlLZ+IoSlRU8GuQukWZp8yGtsDRpgZ8yHMqtAAyvLMZ8Tyw82K/fh6dTA==
@@ -1676,7 +1676,7 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha512-UVU9dibq2JcFWxQPA6KCqj5O42VOmAY3zQUfEKxU0KpTGXwNoCjkX1e13eHNvw/xPynt6pU0rZ1htjWTNTSXsg==
 
-jshint-stylish@^2.2.1:
+jshint-stylish@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/jshint-stylish/-/jshint-stylish-2.2.1.tgz#242082a2c035ae03fd81044e0570cc4208cf6e61"
   integrity sha512-7ySPIM1/gONcJ1isbd1IPKuBzQ/iDTvofILFSsIaMrWZUO7OJkV9kdU0O6O1pxM+bNj/9mbJ31LyXgQgOhIa0A==
@@ -1763,7 +1763,7 @@ liftup@~3.0.1:
     rechoir "^0.7.0"
     resolve "^1.19.0"
 
-load-grunt-config@^4.0.1:
+load-grunt-config@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/load-grunt-config/-/load-grunt-config-4.0.1.tgz#f33d713db347e9cc311454f88635864fc9a8fc71"
   integrity sha512-F3CD28C1WFocVvdTRSKnV73q7JvGY2OrqoeUeflbOQg58AhkFROIFc2BQXOU2xdrYJqWZx53glT5PZp1vrr9qA==
@@ -1776,7 +1776,7 @@ load-grunt-config@^4.0.1:
     load-grunt-tasks "5.1.0"
     lodash "4.17.21"
 
-load-grunt-tasks@5.1.0, load-grunt-tasks@^5.1.0:
+load-grunt-tasks@5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/load-grunt-tasks/-/load-grunt-tasks-5.1.0.tgz#14894c27a7e34ebbef9937c39cc35c573cd04c1c"
   integrity sha512-oNj0Jlka1TsfDe+9He0kcA1cRln+TMoTsEByW7ij6kyktNLxBKJtslCFEvFrLC2Dj0S19IWJh3fOCIjLby2Xrg==
@@ -1949,7 +1949,7 @@ mkdirp@~1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-moment-timezone@^0.5.34:
+moment-timezone@0.5.34:
   version "0.5.34"
   resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.34.tgz#a75938f7476b88f155d3504a9343f7519d9a405c"
   integrity sha512-3zAEHh2hKUs3EXLESx/wsgw6IQdusOT8Bxm3D9UrHPQR7zlMmzwybC8zHEM1tQ4LJwP7fcxrWr8tuBg05fFCbg==
@@ -2118,7 +2118,7 @@ onetime@^1.0.0:
   resolved "https://registry.yarnpkg.com/onetime/-/onetime-1.1.0.tgz#a1f7838f8314c516f05ecefcbc4ccfe04b4ed789"
   integrity sha512-GZ+g4jayMqzCRMgB2sol7GiCLjKfS1PINkjmx8spcKce1LiVqcbQreXwqs2YAFXC6R03VIG28ZS31t8M866v6A==
 
-open@^8.4.0:
+open@8.4.0:
   version "8.4.0"
   resolved "https://registry.yarnpkg.com/open/-/open-8.4.0.tgz#345321ae18f8138f82565a910fdc6b39e8c244f8"
   integrity sha512-XgFPPM+B28FtCCgSb9I+s9szOC1vZRSwgWsRUA5ylIxRTgKozqjOCrVOqGsYABPYK5qnfqClxZTFBa8PKt2v6Q==
@@ -2552,7 +2552,7 @@ pug-walk@^2.0.0:
   resolved "https://registry.yarnpkg.com/pug-walk/-/pug-walk-2.0.0.tgz#417aabc29232bb4499b5b5069a2b2d2a24d5f5fe"
   integrity sha512-yYELe9Q5q9IQhuvqsZNwA5hfPkMJ8u92bQLIMcsMxf/VADjNtEYptU+inlufAFYcWdHlwNfZOEnOOQrZrcyJCQ==
 
-pug@^3.0.2:
+pug@3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/pug/-/pug-3.0.2.tgz#f35c7107343454e43bc27ae0ff76c731b78ea535"
   integrity sha512-bp0I/hiK1D1vChHh6EfDxtndHji55XP/ZJKwsRqrz6lRia6ZC2OZbdAymlxdVFwd1L70ebrVJw4/eZ79skrIaw==
@@ -3077,7 +3077,7 @@ throwback@^4.1.0:
   resolved "https://registry.yarnpkg.com/throwback/-/throwback-4.1.0.tgz#421aac7ba9eff473105385ac4a2b0130d4b0a59c"
   integrity sha512-dLFe8bU8SeH0xeqeKL7BNo8XoPC/o91nz9/ooeplZPiso+DZukhoyZcSz9TFnUNScm+cA9qjU1m1853M6sPOng==
 
-time-grunt@^2.0.0:
+time-grunt@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/time-grunt/-/time-grunt-2.0.0.tgz#db41853f92b879b2f5ec33731af885b451800ec9"
   integrity sha512-iQD2AeDYCAJrsPC/eUsfYZD9UT7TuBOmUIgFV5zeTQgRk6yLJKoc3aYR0gusJ0m+bG13B6qrDZ0SwPLe0/htHw==
@@ -3146,15 +3146,15 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
+trim-newlines@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-4.0.2.tgz#d6aaaf6a0df1b4b536d183879a6b939489808c7c"
+  integrity sha512-GJtWyq9InR/2HRiLZgpIKv+ufIKrVrvjQWEj7PxAXNc5dwbNJkqhAUoAGgzRmULAnoOM5EIpveYd3J2VeSAIew==
+
 trim-newlines@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-1.0.0.tgz#5887966bb582a4503a41eb524f7d35011815a613"
   integrity sha512-Nm4cF79FhSTzrLKGDMi3I4utBtFv8qKy4sq1enftf2gMdpqI8oVQTAfySkTz5r49giVzDj88SVZXP4CeYQwjaw==
-
-trim-newlines@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-4.0.2.tgz#d6aaaf6a0df1b4b536d183879a6b939489808c7c"
-  integrity sha512-GJtWyq9InR/2HRiLZgpIKv+ufIKrVrvjQWEj7PxAXNc5dwbNJkqhAUoAGgzRmULAnoOM5EIpveYd3J2VeSAIew==
 
 ts-expect@^1.1.0:
   version "1.3.0"
@@ -3345,7 +3345,7 @@ with@^7.0.0:
     assert-never "^1.2.1"
     babel-walk "3.0.0-canary-5"
 
-wpapi@^1.2.2:
+wpapi@1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/wpapi/-/wpapi-1.2.2.tgz#8db0f0e1d6df8e472d95cbd1bb2c84e6b5ee365c"
   integrity sha512-lkgi8Gjav3SArrCkNpG61ZnmCyamXKB+SjaR8tAoHhSZbJRTeabIlsdqUUAN3JGbVY3ht8p+EGdpCFIaanI5+w==

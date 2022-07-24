@@ -16,7 +16,7 @@ function createArticles() {
       dataLength = data.length;
       let fixedLinkingOrder = data.length - 1;
       for (let i = 0; i < data.length - 1; i++) {
-        clientSpawn.insertAdjacentHTML('afterbegin', `<a href="${data[fixedLinkingOrder].link}">
+        clientSpawn.insertAdjacentHTML('afterbegin', `<a target='_blank' href="${data[fixedLinkingOrder].link}">
     <div class="clientContainer column1">
         <div class="clientImage"></div>
         <div class="clientText">
@@ -28,11 +28,11 @@ function createArticles() {
         
         fixedLinkingOrder--;
       }
-      clientMainFeature[0].insertAdjacentHTML('afterbegin', `<a class="featureSubGrid column9" href="${data[0].link}">
-    <div class="featureContainer column4">
+      clientMainFeature[0].insertAdjacentHTML('afterbegin', `<a class="featureSubGrid column9" target='_blank' href="${data[0].link}">
+    <div class="featureContainer column5">
         <div class="featureImage"></div>
     </div>
-    <div class="featureContainer column8">
+    <div class="featureContainer column7">
         <div class="featureText">
             <h1 class="featureTitle"></h1>
             <div class="featureContent"></div>
@@ -57,7 +57,7 @@ function createArticles() {
     let content = data[0].content;
     featureImage[0].style.backgroundImage = `url("${data[0].media}")`;
     featureTitle[0].innerHTML = `${data[0].title}`;
-    featureContent[0].innerHTML = `${content.substring(0, 400)}`;
+    featureContent[0].innerHTML = `${content.substring(0, 350)}`;
     
   });
 }
@@ -87,7 +87,7 @@ arrowLeft.addEventListener('click', () => {
   }else {
     newsLimit--;
     newsPosition = newsPosition + newsMove;
-    clientSpawn.style.transform = `translateX(${newsPosition + 20}px)`;
+    clientSpawn.style.transform = `translateX(${newsPosition + 5}px)`;
   }
   
 

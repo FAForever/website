@@ -23,17 +23,20 @@ html(lang='en')
     script(src="https://kit.fontawesome.com/33e7e258d3.js" crossorigin='anonymous')
 body
         
-     
+    
   .clientBackground
     .clientMainFeature
       .featureSubGrid.column3.featureLink
-        .featureContainer.column12
-          a(href='https://www.twitch.tv/directory/game/Supreme%20Commander%3A%20Forged%20Alliance') TWITCH
-              img(src='/../../images/twitch.png' alt='')
-          a(href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') YOUTUBE
-              img(src='/../../images/youtube.png' alt='')
-          a(href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') DISCORD
-            img(src='/../../images/youtube.png' alt='')
+        .featureSocial.column12 
+          .featureLink.featureDiscord
+            a(target='_blank' href='https://discord.gg/mXahVSKGVb') FAF DISCORD
+                img(src='/../../images/logos/discord.svg' alt='')
+          .featureLink.featureTwitch
+            a(target='_blank' href='https://www.twitch.tv/directory/game/Supreme%20Commander%3A%20Forged%20Alliance') LIVE FAF STREAMS
+              img(src='/../../images/logos/twitch.png' alt='')
+          .featureLink.featureYoutube
+            a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') FAF CHANNELS
+              img(src='/../../images/logos/youtube.png' alt='')
  
        
         
@@ -41,7 +44,7 @@ body
       #clientSpawn
         
         .clientContainer.column1
-          a(href='https://forms.gle/yCTimUxqRbmYhvKc9')
+          a(target='_blank' href='https://forms.gle/yCTimUxqRbmYhvKc9')
             .clientNewsRequest 
           
               h1.column12 Request a News Post
@@ -50,19 +53,33 @@ body
         .fas.fa-chevron-left
       #clientArrowRigth
         .fas.fa-chevron-right
+    .clientMenu
+      .clientMenuContainer.column2
+        ul NEW PLAYERS
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') FAQ
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') First Time in FAF
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Community Guides
+      .clientMenuContainer.column2
+        ul COMMUNITY
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Forums
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Player Statistics
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Player Guidelines
+      .clientMenuContainer.column2
+        ul DEVELOPMENT
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Github
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Contribute
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Vault RUles
+      .clientMenuSubgrid.column6
+        .clientSupportFAF.column12
+          a(target='_blank' href='https://www.patreon.com/faf')
+            h1 SUPPORT FAF
+              img(src='/../../images/logos/patreon.png' alt='')
+        .column12
+          // TODO Jip needs to make a link or find one for the report a bug button
+          a(target='_blank' href='https://discord.com/channels/197033481883222026/907037442832482315')
+            h2 Report a Bug
 
-    //.socialMedia
-      a(href='https://discord.gg/mXahVSKGVb')
-        .fab.fa-discord.fa-lg
-      a(href='https://www.youtube.com/c/ForgedAllianceForever')
-        .fab.fa-youtube.fa-lg
-      a(href='https://www.twitch.tv/faflive')
-        .fab.fa-twitch.fa-lg
-      a(href='https://github.com/FAForever')
-        .fab.fa-github.fa-lg
-      a(href='https://www.patreon.com/faf')
-        button Support FAF
-  .splatForgedBorder
+  //.splatForgedBorder
     .movingBackground1
     .movingBackground2
         

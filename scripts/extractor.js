@@ -52,7 +52,8 @@ async function getClientNews() {
   let data = await response.json();
   //Now we get a js array rather than a js object. Otherwise we can't sort it out.
   let dataObjectToArray = Object.values(data);
-  let clientNewsData = dataObjectToArray.map(item => ({
+  let sortedData = dataObjectToArray.map(item => ({
+    category: item.categories,
     sortIndex: item.newshub_sortIndex,
     link: item.newshub_externalLinkUrl,
     date: item.date,
@@ -61,7 +62,11 @@ async function getClientNews() {
     author: item._embedded.author[0].name,
     media: item._embedded['wp:featuredmedia'][0].source_url,
   }));
-  clientNewsData.sort((articleA, articleB) => articleB.sortIndex - articleA.sortIndex);
+  sortedData.sort((articleA, articleB) => articleB.sortIndex - articleA.sortIndex);
+  function onlyActiveArticles(article) {
+    return article.category[1] !== 284;
+  }
+  let clientNewsData = sortedData.filter(onlyActiveArticles);
   return await clientNewsData;
 }
 //process.on('warning', (warning) => {
@@ -70,7 +75,7 @@ async function getClientNews() {
 
 module.exports.run = function run() {
   //we start at 2 because we want the ID starting on 2
-  for (let i = 2; i < 5; i++) {
+  /*for (let i = 2; i < 5; i++) {
     getLeaderboards(i)
       .then(leaderboardData => {
         fs.writeFile(`public/js/app/members/${leaderboardIDs[i]}.json`, JSON.stringify(leaderboardData), error => {
@@ -81,7 +86,7 @@ module.exports.run = function run() {
           }
         });
       });
-  }
+  } */
 
   getNewshub()
     .then(newshubData => {

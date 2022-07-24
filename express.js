@@ -27,7 +27,7 @@ process.env.WP_NEWSHUBARCHIVE_CATEGORYID = process.env.WP_NEWSHUBARCHIVE_CATEGOR
 
 process.env.PORT = process.env.PORT || '4000';
 process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
-process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
+process.env.API_URL = process.env.API_URL || 'https://test.api.faforever.com';
 process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
 process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
 process.env.HOST = process.env.HOST || 'http://localhost';
