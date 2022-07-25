@@ -83,18 +83,14 @@ function loggedIn(req, res, next) {
     }
 }
 
-// ToS and Privacy Statement
-function markdown(template) {
-  let html = new showdown.Converter().makeHtml(fs.readFileSync(template, 'utf-8'));
-  return (req, res) => {
-    res.render('markdown', {content: html});
-  };
-}
+// Terms of Service
+app.get('/tos', require(routes + 'tos'));
+app.get('/tos-fr', require(routes + 'tos-fr'));
+app.get('/tos-ru', require(routes + 'tos-ru'));
 
-app.get('/privacy', markdown('templates/views/privacy.md'));
-app.get('/tos', markdown('templates/views/tos.md'));
-app.get('/rules', markdown('templates/views/rules.md'));
-app.get('/coc', markdown('templates/views/coc.md'));
+
+
+
 
 /// Account routes
 // Registration
