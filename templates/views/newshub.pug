@@ -1,62 +1,89 @@
-extends ../layouts/default
+doctype html
+html(lang='en')
+  //- HTML HEADER
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="description" content="FAF Community Website")
 
-mixin renderArticle(a)
-  - var hoverCssClass = a.linkUrl ? "hoverable" : "";
-  .cell(class=a.customStyle + " " + hoverCssClass, data-url=a.linkUrl)
-    if a.badge
-      .articleBadge !{ a.badge }
-    if a.title  
-      .articleTitle !{ a.title }
-    if a.imageUrl
-      .articleImage
-        img(src=a.imageUrl)
-    if a.subtitle  
-      .articleSubtitle !{ a.subtitle }
-    if a.paragraph  
-      .articleParagraph !{ a.paragraph }
+    title= title || 'Forged Alliance Forever'
+    link(rel="shortcut icon", href="/images/favicon-package/favicon.ico", type="image/png")
 
-block content
-  .newshub_container
-    .newshub
-    
-      // top bar
-      if content.topbar
-        .announcement
-          a(href=content.topbar.linkUrl)
-            div(style="background:#" + content.topbar.backgroundcolor)
-              | !{ content.topbar.paragraph }
+    // Fonts
+    link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css2?family=Electrolize&display=swap' rel='stylesheet')
 
-      // sidebar left
-      if content.sidebarLeft
-        #sidebar_left(style="background:#" + content.sidebarLeft.backgroundcolor)
-          a(href=content.sidebarLeft.linkUrl)
-            img(src=content.sidebarLeft.imageUrl)
+    link(href='https://fonts.googleapis.com/css2?family=Electrolize&family=Russo+One&display=swap' rel='stylesheet' type='text/css')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Orbitron&display=swap')
 
-      // sidebar right
-      if content.sidebarRight
-        #sidebar_right(style="background:#" + content.sidebarRight.backgroundcolor)
-          a(href=content.sidebarRight.linkUrl)
-            img(src=content.sidebarRight.imageUrl)
+    //- Customise the stylesheet for your site by editing /public/styles/site.sass
+    link(href="/styles/css/site.min.css?version="+Date.now(), rel="stylesheet")
+    script(async, defer, data-domain="faforever.com", src="https://plausible.faforever.com/js/plausible.js")
+    script(src="https://kit.fontawesome.com/33e7e258d3.js" crossorigin='anonymous')
+body
 
-      .newshub_flex
 
-        // normalArticles 
-        .column_left
-          for a in content.normalArticles
-            +renderArticle(a)
-        
-        // rightArticles
-        .column_right
-          for a in content.rightArticles
-            +renderArticle(a)
+  .clientBackground
+    .clientMainFeature
+      .featureSubGrid.column3.featureLink
+        .featureSocial.column12
+          .featureLink.featureDiscord
+            a(target='_blank' href='https://discord.gg/mXahVSKGVb') FAF DISCORD
+              img(src='/../../images/logos/discord.svg' alt='')
+          .featureLink.featureTwitch
+            a(target='_blank' href='https://www.twitch.tv/directory/game/Supreme%20Commander%3A%20Forged%20Alliance') LIVE FAF STREAMS
+              img(src='/../../images/logos/twitch.png' alt='')
+          .featureLink.featureYoutube
+            a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') FAF CHANNELS
+              img(src='/../../images/logos/youtube.png' alt='')
 
-        // sidebar middle
-        if content.sidebarMiddle
-          #sidebar_middle
-            a(href=content.sidebarMiddle.linkUrl)
-              img(src=content.sidebarMiddle.imageUrl)
-          
-          .endline
 
-block js
-  script(src="/js/newshub.min.js")
+
+    #clientMain
+      #clientSpawn
+
+        .clientContainer.column1
+          a(target='_blank' href='https://forms.gle/yCTimUxqRbmYhvKc9')
+            .clientNewsRequest
+
+              h1.column12 Request a News Post
+
+      #clientArrowLeft
+        .fas.fa-chevron-left
+      #clientArrowRigth
+        .fas.fa-chevron-right
+    .clientMenu
+      .clientMenuContainer.column2
+        ul NEW PLAYERS
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') FAQ
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') First Time in FAF
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Community Guides
+      .clientMenuContainer.column2
+        ul COMMUNITY
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Forums
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Player Statistics
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Player Guidelines
+      .clientMenuContainer.column2
+        ul DEVELOPMENT
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Github
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Contribute
+        a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw') Vault RUles
+      .clientMenuSubgrid.column6
+        .clientSupportFAF.column12
+          a(target='_blank' href='https://www.patreon.com/faf')
+            h1 SUPPORT FAF
+              img(src='/../../images/logos/patreon.png' alt='')
+        .column12
+          // TODO Jip needs to make a link or find one for the report a bug button
+          a(target='_blank' href='https://discord.com/channels/197033481883222026/907037442832482315')
+            h2 Report a Bug
+
+  //.splatForgedBorder
+    .movingBackground1
+    .movingBackground2
+
+
+
+script(src="../../js/app/newshub.js")
+
