@@ -68,17 +68,17 @@ let arrowLeft = document.getElementById('clientArrowLeft');
 let newsPosition = 0;
 let newsLimit = 0;
 let newsMove = clientContainer[0].offsetWidth;
-console.log(newsMove)
+console.log(newsMove);
 
 
 arrowRight.addEventListener('click', () => {
   let newsMove = clientContainer[0].offsetWidth;
-  if (newsLimit === dataLength - 1) {
+  if (newsLimit === dataLength) {
     console.log('limit reached')
   }else {
     newsLimit++;
     newsPosition = newsPosition - newsMove;
-    clientSpawn.style.transform = `translateX(${newsPosition - 5}px)`;
+    clientSpawn.style.transform = `translateX(${newsPosition - 10}px)`;
     arrowLeft.style.display = 'grid';
   }
 
@@ -90,7 +90,7 @@ arrowLeft.addEventListener('click', () => {
   }else {
     newsLimit--;
     newsPosition = newsPosition + newsMove;
-    clientSpawn.style.transform = `translateX(${newsPosition + 5}px)`;
+    clientSpawn.style.transform = `translateX(${newsPosition + 10}px)`;
   }
   
 });

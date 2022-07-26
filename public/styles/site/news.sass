@@ -126,7 +126,7 @@ html, body
   grid-template-rows: 15vw
   text-align: left
   margin: 20px 0
-  gap: 10px 25px
+  gap: 0px 25px
   .featureSubGrid
     color: $color-active
     @include gridMainContainer
@@ -229,13 +229,12 @@ html, body
   @include gridMainContainer
   grid-template-columns: repeat(10, 15vw)
   overflow: hidden
-  gap: 0 15px
   text-align: left
   padding: 0 20px
   margin: 2vw 0
   
 #clientSpawn
-  padding: 5px 25px
+  padding: 0 2vw
   @include gridMainContainer
   grid-template-columns: repeat(10, 16vw)
   overflow: visible
@@ -358,7 +357,8 @@ html, body
 
 //Media Queries below
 @media (max-width: 1400px)
-
+  #clientArrowLeft, #clientArrowRigth
+    grid-template-columns: 1.25em
   #clientSpawn
     grid-template-columns: repeat(10, 23vw)
     a
@@ -388,9 +388,14 @@ html, body
           padding: 0 0.25em
     .featureSocial
       padding: 0 0
+      grid-template-columns: repeat(12, 1fr)
+      grid-template-rows: 1fr
+      .column12
+        grid-column: span 4
       .featureLink
         padding: 2em
         a
+          height: 3em
           font-size: 18px
 
   .clientMenu
@@ -455,6 +460,10 @@ html, body
         h1
           font-size: 14px
           padding: 0 0.25em
+    .featureSocial
+      .featureLink
+        a
+          font-size: 12px
   .clientMenu
     .column6, .column2
       grid-column: span 6
