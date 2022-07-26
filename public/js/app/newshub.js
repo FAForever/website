@@ -76,7 +76,7 @@ arrowRight.addEventListener('click', () => {
   }else {
     newsLimit++;
     newsPosition = newsPosition - newsMove;
-    clientSpawn.style.transform = `translateX(${newsPosition}px)`;
+    clientSpawn.style.transform = `translateX(${newsPosition - 5}px)`;
     arrowLeft.style.display = 'grid';
   }
 
@@ -89,7 +89,12 @@ arrowLeft.addEventListener('click', () => {
     newsPosition = newsPosition + newsMove;
     clientSpawn.style.transform = `translateX(${newsPosition + 5}px)`;
   }
-
-
+  
 });
 
+
+function movee() {
+  newsPosition = newsPosition - newsMove;
+  clientSpawn.style.transform = `translateX(${newsPosition - 50}px)`;
+}
+//setInterval(movee, 1000);

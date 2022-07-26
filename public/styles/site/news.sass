@@ -82,7 +82,7 @@ html, body
     
 .clientBackground
   text-align: left
-  padding: 20px
+  padding: 50px
   p, h3, h2, h1
     font-family: $family-paragraph
     margin: 0
@@ -151,6 +151,7 @@ html, body
     p
       font-size: 0.95vw
       display: inline-block
+      color: $color-inactive
     h1
       color: $color-active
       font-size: 1.2vw
@@ -217,11 +218,12 @@ html, body
     @include gridMainContainer
     height: 100%
     text-align: center
-    background-color: $button-inactive
+    background-color: $background-secondary
     transition: 0.4s
-    color: white
+    color: $color-inactive-plus
     &:hover
-      background-color: $button-active
+      background-color: $background-primary
+      color: $color-active
 
 #clientMain
   @include gridMainContainer
@@ -249,7 +251,7 @@ html, body
       color: $color-active
       transition: 0.4s
       &:hover
-        filter: brightness(1.1)
+   
         background-color: $background-primary
 
       .clientImage
@@ -260,7 +262,8 @@ html, body
       .clientText
         padding: 0.5em 0.5em 0 0.5em
         p
-          font-size: 13px
+          color: $color-inactive
+          font-size: 14px
           padding: 0.5em
         h1
           color: $color-active
@@ -337,7 +340,7 @@ html, body
         font-size: 40px
         padding: 0.25em
       img
-        height: 1em
+        height: 1.25em
         padding: 0.25em
         display: block
         margin-left: auto
