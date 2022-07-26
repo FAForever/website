@@ -5,6 +5,7 @@ async function getNewshub() {
   const data = await response.json();
   return await data;
 }
+
 let dataLength = 0;
 let clientSpawn = document.getElementById('clientSpawn');
 let clientContainer = document.querySelectorAll('.clientContainer');
@@ -28,7 +29,7 @@ function createArticles() {
 
         fixedLinkingOrder--;
       }
-      clientMainFeature[0].insertAdjacentHTML('afterbegin', `<a class="featureSubGrid column9" target='_blank' href="${data[0].link}">
+      clientMainFeature[0].insertAdjacentHTML('afterbegin', `<a class="featureSubGrid column11" target='_blank' href="${data[0].link}">
     <div class="featureContainer column5">
         <div class="featureImage"></div>
     </div>
@@ -69,35 +70,40 @@ let newsPosition = 0;
 let newsLimit = 0;
 let newsMove = clientContainer[0].offsetWidth;
 console.log(newsMove);
+let spawnStyle = getComputedStyle(clientSpawn).columnGap;
+let columnGap = spawnStyle.slice(0, 2);
 
 
 arrowRight.addEventListener('click', () => {
   let newsMove = clientContainer[0].offsetWidth;
   if (newsLimit === dataLength) {
-    console.log('limit reached')
-  }else {
+    console.log('limit reached');
+  } else {
     newsLimit++;
     newsPosition = newsPosition - newsMove;
-    clientSpawn.style.transform = `translateX(${newsPosition - 10}px)`;
+    clientSpawn.style.transform = `translateX(${newsPosition - columnGap}px)`;
     arrowLeft.style.display = 'grid';
   }
-
 });
-
 arrowLeft.addEventListener('click', () => {
   let newsMove = clientContainer[0].offsetWidth;
   if (newsLimit === 0) {
-  }else {
+  } else {
     newsLimit--;
     newsPosition = newsPosition + newsMove;
-    clientSpawn.style.transform = `translateX(${newsPosition + 10}px)`;
+    clientSpawn.style.transform = `translateX(${newsPosition - columnGap + 10}px)`;
   }
-  
-});
 
+});
+addEventListener('resize', (event) => {
+  clientSpawn.style.transform = `translateX(0px)`;
+  newsPosition = 0;
+  newsLimit = 0;
+});
 
 function movee() {
   newsPosition = newsPosition - newsMove;
   clientSpawn.style.transform = `translateX(${newsPosition - 50}px)`;
 }
+
 //setInterval(movee, 1000);
