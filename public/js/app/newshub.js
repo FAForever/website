@@ -69,8 +69,10 @@ let newsPosition = 0;
 let newsLimit = 0;
 let newsMove = clientContainer[0].offsetWidth;
 console.log(newsMove)
-arrowRight.addEventListener('click', () => {
 
+
+arrowRight.addEventListener('click', () => {
+  let newsMove = clientContainer[0].offsetWidth;
   if (newsLimit === dataLength - 1) {
     console.log('limit reached')
   }else {
@@ -83,6 +85,7 @@ arrowRight.addEventListener('click', () => {
 });
 
 arrowLeft.addEventListener('click', () => {
+  let newsMove = clientContainer[0].offsetWidth;
   if (newsLimit === 0) {
   }else {
     newsLimit--;
