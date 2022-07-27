@@ -5,6 +5,7 @@ async function getNewshub() {
   const data = await response.json();
   return await data;
 }
+
 let dataLength = 0;
 let clientSpawn = document.getElementById('clientSpawn');
 let clientContainer = document.querySelectorAll('.clientContainer');
@@ -25,10 +26,10 @@ function createArticles() {
         </div>
     </div>
 </a>`);
-        
+
         fixedLinkingOrder--;
       }
-      clientMainFeature[0].insertAdjacentHTML('afterbegin', `<a class="featureSubGrid column9" target='_blank' href="${data[0].link}">
+      clientMainFeature[0].insertAdjacentHTML('afterbegin', `<a class="featureSubGrid column11" target='_blank' href="${data[0].link}">
     <div class="featureContainer column5">
         <div class="featureImage"></div>
     </div>
@@ -41,7 +42,7 @@ function createArticles() {
 </a>`);
       return data;
     }).then(data => {
-    
+
     let clientImage = document.querySelectorAll('.clientImage');
     let clientTitle = document.querySelectorAll('.clientTitle');
     let clientContent = document.querySelectorAll('.clientContent');
@@ -58,7 +59,7 @@ function createArticles() {
     featureImage[0].style.backgroundImage = `url("${data[0].media}")`;
     featureTitle[0].innerHTML = `${data[0].title}`;
     featureContent[0].innerHTML = `${content.substring(0, 350)}`;
-    
+
   });
 }
 
@@ -68,29 +69,41 @@ let arrowLeft = document.getElementById('clientArrowLeft');
 let newsPosition = 0;
 let newsLimit = 0;
 let newsMove = clientContainer[0].offsetWidth;
-console.log(newsMove)
-arrowRight.addEventListener('click', () => {
+console.log(newsMove);
+let spawnStyle = getComputedStyle(clientSpawn).columnGap;
+let columnGap = spawnStyle.slice(0, 2);
 
-  if (newsLimit === dataLength - 1) {
-    console.log('limit reached')
-  }else {
+
+arrowRight.addEventListener('click', () => {
+  let newsMove = clientContainer[0].offsetWidth;
+  if (newsLimit === dataLength) {
+    console.log('limit reached');
+  } else {
     newsLimit++;
     newsPosition = newsPosition - newsMove;
-    clientSpawn.style.transform = `translateX(${newsPosition}px)`;
+    clientSpawn.style.transform = `translateX(${newsPosition - columnGap}px)`;
     arrowLeft.style.display = 'grid';
   }
-  
 });
-
 arrowLeft.addEventListener('click', () => {
+  let newsMove = clientContainer[0].offsetWidth;
   if (newsLimit === 0) {
-  }else {
+  } else {
     newsLimit--;
     newsPosition = newsPosition + newsMove;
-    clientSpawn.style.transform = `translateX(${newsPosition + 5}px)`;
+    clientSpawn.style.transform = `translateX(${newsPosition - columnGap + 10}px)`;
   }
-  
 
 });
+addEventListener('resize', (event) => {
+  clientSpawn.style.transform = `translateX(0px)`;
+  newsPosition = 0;
+  newsLimit = 0;
+});
 
+function movee() {
+  newsPosition = newsPosition - newsMove;
+  clientSpawn.style.transform = `translateX(${newsPosition - 50}px)`;
+}
 
+//setInterval(movee, 1000);

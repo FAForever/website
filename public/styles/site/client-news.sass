@@ -3,16 +3,54 @@
 body
   background-image: url("../../images/newshub.jpg")
   background-size: cover
-.clientBackground
-  padding: 20px
 
-  
+.clientBackground
+  text-align: left
+  padding: 50px
+  p, h3, h2, h1
+    font-family: variables.$family-paragraph
+    margin: 0
+    padding: 0.8em
+  p
+    font-family: variables.$family-paragraph
+    font-size: var(--paragraph-font-size)
+  h1
+    font-family: variables.$family-title
+    font-size: var(--title-font-size)
+    padding: 1.4em 0.8em
+  h2
+    font-family: variables.$family-subtitle
+    font-size: var(--subtitle-font-size)
+    padding: 1em 0.8em
+  h3,h4
+    font-family: variables.$family-subtitle
+    font-size: calc(var(--paragraph-font-size)*1.2)
+    padding: 1em 0.8em
+
+  a
+
+    &:link
+
+      text-align: center
+      text-decoration: none
+      color: variables.$color-inactive
+      transition: 0.5s
+
+  &:visited
+    text-decoration: none
+    color: variables.$color-inactive
+
+  &:hover
+    color: variables.$color-active
+
+
+
 .clientMainFeature
   @include mixins.gridMainContainer
   grid-template-rows: 15vw
   text-align: left
   margin: 20px 0
-  gap: 10px 25px
+  gap: 0
   .featureSubGrid
     color: variables.$color-active
     @include mixins.gridMainContainer
@@ -21,6 +59,7 @@ body
     &:hover
       background-color: variables.$background-primary
 .featureContainer
+  text-align: left
   transition: 0.4s
   height: 100%
   justify-content: center
@@ -36,7 +75,9 @@ body
     p
       font-size: 0.95vw
       display: inline-block
+      color: variables.$color-inactive
     h1
+      color: variables.$color-active
       font-size: 1.2vw
       text-transform: uppercase
       display: inline-block
@@ -62,32 +103,40 @@ body
     &:hover
       background-color: #3c0000
   .featureLink
-    display: inline-block    
+    display: inline-block
     transition: 0.4s
     height: 100%
     text-align: center
     position: relative
     cursor: pointer
-    
     a
+      text-align: center
       position: absolute
+      display: block
       top: 0
       bottom: 0
       left: 0
       right: 0
       margin: auto
-      height: 1.1em
-      padding: 1.2em 0
+      padding: 1em 0
       width: 100%
       color: variables.$color-active
       font-size: 1vw
       font-family: variables.$family-title
-      
+
     img
-      height: 0.9em
-      padding: 0 0.5em
-      
-      
+      color: variables.$color-active
+      position: absolute
+      display: block
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      margin: auto
+      height: 2em
+      padding: 0
+
+
 
 .clientContainer
   height: 100%
@@ -95,22 +144,24 @@ body
     @include mixins.gridMainContainer
     height: 100%
     text-align: center
-    background-color: variables.$button-inactive
+    background-color: variables.$background-secondary
     transition: 0.4s
-    color: white
+    color: variables.$color-inactive-plus
     &:hover
-      background-color: variables.$button-active
-  
+      background-color: variables.$background-primary
+      color: variables.$color-active
+
 #clientMain
   @include mixins.gridMainContainer
   grid-template-columns: repeat(10, 15vw)
   overflow: hidden
-  gap: 0 15px
   text-align: left
   padding: 0 20px
   margin: 2vw 0
+
 #clientSpawn
-  padding: 5px 25px
+  padding: 0 25px
+
   @include mixins.gridMainContainer
   grid-template-columns: repeat(10, 16vw)
   overflow: visible
@@ -120,34 +171,37 @@ body
   a
     height: 100%
     .clientContainer
+      text-align: left
       height: 100%
       background-color: variables.$background-secondary
       color: variables.$color-active
       transition: 0.4s
       &:hover
-        filter: brightness(1.1) 
+
         background-color: variables.$background-primary
 
       .clientImage
         background-image: url("/../../images/coop.jpg")
         background-size: cover
         background-position: center
-        padding: 5vw 
+        padding: 5vw
       .clientText
         padding: 0.5em 0.5em 0 0.5em
         p
-          font-size: 13px
+          color: variables.$color-inactive
+          font-size: 14px
           padding: 0.5em
         h1
+          color: variables.$color-active
           font-size: 16px
           padding: 0.25em 0.25em 0 0.25em
 
 @mixin clientArrow
   @include mixins.gridMainContainer
-  grid-template-columns: 2em
+  grid-template-columns: 1.5em
   background-color: variables.$background-tertiary
   color: variables.$background-primary
-  
+
   height: 100%
   cursor: pointer
   position: absolute
@@ -168,21 +222,23 @@ body
 .clientMenu
   @include mixins.gridMainContainer
   padding: 0
-  
+
   .clientMenuContainer
 
     margin: 0 2em 0 0
     background-color: variables.$background-tertiary
     //height: 100%
     ul
+      text-align: center
       display: block
       background-color: variables.$button-inactive
       font-family: variables.$family-title
       padding: 0.8em
+      margin: 0
       color: variables.$background-primary
       font-size: 1.2em
     a
-      
+
       font-family: variables.$family-paragraph
       display: block
       padding: 0.8em 0.5em
@@ -200,14 +256,15 @@ body
     .clientSupportFAF
       background-color: variables.$background-secondary
       text-align: center
-      padding: 0.8em
+      padding: 0.5em
       transition: 0.4s
       &:hover
         background-color: variables.$background-primary
       a
         color: white
       h1
-        font-size: 40px
+        font-size: 35px
+        padding: 0.25em
       img
         height: 1em
         padding: 0.25em
@@ -222,12 +279,13 @@ body
       &:hover
         background-color: variables.$button-inactive
         color: variables.$background-primary
-      
-        
-        
+
+
+
 //Media Queries below
 @media (max-width: 1400px)
-
+  #clientArrowLeft, #clientArrowRigth
+    grid-template-columns: 1.25em
   #clientSpawn
     grid-template-columns: repeat(10, 23vw)
     a
@@ -242,10 +300,10 @@ body
             padding: 0.25em 0.25em 0 0.25em
         .clientImage
           padding: 7vw
-          
+
   .clientMainFeature
     grid-template-rows: 25vw
-    .column9, .column3
+    .column9, .column2
       grid-column: span 12
     .featureContainer
       .featureText
@@ -256,12 +314,13 @@ body
           font-size: 20px
           padding: 0 0.25em
     .featureSocial
-      padding: 5.5em 0
+      padding: 0 0
       .featureLink
+        padding: 0
         a
-          font-size: 18px
+          font-size: 12px
 
-  .clientMenu      
+  .clientMenu
     .clientMenuSubgrid
       .clientSupportFAF
         a
@@ -274,7 +333,7 @@ body
         font-size: 14px
       a
         font-size: 12px
-        
+
 @media (max-width: 1000px)
   #clientSpawn
     grid-template-columns: repeat(10, 30vw)
@@ -291,10 +350,9 @@ body
           font-size: 18px
           padding: 0 0.25em
     .featureSocial
-      padding: 5.5em 0
       .featureLink
         a
-          font-size: 16px
+          font-size: 12px
   .clientMenu
     .clientMenuSubgrid
       .clientSupportFAF
@@ -313,7 +371,7 @@ body
       a
         font-size: 12px
 
-@media (max-width: 850px)
+@media (max-width: 875px)
   .clientMainFeature
     grid-template-rows: 35vw
     .featureContainer
@@ -324,6 +382,10 @@ body
         h1
           font-size: 14px
           padding: 0 0.25em
+    .featureSocial
+      .featureLink
+        a
+          font-size: 10px
   .clientMenu
     .column6, .column2
       grid-column: span 6
@@ -349,4 +411,10 @@ body
       h2
         font-size: 14px
         padding: 0.75em
-      
+
+@media (max-width: 500px)
+  .clientMainFeature
+    .featureSocial
+      .featureLink
+        a
+          font-size: 8px
