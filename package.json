@@ -19,7 +19,7 @@
     "highcharts": "9.3.3",
     "html-ellipsis": "2.0.1",
     "json-api-models": "^0.1.0-beta.4",
-    "moment": "2.29.2",
+    "moment": "2.29.4",
     "moment-timezone": "0.5.34",
     "node-fetch": "^2.6.7",
     "parse-link-header": "^2.0.0",
