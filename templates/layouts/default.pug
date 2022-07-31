@@ -32,7 +32,7 @@ html(lang='en')
     //- Add any other template-specific HEAD tags by extending the head block
     block head
 
-  //- HTML BODY
+  //- HTML BODy
   body
     .body-overlay
     if !removeNavigation
@@ -69,7 +69,7 @@ html(lang='en')
             ul.main-navigation
               li.mobile-nav-logo-wrapper: a(href="/", class="mobile-nav-logo")
                 img(src="/images/faf-logo.png")
-              li(class=(section === 'news' ? 'active' : null)): a(href='/newshub')
+              li(class=(section === 'news' ? 'active' : null)): a(target='_blank' href='/newshub')
                 i.fas.fa-rss
                 span News
               li(class=(section === 'competitive' ? 'active' : null)): a(href='/competitive/leaderboards/global')
