@@ -139,12 +139,20 @@ async function getClientNews() {
     media: item._embedded['wp:featuredmedia'][0].source_url,
   }));
   sortedData.sort((articleA, articleB) => articleB.sortIndex - articleA.sortIndex);
+  let clientNewsData = sortedData.filter(article => article.category[1] !== 284);
+  return await clientNewsData;
+}
 
-  function onlyActiveArticles(article) {
-    return article.category[1] !== 284;
-  }
-
-  let clientNewsData = sortedData.filter(onlyActiveArticles);
+async function getTournamentNews() {
+  let response = await fetch(`https://direct.faforever.com/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=content.rendered,categories&categories=638`);
+  let data = await response.json();
+  //Now we get a js array rather than a js object. Otherwise we can't sort it out.
+  let dataObjectToArray = Object.values(data);
+  let sortedData = dataObjectToArray.map(item => ({
+    content: item.content.rendered,
+    category: item.categories
+  }));
+  let clientNewsData = sortedData.filter(article => article.category[1] !== 284);
   return await clientNewsData;
 }
 
@@ -156,6 +164,16 @@ module.exports.run = function run() {
           console.log(error);
         } else {
           console.log(`${currentDate} - Client News file created successfully.`);
+        }
+      });
+    });
+  getTournamentNews()
+    .then(clientNewsData => {
+      fs.writeFile(`public/js/app/json/tournament-news.json`, JSON.stringify(clientNewsData), error => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(`${currentDate} - Tournament News file created successfully.`);
         }
       });
     });

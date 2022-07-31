@@ -83,7 +83,7 @@ body, html
     
 .clientBackground
   text-align: left
-  padding: 50px
+  padding: 30px 50px
   p, h3, h2, h1
     font-family: $family-paragraph
     margin: 0
@@ -127,7 +127,7 @@ body, html
   grid-template-rows: 15vw
   text-align: left
   margin: 20px 0
-  gap: 0
+  gap: 20px 20px
   .featureSubGrid
     color: $color-active
     @include gridMainContainer
@@ -150,19 +150,19 @@ body, html
   .featureText
     padding: 1em
     p
-      font-size: 0.95vw
+      font-size: 0.9vw
       display: inline-block
       color: $color-inactive
     h1
       color: $color-active
-      font-size: 1.2vw
+      font-size: 1.1vw
       text-transform: uppercase
       display: inline-block
       padding: 0.25em
 .featureSocial
   @include gridMainContainer
-  grid-template-columns: 1fr
-  grid-template-rows: 33%
+
+  grid-template-rows: 1fr
   transition: 0.4s
   height: 100%
   justify-content: center
@@ -214,7 +214,33 @@ body, html
       margin: auto
       height: 2em
       padding: 0
+  .clientSupportFAF
+    background-color: $background-secondary
+    text-align: center
 
+    transition: 0.4s
+    &:hover
+      background-color: $background-primary
+    a
+      color: white
+      h1
+        font-size: 2vw
+        padding: 0.5em
+      img
+        height: 1.25em
+        padding: 0.25em
+        display: block
+        margin-left: auto
+        margin-right: auto
+      h2
+        font-size: 1.4vw
+        padding: 0.5em
+        transition: 0.4s
+        color: $color-active
+        background-color: $background-tertiary
+        &:hover
+          background-color: $button-inactive
+          color: $background-primary
 
 
 .clientContainer
@@ -301,23 +327,23 @@ body, html
 .clientMenu
   @include gridMainContainer
   padding: 0
-
+  gap: 20px 0
   .clientMenuContainer
-
     margin: 0 2em 0 0
     background-color: $background-tertiary
-    //height: 100%
+    height: 100%
+    
     ul
       text-align: center
       display: block
-      background-color: $button-inactive
+      color: $color-active
       font-family: $family-title
+      font-size: 1.2em
       padding: 0.8em
       margin: 0
-      color: $background-primary
-      font-size: 1.2em
+      background-color: $background-secondary
+      
     a
-
       font-family: $family-paragraph
       display: block
       padding: 0.8em 0.5em
@@ -327,12 +353,45 @@ body, html
       &:hover
         background-color: $background-primary
         color: $color-active
+  .clientTournament
+    h2
+      font-size: 16px
+      display: inline-block
+      padding: 0.5em
+    p
+      display: block
+      font-size: 14px
+      padding: 0.5em
+  #tournamentSpawn
+    @include gridMainContainer
+    
+      
+    a
+      border: 0.2em solid $background-secondary
+      border-top: 0 solid white
+      width: 100%
+      padding: 1em
+      height: 100%
+      display: inline-block
+      margin: 0
+      h2
+        font-size: 16px
+        display: inline-block
+        padding: 0.5em
+      p
+        display: block
+        font-size: 14px
+        padding: 0.5em
+        
+      
   .clientMenuSubgrid
     @include gridMainContainer
-    grid-template-rows: max-content auto
     height: 100%
     background-color: $background-tertiary
+
     .clientSupportFAF
+      
+      height: 100%
       background-color: $background-secondary
       text-align: center
       padding: 0.8em
@@ -341,23 +400,26 @@ body, html
         background-color: $background-primary
       a
         color: white
-      h1
-        font-size: 40px
+      p
         padding: 0.25em
+        font-size: 14px
+      h1
+        font-size: 25px
+        padding: 1em
+        color: $color-active
+        margin: auto
       img
         height: 1.25em
         padding: 0.25em
         display: block
         margin-left: auto
         margin-right: auto
-    h2
-      font-size: 25px
-      padding: 0.5em
-      transition: 0.4s
-      color: $color-active
-      &:hover
-        background-color: $button-inactive
-        color: $background-primary
+      h2
+        font-size: 18px
+        padding: 0.25em
+        transition: 0.4s
+        color: $color-active
+        
 
 
 
@@ -382,8 +444,7 @@ body, html
 
   .clientMainFeature
     grid-template-rows: 25vw
-    .column9, .column2
-      grid-column: span 12
+
     .featureContainer
       .featureText
         padding: 1em
@@ -393,12 +454,9 @@ body, html
           font-size: 20px
           padding: 0 0.25em
     .featureSocial
-      padding: 0 0
       .featureLink
-        padding: 2em
         a
           font-size: 12px
-
   .clientMenu
     .clientMenuSubgrid
       .clientSupportFAF
@@ -430,8 +488,8 @@ body, html
           padding: 0 0.25em
     .featureSocial
       .featureLink
-        a
-          font-size: 12px
+        padding: 1em
+
   .clientMenu
     .clientMenuSubgrid
       .clientSupportFAF
@@ -453,6 +511,8 @@ body, html
 @media (max-width: 875px)
   .clientMainFeature
     grid-template-rows: 35vw
+    .column9, .column3
+      grid-column: span 12
     .featureContainer
       .featureText
         padding: 1em
@@ -465,6 +525,11 @@ body, html
       .featureLink
         a
           font-size: 10px
+      .clientSupportFAF
+        h1
+          font-size: 18px
+        h2
+          font-size: 14px
   .clientMenu
     .column6, .column2
       grid-column: span 6
@@ -490,10 +555,17 @@ body, html
       h2
         font-size: 14px
         padding: 0.75em
-      
+  #tournamentSpawn
+    .column6
+      grid-column: span 12
+    a
+      h2
+        font-size: 14px
+      p
+        font-size: 12px
 @media (max-width: 500px)
   .clientMainFeature
-    .featureContainer
+
     .featureSocial
       .featureLink
         a
