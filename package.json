@@ -23,7 +23,7 @@
     "moment-timezone": "0.5.34",
     "node-fetch": "^2.6.7",
     "parse-link-header": "^2.0.0",
-    "passport": "^0.6.0",
+    "passport": "0.5.2",
     "passport-openidconnect": "^0.1.1",
     "postcss": "^8.1.0",
     "pug": "3.0.2",
