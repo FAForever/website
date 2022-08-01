@@ -115,3 +115,10 @@ function createTournaments() {
 }
 
 createTournaments();
+
+
+let links = document.getElementsByTagName('a');
+let linksLength = links.length;
+for (let i= 0; i < linksLength; i++) {
+  links[i].target = '_blank';
+}

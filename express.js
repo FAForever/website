@@ -280,6 +280,7 @@ try{
     getLatestClientRelease.run();
     getRecentUsers.run();
     getAllClans.run();
+    getNewshub.run();
 }
 catch(e){
     console.error('Error while running update scripts. Make sure the API is available. Those scripts will run again after some time - no need to restart the website.', e);
