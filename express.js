@@ -272,6 +272,7 @@ let extractor = require('./scripts/extractor');
 let getLatestClientRelease = require('./scripts/getLatestClientRelease');
 let getRecentUsers = require('./scripts/getRecentUsers');
 let getAllClans = require('./scripts/getAllClans');
+let getNewshub = require('./scripts/getNewshub');
 
 // Run scripts initially on startup
 try{
@@ -319,6 +320,14 @@ setInterval(() => {
         console.error('Error while fetching latest client release!', e);
     }
 },  parseInt(process.env.CLIENT_RELEASE_FETCHING_INTERVAL) * 1000);
+
+setInterval( () => {
+  try {
+    getNewshub.run();
+  } catch (e) {
+    console.error('Error while fetching latest client news!', e);
+  }
+}, parseInt(process.env.CLIENT_RELEASE_FETCHING_INTERVAL) * 1000);
 
 //Start and listen on port
 app.listen(process.env.PORT, function () {
