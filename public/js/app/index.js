@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(highlightPulse, 2000);
   
 });
-
+/*
 async function playerCounterJSON() {
   const response = await fetch('js/app/members/recent.json');
   const data = await response.json();
@@ -111,3 +111,4 @@ playerCounterJSON()
   .then((data) => {
     document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", data.length);
   });
+*/

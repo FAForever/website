@@ -1,24 +1,27 @@
 console.log("Azul");
-
-let flipContainer = document.getElementsByClassName("flipContainer");
-let gridImage = document.getElementsByClassName("gridImage");
-let flipText = document.getElementsByClassName("flipText");
-
-for (let i = 0; i < flipContainer.length; i++) {
-  flipContainer[i].addEventListener('click', function() {
-    for (let j = 0; j < flipContainer.length; j++) {
-      
-    }
-
-    flipContainer[i].classList.toggle("flipAnimationBack");
-    flipContainer[i].classList.toggle("flipAnimation");
-    setTimeout(() => {
-      gridImage[i].classList.toggle("flipInactive");
-      flipText[i].classList.toggle("flipInactive");
-      
-    }, 200);
-    
-    
-
-  });
+let teamSelection = document.querySelectorAll('.teamSelection');
+let teamContainer = document.querySelectorAll('.teamContainer');
+async function getWordpress() {
+  const response = await fetch(`js/app/members/faf-teams.json`);
+  const data = await response.json();
+  let insertWordpress = document.getElementById('insertWordpress');
+  insertWordpress.insertAdjacentHTML('beforeend', `${data[0].content}`);
+  teamSelection = document.querySelectorAll('.teamSelection');
+  teamContainer = document.querySelectorAll('.teamContainer');
+  return await data;
 }
+getWordpress();
+
+
+
+teamSelection.forEach((team, index) => team.addEventListener('click', () => {
+  
+  teamSelection.forEach(item => item.style.display = 'none');
+  teamContainer[index].style.display = 'grid';
+}));
+
+function returnTeam() {
+  teamSelection.forEach(item => item.style.display = 'block');
+  teamContainer.forEach(item => item.style.display = 'none');
+}
+

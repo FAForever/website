@@ -73,6 +73,16 @@ async function getClientNews() {
   //console.log(warning.stack);
 //});
 
+async function getFAFTeams() {
+  let response = await fetch(`https://direct.faforever.com/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=content.rendered,categories&categories=636`);
+  let data = await response.json();
+  //Now we get a js array rather than a js object. Otherwise we can't sort it out.
+  let dataObjectToArray = Object.values(data);
+  let fafTeamsData = dataObjectToArray.map(item => ({
+    content: item.content.rendered,
+  }));
+  return await fafTeamsData;
+}
 module.exports.run = function run() {
   //we start at 2 because we want the ID starting on 2
   /*for (let i = 2; i < 5; i++) {
@@ -98,6 +108,7 @@ module.exports.run = function run() {
         }
       });
     });
+  
   getClientNews()
     .then(clientNewsData => {
       fs.writeFile(`public/js/app/members/client-news.json`, JSON.stringify(clientNewsData), error => {
@@ -108,7 +119,16 @@ module.exports.run = function run() {
         }
       });
     });
-
+  getFAFTeams()
+    .then(fafTeamsData => {
+      fs.writeFile(`public/js/app/members/faf-teams.json`, JSON.stringify(fafTeamsData), error => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(`${currentDate} - FAFTeams file created successfully.`);
+        }
+      });
+    });
 };
 
 
