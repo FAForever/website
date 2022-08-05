@@ -22,18 +22,14 @@
     text-align: center
     background-color: variables.$background-secondary
     transition: 0.4s
+
     h1
       text-transform: uppercase
     img
       width: 50%
     &:hover
       background-color: variables.$button-inactive
-      color: variables.$background-primary
-      
-  
-  
-  
-  
+      color: variables.$background-primary  
   .teamContainer
     border: 1em solid variables.$background-secondary
 
@@ -56,9 +52,28 @@
 
     img
       padding: 10px
-      height: 70%
+      width: 80%
       margin-left: auto
       margin-right: auto
   
 
+@media (max-width: 1000px)
+  .teamMain
+    margin: 0.25em
+    .column4
+      grid-column: span 6
+    .teamContainer
+      padding: 0.5em
+      .teamh1
+        padding: 0.25em
+      .column6, .column4
+        grid-column: span 12
+
+
+@media (max-width: 700px)
+  .teamMain
+    .teamSelection
+      padding: 0.25em
+      h1
+        font-size: 14px
 

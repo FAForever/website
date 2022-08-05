@@ -38,7 +38,6 @@ Highcharts.chart('container', {
       dataLabels: {
         color: '#ffffff',
         font: '20px electrolize',
-        fontSize:'20px',
         enabled: true,
         format: '<h2>{point.name}</h2>: {point.percentage:.1f} %',
         style: {
