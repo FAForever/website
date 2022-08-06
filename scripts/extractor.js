@@ -50,7 +50,6 @@ async function getNewshub() {
 async function getClientNews() {
   let response = await fetch(`https://direct.faforever.com/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,newshub_externalLinkUrl,newshub_sortIndex,content.rendered,date,categories&categories=283`);
   let data = await response.json();
-  //Now we get a js array rather than a js object. Otherwise we can't sort it out.
   let dataObjectToArray = Object.values(data);
   let sortedData = dataObjectToArray.map(item => ({
     category: item.categories,
@@ -69,20 +68,30 @@ async function getClientNews() {
   let clientNewsData = sortedData.filter(onlyActiveArticles);
   return await clientNewsData;
 }
-//process.on('warning', (warning) => {
-  //console.log(warning.stack);
-//});
+
 
 async function getFAFTeams() {
   let response = await fetch(`https://direct.faforever.com/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=content.rendered,categories&categories=636`);
   let data = await response.json();
-  //Now we get a js array rather than a js object. Otherwise we can't sort it out.
   let dataObjectToArray = Object.values(data);
   let fafTeamsData = dataObjectToArray.map(item => ({
     content: item.content.rendered,
   }));
   return await fafTeamsData;
 }
+
+async function getContentCreators() {
+  let response = await fetch(`https://direct.faforever.com/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=content.rendered,categories&categories=639`);
+  let data = await response.json();
+  let dataObjectToArray = Object.values(data);
+  let contentCreatorsData = dataObjectToArray.map(item => ({
+    content: item.content.rendered,
+  }));
+  return await contentCreatorsData;
+}
+
+
+
 module.exports.run = function run() {
   //we start at 2 because we want the ID starting on 2
   /*for (let i = 2; i < 5; i++) {
@@ -126,6 +135,16 @@ module.exports.run = function run() {
           console.log(error);
         } else {
           console.log(`${currentDate} - FAFTeams file created successfully.`);
+        }
+      });
+    });
+  getContentCreators()
+    .then(fafTeamsData => {
+      fs.writeFile(`public/js/app/members/content-creators.json`, JSON.stringify(fafTeamsData), error => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(`${currentDate} - ContentCreators file created successfully.`);
         }
       });
     });

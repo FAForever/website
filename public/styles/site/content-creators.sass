@@ -1,78 +1,52 @@
 @use '../abstracts/mixins'
 @use '../abstracts/variables'
 
-/* Content Creator variant of container
-.contentBanner
-  background-image: url("/../../images/content-creator/creatorbg.jpg")
-  
-.mainContentContainer
+
+.creatorMain
   @include mixins.gridMainContainer
-  background-image: url("/../../images/fafbgpattern.jpg")
-  padding: 2.5vw 8vw
-  grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr))
-@media (max-width: 1200px)
-  .mainContentContainer
-    grid-template-columns: repeat(auto-fit, minmax(28vw, 1fr))
-@media (max-width: 800px) 
-  .mainContentContainer
-    grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr))
-  @media (max-width: 800px)
-  .mainContentContainer
-    grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr))
-    margin: 4vw
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+  padding: 20px 60px
+  gap: 30px
+  .creatorContainer
+    position: relative
+    color: variables.$color-active
+    transition: 0.4s
+    height: 100%
+    background-color: variables.$background-secondary
+    img
+      height: 300px
+      width: 100%
+      transition: 0.4s
+    h1
+      position: absolute
+      top: 0
+      font-size: 16px
+      letter-spacing: 0.15em
+      text-transform: uppercase
+      color: variables.$color-inactive
 
+      background-color: variables.$background-secondary
+      border: 0.1em solid variables.$background-tertiary
+    h2
+      text-transform: capitalize
+      padding: 0.5em
+      p
+        text-transform: none
+        padding:  0.25em 
+        
+    &:hover
+      color: variables.$background-primary
+      background-color: variables.$button-inactive
+      transform: scale(1.05)
+      img
+        filter: brightness(1.16)
 
-.contentContainer
-  padding: 1vw
-  position: relative
-
-  .responsiveTextTitle
-    background-color: variables.$background-tertiary
-    border: 0.25vw solid variables.$background-secondary
-    border-radius: 20px
-    padding: 0.25vw 0 0 0
-  .responsiveText
-    padding: 0.5vw 0
-
-.contentAbsolute
-  position: absolute
-  bottom: 0
-  z-index: 100
-  color: variables.$color-active
-  width: 100%
-  
-
-.contentImage
-  position: relative
-  display: inline-block
-  
-  
-
-  a
-    display: inline-block
-    font-size: var(--subtitle-font-size)
-    padding: 0.5vw
-    border-radius: 20%
-
-  img
-    border-radius: 10%
-    width: 50%
-
-.contentSocial
-  color: variables.$color-active
-
-  &:hover
-    transform: scale(1.2)
-
-.contentItem
-  width: 100%
-
-.countryFlag
-  width: 20%
-  position: absolute
-  top: 0
-  left: 20%
-  z-index: 100
-
-//.fa-twitch
-  color: #db80ff
+@media (max-width: 800px)
+  .creatorMain
+    @include mixins.gridMainContainer
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
+    padding: 15px
+    gap: 15px
+    .creatorContainer
+      img
+        height: 200px
