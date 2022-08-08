@@ -7,54 +7,47 @@ block bannerData
 
 block content    
 
-  .rectangleSpace
-    .mainRectangleContainerReverseAI
-      .column4.rectangleContainer
-        .responsiveTextTitle.highlightText
-          | M27AI by Maudlin27
-          .responsiveText
-            | Adaptive AI, particularly effective against turtles on small maps.  Currently estimated as a challenge for new 1v1 players!
-            br
-            a(href="https://forum.faforever.com/topic/2373/ai-development-guide-and-m27ai-v24-devlog" target = "_blank")
-              button.smallButton Learn More   
-      .column2
-        .gridImage.rectangleImage
-          img(src='/images/ai/maudlin.jpg' alt='')
-      .column4.rectangleContainer
-        .responsiveTextTitle.highlightText
-          | RNGAI by Relent0r
-          .responsiveText.responsiveText
-            | AI aimed at the players wanting to learn 1v1 gameplay. It provides an avenue to play against something that emulates some of the methods ladder players use!
-            br
-            a(href="https://forums.faforever.com/viewtopic.php?f=88&t=19149" target = "_blank")
-              button.smallButton Learn More
-      .column2
-        .gridImage.rectangleImage
-          img(src='/images/ai/relentor.jpg' alt='')
+  .showcaseBackground
+    .descriptionMain
+      .descriptionContainer
+        h2 Artificial Intelligence on FAF
+        p Originally, Supreme Commander:FA had very suboptimal AI, being barely able to do anything even trivial. Nonetheless, thanks to the contribution of FAF contributors, now you have 4 quite challenging AIs! Specially on 5x5 and 10x10 land maps, these AIs will show you who's boss! You can download these AIs in the FAF client Mods section.
+    .profileMain
+      .profileSubGrid.column6
+        .profileImage.azraelBG.column4
+        .profileContainer.column8
+          h2.highlightText Get Flooded
+          h1 AI-Swarm by AzraelianAngel
+          p Swarm is a bit of a middle grounded AI, it is regarded as the most solid economic AI. It tends to be heavy on land but it adapts to air and naval situations!
+          a(href='https://forum.faforever.com/topic/53/ai-swarm-ai-mod-for-faforever?_=1646687814769')
+            button AI-Swarm DevLog
+      .profileSubGrid.column6
+        .profileImage.uvesoBG.column4
+        .profileContainer.column8
+          h2.highlightText Uveso by AI-Uveso
+          h1 AI-Uveso by Uveso
+          p Adaptive AI with multiple sub AIs in order for players to have control on the behavior of the AI! The sub AIs are Adaptive, Overwhelm, Rush, Experimental and Easy!
+          a(href='https://forum.faforever.com/topic/350/ai-uveso-v98-ai-mod-for-faforever')
+            button AI-Uveso DevLog
+      .profileSubGrid.column6
+        .profileImage.relentorBG.column4
+        .profileContainer.column8
+          h2.highlightText Random Number Generator?
+          h1 RNGAI by Relent0r
+          p AI aimed at the players wanting to learn 1v1 gameplay. It provides an avenue to play against something that emulates some of the methods ladder players use!
+          a(href='https://forums.faforever.com/viewtopic.php?f=88&t=19149')
+            button RGNAI DevLog
+      .profileSubGrid.column6
+        .profileImage.maudlinBG.column4
+        .profileContainer.column8
+          h2.highlightText Best 1v1 AI
+          h1 M27AI by Maudlin27
+          p Adaptive AI, particularly effective against turtles on small maps. One of the most effective AIs for 5x5 and 10x10 land maps!
+          a(href='https://forum.faforever.com/topic/2373/ai-development-guide-and-m27ai-v24-devlog')
+            button M27AI DevLog
+    .descriptionMain
+      .descriptionContainer
+        h2 Not Difficult Enough?
+        p If AIs aren't a challenge for you, we recommend using the in-lobby option "AIx Cheat Multiplier" which can be found in a game lobby throught Options > AI Options. Putting it to 1.1 or 1.2 should provide a challenge for a great deal of players. This bonus makes the AI cheat, meaning it gets 1.1 resources and buildpower. Making more stuff in less time!
 
-    .mainRectangleContainerAI
-      .column4.rectangleContainer
-        .responsiveTextTitle.highlightText
-          | AI-Uveso by Uveso
-          .responsiveText.responsiveText
-            | Adaptive AI with multiple sub AIs in order for players to have control on the behavior of the AI! The sub AIs are Adaptive, Overwhelm, Rush, Experimental and Easy!
-            br
-            a(href="https://forum.faforever.com/topic/350/ai-uveso-v98-ai-mod-for-faforever" target = "_blank")
-              button.smallButton Learn More   
-      .column2
-        .gridImage.rectangleImage
-          img(src='/images/ai/uveso.jpg' alt='')
-      .column4.rectangleContainer
-        .responsiveTextTitle.highlightText
-          | AI-Swarm by AzraelianAngel
-          .responsiveText.responsiveText
-            | Swarm is a bit of a middle grounded AI, it is regarded as the most solid economic AI. It tends to be heavy on land but it adapts to air and naval situations!
-            br
-            a(href="https://forum.faforever.com/topic/53/ai-swarm-ai-mod-for-faforever?_=1646687814769" target = "_blank")
-              button.smallButton Learn More
-      .column2
-        .gridImage
-          img(src='/images/ai/azrael.jpg' alt='')
-
- 
 block js

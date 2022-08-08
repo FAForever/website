@@ -1,6 +1,32 @@
-@use 'index'
+@use '../abstracts/mixins'
+@use '../abstracts/variables'
 
-
-  
+.tutorialMain
+  @include mixins.gridMainContainer
+  margin: 20px 10%
+  gap: 10px
+  .tutorialTop
+    background-color: variables.$button-active
+    border: 0.2em solid variables.$background-primary
+  .tutorialContainer
+    height: 100%
+    background-color: variables.$background-secondary
+    border: 0.2em solid variables.$background-primary
+    
+    transition: 0.4s
+    &:hover
+      
+      background-color: variables.$button-inactive
+      a
+        color: variables.$background-primary
+    a
+      padding: 1em
+      width: 100%
+      height: 100%
+      color: variables.$color-active
+      
+@media (max-width: 600px)
+  .tutorialMain
+    margin: 5px 0%
 
 
