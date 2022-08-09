@@ -3,6 +3,63 @@ block bannerData
   - var bannerImage = "scfa"
   - var bannerFirstTitle = "CONTINUING THE DEVELOPMENT"
   - var bannerSecondTitle = "OF SC:FA, FOREVER"
-  - var bannerSubTitle = "MAINTAINING THE BEST FEATURES AND REMOVING THE WORST"
+  - var bannerSubTitle = "MAINTAINING THE BEST FEATURES AND REMOVING THE WORST ISSUES"
 block content
-
+  .descriptionMain
+    .descriptionContainer
+      h2 Signficant Changes in FAF
+      p In this page you will find the biggest and most signficant changes done in FAF. From certain mods being part of the game (such as Engymod), adding additional hotkey layouts and more customization, allowing 16 player matches, to all the small unit value tweaks (such as reducing AA damage from Restorers). If you want to learn all the details, you can read more in the FAF wiki.
+      a(href='https://wiki.faforever.com/en/Changes-from-steam' target='_blank')
+        button Wiki Steam Changes Page
+  .changeMain
+    .changeSubGrid.column4
+      .changeContainer.column12
+        h1 Support Factories
+          p Instead of having to assist only one T2 or T3 factory. Now mass production of T2-T3 armies is possible with support factories. Now your first T2 or T3 factory will be a "HQ" factory, unlocking the new units which can also be built in support factories (cheaper T2-T3 factories that can only build units of that tier as long as the HQ is alive).
+          
+    .changeSubGrid.column4
+      .changeContainer.column12
+        h1 More Hotkeys/Hotbuild
+          p Hotbuild is a mod which lets you quickly queue buildings and units via hotkeys instead of having to click the build menu. It does this by having multiple structures/units bound to the same key, which you press multiple times to cycle through.
+    .changeSubGrid.column4
+      .changeContainer.column12
+        h1 Lobby Changes
+          li Maximum player count was increased to 16. In addition to unit categories, 
+          li it's possible to restrict specific units. If you hate mercies or have a grudge towards UEF T3 gunships, you have the power to disable specifically them.
+            
+          li Improved AI known as Sorian AI has been added. 
+          li Option to auto-balance teams based on rating.
+    .changeSubGrid.column4
+      .changeContainer.column12
+        h1 Overcharge
+          li Starting energy storage was reduced to 4000. An energy storage has to be built before overcharge can be used.
+          li Overcharge was tweaked to require more energy in order to deal more damage. This makes T3 units more effective versus an ACU, since more energy is required to kill them.
+          li An auto-overcharge was added. When enabled, ACUs will automatically overcharge best targets when possible.
+    .changeSubGrid.column4
+      .changeContainer.column12
+        h1 Veterancy
+          p Original veterancy system counted number of kills, making high tier units vet very quickly from killing many T1 units. FAF replaced this system with mass-based veterancy, where most units have to kill 200% of their mass cost in order to gain a veterancy level. Veterancy is now also shared by all units that damaged the dying unit, proportionally to damage dealt.
+    .changeSubGrid.column4
+      .changeContainer.column12
+        h1 Miscellaneous Changes
+          li Naval units leave underwater wreckage (now wrecks can be reclaimed after a navy fight for their mass).
+          li Unit groups can be given special targetting priorities, such as engineers first, economy units first, ACU first, and so on. Available via a UI mod called Target Priorities.
+    .changeSubGrid.column12
+      .changeContainer.column12
+        h1 Balance Changes
+          li Most of the atrociously unbalanced units were fixed (such as Restorer AA capacity or MML homing on targets)
+          li T1 transports can no longer transport ACUs. This insane change was introduced in the Steam version.
+          li T1 air scouts are much cheaper. They also have radar and sonar.
+          li T1 bombers were tweaked to remove hoverbombing. In exchange, T1 bombers were buffed.
+          li ACU upgrades were rebalanced across the board.
+          li Support ACUs were rebalanced to be more useful in the field.
+          li ACU explosion damage was reduced to 2500 to reduce the number of draws.
+          li  Mobile T3 AA units were added to each faction. This makes late game experimental pushes less susceptible to enemy air.
+          li Static T3 anti-air is much cheaper.
+          li Air staging stations can now be built by T1 engineers.
+  .descriptionMain
+    .descriptionContainer
+      h2 Patch Notes
+      p If you want to find out all the small tweaks done to units across the years. Such as changing the speed of hover units from 4.3 to 3.0, or the turning rate of certain weapons. Below you will find a link to the patchnotes starting from 2015. 
+      a(href='http://patchnotes.faforever.com/' target='_blank')
+        button FAF Patch Notes
