@@ -3,27 +3,19 @@
 require('dotenv').config();
 
 let express = require('express');
-
 let middleware = require('./routes/middleware');
-
 let bodyParser = require('body-parser');
 let passport = require('passport');
 let OidcStrategy = require('passport-openidconnect');
 let flash = require('connect-flash');
-
 const cors = require('cors');
-const showdown = require('showdown');
-const fs = require('fs');
-
 let app = express();
+
 app.locals.clanInvitations = {};
 
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 process.env.WP_URL = process.env.WP_URL || 'https://direct.faforever.com/wp-json';
-
-process.env.WP_NEWSHUB_CATEGORYID = process.env.WP_NEWSHUB_CATEGORYID || '0';
-process.env.WP_NEWSHUBARCHIVE_CATEGORYID = process.env.WP_NEWSHUBARCHIVE_CATEGORYID || '0';
 
 process.env.PORT = process.env.PORT || '4000';
 process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
@@ -40,15 +32,15 @@ app.use(middleware.clientChecks);
 
 //Set static public directory path
 app.use(express.static('public', {
-    immutable: true,
-    maxAge: 4 * 60 * 60 * 1000 // 4 hours
+  immutable: true,
+  maxAge: 4 * 60 * 60 * 1000 // 4 hours
 }));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(require('express-session')({
-    secret: process.env.SESSION_SECRET_KEY,
-    resave: false,
-    saveUninitialized: false,
+  secret: process.env.SESSION_SECRET_KEY,
+  resave: false,
+  saveUninitialized: false,
   cookie: {
     maxAge: process.env.TOKEN_LIFESPAN * 1000
   }
@@ -72,24 +64,21 @@ let routes = './routes/views/';
 app.get('/', require(routes + 'index'));
 
 function loggedIn(req, res, next) {
-    let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-    req.session.referral = fullUrl;
+  let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  req.session.referral = fullUrl;
 
-    if (req.isAuthenticated()) {
-        res.locals.username = req.user.data.attributes.userName;
-        next();
-    } else {
-        res.redirect('/login');
-    }
+  if (req.isAuthenticated()) {
+    res.locals.username = req.user.data.attributes.userName;
+    next();
+  } else {
+    res.redirect('/login');
+  }
 }
 
 // Terms of Service
 app.get('/tos', require(routes + 'tos'));
 app.get('/tos-fr', require(routes + 'tos-fr'));
 app.get('/tos-ru', require(routes + 'tos-ru'));
-
-
-
 
 
 /// Account routes
@@ -131,31 +120,25 @@ app.get('/password_resetted', require(routes + 'accounts/get/requestPasswordRese
 app.get('/report_submitted', require(routes + 'accounts/get/report'));
 
 //All Pages
-
-// NewsHub Page With Legacy support
-app.get('/client-news', require(routes + 'client-news'));
-app.get('/newshub', require(routes + 'newshub'));
-
-//Game pages
-app.get('/campaign-missions', require(routes + 'campaign-missions'));
-app.get('/scfa-vs-faf', require(routes + 'scfa-vs-faf'));
-app.get('/donation', require(routes + 'donation'));
-app.get('/tutorials-guides', require(routes + 'tutorials-guides'));
-app.get('/ai', require(routes + 'ai'));
-app.get('/patchnotes', require(routes + 'patchnotes'));
-
-//Community pages
-app.get('/faf-teams', require(routes + 'faf-teams'));
-app.get('/contribution', require(routes + 'contribution'));
-app.get('/content-creators', require(routes + 'content-creators'));
-
-//Competitive pages
-app.get('/tournaments', require(routes + 'tournaments'));
-app.get('/training', require(routes + 'training'));
-app.get('/leaderboards', require(routes + 'leaderboards'));
-
-// Play on faf
-app.get('/play', require(routes + 'play'));
+// when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.    
+let appGetRouteArray = [
+  'client-news',
+  'newshub',
+  'campaign-missions',
+  'scfa-vs-faf',
+  'donation',
+  'tutorials-guides',
+  'ai',
+  'patchnotes',
+  'faf-teams',
+  'contribution',
+  'content-creators',
+  'tournaments',
+  'training',
+  'leaderboards',
+  'play'
+];
+appGetRouteArray.forEach(page => app.get(`/${page}`, require(`${routes}${page}`)));
 
 app.get('/lobby_api', cors(), require('./routes/lobby_api'));
 app.get('/account/checkUsername', require('./routes/views/accounts/get/checkUsername'));
@@ -167,6 +150,7 @@ app.get('/clans/manage', loggedIn, require(routes + 'clans/get/manage'));
 app.get('/clans/see', require(routes + 'clans/get/see'));
 app.get('/clans/browse', require(routes + 'clans/get/browse'));
 app.get('/clans/accept', loggedIn, require(routes + 'clans/get/accept'));
+
 app.post('/clans/create', loggedIn, require(routes + 'clans/post/create'));
 app.post('/clans/destroy', loggedIn, require(routes + 'clans/post/destroy'));
 app.post('/clans/invite', loggedIn, require(routes + 'clans/post/invite'));
@@ -176,23 +160,23 @@ app.post('/clans/update', loggedIn, require(routes + 'clans/post/update'));
 app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
 
 // Compatibility
-app.get('/clan/*', function (req, res){
-    const id = req.path.split('/').slice(-1)[0];
-    res.redirect('/clans/see?id='+id);
+app.get('/clan/*', function (req, res) {
+  const id = req.path.split('/').slice(-1)[0];
+  res.redirect('/clans/see?id=' + id);
 
 });
 
 app.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
+  req.logout();
+  res.redirect('/');
 });
 
 app.get('/login', passport.authenticate('faforever', {
-    failureRedirect: '/login',
-    failureFlash: true
+  failureRedirect: '/login',
+  failureFlash: true
 }), function (req, res) {
-    req.logout();
-    res.redirect('/');
+  req.logout();
+  res.redirect('/');
 });
 
 passport.use('faforever', new OidcStrategy({
@@ -218,94 +202,63 @@ passport.use('faforever', new OidcStrategy({
         user.data.id = user.data.attributes.userId;
         return verified(null, user);
       }
-        );
-    }
+    );
+  }
 ));
 
 passport.serializeUser(function (user, done) {
-    done(null, user);
+  done(null, user);
 });
 
 passport.deserializeUser(function (id, done) {
-    done(null, id);
+  done(null, id);
 });
 
 app.get('/callback', passport.authenticate('faforever', {
-    failureRedirect: '/login',
-    failureFlash: true
+  failureRedirect: '/login',
+  failureFlash: true
 }), function (req, res) {
-    res.redirect(req.session.referral ? req.session.referral : '/');
-    req.session.referral = null;
+  res.redirect(req.session.referral ? req.session.referral : '/');
+  req.session.referral = null;
 });
 
 //404 Error Handler
 app.use(function (req, res) {
-    res.status(404).render('errors/404');
+  res.status(404).render('errors/404');
 });
 
 //Display 500 Error Handler if in development mode.
 if (process.env.NODE_ENV === 'development') {
-    app.enable('verbose errors');
+  app.enable('verbose errors');
 
-    //500 Error Handler
-    app.use(function (err, req, res) {
-        res.status(500).render('errors/500', {error: err});
-    });
+  //500 Error Handler
+  app.use(function (err, req, res) {
+    res.status(500).render('errors/500', {error: err});
+  });
 }
 
-let extractor = require('./scripts/extractor');
-let getLatestClientRelease = require('./scripts/getLatestClientRelease');
-let getRecentUsers = require('./scripts/getRecentUsers');
-let getAllClans = require('./scripts/getAllClans');
 
 // Run scripts initially on startup
-try{
-    extractor.run();
-    getLatestClientRelease.run();
-    getRecentUsers.run();
-    getAllClans.run();
+let requireRunArray = ['extractor', 'getLatestClientRelease', 'getRecentUsers', 'getAllClans'];
+for (let i = 0; i < requireRunArray.length; i++) {
+  try {
+    require(`./scripts/${requireRunArray[i]}`).run();
+  } catch (e) {
+    console.error(`Error while running ${requireRunArray[i]} script. Make sure the API is available. Those scripts will run again after some time - no need to restart the website.`, e);
+  }
+  // Run leaderboard extractor every 900 seconds / 15 minutes
+  setInterval(() => {
+    try {
+      require(`./scripts/${requireRunArray[i]}`).run();
+    } catch (e) {
+      console.error(`${requireRunArray[i]} caused the error`, e);
+    }
+  }, 9 * 100000);
 }
-catch(e){
-    console.error('Error while running update scripts. Make sure the API is available. Those scripts will run again after some time - no need to restart the website.', e);
-}
-
-// Run leaderboard extractor every minute
-setInterval(() => {
-    try {
-        extractor.run();
-    } catch (e) {
-        console.error('Error while updating leaderboards!', e);
-    }
-},  parseInt(process.env.LEADERBOARDS_UPDATE_INTERVAL) * 1000);
-
-// Run recent players detection every 15 minutes
-setInterval(() => {
-    try {
-        getRecentUsers.run();
-    } catch (e) {
-        console.error('Error while updating recent user list!', e);
-    }
-},  parseInt(process.env.RECENT_USERS_LIST_UPDATE_INTERVAL) * 1000);
-
-// Run recent players detection every 15 minutes
-setInterval(() => {
-    try {
-        getAllClans.run();
-    } catch (e) {
-        console.error('Error while updating the clan list!', e);
-    }
-},  parseInt(process.env.CLAN_LIST_UPDATE_INTERVAL) * 1000);
-
-// Run client release fetcher every 15 minutes
-setInterval(() => {
-    try {
-        getLatestClientRelease.run();
-    } catch (e) {
-        console.error('Error while fetching latest client release!', e);
-    }
-},  parseInt(process.env.CLIENT_RELEASE_FETCHING_INTERVAL) * 1000);
 
 //Start and listen on port
-app.listen(process.env.PORT, function () {
-    console.log('Express listening on port ' + process.env.PORT);
+app.listen(process.env.PORT,() => {
+  console.log('Express listening on port ' + process.env.PORT);
 });
+
+
