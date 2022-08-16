@@ -30,8 +30,7 @@
     "request": "2.88.2",
     "semver-regex": "^4.0.5",
     "showdown": "^2.1.0",
-    "trim-newlines": "4.0.2",
-    "wpapi": "1.2.2"
+    "trim-newlines": "4.0.2"
   },
   "devDependencies": {
     "dart-sass": "^1.25.0",

@@ -13,10 +13,9 @@ let app = express();
 
 app.locals.clanInvitations = {};
 
+
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-process.env.WP_URL = process.env.WP_URL || 'https://direct.faforever.com/wp-json';
-
 process.env.PORT = process.env.PORT || '4000';
 process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
 process.env.API_URL = process.env.API_URL || 'https://test.api.faforever.com';
@@ -29,6 +28,7 @@ process.env.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '12345';
 app.use(middleware.initLocals);
 app.use(middleware.getLatestClientRelease);
 app.use(middleware.clientChecks);
+
 
 //Set static public directory path
 app.use(express.static('public', {
@@ -57,11 +57,10 @@ app.set('views', 'templates/views');
 app.set('view engine', 'pug');
 app.set('port', process.env.PORT);
 
-//Variable to hold routing path
-let routes = './routes/views/';
+
 
 //Define routes
-app.get('/', require(routes + 'index'));
+
 
 function loggedIn(req, res, next) {
   let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
@@ -74,15 +73,12 @@ function loggedIn(req, res, next) {
     res.redirect('/login');
   }
 }
-
-// Terms of Service
-app.get('/tos', require(routes + 'tos'));
-app.get('/tos-fr', require(routes + 'tos-fr'));
-app.get('/tos-ru', require(routes + 'tos-ru'));
-
-
-/// Account routes
+// Account routes
 // Registration
+
+//Variable to hold routing path
+let routes = './routes/views/';
+
 app.get('/account/register', require(routes + 'accounts/get/register'));
 app.post('/account/register', require(routes + 'accounts/post/register'));
 
@@ -119,9 +115,12 @@ app.get('/account_activated', require(routes + 'accounts/get/register'));
 app.get('/password_resetted', require(routes + 'accounts/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'accounts/get/report'));
 
+
 //All Pages
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.    
 let appGetRouteArray = [
+  // This first '' is the home/index page
+  '',
   'client-news',
   'newshub',
   'campaign-missions',
@@ -136,9 +135,22 @@ let appGetRouteArray = [
   'tournaments',
   'training',
   'leaderboards',
-  'play'
+  'play',
+  'tos',
+  'tos-ru',
+  'tos-fr'
 ];
-appGetRouteArray.forEach(page => app.get(`/${page}`, require(`${routes}${page}`)));
+
+//Runs every page written above
+appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
+  let locals = res.locals;
+  // locals.section is used to set the currently selected item in the header navigation.
+  locals.section = page;
+  res.render(page);
+}));
+
+
+
 
 app.get('/lobby_api', cors(), require('./routes/lobby_api'));
 app.get('/account/checkUsername', require('./routes/views/accounts/get/checkUsername'));
@@ -222,20 +234,7 @@ app.get('/callback', passport.authenticate('faforever', {
   req.session.referral = null;
 });
 
-//404 Error Handler
-app.use(function (req, res) {
-  res.status(404).render('errors/404');
-});
 
-//Display 500 Error Handler if in development mode.
-if (process.env.NODE_ENV === 'development') {
-  app.enable('verbose errors');
-
-  //500 Error Handler
-  app.use(function (err, req, res) {
-    res.status(500).render('errors/500', {error: err});
-  });
-}
 
 
 // Run scripts initially on startup
@@ -262,3 +261,24 @@ app.listen(process.env.PORT,() => {
 });
 
 
+//404 Error Handlers
+app.use(function (req, res) {
+  res.status(404).render('errors/404');
+});
+
+
+
+//Display 500 Error Handler if in development mode.
+if (process.env.NODE_ENV === 'development') {
+  app.enable('verbose errors');
+
+  //500 Error Handler
+  app.use(function (err, req, res) {
+    res.status(500).render('errors/500', {error: err});
+  });
+}
+
+/*app.use( (err, req, res, next) => {
+  res.status(!200).render('error/error');
+});
+*/
