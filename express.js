@@ -233,7 +233,7 @@ passport.deserializeUser(function (id, done) {
 
 
 // Run scripts initially on startup
-let requireRunArray = ['extractor', 'getLatestClientRelease', 'getRecentUsers', 'getAllClans'];
+let requireRunArray = ['extractor', 'getLatestClientRelease', 'getRecentUsers'];
 for (let i = 0; i < requireRunArray.length; i++) {
   try {
     require(`./scripts/${requireRunArray[i]}`).run();
