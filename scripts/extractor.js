@@ -83,7 +83,7 @@ async function getAllClans() {
 
 
 
-//Dummies added (0 and 1) so we cab re-use leaderboardID on the API call
+//Dummies added (0 and 1) so we can re-use leaderboardID on the API call
 
 
 async function getLeaderboards(leaderboardID) {
