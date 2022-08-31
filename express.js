@@ -13,7 +13,6 @@ let app = express();
 
 app.locals.clanInvitations = {};
 
-
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 process.env.PORT = process.env.PORT || '4000';
@@ -63,9 +62,7 @@ app.set('port', process.env.PORT);
 
 
 function loggedIn(req, res, next) {
-  let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-  req.session.referral = fullUrl;
-
+  req.session.referral = req.protocol + '://' + req.get('host') + req.originalUrl;
   if (req.isAuthenticated()) {
     res.locals.username = req.user.data.attributes.userName;
     next();
@@ -140,12 +137,8 @@ let appGetRouteArray = [
   'tos-ru',
   'tos-fr'
 ];
-
-//Runs every page written above
-appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
-  let locals = res.locals;
-  // locals.section is used to set the currently selected item in the header navigation.
-  locals.section = page;
+//Renders every page written above
+appGetRouteArray.forEach(page => app.get(`/${page}`, (req,res) => {
   res.render(page);
 }));
 
@@ -191,6 +184,14 @@ app.get('/login', passport.authenticate('faforever', {
   res.redirect('/');
 });
 
+app.get('/callback', passport.authenticate('faforever', {
+  failureRedirect: '/login',
+  failureFlash: true
+}), function (req, res) {
+  res.redirect(req.session.referral ? req.session.referral : '/');
+  req.session.referral = null;
+});
+
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
     tokenURL: process.env.OAUTH_URL + '/oauth2/token',
@@ -226,13 +227,7 @@ passport.deserializeUser(function (id, done) {
   done(null, id);
 });
 
-app.get('/callback', passport.authenticate('faforever', {
-  failureRedirect: '/login',
-  failureFlash: true
-}), function (req, res) {
-  res.redirect(req.session.referral ? req.session.referral : '/');
-  req.session.referral = null;
-});
+
 
 
 
@@ -243,7 +238,7 @@ for (let i = 0; i < requireRunArray.length; i++) {
   try {
     require(`./scripts/${requireRunArray[i]}`).run();
   } catch (e) {
-    console.error(`Error while running ${requireRunArray[i]} script. Make sure the API is available. Those scripts will run again after some time - no need to restart the website.`, e);
+    console.error(`Error running ${requireRunArray[i]} script. Make sure the API is available (will try again after interval).`, e);
   }
   // Run leaderboard extractor every 900 seconds / 15 minutes
   setInterval(() => {
@@ -252,7 +247,7 @@ for (let i = 0; i < requireRunArray.length; i++) {
     } catch (e) {
       console.error(`${requireRunArray[i]} caused the error`, e);
     }
-  }, 9 * 100000);
+  }, 9 * 100000); // 15 Minutes
 }
 
 //Start and listen on port
