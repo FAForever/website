@@ -87,7 +87,7 @@ async function getAllClans() {
 
 
 async function getLeaderboards(leaderboardID) {
-  let response = await fetch(`${process.env.API_URL}data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
+  let response = await fetch(`${process.env.API_URL}/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
   let data = await response.json();
   let dataObjectToArray = Object.values(data);
   let playerLogin = dataObjectToArray[2].map(item => ({
