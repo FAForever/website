@@ -2,47 +2,12 @@ extends ../layouts/default
 block bannerMixin
   
 block content
-  #articleMain
+  #articleStart
     .articleTopTitle.column12
       h2 Recent
       h1.highlightText News
-    .articleContainer.column8
-      .articleImage(onclick=`articleActivate(0)`)
-      .articleText
-        h2.articleAuthorDate
-        h1.articleTitle
-        .articleContent
-        button(onclick=`articleActivate(0)`) Learn More
-    .articleContainer.column4
-      .articleImage(onclick=`articleActivate(1)`)
-      .articleText
-        h2.articleAuthorDate
-        h1.articleTitle
-        .articleContent
-        button(onclick=`articleActivate(1)`) Learn More
-    .articleContainer.column4
-      .articleImage(onclick=`articleActivate(2)`)
-      .articleText
-        h2.articleAuthorDate
-        h1.articleTitle
-        .articleContent
-        button(onclick=`articleActivate(2)`) Learn More
+    #articleMain.column12
 
 
-
-
-  #newsMain
-    .newsAbsolute
-      button(onclick=`returnNewshub()`) Back to News page
-    .newsContainer.column12
-      h1#title
-    .newsContainer.column12
-      #featuredImage
-    .newsContainer.column12
-      h1#authorDate
-    .newsContainer.column12
-      #content
-    .newsAbsolute
-      button(onclick=`returnNewshub()`) Back to News page
 block js
   script( src="../../js/app/newshub.js")

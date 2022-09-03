@@ -135,7 +135,8 @@ let appGetRouteArray = [
   'play',
   'tos',
   'tos-ru',
-  'tos-fr'
+  'tos-fr',
+  'newsArticle',
 ];
 //Renders every page written above
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req,res) => {
@@ -227,8 +228,8 @@ passport.deserializeUser(function (id, done) {
   done(null, id);
 });
 
-
-
+const newsRoute = require('./scripts/getNews');
+app.use(newsRoute);
 
 
 

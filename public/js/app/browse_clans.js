@@ -249,6 +249,10 @@ $("#sort-create").click( function() {
 });
 
 
+// https://api.faforever.com/data/clan?include=memberships.player&filter=tag==FEM
+
+// https://api.faforever.com/data/clan?include=memberships.player&filter=tag==FEM
+
 
 $("#sort-population").click( function() {
     clans.sort(function(a, b){

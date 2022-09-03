@@ -1,15 +1,22 @@
 @use '../abstracts/mixins'
 @use '../abstracts/variables'
 
-#articleMain
+
+#articleStart
   @include mixins.gridMainContainer
-  gap: 40px 
+  gap: 25px
   background-image: url("../../images/factionpattern.jpg")
-  padding: 2vw 8vw
+  padding: 2vw 7vw
   text-align: left
   .articleTopTitle
     text-align: center
     letter-spacing: 0.25em
+    
+#articleMain
+  @include mixins.gridMainContainer
+  gap: 25px 
+  padding: 1vw
+
   .articleContainer
     height: 100%
     background-color: variables.$background-secondary
@@ -17,88 +24,64 @@
     transition: 0.4s
     &:hover
       filter: brightness(1.2) contrast(1.05)
+      background-color: variables.$background-primary
     .articleImage
       cursor: pointer
       background-image: url("/../../images/coop.jpg")
       background-size: cover
       background-position: center
-      padding: 10vw
+      padding: 8vw
     .articleText
-      padding: 1em
+      padding: 0.5em
       p
+        padding: 0.25em
+      h2 ,p
+        font-size: 18px
+      h1
+        font-size: 30px
+      button
+        font-size: 14px
         padding: 0.5em
-      h2 
-        font-size: var(--paragraph-font-size)
 
-#newsMain
-  
-  @include mixins.gridMainContainer
-  background-image: url("../../images/blackasf.jpg")
-  background-repeat: no-repeat
-  background-attachment: fixed
-  background-position: center
-  background-size: cover
-  opacity: 1
-  display: none
-  padding: 5vw 10vw
-  line-height: 2em
-  text-align: left
-  .newsAbsolute
-    position: sticky
-    top: 0
-    left: 0
-  .newsContainer
-    padding: 1em
-    display: inline-block
-    h2
-      padding: 1.5em 0.8em
-    h3,h4,h5
-      font-family: variables.$family-subtitle
-      font-size: calc(var(--paragraph-font-size)*1.2)
-      padding: 1em 0.8em
-      margin: 0
-    
-    img
-      width: 70%
-      height: 70%
-      border-radius: 20px
-    figcaption
-      font-family: variables.$family-paragraph
-      font-size: var(--paragraph-font-size)
-      
-    li
-      list-style: none
-      font-size: var(--paragraph-font-size)
-      font-family: variables.$family-paragraph
-      padding: 0.5em 3em
-    .wp-block-preformatted
-      font-size: var(--paragraph-font-size)
-      text-transform: uppercase
-      font-family: variables.$family-paragraph
-      padding: 1em 2em
-      line-height: 1.5em
-      
     
 @media (max-width: 1200px)
-  #articleMain
+  #articleStart
     padding: 4vw
+  #articleMain
     gap: 20px
     .column8
       grid-column: span 4
 
 @media (max-width: 800px)
   #articleMain
-    padding: 4vw
     gap: 20px
     .column4, .column8
       grid-column: span 6
+    .articleContainer
+      .articleText
+        padding: 0.5em
+        p
+          padding: 0.25em
+        h2 ,p
+          font-size: 12px
+        h1
+          font-size: 18px
+        button
+          font-size: 12px
+          padding: 0.5em
+      .articleImage
+
+        padding: 14vw
 
 @media (max-width: 500px)
   #articleMain
-    padding: 4vw
     gap: 20px
-    .column4, .column8
+    .column4, .column8, .column6
       grid-column: span 12
+    .articleContainer
+      .articleImage
+
+        padding: 20vw
     
       
   

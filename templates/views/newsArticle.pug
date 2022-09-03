@@ -1,0 +1,21 @@
+extends ../layouts/default
+block bannerMixin
+  
+block content
+  #emptyContainer
+    .newsAbsolute
+      a(href='/newshub')
+        button Back to News page
+    #newsBackground
+      
+      #newsMain
+        .newsContainer.column12
+          h1#title
+        .newsContainer.column12
+          #featuredImage
+        .newsContainer.column12
+          h1#authorDate
+        .newsContainer.column12
+          #content
+block js
+  script( src="../../js/app/newsArticle.js")
