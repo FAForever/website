@@ -231,10 +231,8 @@ passport.deserializeUser(function (id, done) {
 const newsRoute = require('./scripts/getNews');
 app.use(newsRoute);
 
-
-
 // Run scripts initially on startup
-let requireRunArray = ['extractor', 'getLatestClientRelease', 'getRecentUsers'];
+let requireRunArray = ['extractor', 'getLatestClientRelease', 'getRecentUsers' ];
 for (let i = 0; i < requireRunArray.length; i++) {
   try {
     require(`./scripts/${requireRunArray[i]}`).run();
@@ -248,7 +246,7 @@ for (let i = 0; i < requireRunArray.length; i++) {
     } catch (e) {
       console.error(`${requireRunArray[i]} caused the error`, e);
     }
-  }, 9 * 100000); // 15 Minutes
+  },  1000 * 60 * 5); // 5 Minutes
 }
 
 //Start and listen on port

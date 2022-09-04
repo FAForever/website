@@ -19,7 +19,7 @@ let articleMain = document.getElementById('articleMain');
 function updateNewshub() {
   getNewshub()
     .then(data => {
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < data.length; i++) {
         articleMain.insertAdjacentHTML("afterbegin", `
 <div class ="articleContainer column4">
   <div class ="articleImage" onClick="articleActivate(${data.length - 1 - i})"></div>
@@ -39,9 +39,7 @@ function updateNewshub() {
 
       for (let i = 0; i < data.length; i++) {
         let date = data[i].date;
-
         let content = data[i].content;
-        console.log(content.length);
         articleImage[i].style.backgroundImage = `url("${data[i].media}")`;
         articleTitle[i].innerHTML = `${data[i].title}`;
         articleAuthorDate[i].innerHTML = `By ${data[i].author} on ${date.substring(0, 10)}`;
