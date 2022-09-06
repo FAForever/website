@@ -102,25 +102,23 @@ html(lang='en')
               ul.navAbsolute
           
       .navContainer.navEnd
-        ul.navItem
-          a(href='/login')
-            li.navList LOGIN
-            li.navAbsolute
-              li(class=(section === 'account' ? 'active' : null)).dropdown
-                a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button' title=(username ? 'Welcome ' + username : undefined))
-                ul.dropdown-menu.nav-account-dropdown-menu.pull-right(role='menu')
-                  if username
-                    li: span.welcome-text #{username}
-                    li: a(href="/account/report") Report Player
-                    if hasClan
-                      li: a(href="/clans/manage") My Clan
-                    li: a(href="/account/password/change") Change Password
-                    li: a(href="/account/username/change") Change Username
-                    li: a(href="/account/email/change") Change Email
-                    li: a(href="/account/link") Link Account to Steam
-                    li: a(href="/account/linkGog") Link Account to GOG
-                    li: a(href="/account/resync") Resync account
-                    li: a(href='/logout') Log Out
+        ul.loginItem
+          a#loginList(href='/login') LOGIN
+          ul#loginAbsolute
+            li(class=(section === 'account' ? 'active' : !null)).loginDropdown
+              ul.dropdown-menu.nav-account-dropdown-menu.pull-right(role='menu')
+                if username
+                  li: span.welcome-text Welcome #{username}
+                  li: a(href="/account/report") Report Player
+                  if hasClan
+                    li: a(href="/clans/manage") My Clan
+                  li: a(href="/account/password/change") Change Password
+                  li: a(href="/account/username/change") Change Username
+                  li: a(href="/account/email/change") Change Email
+                  li: a(href="/account/link") Link Account to Steam
+                  li: a(href="/account/linkGog") Link Account to GOG
+                  li: a(href="/account/resync") Resync account
+                  li: a(href='/logout') Log Out
       .navContainer.navEnd
         ul.navItem
           a(href="/account/register")

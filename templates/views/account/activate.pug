@@ -11,8 +11,6 @@ block content
   .activationContainer
     br
     .column12
-      +flash-messages(flash)
-      br
       form(method='post',action="/account/activate?username="+username+"&token="+token,data-toggle="validator")
         - passwordName = passwordName || 'password'
         - labelPassword = labelPassword || ''
@@ -31,7 +29,7 @@ block content
               .help-block.with-errors
         .form-actions
           br
-          button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
+          button(type='submit') Register
 
 block js
   script(src='/js/account.min.js')

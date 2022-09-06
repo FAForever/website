@@ -78,6 +78,35 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileTransitionBar[0].style.opacity = "1";
     }, 500); 
   });
+
+
+
+
+  let loginList = document.getElementById("loginList");
+  let loginAbsolute = document.getElementById("loginAbsolute");
+  let stillHovering = 0;
+
+
+    //When you mouseover/click, menu appears
+    loginList.addEventListener("mouseout", () => {
+      stillHovering = 1;
+      console.log('hovering out of login');
+      setTimeout(() => {
+        if (stillHovering === 1) {
+          loginAbsolute.style.display = "none";
+        }
+      }, 0);
+
+    });
+    loginList.addEventListener("mouseover", () => {
+      stillHovering = 0;
+      console.log('hovering on login');
+      setTimeout(() => {
+        loginAbsolute.style.display = "block";
+        console.log('timeout done')
+      }, 20);
+    });
+    //when you mouseout/leave, menu dissapears
   
   
 
@@ -100,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(highlightPulse, 2000);
   
 });
-/*
+
 async function playerCounterJSON() {
   const response = await fetch('js/app/members/recent.json');
   const data = await response.json();
@@ -111,4 +140,4 @@ playerCounterJSON()
   .then((data) => {
     document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", data.length);
   });
-*/
+

@@ -500,8 +500,29 @@ ul
       color: variables.$color-active
       transition: 0.4s
       
+.navContainer
+  .loginItem
+    position: relative
+    li
+      list-style: none
+      padding: 0.5em
+      font-size: 16px
+    #loginList
+      position: relative
 
-
+    #loginAbsolute
+      display: none
+      z-index: 200
+      background-color: variables.$background-primary
+      position: absolute
+      top: 1em
+      opacity: 1
+      .loginDropdown
+        width: 10em
+        display: block
+        opacity: 1
+        
+      
 @media (min-width: 1201px)
   .mobileTransition
     display: none
