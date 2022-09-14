@@ -15,6 +15,66 @@ let clientSpawn = document.getElementById('clientSpawn');
 let clientContainer = document.querySelectorAll('.clientContainer');
 let clientMainFeature = document.querySelectorAll('.clientMainFeature');
 
+//downscale-fix
+let PICA = new pica({ features: ['js', 'wasm', 'cib', 'ww'] });
+
+let images = [];
+
+function rescaleToCanvas() {
+
+
+  // this part should position the canvas such that it matches the original
+  // background-image. the code assumes background image is centered and scaled
+  // to cover the div
+
+  let ratio = {
+    x: this.div.offsetWidth / this.width,
+    y: this.div.offsetHeight / this.height
+  };
+  if (ratio.x > ratio.y) {
+    let height = Math.round(this.height * ratio.x);
+    this.cvs.setAttribute('width', this.div.offsetWidth);
+    this.cvs.setAttribute('height', height);
+    this.cvs.style.top = Math.round((this.div.offsetHeight - height) / 2) + 'px';
+    this.cvs.style.left = '0';
+  } else {
+    let width = Math.round(this.width * ratio.y);
+    this.cvs.setAttribute('width', width);
+    this.cvs.setAttribute('height', this.div.offsetHeight);
+    this.cvs.style.left = Math.round((this.div.offsetWidth - width) / 2) + 'px';
+    this.cvs.style.top = '0';
+  }
+  
+  PICA.resize(this, this.cvs);
+  
+}
+
+function prepImageDownscale(div, imageURL) {
+  // We need the background image in a new Image class both to send it to pica
+  // and to get it's original pixel dimensions, so we get the url from the div
+  // and clean it up
+
+  let img = new Image();
+  
+  img.src = imageURL;
+  
+  // the canvas element will sit just inside the old div, overlapping the
+  // background image and clipped to the div's dimentions with overflow: hidden
+  let cvs = document.createElement('canvas');
+
+  div.style.position = 'relative';
+  div.style.overflow = 'hidden';
+  cvs.style.position = 'absolute';
+  div.appendChild(cvs);
+  img.cvs = cvs;
+  img.div = div;
+
+  
+  img.onload = rescaleToCanvas;
+  images.push(img);
+}
+//downscale-fix END
+
 function createArticles() {
   getNewshub()
     .then(data => {
@@ -53,6 +113,11 @@ function createArticles() {
     for (let i = 0; i < data.length - 1; i++) {
       let content = data[i + 1].content;
       clientImage[i].style.backgroundImage = `url("${data[i + 1].media}")`;
+      
+      //downscale-fix
+      prepImageDownscale(clientImage[i], `${data[i + 1].media}` );
+      //downscale-fix END
+      
       clientTitle[i].innerHTML = `${data[i + 1].title}`;
       clientContent[i].innerHTML = `${content.substring(0, 200)}`;
     }
@@ -61,11 +126,43 @@ function createArticles() {
     let featureContent = document.querySelectorAll('.featureContent');
     let content = data[0].content;
     featureImage[0].style.backgroundImage = `url("${data[0].media}")`;
+    
+    //downscale-fix
+    prepImageDownscale(featureImage[0], `${data[0].media}` );
+    //downscale-fix END
+
     featureTitle[0].innerHTML = `${data[0].title}`;
     featureContent[0].innerHTML = `${content.substring(0, 400)}`;
-
+    
   });
 }
+
+
+//downscale-fix
+
+let resizeTimer = null;
+let resizeFunction = function() {
+  images.forEach( (img) => {
+    img.onload();
+    img.cvs.style.display = 'block';
+  });
+};
+
+// delay after resize event before we do the downscale. The faf client behaved
+// erratically without it
+let resizeTime = 60;
+let resizeEventListener = function() {
+  {
+    clearTimeout(resizeTimer);
+    images.forEach( (img) => {
+      img.cvs.style.display = 'none';
+    });
+    resizeTimer = setTimeout(resizeFunction, resizeTime);
+  }
+};
+window.addEventListener('resize', resizeEventListener);
+
+//downscale-fix END
 
 createArticles();
 let arrowRight = document.getElementById('clientArrowRigth');
