@@ -1,6 +1,17 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
 require('dotenv').config();
+//Define environment variables with default values
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+process.env.PORT = process.env.PORT || '4000';
+process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
+process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
+process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
+process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
+process.env.HOST = process.env.HOST || 'http://localhost';
+process.env.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '12345';
+
+
 
 let express = require('express');
 let middleware = require('./routes/middleware');
@@ -11,17 +22,17 @@ let flash = require('connect-flash');
 const cors = require('cors');
 let app = express();
 
-app.locals.clanInvitations = {};
+//Start and listen on port
+app.listen(process.env.PORT,() => {
+  console.log('Express listening on port ' + process.env.PORT);
+});
 
-//Define environment variables with default values
-process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-process.env.PORT = process.env.PORT || '4000';
-process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
-process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
-process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
-process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
-process.env.HOST = process.env.HOST || 'http://localhost';
-process.env.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '12345';
+//Initialize values for default configs
+app.set('views', 'templates/views');
+app.set('view engine', 'pug');
+app.set('port', process.env.PORT);
+
+app.locals.clanInvitations = {};
 
 //Execute middleware before each request...
 app.use(middleware.initLocals);
@@ -36,6 +47,8 @@ app.use(express.static('public', {
 }));
 
 app.use(bodyParser.urlencoded({extended: false}));
+
+
 app.use(require('express-session')({
   secret: process.env.SESSION_SECRET_KEY,
   resave: false,
@@ -51,10 +64,7 @@ app.use(passport.session());
 app.use(flash());
 app.use(middleware.username);
 
-//Initialize values for default configs
-app.set('views', 'templates/views');
-app.set('view engine', 'pug');
-app.set('port', process.env.PORT);
+
 
 
 
@@ -62,16 +72,19 @@ app.set('port', process.env.PORT);
 
 
 function loggedIn(req, res, next) {
+  // Takes the current URL
   req.session.referral = req.protocol + '://' + req.get('host') + req.originalUrl;
   if (req.isAuthenticated()) {
     res.locals.username = req.user.data.attributes.userName;
     next();
-  } else {
+    
+  } 
+  // Not logged? Gets sent to /login
+  else {
     res.redirect('/login');
   }
 }
-// Account routes
-// Registration
+
 
 //Variable to hold routing path
 let routes = './routes/views/';
@@ -146,7 +159,6 @@ appGetRouteArray.forEach(page => app.get(`/${page}`, (req,res) => {
 
 
 
-app.get('/lobby_api', cors(), require('./routes/lobby_api'));
 app.get('/account/checkUsername', require('./routes/views/accounts/get/checkUsername'));
 
 // Clans
@@ -165,13 +177,13 @@ app.post('/clans/transfer', loggedIn, require(routes + 'clans/post/transfer'));
 app.post('/clans/update', loggedIn, require(routes + 'clans/post/update'));
 app.post('/clans/leave', loggedIn, require(routes + 'clans/post/leave'));
 
-// Compatibility
+// Get any clan, see that clan id
 app.get('/clan/*', function (req, res) {
   const id = req.path.split('/').slice(-1)[0];
   res.redirect('/clans/see?id=' + id);
 
 });
-
+//Logout function
 app.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
@@ -193,6 +205,7 @@ app.get('/callback', passport.authenticate('faforever', {
   req.session.referral = null;
 });
 
+//Strategy in current use?
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
     tokenURL: process.env.OAUTH_URL + '/oauth2/token',
@@ -232,14 +245,14 @@ const newsRoute = require('./scripts/getNews');
 app.use(newsRoute);
 
 // Run scripts initially on startup
-let requireRunArray = ['extractor', 'getLatestClientRelease', 'getRecentUsers' ];
+let requireRunArray = ['extractor', 'getLatestClientRelease'];
 for (let i = 0; i < requireRunArray.length; i++) {
   try {
     require(`./scripts/${requireRunArray[i]}`).run();
   } catch (e) {
     console.error(`Error running ${requireRunArray[i]} script. Make sure the API is available (will try again after interval).`, e);
   }
-  // Run leaderboard extractor every 900 seconds / 15 minutes
+// Interval for scripts
   setInterval(() => {
     try {
       require(`./scripts/${requireRunArray[i]}`).run();
@@ -248,11 +261,16 @@ for (let i = 0; i < requireRunArray.length; i++) {
     }
   },  1000 * 60 * 5); // 5 Minutes
 }
+setInterval(() => {
+  try {
+    require(`./scripts/getRecentUsers`).run();
 
-//Start and listen on port
-app.listen(process.env.PORT,() => {
-  console.log('Express listening on port ' + process.env.PORT);
-});
+  } catch (e) {
+    console.error(`getRecentUsers script caused the error`, e);
+  }
+},  1000 * 15); // 30 seconds
+
+
 
 
 //404 Error Handlers

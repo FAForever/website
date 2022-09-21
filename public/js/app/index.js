@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function playerCounterJSON() {
-  const response = await fetch('js/app/members/recent.json');
+  const response = await fetch('js/app/members/recentUsers.json');
   const data = await response.json();
   return data;
 }

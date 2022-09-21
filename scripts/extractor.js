@@ -69,7 +69,7 @@ async function contentCreators() {
 }
 
 async function getAllClans() {
-  let response = await fetch(`https:api.faforever.com/data/clan?fields[clan]=name,tag&page[number]=1&page[size]=3000`);
+  let response = await fetch(`${process.env.API_URL}/data/clan?fields[clan]=name,tag&page[number]=1&page[size]=3000`);
   let fetchData = await response.json();
   let dataObjectToArray = Object.values(fetchData);
   let data = dataObjectToArray[0].map((item, index) => ({
@@ -79,11 +79,6 @@ async function getAllClans() {
   }));
   return await data;
 }
-
-
-
-
-//Dummies added (0 and 1) so we can re-use leaderboardID on the API call
 
 
 async function getLeaderboards(leaderboardID) {
@@ -113,19 +108,20 @@ module.exports.run = function run() {
     newshub(), contentCreators(), clientNews(), fafTeams(), getAllClans(),
     getLeaderboards(1),getLeaderboards(2),getLeaderboards(3),getLeaderboards(4),  
   ];
-  const functionNames = [
+  //Make sure to not change the order of these since they match the order of extractorFunctions
+  const fileNames = [
     'newshub', 'content-creatores', 'client-news', 'faf-teams', 'getAllClans',
     'global', '1v1', '2v2', '4v4',
   ];
 
-  functionNames.forEach((theFunction, index) => {
+  fileNames.forEach((fileName, index) => {
     extractorFunctions[index]
       .then(data => {
-        fs.writeFile(`public/js/app/members/${theFunction}.json`, JSON.stringify(data), error => {
+        fs.writeFile(`public/js/app/members/${fileName}.json`, JSON.stringify(data), error => {
           if (error) {
             console.log(error);
           } else {
-            console.log(`${currentDate} - ${theFunction} file created successfully.`);
+            console.log(`${currentDate} - ${fileName} file created successfully.`);
           }
         });
       });

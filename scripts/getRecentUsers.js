@@ -1,56 +1,37 @@
 require('dotenv').config();
 
-let request = require('request');
-let fs = require('fs');
-let moment = require('moment');
+// /data/game?filter=endTime=gt=date.toISOString() &include=playerStats.player&fields[player]=login &sort=-endTime
 
+const fs = require('fs');
+const fetch = require('node-fetch');
+
+let d = new Date();
+let timeFilter = 4;
+let minusTimeFilter = d.setHours(d.getHours() - timeFilter);
+let currentDate = new Date(minusTimeFilter).toISOString();
+console.log(currentDate);
+
+
+async function getRecentUsers() {
+  let response = await fetch(`${process.env.API_URL}/data/leaderboardRating?filter=updateTime=gt=${currentDate}&page[size]=5000`);
+  let fetchData = await response.json();
+  //Now we get a js array rather than a js object. Otherwise we can't sort it out.
+  let dataObjectToArray = Object.values(fetchData);
+  let data = dataObjectToArray[0].map((item)=> ({
+    playerID: item.id
+  }));
+  return await data;
+}
 
 module.exports.run = function run() {
-    console.log(moment().format('DD-MM-YYYY - HH:mm:ss')  + ' - Updating the recent users...');
-    
-    try{
-        let date = new Date();
-        date.setDate( date.getDate() - 1 ); // Remove one day
-        const requestUrl =
-            process.env.API_URL + '/data/game'+
-                '?filter=endTime=gt="'+date.toISOString()+'"'+
-                '&include=playerStats.player'+
-                '&fields[player]=login'+
-                '&sort=-endTime'
-            ;
-         
-        request(
-            requestUrl,        
-            function (error, response, body) {                
-                if (error || response.statusCode > 210) return;
-                
-                let apiRecentPlayers = JSON.parse(body);
-                let recentPlayers = [];
-
-                if (apiRecentPlayers.included === undefined){
-                    console.log(moment().format('DD-MM-YYYY - HH:mm:ss') + ' - Tried to update the list of recent players, but there is no one.');
-                    return;
-                }
-
-                for(const i in apiRecentPlayers.included) {
-                    let entry = apiRecentPlayers.included[i];
-                    if (entry.type !== 'player') continue;
-                    
-                    recentPlayers.push(entry.attributes.login);
-                }
-
-                fs.writeFile('public/js/app/members/recent.json', JSON.stringify(recentPlayers), function(error) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        console.log(moment().format('DD-MM-YYYY - HH:mm:ss') + ' - Recent players file created successfully');
-                    }
-                });                
-            }
-        );
-    }
-    catch(e){
-        console.log(moment().format('DD-MM-YYYY - HH:mm:ss')  + ' - An error occured while getting the list of recent users:');
-        console.log(e);
-    }
+  getRecentUsers()
+    .then(data => {
+      fs.writeFile(`public/js/app/members/recentUsers.json`, JSON.stringify(data), error => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(`${currentDate} - Recent Users file created successfully.`);
+        }
+      });
+    });
 };

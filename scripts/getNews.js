@@ -2,7 +2,7 @@ const  fs = require('fs');
 const {Router} = require('express');
 const router = Router();
 
-
+// Interval so the news update themselves
 setInterval(()=>{
   
 
@@ -20,6 +20,7 @@ let articleTitle = [];
     let title = data[i].title.replace(/ /g, '-');
     articleTitle.push(title);
   }
+  //we create a get route for each article found
   articleTitle.forEach(page => router.get(`/newshub/${page}`, (req, res) => {
     res.render('newsArticle');
   }));
