@@ -9,7 +9,6 @@ let d = new Date();
 let timeFilter = 4;
 let minusTimeFilter = d.setHours(d.getHours() - timeFilter);
 let currentDate = new Date(minusTimeFilter).toISOString();
-console.log(currentDate);
 
 
 async function getRecentUsers() {
@@ -29,9 +28,7 @@ module.exports.run = function run() {
       fs.writeFile(`public/js/app/members/recentUsers.json`, JSON.stringify(data), error => {
         if (error) {
           console.log(error);
-        } else {
-          console.log(`${currentDate} - Recent Users file created successfully.`);
-        }
+        } 
       });
     });
 };
