@@ -31,19 +31,30 @@ function rescaleToCanvas() {
     x: this.div.offsetWidth / this.width,
     y: this.div.offsetHeight / this.height
   };
+  let sizeCSS = {
+    x: 0,
+    y: 0
+  };
+  
   if (ratio.x > ratio.y) {
     let height = Math.round(this.height * ratio.x);
-    this.cvs.setAttribute('width', this.div.offsetWidth);
-    this.cvs.setAttribute('height', height);
+    sizeCSS.x = this.div.offsetWidth;
+    sizeCSS.y = height;
     this.cvs.style.top = Math.round((this.div.offsetHeight - height) / 2) + 'px';
     this.cvs.style.left = '0';
   } else {
     let width = Math.round(this.width * ratio.y);
-    this.cvs.setAttribute('width', width);
-    this.cvs.setAttribute('height', this.div.offsetHeight);
+    sizeCSS.x = width;
+    sizeCSS.y = this.div.offsetHeight;
     this.cvs.style.left = Math.round((this.div.offsetWidth - width) / 2) + 'px';
     this.cvs.style.top = '0';
   }
+  
+  let scale = window.devicePixelRatio;
+  this.cvs.setAttribute('width', sizeCSS.x * scale);
+  this.cvs.setAttribute('height', sizeCSS.y * scale);
+  this.cvs.style.width = sizeCSS.x + 'px';
+  this.cvs.style.height = sizeCSS.y + 'px';
   
   PICA.resize(this, this.cvs);
   
