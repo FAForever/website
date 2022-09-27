@@ -55,8 +55,10 @@ function prepImageDownscale(div, imageURL) {
   // and clean it up
 
   let img = new Image();
-  
+
   img.src = imageURL;
+
+  img.crossOrigin = 'Anonymous';
   
   // the canvas element will sit just inside the old div, overlapping the
   // background image and clipped to the div's dimentions with overflow: hidden
