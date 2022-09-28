@@ -94,7 +94,7 @@ function markdown(template) {
 app.get('/privacy', markdown('templates/views/privacy.md'));
 app.get('/tos', markdown('templates/views/tos.md'));
 app.get('/rules', markdown('templates/views/rules.md'));
-app.get('/coc', markdown('templates/views/coc.md'));
+app.get('/cg', markdown('templates/views/cg.md'));
 
 /// Account routes
 // Registration
