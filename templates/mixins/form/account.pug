@@ -78,6 +78,6 @@ mixin gogUsername
     .form-group.has-feedback
         label GOG account name:
             .input-group
-                input(type='text', name='gog_username', id='gogUsername', required='required', data-minlength='3', maxlength='100', pattern='[A-Za-z0-9_-]{2,99}$').form-control
+                input(type='text', name='gog_username', id='gogUsername', required='required', data-minlength='3', maxlength='100', pattern='[A-Za-z0-9._-]{2,99}$').form-control
                 span(aria-hidden='true').glyphicon.form-control-feedback
                 .help-block.with-errors
