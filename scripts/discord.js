@@ -1,7 +1,10 @@
+require('dotenv').config();
+
 const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 const scopes = ['identify', 'email', 'guilds.join'];
 const discordUser = require("../scripts/database/schemas/discordSchema");
+
 
 /*
 passport.serializeUser(function(user, done) {
@@ -44,8 +47,8 @@ passport.deserializeUser(function (user, cb) {
 passport.use(
   new DiscordStrategy(
     {
-      clientID: 'id',
-      clientSecret: 'secret',
+      clientID: process.env.OAUTH_CLIENT_ID,
+      clientSecret: process.env.OAUTH_CLIENT_SECRET,
       callbackURL: 'http://localhost:3000/login/redirect',
       scope: scopes
     }, (

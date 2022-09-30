@@ -2,8 +2,8 @@ const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const mongoStore = require('connect-mongo')
-const bodyParser = require('body-parser')
+const mongoStore = require('connect-mongo');
+const bodyParser = require('body-parser');
 require('./scripts/discord');
 require('./scripts/database');
 const app = express();
@@ -32,13 +32,12 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-
-  maxAge: 1000 * 60,
-  /*
+  cookie: {maxAge: 1000 * 60 * 60}, // 1 hour
+  
   store: mongoStore.create({
-    mongoUrl: 'mongodb+srv://Javi:4321@cluster0.j52qwuz.mongodb.net/test'
+    mongoUrl: process.env.MONGO
   })
-   */
+   
 }));
 
 
@@ -62,14 +61,32 @@ app.get('/login/redirect/', passport.authenticate('discord', {
   console.log('You did it!');
   res.redirect('/newshub'); // Successful auth
 });
+
+app.get('/logout', function(req, res, next) {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+});
+function loggedIn(req, res, next) {
+  if (req.isAuthenticated() ) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+}
 //All Pages
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
 let appGetRouteArray = [
   // This first '' is the home/index page
   '', 'client-news', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'tos', 'tos-ru', 'tos-fr', 'newsArticle',
+  
+  
+  
+  'account/create', 'account/register',
 ];
 //Renders every page written above
-appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
+appGetRouteArray.forEach(page => app.get(`/${page}`,loggedIn, (req, res) => {
   res.render(page);
 }));
 
