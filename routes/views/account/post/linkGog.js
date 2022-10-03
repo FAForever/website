@@ -41,7 +41,7 @@ exports = module.exports = function(req, res) {
 
       if (res !== undefined && res.statusCode === 200) {
         flash.class = 'alert-success';
-        flash.messages = [{msg: 'Your accounts were linked successfully.'}];
+        flash.messages = [{msg: 'Your account were linked successfully.'}];
         flash.type = 'Success!';
 
         locals.gogToken = '-';

@@ -28,34 +28,13 @@
     --title-font-size: 20px
 /* Used as white text between stuff
 
-.responsiveTextTitle
-  font-family: variables.$family-subtitle
-  font-size: var(--subtitle-font-size)
-
-.responsiveText
-  font-size: var(--paragraph-font-size)
-  padding: 1.2em 0
-  line-height: 1.5em
-  color: variables.$color-active
-  font-family: variables.$family-paragraph
-  direction: ltr
-
-.responsiveTextPadding
-  padding: 1.5em 10vw
-
-.responsiveTextNoPadding
-  font-size: var(--paragraph-font-size)
-  line-height: 1.5em
-  color: variables.$color-active
-  font-family: variables.$family-paragraph
-  direction: ltr
 
 //scroll Bar
 
 /* width */
 ::-webkit-scrollbar 
   width: 8px
-  height: 0px
+  height: 0
 /* Track */
 ::-webkit-scrollbar-track 
   background: variables.$background-primary
@@ -67,7 +46,8 @@
   background: variables.$color-inactive 
 
 
-
+// Global values
+  
 html
   font-family: variables.$family-paragraph
 
@@ -99,8 +79,7 @@ h3,h4
   font-family: variables.$family-subtitle
   font-size: calc(var(--paragraph-font-size)*1.2)
   padding: 1em 0.8em
-  
-  
+
   
 a
   &:link
@@ -119,6 +98,8 @@ ul
   padding: 0
   margin: 0
 
+
+  
 .indexButton
   margin: 10vw
   font-size: 4vw
@@ -267,6 +248,8 @@ ul
 
   li
     color: variables.$color-inactive
+    
+    
 /*===== Regular navbar =====
 
 .mainNavContainer
@@ -491,7 +474,7 @@ ul
     
   li
     list-style-type: none
-    padding: 1em 0.5em 0em 0.5em
+    padding: 1em 0.5em 0 0.5em
     font-size: 0.8em
     font-family: variables.$family-paragraph
   a

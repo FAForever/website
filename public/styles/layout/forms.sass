@@ -1,0 +1,50 @@
+@use '../abstracts/variables'
+@use '../abstracts/mixins'
+
+.accountForm
+  @include mixins.mainRectangleContainer
+  justify-items: center
+  gap: 0
+  
+    
+
+form
+  align-self: center
+  width: 100%
+  padding: 0em
+  p
+    text-align: left
+    font-size: calc(var(--paragraph-font-size)*1)
+    padding: 0.1em
+ 
+  .formStart
+    text-align: left
+    display: inline-block
+    p
+      font-size: 16px
+      
+    input
+      margin: 0.1em
+      border: 0.2em solid variables.$background-primary
+      
+      
+    .formHelp
+      display: inline
+      ul
+        padding: 0.5em 0
+        font-weight: bold
+        font-family: variables.$family-paragraph
+        li
+          font-weight: normal
+          line-height: 1.25em
+
+.formGroup
+  p
+    padding: 0.2em
+
+.formContainer
+  padding: 1em 0
+  text-align: center
+  display: inline-block
+
+

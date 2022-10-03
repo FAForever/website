@@ -56,10 +56,10 @@ app.listen(3000, () => {
 app.get('/login', passport.authenticate('discord'));
 
 app.get('/login/redirect/', passport.authenticate('discord', {
-  failureRedirect: '/',
+  failureRedirect: '/login',
 }), function(req, res) {
   console.log('You did it!');
-  res.redirect('/newshub'); // Successful auth
+  res.redirect('/'); // Successful auth
 });
 
 app.get('/logout', function(req, res, next) {
@@ -69,14 +69,18 @@ app.get('/logout', function(req, res, next) {
   });
 });
 function loggedIn(req, res, next) {
+  
   if (req.isAuthenticated() ) {
     next();
   } else {
     res.redirect('/login');
   }
 }
-//All Pages
+//Routes
+
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
+
+// GET ROUTES
 let appGetRouteArray = [
   // This first '' is the home/index page
   '', 'client-news', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'tos', 'tos-ru', 'tos-fr', 'newsArticle',
@@ -89,6 +93,17 @@ let appGetRouteArray = [
 appGetRouteArray.forEach(page => app.get(`/${page}`,loggedIn, (req, res) => {
   res.render(page);
 }));
+
+
+// POST routes
+let routes = './routes/views/account/post/';
+let appPostRouteArray = [
+   'register',
+];
+//Renders every page written above
+appPostRouteArray.forEach(page => app.post(`account/${page}`,loggedIn, require(`${routes}${page}`)));
+
+app.post('account/register',);
 
 /*
 

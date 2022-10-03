@@ -2,7 +2,7 @@ let flash = {};
 const request = require('request');
 const ClientOAuth2 = require('client-oauth2');
 const {check, validationResult} = require('express-validator');
-
+console.log('register POST!')
 const apiAuth = new ClientOAuth2({
 	clientId: process.env.OAUTH_CLIENT_ID,
 	clientSecret: process.env.OAUTH_CLIENT_SECRET,
