@@ -8,6 +8,8 @@ let timeFilter = 6;
 let minusTimeFilter = d.setMonth(d.getMonth() - timeFilter);
 let currentDate = new Date(minusTimeFilter).toISOString();
 
+
+//TODO: Make an env variable for all API/Wordpress urls, rather than using direct values
 async function newshub() {
   let response = await fetch(`https:direct.faforever.com/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,content.rendered,date,categories&categories=587`);
   let fetchData = await response.json();
@@ -69,7 +71,7 @@ async function contentCreators() {
 }
 
 async function getAllClans() {
-  let response = await fetch(`${process.env.API_URL}/data/clan?fields[clan]=name,tag&page[number]=1&page[size]=3000`);
+  let response = await fetch(`https://api.faforever.com/data/clan?fields[clan]=name,tag&page[number]=1&page[size]=3000`);
   let fetchData = await response.json();
   let dataObjectToArray = Object.values(fetchData);
   let data = dataObjectToArray[0].map((item) => ({
@@ -82,7 +84,7 @@ async function getAllClans() {
 
 
 async function getLeaderboards(leaderboardID) {
-  let response = await fetch(`${process.env.API_URL}/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
+  let response = await fetch(`https://api.faforever.com/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
 
   let data = await response.json();
   let dataObjectToArray = await Object.values(data);
