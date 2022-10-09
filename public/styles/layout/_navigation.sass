@@ -61,7 +61,6 @@ body
   font-family: variables.$family-paragraph
   color: variables.$color-active
 p, h3, h2, h1
-  font-family: variables.$family-paragraph
   margin: 0
   padding: 0.8em
 p
@@ -71,16 +70,19 @@ h1
   font-family: variables.$family-title
   font-size: var(--title-font-size)
   padding: 1.4em 0.8em
+  font-weight: normal
+  
 h2
   font-family: variables.$family-subtitle
   font-size: var(--subtitle-font-size)
   padding: 1em 0.8em
-h3,h4
-  font-family: variables.$family-subtitle
-  font-size: calc(var(--paragraph-font-size)*1.2)
-  padding: 1em 0.8em
-
   
+h3 , h4, h5, h6
+  font-size: var(--paragraph-font-size)
+  padding: 1em 0.8em
+  font-weight: normal
+
+
 a
   &:link
     text-decoration: none
@@ -501,9 +503,20 @@ ul
       top: 1em
       opacity: 1
       .loginDropdown
-        width: 10em
+        padding: 0
+    
         display: block
         opacity: 1
+        li
+          padding: 1em 0.8em
+          background-color: variables.$background-secondary
+          transition: 0.4s
+          &:hover
+            background-color: variables.$background-tertiary
+            a
+              color: variables.$color-active
+
+        
         
       
 @media (min-width: 1201px)

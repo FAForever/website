@@ -85,9 +85,19 @@ document.addEventListener("DOMContentLoaded", () => {
   let loginList = document.getElementById("loginList");
   let loginAbsolute = document.getElementById("loginAbsolute");
   let stillHovering = 0;
-
-
+  
+  
+  //when you mouse is over the login, it should appear
+  loginList.addEventListener("mouseover", () => {
+    stillHovering = 0;
+    console.log('hovering on login');
+    setTimeout(() => {
+      loginAbsolute.style.display = "block";
+      //console.log('timeout done');
+    }, 0);
+  });
     //When you mouseover/click, menu appears
+    //when you mouseout/leave, menu dissapears
     loginList.addEventListener("mouseout", () => {
       stillHovering = 1;
       console.log('hovering out of login');
@@ -98,15 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 0);
 
     });
-    loginList.addEventListener("mouseover", () => {
-      stillHovering = 0;
-      console.log('hovering on login');
-      setTimeout(() => {
-        loginAbsolute.style.display = "block";
-        console.log('timeout done')
-      }, 20);
-    });
-    //when you mouseout/leave, menu dissapears
+    
+ 
+    
   
   
 

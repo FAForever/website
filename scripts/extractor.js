@@ -72,7 +72,7 @@ async function getAllClans() {
   let response = await fetch(`${process.env.API_URL}/data/clan?fields[clan]=name,tag&page[number]=1&page[size]=3000`);
   let fetchData = await response.json();
   let dataObjectToArray = Object.values(fetchData);
-  let data = dataObjectToArray[0].map((item, index) => ({
+  let data = dataObjectToArray[0].map((item) => ({
     id: item.id,
     name: item.attributes.name,
     tag: item.attributes.tag,
@@ -83,8 +83,10 @@ async function getAllClans() {
 
 async function getLeaderboards(leaderboardID) {
   let response = await fetch(`${process.env.API_URL}/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
+
   let data = await response.json();
-  let dataObjectToArray = Object.values(data);
+  let dataObjectToArray = await Object.values(data);
+  
   let playerLogin = dataObjectToArray[2].map(item => ({
     label: item.attributes.login
   }));

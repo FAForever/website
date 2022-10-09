@@ -18,7 +18,7 @@ html(lang='en')
     link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Orbitron&display=swap')
 
     //- Customise the stylesheet for your site by editing /public/styles/site.sass
-    link(href="/styles/css/site.min.css?version="+Date.now(), rel="stylesheet")
+    link(href="/styles/css/site.min.css?version=" + Date.now(), rel="stylesheet")
     script(async, defer, data-domain="faforever.com", src="https://plausible.faforever.com/js/plausible.js")
     script(src="https://kit.fontawesome.com/33e7e258d3.js" crossorigin='anonymous')
 
@@ -44,7 +44,7 @@ html(lang='en')
           .fab.fa-discord.fa-lg
       .topNavContainer
         a(href='https://www.youtube.com/c/ForgedAllianceForever')
-          .fab.fa-youtube.fa-lg 
+          .fab.fa-youtube.fa-lg
       .topNavContainer
         a(href='https://www.twitch.tv/faflive')
           .fab.fa-twitch.fa-lg
@@ -77,7 +77,7 @@ html(lang='en')
                 li AI/Skirmish
               a(href='/scfa-vs-faf')
                 li SC:FA vs FAF
-              
+
           li.navList COMMUNITY
             .fas.fa-caret-down
             ul.navAbsolute
@@ -89,7 +89,7 @@ html(lang='en')
                 li  Contribute/Volunteer
               a(href='/donation')
                 li  Donate to FAF
-              
+
           li.navList COMPETITIVE
             .fas.fa-caret-down
             ul.navAbsolute
@@ -100,40 +100,47 @@ html(lang='en')
           a(href='/play')
             li.navList DOWNLOAD
               ul.navAbsolute
-          
-      .navContainer.navEnd
-        ul.loginItem
-          a#loginList(href='/login') LOGIN
-          ul#loginAbsolute
-            li(class=(section === 'account' ? 'active' : !null)).loginDropdown
-              ul.dropdown-menu.nav-account-dropdown-menu.pull-right(role='menu')
-                if username
-                  li: span.welcome-text Welcome #{username}
-                  li: a(href="/account/report") Report Player
+
+      if !username
+        .navContainer.navEnd
+          ul.navItem
+            a(href="/login")
+              li.navList LOGIN
+        .navContainer.navEnd
+          ul.navItem
+            a(href="/account/register")
+              li.navList REGISTER
+      
+      if username
+        .navContainer.navEnd#loginList
+          ul.loginItem
+            .navList #{username}
+            ul#loginAbsolute
+              li.loginDropdown
+                ul(role='menu')                  
                   if hasClan
                     li: a(href="/clans/manage") My Clan
-                  li: a(href="/account/password/change") Change Password
-                  li: a(href="/account/username/change") Change Username
-                  li: a(href="/account/email/change") Change Email
-                  li: a(href="/account/link") Link Account to Steam
-                  li: a(href="/account/linkGog") Link Account to GOG
-                  li: a(href="/account/resync") Resync account
-                  li: a(href='/logout') Log Out
-      .navContainer.navEnd
-        ul.navItem
-          a(href="/account/register")
-            li.navList REGISTER
-            ul.navAbsolute
-      
+                  li: a(href="/account/changeEmail") Change Email
+                  li: a(href="/account/changePassword") Change Password
+                  li: a(href="/account/changeUsername") Change Username
+                  li: a(href="/account/linkSteam") Steam Linking
+                  li: a(href="/account/linkGog") GOG Linking
+                  li: a(href="/account/report") Report Player
+        .navContainer.navEnd
+          ul.navItem
+            a(href="/logout")
+              li.navList LOG OUT
+
+
     // the mobilenav is the mobile navbar, it has two stickies, one of them is the sticky for the mobile menu (so it stays with the user) and the second one is the black backgroud (so when the user opens the mobile menu, everything else darkens.)
 
 
     .mobileTransition
       .mobileTransitionContainer
-          img(src='/images/logos/faflogo.svg' alt='')
+        img(src='/images/logos/faflogo.svg' alt='')
       .fas.fa-bars
 
-    
+
     .gridMainContainer.mobileNavBar
       i.fas.fa-times
       .gridItem.column12
@@ -141,13 +148,13 @@ html(lang='en')
           .movingBackground1
           .movingBackground2
         img(src='/images/faflogo.svg' alt='')
-        
+
         ul
           a(href='/') Home
         ul
           a(href='/newshub') News
         .mobileNavUl Game
-            .fas.fa-caret-down.mobileCaret
+          .fas.fa-caret-down.mobileCaret
         ul.mobileNavLi
           li
             a(href='/tutorials-guides') Tutorials/Guides
@@ -166,16 +173,16 @@ html(lang='en')
             a(href='/donation') Donate
           li
             a(href='/contribution') Contribute
-          
+
         .mobileNavUl Competitive
-            .fas.fa-caret-down.mobileCaret
+          .fas.fa-caret-down.mobileCaret
         ul.mobileNavLi
           li
             a(href='/leaderboards') Leaderboards
           li
             a(href='/tournaments') Tournaments
         .mobileSocialMedia
-          a(href='https://discord.gg/mXahVSKGVb') 
+          a(href='https://discord.gg/mXahVSKGVb')
             .fab.fa-discord
           a(href='https://www.twitch.tv/faflive')
             .fab.fa-twitch
@@ -188,20 +195,20 @@ html(lang='en')
           a(href='https://wiki.faforever.com/en/home') FAF Wiki
       .splatForgedBorder.transformationReverse.absoluteBottom
         .movingBackground1
-        .movingBackground2 
-  
-    
+        .movingBackground2
+
+
     .splatForgedBorder
       .movingBackground1
       .movingBackground2
 
-          
+
     block bannerData    
 
-    
+
     block banner
       mixin banner()
-        .mainBannerContainer(class= bannerImage + 'Banner' style='background-image: url(../images/banner/' +bannerImage+ '.jpg);')
+        .mainBannerContainer(class= bannerImage + 'Banner' style='background-image: url(../images/banner/' + bannerImage + '.jpg);')
           .bannerContainer.bannerTitle #{bannerFirstTitle}
           .bannerContainer.bannerTitle #{bannerSecondTitle}
           .bannerContainer.bannerSubtitle #{bannerSubTitle}
@@ -212,14 +219,14 @@ html(lang='en')
       .splatForgedBorder.transformationReverse
         .movingBackground1
         .movingBackground2
- 
-      
+
+
       //- The content block should contain the body of your template's content
     block content
     .splatForgedBorder.transformationReverse
       .movingBackground1
       .movingBackground2
-        
+
     .mainFooterContainer
       .footerContainer.column12
         .footerItem
@@ -235,29 +242,29 @@ html(lang='en')
               a(href='/coc') CODE OF CONDUCT
             li
               a(href='/rules') RULES
-            
+
           ul CONTRIBUTE  
             li
               a(href='/contribution') VOLUNTEER POSITIONS
             li
               a(href='https://www.patreon.com/faf') DONATIONS
-            
+
           ul LEGAL
             li
               a(href='/privacy') PRIVACY STATEMENT  
             li
               a(href='/tos') TERMS OF SERVICE
-                    
+
           ul CONTACT US
             li
               a(href='https://discord.gg/mXahVSKGVb') DISCORD
             li
               a(href='https://forum.faforever.com/')  FORUMS
-            
 
 
 
-      
+
+
 
       //- Add scripts that are globally required by your site here.
       script(src="../../js/app/navigation.js")

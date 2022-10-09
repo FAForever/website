@@ -2,12 +2,22 @@ const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const mongoStore = require('connect-mongo');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
-require('./scripts/discord');
-require('./scripts/database');
+let OidcStrategy = require('passport-openidconnect');
 const app = express();
+
+app.locals.clanInvitations = {};
+
+//Define environment variables with default values
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+process.env.PORT = process.env.PORT || '4000';
+process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
+process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
+process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
+process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
+process.env.HOST = process.env.HOST || 'http://localhost';
+process.env.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '12345';
 
 //Initialize values for default configs
 app.set('views', 'templates/views');
@@ -26,15 +36,12 @@ app.use(cookieParser());
 
 // Session determines how long will the user be logged in/authorized in the website
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.SESSION_SECRET_KEY,
   resave: false,
   saveUninitialized: false,
-  cookie: {maxAge: 1000 * 60 * 60}, // 1 hour
-
-  store: mongoStore.create({
-    mongoUrl: process.env.MONGO
-  })
-
+  cookie: {
+    maxAge: process.env.TOKEN_LIFESPAN * 1000
+  }
 }));
 
 
@@ -50,12 +57,11 @@ app.listen(3000, () => {
 });
 
 // Login and Login/redirect routes
-app.get('/login', passport.authenticate('discord'));
+app.get('/login', passport.authenticate('faforever'));
 
-app.get('/login/redirect/', passport.authenticate('discord', {
+app.get('/login/redirect/', passport.authenticate('faforever', {
   failureRedirect: '/login',
 }), function (req, res) {
-  console.log('You did it!');
   res.redirect('/'); // Successful auth
 });
 
@@ -76,7 +82,48 @@ function loggedIn(req, res, next) {
   }
 }
 
+passport.use('faforever', new OidcStrategy({
+    issuer: process.env.OAUTH_URL + '/',
+    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
+    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+    userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+    clientID: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    callbackURL: process.env.HOST + '/callback',
+    scope: ['openid', 'public_profile', 'write_account_data']
+  },
+  function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
+    let request = require('request');
+    request.get(
+      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
+      function (e, r, body) {
+        if (r.statusCode !== 200) {
+          return verified(null);
+        }
+        let user = JSON.parse(body);
+        user.data.attributes.token = accessToken;
+        user.data.id = user.data.attributes.userId;
+        return verified(null, user);
+      }
+    );
+  }
+));
 
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (id, done) {
+  done(null, id);
+});
+
+app.get('/callback', passport.authenticate('faforever', {
+  failureRedirect: '/login',
+  failureFlash: true
+}), function (req, res, next) {
+  res.redirect(req.session.referral ? req.session.referral : '/');
+  req.session.referral = null;
+});
 // --- R O U T E S ---
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
 
@@ -128,11 +175,9 @@ clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn, require(`${
   lobby_api (not in use in the new website)
  */
 // Protected
-app.get('/account/link', loggedIn, require(routes + 'account/get/linkSteam'));
-app.get('/account/connect', loggedIn, require(routes + 'account/get/connectSteam'));
-app.get('/account/link', loggedIn, require(routes + 'account/get/linkSteam'));
+app.get('/account/linkSteam', loggedIn, require(routes + 'account/get/linkSteam'));
+app.get('/account/connectSteam', loggedIn, require(routes + 'account/get/connectSteam'));
 app.get('/account/resync', loggedIn, require(routes + 'account/get/resync'));
-app.get('/account/connect', loggedIn, require(routes + 'account/get/connectSteam'));
 // Not Protected
 app.get('/account/create', require(routes + 'account/get/createAccount'));
 app.get('/account_activated', require(routes + 'account/get/register'));
@@ -145,7 +190,7 @@ app.get('/client', (req,res)=>{
   res.redirect(locals.downlords_faf_client_download_link);
 });
 
-/*
+
 
 // Run scripts initially on startup
 let requireRunArray = ['extractor', 'getLatestClientRelease'];
@@ -178,4 +223,4 @@ setInterval(() => {
 app.use(function (req, res) {
   res.status(404).render('errors/404');
 });
- */
+ 
