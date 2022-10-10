@@ -60,7 +60,7 @@ app.listen(3000, () => {
 app.get('/login', passport.authenticate('faforever'));
 
 app.get('/login/redirect/', passport.authenticate('faforever', {
-  failureRedirect: '/login',
+  failureRedirect: '/faf-teams',
 }), function (req, res) {
   res.redirect('/'); // Successful auth
 });

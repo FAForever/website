@@ -1,4 +1,6 @@
 require("dotenv").config();
+
+//Default values for API Calls
 process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
 process.env.WP_URL = process.env.WP_URL || 'https:direct.faforever.com';
 
@@ -9,9 +11,7 @@ let d = new Date();
 let timeFilter = 6;
 let minusTimeFilter = d.setMonth(d.getMonth() - timeFilter);
 let currentDate = new Date(minusTimeFilter).toISOString();
-
-
-//TODO: Make an env variable for all API/Wordpress urls, rather than using direct values
+//TODO: Manage to make a loop of sorts of the URLs and "let data = dataObjectToArray.map" because it repeats alot and it could be done in a for loop/array since almost all API calls below have an extremely similar syntax/behavior.
 async function newshub() {
 
   try {
@@ -139,6 +139,7 @@ async function getLeaderboards(leaderboardID) {
     let leaderboardData = combineArrays(playerLogin, playerValues);
     leaderboardData.sort((playerA, playerB) => playerA[1].rating - playerB[1].rating);
     return await leaderboardData;
+    
   } catch (e) {
     console.log(e);
     return null;
