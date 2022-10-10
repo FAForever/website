@@ -62,7 +62,7 @@ app.get('/login', passport.authenticate('faforever'));
 app.get('/login/redirect/', passport.authenticate('faforever', {
   failureRedirect: '/faf-teams',
 }), function (req, res) {
-  res.redirect('/'); // Successful auth
+  res.redirect('/tournaments'); // Successful auth
 });
 
 app.get('/logout', function (req, res, next) {
@@ -96,8 +96,8 @@ passport.use('faforever', new OidcStrategy({
     let request = require('request');
     request.get(
       {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
-      function (e, r, body) {
-        if (r.statusCode !== 200) {
+      function (response, body) {
+        if (response.statusCode !== 200) {
           return verified(null);
         }
         let user = JSON.parse(body);
