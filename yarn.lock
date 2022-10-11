@@ -1105,6 +1105,11 @@
   "resolved" "https://registry.npmjs.org/flagged-respawn/-/flagged-respawn-1.0.1.tgz"
   "version" "1.0.1"
 
+"flash@^1.1.0":
+  "integrity" "sha512-2pvqSI88nkPRSyh8kOJV0TqxlfLjZKS9b2jDf67RWGeIyicEGJoDovSyVS9zdiWbx/M9jzZkmFB5TSdaeBNSZA=="
+  "resolved" "https://registry.npmjs.org/flash/-/flash-1.1.0.tgz"
+  "version" "1.1.0"
+
 "follow-redirects@^1.14.0":
   "integrity" "sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.1.tgz"

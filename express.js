@@ -60,10 +60,10 @@ app.listen(3000, () => {
 // Login and Login/redirect routes
 app.get('/login', passport.authenticate('faforever'));
 
-app.get('/login/redirect/', passport.authenticate('faforever', {
-  failureRedirect: '/faf-teams',
+app.get('/callback', passport.authenticate('faforever', {
+  failureRedirect: '/login', // Failed auth
 }), function (req, res) {
-  res.redirect('/tournaments'); // Successful auth
+  res.redirect('/'); // Successful auth
 });
 
 app.get('/logout', function (req, res, next) {
@@ -113,7 +113,7 @@ passport.use('faforever', new OidcStrategy({
    issuer: process.env.OAUTH_URL + '/',
    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
-   //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+   userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
    clientID: process.env.OAUTH_CLIENT_ID,
    clientSecret: process.env.OAUTH_CLIENT_SECRET,
    callbackURL: process.env.HOST + '/callback',
@@ -125,7 +125,7 @@ passport.use('faforever', new OidcStrategy({
    console.log(refreshToken);
    console.log(profile);
    console.log(`I'm the cb: ${cb}`);
-   let user = refreshToken;
+   let user = refreshToken.id;
    return cb(null, user);
  }
 ));
@@ -142,11 +142,7 @@ passport.deserializeUser(function (id, done) {
   done(null, id);
 });
 
-app.get('/callback', passport.authenticate('faforever', {
-  failureRedirect: '/login', // Failed auth
-}), function (req, res, next) {
-    res.redirect('/tournaments'); // Successful auth
-  });
+
 // --- R O U T E S ---
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
 
