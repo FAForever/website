@@ -85,25 +85,26 @@ function loggedIn(req, res, next) {
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
     tokenURL: process.env.OAUTH_URL + '/oauth2/token',
-    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
-    userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+    //authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+    //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
     clientID: process.env.OAUTH_CLIENT_ID,
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
     callbackURL: process.env.HOST + '/callback',
     scope: ['openid', 'public_profile', 'write_account_data']
   },
-  function (accessToken, verified) {
+  function (accessToken, refreshToken, profile, cb) {
+  console.log(accessToken,refreshToken,profile,cb);
     let request = require('request');
     request.get(
       {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
       function (response, body) {
         if (response.statusCode !== 200) {
-          return verified(null);
+          return cb(null);
         }
         let user = JSON.parse(body);
         user.data.attributes.token = accessToken;
         user.data.id = user.data.attributes.userId;
-        return verified(null, user);
+        return cb(null, user);
       }
     );
   }
