@@ -8,11 +8,7 @@ let OidcStrategy = require('passport-openidconnect');
 const app = express();
 
 app.locals.clanInvitations = {};
-console.log(' Changeeeeeeeees are here');
-console.log(' Changeeeeeeeees are here');
-console.log(' Changeeeeeeeees are here');
-console.log(' Changeeeeeeeees are here');
-console.log(' Changeeeeeeeees are here');
+
 
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
@@ -124,8 +120,11 @@ passport.use('faforever', new OidcStrategy({
  },
  function (accessToken, refreshToken, profile, cb) {
    console.log('Console log strategy');
-   console.log(accessToken,refreshToken,profile,cb);
-   let user = profile;
+   console.log(`I'm the accessToken: ${accessToken}`);
+   console.log(`I'm the refreshToken: ${refreshToken}`);
+   console.log(`I'm the profile: ${profile}`);
+   console.log(`I'm the cb: ${cb}`);
+   let user = refreshToken;
    return cb(null, user);
  }
 ));
@@ -133,10 +132,12 @@ passport.use('faforever', new OidcStrategy({
 
 
 passport.serializeUser(function (user, done) {
+  console.log('Serialized User');
   done(null, user);
 });
 
 passport.deserializeUser(function (id, done) {
+  console.log('Deserialized User');
   done(null, id);
 });
 
