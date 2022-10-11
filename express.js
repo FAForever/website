@@ -92,7 +92,7 @@ passport.use('faforever', new OidcStrategy({
     callbackURL: process.env.HOST + '/callback',
     scope: ['openid', 'public_profile', 'write_account_data']
   },
-  function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
+  function (accessToken, verified) {
     let request = require('request');
     request.get(
       {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
