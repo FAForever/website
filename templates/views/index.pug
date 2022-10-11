@@ -1,14 +1,11 @@
 extends ../layouts/default
 block bannerData    
   - var bannerImage = "landing"
-  - var bannerFirstTitle = "I love you <3"
-  - var bannerSecondTitle = "my sweet potato"
+  - var bannerFirstTitle = "AN RTS CLASSIC REFORGED"
+  - var bannerSecondTitle = "MASSIVE SCALE WARFARE"
   - var bannerSubTitle = "" + " " + "COMMANDERS PLAYING RIGHT NOW"
-    
 block banner
   mixin banner()
-    //MASSIVE SCALE WARFARE
-    //TEST SERVER AN RTS CLASSIC REFORGED
     .mainBannerContainer(class= bannerImage + 'Banner' style='background-image: url(../images/banner/' + bannerImage + '.jpg);')
       .bannerContainer.bannerTitle #{bannerFirstTitle}
       .bannerContainer.bannerTitle #{bannerSecondTitle}
