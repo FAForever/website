@@ -98,7 +98,6 @@ passport.use('faforever', new OidcStrategy({
     scope: ['openid', 'public_profile', 'write_account_data']
   },
   function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
-    console.log(iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified);
     let request = require('request');
     request.get(
       {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
@@ -112,7 +111,8 @@ passport.use('faforever', new OidcStrategy({
         return verified(null, user);
       }
     );
-  };
+  }
+));
  /*
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
