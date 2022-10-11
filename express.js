@@ -122,8 +122,8 @@ passport.use('faforever', new OidcStrategy({
  function (accessToken, refreshToken, profile, cb) {
    console.log('Console log strategy');
    console.log(`I'm the accessToken: ${accessToken}`);
-   console.log(`I'm the refreshToken: ${refreshToken}`);
-   console.log(`I'm the profile: ${profile}`);
+   console.log(refreshToken);
+   console.log(profile);
    console.log(`I'm the cb: ${cb}`);
    let user = refreshToken;
    return cb(null, user);
