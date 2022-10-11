@@ -91,6 +91,33 @@ passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
     tokenURL: process.env.OAUTH_URL + '/oauth2/token',
     authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+    userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+    clientID: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    callbackURL: process.env.HOST + '/callback',
+    scope: ['openid', 'public_profile', 'write_account_data']
+  },
+  function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
+    console.log(iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified);
+    let request = require('request');
+    request.get(
+      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
+      function (e, r, body) {
+        if (r.statusCode !== 200) {
+          return verified(null);
+        }
+        let user = JSON.parse(body);
+        user.data.attributes.token = accessToken;
+        user.data.id = user.data.attributes.userId;
+        return verified(null, user);
+      }
+    );
+  };
+ /*
+passport.use('faforever', new OidcStrategy({
+    issuer: process.env.OAUTH_URL + '/',
+    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
+    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
     //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
     clientID: process.env.OAUTH_CLIENT_ID,
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
@@ -104,7 +131,7 @@ passport.use('faforever', new OidcStrategy({
     request.get(
       {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
       function (response, body) {
-        if (response.statusCode !== 200) {
+        if (response.status !== 200) {
           return cb(null);
         }
         let user = JSON.parse(body);
@@ -115,6 +142,8 @@ passport.use('faforever', new OidcStrategy({
     );
   }
 ));
+
+ */
 
 passport.serializeUser(function (user, done) {
   done(null, user);
