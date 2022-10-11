@@ -60,8 +60,8 @@ app.listen(3000, () => {
 // Login and Login/redirect routes
 app.get('/login', passport.authenticate('faforever'));
 
-app.get('/login/redirect/', passport.authenticate('faforever', {
-  failureRedirect: '/faf-teams',
+app.get('/login/redirect', passport.authenticate('faforever', {
+  failureRedirect: '/login',
 }), function (req, res) {
   res.redirect('/tournaments'); // Successful auth
 });
@@ -74,6 +74,7 @@ app.get('/logout', function (req, res, next) {
     res.redirect('/');
   });
 });
+
 
 function loggedIn(req, res, next) {
   if (req.isAuthenticated()) {
@@ -115,7 +116,7 @@ passport.use('faforever', new OidcStrategy({
    //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
    clientID: process.env.OAUTH_CLIENT_ID,
    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-   callbackURL: process.env.HOST + '/callback',
+   callbackURL: process.env.HOST + '/login/redirect',
    scope: ['openid', 'public_profile', 'write_account_data']
  },
  function (accessToken, refreshToken, profile, cb) {
@@ -143,7 +144,6 @@ passport.deserializeUser(function (id, done) {
 
 app.get('/callback', passport.authenticate('faforever', {
   failureRedirect: '/login',
-  failureFlash: true
 }), function (req, res, next) {
   res.redirect(req.session.referral ? req.session.referral : '/');
   req.session.referral = null;
