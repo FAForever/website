@@ -86,7 +86,7 @@ function loggedIn(req, res, next) {
     res.redirect('/login');
   }
 }
-
+/*
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
     tokenURL: process.env.OAUTH_URL + '/oauth2/token',
@@ -102,48 +102,35 @@ passport.use('faforever', new OidcStrategy({
     request.get(
       {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
       function (e, r, body) {
-        if (r.statusCode !== 200) {
-          return verified(null);
-        }
         let user = JSON.parse(body);
         user.data.attributes.token = accessToken;
         user.data.id = user.data.attributes.userId;
         return verified(null, user);
-      }
-    );
-  }
-));
- /*
-passport.use('faforever', new OidcStrategy({
-    issuer: process.env.OAUTH_URL + '/',
-    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
-    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
-    //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
-    clientID: process.env.OAUTH_CLIENT_ID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    callbackURL: process.env.HOST + '/callback',
-    scope: ['openid', 'public_profile', 'write_account_data']
-  },
-  function (accessToken, refreshToken, profile, cb) {
-    console.log('Console log strategy');
-  console.log(accessToken,refreshToken,profile,cb);
-    let request = require('request');
-    request.get(
-      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
-      function (response, body) {
-        if (response.status !== 200) {
-          return cb(null);
-        }
-        let user = JSON.parse(body);
-        user.data.attributes.token = accessToken;
-        user.data.id = user.data.attributes.userId;
-        return cb(null, user);
-      }
-    );
+      });
   }
 ));
 
  */
+
+passport.use('faforever', new OidcStrategy({
+   issuer: process.env.OAUTH_URL + '/',
+   tokenURL: process.env.OAUTH_URL + '/oauth2/token',
+   authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+   //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+   clientID: process.env.OAUTH_CLIENT_ID,
+   clientSecret: process.env.OAUTH_CLIENT_SECRET,
+   callbackURL: process.env.HOST + '/callback',
+   scope: ['openid', 'public_profile', 'write_account_data']
+ },
+ function (accessToken, refreshToken, profile, cb) {
+   console.log('Console log strategy');
+   console.log(accessToken,refreshToken,profile,cb);
+   let user = profile;
+   return cb(null, user);
+ }
+));
+
+
 
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -178,7 +165,7 @@ appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
  reset > requestPasswordReset
  confirmReset > confirmPasswordReset
  change > changePassword, changeUsername, changeEmail
- */   
+ */
 
 // Account routes
 // These routes are protected by the 'loggedIn' function (which verifies if user is serialized/deserialized or logged in [same thing]).
@@ -221,11 +208,10 @@ app.get('/account/checkUsername', require('./routes/views/checkUsername'));
 app.get('/password_resetted', require(routes + 'account/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'account/get/report'));
 // Download Client
-app.get('/client', (req,res)=>{
+app.get('/client', (req, res) => {
   let locals = res.locals;
   res.redirect(locals.downlords_faf_client_download_link);
 });
-
 
 
 // Run scripts initially on startup
