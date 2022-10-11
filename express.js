@@ -8,6 +8,11 @@ let OidcStrategy = require('passport-openidconnect');
 const app = express();
 
 app.locals.clanInvitations = {};
+console.log(' Changeeeeeeeees are here');
+console.log(' Changeeeeeeeees are here');
+console.log(' Changeeeeeeeees are here');
+console.log(' Changeeeeeeeees are here');
+console.log(' Changeeeeeeeees are here');
 
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
@@ -85,7 +90,7 @@ function loggedIn(req, res, next) {
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
     tokenURL: process.env.OAUTH_URL + '/oauth2/token',
-    //authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
     //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
     clientID: process.env.OAUTH_CLIENT_ID,
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
@@ -93,6 +98,7 @@ passport.use('faforever', new OidcStrategy({
     scope: ['openid', 'public_profile', 'write_account_data']
   },
   function (accessToken, refreshToken, profile, cb) {
+    console.log('Console log strategy');
   console.log(accessToken,refreshToken,profile,cb);
     let request = require('request');
     request.get(
