@@ -60,8 +60,8 @@ app.listen(3000, () => {
 // Login and Login/redirect routes
 app.get('/login', passport.authenticate('faforever'));
 
-app.get('/login/redirect', passport.authenticate('faforever', {
-  failureRedirect: '/login',
+app.get('/login/redirect/', passport.authenticate('faforever', {
+  failureRedirect: '/faf-teams',
 }), function (req, res) {
   res.redirect('/tournaments'); // Successful auth
 });
@@ -116,7 +116,7 @@ passport.use('faforever', new OidcStrategy({
    //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
    clientID: process.env.OAUTH_CLIENT_ID,
    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-   callbackURL: process.env.HOST + '/login/redirect',
+   callbackURL: process.env.HOST + '/callback',
    scope: ['openid', 'public_profile', 'write_account_data']
  },
  function (accessToken, refreshToken, profile, cb) {
@@ -143,11 +143,10 @@ passport.deserializeUser(function (id, done) {
 });
 
 app.get('/callback', passport.authenticate('faforever', {
-  failureRedirect: '/login',
+  failureRedirect: '/login', // Failed auth
 }), function (req, res, next) {
-  res.redirect(req.session.referral ? req.session.referral : '/');
-  req.session.referral = null;
-});
+    res.redirect('/tournaments'); // Successful auth
+  });
 // --- R O U T E S ---
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
 
