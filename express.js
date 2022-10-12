@@ -61,11 +61,7 @@ app.listen(3000, () => {
 // Login and Login/redirect routes
 app.get('/login', passport.authenticate('faforever'));
 
-app.get('/callback', passport.authenticate('faforever', {
-  failureRedirect: '/login', // Failed auth
-}), function (req, res) {
-  res.redirect('/'); // Successful auth
-});
+
 
 app.get('/logout', function (req, res, next) {
   req.logout(function (err) {
@@ -152,6 +148,12 @@ passport.deserializeUser(function (id, done) {
   done(null, id);
 });
 
+
+app.get('/callback', passport.authenticate('faforever', {
+  failureRedirect: '/login', // Failed auth
+}), function (req, res) {
+  res.redirect('/'); // Successful auth
+});
 
 // --- R O U T E S ---
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
