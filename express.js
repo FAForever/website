@@ -114,7 +114,7 @@ passport.use('faforever', new OidcStrategy({
    issuer: process.env.OAUTH_URL + '/',
    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
-   userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+   //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
    clientID: process.env.OAUTH_CLIENT_ID,
    clientSecret: process.env.OAUTH_CLIENT_SECRET,
    callbackURL: process.env.HOST + '/callback',
@@ -123,8 +123,6 @@ passport.use('faforever', new OidcStrategy({
  function (accessToken, refreshToken, profile, cb) {
    console.log(refreshToken);
    console.log(profile);
-   
-   
    
    axios.get(`${process.env.API_URL} + /me`,{
      headers: { Authorization: `Bearer${accessToken}` }
