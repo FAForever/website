@@ -33,7 +33,7 @@ exports = module.exports = function (req, res) {
 		let password = req.body.password;
 
 		let overallRes = res;
-
+    
 		request.post({
 			url: process.env.API_URL + '/users/changeEmail',
 			headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},

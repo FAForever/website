@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -120,11 +121,22 @@ passport.use('faforever', new OidcStrategy({
    scope: ['openid', 'public_profile', 'write_account_data']
  },
  function (accessToken, refreshToken, profile, cb) {
-   console.log('Console log strategy');
-   console.log(`I'm the accessToken: ${accessToken}`);
    console.log(refreshToken);
    console.log(profile);
-   console.log(`I'm the cb: ${cb}`);
+   
+   
+   
+   axios.get(`${process.env.API_URL} + /me`,{
+     headers: { Authorization: `Bearer${accessToken}` }
+       .then(response => {
+         console.log(response.data);
+         
+       })
+       .catch(function (error){
+         console.log(error);
+       })
+   });
+   
    let user = refreshToken.id;
    return cb(null, user);
  }
