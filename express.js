@@ -184,8 +184,8 @@ passport.use('faforever', new OidcStrategy({
    scope: ['openid', 'public_profile', 'write_account_data']
  },
  function (accessToken, refreshToken, profile, cb) {
-   console.log(refreshToken);
-   console.log(profile);
+   //console.log(refreshToken);
+   //console.log(profile);
    
    axios.get(`${process.env.API_URL}/me`,{
      headers: { Authorization: `Bearer${accessToken}` }
@@ -194,18 +194,24 @@ passport.use('faforever', new OidcStrategy({
      .then(response => {
        try {
 
-         console.log(` This is the token ${response.data.attributes.token}`);
-         console.log(response.data.attributes.token);
-         console.log('token is over')
-         //console.log(` This is the id ${response.data.id}`);
-         //console.log(response.data.id);
-         //console.log('id is over')
+         //console.log(` This is the token ${response.data.attributes.token}`);
+         //console.log(response.data.attributes.token);
+         //console.log('token is over')
+         console.log(` This is the id ${response.data.id}`);
+         console.log(response.data.id);
+         console.log('id is over')
+         console.log('id is over')
+         console.log('id is over')
+         console.log('id is over')
+         console.log('id is over')
+         console.log('id is over')
+         console.log('id is over')
+         
 
        }catch (e) {
          console.log('error! Error!');
          console.log(e);
        }
-       
 
      })
      .catch(function (error){
