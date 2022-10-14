@@ -133,8 +133,6 @@ app.get('/client', (req, res) => {
 });
 
 
-
-
 app.get('/logout', function (req, res, next) {
   req.logout(function (err) {
     if (err) {
@@ -174,55 +172,39 @@ passport.use('faforever', new OidcStrategy({
  */
 
 passport.use('faforever', new OidcStrategy({
-   issuer: process.env.OAUTH_URL + '/',
-   tokenURL: process.env.OAUTH_URL + '/oauth2/token',
-   authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
-   userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
-   clientID: process.env.OAUTH_CLIENT_ID,
-   clientSecret: process.env.OAUTH_CLIENT_SECRET,
-   callbackURL: process.env.HOST + '/callback',
-   scope: ['openid', 'public_profile', 'write_account_data']
- },
- function (accessToken, refreshToken, profile, cb) {
-   //console.log(refreshToken);
-   //console.log(profile);
-   
-   axios.get(`${process.env.API_URL}/me`,{
-     headers: { Authorization: `Bearer${accessToken}` }
-       
-   })
-     .then(response => {
-       try {
+    issuer: process.env.OAUTH_URL + '/',
+    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
+    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+    userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+    clientID: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    callbackURL: process.env.HOST + '/callback',
+    scope: ['openid', 'public_profile', 'write_account_data']
+  },
+  function (accessToken, refreshToken, profile, cb) {
+    //console.log(refreshToken);
+    //console.log(profile);
 
-         //console.log(` This is the token ${response.data.attributes.token}`);
-         //console.log(response.data.attributes.token);
-         //console.log('token is over')
-         console.log(` This is the id ${response.data.id}`);
-         console.log(response.data.id);
-         console.log('id is over')
-         console.log('id is over')
-         console.log('id is over')
-         console.log('id is over')
-         console.log('id is over')
-         console.log('id is over')
-         console.log('id is over')
-         
+    axios.get(`${process.env.API_URL}/me`, {
+      headers: {Authorization: `Bearer${accessToken}`}
 
-       }catch (e) {
-         console.log('error! Error!');
-         console.log(e);
-       }
+    })
+      .then(response => {
+        try {
 
-     })
-     .catch(function (error){
-       console.log(error);
-     });
-   
-   let user = refreshToken.id;
-   return cb(null, user);
- }
+          let user = response;
+          user.data.attributes.token = accessToken;
+          user.data.id = user.data.attributes.userId;
+
+          return cb(null, user);
+        } catch (e) {
+          console.log('error! Error!');
+          console.log(e);
+        }
+
+      });
+  }
 ));
-
 
 
 passport.serializeUser(function (user, done) {
