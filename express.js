@@ -46,6 +46,13 @@ app.use(session({
   }
 }));
 
+function loggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+}
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -58,8 +65,7 @@ app.listen(3000, () => {
   console.log('Express listening on port ' + 3000);
 });
 
-// Login and Login/redirect routes
-app.get('/login', passport.authenticate('faforever'));
+
 
 
 
@@ -72,14 +78,9 @@ app.get('/logout', function (req, res, next) {
   });
 });
 
+// Login and Login/redirect routes
+app.get('/login', passport.authenticate('faforever'));
 
-function loggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
-}
 /*
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
@@ -150,7 +151,7 @@ passport.deserializeUser(function (id, done) {
 
 
 app.get('/callback', passport.authenticate('faforever', {
-  failureRedirect: '/login', // Failed auth
+  failureRedirect: '/faf-teams', // Failed auth
 }), function (req, res) {
   res.redirect('/'); // Successful auth
 });
