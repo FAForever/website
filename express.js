@@ -189,14 +189,15 @@ passport.use('faforever', new OidcStrategy({
    
    axios.get(`${process.env.API_URL}/me`,{
      headers: { Authorization: `Bearer${accessToken}` }
-       .then(response => {
-         console.log(response.data);
-         
-       })
-       .catch(function (error){
-         console.log(error);
-       })
-   });
+       
+   })
+     .then(response => {
+       console.log(response.data);
+
+     })
+     .catch(function (error){
+       console.log(error);
+     });
    
    let user = refreshToken.id;
    return cb(null, user);
