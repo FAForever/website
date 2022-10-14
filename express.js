@@ -186,8 +186,8 @@ passport.use('faforever', new OidcStrategy({
  function (accessToken, refreshToken, profile, cb) {
    console.log(refreshToken);
    console.log(profile);
-   /*
-   axios.get(`${process.env.API_URL} + /me`,{
+   
+   axios.get(`${process.env.API_URL}/me`,{
      headers: { Authorization: `Bearer${accessToken}` }
        .then(response => {
          console.log(response.data);
@@ -197,7 +197,7 @@ passport.use('faforever', new OidcStrategy({
          console.log(error);
        })
    });
-   */
+   
    let user = refreshToken.id;
    return cb(null, user);
  }
