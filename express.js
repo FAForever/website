@@ -196,8 +196,10 @@ passport.use('faforever', new OidcStrategy({
 
          console.log(` This is the token ${response.data.attributes.token}`);
          console.log(response.data.attributes.token);
-         console.log(` This is the id ${response.data.id}`);
-         console.log(response.data.id);
+         console.log('token is over')
+         //console.log(` This is the id ${response.data.id}`);
+         //console.log(response.data.id);
+         //console.log('id is over')
 
        }catch (e) {
          console.log('error! Error!');
