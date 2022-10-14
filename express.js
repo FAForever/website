@@ -66,96 +66,6 @@ app.listen(3000, () => {
 });
 
 
-
-
-
-app.get('/logout', function (req, res, next) {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect('/');
-  });
-});
-
-// Login and Login/redirect routes
-app.get('/login', passport.authenticate('faforever'));
-
-/*
-passport.use('faforever', new OidcStrategy({
-    issuer: process.env.OAUTH_URL + '/',
-    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
-    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
-    userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
-    clientID: process.env.OAUTH_CLIENT_ID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    callbackURL: process.env.HOST + '/callback',
-    scope: ['openid', 'public_profile', 'write_account_data']
-  },
-  function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
-    let request = require('request');
-    request.get(
-      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
-      function (e, r, body) {
-        let user = JSON.parse(body);
-        user.data.attributes.token = accessToken;
-        user.data.id = user.data.attributes.userId;
-        return verified(null, user);
-      });
-  }
-));
-
- */
-
-passport.use('faforever', new OidcStrategy({
-   issuer: process.env.OAUTH_URL + '/',
-   tokenURL: process.env.OAUTH_URL + '/oauth2/token',
-   authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
-   //userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
-   clientID: process.env.OAUTH_CLIENT_ID,
-   clientSecret: process.env.OAUTH_CLIENT_SECRET,
-   callbackURL: process.env.HOST + '/callback',
-   scope: ['openid', 'public_profile', 'write_account_data']
- },
- function (accessToken, refreshToken, profile, cb) {
-   console.log(refreshToken);
-   console.log(profile);
-   
-   axios.get(`${process.env.API_URL} + /me`,{
-     headers: { Authorization: `Bearer${accessToken}` }
-       .then(response => {
-         console.log(response.data);
-         
-       })
-       .catch(function (error){
-         console.log(error);
-       })
-   });
-   
-   let user = refreshToken.id;
-   return cb(null, user);
- }
-));
-
-
-
-passport.serializeUser(function (user, done) {
-  console.log('Serialized User');
-  done(null, user);
-});
-
-passport.deserializeUser(function (id, done) {
-  console.log('Deserialized User');
-  done(null, id);
-});
-
-
-app.get('/callback', passport.authenticate('faforever', {
-  failureRedirect: '/faf-teams', // Failed auth
-}), function (req, res) {
-  res.redirect('/'); // Successful auth
-});
-
 // --- R O U T E S ---
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
 
@@ -220,6 +130,96 @@ app.get('/report_submitted', require(routes + 'account/get/report'));
 app.get('/client', (req, res) => {
   let locals = res.locals;
   res.redirect(locals.downlords_faf_client_download_link);
+});
+
+
+
+
+app.get('/logout', function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+});
+
+// Login and Login/redirect routes
+app.get('/login', passport.authenticate('faforever'));
+
+/*
+passport.use('faforever', new OidcStrategy({
+    issuer: process.env.OAUTH_URL + '/',
+    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
+    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+    userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+    clientID: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    callbackURL: process.env.HOST + '/callback',
+    scope: ['openid', 'public_profile', 'write_account_data']
+  },
+  function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
+    let request = require('request');
+    request.get(
+      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
+      function (e, r, body) {
+        let user = JSON.parse(body);
+        user.data.attributes.token = accessToken;
+        user.data.id = user.data.attributes.userId;
+        return verified(null, user);
+      });
+  }
+));
+
+ */
+
+passport.use('faforever', new OidcStrategy({
+   issuer: process.env.OAUTH_URL + '/',
+   tokenURL: process.env.OAUTH_URL + '/oauth2/token',
+   authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+   userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
+   clientID: process.env.OAUTH_CLIENT_ID,
+   clientSecret: process.env.OAUTH_CLIENT_SECRET,
+   callbackURL: process.env.HOST + '/callback',
+   scope: ['openid', 'public_profile', 'write_account_data']
+ },
+ function (accessToken, refreshToken, profile, cb) {
+   console.log(refreshToken);
+   console.log(profile);
+   /*
+   axios.get(`${process.env.API_URL} + /me`,{
+     headers: { Authorization: `Bearer${accessToken}` }
+       .then(response => {
+         console.log(response.data);
+         
+       })
+       .catch(function (error){
+         console.log(error);
+       })
+   });
+   */
+   let user = refreshToken.id;
+   return cb(null, user);
+ }
+));
+
+
+
+passport.serializeUser(function (user, done) {
+  console.log('Serialized User');
+  done(null, user);
+});
+
+passport.deserializeUser(function (id, done) {
+  console.log('Deserialized User');
+  done(null, id);
+});
+
+
+app.get('/callback', passport.authenticate('faforever', {
+  failureRedirect: '/faf-teams', // Failed auth
+}), function (req, res) {
+  res.redirect('/'); // Successful auth
 });
 
 
