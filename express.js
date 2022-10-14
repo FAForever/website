@@ -192,9 +192,14 @@ passport.use('faforever', new OidcStrategy({
        
    })
      .then(response => {
-       console.log(response.data.attributes.token);
-       console.log(response.data.id);
-       console.log(response.data.attributes.userId);
+       try {
+         console.log(response.data.attributes.token);
+         console.log(response.data.id);
+
+       }catch (e) {
+         console.log(e);
+       }
+       
 
      })
      .catch(function (error){
