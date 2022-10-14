@@ -199,7 +199,7 @@ passport.use('faforever', new OidcStrategy({
           return cb(null, user);
         } catch (e) {
           console.log('error! Error!');
-          console.log(e);
+          //console.log(e);
         }
 
       });
