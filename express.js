@@ -182,7 +182,7 @@ passport.use('faforever', new OidcStrategy({
     scope: ['openid', 'public_profile', 'write_account_data']
   },
    function (accessToken, refreshToken, profile, cb) {
-    console.log(refreshToken);
+    console.log(refreshToken.id);
     //console.log(refreshToken.id);
     console.log(profile);
 
