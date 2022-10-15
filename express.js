@@ -182,30 +182,26 @@ passport.use('faforever', new OidcStrategy({
     scope: ['openid', 'public_profile', 'write_account_data']
   },
    function (accessToken, refreshToken, profile, cb) {
-    console.log(refreshToken.id);
-    //console.log(refreshToken.id);
-    console.log(profile);
+    //console.log(refreshToken);
+    //console.log(profile);
 
-    return cb(null, refreshToken);
-  }
-));
-/*
-    await axios.get(`${process.env.API_URL}/me`, {
-      headers: {Authorization: `Bearer ${refreshToken}`}
+     axios.get(`${process.env.API_URL}/me`, {
+      headers: {Authorization: `Bearer ${refreshToken.id}`}
 
     })
-      .then(async response => {
+      .then( response => {
 
-        let user = await response;
-        await user.data.attributes.token = accessToken;
-        await user.data.id = user.data.attributes.userId;
+        let user =  response;
+        user.data.attributes.token = refreshToken;
+        user.data.id = user.data.attributes.userId;
 
         return cb(null, user);
 
 
       });
-      
- */
+  }
+));
+
 
 passport.serializeUser(function (user, done) {
   console.log('Serialized User');
