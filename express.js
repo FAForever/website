@@ -181,26 +181,22 @@ passport.use('faforever', new OidcStrategy({
     callbackURL: process.env.HOST + '/callback',
     scope: ['openid', 'public_profile', 'write_account_data']
   },
-  function (accessToken, refreshToken, profile, cb) {
+  async function (accessToken, refreshToken, profile, cb) {
     //console.log(refreshToken);
     //console.log(profile);
 
-    axios.get(`${process.env.API_URL}/me`, {
-      headers: {Authorization: `Bearer${accessToken}`}
+    await axios.get(`${process.env.API_URL}/me`, {
+      headers: {Authorization: `Bearer ${accessToken}`}
 
     })
       .then(response => {
-        try {
 
-          let user = response;
-          user.data.attributes.token = accessToken;
-          user.data.id = user.data.attributes.userId;
+        let user = response;
+        user.data.attributes.token = accessToken;
+        user.data.id = user.data.attributes.userId;
 
-          return cb(null, user);
-        } catch (e) {
-          console.log('error! Error!');
-          //console.log(e);
-        }
+        return cb(null, user);
+
 
       });
   }
