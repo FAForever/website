@@ -181,10 +181,14 @@ passport.use('faforever', new OidcStrategy({
     callbackURL: process.env.HOST + '/callback',
     scope: ['openid', 'public_profile', 'write_account_data']
   },
-  async function (accessToken, refreshToken, profile, cb) {
+   function (accessToken, refreshToken, profile, cb) {
     console.log(refreshToken);
-    console.log(refreshToken.id);
+    //console.log(refreshToken.id);
     console.log(profile);
+
+    return cb(null, refreshToken);
+  }
+));
 /*
     await axios.get(`${process.env.API_URL}/me`, {
       headers: {Authorization: `Bearer ${refreshToken}`}
@@ -202,10 +206,6 @@ passport.use('faforever', new OidcStrategy({
       });
       
  */
-    return cb(null, profile);
-  }
-));
-
 
 passport.serializeUser(function (user, done) {
   console.log('Serialized User');
