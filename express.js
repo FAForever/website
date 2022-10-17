@@ -182,12 +182,10 @@ passport.use('faforever', new OidcStrategy({
     scope: ['openid', 'public_profile', 'write_account_data']
   },
   function (accessToken, refreshToken, profile, cb) {
-    //refreshToken has id
-    // accessToken is equal to hydra.test.faforever.com 
-    // profile is a bit of nonsense/didnt look too much into it
-    console.log(accessToken);
-    console.log(refreshToken);
-    console.log(profile);
+    // accessToken https://hydra.test.faforever.com/
+    // refreshToken { id: '309803' } (this id is for user "Femboy")
+    // profile { timestamp: 2022-10-17T15:29:04.000Z }
+
 
     axios.get(`https://api.faforever.com/me`, {
       headers: {'Authorization': `Bearer ${refreshToken}`}
