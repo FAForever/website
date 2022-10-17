@@ -1,4 +1,5 @@
 extends ../layouts/default
+
 block bannerMixin
 
 block content
@@ -6,7 +7,7 @@ block content
   .leaderboardBackground
     .mainLeaderboardContainer
       .leaderboardContainer.column12.centerYourself
-        .responsiveText Search for a player in the selected leaderboard
+        p Search for a player in the selected leaderboard
           #errorLog
         input#input(onkeyup=`pressEnter(event)` type='text' placeholder='Player Name')
         #searchbar
