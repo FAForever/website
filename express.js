@@ -181,17 +181,20 @@ passport.use('faforever', new OidcStrategy({
     callbackURL: process.env.HOST + '/callback',
     scope: ['openid', 'public_profile', 'write_account_data']
   },
-   function (accessToken, refreshToken, profile, cb) {
+  function (accessToken, refreshToken, profile, cb) {
+    //refreshToken has id
+    // accessToken is equal to hydra.com something
+    // profile is a bit of nonsense/didnt look too much into it
     //console.log(refreshToken);
     //console.log(profile);
 
-     axios.get(`${process.env.API_URL}/me`, {
-      headers: {'Authorization':`Bearer ${refreshToken.id}`}
+    axios.get(`${process.env.API_URL}/me`, {
+      headers: {'Authorization': `basic ${refreshToken.id}`}
 
     })
-      .then( response => {
+      .then(response => {
 
-        let user =  response;
+        let user = response;
         user.data.attributes.token = refreshToken;
         user.data.id = user.data.attributes.userId;
 
