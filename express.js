@@ -186,7 +186,7 @@ passport.use('faforever', new OidcStrategy({
     //console.log(profile);
 
      axios.get(`${process.env.API_URL}/me`, {
-      headers: {Authorization: `Bearer ${refreshToken.id}`}
+      headers: {'Authorization':`Bearer ${refreshToken.id}`}
 
     })
       .then( response => {
