@@ -183,13 +183,14 @@ passport.use('faforever', new OidcStrategy({
   },
   function (accessToken, refreshToken, profile, cb) {
     //refreshToken has id
-    // accessToken is equal to hydra.com something
+    // accessToken is equal to hydra.test.faforever.com 
     // profile is a bit of nonsense/didnt look too much into it
-    //console.log(refreshToken);
-    //console.log(profile);
+    console.log(accessToken);
+    console.log(refreshToken);
+    console.log(profile);
 
-    axios.get(`${process.env.API_URL}/me`, {
-      headers: {'Authorization': `Bearer ${accessToken}`}
+    axios.get(`https://api.faforever.com/me`, {
+      headers: {'Authorization': `Bearer ${refreshToken}`}
 
     }).then(response => {
 
