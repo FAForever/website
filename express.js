@@ -181,6 +181,7 @@ passport.use('faforever', new OidcStrategy({
     callbackURL: process.env.HOST + '/callback',
     scope: ['openid', 'public_profile', 'write_account_data']
   },
+  
   function (accessToken, refreshToken, profile, cb) {
     // accessToken https://hydra.test.faforever.com/
     // refreshToken { id: '309803' } (this id is for user "Femboy")
@@ -197,8 +198,6 @@ passport.use('faforever', new OidcStrategy({
         user.data.id = user.data.attributes.userId;
 
         return cb(null, user);
-
-
       });
   }
 ));
