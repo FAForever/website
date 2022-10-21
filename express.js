@@ -185,16 +185,18 @@ passport.use('faforever', new OidcStrategy({
   function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
   
     axios.get(`${process.env.API_URL}/me`, {
-      headers: {Authorization: `Bearer ${accessToken}`}
+      headers: {'Authorization': `Bearer ${accessToken}`},
 
-    }).then(response => {
-
-        let user = response;
-        user.data.attributes.token = accessToken;
-        user.data.id = user.data.attributes.userId;
-
-        return verified(null, user);
-      });
+    }); function (e, r, body) {
+      if (r.statusCode !== 200) {
+        return verified(null);
+      }
+      let user = JSON.parse(body);
+      user.data.attributes.token = accessToken;
+      user.data.id = user.data.attributes.userId;
+      return verified(null, user);
+    }
+  
   }
 ));
 
