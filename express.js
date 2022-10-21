@@ -183,14 +183,9 @@ passport.use('faforever', new OidcStrategy({
   },
   
   function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
-    // accessToken https://hydra.test.faforever.com/
-    // refreshToken { id: '309803' } (this id is for user "Femboy")
-    // profile { timestamp: 2022-10-17T15:29:04.000Z }
-    console.log(iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified);
-    
-
-    axios.get(`https://api.faforever.com/me`, {
-      headers: {'Authorization': `Bearer ${accessToken}`}
+  
+    axios.get(`${process.env.API_URL}/me`, {
+      headers: {Authorization: `Bearer ${accessToken}`}
 
     }).then(response => {
 
