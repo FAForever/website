@@ -186,11 +186,12 @@ passport.use('faforever', new OidcStrategy({
   
     axios.get(`${process.env.API_URL}/me`, {
       headers: {'Authorization': `Bearer ${accessToken}`},
-
+    
     }).then(response => {
-      console.log(response);
-      console.log(response.attributes);
-      console.log(response.id);
+      console.log(response.data);
+      // data: { data: { type: 'me', id: 'me', attributes: [Object] } }
+      console.log(response.data.data.attributes);
+      console.log(response.data.data.id);
       
         let user = response;
         user.data.attributes.token = accessToken;
