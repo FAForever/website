@@ -188,8 +188,8 @@ passport.use('faforever', new OidcStrategy({
       headers: {'Authorization': `Bearer ${accessToken}`},
 
     }).then(response => {
-      console.log(response);
-      console.log(response.user.data);
+      //console.log(response);
+      console.log(response.user);
         let user = response;
         user.data.attributes.token = accessToken;
         user.data.id = user.data.attributes.userId;
