@@ -182,22 +182,23 @@ passport.use('faforever', new OidcStrategy({
     scope: ['openid', 'public_profile', 'write_account_data']
   },
   
-  function (accessToken, refreshToken, profile, cb) {
+  function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
     // accessToken https://hydra.test.faforever.com/
     // refreshToken { id: '309803' } (this id is for user "Femboy")
     // profile { timestamp: 2022-10-17T15:29:04.000Z }
-
+    console.log(iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified);
+    
 
     axios.get(`https://api.faforever.com/me`, {
-      headers: {'Authorization': `Bearer ${refreshToken}`}
+      headers: {'Authorization': `Bearer ${accessToken}`}
 
     }).then(response => {
 
         let user = response;
-        user.data.attributes.token = refreshToken;
+        user.data.attributes.token = accessToken;
         user.data.id = user.data.attributes.userId;
 
-        return cb(null, user);
+        return verified(null, user);
       });
   }
 ));
