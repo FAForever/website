@@ -199,8 +199,10 @@ passport.use('faforever', new OidcStrategy({
         
         // '/me' becomes the user id
        // data.id = data.attributes.userId;
-
-        return verified(null, response);
+      let user = JSON.parse(response);
+      user.data.attributes.token = accessToken;
+      user.data.id = user.data.attributes.userId;
+        return verified(null, user);
       });
   }
 ));
