@@ -213,6 +213,7 @@ passport.serializeUser(async function (user, done) {
 
 passport.deserializeUser(function (id, done) {
   console.log('Deserialized User');
+  console.log(id,done);
   done(null, id);
 });
 
