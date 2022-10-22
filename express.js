@@ -193,22 +193,31 @@ passport.use('faforever', new OidcStrategy({
       // data: { data: { type: 'me', id: 'me', attributes: [Object] } }
       
       console.log(data.attributes);
-      console.log('Im before data.id');
       console.log(data.id);
       
         //data.attributes.token = accessToken;
         
         // '/me' becomes the user id
-       // data.id = data.attributes.userId;
-      return verified(null, response);
+        data.id = data.attributes.userId;
+        
+        //TODO: Cant send the whole response or it creates circular dependency therefore we must only pack what we truly need in our return verified()
+        let user = 
+          {
+            id: data.attributes.userId,
+            accessToken: accessToken,
+            attributes: data.attributes
+            
+          };
+        
+        return verified(null, user);
       });
   }
 ));
 
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser(async function (user, done) {
   console.log('Serialized User');
-  done(null, user);
+  await done(null, user);
 });
 
 passport.deserializeUser(function (id, done) {
