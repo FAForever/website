@@ -195,7 +195,7 @@ passport.use('faforever', new OidcStrategy({
       console.log(data.attributes);
       console.log(data.id);
       
-        data.attributes.token = accessToken;
+        //data.attributes.token = accessToken;
         
         // '/me' becomes the user id
        // data.id = data.attributes.userId;
