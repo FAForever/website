@@ -193,16 +193,14 @@ passport.use('faforever', new OidcStrategy({
       // data: { data: { type: 'me', id: 'me', attributes: [Object] } }
       
       console.log(data.attributes);
+      console.log('Im before data.id');
       console.log(data.id);
       
         //data.attributes.token = accessToken;
         
         // '/me' becomes the user id
        // data.id = data.attributes.userId;
-      let user = JSON.parse(response);
-      user.data.attributes.token = accessToken;
-      user.data.id = user.data.attributes.userId;
-        return verified(null, user);
+      return verified(null, response);
       });
   }
 ));
