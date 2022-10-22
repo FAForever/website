@@ -1,7 +1,7 @@
 mixin email
   p Enter your Email 
   .formStart
-    input(type='email', name='email', required='required', placeholder='UEF@gmail.com')
+    input(type='email', name='email', required='required', value=formData['email']),placeholder='UEF@gmail.com')
     //p Do not use a throwaway / temporary / anonymous email address or you may be banned later.
     span(aria-hidden='true')
 
@@ -10,7 +10,7 @@ mixin username
     .formStart
       //value=formData['username']
       label  
-        input(type='text', name='username', required='required', data-minlength='3', maxlength='16', pattern='[A-Za-z]{1}[A-Za-z0-9_-]{2,15}$', data-minlength-error='The username is too short - must be at least 3 characters', data-error='Please check username requirements', data-remote="/account/checkUsername", data-remote-error="Username taken", placeholder='Eco_Player7-')
+        input(type='text', name='username', required='required', data-minlength='3', maxlength='16', pattern='[A-Za-z]{1}[A-Za-z0-9_-]{2,15}$', data-minlength-error='The username is too short - must be at least 3 characters', data-error='Please check username requirements', data-remote="/account/checkUsername", data-remote-error="Username taken", value=formData['username'],placeholder='Eco_Player7-')
         span(aria-hidden='true')
         .formHelp 
           ul Your username must:
