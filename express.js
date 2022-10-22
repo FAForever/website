@@ -182,29 +182,20 @@ passport.use('faforever', new OidcStrategy({
     scope: ['openid', 'public_profile', 'write_account_data']
   },
   
-  function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
+  async function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
   
-    axios.get(`${process.env.API_URL}/me`, {
+    await axios.get(`${process.env.API_URL}/me`, {
       headers: {'Authorization': `Bearer ${accessToken}`},
     
     }).then(response => {
       let data = response.data.data;
       console.log(response.data);
-      // data: { data: { type: 'me', id: 'me', attributes: [Object] } }
-      
       console.log(data.attributes);
-      console.log(data.id);
-      
-        //data.attributes.token = accessToken;
-        
-        // '/me' becomes the user id
-        data.id = data.attributes.userId;
-        
-        //TODO: Cant send the whole response or it creates circular dependency therefore we must only pack what we truly need in our return verified()
+       
         let user = 
           {
             id: data.attributes.userId,
-            accessToken: accessToken,
+            token: accessToken,
             attributes: data.attributes
             
           };
