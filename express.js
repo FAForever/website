@@ -10,10 +10,7 @@ const middleware = require('./routes/middleware')
 const app = express();
 
 app.locals.clanInvitations = {};
-app.use(middleware.initLocals);
-app.use(middleware.getLatestClientRelease);
-app.use(middleware.clientChecks);
-app.use(middleware.username);
+
 
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
@@ -63,6 +60,10 @@ app.use(passport.session());
 app.use(require('./scripts/getNews'));
 app.use(flash());
 
+app.use(middleware.initLocals);
+app.use(middleware.getLatestClientRelease);
+app.use(middleware.clientChecks);
+app.use(middleware.username);
 
 //Start and listen on port
 app.listen(3000, () => {
