@@ -6,10 +6,14 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 let OidcStrategy = require('passport-openidconnect');
+const middleware = require('./routes/middleware')
 const app = express();
 
 app.locals.clanInvitations = {};
-
+app.use(middleware.initLocals);
+app.use(middleware.getLatestClientRelease);
+app.use(middleware.clientChecks);
+app.use(middleware.username);
 
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';

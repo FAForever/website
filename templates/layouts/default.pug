@@ -101,7 +101,7 @@ html(lang='en')
             li.navList DOWNLOAD
               ul.navAbsolute
 
-      if !user
+      if !username
         .navContainer.navEnd
           ul.navItem
             a(href="/login")
@@ -111,10 +111,10 @@ html(lang='en')
             a(href="/account/register")
               li.navList REGISTER
       
-      if user
+      if username
         .navContainer.navEnd#loginList
           ul.loginItem
-            .navList #{user.attributes.userName}
+            .navList #{username}
             ul#loginAbsolute
               li.loginDropdown
                 ul(role='menu')                  

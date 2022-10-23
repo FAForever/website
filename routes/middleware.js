@@ -44,9 +44,9 @@ exports.clientChecks = function(req, res, next) {
 exports.username = function(req, res, next) {
     let locals = res.locals;
     if (req.isAuthenticated()) {
-        locals.username = req.user.data.attributes.userName;    
+        locals.username = req.user.attributes.userName;    
         locals.hasClan = 
-            req.user && req.user.data.attributes.clan;
+            req.user && req.user.attributes.clan;
     }
     next();
 };
