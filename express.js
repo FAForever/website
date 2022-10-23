@@ -191,7 +191,7 @@ passport.use('faforever', new OidcStrategy({
       let data = response.data.data;
       console.log(response.data);
       console.log(data.attributes);
-       
+       // user then gets the userID, the accessToken and all the data attributes (such as userName, userEmail, etc)
         let user = 
           {
             id: data.attributes.userId,
