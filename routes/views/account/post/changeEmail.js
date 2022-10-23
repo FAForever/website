@@ -29,30 +29,28 @@ exports = module.exports = function (req, res) {
 
   } else {
 
-		// pull the form variables off the request body
-		let email = req.body.email;
-		let password = req.body.password;
-		let overallRes = res;
-    
+    // pull the form variables off the request body
+    let email = req.body.email;
+    let password = req.body.password;
+    let overallRes = res;
+
     axios.post(`${process.env.API_URL}/users/changeEmail`, {
       headers: {'Authorization': `Bearer ${req.user.token}`},
       form: {newEmail: email, currentPassword: password}
 
-    }).then(function (err, res, body) {
+    }).then(() => {
+      // Successfully changed email
+      flash.class = 'alert-success';
+      flash.messages = [{msg: 'Your email was set successfully.'}];
+      flash.type = 'Success!';
 
-        if (res.statusCode !== 200) {
-          error.parseApiErrors(body, flash);
-          return overallRes.render('account/changeEmail', {flash: flash});
-        }
-        
+      overallRes.render('account/changeEmail', {flash: flash});
 
-        // Successfully changed email
-        flash.class = 'alert-success';
-        flash.messages = [{msg: 'Your email was set successfully.'}];
-        flash.type = 'Success!';
+    }).catch(error => {
+      console.log(error);
 
-        overallRes.render('account/changeEmail', {flash: flash});
-        return (req.user.token);
+      return overallRes.render('account/changeEmail', {flash: flash});
+      
     });
-	}
+  }
 };
