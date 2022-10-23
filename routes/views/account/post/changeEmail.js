@@ -2,7 +2,7 @@ let flash = {};
 
 let error = require('./error');
 const {check, validationResult} = require('express-validator');
-const axios = require("axios");
+const axios = require('axios');
 
 exports = module.exports = function (req, res) {
 
@@ -33,7 +33,7 @@ exports = module.exports = function (req, res) {
     let email = req.body.email;
     let password = req.body.password;
     let overallRes = res;
-
+//TODO: Axios is giving me a 400 error, I believe putting the axios.post in a async await function will fix it but that is not a good long term solution
     axios.post(`${process.env.API_URL}/users/changeEmail`, {
       headers: {'Authorization': `Bearer ${req.user.token}`},
       form: {newEmail: email, currentPassword: password}
