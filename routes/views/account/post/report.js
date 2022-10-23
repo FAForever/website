@@ -181,7 +181,7 @@ exports = module.exports = async function (req, res) {
       url: process.env.API_URL + '/data/moderationReport',
       body: JSON.stringify(report),
       headers: {
-        'Authorization': 'Bearer ' + req.user.data.attributes.token,
+        'Authorization': 'Bearer ' + req.user.token,
         'Content-Type': 'application/vnd.api+json',
         'Accept': 'application/vnd.api+json'
       }
