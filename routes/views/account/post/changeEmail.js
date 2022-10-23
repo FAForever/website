@@ -1,7 +1,8 @@
 let flash = {};
-let request = require('request');
+
 let error = require('./error');
 const {check, validationResult} = require('express-validator');
+const axios = require("axios");
 
 exports = module.exports = function (req, res) {
 
@@ -33,24 +34,23 @@ exports = module.exports = function (req, res) {
 		let password = req.body.password;
 
 		let overallRes = res;
-    
-		request.post({
-			url: process.env.API_URL + '/users/changeEmail',
-			headers: {'Authorization': 'Bearer ' + req.user.token},
-			form: {newEmail: email, currentPassword: password}
-		}, function (err, res, body) {
+    axios.post(`${process.env.API_URL}/users/changeEmail`, {
+      headers: {'Authorization': `Bearer ${req.user.token}`},
+      form: {newEmail: email, currentPassword: password}
 
-			if (res.statusCode !== 200) {
-        error.parseApiErrors(body, flash);
-        return overallRes.render('account/changeEmail', {flash: flash});
-			}
+    }).then(function (err, res, body) {
 
-			// Successfully changed email
-			flash.class = 'alert-success';
-			flash.messages = [{msg: 'Your email was set successfully.'}];
-			flash.type = 'Success!';
+        if (res.statusCode !== 200) {
+          error.parseApiErrors(body, flash);
+          return overallRes.render('account/changeEmail', {flash: flash});
+        }
 
-			overallRes.render('account/changeEmail', {flash: flash});
-		});
+        // Successfully changed email
+        flash.class = 'alert-success';
+        flash.messages = [{msg: 'Your email was set successfully.'}];
+        flash.type = 'Success!';
+
+        overallRes.render('account/changeEmail', {flash: flash});
+    });
 	}
 };

@@ -212,12 +212,12 @@ passport.use('faforever', new OidcStrategy({
 
 
 passport.serializeUser(async function (user, done) {
-  console.log('Serialized User');
+  //console.log('Serialized User');
   await done(null, user);
 });
 
 passport.deserializeUser(function (user, done) {
-  console.log('Deserialized User');
+  //console.log('Deserialized User');
   done(null, user);
 });
 
