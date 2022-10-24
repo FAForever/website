@@ -35,12 +35,12 @@ exports = module.exports = function (req, res) {
     let password = req.body.password;
     let overallRes = res;
 
-//TODO: Axios is giving me a 400 error, I believe putting the axios.post in a async await function will fix it but that is not a good long term solution
+//TODO: Axios is giving me a 400 error
 
     console.log('Axios is being used');
     axios.post(`${process.env.API_URL}/users/changeEmail`, {
       headers: {'Authorization': `Bearer ${req.user.token}`},
-      form: {newEmail: email, currentPassword: password}
+      data: {newEmail: email, currentPassword: password}
 
     }).then((response) => {
       console.log('.then()');
