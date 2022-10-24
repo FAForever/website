@@ -223,9 +223,10 @@ passport.deserializeUser(function (user, done) {
 
 
 app.get('/callback', passport.authenticate('faforever', {
-  failureRedirect: '/faf-teams', // Failed auth
+  failureRedirect: '/login', // Failed auth
 }), function (req, res) {
-  res.redirect('/'); // Successful auth
+  res.redirect(req.session.referral ? req.session.referral : '/');
+  req.session.referral = null; // Successful auth
 });
 
 
