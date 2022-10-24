@@ -1,8 +1,9 @@
 let flash = {};
-
+let request = require('request');
+const axios = require('axios');
 let error = require('./error');
 const {check, validationResult} = require('express-validator');
-const axios = require('axios');
+
 
 exports = module.exports = function (req, res) {
 
@@ -36,17 +37,17 @@ exports = module.exports = function (req, res) {
 
 //TODO: Axios is giving me a 400 error, I believe putting the axios.post in a async await function will fix it but that is not a good long term solution
 
-    async function postMail() {
-     await axios.post(`${process.env.API_URL}/users/changeEmail`, {
+   /*
+    axios.post(`${process.env.API_URL}/users/changeEmail`, {
         headers: {'Authorization': `Bearer ${req.user.token}`},
         form: {newEmail: email, currentPassword: password}
 
-      }).then(() => {
+      }).then(response => {
+        console.log(response)
         // Successfully changed email
         flash.class = 'alert-success';
         flash.messages = [{msg: 'Your email was set successfully.'}];
         flash.type = 'Success!';
-
         overallRes.render('account/changeEmail', {flash: flash});
 
       }).catch(error => {
@@ -55,9 +56,26 @@ exports = module.exports = function (req, res) {
         return overallRes.render('account/changeEmail', {flash: flash});
 
       });
-    }
+    
+    
+    */
+    request.post({
+      url: process.env.API_URL + '/users/changeEmail',
+      headers: {'Authorization': `Bearer ${req.user.token}`},
+      form: {newEmail: email, currentPassword: password}
+    }, function (err, res, body) {
 
-    postMail();
+      if (res.statusCode !== 200) {
+        error.parseApiErrors(body, flash);
+        return overallRes.render('account/changeEmail', {flash: flash});
+      }
+
+      // Successfully changed email
+      flash.class = 'alert-success';
+      flash.messages = [{msg: 'Your email was set successfully.'}];
+      flash.type = 'Success!';
+
+      overallRes.render('account/changeEmail', {flash: flash});
+    });
   }
-
 };
