@@ -37,34 +37,14 @@ exports = module.exports = function (req, res) {
 
 //TODO: Axios is giving me a 400 error, I believe putting the axios.post in a async await function will fix it but that is not a good long term solution
 
-   /*
+
     axios.post(`${process.env.API_URL}/users/changeEmail`, {
-        headers: {'Authorization': `Bearer ${req.user.token}`},
-        form: {newEmail: email, currentPassword: password}
-
-      }).then(response => {
-        console.log(response)
-        // Successfully changed email
-        flash.class = 'alert-success';
-        flash.messages = [{msg: 'Your email was set successfully.'}];
-        flash.type = 'Success!';
-        overallRes.render('account/changeEmail', {flash: flash});
-
-      }).catch(error => {
-        console.log(error);
-
-        return overallRes.render('account/changeEmail', {flash: flash});
-
-      });
-    
-    
-    */
-    request.post({
-      url: process.env.API_URL + '/users/changeEmail',
       headers: {'Authorization': `Bearer ${req.user.token}`},
       form: {newEmail: email, currentPassword: password}
-    }, function (err, res, body) {
 
+    }).then((err, res, body) => {
+      
+      
       if (res.statusCode !== 200) {
         error.parseApiErrors(body, flash);
         return overallRes.render('account/changeEmail', {flash: flash});
@@ -74,8 +54,9 @@ exports = module.exports = function (req, res) {
       flash.class = 'alert-success';
       flash.messages = [{msg: 'Your email was set successfully.'}];
       flash.type = 'Success!';
-
       overallRes.render('account/changeEmail', {flash: flash});
+
     });
+    
   }
 };
