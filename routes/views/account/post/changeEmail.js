@@ -43,26 +43,23 @@ exports = module.exports = function (req, res) {
 
 //TODO: Axios is giving me a 400 error
 
-    request.post({
-      url: `${process.env.API_URL}/users/changeEmail`,
+    console.log('Axios is being used');
+    axios.post(`${process.env.API_URL}/users/changeEmail`, {
       headers: {'Authorization': `Bearer ${req.user.token}`},
-      form: {newEmail: email, currentPassword: password}
-    }, function (err, res, body) {
+      data: {newEmail: req.body.email, currentPassword: req.body.password}
 
-      if (res.statusCode !== 200) {
-        error.parseApiErrors(body, flash);
-        return overallRes.render('account/changeEmail', {flash: flash});
-      }
+    }).then((response) => {
+      console.log('.then()');
+      console.log(response);
+      
 
       // Successfully changed email
       flash.class = 'alert-success';
       flash.messages = [{msg: 'Your email was set successfully.'}];
       flash.type = 'Success!';
-
       overallRes.render('account/changeEmail', {flash: flash});
+
     });
+    
   }
 };
-
-
-
