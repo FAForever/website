@@ -38,9 +38,14 @@ exports = module.exports = function (req, res) {
 //TODO: Axios is giving me a 400 error, I believe putting the axios.post in a async await function will fix it but that is not a good long term solution
 
 
-    axios.post(`${process.env.API_URL}/users/changeEmail`, {
+    axios({
+      method: 'POST',
+      url: `${process.env.API_URL}/users/changeEmail`,
       headers: {'Authorization': `Bearer ${req.user.token}`},
-      form: {newEmail: email, currentPassword: password}
+      form: {
+        newEmail: email,
+        currentPassword: password,
+      },
 
     }).then((err, res, body) => {
       
