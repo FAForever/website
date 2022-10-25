@@ -1,42 +1,161 @@
+@use '../abstracts/variables'
+@use '../abstracts/mixins'
 
-.important-form
-  display: flex
-  justify-content: center
-  border: 1px solid #ddd
-  padding-top: 20px
-  padding-bottom: 20px
+// Background of the whole thing
+.clanBackground
+  padding: 7.5vw 11vw
+  background-image: url("/../../images/fafbgpattern0.5.jpg")
+  ul
+    list-style: none
+    li
+      padding: 0.5em 0
+
+// This is the searchbar input form
+input 
+  margin: 1em 1em 2px 1em
+  background-color: variables.$background-tertiary
+  color: variables.$color-active
+  font-size: var(--paragraph-font-size)
+  border: 0.5em solid variables.$background-secondary
+  border-radius: 10px
+  z-index: 2
+  position: relative
+
+.mainClanContainer
+  @include mixins.gridMainContainer
+  padding: 0
+  ul
+    list-style: none
+    li
+      padding: 0.8em 0
+  p
+    padding: 0.2em
+
+.clanFilter
+  border: 1px solid white
+  font-family: variables.$family-paragraph
+  font-size: var(--paragraph-font-size)
+  color: variables.$color-active
+  background-color: variables.$background-tertiary
+  padding: 0.5em 0 0.5em 0.5em
+  margin: 0 0.8em 
+  text-align: center
+  option
+    color: variables.$color-active
+    background-color: variables.$background-secondary
+// This is in here for the js since the clan is actually starting from 100 to 1. So it needs to be displayed in reverse.
+
+
+.clanBorder
+  border: 1px solid variables.$color-active
+  padding: 0px
+  background-color: variables.$background-primary
+
+.clanContainer
+  font-family: variables.$family-paragraph
+  padding: 0em
+  ul
+    font-size: var(--paragraph-font-size)
+    padding: 1em 0
+    li
+      font-size: var(--paragraph-font-size)
+      padding: 1em 0
+.clanItem
+    
+  li:nth-child(odd)
+    background-color: mix(variables.$background-tertiary, variables.$background-primary, 25%)
+  li:nth-child(even)
+    background-color: variables.$background-secondary
+.clanCategory
+  padding: 1em 0.25em
+  display: inline-block
+  place-items: start
+  font-family: variables.$family-paragraph
+  font-size: var(--paragraph-font-size)
+  letter-spacing: 0em
+  ul
+    padding: 0.5em
+    li
+      display: inline-block
+      padding: 0.6em 1em
+      border: 0.05em solid variables.$color-inactive
+      background-color: variables.$background-tertiary
+      cursor: pointer
+      transition: 0.4s
+      &:hover
+        border: 0.05em solid variables.$color-active
+        filter: brightness(2)
+    .exhaustedButton
+      border: 0.05em solid variables.$color-inactive
+      background-color: variables.$background-secondary
+      color: variables.$color-inactive-plus
+      pointer-events: none
+      cursor: default
+
+#searchResults
+  margin: 1em 0 0 0
+.appearWhenSearching
+  display: none
+.centerYourself
+  display: grid
+  justify-items: center
+  position: relative
+
+.searchBar
+  ul
+    background-color: variables.$background-secondary
+    color: variables.$color-inactive
+    font-size: calc(var(--paragraph-font-size) * 0.9)
+    border-radius:  0  0 10px 10px
+    text-align: left
+    li
+      padding: 0.5em 1em
+      
+.clearButton
+  li
+    cursor: pointer
+    margin: 1em 1em 0 1em
+    border-radius: 10px
+    background-color: variables.$background-tertiary
+    color: variables.$color-inactive
+    transition: 0.4s
+    &:hover
+      background-color: variables.$color-inactive-plus
+      color: variables.$color-active
+  .fa-trash-alt
+    padding: 0.5em
+
+@media (max-width: 800px)
+  .clanFilter
+    font-size: 12px
+  .clanContainer
+    ul
+      font-size: 12px
+      padding: 1em 0 0 0
+      
+      li
+        text-overflow: ellipsis
+        font-size: 12px
+        padding: 1em 0
   
-  
-.danger
-  border: 1px solid #F04124
-  color: #F04124
-  padding: 10px
-  
-.inline-panel
-  display: flex
-  justify-content: space-between
-  flex-direction: row
-  
-.leader
-  background-color: #fff1c9 !important
-  
-.centered-flex
-  display: flex
-  justify-content: center
-  
-a.invite-link
-  color: white
-  font-weight: bold
-  text-decoration: underline
-  
-a.invite-link:hover
-  color: #ddd
-  font-weight: bold
-  
-tr.me 
-  font-weight: bold
-  
-th.sort-column:hover
-  background-color: #ddd
-  cursor: pointer
-  
+  .clearButton
+    left: 90%
+    top: 68%
+  .clanBackground
+    padding: 1vw
+  .clanCategory
+    padding: 1vw
+    font-size: var(--paragraph-font-size)
+    ul
+      li
+        padding: 0.65em
+    
+
+@media (max-width: 1600px)
+  .clanContainer
+    ul
+      font-size: 14px
+      li
+        font-size: 14px
+  .clanFilter
+    font-size: 14px

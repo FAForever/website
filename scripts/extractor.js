@@ -99,18 +99,28 @@ async function contentCreators() {
 
 
 }
-
+//https://api.faforever.com/data/clan?include=memberships.player&filter=tag==FEM
 async function getAllClans() {
   try {
-    let response = await fetch(`${process.env.API_URL}/data/clan?fields[clan]=name,tag&page[number]=1&page[size]=3000`);
+    let response = await fetch(`${process.env.API_URL}/data/clan?sort=createTime&include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000`);
     let fetchData = await response.json();
     let dataObjectToArray = Object.values(fetchData);
-    let data = dataObjectToArray[0].map((item) => ({
-      id: item.id,
+    let clanLeader = dataObjectToArray[2].map(item => ({
+      leaderName: item.attributes.login
+    }));
+    let clanValues = dataObjectToArray[0].map(item => ({
+      //id: item.id,
       name: item.attributes.name,
       tag: item.attributes.tag,
+      createTime: item.attributes.createTime,
+      description: item.attributes.description,
+      population: item.relationships.memberships.data.length
     }));
-    return await data;
+    const combineArrays = (array1, array2) => array1.map((x, i) => [x, array2[i]]);
+    let clanData = combineArrays(clanLeader, clanValues);
+    clanData.sort((playerA, playerB) => playerA[1].population - playerB[1].population);
+    return await clanData;
+
   } catch (e) {
     console.log(e);
     return null;

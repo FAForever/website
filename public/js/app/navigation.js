@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //when you mouse is over the login, it should appear
   loginList.addEventListener("mouseover", () => {
     stillHovering = 0;
-    console.log('hovering on login');
+   
     setTimeout(() => {
       loginAbsolute.style.display = "block";
       //console.log('timeout done');
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //when you mouseout/leave, menu dissapears
     loginList.addEventListener("mouseout", () => {
       stillHovering = 1;
-      console.log('hovering out of login');
+      
       setTimeout(() => {
         if (stillHovering === 1) {
           loginAbsolute.style.display = "none";

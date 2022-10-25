@@ -8,7 +8,7 @@ let backgroundColor = 'greyLeaderboard';
 let playerListDivided = playerList.length/100;
 // This decides the time filter
 let d = new Date();
-let timeFilter = 6;
+let timeFilter = 6; // 6 Months is the default value
 let minusTimeFilter = d.setMonth(d.getMonth() - timeFilter);
 let currentDate = new Date(minusTimeFilter).toISOString();
 

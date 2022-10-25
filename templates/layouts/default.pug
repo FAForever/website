@@ -89,6 +89,8 @@ html(lang='en')
                 li  Contribute/Volunteer
               a(href='/donation')
                 li  Donate to FAF
+              a(href='/clans')
+                li  Clans
 
           li.navList COMPETITIVE
             .fas.fa-caret-down
@@ -119,13 +121,13 @@ html(lang='en')
               li.loginDropdown
                 ul(role='menu')                  
                   if hasClan
-                    li: a(href="/clans/manage") My Clan
-                  li: a(href="/account/changeEmail") Change Email
-                  li: a(href="/account/changePassword") Change Password
-                  li: a(href="/account/changeUsername") Change Username
-                  li: a(href="/account/linkSteam") Steam Linking
-                  li: a(href="/account/linkGog") GOG Linking
-                  li: a(href="/account/report") Report Player
+                    a(href="/clans/manage"): li My Clan
+                  a(href="/account/changeEmail"): li Change Email
+                  a(href="/account/changePassword"): li Change Password
+                  a(href="/account/changeUsername"): li Change Username
+                  a(href="/account/linkSteam"): li Steam Linking
+                  a(href="/account/linkGog"): li GOG Linking
+                  a(href="/account/report"): li Report Player
         .navContainer.navEnd
           ul.navItem
             a(href="/logout")
@@ -173,6 +175,8 @@ html(lang='en')
             a(href='/donation') Donate
           li
             a(href='/contribution') Contribute
+          li
+            a(href='/clans') Clans
 
         .mobileNavUl Competitive
           .fas.fa-caret-down.mobileCaret

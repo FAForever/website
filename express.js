@@ -77,7 +77,7 @@ app.listen(3000, () => {
 // --- UNPROTECTED ROUTES ---
 const appGetRouteArray = [
   // This first '' is the home/index page
-  '', 'client-news', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'tos', 'tos-ru', 'tos-fr', 'newsArticle', 'account/createAccount', 'account/register', 'account/activate',];
+  '', 'client-news', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'tos', 'tos-ru', 'tos-fr', 'newsArticle', 'clans', 'account/createAccount', 'account/register', 'account/activate',];
 
 //Renders every page written above
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
@@ -150,31 +150,7 @@ app.get('/logout', function (req, res, next) {
 // Login and Login/redirect routes
 app.get('/login', passport.authenticate('faforever'));
 
-/*
-passport.use('faforever', new OidcStrategy({
-    issuer: process.env.OAUTH_URL + '/',
-    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
-    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
-    userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
-    clientID: process.env.OAUTH_CLIENT_ID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    callbackURL: process.env.HOST + '/callback',
-    scope: ['openid', 'public_profile', 'write_account_data']
-  },
-  function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
-    let request = require('request');
-    request.get(
-      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
-      function (e, r, body) {
-        let user = JSON.parse(body);
-        user.data.attributes.token = accessToken;
-        user.data.id = user.data.attributes.userId;
-        return verified(null, user);
-      });
-  }
-));
 
- */
 
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
