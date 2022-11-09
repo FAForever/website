@@ -1,67 +1,83 @@
 extends ../layouts/default
 
-block bannerData
-  - var bannerImage = "Play"
-  - var bannerFirstTitle = "Play, Conquer, Destroy"
-  - var bannerSubTitle = "Join the FAForever Community Today!"
+block bannerMixin
 
 block content
-  .playContainer
-    .playInfo.column12
-      h1 Play on FAF
-      h2.highlightText Join other Commanders on the battlefield
-      p should work on 
-      img(src='/images/logos/linux-icon.svg' alt='Linux Logo')
-      img(src='/images/logos/windows-icon.svg' alt='Windows Logo')
-      br 
-      br
-      h2 Owning The game
-      p Before being able to use FAForever Client you need to own the Game via Steam or GOG. <br> This is due to Needing to link your steam or gog account to verify that your own the game.<br> If you dont own the game you can use one of the following links.
-      br
-      a(href='https://store.steampowered.com/app/9420/Supreme_Commander_Forged_Alliance')
-        button Steam
-      a(href='https://www.gog.com/en/game/supreme_commander_gold_edition')
-        button GOG
-
-    .playPrep
-      h1 Prep before client install
-      p Before we get started make sure that you have complete a few things first before installing the client.
-      li Installed the Game Via Steam or GOG.
-      li Create a FAF Account and Linked it to the platform where you owned the game.
-
-    .playStep1
-      h1 1. Downloding the Client
-      p <b>First</b> we need to download the client installer.
-      a(href=fafClientDownloadLink)
-        button <img src='/images/logos/windows-icon.svg'> Download <strong>Windows</strong> Installer
-      //a(href=#)
-        button <img src='/images/logos/windows-icon.svg'> Download <strong>Linux</strong> Installer
-
-    .playStep2
-      h1 2. Running the installer
-      p
+  .playMain
     
-    .playStep3
-      h1 3. login to the client
-      p
+    h1 Play the best RTS out there 
+    h2.highlightText Join hundreds of players on the battlefield
+
+    
+    
+    br
+
+    .playInnerGrid
+      .playContainer
+        h1 Before Installing FAF
+        p Doing these now will ensure an easy installation later and avoid issues.
+        
+        input(type='checkbox')
+        label Created a FAF account
+        br
+        a(href='/account/register' target='_blank')
+          button Register
+        
+
+        br
+        input(type='checkbox') 
+        label Bought and installed Supreme Commander:Forged Alliance (SC:FA) via Steam or GOG.
+        br
+        a(href='https://store.steampowered.com/app/9420/Supreme_Commander_Forged_Alliance' target='_blank')
+          button Buy on Steam
+        a(href='https://www.gog.com/en/game/supreme_commander_gold_edition' target='_blank')
+          button Buy on GOG
+        
+        br
+        input(type='checkbox')
+        label Run SC:FA locally once to create a profile in it (game generates necessary files doing so)
+        
+        br
+        input(type='checkbox')
+        label Linked Steam or GOG account to your FAF account.
+        br
+        a(href='/account/linkSteam' target='_blank')
+          button Link Steam Account
+        a(href='/account/linkGog' target='_blank')
+          button Link GOG Account
+        h2 Why do I need to link my Steam/GOG account to FAF?
+          p FAF as an organization, doesn't own the copyright or trademark to SC:FA (Square Enix does). <br> Therefore, we need to verify you own a copy of SC:FA to protect ourselves from legal repercussions.
       
-    .playStep4
-      h1 4. Playing First game
-      p
+      h2.highlightText Checked everything above?
+      h2.highlightText Then follow these easy steps to play FAF
       
-    .playStep5
-      h1 Optional. Downloading Maps & Mods
-      p
-           
-    .playDiscord
-      img(src='/images/logos/discord.svg')
-      h2 We highly recommend that you join out Discord
-      br
-      a(href='https://discord.gg/kTsxKu52WU')
-        button Join the FAF Discord Community
-      br
-      br
-      p The discord is the best place to get all the information you need.
-      p to keep updated with development of the project follow #X and #Y
+        
+
+  
+      .playContainer
+        h1 1 - Download and Install FAF 
+        p Download the FAF Client and install it. FAF is open source and 100% safe. <br> If your Windows computer stops you from running FAF, click on "More info" and you'll be able to run it. <br> If you have any issues or troubleshooting, join our Discord or use our forum for help.
+        a(href=fafClientDownloadLink)
+          button Download FAF
+        br
+        br
+        a(href='https://discord.gg/mXahVSKGVb')
+          button Discord
+        a(href='https://forum.faforever.com/')
+          button Forum
+        a(href='https://wiki.faforever.com/en/Linux-Install')
+          button Instructions for Linux
+  
+      .playContainer
+        h1 2 - Run FAF and Find your SC:FA Directory
+        p Run FAF and log in with the same credentials you used for you FAF account. <br> Now once you try joining a lobby or matchmaking queue in the Play tab, FAF will ask for your SC:FA game directory. <br> If you installed it in steam, it should be in your steamapps/common folder. If installed in GOG, it should be a /GOG folder.
       
-      embed(width="852" height="480" src="https://www.youtube.com/embed/Nks9loE96ok" title="NEW TO FAF? || SUPREME COMMANDER TUTORIAL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+      .playContainer
+        h1 3 - Enjoy Forged Alliance Forever!
+        p You are officially done! If you are new to the game, we recommend <br> watching the video below and joining the official FAF Discord, <br> you'll find plenty of friendly people to play, ask questions and become part of the community!
+        
+        a(href='https://discord.gg/kTsxKu52WU')
+          button Join the FAF Discord
+        br
+        br
+        embed(style="width:75%; height:40vh;" src="https://www.youtube.com/embed/Nks9loE96ok" title="NEW TO FAF? || SUPREME COMMANDER TUTORIAL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"  allowfullscreen )
