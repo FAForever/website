@@ -113,7 +113,7 @@ async function getAllClans() {
       name: item.attributes.name,
       tag: item.attributes.tag,
       createTime: item.attributes.createTime,
-      description: item.attributes.description,
+      //description: item.attributes.description,
       population: item.relationships.memberships.data.length
     }));
     const combineArrays = (array1, array2) => array1.map((x, i) => [x, array2[i]]);

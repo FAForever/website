@@ -1,0 +1,18 @@
+extends ../layouts/default
+block bannerMixin
+
+block content
+  // Most of this page is generated through its js file, this pug file is just used to put the ids in place
+  .renderClan
+    .renderClanContainer.column12
+      h2#clanTag 
+      h1#clanName
+      p#clanDescription
+      p#clanCreation
+      h1#clanLeader
+      p Clan Members
+      
+      ul.renderClanSubGrid#clanMembers
+  
+block js
+  script( src="../../js/app/getClans.js")

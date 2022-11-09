@@ -29,14 +29,12 @@ function articleActivate(article) {
       activeImage.innerHTML = `<img src="${data[article].media}" alt="News">`;
       activeContent.innerHTML = data[article].content;
       activeBackground.style.backgroundImage = `url("../../images/black${randomNumber}.jpg")`;
-
     });
 }
 
 //So here we check the name of the article in the url and display the article, the slice is done so we only check the title and not the name.
 
 let url = window.location.href;
-console.log(url);
 const sliceIndicator = url.indexOf('/newshub');
 // The slice has + 9 because thats the amount of characters in "/newshub/" yes with two /, not one!
 let findMatch = url.slice(sliceIndicator + 9);

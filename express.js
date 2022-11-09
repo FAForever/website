@@ -106,14 +106,21 @@ accountRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, require(`${a
 const routes = './routes/views/';
 app.get('/clans', require(routes + 'clans/get/index'));
 
+
+
 const clansRoutesGet = [
-  'create', 'manage', 'see', 'browse', 'accept_invite',];
+  'create', 'manage', 'browse', 'accept_invite',];
 clansRoutesGet.forEach(page => app.get(`/clans/${page}`, loggedIn, require(`${routes}clans/get/${page}`)));
 
 const clansRoutesPost = [
   'create', 'destroy', 'invite', 'kick', 'transfer', 'update', 'leave', 'join',];
 clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn, require(`${routes}clans/post/${page}`)));
 
+
+//When searching for a specific clan
+app.get('/clans/*', (req, res) => {
+  res.render(`getClans`);
+});
 
 // ---ODD BALLS---
 // Routes that might not be able to be added into the loops due to their nature in naming

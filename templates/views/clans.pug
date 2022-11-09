@@ -9,7 +9,7 @@ block content
       .clanContainer.column12.centerYourself
         p Search FAF Clans
           #errorLog
-        input#input(onkeyup=`pressEnter(event)` type='text' placeholder='Player Name')
+        input#input(onkeyup=`pressEnter(event)` type='text' placeholder='Clan TAG')
         #searchbar
           .searchBar
             ul
@@ -17,31 +17,27 @@ block content
         ul#clearSearch.clearButton.appearWhenSearching
           li.fas.fa-trash-alt
     .mainClanContainer.clanBorder#searchResults.appearWhenSearching
-      .clanContainer.column1
-        .clanItem
-          ul Rank
-            li#clanRankSearch
-      
-      .clanContainer.column5
+
+      .clanContainer.column6
         .clanItem
           ul Clan Name
-            li#clanNameSearch
+          li#clanNameSearch
       .clanContainer.column1
         .clanItem
           ul TAG
-            li#clanTAGSearch
+          li#clanTAGSearch
       .clanContainer.column3
         .clanItem
           ul Clan Leader
-            li#clanPlayerSearch
+          li#clanPlayerSearch
       .clanContainer.column2
         .clanItem
           ul Population
-            li#clanPopulationSearch
+          li#clanPopulationSearch
     .mainClanContainer
 
       //DO NOT Change the order of these without changing the js. For them to work, they need to be in this specific order
-      .clanContainer.clanCategory.column12
+      .clanContainer.clanButton.column12
         ul
           li(onclick= `pageChange(0)`).pageButton.exhaustedButton First
           li(onclick= `pageChange(lastPage)`).pageButton Last 
@@ -50,29 +46,26 @@ block content
           li(onclick= `pageChange(pageNumber + 1)`).pageButton Next
 
     .mainClanContainer.clanBorder
-      .clanContainer.column1
-        .clanItem
-          ul Rank
-            li#clanRank
+
     
-      .clanContainer.column5
+      .clanContainer.column6
         .clanItem
           ul Clan Name
-            li#clanName
+          li#clanName
       .clanContainer.column1
         .clanItem
           ul TAG
-            li#clanTAG
+          li#clanTAG
       .clanContainer.column3
         .clanItem
           ul#spawnPlayer Clan Leader
-            li#clanPlayer
+          li#clanPlayer
       .clanContainer.column2
         .clanItem
           ul Population
-            li#clanPopulation
+          li#clanPopulation
     .mainClanContainer
-      .clanContainer.clanCategory.column12
+      .clanContainer.clanButton.column12
         ul
           li(onclick= `pageChange(0)`).pageButton.exhaustedButton First
           li(onclick= `pageChange(lastPage)`).pageButton Last 
