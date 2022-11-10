@@ -22,10 +22,10 @@ process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
 process.env.HOST = process.env.HOST || 'http://localhost';
 process.env.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '12345';
 
-//Initialize values for default configs
-app.set('views', 'templates/views');
-app.set('view engine', 'pug');
-app.set('port', 3000);
+//Execute Middleware
+app.use(middleware.initLocals);
+app.use(middleware.getLatestClientRelease);
+app.use(middleware.clientChecks);
 
 //Set static public directory path
 app.use(express.static('public', {
@@ -33,8 +33,10 @@ app.use(express.static('public', {
   maxAge: 4 * 60 * 60 * 1000 // 4 hours
 }));
 
+
+app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 // Session determines how long will the user be logged in/authorized in the website
@@ -47,6 +49,17 @@ app.use(session({
   }
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(require('./scripts/getNews'));
+app.use(flash());
+app.use(middleware.username);
+
+//Initialize values for default configs
+app.set('views', 'templates/views');
+app.set('view engine', 'pug');
+app.set('port', 3000);
+
 function loggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     next();
@@ -55,15 +68,9 @@ function loggedIn(req, res, next) {
   }
 }
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(require('./scripts/getNews'));
-app.use(flash());
 
-app.use(middleware.initLocals);
-app.use(middleware.getLatestClientRelease);
-app.use(middleware.clientChecks);
-app.use(middleware.username);
+
+
 
 //Start and listen on port
 app.listen(3000, () => {
