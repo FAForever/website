@@ -54,11 +54,17 @@ app.use(passport.session());
 app.use(require('./scripts/getNews'));
 app.use(flash());
 app.use(middleware.username);
+app.use(middleware.flashMessage);
 
 //Initialize values for default configs
 app.set('views', 'templates/views');
 app.set('view engine', 'pug');
 app.set('port', 3000);
+
+app.use(function(req, res, next){
+  res.locals.message = req.flash();
+  next();
+});
 
 function loggedIn(req, res, next) {
   if (req.isAuthenticated()) {

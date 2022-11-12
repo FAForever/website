@@ -1,7 +1,10 @@
+
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Lock and loaded!");
 
 
+
+
+  
   //JS for the main navbar menus to open on hover and close when leaving (GAME, COMMUNITY, etc). It uses mobilenav-active because it just needs the display:block        
 
   let navList = document.getElementsByClassName("navList");
@@ -133,5 +136,18 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(highlightPulse, 2000);
   
 });
+
+let pages = htmlElement.split(',');
+if (pages[0] === '/all') {
+  document.getElementById('flashMessageContainer').style.display = 'block';
+} else {
+  pages.forEach(route => {
+
+    if (window.location.href.includes(route)) {
+      document.getElementById('flashMessageContainer').style.display = 'block';
+    }
+  });  
+}
+
 
 

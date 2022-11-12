@@ -11,9 +11,32 @@ let d = new Date();
 let timeFilter = 6;
 let minusTimeFilter = d.setMonth(d.getMonth() - timeFilter);
 let currentDate = new Date(minusTimeFilter).toISOString();
-//TODO: Manage to make a loop of sorts of the URLs and "let data = dataObjectToArray.map" because it repeats alot and it could be done in a for loop/array since almost all API calls below have an extremely similar syntax/behavior.
-async function newshub() {
 
+
+//TODO: Manage to make a loop of sorts of the URLs and "let data = dataObjectToArray.map" because it repeats alot and it could be done in a for loop/array since almost all API calls below have an extremely similar syntax/behavior.
+async function flashMessage() {
+
+  try {
+    let response = await fetch(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields,_links.wp:featuredmedia,_embedded,title,content.rendered,categories&categories=640`);
+    let fetchData = await response.json();
+    //Now we get a js array rather than a js object. Otherwise we can't sort it out.
+    let dataObjectToArray = Object.values(fetchData);
+    let data = dataObjectToArray.map(item => ({
+      //title: item.title.rendered,
+      content: item.newshub_badge,
+      color: item.newshub_backgroundcolor,
+      valid: item.newshub_sortIndex,
+      pages: item.newshub_externalLinkUrl,
+
+    }));
+    return await data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
+async function newshub() {
   try {
     let response = await fetch(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,content.rendered,date,categories&categories=587`);
     let fetchData = await response.json();
@@ -31,8 +54,6 @@ async function newshub() {
     console.log(e);
     return null;
   }
-
-
 }
 
 async function clientNews() {
@@ -161,12 +182,12 @@ module.exports.run = function run() {
 
   // Do not change the order of these/make sure they match the order of fileNames below
   const extractorFunctions = [
-    newshub(), contentCreators(), clientNews(), fafTeams(), getAllClans(),
+    flashMessage(), newshub(), contentCreators(), clientNews(), fafTeams(), getAllClans(),
     getLeaderboards(1), getLeaderboards(2), getLeaderboards(3), getLeaderboards(4),
   ];
   //Make sure to not change the order of these since they match the order of extractorFunctions
   const fileNames = [
-    'newshub', 'content-creatores', 'client-news', 'faf-teams', 'getAllClans',
+    'flashMessage', 'newshub', 'content-creatores', 'client-news', 'faf-teams', 'getAllClans',
     'global', '1v1', '2v2', '4v4',
   ];
 
