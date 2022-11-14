@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const request = require('request');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -181,31 +182,40 @@ passport.use('faforever', new OidcStrategy({
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
     callbackURL: process.env.HOST + '/callback',
     scope: ['openid', 'public_profile', 'write_account_data']
-  },
-  
-  async function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
-  
-    await axios.get(`${process.env.API_URL}/me`, {
-      headers: {'Authorization': `Bearer ${accessToken}`},
+  }, function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
     
-    }).then(response => {
-      let data = response.data.data;
-      console.log(response.data);
-      console.log(data.attributes);
-       // user then gets the userID, the accessToken and all the data attributes (such as userName, userEmail, etc)
-        let user = 
-          {
-            id: data.attributes.userId,
-            token: accessToken,
-            attributes: data.attributes
-            
-          };
-        
+    request.get(
+      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
+      function (e, r, body) {
+        if (r.statusCode !== 200) {
+          return verified(null);
+        }
+        let user = JSON.parse(body);
+        user.data.attributes.token = accessToken;
+        user.data.id = user.data.attributes.userId;
         return verified(null, user);
-      });
+      }
+    );
   }
 ));
 
+//Commenting out just in case I need this later.
+/*
+          {
+         data:{
+           attributes: {
+             userId: data.attributes.userId,
+             token: accessToken
+           },
+         },
+
+         data:{
+           attributes: data.attributes
+         },
+          */
+//id: data.attributes.userId,
+//token: accessToken,
+//attributes: data.attributes
 
 passport.serializeUser(async function (user, done) {
   //console.log('Serialized User');

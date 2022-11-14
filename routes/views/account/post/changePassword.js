@@ -43,7 +43,7 @@ exports = module.exports = function(req, res) {
 		//Run post to reset endpoint
 		request.post({
 			url: process.env.API_URL + '/users/changePassword',
-			headers: {'Authorization': 'Bearer ' + req.user.token},
+			headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
 			form: {name: username, currentPassword: oldPassword, newPassword: newPassword}
 		}, function (err, res, body) {
 

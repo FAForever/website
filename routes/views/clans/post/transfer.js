@@ -51,7 +51,7 @@ exports = module.exports = async function (req, res) {
     let playerId = null;
 
     try {
-      if (userName === req.user.attributes.userName) throw "You cannot transfer your own clan to yourself";
+      if (userName === req.user.data.attributes.userName) throw "You cannot transfer your own clan to yourself";
 
       const httpData = await promiseRequest(fetchRoute);
       clanData = JSON.parse(httpData);
@@ -106,7 +106,7 @@ exports = module.exports = async function (req, res) {
       url: queryUrl,
       body: JSON.stringify(newClanObject),
       headers: {
-        'Authorization': 'Bearer ' + req.user.token,
+        'Authorization': 'Bearer ' + req.user.data.attributes.token,
         'Content-Type': 'application/vnd.api+json'
       }
     }, function (err, res, body) {
@@ -135,15 +135,15 @@ exports = module.exports = async function (req, res) {
         request.get({
             url: process.env.API_URL + '/me',
             headers: {
-              'Authorization': 'Bearer ' + req.user.token,
+              'Authorization': 'Bearer ' + req.user.data.attributes.token,
             }
           },
 
           function (err, res, body) {
             try{
               let user = JSON.parse(body);
-              user.data.id = user.id;
-              user.token = req.user.token;
+              user.data.id = user.data.attributes.userId;
+              user.data.attributes.token = req.user.data.attributes.token;
               req.logIn(user, function(err){
                 if (err) console.error(err);
                 return overallRes.redirect('see?id='+clanId);
@@ -156,4 +156,4 @@ exports = module.exports = async function (req, res) {
       }
     });
   }
-}
+};

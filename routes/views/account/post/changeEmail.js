@@ -39,7 +39,7 @@ exports = module.exports = function (req, res) {
 
     request.post({
       url: `${process.env.API_URL}/users/changeEmail`,
-      headers: {'Authorization': `Bearer ${req.user.token}`},
+      headers: {'Authorization': `Bearer ${req.user.data.attributes.token}`},
       form: {newEmail: email, currentPassword: password}
     }, function (err, res, body) {
 

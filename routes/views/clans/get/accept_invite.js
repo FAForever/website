@@ -36,9 +36,9 @@ exports = module.exports = function(req, res) {
   const invite = req.app.locals.clanInvitations[invitationId];
   const clanId = invite.clan;
 
-  if (req.user.attributes.clan != null){
+  if (req.user.data.attributes.clan != null){
     // User is already in a clan!
-    return res.redirect('/clans/see?id='+req.user.attributes.clan.id);
+    return res.redirect('/clans/see?id='+req.user.data.attributes.clan.id);
   }
 
   const queryUrl = process.env.API_URL
@@ -67,7 +67,7 @@ exports = module.exports = function(req, res) {
         return res.redirect('./?flash='+data);
       }
 
-      locals.clanName = clan.attributes.name;
+      locals.clanName = clan.data.attributes.name;
       locals.clanLeaderName = "<unknown>";
 
       for (k in clan.included){

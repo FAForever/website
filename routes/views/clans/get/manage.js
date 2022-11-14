@@ -12,7 +12,7 @@ exports = module.exports = function(req, res) {
 
   let clanMembershipId = null;
   try{
-    clanMembershipId = req.user.attributes.clan.membershipId;
+    clanMembershipId = req.user.data.attributes.clan.membershipId;
   }
   catch{
     // The user doesnt belong to a clan
@@ -43,7 +43,7 @@ exports = module.exports = function(req, res) {
         + '&fields[player]=login,updateTime'
         + '&fields[clanMembership]=createTime,player',
       headers: {
-        'Authorization': 'Bearer ' + req.user.token
+        'Authorization': 'Bearer ' + req.user.data.attributes.token
       }
     },
     function (err, childRes, body) {
@@ -63,15 +63,15 @@ exports = module.exports = function(req, res) {
       }
 
       if (clan.data.relationships.leader.data.id != req.user.data.id){
-        // Not the leader! Shouldn't be able to manage stuff
+        // Not the leader! Should'nt be able to manage shit
         res.redirect('/clans/see?id='+clan.data.id);
         return;
       }
 
-      locals.clan_name = clan.attributes.name;
-      locals.clan_tag = clan.attributes.tag;
-      locals.clan_description = clan.attributes.description;
-      locals.clan_create_time = clan.attributes.createTime;
+      locals.clan_name = clan.data.attributes.name;
+      locals.clan_tag = clan.data.attributes.tag;
+      locals.clan_description = clan.data.attributes.description;
+      locals.clan_create_time = clan.data.attributes.createTime;
       locals.me = req.user.data.id;
       locals.clan_id = clan.data.id;
       locals.clan_link = process.env.HOST + "/clans/see?id="+clan.data.id;
@@ -120,7 +120,7 @@ exports = module.exports = function(req, res) {
         catch(e){
           console.error("Parsing error while trying to decode a flash error: " + text);
           console.error(e);
-          flash = [{msg: "Unknown error"}];
+          flasg = [{msg: "Unknown error"}];
         }
       }
 
