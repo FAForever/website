@@ -96,7 +96,7 @@ exports = module.exports = async function (req, res) {
       url: queryUrl,
       body: "",
       headers: {
-        'Authorization': 'Bearer ' + req.user.data.attributes.token
+        'Authorization': 'Bearer ' + req.user.token
       }
     }, function (err, res, body) {
 

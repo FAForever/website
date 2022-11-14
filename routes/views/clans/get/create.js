@@ -12,7 +12,7 @@ exports = module.exports = function(req, res) {
         {
             url: process.env.API_URL + '/clans/me',
             headers: {
-                'Authorization': 'Bearer ' + req.user.data.attributes.token
+                'Authorization': 'Bearer ' + req.user.token
             }
         },
         function (err, childRes, body) {

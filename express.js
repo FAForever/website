@@ -122,7 +122,7 @@ app.get('/clans', require(routes + 'clans/get/index'));
 
 
 const clansRoutesGet = [
-  'create', 'manage', 'browse', 'accept_invite',];
+  'create', 'manage', 'accept_invite',];
 clansRoutesGet.forEach(page => app.get(`/clans/${page}`, loggedIn, require(`${routes}clans/get/${page}`)));
 
 const clansRoutesPost = [

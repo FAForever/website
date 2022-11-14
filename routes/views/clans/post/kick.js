@@ -30,7 +30,7 @@ exports = module.exports = async function (req, res) {
   let errors = validationResult(req);
 
   // Should not happen normally, but you never know
-  if (req.body.membership_id == req.user.data.attributes.clan.membershipId) errors = [{msg: "You cannot kick yourself"}];
+  if (req.body.membership_id == req.user.attributes.clan.membershipId) errors = [{msg: "You cannot kick yourself"}];
 
   //Must have client side errors to fix
   if (!errors.isEmpty()) {
@@ -57,7 +57,7 @@ exports = module.exports = async function (req, res) {
         url: queryUrl,
         body: "",
         headers: {
-            'Authorization': 'Bearer ' + req.user.data.attributes.token
+            'Authorization': 'Bearer ' + req.user.token
         }
     }, function (err, res, body) {
 

@@ -51,7 +51,7 @@ exports = module.exports = async function (req, res) {
         url: queryUrl,
         body: "",
         headers: {
-            'Authorization': 'Bearer ' + req.user.data.attributes.token
+            'Authorization': 'Bearer ' + req.user.token
         }
     }, function (err, res, body) {
 
@@ -88,15 +88,15 @@ exports = module.exports = async function (req, res) {
         request.get({
             url: process.env.API_URL + '/me',
             headers: {
-                'Authorization': 'Bearer ' + req.user.data.attributes.token,
+                'Authorization': 'Bearer ' + req.user.token,
             }
         },
             
         function (err, res, body) {
             try{
                 let user = JSON.parse(body);
-                user.data.id = user.data.attributes.userId;
-                user.data.attributes.token = req.user.data.attributes.token;
+                user.data.id = user.id;
+                user.token = req.user.token;
                 req.logIn(user, function(err){
                     if (err) console.error(err);
                     return overallRes.redirect('/clans?flash='+data);

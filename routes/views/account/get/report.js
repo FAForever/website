@@ -39,7 +39,7 @@ exports = module.exports = function (req, res) {
     {
       url: process.env.API_URL + '/data/moderationReport?include=reportedUsers,lastModerator&sort=-createTime',
       headers: {
-        'Authorization': 'Bearer ' + req.user.data.attributes.token
+        'Authorization': 'Bearer ' + req.user.data.token
       }
     },
     function (err, childRes, body) {

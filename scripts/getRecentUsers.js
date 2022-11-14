@@ -6,7 +6,7 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 
 let d = new Date();
-let timeFilter = 4;
+let timeFilter = 1;
 let minusTimeFilter = d.setHours(d.getHours() - timeFilter);
 let currentDate = new Date(minusTimeFilter).toISOString();
 
