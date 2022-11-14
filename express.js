@@ -117,7 +117,7 @@ accountRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, require(`${a
 
 // --- C L A N S ---
 const routes = './routes/views/';
-app.get('/clans', require(routes + 'clans/get/index'));
+//app.get('/clans', require(routes + 'clans/get/index'));
 
 
 
