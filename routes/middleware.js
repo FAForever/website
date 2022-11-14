@@ -46,13 +46,15 @@ exports.clientChecks = function(req, res, next) {
 };
 
 exports.username = function(req, res, next) {
-    let locals = res.locals;
-    if (req.isAuthenticated()) {
-        locals.username = req.user.attributes.userName;    
-        locals.hasClan = 
-            req.user && req.user.attributes.clan;
-    }
-    next();
+  var locals = res.locals;
+
+  if (req.isAuthenticated()) {
+    locals.username = req.user.userName;
+    locals.hasClan =
+      req.user && req.user.attributes.clan;
+  }
+
+  next();
 };
 
 exports.flashMessage =  function(req, res, next) {
