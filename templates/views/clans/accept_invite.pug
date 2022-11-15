@@ -1,0 +1,19 @@
+extends ../../layouts/default
+include ../../mixins/flash-messages
+block bannerMixin
+block content
+  .container.text-center
+    .row
+      .col-md-12
+        h1.account-title Accept invitation
+        h4.account-subtitle.text-center Click the button below to accept the invitation from #{clanLeaderName} to join #{clanName}
+        
+    .row
+      .col-md-offset-3.col-md-6
+        +flash-messages(flash)
+
+    .row
+      .col-md-offset-3.col-md-6
+        form(method='post', action=acceptURL, data-toggle="validator")
+          button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Join #{clanName}
+                        

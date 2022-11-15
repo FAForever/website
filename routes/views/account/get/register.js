@@ -8,7 +8,9 @@ exports = module.exports = function (req, res) {
 
   locals.formData = req.body || {};
 
+  var flash = null;
+
   // Render the view
-  res.render('account/register', {recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
+  res.render('account/register', {flash: flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
 
 };

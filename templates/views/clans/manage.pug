@@ -3,135 +3,121 @@ include ../../mixins/flash-messages
 include ../../mixins/form/account
 block bannerMixin
 block content
-    .container.text-center
-        .row
-            .col-md-12
-                h1.account-title Clan control panel
-                hr
-        .row
-            .col-md-offset-3.col-md-6
-                +flash-messages(flash)
-    
-        .row.important-form
-            .col-md-6
-                h2 Invite players
-                form(method='post',action="/clans/invite")
-                    p This will generate an invitation link for the player of your choice
-                    p Be sure to type the player name correctly!
-                    
-                    .row.inline-panel
+  .container.text-center
+    .row
+      .col-md-12
+        h1.account-title Clan Management
+        br
+    .row
+      .col-md-offset-3.col-md-6
+        +flash-messages(flash)
+
+    .row.important-form
+      .col-md-6
+        h2 Invite players
+        form(method='post',action="/clans/invite")
+          p This will generate an invitation link for the player of your choice
+          p Be sure to type the player name correctly!
+
+          .row.inline-panel
+            input(type='hidden', name='clan_id', value=clan_id)
+            input(type='text', name='invited_player', placeholder='Player name', style="margin-left:5px;margin-right:5px").form-control
+            button(type='submit').btn-danger.btn Invite
+
+
+    br
+    h2 Clan Settings
+    .col-md-6
+      form(method='post',action="/clans/update",data-toggle="validator")
+        input(type='hidden', name='clan_id', value=clan_id)
+        .clanManagement
+          .column12
+            div.clanManagementItem
+              label Name
+              input(type='text', name='clan_name', value=clan_name, placeholder='Clan name').form-control
+              input(type='hidden', name='original_clan_name', value=clan_name)
+              span(aria-hidden='true').glyphicon.form-control-feedback
+
+            div.clanManagementItem
+              label Tag:
+
+              input(type='text', required='required', name='clan_tag', value=clan_tag, placeholder='TAG', style="display:inline;margin-left:5px;margin-right:5px;width:5em;").form-control
+              input(type='hidden', name='original_clan_tag', value=clan_tag)
+
+              span(aria-hidden='true').glyphicon.form-control-feedback
+            br
+            div.clanManagementItem
+              label Clan description
+              br
+              br
+              textarea(rows='12', name='clan_description', required='required', placeholder='The description players will see when they look your clan').form-control #{clan_description}
+              span(aria-hidden='true').glyphicon.form-control-feedback
+
+            .form-actions
+              button(type='submit').bigButton Update Clan Settings
+
+    .clanManagement
+      .column12
+        .clanManagementTable(style="overflow:auto;")
+          table.table.table-striped.table-hover
+            thead
+              tr
+                th.text-center  Player
+                th.text-center  Joined
+                th.text-center  Kick member
+            tbody
+              each member in clan_members
+                tr(class= member.id == me ? "leader me" : "")
+                  td
+                    if member.id == me
+                      abbr(title="Leader") 👑 
+                    | #{member.name}
+                  td #{member.joinedAt}
+                  td
+                    if member.id != me
+                      form(method='post',action="/clans/kick")
+                        input(type='hidden', name="membership_id", value=member.membershipId)
                         input(type='hidden', name='clan_id', value=clan_id)
-                        input(type='text', name='invited_player', placeholder='Player name', style="margin-left:5px;margin-right:5px").form-control
-                        button(type='submit').btn-danger.btn Invite
-                        
+                        button(type='submit').btn Kick
+                    else
+                      span
+  .clanManagement
+    .clanManagementDanger.column12
+      h1.danger DANGER ZONE
+      p The settings below CANNOT be undone. Do not touch these settings unless you are sure about what you are doing.
 
-        .row
-            h2 Manage clan
-            .col-md-6
-                form(method='post',action="/clans/update",data-toggle="validator")
-                    input(type='hidden', name='clan_id', value=clan_id)
-                    .row.inline-panel
-                        .col-md-4
-                            div.form-group
-                                label Name
-                                input(type='text', name='clan_name', value=clan_name, placeholder='Clan name').form-control
-                                input(type='hidden', name='original_clan_name', value=clan_name)
-                                span(aria-hidden='true').glyphicon.form-control-feedback
-                                
-                            div.form-group
-                                label Tag
-                                p(style="font-size:2em") [
-                                    input(type='text', required='required', name='clan_tag', value=clan_tag, placeholder='TAG', style="display:inline;margin-left:5px;margin-right:5px;width:5em;").form-control
-                                    input(type='hidden', name='original_clan_tag', value=clan_tag)
-                                    | ]
-                                span(aria-hidden='true').glyphicon.form-control-feedback
+      form(method='post',action="/clans/transfer",data-toggle="validator", onsubmit="return confirm('ALL YOUR RIGHTS OVER THE CLAN WILL BE LOST. Press OK to confirm the clan transfer');")
+        input(type='hidden', name='clan_id', value=clan_id)
+        h2 Transfer ownership
+        p.text-left This operation will transfer the leadership of your clan to a new member.
+        br
+        p.text-left After the Leadership transfer,
+        ul.text-left
+          li You can no longer update the clan
+          br
+          li You can no longer delete the clan
+          br
+          li You can no longer invite new players
+          br
+          li You can no longer kick a player
+        br
+        p.danger By clicking the "transfer" button, you 
+          b FORFEIT
+          |  all your rights over this clan in favor of the new owner.
 
-                        .col-md-4
-                            div.form-group
-                                label Founder
-                                input(type='text', disabled='disabled', value=founder_name).form-control
-                                span(aria-hidden='true').glyphicon.form-control-feedback
-                                
-                            div.form-group
-                                label Creation date
-                                input(type='text', disabled='disabled', value=clan_create_time).form-control
-                                span(aria-hidden='true').glyphicon.form-control-feedback
-                                
-                    .row.inline-panel
-                        .col-md-8
-                            div.form-group
-                                label Clan link
-                                input(type='text', readonly, value=clan_link).form-control
-                                span(aria-hidden='true').glyphicon.form-control-feedback
-                                
-                    .row.inline-panel
-                        .col-md-8
-                            div.form-group
-                                label Clan description
-                                textarea(rows='8', name='clan_description', required='required', placeholder='Please provide a short description of your clan, and the kind of players you\'re looking for :)').form-control #{clan_description}
-                                span(aria-hidden='true').glyphicon.form-control-feedback
-                                    
-                            .form-actions
-                                button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Update
-                                
-            .col-md-6
-                .table-responsive(style="overflow:auto;")
-                    table.table.table-striped.table-hover
-                        thead
-                            tr
-                                th.text-center  Player
-                                th.text-center  Joined
-                                th.text-center  Kick member
-                        tbody
-                            each member in clan_members
-                                tr(class= member.id == me ? "leader me" : "")
-                                    td 
-                                        if member.id == me
-                                            abbr(title="Leader") 👑 
-                                        | #{member.name}
-                                    td #{member.joinedAt}
-                                    td
-                                        if member.id != me
-                                            form(method='post',action="/clans/kick")
-                                                input(type='hidden', name="membership_id", value=member.membershipId)
-                                                input(type='hidden', name='clan_id', value=clan_id)
-                                                button(type='submit').btn Kick
-                                        else
-                                            span  
-    
-        .row
-            .col-md-12
-                hr
-                
         .row.centered-flex
-            .col-md-8
-                h2.danger Danger zone
-                
-                form(method='post',action="/clans/transfer",data-toggle="validator", onsubmit="return confirm('ALL YOUR RIGHTS OVER THE CLAN WILL BE LOST. Press OK to confirm');")
-                    input(type='hidden', name='clan_id', value=clan_id)
-                    h3 Transfer ownership
-                    p.text-left This operation will transfer the leadership of your clan to a new member.
-                    p.text-left After the Leadership transfer,
-                    ul.text-left
-                        li You can no longer update the clan
-                        li You can no longer delete the clan
-                        li You can no longer invite new players
-                        li You can no longer kick a player
-                    p.danger By clicking the "transfer" button, you 
-                        b FORFEIT
-                        |  all your rights over this clan in favor of the new owner.
-                    
-                    .row.centered-flex
-                        input(type='text', id="ownership_transfer_textbox", name='transfer_to', placeholder='Member name', style="margin-left:5px;margin-right:5px").form-control
-                        button(type='submit').btn-danger.btn Transfer
+          input(type='text', id="ownership_transfer_textbox", name='transfer_to', placeholder='Member name', style="margin-left:5px;margin-right:5px").form-control
+          button(type='submit').btn-danger.btn Transfer clan ownership
+
+      form(method='post',action="/clans/destroy", onsubmit="return confirm('THIS OPERATION IS DEFINITIVE. Press OK to confirm you want to delete your clan');")
+        input(type='hidden', name='clan_id', value=clan_id)
+        h2 Delete the clan
+        p.text-left All memberships will be terminated and the clan will be removed. The name and tag of the clan will become free.
+        p.danger This operation 
+          b CANNOT BE CANCELED
+
+        .row.centered-flex
+          button(type='submit').btn-danger.btn Delete my clan
+
                         
-                form(method='post',action="/clans/destroy", onsubmit="return confirm('THIS OPERATION IS DEFINITIVE. Press OK to confirm');")
-                    input(type='hidden', name='clan_id', value=clan_id)
-                    h3 Destroy the clan
-                    p.text-left All memberships will be terminated and the clan will be removed. The name and tag of the clan will become free.
-                    p.danger This operation 
-                        b CANNOT BE CANCELED
-                    
-                    .row.centered-flex
-                        button(type='submit').btn-danger.btn Destroy
-                        
+      

@@ -35,13 +35,13 @@ exports = module.exports = function(req, res) {
 
     request.post({
       url: process.env.API_URL + '/users/linkToGog',
-      headers: {'Authorization': 'Bearer ' + req.user.token},
+      headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
       form: {gogUsername: gogUsername}
     }, function (err, res, body) {
 
       if (res !== undefined && res.statusCode === 200) {
         flash.class = 'alert-success';
-        flash.messages = [{msg: 'Your account were linked successfully.'}];
+        flash.messages = [{msg: 'Your accounts were linked successfully.'}];
         flash.type = 'Success!';
 
         locals.gogToken = '-';
@@ -55,7 +55,7 @@ exports = module.exports = function(req, res) {
         // it's not possible to extract it into a separate function while saving any code
         request.get({
           url: process.env.API_URL + '/users/buildGogProfileToken',
-          headers: {'Authorization': 'Bearer ' + req.user.token},
+          headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
           form: {}
         }, function (err, res, body) {
           locals.gogToken = 'unable to obtain token';

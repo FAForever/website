@@ -21,7 +21,7 @@ exports = module.exports = async function (req, res) {
   locals.formData = req.body || {};
 
   let overallRes = res;
-  
+
   const bodyKeys =  Object.keys(req.body);
 
   // validate the input
@@ -56,15 +56,15 @@ exports = module.exports = async function (req, res) {
     const isGameReport = req.body.game_id != null;
 
     let offenders = [];
-    
+
     for (i in bodyKeys){
-        const key = bodyKeys[i];
-        if (!key.startsWith("offender_")) continue;
-        
-        const offender = req.body[key];
-        if (offender.trim().length == 0) continue;
-        
-        offenders.push(offender);
+      const key = bodyKeys[i];
+      if (!key.startsWith("offender_")) continue;
+
+      const offender = req.body[key];
+      if (offender.trim().length == 0) continue;
+
+      offenders.push(offender);
     }
 
     // Let's check first that the users exist
@@ -86,7 +86,7 @@ exports = module.exports = async function (req, res) {
       flash.messages = [{msg: 'Error while submitting the report form: '+e.toString()}];
       flash.type = 'Error!';
 
-      let buff = Buffer.from(JSON.stringify(flash));  
+      let buff = Buffer.from(JSON.stringify(flash));
       let data = buff.toString('base64');
 
       return overallRes.redirect('report?flash='+data);
@@ -115,16 +115,16 @@ exports = module.exports = async function (req, res) {
       flash.messages = [{"msg": "The following users could not be found : "+missing.join(',')}];
       flash.type = 'Error!';
 
-      let buff = Buffer.from(JSON.stringify(flash));  
+      let buff = Buffer.from(JSON.stringify(flash));
       let data = buff.toString('base64');
-      
+
       return overallRes.redirect('report?flash='+data);
 
     }
 
     // Checking the game exists
     if (isGameReport){
-      const gameFetchRoute = process.env.API_URL+'/data/game?filter=id=='+req.body.game_id+'&fields[game]=id';
+      const gameFetchRoute = process.env.API_URL+'/data/game?filter=id=='+req.body.game_id+'&fields[game]='; /* empty field here to fetch nothing but ID */
       try {
         const gameFetch = await promiseRequest(gameFetchRoute);
         const gameData = JSON.parse(gameFetch);
@@ -134,7 +134,7 @@ exports = module.exports = async function (req, res) {
         flash.messages = [{msg: 'The game could not be found. Please check the game ID you provided.'}];
         flash.type = 'Error!';
 
-        let buff = Buffer.from(JSON.stringify(flash));  
+        let buff = Buffer.from(JSON.stringify(flash));
         let data = buff.toString('base64');
 
         return overallRes.redirect('report?flash='+data);
@@ -161,18 +161,18 @@ exports = module.exports = async function (req, res) {
     }
 
     // Making the report accordingly to what the API expects to receive
-    const report = 
+    const report =
       {
         "data": [
           {
             "type": "moderationReport",
             "attributes": {
-                "gameIncidentTimecode": (req.body.game_timecode.length > 0 ? req.body.game_timecode : null),
-                "reportDescription": req.body.report_description
+              "gameIncidentTimecode": (req.body.game_timecode.length > 0 ? req.body.game_timecode : null),
+              "reportDescription": req.body.report_description
             },
             "relationships":relationShips
           }
-        ]        
+        ]
       }
     ;
 
@@ -181,7 +181,7 @@ exports = module.exports = async function (req, res) {
       url: process.env.API_URL + '/data/moderationReport',
       body: JSON.stringify(report),
       headers: {
-        'Authorization': 'Bearer ' + req.user.token,
+        'Authorization': 'Bearer ' + req.user.data.attributes.token,
         'Content-Type': 'application/vnd.api+json',
         'Accept': 'application/vnd.api+json'
       }
@@ -191,15 +191,15 @@ exports = module.exports = async function (req, res) {
       let errorMessages = [];
 
       if (res.statusCode != 201) {
-          errorMessages.push({msg: 'Error while submitting the report form'});
-          flash.class = 'alert-danger';
-          flash.messages = errorMessages;
-          flash.type = 'Error!';
+        errorMessages.push({msg: 'Error while submitting the report form'});
+        flash.class = 'alert-danger';
+        flash.messages = errorMessages;
+        flash.type = 'Error!';
 
-          let buff = Buffer.from(JSON.stringify(flash));  
-          let data = buff.toString('base64');
+        let buff = Buffer.from(JSON.stringify(flash));
+        let data = buff.toString('base64');
 
-          return overallRes.redirect('report?flash='+data);
+        return overallRes.redirect('report?flash='+data);
       }
 
       overallRes.redirect('../report_submitted');

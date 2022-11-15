@@ -13,7 +13,7 @@ exports = module.exports = function (req, res) {
   locals.game_id = req.query.game_id; // Game_id can be supplied as GET
   locals.offenders_names = []; // Offender name aswell
 
-  if (req.query.offenders != undefined) {
+  if (req.query.offenders !== undefined) {
     locals.offenders_names = req.query.offenders.split(" ");
   }
 
@@ -22,7 +22,7 @@ exports = module.exports = function (req, res) {
 
   var flash = null;
 
-  if (req.originalUrl == '/report_submitted') {
+  if (req.originalUrl === '/report_submitted') {
     flash = {};
 
     flash.class = 'alert-success';
@@ -39,7 +39,7 @@ exports = module.exports = function (req, res) {
     {
       url: process.env.API_URL + '/data/moderationReport?include=reportedUsers,lastModerator&sort=-createTime',
       headers: {
-        'Authorization': 'Bearer ' + req.user.data.token
+        'Authorization': 'Bearer ' + req.user.data.attributes.token
       }
     },
     function (err, childRes, body) {
@@ -63,7 +63,7 @@ exports = module.exports = function (req, res) {
         if (report.relationships.lastModerator.data) {
           for (l in reports.included) {
             const user = reports.included[l];
-            if (user.type == "player" && user.id == report.relationships.lastModerator.data.id) {
+            if (user.type === "player" && user.id === report.relationships.lastModerator.data.id) {
               moderator = user.attributes.login;
               break;
             }
@@ -100,16 +100,24 @@ exports = module.exports = function (req, res) {
         });
       }
 
-      fs.readFile('members/recent.json', 'utf8', function (err, data) {
-        try {
-          locals.reportable_members = JSON.parse(data);
-        } catch (e) {
-          const moment = require('moment');
-          console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + "The list of reportable members could not be read from the disk: " + e.toString());
-        }
+      locals.reportable_members = {};
+      const recentMembersPath = 'members/recent.json';
+      if (fs.existsSync(recentMembersPath)){
+        fs.readFile(recentMembersPath, 'utf8', function (err, data) {
+          try {
+            locals.reportable_members = JSON.parse(data);
+          } catch (e) {
+            const moment = require('moment');
+            console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + " - The list of reportable members could not be read from the disk: " + e.toString());
+          }
 
+          res.render('account/report', {flash: flash});
+        });
+      }
+      else
+      {
         res.render('account/report', {flash: flash});
-      });
+      }
     }
   )
 };

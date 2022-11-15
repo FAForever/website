@@ -118,7 +118,9 @@ accountRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, require(`${a
 
 // --- C L A N S ---
 const routes = './routes/views/';
-//app.get('/clans', require(routes + 'clans/get/index'));
+app.get('/renderMe', (req,res) => {
+  res.render('clans/accept_invite');
+});
 
 
 
@@ -266,5 +268,8 @@ setInterval(() => {
 //404 Error Handlers
 app.use(function (req, res) {
   res.status(404).render('errors/404');
+});
+app.use(function (req, res) {
+  res.status(500).render('errors/500');
 });
  

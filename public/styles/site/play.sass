@@ -17,7 +17,7 @@
     margin: 0 auto
     gap: 3em 0
     .playContainer
-      padding: 1em 0
+      padding: 1em 0 
       width: 100%
       border-radius: 20px
       text-align: center
@@ -50,10 +50,25 @@
         p
           font-weight: normal
     .playCheckboxContainer
+      padding: 0 0.25em
       text-align: left
       display: inline-block
+      img
+        width: 75%
+      .gogSmallerImage
+        img
+          width: 30%
+      .gogSmallerImage2
+        img
+          width: 45%
+      .displayBlock
+        input
+          width: initial
 
 @media (max-width: 1000px)
   .playMain
     padding: 0
     margin: 0
+    .playInnerGrid
+      .playContainer
+        padding: 1em 0.1em

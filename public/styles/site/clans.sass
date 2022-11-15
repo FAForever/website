@@ -160,3 +160,41 @@ input
         font-size: 14px
   .clanFilter
     font-size: 14px
+
+    
+    
+// Below are classes that depend 
+.clanManagement
+  @include mixins.gridMainContainer
+  padding: 0vw 15vw
+  margin: 1em 0 
+  .clanManagementItem
+    padding: 1.5em 0
+    display: inline-block
+    justify-self: center
+    align-self: center
+    
+    //clan Description
+    textarea
+      width: 40vw
+    
+  .clanManagementDanger
+    background-color: variables.$Cybran-dark
+    border-radius: 20px
+    ul
+      text-align: center
+      li
+        display: inline-block
+        list-style: none
+        text-align: left
+  .clanManagementTable
+    padding: 1.5em
+    display: inline-block
+    justify-self: center
+    align-self: center
+    th
+      padding: 4em
+    
+  
+.bigButton
+  font-size: 1.25em

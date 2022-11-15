@@ -11,7 +11,7 @@
 form
   align-self: center
   width: 100%
-  padding: 1em
+  
   p
 
     font-size: calc(var(--paragraph-font-size)*1)
@@ -24,6 +24,7 @@ form
       font-size: 16px
       
     input
+      min-width: 300px
       margin: 0.1em
       border: 0.2em solid variables.$background-primary
       
@@ -51,3 +52,6 @@ form
 
 .form-group
   padding: 2em 1em
+  
+.form-control
+  width: 200px

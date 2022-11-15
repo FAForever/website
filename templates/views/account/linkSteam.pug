@@ -3,19 +3,55 @@ include ../../mixins/flash-messages
 include ../../mixins/form/account
 block bannerMixin
 block content
-    .container.text-center
-        .row
-            .col-md-12
-                h1.account-title Link Account to Steam
-                h4.account-subtitle.text-center The Steam account needs to own Forged Alliance. It doesn't need to be installed. The Steam account and your Game details need to be public during the first login. You can set them back to private after the initial login. Once your account is tied to Steam, you can't unlink it! For details please see this <a href="https://imgur.com/a/enuUlAb">Steam linking guide with pictures!</a>
-                hr
-        .row
-            .col-md-12
-                +flash-messages(flash)
-        .row
-            p Click on the image below to get to the Steam login page:
-            a(href=steamConnect)
-                img(src='/images/steam_link.png')
+
+
+  .playMain
+    .playInnerGrid
+      .playContainer
+        h2 How to link FAF account to Steam?
+          p Shouldnt take more than 1-2 minutes.
+
+        .playCheckboxContainer
+          input(type='checkbox')
+          label Go to your Profile inside Steam -> Edit Profile -> My Privacy Settings -> Set Game details to "Public" 
+          br
+          img(src='/images/steamGOG/steamPublic.jpg')
+          br
+          br
+          img(src='/images/steamGOG/steamEditProfile.jpg')
+          br
+          br
+          img(src='/images/steamGOG/steamSettings.jpg')
+          
+
+          br
+          input(type='checkbox')
+          label Login to Steam and link your account below
+          br
+          a(href=steamConnect target='_blank')
+            button Link your FAF account to Steam
+          br
+          img(src='/images/steamGOG/steamLogin.jpg')
+
+
+          br
+
+          input(type='checkbox')
+          label Make sure the flash message below states you are connected.
+          
+          br
+          p Flash Message:
+          +flash-messages(flash)
+          br
+        h1 And you are done with Steam link forever!
+          p Now if you want, you can set your Game Details back to private.
+
+        h2 Why do I need to link my Steam/GOG account to FAF?
+          p FAF as an organization doesn't own the copyright or trademark to SC:FA (Square Enix does). <br> Therefore, we need to verify you own a copy of SC:FA to protect ourselves from legal repercussions.
+          p Linking your steam account to FAF doesn't provide us with any information or powers over your account. <br> Only the fact that you own Supreme Commander: Forged Alliance. <br> Which is why we need you to set your Game Details to public when linking your account.
+
+
+
 
 block js
     script(src='/js/account.min.js')
