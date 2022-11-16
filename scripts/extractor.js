@@ -14,6 +14,27 @@ let currentDate = new Date(minusTimeFilter).toISOString();
 
 
 //TODO: Manage to make a loop of sorts of the URLs and "let data = dataObjectToArray.map" because it repeats alot and it could be done in a for loop/array since almost all API calls below have an extremely similar syntax/behavior.
+
+async function getTournamentNews() {
+
+  try {
+    let response = await fetch(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=content.rendered,categories&categories=638`);
+    let data = await response.json();
+    //Now we get a js array rather than a js object. Otherwise we can't sort it out.
+    let dataObjectToArray = Object.values(data);
+    let sortedData = dataObjectToArray.map(item => ({
+      content: item.content.rendered,
+      category: item.categories
+    }));
+    let clientNewsData = sortedData.filter(article => article.category[1] !== 284);
+    return await clientNewsData;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
+
 async function flashMessage() {
 
   try {
@@ -182,12 +203,12 @@ module.exports.run = function run() {
 
   // Do not change the order of these/make sure they match the order of fileNames below
   const extractorFunctions = [
-    flashMessage(), newshub(), contentCreators(), clientNews(), fafTeams(), getAllClans(),
+    getTournamentNews(), flashMessage(), newshub(), contentCreators(), clientNews(), fafTeams(), getAllClans(),
     getLeaderboards(1), getLeaderboards(2), getLeaderboards(3), getLeaderboards(4),
   ];
   //Make sure to not change the order of these since they match the order of extractorFunctions
   const fileNames = [
-    'flashMessage', 'newshub', 'content-creatores', 'client-news', 'faf-teams', 'getAllClans',
+    'tournament-news','flashMessage', 'newshub', 'content-creatores', 'client-news', 'faf-teams', 'getAllClans',
     'global', '1v1', '2v2', '4v4',
   ];
 

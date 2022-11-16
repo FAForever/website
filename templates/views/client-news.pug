@@ -8,7 +8,7 @@ html(lang='en')
     meta(name="description" content="FAF Community Website")
 
     title= title || 'Forged Alliance Forever'
-    link(rel="shortcut icon", href="/images/favicon-package/favicon.ico", type="image/png")
+    link(rel="shortcut icon", href="/images/favicon.png", type="image/png")
 
     // Fonts
     link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
@@ -26,17 +26,25 @@ body
 
   .clientBackground
     .clientMainFeature
-      .featureSubGrid.column1.featureLink
+      .featureSubGrid.column3.featureLink
         .featureSocial.column12
-          .featureLink.featureDiscord.column12
+          .featureLink.featureDiscord.column4
             a(target='_blank' href='https://discord.gg/mXahVSKGVb')
               img(src='/../../images/logos/discord.svg' alt='')
-          .featureLink.featureTwitch.column12
+          .featureLink.featureTwitch.column4
             a(target='_blank' href='https://www.twitch.tv/directory/game/Supreme%20Commander%3A%20Forged%20Alliance')
               img(src='/../../images/logos/twitch.png' alt='')
-          .featureLink.featureYoutube.column12
+          .featureLink.featureYoutube.column4
             a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw')
               img(src='/../../images/logos/youtube.png' alt='')
+          .clientSupportFAF.column12
+            a(target='_blank' href='https://www.patreon.com/faf')
+              h1 SUPPORT FAF
+                img(src='/../../images/logos/patreon.png' alt='')
+          .clientSupportFAF.column12
+            // TODO Jip needs to make a link or find one for the report a bug button
+            a(target='_blank' href='https://discord.com/channels/197033481883222026/907037442832482315')
+              h2 Report a Bug
 
 
 
@@ -69,20 +77,9 @@ body
         a(target='_blank' href='https://github.com/FAForever/fa') Github
         a(target='_blank' href='https://faforever.com/contribution') Contribute
         a(target='_blank' href='https://wiki.faforever.com/en/Vault-Rules') Vault Rules
-      .clientMenuSubgrid.column6
-        .clientSupportFAF.column12
-          a(target='_blank' href='https://www.patreon.com/faf')
-            h1 SUPPORT FAF
-              img(src='/../../images/logos/patreon.png' alt='')
-        .column12
-          // TODO Create an actual report a bug page or something else better than a discord channel
-          a(target='_blank' href='https://discord.com/channels/197033481883222026/907037442832482315')
-            h2 Report a Bug
-
-  //.splatForgedBorder
-    .movingBackground1
-    .movingBackground2
-
+      .clientMenuContainer.clientTournament.column6
+        #tournamentSpawn
+          ul.column12 UPCOMING TOURNAMENTS/EVENTS
 
 
 script(src="../../js/app/client-news.js")

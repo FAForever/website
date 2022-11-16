@@ -28,13 +28,28 @@ exports = module.exports = function(req, res) {
       {msg:
           "<p><a id='inviteLink' onclick='return false' href='"+process.env.HOST + "/clans/accept_invite"
           +"?i=" + req.query.invitation_id
-          +"'></a></p>Note: The link has already been copied to your clipboard."}
+          +"'>Right click on me and copy the invitation link</a></p>Note: The link has already been copied to your clipboard."}
     ];
     flash.type = '';
+    navigator.clipboard.writeText(`${process.env.HOST}/clans/accept_invite?i=${req.query.invitation_id}`).then(
+      () => {
+        /* clipboard successfully set */
+      },
+      () => {
+        /* clipboard write failed */
+      }
+    );
   }
 
 function copyTextButton() {
-  navigator.clipboard.writeText(`${process.env.HOST}/clans/accept_invite?i=${req.query.invitation_id}`);
+  navigator.clipboard.writeText(`${process.env.HOST}/clans/accept_invite?i=${req.query.invitation_id}`).then(
+    () => {
+      /* clipboard successfully set */
+    },
+    () => {
+      /* clipboard write failed */
+    }
+  );
 }
   
   

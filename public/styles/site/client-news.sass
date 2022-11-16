@@ -1,12 +1,12 @@
-@use '../abstracts/variables'
 @use '../abstracts/mixins'
+@use '../abstracts/variables'
+
 body
   background-image: url("../../images/newshub.jpg")
   background-size: cover
-
 .clientBackground
   text-align: left
-  padding: 50px
+  padding: 30px 50px
   p, h3, h2, h1
     font-family: variables.$family-paragraph
     margin: 0
@@ -50,7 +50,7 @@ body
   grid-template-rows: 15vw
   text-align: left
   margin: 20px 0
-  gap: 0
+  gap: 20px 20px
   .featureSubGrid
     color: variables.$color-active
     @include mixins.gridMainContainer
@@ -73,19 +73,19 @@ body
   .featureText
     padding: 1em
     p
-      font-size: 0.95vw
+      font-size: 0.9vw
       display: inline-block
       color: variables.$color-inactive
     h1
       color: variables.$color-active
-      font-size: 1.2vw
+      font-size: 1.1vw
       text-transform: uppercase
       display: inline-block
       padding: 0.25em
 .featureSocial
   @include mixins.gridMainContainer
-  grid-template-columns: 1fr
-  grid-template-rows: 33%
+
+  grid-template-rows: 1fr
   transition: 0.4s
   height: 100%
   justify-content: center
@@ -119,10 +119,12 @@ body
       right: 0
       margin: auto
       padding: 1em 0
-      width: 100%
+      //width: 100%
       color: variables.$color-active
       font-size: 1vw
       font-family: variables.$family-title
+      box-sizing: inherit
+      text-decoration: none
 
     img
       color: variables.$color-active
@@ -135,7 +137,33 @@ body
       margin: auto
       height: 2em
       padding: 0
+  .clientSupportFAF
+    background-color: variables.$background-secondary
+    text-align: center
 
+    transition: 0.4s
+    &:hover
+      background-color: variables.$background-primary
+    a
+      color: white
+      h1
+        font-size: 2vw
+        padding: 0.5em
+      img
+        height: 1.25em
+        padding: 0.25em
+        display: block
+        margin-left: auto
+        margin-right: auto
+      h2
+        font-size: 1.4vw
+        padding: 0.5em
+        transition: 0.4s
+        color: variables.$color-active
+        background-color: variables.$background-tertiary
+        &:hover
+          background-color: variables.$button-inactive
+          color: variables.$background-primary
 
 
 .clientContainer
@@ -222,23 +250,23 @@ body
 .clientMenu
   @include mixins.gridMainContainer
   padding: 0
-
+  gap: 20px 0
   .clientMenuContainer
-
     margin: 0 2em 0 0
     background-color: variables.$background-tertiary
-    //height: 100%
+    height: 100%
+
     ul
       text-align: center
       display: block
-      background-color: variables.$button-inactive
+      color: variables.$color-active
       font-family: variables.$family-title
+      font-size: 1.2em
       padding: 0.8em
       margin: 0
-      color: variables.$background-primary
-      font-size: 1.2em
-    a
+      background-color: variables.$background-secondary
 
+    a
       font-family: variables.$family-paragraph
       display: block
       padding: 0.8em 0.5em
@@ -248,37 +276,73 @@ body
       &:hover
         background-color: variables.$background-primary
         color: variables.$color-active
+  .clientTournament
+    h2
+      font-size: 16px
+      display: inline-block
+      padding: 0.5em
+    p
+      display: block
+      font-size: 14px
+      padding: 0.5em
+  #tournamentSpawn
+    @include mixins.gridMainContainer
+    ul
+      padding: 1em
+    a
+      border: 0.2em solid variables.$background-secondary
+      border-top: 0 solid white
+      width: 100%
+      padding: 0em
+      height: 100%
+      display: inline-block
+      margin: 0
+      h2
+        font-size: 16px
+        display: inline-block
+        padding: 0.5em
+      p
+        display: block
+        font-size: 14px
+        padding: 0.5em
+
+
   .clientMenuSubgrid
     @include mixins.gridMainContainer
-    grid-template-rows: max-content auto
     height: 100%
     background-color: variables.$background-tertiary
+
     .clientSupportFAF
+
+      height: 100%
       background-color: variables.$background-secondary
       text-align: center
-      padding: 0.5em
+      padding: 0.8em
       transition: 0.4s
       &:hover
         background-color: variables.$background-primary
       a
         color: white
-      h1
-        font-size: 35px
+      p
         padding: 0.25em
+        font-size: 14px
+      h1
+        font-size: 25px
+        padding: 1em
+        color: variables.$color-active
+        margin: auto
       img
-        height: 1em
+        height: 1.25em
         padding: 0.25em
         display: block
         margin-left: auto
         margin-right: auto
-    h2
-      font-size: 25px
-      padding: 0.5em
-      transition: 0.4s
-      color: variables.$color-active
-      &:hover
-        background-color: variables.$button-inactive
-        color: variables.$background-primary
+      h2
+        font-size: 18px
+        padding: 0.25em
+        transition: 0.4s
+        color: variables.$color-active
+
 
 
 
@@ -303,8 +367,7 @@ body
 
   .clientMainFeature
     grid-template-rows: 25vw
-    .column9, .column2
-      grid-column: span 12
+
     .featureContainer
       .featureText
         padding: 1em
@@ -314,12 +377,9 @@ body
           font-size: 20px
           padding: 0 0.25em
     .featureSocial
-      padding: 0 0
       .featureLink
-        padding: 0
         a
           font-size: 12px
-
   .clientMenu
     .clientMenuSubgrid
       .clientSupportFAF
@@ -351,16 +411,18 @@ body
           padding: 0 0.25em
     .featureSocial
       .featureLink
-        a
-          font-size: 12px
+        padding: 1em
+
   .clientMenu
     .clientMenuSubgrid
       .clientSupportFAF
         padding: 0.25em
         a
           h1
-            font-size: 22px
-            padding: 0.25em
+            font-size: 20px
+            padding: 0.5em
+            img
+              width: 75px
       h2
         font-size: 16px
         padding: 0.75em
@@ -374,6 +436,8 @@ body
 @media (max-width: 875px)
   .clientMainFeature
     grid-template-rows: 35vw
+    .column9, .column3
+      grid-column: span 12
     .featureContainer
       .featureText
         padding: 1em
@@ -386,6 +450,11 @@ body
       .featureLink
         a
           font-size: 10px
+      .clientSupportFAF
+        h1
+          font-size: 18px
+        h2
+          font-size: 14px
   .clientMenu
     .column6, .column2
       grid-column: span 6
@@ -411,9 +480,17 @@ body
       h2
         font-size: 14px
         padding: 0.75em
-
+  #tournamentSpawn
+    .column6
+      grid-column: span 12
+    a
+      h2
+        font-size: 14px
+      p
+        font-size: 12px
 @media (max-width: 500px)
   .clientMainFeature
+
     .featureSocial
       .featureLink
         a
