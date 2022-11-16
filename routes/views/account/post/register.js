@@ -2,14 +2,14 @@ let flash = {};
 const request = require('request');
 const ClientOAuth2 = require('client-oauth2');
 const {check, validationResult} = require('express-validator');
-console.log('register POST!')
+
 const apiAuth = new ClientOAuth2({
-	clientId: process.env.OAUTH_CLIENT_ID,
-	clientSecret: process.env.OAUTH_CLIENT_SECRET,
-	accessTokenUri: process.env.API_URL + '/oauth/token',
-	authorizationUri: process.env.API_URL + '/oauth/authorize',
-	redirectUri: process.env.HOST + '/callback',
-	scopes: ['create_user']
+  clientId: process.env.OAUTH_CLIENT_ID,
+  clientSecret: process.env.OAUTH_CLIENT_SECRET,
+  accessTokenUri: process.env.API_URL + '/oauth/token',
+  authorizationUri: process.env.API_URL + '/oauth/authorize',
+  redirectUri: process.env.HOST + '/callback',
+  scopes: ['create_user']
 });
 
 exports = module.exports = function (req, res) {
@@ -21,7 +21,7 @@ exports = module.exports = function (req, res) {
   check('username', 'Username must be three or more characters').isLength({min: 3});
   check('email', 'Email is required').notEmpty();
   check('email', 'Email does not appear to be valid').isEmail();
-  
+
   // check the validation object for errors
   let errors = validationResult(req);
 
@@ -37,12 +37,12 @@ exports = module.exports = function (req, res) {
 
   } else {
 
-		// pull the form variables off the request body
-		let username = req.body.username;
-		let email = req.body.email;
-		let recaptchaResponse = req.body["g-recaptcha-response"]
+    // pull the form variables off the request body
+    let username = req.body.username;
+    let email = req.body.email;
+    let recaptchaResponse = req.body["g-recaptcha-response"]
 
-		let overallRes = res;
+    let overallRes = res;
 
     //Run post to register endpoint
     request.post({
@@ -85,5 +85,5 @@ exports = module.exports = function (req, res) {
 
       overallRes.render('account/register', {flash: flash});
     });
-	}
+  }
 };

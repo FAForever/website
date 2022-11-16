@@ -22,7 +22,7 @@ block content
           .row.inline-panel
             input(type='hidden', name='clan_id', value=clan_id)
             input(type='text', name='invited_player', placeholder='Player name', style="margin-left:5px;margin-right:5px").form-control
-            button(type='submit').btn-danger.btn Invite
+            button(type='submit' onclick="copyTextButton()") Invite
 
 
     br

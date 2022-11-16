@@ -195,6 +195,7 @@ passport.use('faforever', new OidcStrategy({
         let user = JSON.parse(body);
         user.data.attributes.token = accessToken;
         user.data.id = user.data.attributes.userId;
+        console.log(user.data);
         return verified(null, user);
       }
     );

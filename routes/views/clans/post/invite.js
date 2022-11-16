@@ -144,7 +144,7 @@ exports = module.exports = async function (req, res) {
         }
         catch (e){
           flash.class = 'alert-danger';
-          flash.messages = [{msg:"Unkown error while generating the invite link: "+e}];
+          flash.messages = [{msg:"Unknown error while generating the invite link: "+e}];
           flash.type = 'Error!';
           let buff = Buffer.from(JSON.stringify(flash));
           let data = buff.toString('base64');

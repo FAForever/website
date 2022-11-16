@@ -1,6 +1,3 @@
-console.log('im here');
-
-
 const clanName = document.getElementById('clanName');
 const clanTag = document.getElementById('clanTag');
 const clanDescription = document.getElementById('clanDescription');
@@ -28,28 +25,30 @@ async function getClan() {
   const fetchData = await response.json();
   return fetchData;
 }
+setTimeout( ()=> {
+  getClan()
+    .then(fetchData => {
 
-getClan()
-  .then(fetchData => {
+      const { attributes} = fetchData.data[0];
+      clanName.insertAdjacentHTML('afterbegin',
+        `${attributes.name}`);
+      clanDescription.insertAdjacentHTML('afterbegin',
+        `${attributes.description}`);
+      clanTag.insertAdjacentHTML('afterbegin',
+        `Welcome to "${attributes.tag}"`);
+      //clanLeader.insertAdjacentHTML('afterbegin',
+      //  `${fetchData.data[0].attributes.id}`);
+      clanCreation.insertAdjacentHTML('afterbegin',
+        `Created on ${attributes.createTime.slice(0, 10)}`);
+      clanLeader.insertAdjacentHTML('afterbegin',
+        `Led by ${leaderName}`);
 
-    const { attributes} = fetchData.data[0];
-    clanName.insertAdjacentHTML('afterbegin',
-      `${attributes.name}`);
-    clanDescription.insertAdjacentHTML('afterbegin',
-      `${attributes.description}`);
-    clanTag.insertAdjacentHTML('afterbegin',
-      `Welcome to "${attributes.tag}"`);
-    //clanLeader.insertAdjacentHTML('afterbegin',
-    //  `${fetchData.data[0].attributes.id}`);
-    clanCreation.insertAdjacentHTML('afterbegin',
-      `Created on ${attributes.createTime.slice(0, 10)}`);
-    clanLeader.insertAdjacentHTML('afterbegin',
-      `Led by ${leaderName}`);
+      for (let i = 0; i < fetchData.included.length; i++) {
+        if (i % 2 !== 0) {
+          clanMembers.insertAdjacentHTML('afterbegin',
+            `<li> ${fetchData.included[i].attributes.login} </li>`);
+        }
+      }
+    });
 
-    for (let i = 0; i < fetchData.included.length; i++) {
-      if (i % 2 !== 0) {
-        clanMembers.insertAdjacentHTML('afterbegin',
-          `<li> ${fetchData.included[i].attributes.login} </li>`);
-      } 
-    }
-  });
+},1000);

@@ -87,7 +87,7 @@ function pageChange(newPageNumber) {
 // Don't know why but the code refuses to run correctly unless it is delayed by at least 1/10 of a second/100ms. Not really an issue but idk why its doing this
 setTimeout(() => {
   clanUpdate();
-}, 111);
+}, 1000);
 
 
 // SEARCH BAR

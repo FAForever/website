@@ -2,7 +2,8 @@
 @use '../abstracts/mixins'
 
 .accountForm
-  @include mixins.mainRectangleContainer
+  @include mixins.gridMainContainer
+  padding: 4vw
   justify-items: center
   gap: 0
   
@@ -40,6 +41,9 @@ form
           font-weight: normal
           line-height: 1.25em
 
+          
+
+          
 .formGroup
   p
     padding: 0.2em
@@ -55,3 +59,10 @@ form
   
 .form-control
   width: 200px
+
+  
+.tosAgree
+  label
+    display: block
+  input
+    display: inline-block

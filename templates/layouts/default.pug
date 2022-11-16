@@ -125,6 +125,8 @@ html(lang='en')
                 ul(role='menu')                  
                   if hasClan
                     a(href="/clans/manage"): li My Clan
+                  if !hasClan
+                    a(href="/clans/create"): li Create Clan
                   a(href="/account/changeEmail"): li Change Email
                   a(href="/account/changePassword"): li Change Password
                   a(href="/account/changeUsername"): li Change Username

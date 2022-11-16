@@ -4,38 +4,27 @@ include ../../mixins/form/account
 block bannerMixin
   
 block content  
-  form(method='POST', action="/account/register", data-toggle="validator").accountForm
+  .accountForm
     .column12
       h1 Get Started
       h2 Welcome to the FAF community
-      
-    .column12
-      .formContainer
-        +email
-    .column12
-      .formContainer
+      br
+      form(method='post', action="/account/register", data-toggle="validator")
         +username
-        
-    .column12
-      - checked = checked || false
-      .formGroup
-        p I have read and agree with our <a href="https://faforever.com/tos" rel="_new">Terms of Service</a>
-          input(type='checkbox', name='tosagree', required='required')
-        p I have read and agree with our <a href="https://faforever.com/privacy" rel="_new">Privacy Statement</a>
-          input(type='checkbox', name='privacyagree', required='required')
-        p I have read and agree with our <a href="https://faforever.com/coc" rel="_new">Code of Conduct</a>
-          input(type='checkbox', name='cocagree', required='required')
-
         br
+        br
+        br
+        
+        +email
+        br
+        +tosagree
         .form-group.has-feedback
-          label 
+          label
             .g-recaptcha(data-sitekey=recaptchaSiteKey)
-        
-        br
         p We will send you an email with a link. The link will lead you to a page where you can set your password and activate your account.
         p If you don't receive an email please check your spam folder!
-        .formAction
-          button(type='submit') Register
+        .form-actions
+          button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
 
 
 block js
