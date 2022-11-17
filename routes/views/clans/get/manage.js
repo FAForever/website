@@ -68,7 +68,7 @@ exports = module.exports = function(req, res) {
 
       if (clan.data.relationships.leader.data.id != req.user.data.id){
         // Not the leader! Should'nt be able to manage stuff
-        res.redirect(`/clans/${clan.data.tag}`);
+        res.redirect(`/clans/${req.user.data.attributes.clan.tag}`);
         return;
       }
 

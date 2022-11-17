@@ -1,6 +1,5 @@
 let flash = {};
 let request = require('request');
-const axios = require('axios');
 let error = require('./error');
 const {check, validationResult} = require('express-validator');
 
