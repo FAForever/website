@@ -38,10 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let mobileCaret = document.querySelectorAll(".mobileCaret");
   let mobileSameElementClicked = 7;
   mobileNavUl[0].classList.add('MobileNavULActive');
-
+  
+  // When you click a mobile nav
+  // Nav li === the options/dropdown menu
+  // Nav ul === The category
   mobileNavUl.forEach((ul,index) => ul.addEventListener('click', () => {
     mobileNavLi.forEach(li => li.style.display = "none");
-    mobileNavUl.forEach(li => li.style.backgroundColor = "#0A0A0AFF");
+    mobileNavUl.forEach(li => li.style.backgroundColor = "#262626");
     mobileCaret.forEach(li => li.classList.remove("mobileCaretActive"));
     if (mobileSameElementClicked !== index) {
       mobileNavUl[index].style.backgroundColor = "#3F3F3FFF";
@@ -148,6 +151,5 @@ if (pages[0] === '/all') {
     }
   });  
 }
-
 
 

@@ -95,13 +95,9 @@ html(lang='en')
               a(href='/clans')
                 li  Clans
 
-          li.navList COMPETITIVE
-            .fas.fa-caret-down
-            ul.navAbsolute
-              a(href='/leaderboards')
-                li Leaderboards
-              a(href='/tournaments')
-                li Tournaments
+          a(href='/leaderboards')
+            li.navList LEADERBOARDS
+              ul.navAbsolute
           a(href='/play')
             li.navList PLAY NOW
               ul.navAbsolute
@@ -182,14 +178,9 @@ html(lang='en')
             a(href='/contribution') Contribute
           li
             a(href='/clans') Clans
-
-        .mobileNavUl Competitive
-          .fas.fa-caret-down.mobileCaret
-        ul.mobileNavLi
-          li
-            a(href='/leaderboards') Leaderboards
-          li
-            a(href='/tournaments') Tournaments
+        
+        ul
+          a(href='/leaderboards') Leaderboards
         .mobileSocialMedia
           a(href='https://discord.gg/mXahVSKGVb')
             .fab.fa-discord
