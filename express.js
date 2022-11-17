@@ -152,6 +152,7 @@ app.get('/account/resync', loggedIn, require(routes + 'account/get/resync'));
 app.get('/account/create', require(routes + 'account/get/createAccount'));
 app.get('/account_activated', require(routes + 'account/get/register'));
 app.get('/account/register', require(routes + 'account/get/register'));
+app.post('/account/register', require(routes + 'account/post/register'));
 
 app.get('/account/activate', require(routes + 'account/get/activate'));
 app.post('/account/activate', require(routes + 'account/post/activate'));
@@ -207,31 +208,12 @@ passport.use('faforever', new OidcStrategy({
   }
 ));
 
-//Commenting out just in case I need this later.
-/*
-          {
-         data:{
-           attributes: {
-             userId: data.attributes.userId,
-             token: accessToken
-           },
-         },
-
-         data:{
-           attributes: data.attributes
-         },
-          */
-//id: data.attributes.userId,
-//token: accessToken,
-//attributes: data.attributes
 
 passport.serializeUser(async function (user, done) {
-  //console.log('Serialized User');
   await done(null, user);
 });
 
 passport.deserializeUser(function (user, done) {
-  //console.log('Deserialized User');
   done(null, user);
 });
 

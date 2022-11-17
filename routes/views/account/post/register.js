@@ -41,8 +41,6 @@ exports = module.exports = function (req, res) {
     let username = req.body.username;
     let email = req.body.email;
     let recaptchaResponse = req.body["g-recaptcha-response"]
-    console.log(username);
-    console.log(email);
 
     let overallRes = res;
 
