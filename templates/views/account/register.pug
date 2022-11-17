@@ -10,23 +10,22 @@ block content
       h1 Get Started
       h2 Welcome to the FAF community
       br
-  form(method='post', action="/account/register", data-toggle="validator")
-    
-    +username
-    br
-    br
-    br
-    
-    +email
-    br
-    +tosagree
-    .form-group.has-feedback
-      label
-        .g-recaptcha(data-sitekey=recaptchaSiteKey)
-    p We will send you an email with a link. The link will lead you to a page where you can set your password and activate your account.
-    p If you don't receive an email please check your spam folder!
-    .form-actions
-      button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
+      form(method='post', action="/account/register", data-toggle="validator")
+        +username
+        br
+        br
+        br
+        
+        +email
+        br
+        +tosagree
+        .recaptchaForm
+          label.column12
+            .g-recaptcha(data-sitekey=recaptchaSiteKey)
+        p We will send you an email with a link. The link will lead you to a page where you can set your password and activate your account.
+        p If you don't receive an email please check your spam folder!
+        .form-actions
+          button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
 
 
 block js

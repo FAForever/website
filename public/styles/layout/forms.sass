@@ -71,6 +71,11 @@ form
   border-radius: 20px
   display: inline-block
   padding: 1em 2em
+  margin: 1em 5vw
+  list-style: none
+  li
+    list-style: none
+
   
 .alert-danger
   background-color: variables.$Cybran
@@ -78,3 +83,11 @@ form
 .alert-success
   background-color: variables.$Aeon
 
+.recaptchaForm
+  @include mixins.gridMainContainer
+  padding: 2em
+  label
+    justify-self: center
+    align-self: center
+    .g-recaptcha
+      display: inline-block

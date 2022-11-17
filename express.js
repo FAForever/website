@@ -91,7 +91,7 @@ app.listen(3000, () => {
 // --- UNPROTECTED ROUTES ---
 const appGetRouteArray = [
   // This first '' is the home/index page
-  '', 'client-news', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'tos', 'tos-ru', 'tos-fr', 'newsArticle', 'clans', 'account/createAccount', 'account/register', 'account/activate',];
+  '', 'client-news', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'tos', 'tos-ru', 'tos-fr', 'newsArticle', 'clans',];
 
 //Renders every page written above
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
@@ -151,6 +151,11 @@ app.get('/account/resync', loggedIn, require(routes + 'account/get/resync'));
 // Not Protected
 app.get('/account/create', require(routes + 'account/get/createAccount'));
 app.get('/account_activated', require(routes + 'account/get/register'));
+app.get('/account/register', require(routes + 'account/get/register'));
+
+app.get('/account/activate', require(routes + 'account/get/activate'));
+app.post('/account/activate', require(routes + 'account/post/activate'));
+
 app.get('/account/checkUsername', require('./routes/views/checkUsername'));
 app.get('/password_resetted', require(routes + 'account/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'account/get/report'));
