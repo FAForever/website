@@ -10,6 +10,8 @@ block content
       h1 Get Started
       h2 Welcome to the FAF community
       br
+      +flash-messages(flash)
+      
       form(method='post', action="/account/register", data-toggle="validator")
         +username
         br
