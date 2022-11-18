@@ -136,7 +136,7 @@ clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn, require(`${
 
 //When searching for a specific clan
 app.get('/clans/*', (req, res) => {
-  res.render(`getClans`);
+  res.render(`clans/seeClan`);
 });
 
 

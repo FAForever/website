@@ -2,6 +2,7 @@ let flash = {};
 const request = require('request');
 const ClientOAuth2 = require('client-oauth2');
 const {check, validationResult} = require('express-validator');
+require("dotenv").config();
 
 const apiAuth = new ClientOAuth2({
   clientId: process.env.OAUTH_CLIENT_ID,
@@ -61,7 +62,7 @@ exports = module.exports = function (req, res) {
           flash.messages = errorMessages;
           flash.type = 'Error!';
 
-          return overallRes.render('account/register', {flash: flash});
+          return overallRes.render('account/register', {flash: flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
         }
 
         // Failed registering user
@@ -75,7 +76,7 @@ exports = module.exports = function (req, res) {
         flash.messages = errorMessages;
         flash.type = 'Error!';
 
-        return overallRes.render('account/register', {flash: flash});
+        return overallRes.render('account/register', {flash: flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
       }
 
       // Successfully registered user
