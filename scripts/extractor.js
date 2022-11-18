@@ -208,7 +208,7 @@ module.exports.run = function run() {
   ];
   //Make sure to not change the order of these since they match the order of extractorFunctions
   const fileNames = [
-    'tournament-news','flashMessage', 'newshub', 'content-creatores', 'client-news', 'faf-teams', 'getAllClans',
+    'tournament-news','flashMessage', 'newshub', 'content-creators', 'client-news', 'faf-teams', 'getAllClans',
     'global', '1v1', '2v2', '4v4',
   ];
 
