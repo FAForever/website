@@ -119,11 +119,6 @@ accountRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, require(`${a
 
 // --- C L A N S ---
 const routes = './routes/views/';
-app.get('/renderMe', (req,res) => {
-  res.render('clans/accept_invite');
-});
-
-
 
 const clansRoutesGet = [
   'create', 'manage', 'accept_invite',];

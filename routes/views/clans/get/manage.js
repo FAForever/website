@@ -68,7 +68,7 @@ exports = module.exports = function(req, res) {
 
       if (clan.data.relationships.leader.data.id != req.user.data.id){
         // Not the leader! Should'nt be able to manage stuff
-        res.redirect(`/clans/${req.user.data.attributes.clan.tag}`);
+        res.render(`/clans/${req.user.data.attributes.clan.tag}`, {iAmMember: true});
         return;
       }
 
@@ -124,7 +124,7 @@ exports = module.exports = function(req, res) {
         catch(e){
           console.error("Parsing error while trying to decode a flash error: " + text);
           console.error(e);
-          flasg = [{msg: "Unknown error"}];
+          flash = [{msg: "Unknown error"}];
         }
       }
 
