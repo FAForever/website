@@ -1,13 +1,14 @@
 const express = require('express');
-const axios = require('axios');
+const showdown = require('showdown');
 const request = require('request');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
+const fs = require('fs');
 let OidcStrategy = require('passport-openidconnect');
-const middleware = require('./routes/middleware')
+const middleware = require('./routes/middleware');
 const app = express();
 
 app.locals.clanInvitations = {};
@@ -91,7 +92,7 @@ app.listen(3000, () => {
 // --- UNPROTECTED ROUTES ---
 const appGetRouteArray = [
   // This first '' is the home/index page
-  '', 'client-news', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'tos', 'tos-ru', 'tos-fr', 'newsArticle', 'clans',];
+  '', 'client-news', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'newsArticle', 'clans',];
 
 //Renders every page written above
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
@@ -137,6 +138,27 @@ clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn, require(`${
 app.get('/clans/*', (req, res) => {
   res.render(`getClans`);
 });
+
+
+// Markdown Routes
+
+// ToS and Privacy Statement
+function markdown(template) {
+  let html = new showdown.Converter().makeHtml(fs.readFileSync(template, 'utf-8'));
+  return (req, res) => {
+    res.render('markdown', {content: html});
+  };
+}
+
+app.get('/privacy', markdown('templates/views/markdown/privacy.md'));
+app.get('/privacy-fr', markdown('templates/views/markdown/privacy-fr.md'));
+app.get('/privacy-ru', markdown('templates/views/markdown/privacy-ru.md'));
+app.get('/tos', markdown('templates/views/markdown/tos.md'));
+app.get('/tos-fr', markdown('templates/views/markdown/tos-fr.md'));
+app.get('/tos-ru', markdown('templates/views/markdown/tos-ru.md'));
+app.get('/rules', markdown('templates/views/markdown/rules.md'));
+app.get('/cg', markdown('templates/views/markdown/cg.md'));
+
 
 // ---ODD BALLS---
 // Routes that might not be able to be added into the loops due to their nature in naming

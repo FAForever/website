@@ -1,9 +1,6 @@
 @use '../abstracts/variables'
 @use '../abstracts/mixins'
 
-.engymodBG
-  background-image: url("../../images/scfa/engymod.jpg")
-  
 
 .changeMain
   @include mixins.gridMainContainer
@@ -14,7 +11,7 @@
     @include mixins.gridMainContainer
     height: 100%
     transition: 0.4s
-    &:hover
+    //&:hover
       .changeContainer, .changeImage
         filter: contrast(1.2)
         background-color: variables.$button-inactive
@@ -34,3 +31,15 @@
       font-size: var(--paragraph-font-size)
       line-height: 2em
       padding: 0.25em
+
+@media (max-width: 1000px)
+  .changeMain
+    .column4
+      grid-column: span 6
+      
+@media (max-width: 500px)
+  .changeMain
+    gap: 10px
+    margin: 10px 2%
+    .column4
+      grid-column: span 12

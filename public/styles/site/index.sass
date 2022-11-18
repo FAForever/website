@@ -22,7 +22,7 @@ h2
   background-size: cover
   padding: 9.5% 0
   letter-spacing: 1.2PX
-  text-shadow: 0 4px 4px black, 0 10px 4px black      
+  text-shadow: 0 0px 7.5px black, 0 0px 7.5px black      
 
 .bannerTitle
   font-size: var(--subtitle-font-size)
@@ -96,9 +96,10 @@ h2
 .factionMainContainer 
   @include mixins.gridMainContainer
   padding: 0vw 6vw 4vw 6vw
+  
   background-image: url("/../../images/fafbgmasspattern0.5.jpg")
   .factionTitle
-    padding: 3em
+    padding: 2em
 
 
 
@@ -203,10 +204,12 @@ h2
 .endBanner
   @include mixins.gridMainContainer
   padding: 10vw 5vw
-  background-image: url("/../../images/bannerfooter.jpg")
+  background-image: url("/../../images/bannerFooter.webp")
   background-size: cover
-  background-position: top
+  background-position: center
   text-align: left
+  &:after
+    background-color: black
   .bannerContainer
     padding: 1em
   h1, h2

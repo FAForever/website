@@ -76,7 +76,7 @@ form
   li
     list-style: none
 
-  
+// Flash alert styling
 .alert-danger
   background-color: variables.$Cybran
 
@@ -91,3 +91,33 @@ form
     align-self: center
     .g-recaptcha
       display: inline-block
+      
+// Markdown styling
+.container
+  background-color: rgba(0,0,0,0.8)
+  margin: 2vw 5vw
+  padding: 2em 4vw
+  border-radius: 20px
+  text-align: left
+  .markdownButton
+    a
+      display: inline-block
+      margin: 1em
+      button
+        margin: 0
+        
+
+  a
+    color: variables.$button-inactive
+    text-decoration: underline variables.$button-inactive
+    transition: 0.4s
+    &:hover
+      color: variables.$button-active
+      text-decoration: underline variables.$button-active
+    
+  h2
+    padding: 1em
+  
+  li
+    padding: 0.5em
+    font-size: 1em

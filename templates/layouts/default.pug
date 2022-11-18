@@ -209,17 +209,18 @@ html(lang='en')
 
     block banner
       mixin banner()
-        .mainBannerContainer(class= bannerImage + 'Banner' style='background-image: url(../images/banner/' + bannerImage + '.jpg);')
+        .mainBannerContainer(class= bannerImage + 'Banner' style='background-image: url(../images/banner/' + bannerImage + '.webp);')
           .bannerContainer.bannerTitle #{bannerFirstTitle}
           .bannerContainer.bannerTitle #{bannerSecondTitle}
           .bannerContainer.bannerSubtitle #{bannerSubTitle}
 
           block bannerButton 
     block bannerMixin
-      +banner()
-      .splatForgedBorder.transformationReverse
-        .movingBackground1
-        .movingBackground2
+      if bannerImage
+        +banner()
+        .splatForgedBorder.transformationReverse
+          .movingBackground1
+          .movingBackground2
 
 
       //- The content block should contain the body of your template's content
@@ -234,13 +235,14 @@ html(lang='en')
           //.backToTop Back to Top
       .footerContainer.column12
         .footerItem
-          img(src='/images/logos/faflogo.svg' alt='')
+          a(href='/')
+            img(src='/images/logos/faflogo.svg' alt='FAF Logo')
           h1 FORGED ALLIANCE FOREVER
       .footerContainer.column12
         .footerItem
           ul ETIQUETTE
             li
-              a(href='/coc') CODE OF CONDUCT
+              a(href='/cg') CONTRIBUTION GUIDELINES
             li
               a(href='/rules') RULES
 
@@ -248,7 +250,7 @@ html(lang='en')
             li
               a(href='/contribution') VOLUNTEER POSITIONS
             li
-              a(href='https://www.patreon.com/faf') DONATIONS
+              a(href='/donation') DONATIONS
 
           ul LEGAL
             li

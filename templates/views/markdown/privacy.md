@@ -1,3 +1,13 @@
+<div class="markdownButton">
+<a href="/privacy-fr">
+<button> Privacy Français</button>
+</a>
+
+<a href="/privacy-ru">
+<button> Privacy Pусский </button>
+</a>
+</div>
+
 # Forged Alliance Forever Privacy Statement
 
 Effective date: _May 25, 2018_
