@@ -13,8 +13,18 @@ async function getClan() {
   let url = window.location.href;
   const sliceIndicator = url.indexOf('/clans');
 // The slice has + 7 because thats the amount of characters in "/clans/" yes with two /, not one!
-  let findClanTag = url.slice(sliceIndicator + 7);
+  let findClanTag = url.slice(sliceIndicator + 7, sliceIndicator + 10);
 
+  
+  //verifies if user is a member, which allows them to leave the clan
+  const memberID = document.getElementById('iAmMember');
+  const isMember = url.indexOf('?member');
+  let verifyMembership = url.slice(isMember  + 8);
+  if (verifyMembership === 'true') {
+
+    memberID.style.display = 'block';  
+  } 
+  
   // We compare the url TAG with the TAGS available in getAllClans and find the clan leader this way
   const responseLeader = await fetch(`/js/app/members/getAllClans.json`);
   const dataLeader = await responseLeader.json();
