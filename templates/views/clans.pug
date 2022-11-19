@@ -1,12 +1,13 @@
 extends ../layouts/default
-
+include ../mixins/flash-messages
 block bannerMixin
 
 block content
-  script(type='module' src="../../js/app/clans.js")
+
   .clanBackground
     .mainClanContainer
       .clanContainer.column12.centerYourself
+        +flash-messages(flash)
         p Search FAF Clans
           #errorLog
         input#input(onkeyup=`pressEnter(event)` type='text' placeholder='Clan TAG')

@@ -43,15 +43,11 @@ exports = module.exports = async function (req, res) {
 
     // Building update query
     const membershipId = req.body.membership_id;
-    const queryUrl =
-      process.env.API_URL
-      + '/data/clanMembership/' + membershipId
-
-    ;
+    const queryUrl = `${process.env.API_URL}/data/clanMembership/${membershipId}`;
 
     //Run post to endpoint
     request.delete({
-      url: queryUrl,
+      url: `${process.env.API_URL}/data/clanMembership/${res.user.data.attributes.clan.membershipId}`,
       headers: {
         'Authorization': 'Bearer ' + req.user.data.attributes.token
       }
