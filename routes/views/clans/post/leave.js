@@ -47,7 +47,7 @@ exports = module.exports = async function (req, res) {
 
     //Run post to endpoint
     request.delete({
-      url: `${process.env.API_URL}/data/clanMembership/${res.user.data.attributes.clan.membershipId}`,
+      url: `${process.env.API_URL}/data/clanMembership/${req.user.data.attributes.clan.membershipId}`,
       headers: {
         'Authorization': 'Bearer ' + req.user.data.attributes.token
       }
@@ -62,11 +62,13 @@ exports = module.exports = async function (req, res) {
 
           msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
         }
-        catch{}
-        errorMessages.push({msg: msg});
-        flash.class = 'alert-danger';
-        flash.messages = errorMessages;
-        flash.type = 'Error!';
+        catch{
+          errorMessages.push({msg: msg});
+          flash.class = 'alert-danger';
+          flash.messages = errorMessages;
+          flash.type = 'Error!';          
+        }
+
 
         let buff = Buffer.from(JSON.stringify(flash));
         let data = buff.toString('base64');
@@ -106,4 +108,4 @@ exports = module.exports = async function (req, res) {
         });
     });
   }
-}
+};

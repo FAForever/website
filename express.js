@@ -258,7 +258,7 @@ for (let i = 0; i < requireRunArray.length; i++) {
     } catch (e) {
       console.error(`${requireRunArray[i]} caused the error`, e);
     }
-  }, 1000 * 60 * 5); // 5 Minutes
+  }, process.env.EXTRACTOR_INTERVAL * 60 * 1000); 
 }
 setInterval(() => {
   try {
@@ -267,7 +267,7 @@ setInterval(() => {
   } catch (e) {
     console.error(`getRecentUsers script caused the error`, e);
   }
-}, 1000 * 30); // 30 seconds
+}, process.env.PLAYER_COUNT_INTERVAL * 1000); 
 
 
 //404 Error Handlers
