@@ -15,16 +15,17 @@ async function getClan() {
   const sliceIndicator = url.indexOf('/clans');
 // The slice has + 7 because thats the amount of characters in "/clans/" yes with two /, not one!
   let findClanTag = url.slice(sliceIndicator + 7, sliceIndicator + 10);
-  
-  
+  let clanTag = await findClanTag.replace(/[?m]/gm,'');
+
   // We compare the url TAG with the TAGS available in getAllClans and find the clan leader this way
   const responseLeader = await fetch(`/js/app/members/getAllClans.json`);
   const dataLeader = await responseLeader.json();
-  const leaderIndex = dataLeader.findIndex(element => element[1].tag === findClanTag.toUpperCase());
+  const leaderIndex = dataLeader.findIndex(element => element[1].tag === clanTag.toUpperCase());
   leaderName = dataLeader[leaderIndex][0].leaderName;
   
-  const response = await fetch(`https://api.test.faforever.com/data/clan?include=memberships.player&filter=tag==${findClanTag}`);
+  const response = await fetch(`https://api.test.faforever.com/data/clan?include=memberships.player&filter=tag==${clanTag}`);
   const fetchData = await response.json();
+
   //verifies if user is a member, which allows them to leave the clan
   const memberID = document.getElementById('iAmMember');
   const isMember = url.indexOf('?member');
@@ -60,4 +61,4 @@ setTimeout( ()=> {
       }
     });
 
-},1500);
+},500);
