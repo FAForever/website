@@ -3,7 +3,8 @@ include ../../mixins/flash-messages
 include ../../mixins/form/account
 block bannerMixin
 block content
-  .container.text-center
+  
+  .containerCenter
     .row
       .col-md-12
         h1.account-title Clan Management
@@ -37,13 +38,13 @@ block content
               input(type='text', name='clan_name', value=clan_name, placeholder='Clan name').form-control
               input(type='hidden', name='original_clan_name', value=clan_name)
               span(aria-hidden='true').glyphicon.form-control-feedback
-
+  
             div.clanManagementItem
               label Tag:
-
+  
               input(type='text', required='required', name='clan_tag', value=clan_tag, placeholder='TAG', style="display:inline;margin-left:5px;margin-right:5px;width:5em;").form-control
               input(type='hidden', name='original_clan_tag', value=clan_tag)
-
+  
               span(aria-hidden='true').glyphicon.form-control-feedback
             br
             div.clanManagementItem
@@ -52,7 +53,7 @@ block content
               br
               textarea(rows='12', name='clan_description', required='required', placeholder='The description players will see when they look your clan').form-control #{clan_description}
               span(aria-hidden='true').glyphicon.form-control-feedback
-
+  
             .form-actions
               button(type='submit').bigButton Update Clan Settings
 
@@ -65,22 +66,7 @@ block content
                 th.text-center  Player
                 th.text-center  Joined
                 th.text-center  Kick member
-            tbody
-              each member in clan_members
-                tr(class= member.id == me ? "leader me" : "")
-                  td
-                    if member.id == me
-                      abbr(title="Leader") 👑 
-                    | #{member.name}
-                  td #{member.joinedAt}
-                  td
-                    if member.id != me
-                      form(method='post',action="/clans/kick")
-                        input(type='hidden', name="membership_id", value=member.membershipId)
-                        input(type='hidden', name='clan_id', value=clan_id)
-                        button(type='submit').btn Kick
-                    else
-                      span
+           
   .clanManagement
     .clanManagementDanger.column12
       h1.danger DANGER ZONE

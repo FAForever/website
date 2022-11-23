@@ -5,6 +5,7 @@ const clanCreation = document.getElementById('clanCreation');
 const clanLeader = document.getElementById('clanLeader');
 const clanMembers = document.getElementById('clanMembers');
 
+
 let leaderName = '';
 
 async function getClan() {
@@ -22,7 +23,7 @@ async function getClan() {
   const leaderIndex = dataLeader.findIndex(element => element[1].tag === findClanTag.toUpperCase());
   leaderName = dataLeader[leaderIndex][0].leaderName;
   
-  const response = await fetch(`https://api.faforever.com/data/clan?include=memberships.player&filter=tag==${findClanTag}`);
+  const response = await fetch(`https://api.test.faforever.com/data/clan?include=memberships.player&filter=tag==${findClanTag}`);
   const fetchData = await response.json();
   //verifies if user is a member, which allows them to leave the clan
   const memberID = document.getElementById('iAmMember');
@@ -59,4 +60,4 @@ setTimeout( ()=> {
       }
     });
 
-},1000);
+},1500);
