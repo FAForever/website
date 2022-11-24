@@ -66,6 +66,22 @@ block content
                 th.text-center  Player
                 th.text-center  Joined
                 th.text-center  Kick member
+            tbody
+              each member in clan_members
+                tr(class= member.id == me ? "leader me" : "")
+                  td
+                    if member.id == me
+                      abbr(title="Leader") 👑 
+                    | #{member.name}
+                  td #{member.joinedAt}
+                  td
+                    if member.id != me
+                      form(method='post',action="/clans/kick")
+                        input(type='hidden', name="membership_id", value=member.membershipId)
+                        input(type='hidden', name='clan_id', value=clan_id)
+                        button(type='submit').btn Kick
+                    else
+                      span
            
   .clanManagement
     .clanManagementDanger.column12
