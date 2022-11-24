@@ -19,7 +19,7 @@ let currentDate = new Date(minusTimeFilter).toISOString();
 async function getTournamentNews() {
 
   try {
-    let response = await axios(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=content.rendered,categories&categories=638`);
+    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=content.rendered,categories&categories=638`);
     //Now we get a js array rather than a js object. Otherwise we can't sort it out.
     let dataObjectToArray = Object.values(response.data);
     
@@ -39,7 +39,7 @@ async function getTournamentNews() {
 async function flashMessage() {
 
   try {
-    let response = await axios(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields,_links.wp:featuredmedia,_embedded,title,content.rendered,categories&categories=640`);
+    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields,_links.wp:featuredmedia,_embedded,title,content.rendered,categories&categories=640`);
     
     //Now we get a js array rather than a js object. Otherwise we can't sort it out.
     let dataObjectToArray = Object.values(response.data);
@@ -60,7 +60,7 @@ async function flashMessage() {
 
 async function newshub() {
   try {
-    let response = await axios(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,content.rendered,date,categories&categories=587`);
+    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,content.rendered,date,categories&categories=587`);
     
     //Now we get a js array rather than a js object. Otherwise we can't sort it out.
     let dataObjectToArray = Object.values(response.data);
@@ -81,7 +81,7 @@ async function newshub() {
 async function clientNews() {
 
   try {
-    let response = await axios(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,newshub_externalLinkUrl,newshub_sortIndex,content.rendered,date,categories&categories=283`);
+    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,newshub_externalLinkUrl,newshub_sortIndex,content.rendered,date,categories&categories=283`);
     
     let dataObjectToArray = Object.values(response.data);
     let sortedData = dataObjectToArray.map(item => ({
@@ -112,7 +112,7 @@ async function clientNews() {
 async function fafTeams() {
 
   try {
-    let response = await axios(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=content.rendered,categories&categories=636`);
+    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=content.rendered,categories&categories=636`);
     
     let dataObjectToArray = Object.values(response.data);
     let data = dataObjectToArray.map(item => ({
@@ -128,7 +128,7 @@ async function fafTeams() {
 
 async function contentCreators() {
   try {
-    let response = await axios(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=content.rendered,categories&categories=639`);
+    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=content.rendered,categories&categories=639`);
     
     let dataObjectToArray = Object.values(response.data);
     let data = dataObjectToArray.map(item => ({
@@ -145,7 +145,7 @@ async function contentCreators() {
 //https://api.faforever.com/data/clan?include=memberships.player&filter=tag==FEM
 async function getAllClans() {
   try {
-    let response = await axios(`${process.env.API_URL}/data/clan?sort=createTime&include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000`);
+    let response = await axios.get(`${process.env.API_URL}/data/clan?sort=createTime&include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000`);
     
     let dataObjectToArray = Object.values(response.data);
     let clanLeader = dataObjectToArray[2].map(item => ({
@@ -174,7 +174,7 @@ async function getAllClans() {
 
 async function getLeaderboards(leaderboardID) {
   try {
-    let response = await axios(`${process.env.API_URL}/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
+    let response = await axios.get(`${process.env.API_URL}/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
 
 
     let dataObjectToArray = await Object.values(response.data);
