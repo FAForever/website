@@ -38,7 +38,7 @@ exports = module.exports = function(req, res) {
 
   if (req.user.data.attributes.clan != null){
     // User is already in a clan!
-    return res.redirect('/clans/see?id='+req.user.data.attributes.clan.id);
+    return res.redirect(`/clans/${req.user.data.attributes.clan.tag}?member=true`);
   }
 
   const queryUrl = process.env.API_URL
