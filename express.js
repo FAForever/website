@@ -73,8 +73,7 @@ let fullUrl = '/';
 function loggedIn(req, res, next) {
   
   fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
-  console.log(` I'm in the loggedIn`);
-  console.log(fullUrl);
+
   if (req.isAuthenticated()) {
     res.locals.username = req.user.data.attributes.userName;
     next();
@@ -229,7 +228,7 @@ passport.use('faforever', new OidcStrategy({
         let user = JSON.parse(body);
         user.data.attributes.token = accessToken;
         user.data.id = user.data.attributes.userId;
-        console.log(user.data);
+     
         return verified(null, user);
       }
     );
@@ -251,8 +250,7 @@ app.get('/callback', passport.authenticate('faforever', {
   failureFlash: true
 }), function (req, res) {
   res.redirect(fullUrl ? fullUrl : '/');
-  console.log(` I'm in the callback`);
-  console.log(fullUrl);
+
   fullUrl = '/'; // Successful auth
 });
 
