@@ -68,7 +68,7 @@ app.use(function(req, res, next){
   next();
 });
 
-let fullUrl = '';
+let fullUrl = '/';
 
 function loggedIn(req, res, next) {
   
@@ -253,7 +253,7 @@ app.get('/callback', passport.authenticate('faforever', {
   res.redirect(fullUrl ? fullUrl : '/');
   console.log(` I'm in the callback`);
   console.log(fullUrl);
-  fullUrl = 'null'; // Successful auth
+  fullUrl = '/'; // Successful auth
 });
 
 
