@@ -6,5 +6,3 @@ async function getWordpress() {
   return await data;
 }
 getWordpress();
-
-console.log('im being read')

@@ -61,7 +61,7 @@ app.use(middleware.flashMessage);
 //Initialize values for default configs
 app.set('views', 'templates/views');
 app.set('view engine', 'pug');
-app.set('port', 3000);
+app.set('port', process.env.PORT);
 
 app.use(function(req, res, next){
   res.locals.message = req.flash();
@@ -125,10 +125,6 @@ accountRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, require(`${a
 
 // --- C L A N S ---
 const routes = './routes/views/';
-
-app.get('/renderMe', (req, res) => {
-  res.render(`account/report`);
-});
 
 const clansRoutesGet = [
   'create', 'manage', 'accept_invite',];

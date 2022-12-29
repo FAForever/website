@@ -1,4 +1,4 @@
-console.log('Javi is the coolest');
+
 let articleTitleArray = [];
 
 async function getNewshub() {

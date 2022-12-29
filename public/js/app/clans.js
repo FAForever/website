@@ -43,8 +43,7 @@ function clanUpdate() {
   //determines the current page, whether to add or substract the missing players in case we pressed next or previous then it will add or substract players
   let clanIndex = (clanList.length - 100) - (pageNumber * 100); //- addNextPlayer;
   let next100Players = clanList.length - (pageNumber * 100);
-  console.log(clanIndex);
-  console.log(next100Players)
+
   for (clanIndex; clanIndex < next100Players; clanIndex++) {
     if (clanIndex < 0) {
       clanIndex = 0;

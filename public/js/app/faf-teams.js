@@ -1,4 +1,4 @@
-console.log("Azul");
+
 let teamSelection = document.querySelectorAll('.teamSelection');
 let teamContainer = document.querySelectorAll('.teamContainer');
 async function getWordpress() {
