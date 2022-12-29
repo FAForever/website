@@ -1,6 +1,5 @@
 const request = require('request');
 
-
 exports = module.exports = function (req, res) {
 
   const maxDescriptionLength = 48;
@@ -104,21 +103,21 @@ exports = module.exports = function (req, res) {
       locals.reportable_members = {};
       const recentMembersPath = 'members/recent.json';
       if (fs.existsSync(recentMembersPath)){
-        fs.readFile(recentMembersPath, 'utf8', function (err, data) {
-          try {
-            locals.reportable_members = JSON.parse(data);
-          } catch (e) {
-            const moment = require('moment');
-            console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + " - The list of reportable members could not be read from the disk: " + e.toString());
-          }
+          fs.readFile(recentMembersPath, 'utf8', function (err, data) {
+            try {
+              locals.reportable_members = JSON.parse(data);
+            } catch (e) {
+              const moment = require('moment');
+              console.log(moment().format("DD-MM-YYYY - HH:mm:ss") + " - The list of reportable members could not be read from the disk: " + e.toString());
+            }
 
-          res.render('account/report', {flash: flash});
-        });
+            res.render('account/report', {flash: flash});
+          });
       }
-      else
-      {
-        res.render('account/report', {flash: flash});
-      }
+	  else
+	  {
+		res.render('account/report', {flash: flash});
+	  }
     }
   )
 };

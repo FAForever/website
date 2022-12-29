@@ -28,28 +28,28 @@ exports = module.exports = function(req, res) {
     res.render('account/linkGog', {flash: flash});
 
   } else {
-
-    let gogUsername = req.body.gog_username; // this is obtained from the form field in the mixin, not the pug file of this page!
-
+    
+		let gogUsername = req.body.gog_username; // this is obtained from the form field in the mixin, not the pug file of this page!
+    
     let overallRes = res;
-
-    request.post({
-      url: process.env.API_URL + '/users/linkToGog',
-      headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
-      form: {gogUsername: gogUsername}
-    }, function (err, res, body) {
-
-      if (res !== undefined && res.statusCode === 200) {
+		
+		request.post({
+			url: process.env.API_URL + '/users/linkToGog',
+			headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
+			form: {gogUsername: gogUsername}
+		}, function (err, res, body) {
+      
+			if (res !== undefined && res.statusCode === 200) {
         flash.class = 'alert-success';
         flash.messages = [{msg: 'Your accounts were linked successfully.'}];
         flash.type = 'Success!';
 
         locals.gogToken = '-';
         overallRes.render('account/linkGog', {flash: flash});
-
-      } else {
+        
+			} else {
         error.parseApiErrors(body, flash);
-
+        
         // We need the gog token on the error page as well,
         // this code literally does the same as linkGog.js, but due to the architectural structure of this application
         // it's not possible to extract it into a separate function while saving any code
@@ -66,10 +66,10 @@ exports = module.exports = function(req, res) {
           }
 
           locals.gogToken = JSON.parse(body).gogToken;
-
+          
           return overallRes.render('account/linkGog', {flash: flash});
         });
       }
-    });
-  }
+		});
+	}
 };

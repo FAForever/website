@@ -25,8 +25,6 @@ The Website is overseen currently by the Promotions Team.
 The recommended 3 development environments to set up are listed below, the guide for each will outline what is needed, and what to configure.
 
 - [JetBrains Webstorm](https://github.com/FAForever/website/wiki/Webstorm-Development-Enviroment)
-- [Visual Studio Code](https://github.com/FAForever/website/wiki/Visual-Studio-Develeopment-Enviroment)
-- [Oracle VM VirtualBox](https://github.com/FAForever/website/wiki/Oracle-VM-VirtualBox-Development-Enviroment)
 
 Any pull requests made to the website will be verified via the Website Test Server before being merged into the website.
 
