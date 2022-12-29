@@ -69,9 +69,12 @@ app.use(function(req, res, next){
 });
 
 function loggedIn(req, res, next) {
+  
   let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  console.log(fullUrl);
   req.session.referral = fullUrl;
   if (req.isAuthenticated()) {
+    res.locals.username = req.user.data.attributes.userName;
     next();
   } else {
     res.redirect('/login');
@@ -232,8 +235,8 @@ passport.use('faforever', new OidcStrategy({
 ));
 
 
-passport.serializeUser(async function (user, done) {
-  await done(null, user);
+passport.serializeUser(function (user, done) {
+  done(null, user);
 });
 
 passport.deserializeUser(function (user, done) {
@@ -243,8 +246,10 @@ passport.deserializeUser(function (user, done) {
 
 app.get('/callback', passport.authenticate('faforever', {
   failureRedirect: '/login', // Failed auth
+  failureFlash: true
 }), function (req, res) {
   res.redirect(req.session.referral ? req.session.referral : '/');
+  console.log(req.session.referral);
   req.session.referral = null; // Successful auth
 });
 
