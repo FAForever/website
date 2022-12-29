@@ -121,7 +121,7 @@ accountRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, require(`${a
 const routes = './routes/views/';
 
 app.get('/renderMe', (req, res) => {
-  res.render(`account/changeUsername`);
+  res.render(`account/report`);
 });
 
 const clansRoutesGet = [

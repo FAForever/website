@@ -103,6 +103,7 @@ block content
           br
           li You can no longer kick a player
         br
+        br
         p.danger By clicking the "transfer" button, you 
           b FORFEIT
           |  all your rights over this clan in favor of the new owner.
@@ -113,13 +114,18 @@ block content
 
       form(method='post',action="/clans/destroy", onsubmit="return confirm('THIS OPERATION IS DEFINITIVE. Press OK to confirm you want to delete your clan');")
         input(type='hidden', name='clan_id', value=clan_id)
+        br
+        br
         h2 Delete the clan
         p.text-left All memberships will be terminated and the clan will be removed. The name and tag of the clan will become free.
         p.danger This operation 
           b CANNOT BE CANCELED
+        
 
         .row.centered-flex
           button(type='submit').btn-danger.btn Delete my clan
+        br
+        br
 
                         
       

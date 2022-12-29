@@ -3,8 +3,7 @@
 
 .accountForm
   @include mixins.gridMainContainer
-  padding: 4vw
-  justify-items: center
+  padding: 0vw
   gap: 0
   
     
@@ -48,6 +47,7 @@ form
   p
     padding: 0.2em
 
+
 .formContainer
   padding: 1em 0
   text-align: center
@@ -56,9 +56,12 @@ form
 
 .form-group
   padding: 2em 1em
+  textarea
+    min-width: 500px
   
 .form-control
-  width: 200px
+  width: 300px
+  
 
   
 .tosAgree
@@ -77,6 +80,14 @@ form
     list-style: none
 
 // Flash alert styling
+.alert-invite
+  background-color: variables.$Seraphim
+  a
+    &:hover
+      color: #ec9d36
+      text-decoration: underline #ec9d36
+      transition: 0.4s
+
 .alert-danger
   background-color: variables.$Cybran
 
@@ -148,3 +159,13 @@ form
   li
     padding: 0.5em
     font-size: 1em
+.centerFormPlease
+  text-align: center
+  table
+    text-align: center
+    margin: 0 auto
+    display: block
+    thead, tr, th
+      text-align: center
+    th
+      padding: 1.5em

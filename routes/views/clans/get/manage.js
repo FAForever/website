@@ -21,14 +21,13 @@ exports = module.exports = function(req, res) {
   }
 
   // In case the user has just generated an invite link
-  if (req.query.invitation_id){
+  if (req.query.invitation_id) {
     flash = {};
-    flash.class = 'alert-success';
+    flash.class = 'alert-invite';
+    
     flash.messages = [
       {msg:
-          "<p><a id='inviteLink' onclick='return false' href='"+process.env.HOST + "/clans/accept_invite"
-          +"?i=" + req.query.invitation_id
-          +"'>Right click on me and copy the invitation link</a></p>Note: The link expires in 30 days."}
+          `<p><a id='inviteLink' onclick='return false' href='${process.env.HOST}/clans/accept_invite?i=${req.query.invitation_id}'> Right click on me and copy the invitation link</a></p>Note: It only works for the user you typed.`}
     ];
     flash.type = '';
     

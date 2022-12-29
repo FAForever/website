@@ -112,7 +112,7 @@ exports = module.exports = async function (req, res) {
       }
 
       flash.class = 'alert-danger';
-      flash.messages = [{"msg": "The following users could not be found : "+missing.join(',')}];
+      flash.messages = [{"msg": "The following users could not be found : " + missing.join(',')}];
       flash.type = 'Error!';
 
       let buff = Buffer.from(JSON.stringify(flash));
