@@ -69,6 +69,8 @@ app.use(function(req, res, next){
 });
 
 function loggedIn(req, res, next) {
+  let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  req.session.referral = fullUrl;
   if (req.isAuthenticated()) {
     next();
   } else {

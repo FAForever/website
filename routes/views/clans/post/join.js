@@ -58,7 +58,7 @@ exports = module.exports = function(req, res) {
               user.data.attributes.token = req.user.data.attributes.token;
               req.logIn(user, function(err){
                 if (err) console.error(err);
-                return overallRes.redirect(`${req.query.tag}?member=true`);
+                return overallRes.redirect(`${req.user.data.attributes.clan.tag}?member=true`);
               });
             }
             catch{
