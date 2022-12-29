@@ -1,9 +1,9 @@
 extends ../../layouts/default
 include ../../mixins/flash-messages
 include ../../mixins/form/account
-
+block bannerMixin
 block content
-    .container.text-center
+    .containerCenter.text-center
         .row
             .col-md-12
                 h1.account-title Report a FAF user
@@ -23,77 +23,84 @@ block content
                         | or preferably as an 
                         a(href='https://github.com/FAForever/fa') issue on our github page.
                 hr
+                br
+                br
         .row
             .col-md-offset-3.col-md-6
                 +flash-messages(flash)
-
-        form(method='post',action="/account/report",data-toggle="validator")
-            .row(style={'display': 'flex', 'flex-direction': 'row', 'justify-content':'space-between'})
-                .col-md-4
-                    div.form-group
-                        label Reporter:
-                        input(type='text', disabled='disabled', value=username).form-control
-                        span(aria-hidden='true').glyphicon.form-control-feedback
-
-                    div.form-group
-                        label Offender username:
-                        input(type='text', required='required', class='offender_name', id='offender_0', name='offender_0', placeholder='FAF username(s) of the offender(s)').form-control
-                        button.form-control(data-validate="false", id="add_offender" type="button") Add one more offender
-                        span(aria-hidden='true').glyphicon.form-control-feedback
-                        .help-block Make sure to spell the names correctly and to respect the casing.
         
-                    div.form-group
-                        label Incident report:
-                        textarea(rows='8', name='report_description', required='required', placeholder='Please provide a short but thorough description of the incident you are reporting. If there are no records available of the incident (e.g. not something that happened in #aeolus or in-game), please provide us a screenshot of it. You can use any image hosting site, e.g. http://imgur.com/.').form-control
-                        span(aria-hidden='true').glyphicon.form-control-feedback
+        form(method='post',action="/account/report",data-toggle="validator").accountForm
+            .column6
+                div.form-group
+                    p Reporter:
+                    input(type='text', disabled='disabled', value=username).form-control
+                    span(aria-hidden='true').glyphicon.form-control-feedback
 
-                .col-md-4
-                    div.form-group
-                        label Replay/Game ID:
-                        input(type='text', name='game_id', value=game_id, placeholder='(If the issue happened ingame)').form-control
-                        span(aria-hidden='true').glyphicon.form-control-feedback
-                        .help-block
-                            p Please enter the replay ID of the game where the incident happened
-                            img(src="/images/Report_Replays.JPG" class="img-responsive")
+                div.form-group
+                    p Offender username:
+                    input(type='text', required='required', class='offender_name', id='offender_0', name='offender_0', placeholder='FAF username(s)').form-control
 
-                    div.form-group
-                        label Timecode:
-                        input(type='text', name='game_timecode', placeholder='(If the issue happened ingame)').form-control
-                        span(aria-hidden='true').glyphicon.form-control-feedback
-                        .help-block
-                            p Enter in-game time when the incident started here.
-                            img(src="/images/report_timecode.jpg")
-            .row
+                    span(aria-hidden='true').glyphicon.form-control-feedback
+                    .help-block Make sure to spell the name correctly and to respect the casing.
+    
+                
 
+            .column6
+                div.form-group
+                    p Replay/Game ID:
+                    input(type='text', name='game_id', value=game_id, placeholder='(If it happened ingame)').form-control
+                    span(aria-hidden='true').glyphicon.form-control-feedback
+                    .help-block
+                        p Please enter the replay ID of the game where the incident happened
+                
+
+                div.form-group
+                    p Timestamp:
+                    input(type='text', name='game_timecode', placeholder='(If it happened ingame)').form-control
+                    span(aria-hidden='true').glyphicon.form-control-feedback
+                    .help-block
+                        p Enter in-game time when the incident started here.
+            .column12
+              div.form-group
+                p Incident report:
+                textarea(rows='8', name='report_description', required='required', placeholder='Please provide a short but thorough description of the incident you are reporting. If there are no records available of the incident (e.g. not something that happened in #aeolus or in-game), please provide us a screenshot of it. You can use any image hosting site, e.g. http://imgur.com/.').form-control
+                span(aria-hidden='true').glyphicon.form-control-feedback
+            br
+            .column12     
                 .form-actions
-                    button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Submit
+                    button(type='submit') Submit Report
 
-        h3.row
-            p Current reports
-
-        .table-responsive
-            table.table.table-striped.table-hover
-              thead
-                tr
-                  th #
-                  th(style={'text-align':'center'}) Created at
-                  th(style={'text-align':'center'}) Offender(s)
-                  th(style={'text-align':'center'}) Game
-                  th(style={'text-align':'center'}) Description
-                  th(style={'text-align':'center'}) Moderator
-                  th(style={'text-align':'center'}) Notice
-                  th(style={'text-align':'center'}) Status
-              tbody
-                each report in reports
-                  tr
-                    td #{report.id}
-                    td #{report.creationTime}
-                    td #{report.offenders}
-                    td #{report.game}
-                    td #{report.description}
-                    td #{report.lastModerator}
-                    td #{report.notice}
-                    td(style=report.statusStyle) #{report.status}
+            h3.column12
+              br
+              br
+              p Current reports
+              
+  
+              .centerFormPlease
+                table
+                  thead
+                    tr
+                      th #
+                      th(style={'text-align':'center'}) Created at
+                      th(style={'text-align':'center'}) Offender
+                      th(style={'text-align':'center'}) Game
+                      th(style={'text-align':'center'}) Description
+                      th(style={'text-align':'center'}) Moderator
+                      th(style={'text-align':'center'}) Notice
+                      th(style={'text-align':'center'}) Status
+                  tbody
+                    each report in reports
+                      tr
+                      td #{report.id}
+                      td #{report.creationTime}
+                      td #{report.offenders}
+                      td #{report.game}
+                      td #{report.description}
+                      td #{report.lastModerator}
+                      td #{report.notice}
+                      td(style=report.statusStyle) #{report.status}
+                  
+              
 
 
 

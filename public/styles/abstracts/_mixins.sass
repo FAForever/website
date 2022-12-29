@@ -1,0 +1,141 @@
+@use '../abstracts/variables'
+
+//Mixins
+
+@mixin gridMainContainer
+  display: grid
+  grid-template-columns: repeat(12, 1fr)
+  grid-template-rows: 1fr
+  grid-auto-columns: auto
+  transition: 0.4s
+  gap: 0
+  overflow: hidden
+  position: relative
+  align-items: center
+
+@mixin gridItem
+  position: relative
+  overflow: hidden
+  object-fit: contain
+  display: grid
+  transition: 0.4s
+
+  
+@mixin gridImg
+  width: 100%
+  height: 100%
+  object-fit: fill
+  overflow: hidden
+  transition: 0.4s
+
+@mixin button
+  color: variables.$background-primary
+  border: 0px solid variables.$background-secondary
+  background-color: variables.$button-inactive
+  font-family: variables.$family-subtitle
+  border-radius: 20px
+  font-size: 1.5em
+  justify-self: center
+  transition: 0.4s
+  font-weight: bold
+  letter-spacing: 0.1em
+  cursor: pointer
+
+  &:hover
+    color: variables.$color-active
+    background-color: variables.$button-active
+    
+// Rectangle Mixins
+
+@mixin mainRectangleContainer
+  @include gridMainContainer
+  background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
+  gap: 10px
+
+@mixin mainRectangleContainerReverse
+  @include gridMainContainer
+  background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%)
+  gap: 10px
+  direction: ltr
+
+//Classes used across multiple documents
+
+.gridMainContainer
+  @include gridMainContainer
+
+.gridItem
+  @include gridItem
+
+.gridImage
+  img
+    @include gridImg
+    
+.landingButton
+  font-size: 1.2em
+  margin: 0.2em 1em
+  padding: 0.8em
+@media (max-width: 800px)
+  .landingButton
+    margin: 8px
+    font-size: 14px
+    padding: 0.6em
+
+button
+  @include button
+  font-size: 1em
+  margin: 0.2em 1em
+  padding: 0.8em
+@media (max-width: 800px)
+  button
+    margin: 0px 8px 8px 8px
+    font-size: 12px
+    padding: 0.6em
+.smallButton
+  @include button
+  font-size: 0.75em
+  margin: 0.25em
+  padding: 0.5em
+  
+.descriptionMain
+  //background-color: variables.$background-secondary
+  padding: 10px
+  .descriptionContainer
+    max-width: 60%
+    margin: 1em auto
+    p
+      text-shadow: 1px 1px 2px black
+      line-height: 2em
+    h2
+      padding: 1em 0
+  a
+    button
+      margin: 1em 1em 2em 1em
+      img
+        display: block
+        height: 2em
+
+@media (max-width: 1000px)
+  .descriptionMain
+    padding: 10px
+    .descriptionContainer
+      max-width: 80%
+      margin: 1em auto
+      
+@media (max-width: 500px)
+  .descriptionMain
+    padding: 10px
+    .descriptionContainer
+      max-width: 100%
+      margin: 1em auto
+//This creates 12 column classes ranging from column 1 to 12. Necessary since the base of every grid container is 12 columns. Done in order to be able to divide by 2,3,4 or 6 pieces (or other combinations such as 3 + 9), the column size doesnt matter as long as the combination of them equals 12).
+@for $i from 1 through 12 
+  .column#{$i}
+    grid-column: span $i
+    
+    
+
+    
+    
+
+
+

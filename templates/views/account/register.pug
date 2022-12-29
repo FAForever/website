@@ -1,42 +1,36 @@
 extends ../../layouts/default
-include ../../mixins/flash-messages
 include ../../mixins/form/account
+include ../../mixins/flash-messages
 
-block content
-  .container.text-center
-    .row
-      .col-md-12
-        h1.account-title Register to Forged Alliance Forever
-        h4.account-subtitle.text-center To get started, please register with a unique username and and a valid email address. You will choose your password later.
-        p <strong>Important Account Rules:</strong>
-          ul.text-left
-            li <strong>You may only register one account.</strong> Additional accounts will be banned. If you misbehave using multiple accounts, you may be banned completely.
-            li <strong>Your email address is the only way to regain access to your account</strong> if you lose your password. If you lose both your password and your email, you will lose access to your account.
-            li <strong>Full FAF Social rules:</strong> <a href="/rules">FAF Lobby and Forum rules</a>
-        hr
-        h3.account-steamLink-warning-title Account Link is Mandatory
-        p.account-steamLink-warning-subtext After registration, you will need to login to the FAF website to link your account with steam or gog!
-          li <a href="https://www.faforever.com/account/link"> Link Account With Steam</a>
-          li <a href="https://www.faforever.com/account/linkGog"> Link Account With GOG</a>
-        p Note: According to <strong><a href="https://web.archive.org/web/20140903143132/http://forums.gaspowered.com/viewtopic.php?f=67&t=57459">GPG's statement</a></strong>, ALL existing CD keys for either Supreme "Commander and Forged Alliance can be redeemed on Steam for a copy of the Supreme Commander Gold Edition bundle. On GOG you need the Gold Edition to play on FAF.
-        hr
-
-    .row
-      .col-md-offset-3.col-md-6
+block bannerMixin
+  
+block content  
+  .containerCenter
+    .accountForm
+      .column12
+        h1 Get Started
+        h2 Welcome to the FAF community
+        br
         +flash-messages(flash)
-    .row
-      .col-md-offset-3.col-md-6
+        
         form(method='post', action="/account/register", data-toggle="validator")
           +username
+          br
+          br
+          br
+          
           +email
+          br
+          br
           +tosagree
-          .form-group.has-feedback
-            label
+          .recaptchaForm
+            label.column12
               .g-recaptcha(data-sitekey=recaptchaSiteKey)
           p We will send you an email with a link. The link will lead you to a page where you can set your password and activate your account.
           p If you don't receive an email please check your spam folder!
           .form-actions
             button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Register
+
 
 block js
   script(src='/js/account.min.js')

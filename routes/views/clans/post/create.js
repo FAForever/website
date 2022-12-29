@@ -59,20 +59,20 @@ exports = module.exports = async function (req, res) {
       flash.messages = [{msg: 'Error while creating the clan '+e}];
       flash.type = 'Error!';
 
-      let buff = Buffer.from(JSON.stringify(flash));  
+      let buff = Buffer.from(JSON.stringify(flash));
       let data = buff.toString('base64');
 
       return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
     }
-    
-    const queryUrl = 
-        process.env.API_URL 
-        + '/clans/create'
-        + '?name=' + encodeURIComponent(clanName)
-        + '&tag='+encodeURIComponent(clanTag)
-        + '&description='+encodeURIComponent(clanDescription)
+
+    const queryUrl =
+      process.env.API_URL
+      + '/clans/create'
+      + '?name=' + encodeURIComponent(clanName)
+      + '&tag='+encodeURIComponent(clanTag)
+      + '&description='+encodeURIComponent(clanDescription)
     ;
-    
+
     //Run post to endpoint
     request.post({
       url: queryUrl,
@@ -82,49 +82,49 @@ exports = module.exports = async function (req, res) {
       }
     }, function (err, res, body) {
 
-        let resp;
-        let errorMessages = [];
+      let resp;
+      let errorMessages = [];
 
-        if (res.statusCode !== 200) {
-          let msg = 'Error while creating the clan';
-          try {
+      if (res.statusCode !== 200) {
+        let msg = 'Error while creating the clan';
+        try {
 
-            msg += ': ' + JSON.stringify(JSON.parse(res.body).errors[0].detail);
-          } catch {
-          }
-          errorMessages.push({msg: msg});
-          flash.class = 'alert-danger';
-          flash.messages = errorMessages;
-          flash.type = 'Error!';
-
-              let buff = Buffer.from(JSON.stringify(flash));  
-              let data = buff.toString('base64');
-
-              return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
+          msg += ': ' + JSON.stringify(JSON.parse(res.body).errors[0].detail);
+        } catch {
         }
-         
-        // Refreshing user
-        request.get({
-            url: process.env.API_URL + '/me',
-            headers: {
-                'Authorization': 'Bearer ' + req.user.data.attributes.token,
-            }
+        errorMessages.push({msg: msg});
+        flash.class = 'alert-danger';
+        flash.messages = errorMessages;
+        flash.type = 'Error!';
+
+        let buff = Buffer.from(JSON.stringify(flash));
+        let data = buff.toString('base64');
+
+        return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
+      }
+
+      // Refreshing user
+      request.get({
+          url: process.env.API_URL + '/me',
+          headers: {
+            'Authorization': 'Bearer ' + req.user.data.attributes.token,
+          }
         },
         function (err, res, body) {
-            try{
-                let user = JSON.parse(body);
-                user.data.attributes.token = req.user.data.attributes.token;
-                user.data.id = user.data.attributes.userId;
-                req.logIn(user, function(err){
-                    if (err) console.error(err);
-                    return overallRes.redirect('/clans/manage');
-                });
-            }
-            catch{
-                console.error("There was an error updating a session after a clan creation");
-            }
+          try{
+            let user = JSON.parse(body);
+            user.data.attributes.token = req.user.data.attributes.token;
+            user.data.id = user.data.attributes.userId;
+            req.logIn(user, function(err){
+              if (err) console.error(err);
+              return overallRes.redirect('/clans/manage');
+            });
+          }
+          catch{
+            console.error("There was an error updating a session after a clan creation");
+          }
         });
-      
+
     });
   }
 }

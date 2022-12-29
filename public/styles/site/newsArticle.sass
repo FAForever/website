@@ -1,0 +1,93 @@
+@use '../abstracts/mixins'
+@use '../abstracts/variables'
+
+.newsAbsolute
+  width: 150px
+  height: 0px
+  position: sticky
+  top: 150px
+  right: 10px
+  z-index: 100
+  a
+    button
+      font-size: 14px
+      padding: 0.5em
+
+#newsBackground
+  background-image: url("../../images/blackasf.jpg")
+  background-repeat: no-repeat
+  background-attachment: fixed
+  background-position: center
+  background-size: cover
+  padding: 5vw 10vw
+
+  
+  
+#newsMain
+  @include mixins.gridMainContainer
+  background-color: rgba(0,0,0,.7) 
+  opacity: 1
+  border-radius: 20px
+  line-height: 2em
+  text-align: left
+  
+  .newsContainer
+    padding: 1em
+    display: inline-block
+    a
+      color: variables.$button-inactive
+      text-decoration: underline variables.$button-inactive
+      transition: 0.4s
+      &:hover
+        color: variables.$button-active
+        text-decoration: underline variables.$button-active
+        
+    h2
+      padding: 1.5em 0.8em
+    h3,h4,h5
+      font-family: variables.$family-subtitle
+      font-size: calc(var(--paragraph-font-size)*1.2)
+      padding: 1em 0.8em
+      margin: 0
+    
+    img
+      width: 70%
+      height: 70%
+      border-radius: 20px
+    figcaption
+      font-family: variables.$family-paragraph
+      font-size: var(--paragraph-font-size)
+      
+    li
+      list-style: none
+      font-size: var(--paragraph-font-size)
+      font-family: variables.$family-paragraph
+      padding: 0.5em 3em
+    .wp-block-preformatted
+      font-size: var(--paragraph-font-size)
+      text-transform: uppercase
+      font-family: variables.$family-paragraph
+      padding: 1em 2em
+      line-height: 1.5em
+      
+
+  
+@media (max-width: 1200px)
+  #newsBackground
+    padding: 2vw 4vw
+  .newsAbsolute
+    width: 100px
+    top: 150px
+    a
+      button
+        font-size: 12px
+
+@media (max-width: 800px)
+  #newsBackground
+    padding: 1vw 2vw
+  .newsAbsolute
+    width: 100px
+    top: 150px
+    a
+      button
+        font-size: 10px

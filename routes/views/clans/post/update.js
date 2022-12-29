@@ -5,11 +5,11 @@ const {check, validationResult} = require('express-validator');
 function promiseRequest(url) {
   return new Promise(function (resolve, reject) {
     request(url, function (error, res, body) {
-        if (!error && res.statusCode < 300) {
-            resolve(body);
-        } else {
-            reject(error);
-        }
+      if (!error && res.statusCode < 300) {
+        resolve(body);
+      } else {
+        reject(error);
+      }
     });
   });
 }
@@ -52,105 +52,105 @@ exports = module.exports = async function (req, res) {
 
     // Is the name taken ?
     try {
-        let msg = null;
-        
-        flash.class = 'alert-danger';
-        flash.type = 'Error!';
+      let msg = null;
 
-        if (oldName != newName){
-              const fetchRoute = process.env.API_URL+'/data/clan?filter=name=="'+encodeURIComponent(newName)+'"';
-              const data = await promiseRequest(fetchRoute);
-              const exists = JSON.parse(data).data.length > 0;
-              
-              if (exists) msg = "This name is already taken: "+encodeURIComponent(newName);
-        }
-        if (oldTag != newTag){
-              const fetchRoute = process.env.API_URL+'/data/clan?filter=tag=="'+encodeURIComponent(newTag)+'"';
-              const data = await promiseRequest(fetchRoute);
-              const exists = JSON.parse(data).data.length > 0;
-              
-              if (exists) msg = "This tag is already taken: "+encodeURIComponent(newTag);
-        }
-        
-        if (msg){
-              flash.messages = [{msg: msg}];
-              let buff = Buffer.from(JSON.stringify(flash));  
-              let data = buff.toString('base64');
-              return overallRes.redirect('manage?flash='+data);        
-            }        
+      flash.class = 'alert-danger';
+      flash.type = 'Error!';
+
+      if (oldName != newName){
+        const fetchRoute = process.env.API_URL+'/data/clan?filter=name=="'+encodeURIComponent(newName)+'"';
+        const data = await promiseRequest(fetchRoute);
+        const exists = JSON.parse(data).data.length > 0;
+
+        if (exists) msg = "This name is already taken: "+encodeURIComponent(newName);
+      }
+      if (oldTag != newTag){
+        const fetchRoute = process.env.API_URL+'/data/clan?filter=tag=="'+encodeURIComponent(newTag)+'"';
+        const data = await promiseRequest(fetchRoute);
+        const exists = JSON.parse(data).data.length > 0;
+
+        if (exists) msg = "This tag is already taken: "+encodeURIComponent(newTag);
+      }
+
+      if (msg){
+        flash.messages = [{msg: msg}];
+        let buff = Buffer.from(JSON.stringify(flash));
+        let data = buff.toString('base64');
+        return overallRes.redirect('manage?flash='+data);
+      }
     }
     catch(e){
-            flash.class = 'alert-danger';
-            flash.messages = [{msg: 'Error while updating the clan '+e}];
-            flash.type = 'Error!';
+      flash.class = 'alert-danger';
+      flash.messages = [{msg: 'Error while updating the clan '+e}];
+      flash.type = 'Error!';
 
-            let buff = Buffer.from(JSON.stringify(flash));  
-            let data = buff.toString('base64');
+      let buff = Buffer.from(JSON.stringify(flash));
+      let data = buff.toString('base64');
 
-            return overallRes.redirect('manage?flash='+data);
+      return overallRes.redirect('manage?flash='+data);
     }
-    
+
     // Building update query
-    const queryUrl = 
-            process.env.API_URL 
-            + '/data/clan/' + req.body.clan_id
+    const queryUrl =
+      process.env.API_URL
+      + '/data/clan/' + req.body.clan_id
     ;
-    
+
     const newClanObject ={
-              "data": {
-                  "type": "clan",
-                  "id": req.body.clan_id,
-                  "attributes": {
-                        "description": clanDescription,
-                        "name": newName,
-                        "tag": newTag
-                  }
-              }
+      "data": {
+        "type": "clan",
+        "id": req.body.clan_id,
+        "attributes": {
+          "description": clanDescription,
+          "name": newName,
+          "tag": newTag
+        }
+      }
     };
-    
-    
+
+
     //Run post to endpoint
     request.patch({
-        url: queryUrl,
-        body: JSON.stringify(newClanObject),
-        headers: {
-            'Authorization': 'Bearer ' + req.user.data.attributes.token,
-            'Content-Type': 'application/vnd.api+json',
-            'Accept': 'application/vnd.api+json'
-        }
+      url: queryUrl,
+      body: JSON.stringify(newClanObject),
+      headers: {
+        'Authorization': 'Bearer ' + req.user.data.attributes.token,
+        'Content-Type': 'application/vnd.api+json',
+        'Accept': 'application/vnd.api+json'
+      }
     }, function (err, res, body) {
 
-        let resp;
-        let errorMessages = [];
+      let resp;
+      let errorMessages = [];
 
-        if (res.statusCode != 204) {
-              let msg = 'Error while updating the clan';
-              try{
-                  
-                  msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
-              }
-              catch{}
-              errorMessages.push({msg: msg});
-              flash.class = 'alert-danger';
-              flash.messages = errorMessages;
-              flash.type = 'Error!';
+      if (res.statusCode != 204) {
+        let msg = 'Error while updating the clan';
+        try{
 
-              let buff = Buffer.from(JSON.stringify(flash));  
-              let data = buff.toString('base64');
-
-              return overallRes.redirect('manage?flash='+data);
+          msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
         }
-        
-        
-        flash = {};
-        flash.class = 'alert-success';
-        flash.messages = [{msg: 'You have successfully updated your clan'}];
-        flash.type = 'Success!';
+        catch{}
+        errorMessages.push({msg: msg});
+        flash.class = 'alert-danger';
+        flash.messages = errorMessages;
+        flash.type = 'Error!';
 
-        let buff = Buffer.from(JSON.stringify(flash));  
+        let buff = Buffer.from(JSON.stringify(flash));
         let data = buff.toString('base64');
-            
+
         return overallRes.redirect('manage?flash='+data);
+      }
+
+
+      flash = {};
+      flash.class = 'alert-success';
+      flash.messages = [{msg: 'You have successfully updated your clan'}];
+      flash.type = 'Success!';
+
+      let buff = Buffer.from(JSON.stringify(flash));
+      let data = buff.toString('base64');
+
+      return overallRes.redirect('manage?flash='+data);
     });
   }
-}
+};

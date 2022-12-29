@@ -1,0 +1,497 @@
+@use '../abstracts/mixins'
+@use '../abstracts/variables'
+
+body
+  background-image: url("../../images/newshub.jpg")
+  background-size: cover
+.clientBackground
+  text-align: left
+  padding: 30px 50px
+  p, h3, h2, h1
+    font-family: variables.$family-paragraph
+    margin: 0
+    padding: 0.8em
+  p
+    font-family: variables.$family-paragraph
+    font-size: var(--paragraph-font-size)
+  h1
+    font-family: variables.$family-title
+    font-size: var(--title-font-size)
+    padding: 1.4em 0.8em
+  h2
+    font-family: variables.$family-subtitle
+    font-size: var(--subtitle-font-size)
+    padding: 1em 0.8em
+  h3,h4
+    font-family: variables.$family-subtitle
+    font-size: calc(var(--paragraph-font-size)*1.2)
+    padding: 1em 0.8em
+
+  a
+
+    &:link
+
+      text-align: center
+      text-decoration: none
+      color: variables.$color-inactive
+      transition: 0.5s
+
+  &:visited
+    text-decoration: none
+    color: variables.$color-inactive
+
+  &:hover
+    color: variables.$color-active
+
+
+
+.clientMainFeature
+  @include mixins.gridMainContainer
+  grid-template-rows: 15vw
+  text-align: left
+  margin: 20px 0
+  gap: 20px 20px
+  .featureSubGrid
+    color: variables.$color-active
+    @include mixins.gridMainContainer
+    height: 100%
+    background-color: variables.$background-secondary
+    &:hover
+      background-color: variables.$background-primary
+.featureContainer
+  text-align: left
+  transition: 0.4s
+  height: 100%
+  justify-content: center
+  align-items: center
+  .featureImage
+    background-size: cover
+    background-position: center
+    padding: 0
+    width: 100%
+    height: 100%
+  .featureText
+    padding: 1em
+    p
+      font-size: 0.9vw
+      display: inline-block
+      color: variables.$color-inactive
+    h1
+      color: variables.$color-active
+      font-size: 1.1vw
+      text-transform: uppercase
+      display: inline-block
+      padding: 0.25em
+.featureSocial
+  @include mixins.gridMainContainer
+
+  grid-template-rows: 1fr
+  transition: 0.4s
+  height: 100%
+  justify-content: center
+  align-items: center
+  .featureDiscord
+    background-color: #151d48
+    &:hover
+      background-color: #000c3c
+  .featureTwitch
+    background-color: #291548
+    &:hover
+      background-color: #24003c
+  .featureYoutube
+    background-color: #481515
+    &:hover
+      background-color: #3c0000
+  .featureLink
+    display: inline-block
+    transition: 0.4s
+    height: 100%
+    text-align: center
+    position: relative
+    cursor: pointer
+    a
+      text-align: center
+      position: absolute
+      display: block
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      margin: auto
+      padding: 1em 0
+      //width: 100%
+      color: variables.$color-active
+      font-size: 1vw
+      font-family: variables.$family-title
+      box-sizing: inherit
+      text-decoration: none
+
+    img
+      color: variables.$color-active
+      position: absolute
+      display: block
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      margin: auto
+      height: 2em
+      padding: 0
+  .clientSupportFAF
+    background-color: variables.$background-secondary
+    text-align: center
+
+    transition: 0.4s
+    &:hover
+      background-color: variables.$background-primary
+    a
+      color: white
+      h1
+        font-size: 2vw
+        padding: 0.5em
+      img
+        height: 1.25em
+        padding: 0.25em
+        display: block
+        margin-left: auto
+        margin-right: auto
+      h2
+        font-size: 1.4vw
+        padding: 0.5em
+        transition: 0.4s
+        color: variables.$color-active
+        background-color: variables.$background-tertiary
+        &:hover
+          background-color: variables.$button-inactive
+          color: variables.$background-primary
+
+
+.clientContainer
+  height: 100%
+  .clientNewsRequest
+    @include mixins.gridMainContainer
+    height: 100%
+    text-align: center
+    background-color: variables.$background-secondary
+    transition: 0.4s
+    color: variables.$color-inactive-plus
+    &:hover
+      background-color: variables.$background-primary
+      color: variables.$color-active
+
+#clientMain
+  @include mixins.gridMainContainer
+  grid-template-columns: repeat(10, 15vw)
+  overflow: hidden
+  text-align: left
+  padding: 0 20px
+  margin: 2vw 0
+
+#clientSpawn
+  padding: 0 25px
+
+  @include mixins.gridMainContainer
+  grid-template-columns: repeat(10, 16vw)
+  overflow: visible
+  gap: 0 25px
+  text-align: left
+  height: 100%
+  a
+    height: 100%
+    .clientContainer
+      text-align: left
+      height: 100%
+      background-color: variables.$background-secondary
+      color: variables.$color-active
+      transition: 0.4s
+      &:hover
+
+        background-color: variables.$background-primary
+
+      .clientImage
+        background-image: url("/../../images/coop.jpg")
+        background-size: cover
+        background-position: center
+        padding: 5vw
+      .clientText
+        padding: 0.5em 0.5em 0 0.5em
+        p
+          color: variables.$color-inactive
+          font-size: 14px
+          padding: 0.5em
+        h1
+          color: variables.$color-active
+          font-size: 16px
+          padding: 0.25em 0.25em 0 0.25em
+
+@mixin clientArrow
+  @include mixins.gridMainContainer
+  grid-template-columns: 1.5em
+  background-color: variables.$background-tertiary
+  color: variables.$background-primary
+
+  height: 100%
+  cursor: pointer
+  position: absolute
+  top: 0
+  text-align: center
+  font-size: 25px
+  &:hover
+    background-color: variables.$background-primary
+    color: variables.$color-active
+#clientArrowRigth
+  @include clientArrow
+  right: 0
+
+#clientArrowLeft
+  @include clientArrow
+  left: 0
+
+.clientMenu
+  @include mixins.gridMainContainer
+  padding: 0
+  gap: 20px 0
+  .clientMenuContainer
+    margin: 0 2em 0 0
+    background-color: variables.$background-tertiary
+    height: 100%
+
+    ul
+      text-align: center
+      display: block
+      color: variables.$color-active
+      font-family: variables.$family-title
+      font-size: 1.2em
+      padding: 0.8em
+      margin: 0
+      background-color: variables.$background-secondary
+
+    a
+      font-family: variables.$family-paragraph
+      display: block
+      padding: 0.8em 0.5em
+      background-color: variables.$background-tertiary
+      color: variables.$color-inactive
+      transition: 0.4s
+      &:hover
+        background-color: variables.$background-primary
+        color: variables.$color-active
+  .clientTournament
+    h2
+      font-size: 16px
+      display: inline-block
+      padding: 0.5em
+    p
+      display: block
+      font-size: 14px
+      padding: 0.5em
+  #tournamentSpawn
+    @include mixins.gridMainContainer
+    ul
+      padding: 1em
+    a
+      border: 0.2em solid variables.$background-secondary
+      border-top: 0 solid white
+      width: 100%
+      padding: 0em
+      height: 100%
+      display: inline-block
+      margin: 0
+      h2
+        font-size: 16px
+        display: inline-block
+        padding: 0.5em
+      p
+        display: block
+        font-size: 14px
+        padding: 0.5em
+
+
+  .clientMenuSubgrid
+    @include mixins.gridMainContainer
+    height: 100%
+    background-color: variables.$background-tertiary
+
+    .clientSupportFAF
+
+      height: 100%
+      background-color: variables.$background-secondary
+      text-align: center
+      padding: 0.8em
+      transition: 0.4s
+      &:hover
+        background-color: variables.$background-primary
+      a
+        color: white
+      p
+        padding: 0.25em
+        font-size: 14px
+      h1
+        font-size: 25px
+        padding: 1em
+        color: variables.$color-active
+        margin: auto
+      img
+        height: 1.25em
+        padding: 0.25em
+        display: block
+        margin-left: auto
+        margin-right: auto
+      h2
+        font-size: 18px
+        padding: 0.25em
+        transition: 0.4s
+        color: variables.$color-active
+
+
+
+
+//Media Queries below
+@media (max-width: 1400px)
+  #clientArrowLeft, #clientArrowRigth
+    grid-template-columns: 1.25em
+  #clientSpawn
+    grid-template-columns: repeat(10, 23vw)
+    a
+      .clientContainer
+        .clientText
+          padding: 0.25em
+          p
+            font-size: 12px
+            padding: 0.5em
+          h1
+            font-size: 14px
+            padding: 0.25em 0.25em 0 0.25em
+        .clientImage
+          padding: 7vw
+
+  .clientMainFeature
+    grid-template-rows: 25vw
+
+    .featureContainer
+      .featureText
+        padding: 1em
+        p
+          font-size: 16px
+        h1
+          font-size: 20px
+          padding: 0 0.25em
+    .featureSocial
+      .featureLink
+        a
+          font-size: 12px
+  .clientMenu
+    .clientMenuSubgrid
+      .clientSupportFAF
+        a
+          h1
+            font-size: 28px
+      h2
+        font-size: 18px
+    .clientMenuContainer
+      ul
+        font-size: 14px
+      a
+        font-size: 12px
+
+@media (max-width: 1000px)
+  #clientSpawn
+    grid-template-columns: repeat(10, 30vw)
+    a
+      .clientContainer
+        .clientImage
+          padding: 10vw
+  .clientMainFeature
+    .featureContainer
+      .featureText
+        p
+          font-size: 14px
+        h1
+          font-size: 18px
+          padding: 0 0.25em
+    .featureSocial
+      .featureLink
+        padding: 1em
+
+  .clientMenu
+    .clientMenuSubgrid
+      .clientSupportFAF
+        padding: 0.25em
+        a
+          h1
+            font-size: 20px
+            padding: 0.5em
+            img
+              width: 75px
+      h2
+        font-size: 16px
+        padding: 0.75em
+    .clientMenuContainer
+      margin: 0 1em 0 0
+      ul
+        font-size: 12px
+      a
+        font-size: 12px
+
+@media (max-width: 875px)
+  .clientMainFeature
+    grid-template-rows: 35vw
+    .column9, .column3
+      grid-column: span 12
+    .featureContainer
+      .featureText
+        padding: 1em
+        p
+          font-size: 12px
+        h1
+          font-size: 14px
+          padding: 0 0.25em
+    .featureSocial
+      .featureLink
+        a
+          font-size: 10px
+      .clientSupportFAF
+        h1
+          font-size: 18px
+        h2
+          font-size: 14px
+  .clientMenu
+    .column6, .column2
+      grid-column: span 6
+      margin: 1em
+  #clientSpawn
+    grid-template-columns: repeat(10, 40vw)
+    a
+      .clientContainer
+        .clientImage
+          padding: 12vw
+  #clientArrowLeft, #clientArrowRigth
+    grid-template-columns: 1.25em
+  .clientMenu
+    .clientMenuSubgrid
+      height: auto
+      .clientSupportFAF
+        padding: 0.25em
+        margin: 0
+        a
+          h1
+            font-size: 20px
+            padding: 0.75em
+      h2
+        font-size: 14px
+        padding: 0.75em
+  #tournamentSpawn
+    .column6
+      grid-column: span 12
+    a
+      h2
+        font-size: 14px
+      p
+        font-size: 12px
+@media (max-width: 500px)
+  .clientMainFeature
+
+    .featureSocial
+      .featureLink
+        a
+          font-size: 8px

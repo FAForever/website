@@ -1,36 +1,39 @@
-// variables & mixins
-@import general/variables
-@import general/mixins
+//All of these will be taken to site.min.css and get combined there into one minimized css file
 
-// fonts
-@import fonts/font-awesome/fontawesome
-@import general/_fonts
+// // Abstracts
+@use 'abstracts/variables'
+@use 'abstracts/mixins'
 
-// reset
-@import general/reset
 
-// bootstrap
-@import bootstrap/bootstrap
+// Layout
+@use 'layout/navigation'
+@use 'layout/forms'
 
-// layout
-@import partials/layout
 
-// mobile (should remove this!)
-@import partials/mobile
+// Page-related
+@use 'site/index.sass'
+@use 'site/newshub.sass'
+@use 'site/newsArticle.sass'
+@use 'site/client-news'
+@use 'site/play.sass'
+@use 'site/getClans'
 
-// general
-@import general/elements
-@import general/navigation
-@import general/footer
+//GAME
+@use 'site/ai.sass'
+@use 'site/tutorials-guides.sass'
+@use 'site/scfa.sass'
+@use 'site/campaign-missions.sass'
 
-// page-related
-@import site/account.sass
-@import site/client.sass
-@import site/contributions.sass
-@import site/index.sass
-@import site/leaderboards.sass
-@import site/news.sass
-@import site/newshub.sass
-@import site/post.sass
-@import site/clans.sass
+
+//COMMUNITY
+@use 'site/donation.sass'
+@use 'site/faf-teams.sass'
+@use 'site/clans.sass'
+@use 'site/content-creators.sass'
+@use 'site/contributions.sass'
+
+//COMPETITIVE
+@use 'site/training.sass'
+@use 'site/tournaments.sass'
+@use 'site/leaderboards.sass'
 

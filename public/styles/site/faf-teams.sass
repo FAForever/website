@@ -1,0 +1,79 @@
+
+@use '../abstracts/mixins'
+@use '../abstracts/variables'
+
+.descriptionText
+  padding: 3em 6em
+  p
+    line-height: 2em
+    button
+      font-size: var(--paragraph-font-size)
+
+.teamMain
+  @include mixins.gridMainContainer
+
+  gap: 20px 20px
+  text-align: left
+  margin: 30px 50px
+  
+  .teamSelection
+    cursor: pointer
+    padding: 2em
+    text-align: center
+    background-color: variables.$background-secondary
+    transition: 0.4s
+
+    h1
+      text-transform: uppercase
+    img
+      width: 50%
+    &:hover
+      background-color: variables.$button-inactive
+      color: variables.$background-primary  
+  .teamContainer
+    border: 1em solid variables.$background-secondary
+
+    background-image: url("../../images/black0.jpg")
+    background-size: cover
+    background-color: variables.$background-secondary
+    padding: 2em
+    @include mixins.gridMainContainer
+    display: none
+    .teamh1
+      font-family: variables.$family-title
+      font-size: var(--title-font-size)
+      padding: 1em
+    h2
+      padding: 1em
+      font-size: calc(var(--subtitle-font-size) * 0.8)
+      display: inline-block
+      p
+        line-height: 2em
+
+    img
+      padding: 10px
+      width: 80%
+      margin-left: auto
+      margin-right: auto
+  
+
+@media (max-width: 1000px)
+  .teamMain
+    margin: 0.25em
+    .column4
+      grid-column: span 6
+    .teamContainer
+      padding: 0.5em
+      .teamh1
+        padding: 0.25em
+      .column6, .column4
+        grid-column: span 12
+
+
+@media (max-width: 700px)
+  .teamMain
+    .teamSelection
+      padding: 0.25em
+      h1
+        font-size: 14px
+

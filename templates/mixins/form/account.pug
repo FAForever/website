@@ -1,83 +1,82 @@
 mixin email
-    .form-group.has-feedback
-        label Email:
-            .input-group
-                input(type='email', name='email', required='required', value=formData['email']).form-control
-                span(aria-hidden='true').glyphicon.form-control-feedback
-                .help-block
-                    | Do not use a throwaway / temporary / anonymous email address or you may be banned later.
-                .help-block.with-errors
+  p Enter your Email 
+  .formStart
+    input(type='email', name='email', required='required', placeholder='UEF@email.com', value=formData['email'])
+    span(aria-hidden='true')
+    ul Please refrain from using Microsoft emails (@hotmail, @live, etc) if possible as we have technical difficulties delivering there.
 
+          
+          
+          
+          
 mixin username
-    .form-group.has-feedback
-        label Username:
-            .input-group
-                input(type='text', name='username', required='required', value=formData['username'], data-minlength='3', maxlength='16', pattern='[A-Za-z]{1}[A-Za-z0-9_-]{2,15}$', data-minlength-error='The username is too short - must be at least 3 characters', data-error='Please check username requirements', data-remote="/account/checkUsername", data-remote-error="Username taken").form-control
-                span(aria-hidden='true').glyphicon.form-control-feedback
-                .help-block
-                    | Must be between 3 and 16 characters <br>
-                    | Only letters, digits, minus and underscore are allowed <br>
-                    | First character must be a letter
-                .help-block.with-errors
+    p Enter your username
+    .formStart
+      //value=formData['username']
+      input(type='text', name='username', required='required', data-minlength='3', maxlength='16', pattern='[A-Za-z]{1}[A-Za-z0-9_-]{2,15}$', data-minlength-error='The username is too short - must be at least 3 characters', data-error='Please check username requirements', data-remote="/account/checkUsername", data-remote-error="Username taken",  placeholder='Eco_Player7-', value=formData['username'])
+      span(aria-hidden='true')
+      .formHelp 
+        ul Your username must:
+          li Start with a letter
+          
+          li Be between 3 and 16 characters
+          
+          li Only use letters and digits ( - and _ are allowed).
+
+
 
 mixin usernameOrEmail
-    .form-group
-        label Username or email:
-            .input-group
-                input(type='text', name='usernameOrEmail', required='required', value=formData['usernameOrEmail']).form-control
-                span(aria-hidden='true').glyphicon.form-control-feedback
+  .form-group
+    label Username or email:
+      .input-group
+        input(type='text', name='usernameOrEmail', required='required', value=formData['usernameOrEmail']).form-control
+        span(aria-hidden='true')
 
 mixin confirm-password(passwordName,labelPassword)
-    - passwordName = passwordName || 'password'
-    - labelPassword = labelPassword || ''
-    .form-group.has-feedback
-        label #{labelPassword} Password:
-            .input-group
-                input(type='password', name=passwordName, required='required', id='inputPassword', data-minlength='6').form-control
-                span(aria-hidden='true').glyphicon.form-control-feedback
-                .help-block Minimum of 6 characters
-    .form-group.has-feedback
-        label Confirm #{labelPassword} Password:
-            .input-group
-                input(type='password', name=passwordName + '_confirm', required='required', data-match='#inputPassword', data-match-error="Passwords don't match. Please fix!", data-minlength='6').form-control
-                span(aria-hidden='true').glyphicon.form-control-feedback
-                .help-block.with-errors
+  - passwordName = passwordName || 'password'
+  - labelPassword = labelPassword || ''
+  .form-group.has-feedback
+    label #{labelPassword} Password:
+      .input-group
+        input(type='password', name=passwordName, required='required', id='inputPassword', data-minlength='6').form-control
+        span(aria-hidden='true').glyphicon.form-control-feedback
+        .help-block Minimum of 6 characters
+  .form-group.has-feedback
+    label Confirm #{labelPassword} Password:
+      .input-group
+        input(type='password', name=passwordName + '_confirm', required='required', data-match='#inputPassword', data-match-error="Passwords don't match. Please fix!", data-minlength='6').form-control
+        span(aria-hidden='true').glyphicon.form-control-feedback
+        .help-block.with-errors
 
 mixin oldPassword(labelPassword)
-    - labelPassword = labelPassword || ''
-    .form-group.has-feedback
-        label #{labelPassword} Password:
-            .input-group
-                input(type='password', name='old_password', required='required', id='oldPassword').form-control
-                span(aria-hidden='true').glyphicon.form-control-feedback
+  - labelPassword = labelPassword || ''
+  .form-group.has-feedback
+    label #{labelPassword} Password:
+      .input-group
+        input(type='password', name='old_password', required='required', id='oldPassword').form-control
+        span(aria-hidden='true').glyphicon.form-control-feedback
 
 mixin currentPassword(labelPassword)
-    - labelPassword = labelPassword || ''
-    .form-group
-        label #{labelPassword} Password:
-            .input-group
-                input(type='password', name='password', required='required', id='password').form-control
+  - labelPassword = labelPassword || ''
+  .form-group
+    label #{labelPassword} Password:
+      .input-group
+        input(type='password', name='password', required='required', id='password').form-control
 
 mixin tosagree(checked)
-    - checked = checked || false
-    .form-group
-        label Agree to our Terms of Service:
-          .input-group
-            p I have read and agree with our <a href="https://faforever.com/tos" rel="_new">Terms of Service</a>
-            input(type='checkbox', name='tosagree', required='required')
-        label Agree to our Privacy Statement:
-          .input-group
-            p I have read and agree with our <a href="https://faforever.com/privacy" rel="_new">Privacy Statement</a>
-            input(type='checkbox', name='privacyagree', required='required')
-        label Agree to our Code of Conduct
-          .input-group
-            p I have read and agree with out <a href="https://faforever.com/coc" rel="_new">Code of Conduct</a>
-            input(type='checkbox', name='cocagree', required='required')
+  - checked = checked || false
+  .tosAgree
+    label Agree to our <a href="https://faforever.com/tos" rel="_new">Terms of Service</a>
+      input(type='checkbox', name='tosagree', required='required')
+    label Agree to our <a href="https://faforever.com/privacy" rel="_new">Privacy Statement</a>
+      input(type='checkbox', name='privacyagree', required='required')
+    //label Agree to our <a href="/gc" rel="_new">Contribution Guidelines</a>
+      input(type='checkbox', name='gcagree', required='required')
 
 mixin gogUsername
-    .form-group.has-feedback
-        label GOG account name:
-            .input-group
-                input(type='text', name='gog_username', id='gogUsername', required='required', data-minlength='3', maxlength='100', pattern='[A-Za-z0-9._-]{2,99}$').form-control
-                span(aria-hidden='true').glyphicon.form-control-feedback
-                .help-block.with-errors
+  .form-group.has-feedback
+    label GOG account name:
+      .input-group
+        input(type='text', name='gog_username', id='gogUsername', required='required', data-minlength='3', maxlength='100', pattern='[A-Za-z0-9._-]{2,99}$').form-control
+        span(aria-hidden='true').glyphicon.form-control-feedback
+        .help-block.with-errors

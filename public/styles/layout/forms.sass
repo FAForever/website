@@ -1,0 +1,171 @@
+@use '../abstracts/variables'
+@use '../abstracts/mixins'
+
+.accountForm
+  @include mixins.gridMainContainer
+  padding: 0vw
+  gap: 0
+  
+    
+
+form
+  align-self: center
+  width: 100%
+  
+  p
+
+    font-size: calc(var(--paragraph-font-size)*1)
+    padding: 0.1em
+ 
+  .formStart
+
+    display: inline-block
+    p
+      font-size: 16px
+      
+    input
+      min-width: 300px
+      margin: 0.1em
+      border: 0.2em solid variables.$background-primary
+      
+      
+    .formHelp
+      display: inline
+      ul
+        padding: 0.5em 0
+        font-weight: bold
+        font-family: variables.$family-paragraph
+        li
+          list-style: none
+          font-weight: normal
+          line-height: 1.25em
+
+          
+
+          
+.formGroup
+  p
+    padding: 0.2em
+
+
+.formContainer
+  padding: 1em 0
+  text-align: center
+  display: inline-block
+
+
+.form-group
+  padding: 2em 1em
+  textarea
+    min-width: 500px
+  
+.form-control
+  width: 300px
+  
+
+  
+.tosAgree
+  label
+    display: block
+  input
+    display: inline-block
+    
+.alert
+  border-radius: 20px
+  display: inline-block
+  padding: 1em 2em
+  margin: 1em 5vw
+  list-style: none
+  li
+    list-style: none
+
+// Flash alert styling
+.alert-invite
+  background-color: variables.$Seraphim
+  a
+    &:hover
+      color: #ec9d36
+      text-decoration: underline #ec9d36
+      transition: 0.4s
+
+.alert-danger
+  background-color: variables.$Cybran
+
+.alert-success
+  background-color: variables.$Aeon
+
+.recaptchaForm
+  @include mixins.gridMainContainer
+  padding: 2em
+  label
+    justify-self: center
+    align-self: center
+    .g-recaptcha
+      display: inline-block
+      
+// Markdown styling
+
+
+.container
+  background-color: rgba(0,0,0,0.8)
+  margin: 2vw 5vw
+  padding: 2em 4vw
+  border-radius: 20px
+  text-align: left
+  .markdownButton
+    a
+      display: inline-block
+      margin: 1em
+      button
+        margin: 0
+  a
+    color: variables.$button-inactive
+    text-decoration: underline variables.$button-inactive
+    transition: 0.4s
+    &:hover
+      color: variables.$button-active
+      text-decoration: underline variables.$button-active
+    
+  h2
+    padding: 1em
+  
+  li
+    padding: 0.5em
+    font-size: 1em
+    
+.containerCenter
+  background-color: rgba(0,0,0,0.8)
+  margin: 2vw 5vw
+  padding: 2em 4vw
+  border-radius: 20px
+  text-align: center
+  .markdownButton
+    a
+      display: inline-block
+      margin: 1em
+      button
+        margin: 0
+  a
+    color: variables.$button-inactive
+    text-decoration: underline variables.$button-inactive
+    transition: 0.4s
+    &:hover
+      color: variables.$button-active
+      text-decoration: underline variables.$button-active
+
+  h2
+    padding: 0.25em 0
+
+  li
+    padding: 0.5em
+    font-size: 1em
+.centerFormPlease
+  text-align: center
+  table
+    text-align: center
+    margin: 0 auto
+    display: block
+    thead, tr, th
+      text-align: center
+    th
+      padding: 1.5em

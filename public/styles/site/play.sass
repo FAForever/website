@@ -1,0 +1,74 @@
+@use '../abstracts/variables'
+@use '../abstracts/mixins'
+
+.playMain
+  @include mixins.gridMainContainer
+  grid-template-columns: 1fr
+  justify-items: center
+  text-align: center
+  background-color: rgba(0,0,0,0.5)
+  gap: 1em 0
+  margin: 2vw 4vw
+  padding: 1em
+  border-radius: 20px
+  .playInnerGrid
+    @include mixins.gridMainContainer
+    grid-template-columns: 1fr
+    margin: 0 auto
+    gap: 3em 0
+    .playContainer
+      padding: 1em 0 
+      width: 100%
+      border-radius: 20px
+      text-align: center
+      background-color: variables.$background-secondary
+      
+      img
+        width: 40%
+        height: 100%
+      label
+        margin: 0
+        font-size: 18px
+
+      input
+        margin: 1em 0.5em
+        width: 0.75em
+        height: 0.75em
+
+
+      a
+        display: inline-block
+        margin: 0.25em auto
+        button
+          font-size: 1em
+          text-align: center
+          display: block
+          
+      h2
+        padding: 1em
+        font-weight: 600
+        p
+          font-weight: normal
+    .playCheckboxContainer
+      padding: 0 0.25em
+      text-align: left
+      display: inline-block
+      img
+        width: 75%
+      .gogSmallerImage
+        img
+          width: 30%
+      .gogSmallerImage2
+        img
+          width: 45%
+      .displayBlock
+        input
+          width: initial
+
+@media (max-width: 1000px)
+  .playMain
+    padding: 0
+    margin: 0
+    .playInnerGrid
+      .playContainer
+        padding: 1em 0.1em
