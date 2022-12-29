@@ -68,11 +68,13 @@ app.use(function(req, res, next){
   next();
 });
 
+let fullUrl = '';
+
 function loggedIn(req, res, next) {
   
-  let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
+  console.log(` I'm in the loggedIn`);
   console.log(fullUrl);
-  req.session.referral = fullUrl;
   if (req.isAuthenticated()) {
     res.locals.username = req.user.data.attributes.userName;
     next();
@@ -248,9 +250,10 @@ app.get('/callback', passport.authenticate('faforever', {
   failureRedirect: '/login', // Failed auth
   failureFlash: true
 }), function (req, res) {
-  res.redirect(req.session.referral ? req.session.referral : '/');
-  console.log(req.session.referral);
-  req.session.referral = null; // Successful auth
+  res.redirect(fullUrl ? fullUrl : '/');
+  console.log(` I'm in the callback`);
+  console.log(fullUrl);
+  fullUrl = 'null'; // Successful auth
 });
 
 
