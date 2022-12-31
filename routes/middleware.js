@@ -58,18 +58,22 @@ exports.username = function(req, res, next) {
 };
 
 exports.flashMessage =  function(req, res, next) {
-  let rawData = fs.readFileSync('./public/js/app/members/flashMessage.json') ;
-  let data = JSON.parse(rawData);
-  let {valid, content, color, pages} = data[0];
   
-  let locals = res.locals;
-  //String 'true' because the wordpress value comes in a string
-  if (valid === 'true') {
-    locals.flashMessage = content;
-    locals.flashColor = color;
-    locals.flashRoutes = pages.slice(1,-1);
-   
-    
-  } 
-  next();
+  try {
+    let rawData = fs.readFileSync('./public/js/app/members/flashMessage.json') ;
+    let data = JSON.parse(rawData);
+    let {valid, content, color, pages} = data[0];
+
+    let locals = res.locals;
+    //String 'true' because the wordpress value comes in a string
+    if (valid === 'true') {
+      locals.flashMessage = content;
+      locals.flashColor = color;
+      locals.flashRoutes = pages.slice(1,-1);
+    }
+    next();    
+  } catch (e) {
+    console.log(e);
+    next();
+  }
 };

@@ -13,7 +13,7 @@ const app = express();
 
 app.locals.clanInvitations = {};
 
-
+require("dotenv").config();
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 process.env.PORT = process.env.PORT || '4000';
@@ -87,8 +87,8 @@ function loggedIn(req, res, next) {
 
 
 //Start and listen on port
-app.listen(3000, () => {
-  console.log('Express listening on port ' + 3000);
+app.listen(process.env.PORT, () => {
+  console.log(`Express listening on port ${process.env.PORT}`);
 });
 
 
@@ -245,7 +245,7 @@ app.get('/callback', passport.authenticate('faforever', {
   failureRedirect: '/login', // Failed auth
   failureFlash: true
 }), function (req, res) {
-  res.redirect(fullUrl ? fullUrl : '/');
+  res.redirect('/faf-teams');
 
   fullUrl = '/'; // Successful auth
 });

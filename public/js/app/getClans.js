@@ -19,8 +19,8 @@ async function getClan() {
 
   // We compare the url TAG with the TAGS available in getAllClans and find the clan leader this way
   
-  
-  const response = await fetch(`https://api.test.faforever.com/data/clan?include=memberships.player&filter=tag==${clanTag}`);
+  // TODO: Change this hardcoded url into something with env
+  const response = await fetch(`https://api.faforever.com/data/clan?include=memberships.player&filter=tag==${clanTag}`);
   const fetchData = await response.json();
   
   const leaderID = fetchData.data[0].relationships.leader.data.id;
