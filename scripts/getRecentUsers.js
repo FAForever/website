@@ -12,14 +12,21 @@ let currentDate = new Date(minusTimeFilter).toISOString();
 
 
 async function getRecentUsers() {
-  let response = await fetch(`${process.env.API_URL}/data/leaderboardRating?filter=updateTime=gt=${currentDate}&page[size]=5000`);
-  let fetchData = await response.json();
-  //Now we get a js array rather than a js object. Otherwise we can't sort it out.
-  let dataObjectToArray = Object.values(fetchData);
-  let data = dataObjectToArray[0].map((item)=> ({
-    playerID: item.id
-  }));
-  return await data;
+  
+  try {
+    let response = await fetch(`${process.env.API_URL}/data/leaderboardRating?filter=updateTime=gt=${currentDate}&page[size]=5000`);
+    let fetchData = await response.json();
+    //Now we get a js array rather than a js object. Otherwise we can't sort it out.
+    let dataObjectToArray = Object.values(fetchData);
+    let data = dataObjectToArray[0].map((item)=> ({
+      playerID: item.id
+    }));
+    return await data;    
+  }catch (e) {
+    console.log(e);
+    return null;
+  }
+
 }
 
 module.exports.run = function run() {

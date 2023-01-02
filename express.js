@@ -17,7 +17,8 @@ require("dotenv").config();
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 process.env.PORT = process.env.PORT || '4000';
-process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.test.faforever.com';
+process.env.CALLBACK = process.env.CALLBACK || 'login';
+process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.faforever.com';
 process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
 process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
 process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
@@ -211,21 +212,27 @@ passport.use('faforever', new OidcStrategy({
     userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
     clientID: process.env.OAUTH_CLIENT_ID,
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    callbackURL: process.env.HOST + '/callback',
+    callbackURL: `${process.env.HOST}/${process.env.CALLBACK}`,
     scope: ['openid', 'public_profile', 'write_account_data']
   }, function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
     
     request.get(
       {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
       function (e, r, body) {
-        if (r.statusCode !== 200) {
-          return verified(null);
+        try {
+          if (r.statusCode !== 200) {
+            return verified(null);
+          }
+          let user = JSON.parse(body);
+          user.data.attributes.token = accessToken;
+          user.data.id = user.data.attributes.userId;
+
+          return verified(null, user);  
+        } catch (e) {
+          console.log(e);
+          return verified(null, null);
         }
-        let user = JSON.parse(body);
-        user.data.attributes.token = accessToken;
-        user.data.id = user.data.attributes.userId;
-     
-        return verified(null, user);
+        
       }
     );
   }
@@ -241,11 +248,11 @@ passport.deserializeUser(function (user, done) {
 });
 
 
-app.get('/callback', passport.authenticate('faforever', {
+app.get('/auth', passport.authenticate('faforever', {
   failureRedirect: '/login', // Failed auth
   failureFlash: true
 }), function (req, res) {
-  res.redirect('/faf-teams');
+  res.redirect(fullUrl ? fullUrl : '/');
 
   fullUrl = '/'; // Successful auth
 });

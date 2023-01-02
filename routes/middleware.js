@@ -7,6 +7,7 @@
 */
 const express = require('express');
 const fs = require('fs');
+const {exec} = require("child_process");
 const app = express();
 exports.initLocals = function(req, res, next) {
 	let locals = res.locals;
@@ -15,23 +16,27 @@ exports.initLocals = function(req, res, next) {
   next();
 };
 exports.getLatestClientRelease = function(req, res, next) {
-
-	let locals = res.locals;
+  try {
+    let locals = res.locals;
     const fs = require('fs');
     let clientLink;
     let exec = require('child_process').exec;
 
     fs.readFile('link.json', 'utf8', function (err, data) {
-        try {
-            clientLink = JSON.parse(data);
-        } catch (e) {
-            exec('node scripts/getLatestClientRelease.js');
-            clientLink = {};
-            clientLink.fafClientLink = 'https://github.com/FAForever/downlords-faf-client/releases';
-        }
-        locals.fafClientDownloadLink = clientLink.fafClientLink;
-        next();
-	});
+      try {
+        clientLink = JSON.parse(data);
+      } catch (e) {
+        exec('node scripts/getLatestClientRelease.js');
+        clientLink = {};
+        clientLink.fafClientLink = 'https://github.com/FAForever/downlords-faf-client/releases';
+      }
+      locals.fafClientDownloadLink = clientLink.fafClientLink;
+      next();
+    });    
+  } catch (e) {
+    console.log(e);
+  }
+
 };
 
 exports.clientChecks = function(req, res, next) {

@@ -112,18 +112,21 @@ input
       padding: 0.5em 1em
       
 .clearButton
-  li
+  img
     cursor: pointer
-    margin: 1em 1em 0 1em
+    margin: 0.5em 0.5em 0 0.5em
     border-radius: 10px
+    z-index: 10
+    width: 1em
     background-color: variables.$background-tertiary
     color: variables.$color-inactive
+    padding: 0.5em
     transition: 0.4s
     &:hover
       background-color: variables.$color-inactive-plus
       color: variables.$color-active
-  .fa-trash-alt
-    padding: 0.5em
+
+   
 
 @media (max-width: 800px)
   .leaderboardFilter
