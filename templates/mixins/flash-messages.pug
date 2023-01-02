@@ -4,6 +4,6 @@ mixin flash-messages(messages)
       ul.flash-errors
         if flash.messages
           if flash.messages[0].msg
-            - for (var i = 0; i < flash.messages.length; i++)
-            li <strong>#{flash.type}</strong> !{flash.messages[i].msg}
-                        
+            li <strong>#{flash.type}</strong> !{flash.messages[0].msg}
+          if flash.messages[1].msg
+            li <strong>#{flash.type}</strong> !{flash.messages[1].msg}
