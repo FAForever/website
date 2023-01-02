@@ -13,11 +13,11 @@ const app = express();
 
 app.locals.clanInvitations = {};
 
-require("dotenv").config();
+require('dotenv').config();
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 process.env.PORT = process.env.PORT || '4000';
-process.env.CALLBACK = process.env.CALLBACK || 'login';
+process.env.CALLBACK = process.env.CALLBACK || 'auth';
 process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.faforever.com';
 process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
 process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
