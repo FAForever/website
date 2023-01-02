@@ -3,7 +3,6 @@ mixin flash-messages(messages)
     div.alert(class=flash['class'])
       ul.flash-errors
         if flash.messages
-          if flash.messages[0].msg
-            li <strong>#{flash.type}</strong> !{flash.messages[0].msg}
-          if flash.messages[1].msg
-            li <strong>#{flash.type}</strong> !{flash.messages[1].msg}
+          if flash.messages[0]
+            if flash.messages[0].msg 
+              li <strong>#{flash.type}</strong> !{flash.messages[0].msg}
