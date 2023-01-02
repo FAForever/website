@@ -1,0 +1,565 @@
+@use '../abstracts/variables'
+@use '../abstracts/mixins'
+
+\:root
+ 
+
+  /* Font sizes
+  --paragraph-font-size: 1vw
+  --subtitle-font-size: 1.5vw
+  --title-font-size: 2vw
+  
+@media (max-width: 1400px)
+  \:root
+    --paragraph-font-size: 1.5vw
+    --subtitle-font-size: 2vw
+    --title-font-size: 2.5vw
+
+@media (max-width: 800px)
+  \:root
+    --paragraph-font-size: 14px
+    --subtitle-font-size: 18px
+    --title-font-size: 24px
+
+@media (max-width: 600px)
+  \:root
+    --paragraph-font-size: 12px
+    --subtitle-font-size: 16px
+    --title-font-size: 20px
+/* Used as white text between stuff
+
+
+//scroll Bar
+
+/* width */
+::-webkit-scrollbar 
+  width: 8px
+  height: 0
+/* Track */
+::-webkit-scrollbar-track 
+  background: variables.$background-primary
+/* Handle */
+::-webkit-scrollbar-thumb
+  background: variables.$color-inactive-plus
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+  background: variables.$color-inactive 
+
+
+// Global values
+  
+html
+  font-family: variables.$family-paragraph
+
+body
+  text-align: center
+  background-attachment: fixed
+  background-color: variables.$background-primary
+  background-position: center center
+  margin: 0 0 0 0
+  padding-top: 0
+  font-family: variables.$family-paragraph
+  color: variables.$color-active
+p, h3, h2, h1
+  margin: 0
+  padding: 0.8em
+p
+  font-family: variables.$family-paragraph
+  font-size: var(--paragraph-font-size)
+h1
+  font-family: variables.$family-title
+  font-size: var(--title-font-size)
+  padding: 1.4em 0.8em
+  font-weight: normal
+  
+h2
+  font-family: variables.$family-subtitle
+  font-size: var(--subtitle-font-size)
+  padding: 1em 0.8em
+  
+h3 , h4, h5, h6
+  font-size: var(--paragraph-font-size)
+  padding: 1em 0.8em
+  font-weight: normal
+
+
+a
+  &:link
+    text-decoration: none
+    color: variables.$color-inactive
+    transition: 0.5s
+
+  &:visited
+    text-decoration: none
+    color: variables.$color-inactive
+
+  &:hover
+    color: variables.$color-active
+
+ul
+  padding: 0
+  margin: 0
+
+
+  
+.indexButton
+  margin: 10vw
+  font-size: 4vw
+  padding: 5vw
+  background-color: variables.$button-inactive
+  color: variables.$color-active
+  font-family: variables.$family-title
+  transition: 0.4s
+
+  &:hover
+    background-color: variables.$button-active
+    color: variables.$color-active
+
+/*===== Splat Starts =====
+.splatForgedBorder
+  display: grid
+  grid-template-columns: 1fr
+  position: relative
+  padding: 0
+  justify-items: center
+  width: 100%
+  height: 10px
+
+.transformationReverse
+  transform: scaleX(-1)
+
+.movingBackground1
+  background: linear-gradient(to right, #8e0800, #ffa300,  #8e0800)
+  background-size: 200%
+  animation: gradientBar1 8s infinite linear
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 1
+  
+  
+@keyframes gradientBar1 
+  0%
+    background-position: left
+  50%
+    background-position: right
+    opacity: 1
+  50.1%
+    opacity: 0
+  100%
+    opacity: 0
+    
+.movingBackground2
+  background: linear-gradient(to right, #ffa300, #8e0800, #ffa300)
+  background-size: 200%
+  animation: gradientBar2 8s infinite linear
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 2
+
+
+@keyframes gradientBar2
+  0%
+    opacity: 0
+  50%
+    opacity: 0
+  50.1%
+    background-position: left
+    opacity: 1
+  100%
+    background-position: right
+    
+
+/*=============== Nav Bar ===============
+/*===== Top Navbar =====
+
+.mainTopNavContainer
+  display: grid
+  grid-template-columns: repeat(12, max-content)
+  grid-template-rows: minmax(10px, 1fr)
+  font-size: calc(var(--paragraph-font-size) / 1.4)
+  background-color: variables.$background-primary
+  padding: 0.15em
+  position: relative
+  justify-content: end
+  place-items: center
+  font-family: variables.$family-paragraph
+
+.topNavContainer
+  padding: 0.25em 0.75em
+  a
+    
+    
+    img
+      transition: 1s
+      height: 1.25em
+      
+      &:hover
+        filter: brightness(2)
+  
+
+.topNavItem
+  position: relative
+  transition: 0.5s
+  display: grid
+  place-items: center
+  cursor: pointer
+  justify-self: end
+  &:hover
+    color: variables.$color-active
+    
+.fab
+  width: 100%
+  text-align: center
+  text-decoration: none
+  color: variables.$color-inactive
+  justify-self: end
+  transition: 0.5s
+  font-size: var(--paragraph-font-size)
+  &:hover
+    color: variables.$color-active
+    
+.fa-language
+  color: variables.$color-active
+  font-size: calc(var(--paragraph-font-size) *1.5)
+  padding: 0
+  
+  
+.topNavAbsolute
+  position: absolute
+  z-index: 10
+  text-align: left
+  display: none
+  font-size: 0.6em
+  top: 1.5em
+  right: 0
+  font-family: variables.$family-title
+  font-weight: 100
+  a
+    li
+      padding: 20px
+      display: block
+      //border: 1px solid variables.$color-inactive
+      background-color: variables.$background-primary
+      transition: 0.25s
+
+      &:hover
+        color: variables.$color-active
+        background-color: variables.$color-inactive-plus
+  
+.topNavList
+  &:hover
+    color: variables.$color-active
+    transition: 0.25s
+    cursor: pointer
+
+  li
+    color: variables.$color-inactive
+    
+    
+/*===== Regular navbar =====
+
+.mainNavContainer
+  display: grid
+  grid-template-columns: max-content minmax(50px, auto) max-content max-content
+  grid-template-rows: auto
+  font-size: calc(var(--paragraph-font-size))
+  background-color: variables.$background-primary
+  color: variables.$color-inactive
+  font-family: variables.$family-paragraph
+  justify-items: center
+  padding: 10px
+
+.navContainer
+  align-self: center
+  align-content: center
+
+.navItem
+  width: 100%
+  height: 100%
+  position: relative
+  list-style-type: none
+  margin: 0
+  padding: 0
+  transition: 0.25s
+
+
+
+.navLogo 
+  img
+    
+    width: 100px
+    height: 100%
+    padding: 0 20px
+    object-fit: contain
+    overflow: hidden
+    justify-self: center
+    place-self: center
+
+.navEnd
+  justify-self: end
+  letter-spacing: 1px
+  transition: 0.25s
+  margin: 0 0.5em
+
+/* This is the hover menu you see when you hover on GAME, COMMUNITY and so on
+
+.navAbsolute
+  position: absolute
+  z-index: 10
+  text-align: left
+  display: none
+  opacity: 0
+  top: 1em
+  li
+    padding: 1em
+    display: block
+    background-color: variables.$background-secondary
+    color: variables.$color-inactive
+    transition: 0.25s
+    &:hover
+      color: variables.$color-active
+      background-color: variables.$background-tertiary
+
+.navAbsoluteActive
+  display: block
+  transition: 0.25s
+
+.navList
+  display: inline-block
+  margin: 0 1em
+  &:hover
+    color: variables.$color-active
+    transition: 0.25s
+    cursor: pointer
+    .fa-caret-down
+      transform: rotate(-0.25turn)
+      transition: 0.25s
+      width: 1em
+
+.navContainer
+  li.navList
+    .fas
+      width: 1em
+
+
+
+/* Mobile navbar
+
+// The black bar with 3 white bars that allow us to enter the mobile nav bar
+.mobileTransition
+  display: none
+  position: sticky
+  grid-template-columns:  auto max-content
+  grid-template-rows: auto
+  justify-items: left
+  align-content: center
+  padding:  0.5em 0.5em 0.25em 0.5em
+  top: 0
+  z-index: 5
+  transition: 0.5s
+  background-color: variables.$background-secondary
+  border: 0.5em solid variables.$background-primary
+  font-size: 28px
+  .mobileTransitionContainer
+    align-self: center
+    align-content: center
+    justify-self: center
+    img
+      width: 46px
+      height: 100%
+.fa-caret-down
+  transition: 0.5s
+  
+// Here to make the body non scrollable while the mobile nav bar is active
+.stopScroll
+  overflow: hidden
+
+//the actual mobile nav bar we see with links and other elements
+.mobileNavBar
+  @include mixins.gridMainContainer
+  display: none
+  position: sticky
+  opacity: 0
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  overflow-y: auto
+  z-index: 100
+  align-items: start
+  background-image: url("../../images/fafbgpatternMobile.jpg")
+  font-family: variables.$family-subtitle
+  font-size: 17px
+  //font-size: calc(var(--title-font-size) * 1.1)
+  color: variables.$color-active
+  transition: 0.5s
+  .gridItem
+    align-items: start
+    a
+      display: inline
+      color: variables.$color-active
+  img
+    height: 40px
+    padding: 1em 0
+    margin-left: auto
+    margin-right: auto
+    display: inline
+  .mobileNavUl, ul
+    background-color: variables.$background-secondary
+    border: 4px solid variables.$background-primary
+    padding: 1em
+    text-align: left
+    list-style: none
+  .mobileNavLi
+    display: none
+    background-color: variables.$background-primary
+    padding: 0 1em
+    li
+      padding: 0.8em
+      a
+        color: variables.$color-inactive
+
+.absoluteBottom
+  position: absolute
+  bottom: 0
+
+.mobileCaretActive
+  transform: rotate(-0.25turn)
+  transition: 0.5s
+  
+// the X we see to close the navbar
+.fa-times
+  font-size: 30px
+  color: variables.$color-active
+  z-index: 100
+  position: absolute
+  opacity: 0.8
+  top: 35px
+  right: 25px
+
+  
+// the social media down below
+.mobileSocialMedia
+  padding: 1em 0
+  a
+    .fab
+      display: inline
+      font-size: 25px
+      padding: 18px
+      color: variables.$color-active
+
+
+      
+.mobileOtherLinks
+  a
+    padding: 0 1em
+    font-size: 14px
+
+// Footer Navbar
+
+.mainFooterContainer
+  @include mixins.gridMainContainer
+  color: variables.$color-inactive
+  background-image: url("../../images/black1.jpg")
+  background-position: center
+  background-size: cover
+  padding: 4em 2em
+  justify-content: center
+  text-align: center
+
+      
+.footerItem
+  transition: 0.4s
+  line-height: 2.2em
+  font-family: variables.$family-subtitle
+  h1
+    color: variables.$color-active
+    padding: 0.25em
+    font-size: var(--subtitle-font-size)
+  img
+    width: 150px
+
+  ul
+    font-size: var(--paragraph-font-size)
+    color: variables.$color-active
+    padding: 1em
+    display: inline-block
+    
+  li
+    list-style-type: none
+    padding: 1em 0.5em 0 0.5em
+    font-size: 0.8em
+    font-family: variables.$family-paragraph
+  a
+    color: variables.$color-inactive
+    &:hover
+      color: variables.$color-active
+      transition: 0.4s
+      
+.navContainer
+  .loginItem
+    position: relative
+    li
+      list-style: none
+      padding: 0.5em
+      font-size: 16px
+    #loginList
+      position: relative
+
+    #loginAbsolute
+      display: none
+      z-index: 200
+      background-color: variables.$background-primary
+      position: absolute
+      top: 1em
+      opacity: 1
+      .loginDropdown
+        padding: 0
+    
+        display: block
+        opacity: 1
+        li
+          padding: 1em 0.8em
+          background-color: variables.$background-secondary
+          transition: 0.4s
+          &:hover
+            background-color: variables.$background-tertiary
+            a
+              color: variables.$color-active
+
+#flashMessageContainer
+  display: none
+  p
+    padding: 0.2em
+    font-size: 18px
+    
+        
+      
+@media (min-width: 1201px)
+  .mobileTransition
+    display: none
+    
+@media (max-width: 1200px)
+  .mainNavContainer, .mainTopNavContainer
+    display: none
+  .mobileTransition
+    display: grid
+    
+@media (max-width: 800px)
+  .mainTopNavContainer
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
+
+@media (max-width: 1100px)
+  .mobileNavSticky
+    display: block
+
+
+@media (max-width: 1100px)
+  .mainNavContainer, .mainTopNavContainer
+    display: none

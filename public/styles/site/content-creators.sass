@@ -1,0 +1,53 @@
+@use '../abstracts/mixins'
+@use '../abstracts/variables'
+
+
+.creatorMain
+  @include mixins.gridMainContainer
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+  padding: 20px 60px
+  gap: 30px
+  .creatorContainer
+    position: relative
+    color: variables.$color-active
+    transition: 0.4s
+    height: 100%
+    background-color: variables.$background-secondary
+    img
+      height: 300px
+      width: 100%
+      transition: 0.4s
+    h1
+      position: absolute
+      top: 0
+      font-size: 16px
+      letter-spacing: 0.15em
+      text-transform: uppercase
+      color: variables.$color-inactive
+
+      background-color: variables.$background-secondary
+      border: 0.1em solid variables.$background-tertiary
+    h2
+      text-transform: capitalize
+      padding: 0.5em
+      p
+        font-weight: normal
+        text-transform: none
+        padding:  0.25em 
+        
+    &:hover
+      color: variables.$background-primary
+      background-color: variables.$button-inactive
+      transform: scale(1.05)
+      img
+        filter: brightness(1.16)
+
+@media (max-width: 800px)
+  .creatorMain
+    @include mixins.gridMainContainer
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
+    padding: 15px
+    gap: 15px
+    .creatorContainer
+      img
+        height: 200px

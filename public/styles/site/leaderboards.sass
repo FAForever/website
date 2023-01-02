@@ -1,66 +1,161 @@
-@import ../../../node_modules/awesomplete/awesomplete
+@use '../abstracts/variables'
+@use '../abstracts/mixins'
 
-div.awesomplete
-  display: block
+// Background of the whole thing
+.leaderboardBackground
+  padding: 7.5vw 11vw
+  background-image: url("/../../images/fafbgpattern0.5.jpg")
+  ul
+    list-style: none
+    li
+      padding: 0.5em 0
 
-.btn-spacing
-  margin-left: 12px
+// This is the searchbar input form
+input 
+  margin: 1em 1em 2px 1em
+  background-color: variables.$background-tertiary
+  color: variables.$color-active
+  font-size: var(--paragraph-font-size)
+  border: 0.5em solid variables.$background-secondary
+  border-radius: 10px
+  z-index: 2
+  position: relative
 
-.btn-top
-  margin-bottom: 10px
-  margin-top: 10px
-  display: inline
+.mainLeaderboardContainer
+  @include mixins.gridMainContainer
+  padding: 0
+  ul
+    list-style: none
+    li
+      padding: 0.8em 0
+  p
+    padding: 0.2em
 
-@media (max-width: 400px)
-  .btn-top .btn
-    font-size: 10px
+.leaderboardFilter
+  border: 1px solid white
+  font-family: variables.$family-paragraph
+  font-size: var(--paragraph-font-size)
+  color: variables.$color-active
+  background-color: variables.$background-tertiary
+  padding: 0.5em 0 0.5em 0.5em
+  margin: 0 0.8em 
+  text-align: center
+  option
+    color: variables.$color-active
+    background-color: variables.$background-secondary
+// This is in here for the js since the leaderboard is actually starting from 100 to 1. So it needs to be displayed in reverse.
 
-.stats
-  width: 0px
 
-.nopadding
-  padding: 0 !important
-  margin: 0 !important
+.leaderboardBorder
+  border: 1px solid variables.$color-active
+  padding: 0px
+  background-color: variables.$background-primary
 
-.featurette
-  display: table
-  width: 100%
-  height: 30%
-  vertical-align: middle
+.leaderboardContainer
+  font-family: variables.$family-paragraph
+  padding: 0em
+  ul
+    font-size: var(--paragraph-font-size)
+    padding: 1em 0
+    li
+      font-size: var(--paragraph-font-size)
+      padding: 1em 0
+.leaderboardItem
+    
+  li:nth-child(odd)
+    background-color: mix(variables.$background-tertiary, variables.$background-primary, 25%)
+  li:nth-child(even)
+    background-color: variables.$background-secondary
+.leaderboardCategory
+  padding: 1em 0.25em
+  display: inline-block
+  place-items: start
+  font-family: variables.$family-paragraph
+  font-size: var(--paragraph-font-size)
+  letter-spacing: 0em
+  ul
+    padding: 0.5em
+    li
+      display: inline-block
+      padding: 0.6em 1em
+      border: 0.05em solid variables.$color-inactive
+      background-color: variables.$background-tertiary
+      cursor: pointer
+      transition: 0.4s
+      &:hover
+        border: 0.05em solid variables.$color-active
+        filter: brightness(2)
+    .exhaustedButton
+      border: 0.05em solid variables.$color-inactive
+      background-color: variables.$background-secondary
+      color: variables.$color-inactive-plus
+      pointer-events: none
+      cursor: default
 
-.featurette-inner
-  display: table-cell
-  vertical-align: middle
+#searchResults
+  margin: 1em 0 0 0
+.appearWhenSearching
+  display: none
+.centerYourself
+  display: grid
+  justify-items: center
+  position: relative
 
-.featurette .search
-  padding: 3%
-  max-width: 980px
-  margin: 0 auto
+.searchBar
+  ul
+    background-color: variables.$background-secondary
+    color: variables.$color-inactive
+    font-size: calc(var(--paragraph-font-size) * 0.9)
+    border-radius:  0  0 10px 10px
+    text-align: left
+    li
+      padding: 0.5em 1em
+      
+.clearButton
+  li
+    cursor: pointer
+    margin: 1em 1em 0 1em
+    border-radius: 10px
+    background-color: variables.$background-tertiary
+    color: variables.$color-inactive
+    transition: 0.4s
+    &:hover
+      background-color: variables.$color-inactive-plus
+      color: variables.$color-active
+  .fa-trash-alt
+    padding: 0.5em
 
-.no-margin-top
-  margin-top: 0
+@media (max-width: 800px)
+  .leaderboardFilter
+    font-size: 12px
+  .leaderboardContainer
+    ul
+      font-size: 12px
+      padding: 1em 0 0 0
+      
+      li
+        text-overflow: ellipsis
+        font-size: 12px
+        padding: 1em 0
+  
+  .clearButton
+    left: 90%
+    top: 68%
+  .leaderboardBackground
+    padding: 1vw
+  .leaderboardCategory
+    padding: 1vw
+    font-size: var(--paragraph-font-size)
+    ul
+      li
+        padding: 0.65em
+    
 
-.featurette .search.has-button .btn
-    margin-top: 5px
-    width: 100%
-
-div.awesomplete > ul
-  text-align: left
-
-div.awesomplete > ul > li[aria-selected="true"]
-  background-color: #008cba
-
-div.awesomplete li[aria-selected="true"] mark, div.awesomplete li:hover mark, div.awesomplete mark
-  background: transparent
-
-@media (min-width: 480px)
-  .featurette .search.has-button .form-group
-    position: relative
-    padding-right: 99px
-
-  .featurette .search.has-button .btn
-    position: absolute
-    top: 0
-    right: 0
-    width: auto
-    margin: 0
+@media (max-width: 1600px)
+  .leaderboardContainer
+    ul
+      font-size: 14px
+      li
+        font-size: 14px
+  .leaderboardFilter
+    font-size: 14px

@@ -5,11 +5,11 @@ const {check, validationResult} = require('express-validator');
 function promiseRequest(url) {
   return new Promise(function (resolve, reject) {
     request(url, function (error, res, body) {
-        if (!error && res.statusCode < 300) {
-            resolve(body);
-        } else {
-            reject(error);
-        }
+      if (!error && res.statusCode < 300) {
+        resolve(body);
+      } else {
+        reject(error);
+      }
     });
   });
 }
@@ -46,51 +46,51 @@ exports = module.exports = async function (req, res) {
 
     // Building update query
     const membershipId = req.body.membership_id;
-    const queryUrl = 
-            process.env.API_URL 
-            + '/data/clanMembership/' + membershipId
+    const queryUrl =
+      process.env.API_URL
+      + '/data/clanMembership/' + membershipId
 
     ;
-    
+
     //Run post to endpoint
     request.delete({
-        url: queryUrl,
-        body: "",
-        headers: {
-            'Authorization': 'Bearer ' + req.user.data.attributes.token
-        }
+      url: queryUrl,
+      body: "",
+      headers: {
+        'Authorization': 'Bearer ' + req.user.data.attributes.token
+      }
     }, function (err, res, body) {
 
-        let resp;
-        let errorMessages = [];
+      let resp;
+      let errorMessages = [];
 
-        if (res.statusCode != 204) {
-              let msg = 'Error while removing the member';
-              try{
-                  
-                  msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
-              }
-              catch{}
-              errorMessages.push({msg: msg});
-              flash.class = 'alert-danger';
-              flash.messages = errorMessages;
-              flash.type = 'Error!';
+      if (res.statusCode != 204) {
+        let msg = 'Error while removing the member';
+        try{
 
-              let buff = Buffer.from(JSON.stringify(flash));  
-              let data = buff.toString('base64');
-
-              return overallRes.redirect('manage?flash='+data);
+          msg += ': '+JSON.stringify(JSON.parse(res.body).errors[0].detail);
         }
-        
-        flash = {};
-        flash.class = 'alert-success';
-        flash.messages = [{msg: 'The member was kicked'}];
-        flash.type = 'Success!';
+        catch{}
+        errorMessages.push({msg: msg});
+        flash.class = 'alert-danger';
+        flash.messages = errorMessages;
+        flash.type = 'Error!';
 
-        let buff = Buffer.from(JSON.stringify(flash));  
+        let buff = Buffer.from(JSON.stringify(flash));
         let data = buff.toString('base64');
-            
+
         return overallRes.redirect('manage?flash='+data);
+      }
+
+      flash = {};
+      flash.class = 'alert-success';
+      flash.messages = [{msg: 'The member was kicked'}];
+      flash.type = 'Success!';
+
+      let buff = Buffer.from(JSON.stringify(flash));
+      let data = buff.toString('base64');
+
+      return overallRes.redirect('manage?flash='+data);
     });
   }
 }

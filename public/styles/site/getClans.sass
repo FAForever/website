@@ -1,0 +1,36 @@
+@use '../abstracts/mixins'
+@use '../abstracts/variables'
+
+.renderClan
+  @include mixins.gridMainContainer
+  background-color: rgba(0,0,0,0.7)
+  border-radius: 20px
+  margin: 2vw 4vw
+  .renderClanContainer
+    p
+       line-height: 2em
+    .renderClanSubGrid
+      text-align: center
+      @include mixins.gridMainContainer
+      li
+        font-size: 14px
+        padding: 1em
+        display: inline-block
+@media (max-width: 1700px)
+  .renderClan
+    .renderClanContainer
+      .renderClanSubGrid
+        grid-template-columns: repeat(6, 1fr)
+
+@media (max-width: 1200px)
+  .renderClan
+    .renderClanContainer
+      .renderClanSubGrid
+        grid-template-columns: repeat(3, 1fr)
+        li
+          font-size: 10px
+    
+
+#iAmMember
+  display: none
+  

@@ -2,23 +2,17 @@ module.exports = {
     js: {
         files: {
             'public/js/bottom.min.js': [
-                'public/js/jquery/jquery-1.11.3.min.js',
-                'public/js/bootstrap/bootstrap-3.3.5.min.js',
                 'public/js/app/headroom.min.js',
                 'public/js/app/navigation.js'
             ],
             'public/js/leaderboards.min.js': [
                 'node_modules/awesomplete/awesomplete.js',
                 'node_modules/moment/min/moment-with-locales.min.js',
-                'node_modules/highcharts/highcharts.js',
-                'public/js/jquery/jquery.animatedscroll-1.1.5.min.js',
                 'public/js/app/leaderboards.js'
             ],
             'public/js/leagues.min.js': [
                 'node_modules/awesomplete/awesomplete.js',
                 'node_modules/moment/min/moment-with-locales.min.js',
-                'node_modules/highcharts/highcharts.js',
-                'public/js/jquery/jquery.animatedscroll-1.1.5.min.js',
                 'public/js/app/leagues.js'
             ],
             'public/js/account.min.js': [

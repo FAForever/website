@@ -1,116 +1,222 @@
-// Top Section with big image 
-.intro
-  height: 800px
-  position: relative
+@use '../abstracts/variables'
+@use '../abstracts/mixins'
 
-.hero 
-  background-image: url("../../images/index-background.jpg")
+p
+  font-family: variables.$family-paragraph
+  font-size: var(--paragraph-font-size)
+  line-height: 1.5em
+  
+h1
+  font-family: variables.$family-title
+  font-size: var(--title-font-size)
+  padding: 0.25em
+h2
+  font-family: variables.$family-subtitle
+  font-size: var(--subtitle-font-size)
+  padding: 0.25em
+
+.mainBannerContainer
+  display: grid
+  grid-template-columns: 1fr
+  background-position: center
+  background-size: cover
+  padding: 9.5% 0
+  letter-spacing: 1.2PX
+  text-shadow: 0 0px 7.5px black, 0 0px 7.5px black      
+
+.bannerTitle
+  font-size: var(--subtitle-font-size)
+  font-family: variables.$family-subtitle                       
+  font-weight: bolder
+  letter-spacing: 6px
+  padding: 0.5em 0
+
+.bannerSubtitle
+  font-size: var(--paragraph-font-size)
+  font-family: variables.$family-paragraph
+  font-weight: 600
+  padding: 0.25em 0
+
+.mainIntroduction
+  @include mixins.gridMainContainer
+  background-image: url("../../images/blackbg.jpg")
   background-size: cover
   background-position: center
-  background-repeat: no-repeat
-  height: 800px
-  box-shadow: 0 0 15px #000000
+  padding: 8em
+  p 
+    padding: 1em 5em
+    line-height: 2em
+/* Separating  banner with highlight gold
 
-.hero:before
-  content: " "
-  width: 100%
-  height: 800px
-  z-index: 2
-  position: absolute
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.11+0,0.65+100 */
-  background: linear-gradient(to bottom,  rgba(0,0,0,0.11) 0%,rgba(0,0,0,0.65) 100%)
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c000000', endColorstr='#a6000000',GradientType=0 )
+.highlightText
+  color: variables.$button-inactive
 
-.introtitle
-  position: relative
-  top: -90%
-  z-index: 3
-  color: #fff
-  text-align: center
-  text-shadow: 1px 1px 0 rgba(0,0,0,.75)
-
-.introtitle img
-  padding: 10px
-
-.introtitle h1
-  font-size: 3em
-  padding: 0.2em
-
-.introtitle h3
-  padding: 1em
-  color: #ccc
-
-.introtitle a
-  text-shadow: none
-
-.btn-intro
-  background-color: transparent
-  color: white
-  margin: 1em
-
-.btn-intro:hover
-  background-color: white
-
-/* What is Forged Alliance Forever? */
-
-.the-project
-  text-align: center
-  padding-top: 30px
-  padding-bottom: 50px
-
-.the-project h1
-  padding: 20px
-
-.the-project p
-  padding: 20px
-
-/* Features */
-
-.features
-  padding-top: 50px
-  padding-bottom: 50px
+.showcaseBackground
+  padding: 1vw 0 4vw 0
+  background-image: url("/../../images/factionpattern.jpg")
+.mainShowcaseReverse
+  @include mixins.gridMainContainer
+  margin: 4vw 20vw 0 2vw
+.mainShowcase
+  @include mixins.gridMainContainer
+  margin: 4vw 2vw 0 20vw
   
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#353535+0,1e1e1e+0,383838+100 */
-  background: rgb(53,53,53) /* Old browsers */
-  background: linear-gradient(135deg,  rgba(53,53,53,1) 0%,rgba(30,30,30,1) 0%,rgba(56,56,56,1) 100%)
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#383838',GradientType=1 )
-  color: white
-  box-shadow: 0 0 15px #000
+.showcaseContainer
+  font-family: variables.$family-paragraph
+  background-color: variables.$background-secondary
+  text-align: left
+  padding: 1.25em
+  h2
+    padding: 0.2em 10px
+  h1
+    padding: 0.2em 10px
+  p
+    font-size: var(--paragraph-font-size)
+    line-height: 2em
+    margin: 0
+    padding: 0.2em 10px
+.showcaseImage
+  background-size: cover
+  background-position: center
+  width: 100%
+  height: 100%
+  min-width: 200px
+  min-height: 200px
+.campaignBG
+  background-image: url("../../images/coop.jpg")
+.communityBG
+  background-image: url("../../images/community.jpg")
+.strategicBG
+  background-image: url("../../images/strategic.jpg")
+.destructionBG
+  background-image: url("../../images/destruction.jpg")
 
-.features .row
-  padding-top: 50px
-  padding-bottom: 50px
 
-.features img
-  box-shadow: 0 0 15px #000
+/* Here you can find stuff related to splitImage containers but in regards to the factions
+.factionMainContainer 
+  @include mixins.gridMainContainer
+  padding: 0vw 6vw 4vw 6vw
+  
+  background-image: url("/../../images/fafbgmasspattern0.5.jpg")
+  .factionTitle
+    padding: 2em
 
-.features h3
-  margin-top: 10.5px
 
-/* What is Supreme Commander? */
 
-.what-is
-  margin-top: 50px
-  margin-bottom: 50px
+.factionContainer
+  height: 100%
+  margin: 1.5vw
+  transition: 0.4s
+  &:hover
+    filter: brightness(1.2)
+  h1
+    padding: 0.5em 0.25em
+  p
+    padding: 0.25em
+    line-height: 1.5em
+  button
+    margin: 0
+  img
+    width: 50%
+    height: 50%
+    transition: 0.4s
+.UEF
+  background-color: variables.$UEF-dark
+  border: 0.25em solid variables.$UEF-light
+  outline: 1em solid variables.$UEF-dark
+  button
+    background-color: variables.$UEF-light
+  img
+    background-color: variables.$UEF
+    padding:  0 25%
+.Cybran
+  background-color: variables.$Cybran-dark
+  border: 0.25em solid variables.$Cybran-light
+  outline: 1em solid variables.$Cybran-dark
+  button
+    background-color: variables.$Cybran-light
+  img
+    background-color: variables.$Cybran
+    padding:  0 25%
+.Aeon
+  background-color: variables.$Aeon-dark
+  border: 0.25em solid variables.$Aeon-light
+  outline: 1em solid variables.$Aeon-dark
+  button
+    background-color: variables.$Aeon-light
+  img
+    background-color: variables.$Aeon
+    width: 40%
+    padding:  0 30%
+.Seraphim
+  background-color: variables.$Seraphim-dark
+  border: 0.25em solid variables.$Seraphim-light
+  outline: 1em solid variables.$Seraphim-dark
+  button
+    background-color: variables.$Seraphim-light
+  img
+    background-color: variables.$Seraphim
+    padding:  0 25%
+/* Media Changes
+@media (max-width: 1600px)
+  .factionMainContainer
+    .column3
+      grid-column: span 6
+    .factionContainer
+      height: 80%
+      margin: 1.5vw
+@media (max-width: 800px)
+  .mainShowcase, .mainShowcaseReverse
+    margin: 20px
+    .column6
+      grid-column: span 12
+@media (max-width: 800px)
 
-.what-is h1
-  margin-top: 20px
-  margin-bottom: 60px
+  .showcaseContainer
+    padding: 5px
+    .showcaseSubTitle, .showcaseTitle, p
+      padding: 0.5em
+  .factionMainContainer
+    .column3
+      grid-column: span 12
+    .factionContainer
+      height: 80%
+      margin: 0vw 
 
-.what-is img
-  box-shadow: 0 0 15px #000
+  .bannerSubtitle
+    font-size: 12px
+    padding: 5px
 
-.buy-now
-  margin-top: 50px
+  .bannerTitle
+    font-size: 20px
+    padding: 5px
 
-.buy-now h3
-  margin-top: 40px
-  line-height: 1.3em
 
-.btn-outro
-  margin: 30px
+  .factionMainContainer
+    .factionContainer
+      height: 90%
+      margin: 10vw 0
+  .mainIntroduction
+    padding: 2em
+    p
+      padding: 1em
 
-.counters
-  color: #dddddd
-  opacity: 0
-  transition: opacity 0.2s ease-out
+.endBanner
+  @include mixins.gridMainContainer
+  padding: 10vw 5vw
+  background-image: url("/../../images/bannerFooter.webp")
+  background-size: cover
+  background-position: center
+  text-align: left
+  &:after
+    background-color: black
+  .bannerContainer
+    padding: 1em
+  h1, h2
+    text-shadow: 0 2px 4px black, 0 8px 16px black
+  a
+    display: inline-block
+
+
+
+/*# sourceMappingURL=index.css.map

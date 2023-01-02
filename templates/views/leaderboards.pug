@@ -1,54 +1,94 @@
-extends competitive_nav
+extends ../layouts/default
 
-mixin pagination
-  .row.btn-top
-    .col-md-3.btn-top.pull-left.text-left.nopadding
-      button(class="btn btn-primary first disabled") First
-      button(class="btn btn-primary btn-spacing previous disabled") Previous
-    .col-md-3.col-md-offset-6.btn-top.pull-right.text-right.nopadding
-      button(class="btn btn-primary next") Next
-      button(class="btn btn-primary btn-spacing last") Last
+block bannerMixin
 
-block cContent
+block content
+  script(type='module' src="../../js/app/leaderboards.js")
+  .leaderboardBackground
+    .mainLeaderboardContainer
+      .leaderboardContainer.column12.centerYourself
+        p Search for a player in the selected leaderboard
+          #errorLog
+        input#input(onkeyup=`pressEnter(event)` type='text' placeholder='Player Name')
+        #searchbar
+          .searchBar
+            ul
+              #placeMe
+        ul#clearSearch.clearButton.appearWhenSearching
+          li.fas.fa-trash-alt
+    .mainLeaderboardContainer.leaderboardBorder#searchResults.appearWhenSearching
+      .leaderboardContainer.column1
+        .leaderboardItem
+          ul Rank
+            li#leaderboardRankSearch
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul Player
+            li#leaderboardPlayerSearch
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul Rating
+            li#leaderboardRatingSearch
+      .leaderboardContainer.column2
+        .leaderboardItem
+          ul Win Rate
+            li#leaderboardWonSearch
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul Total Games
+            li#leaderboardGamesAmountSearch
+    .mainLeaderboardContainer
 
-  br
-  
-  h2.text-center #{ratingTypeTitle} Leaderboards
-  
-  br
-  
-  .featurette
-    .featurette-inner.text-center
-      form(role="form").search.has-button
-        .form-group
-          input(type="text" class="form-control" data-autofirst placeholder="Player name...")#searchbar
-          button(class="btn btn-default" type="button" id="forget-search") Forget Search
+      .leaderboardContainer.leaderboardCategory.column4
+        select.leaderboardFilter(onchange='changeLeaderboard(this.value)')
+          option(value='1v1') 1v1
+          option(value='2v2') 2v2
+          option(value='4v4') 4v4
+          option(value='global') Global
+        select.leaderboardFilter(onchange='timeCheck(this.value)')
+          option(value='6') 6 Months
+          option(value='3') 3 Months
+          option(value='1') 1 Month
+      //DO NOT Change the order of these without changing the js. For them to work, they need to be in this specific order
+      .leaderboardContainer.leaderboardCategory.column8
+        ul
+          li(onclick= `pageChange(0)`).pageButton.exhaustedButton First
+          li(onclick= `pageChange(lastPage)`).pageButton Last 
+        ul
+          li(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous
+          li(onclick= `pageChange(pageNumber + 1)`).pageButton Next
 
-
-  #stats
-  
-  +pagination
-
-  .table-responsive
-    table.table.table-striped.table-hover
-      thead
-        tr
-          th #
-          th Player
-          th Rating
-          th Games
-          th Stats
-      tbody#players
-    
-  +pagination
-
-  br
+    .mainLeaderboardContainer.leaderboardBorder
+      .leaderboardContainer.column1
+        .leaderboardItem
+          ul Rank
+            li#leaderboardRank
+      .leaderboardContainer.column4
+        .leaderboardItem
+          ul#spawnPlayer Player
+            li#leaderboardPlayer
+      .leaderboardContainer.column2
+        .leaderboardItem
+          ul Rating
+            li#leaderboardRating
+      .leaderboardContainer.column2
+        .leaderboardItem
+          ul Win Rate
+            li#leaderboardWon
+      .leaderboardContainer.column3
+        .leaderboardItem
+          ul Total Games
+            li#leaderboardGamesAmount
+    .mainLeaderboardContainer
+      .leaderboardContainer.leaderboardCategory.column12
+        ul
+          li(onclick= `pageChange(0)`).pageButton.exhaustedButton First
+          li(onclick= `pageChange(lastPage)`).pageButton Last 
+        ul
+          li(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous 
+          li(onclick= `pageChange(pageNumber + 1)`).pageButton Next
 
 block js
-  script(type='text/javascript').
-    var apiURL = !{JSON.stringify(apiURL)};
-    var ratingTypeTitle = !{JSON.stringify(ratingTypeTitle)};
-    var ratingType = !{JSON.stringify(ratingType)};
-    var members = '!{JSON.stringify(members)}';
-    var lastPage = !{JSON.stringify(lastPage)};
-  script(src="/js/leaderboards.min.js")
+
+  script( src="../../js/app/leaderboards.js")
+  

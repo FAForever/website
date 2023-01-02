@@ -8,179 +8,275 @@ html(lang='en')
     meta(name="description" content="FAF Community Website")
 
     title= title || 'Forged Alliance Forever'
-    link(rel="shortcut icon", href="/images/favicon.png", type="image/png")
+    link(rel="shortcut icon", href="/images/favicon-package/favicon.ico", type="image/png")
 
     // Fonts
     link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
-    link(href='https://fonts.googleapis.com/css2?family=Electrolize&family=Russo+One&display=swap' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css2?family=Electrolize&display=swap' rel='stylesheet')
+
+    link(href='https://fonts.googleapis.com/css2?family=Electrolize&family=Chakra+Petch&family=Russo+One&display=swap' rel='stylesheet' type='text/css')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Orbitron&display=swap')
 
     //- Customise the stylesheet for your site by editing /public/styles/site.sass
-    link(href="/styles/css/site.min.css?version="+Date.now(), rel="stylesheet")
-
+    link(href="/styles/css/site.min.css?version=" + Date.now(), rel="stylesheet")
     script(async, defer, data-domain="faforever.com", src="https://plausible.faforever.com/js/plausible.js")
-
-    //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-    //- Safely remove this block if you are not targeting IE8
-    //-[if lt IE 9]
-      script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
-      script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
-    //-[endif]
+    script(src="https://kit.fontawesome.com/33e7e258d3.js" crossorigin='anonymous')
 
     //- Include template-specific stylesheets by extending the css block
     block css
 
+
     //- Add any other template-specific HEAD tags by extending the head block
     block head
 
-  //- HTML BODy
+  //- HTML BODY
   body
-    .body-overlay
-    if !removeNavigation
-      section.navigation-wrapper#header
-        .top-navigation-wrapper
-          nav.top-navigation
-            ul.top-navigation
-              li: a(href="https://forum.faforever.com") Forums
-              li: a(href="https://wiki.faforever.com") Wiki
-              li: a(href="https://unitdb.faforever.com") Unit Database
-              li: a(href="https://discord.gg/hgvj6Af") Discord 
-                i.icon.fab.fa-discord
-              li: a.icon(href="https://www.youtube.com/c/ForgedAllianceForever")
-                i.fab.fa-youtube
-              li: a.icon(href="https://www.twitch.tv/directory/game/Supreme%20Commander%3A%20Forged%20Alliance")
-                i.fab.fa-twitch
-              li: a.icon(href="https://www.facebook.com/ForgedAllianceForever")
-                i.fab.fa-facebook-f
-              li: a.icon(href="https://twitter.com/FAFOfficial_")
-                i.fab.fa-twitter
-              li: a.icon(href="https://github.com/FAForever")
-                i.fab.fa-github
-              li: a.icon(href="https://paypal.me/faforever")
-                i.fab.fa-paypal
-              li
-                form.nav-support-us(action='https://www.patreon.com/faf', method='get', target='_top')
-                  button(type='submit', name='submit')
-                    i.fab.fa-patreon(aria-hidden='true')
-                    span Support us
-        .main-navigation-wrapper
-          nav.main-navigation
-            a(href="/", class="nav-logo")
-              img(src="/images/faf-logo.png")
-            ul.main-navigation
-              li.mobile-nav-logo-wrapper: a(href="/", class="mobile-nav-logo")
-                img(src="/images/faf-logo.png")
-              li(class=(section === 'news' ? 'active' : null)): a(target='_blank' href='/newshub')
-                i.fas.fa-rss
-                span News
-              li(class=(section === 'competitive' ? 'active' : null)): a(href='/competitive/leaderboards/global')
-                i.fas.fa-trophy
-                span Competitive
-              li(class=(section === 'clan' ? 'active' : null)): a(href='/clans')
-                i.fas.fa-users
-                span Clans
-              li(class=(section === 'contribution' ? 'active' : null)): a(href='/contribution')
-                i.fas.fa-heart
-                span Contribute
-              li(class=(section === "faq" ? 'active' : null)): a(href='https://forum.faforever.com/category/18/frequently-asked-questions')
-                i.fas.fa-question-circle
-                span FAQ
-              li.close-mobile-nav: button.toggle-nav
-                i.fas.fa-times
-                span Close menu
-            ul.main-navigation-right
-              li
-                a(href='/client' class='nav-download-client')
-                  i.fas.fa-download
-                  span Download
-              li(class=(section === 'account' ? 'active' : null)).dropdown
-                a.dropdown-toggle.nav-account-dropdown(href='#' data-toggle='dropdown' role='button' title=(username ? 'Welcome ' + username : undefined))
-                  if username
-                    i.fas.fa-user
-                      span.login-indicator-success
-                  else
-                    i.far.fa-user
-                      span.login-indicator-false
-                  span.caret
-                ul.dropdown-menu.nav-account-dropdown-menu.pull-right(role="menu")
-                  if username
-                    li: span.welcome-text #{username}
-                    li: a(href="/account/report") Report player
-                    if hasClan
-                        li: a(href="/clans/manage") My clan
-                    li: a(href="/account/password/change") Change Password
-                    li: a(href="/account/username/change") Change Username
-                    li: a(href="/account/email/change") Change Email
-                    li: a(href="/account/link") Link Account to Steam
-                    li: a(href="/account/linkGog") Link Account to GOG
-                    li: a(href="/account/resync") Resync account
-                    li: a(href='/logout') Log Out
-                  else
-                    li: a(href='/login') Log In
-                    li: a(href="/account/register") Register
-                    li: a(href="/account/password/reset") Reset/Forgot Password
-            button.toggle-nav.mobile-hamburger
-              i.fas.fa-bars(aria-hidden='true')
-    .website(class=(removeNavigation && 'removeNavigation'))
-      //- BODY
-      #body.content(class=(removeNavigation && 'updatePage'))
+    if flashMessage
+      #flashMessageContainer
+        p(style=`background-color:${flashColor}`) #{flashMessage}
+    .mainTopNavContainer
+      // this is the "thin" navbar that has forums, discord, youtube icons, etc. 
+      .topNavContainer
+        a.topnav_item(href='/donation') Support FAF
+      .topNavContainer
+        a.topnav_item(href='https://forum.faforever.com/') Forums
+      .topNavContainer
+        a.topnav_item(href='https://wiki.faforever.com/en/home') Wiki
+      .topNavContainer
+        a(href='https://discord.gg/mXahVSKGVb')
+          img(src='/images/fontAwesomeIcons/discord.svg')
+      .topNavContainer
+        a(href='https://www.youtube.com/c/ForgedAllianceForever')
+          img(src='/images/fontAwesomeIcons/youtube.svg')
+      .topNavContainer
+        a(href='https://www.twitch.tv/faflive')
+          img(src='/images/fontAwesomeIcons/twitch.svg')
+      .topNavContainer
+        a(href='https://github.com/FAForever')
+          img(src='/images/fontAwesomeIcons/github.svg')
+    // Main Navbar with FAF NEWS, LOGIN AND DOWNLOAD. 
+    .mainNavContainer
+      .navContainer
+        .navItem
+          .navLogo
+            a(href='/')
+              img(src='/images/logos/faflogo.svg' alt='')
+      .navContainer
+        ul.navItem
+          a(href='/')
+            li.navList HOME
+              ul.navAbsolute
+          a(href='/newshub')
+            li.navList NEWS
+              ul.navAbsolute
+          li.navList GAME
+           
+            ul.navAbsolute
+              a(href='/campaign-missions')
+                li Campaign & Co-Op Missions
+              a(href='/tutorials-guides')
+                li Tutorials/Guides
+              a(href='/ai')
+                li AI/Skirmish
+              a(href='/scfa-vs-faf')
+                li SC:FA vs FAF
 
-          //- NOTE:
-          //- There is no .container wrapping class around body blocks to allow more flexibility in design.
-          //- Remember to include it in your templates when you override the intro and content blocks!
+          li.navList COMMUNITY
+            
+            ul.navAbsolute
+              a(href='/faf-teams')
+                li Teams and Association
+              a(href='/content-creators')
+                li Content Creators
+              a(href='/contribution')
+                li  Contribute/Volunteer
+              a(href='/donation')
+                li  Donate to FAF
+              a(href='/clans')
+                li  Clans
 
-          //- The Intro block appears above flash messages (used for temporary information display)
-          block intro
+          a(href='/leaderboards')
+            li.navList LEADERBOARDS
+              ul.navAbsolute
+          a(href='/play')
+            li.navList PLAY NOW
+              ul.navAbsolute
 
-          //- The content block should contain the body of your template's content
-          block content
-
-      #footer.footer-wrapper
-        .site-footer
-          .footer-top-wrapper
-            .footer-top
-          .footer-bottom-wrapper
-            .footer-bottom
-              .footer-links
-                ul.footer-links
-                  li: a(href='/contribution') Contribute
-                  li: a(href='/rules') Rules
-                  li: a(href='/tos') Terms of Service
-                  li: a(href='/privacy') Privacy Statement
-                  li: a(href='/cg') Contribution Guidelines
-              .footer-social
-                ul.footer-social
-                  li
-                    a(href="https://paypal.me/faforever" title="Support Forged Alliance Forever via PayPal" target="_blank")
-                     i.fab.fa-paypal
-                  li
-                    a(href="https://www.patreon.com/faf" title="Support Forged Alliance Forever on Patreon" target="_blank")
-                     i.fab.fa-patreon
-                  li
-                    a(href="https://discord.gg/hgvj6Af" title="Follow Forged Alliance Forever on Discord" target="_blank")
-                      i.fab.fa-discord
-                  li
-                    a(href="https://www.facebook.com/ForgedAllianceForever" title="Follow Forged Alliance Forever on Facebook" target="_blank")
-                      i.fab.fa-facebook-f
-                  li
-                    a(href="https://twitter.com/FAFOfficial_" title="Follow Forged Alliance Forever on Twitter" target="_blank")
-                      i.fab.fa-twitter
-                  li
-                    a(href="https://www.youtube.com/c/ForgedAllianceForever" title="Follow Forged Alliance Forever on YouTube" target="_blank")
-                      i.fab.fa-youtube
-                  li
-                    a(href="https://github.com/FAForever/" title="Follow Forged Alliance Forever on GitHub" target="_blank")
-                      i.fab.fa-github
+      if !username
+        .navContainer.navEnd
+          ul.navItem
+            a(href="/login")
+              li.navList LOGIN
+        .navContainer.navEnd
+          ul.navItem
+            a(href="/account/register")
+              li.navList REGISTER
+      
+      if username
+        .navContainer.navEnd#loginList
+          ul.loginItem
+            .navList #{username}
+            ul#loginAbsolute
+              li.loginDropdown
+                ul(role='menu')                  
+                  if hasClan
+                    a(href="/clans/manage"): li My Clan
+                    
+                  if !hasClan
+                    a(href="/clans/create"): li Create Clan
+                  a(href="/account/changeEmail"): li Change Email
+                  a(href="/account/changePassword"): li Change Password
+                  a(href="/account/changeUsername"): li Change Username
+                  a(href="/account/linkSteam"): li Steam Linking
+                  a(href="/account/linkGog"): li GOG Linking
+                  a(href="/account/report"): li Report Player
+        .navContainer.navEnd
+          ul.navItem
+            a(href="/logout")
+              li.navList LOG OUT
 
 
-      //- JAVASCRIPT
+    // the mobilenav is the mobile navbar, it has two stickies, one of them is the sticky for the mobile menu (so it stays with the user) and the second one is the black backgroud (so when the user opens the mobile menu, everything else darkens.)
 
-      //- jQuery 1.11.3 is included by default, and required by both Bootstrap
-      //- and the KeystoneJS Content Editor. If you are not targeting IE8,
-      //- you can upgrade to 2.1.4 (also bundled) for better performance.
-      //- Customise which Bootstrap javascript files are served by including
-      //- them specifically here, instead of bootstrap-3.3.5.min.js
-      script(src='/js/bottom.min.js')
+
+    .mobileTransition
+      .mobileTransitionContainer
+        img(src='/images/logos/faflogo.svg' alt='')
+      .fas.fa-bars
+
+
+    .gridMainContainer.mobileNavBar
+      i.fas.fa-times
+      .gridItem.column12
+        .splatForgedBorder
+          .movingBackground1
+          .movingBackground2
+        img(src='/images/faflogo.svg' alt='')
+
+        ul
+          a(href='/') Home
+        ul
+          a(href='/newshub') News
+        .mobileNavUl Game
+          .fas.fa-caret-down.mobileCaret
+        ul.mobileNavLi
+          li
+            a(href='/tutorials-guides') Tutorials/Guides
+          li
+            a(href='/ai') AI/Co-op Play
+          li
+            a(href='/scfa-vs-faf') SC:FA vs FAF
+        .mobileNavUl Community
+          .fas.fa-caret-down.mobileCaret
+        ul.mobileNavLi
+          li
+            a(href='/faf-teams') Teams and Association
+          li
+            a(href='/content-creators') Content Creators
+          li
+            a(href='/donation') Donate
+          li
+            a(href='/contribution') Contribute
+          li
+            a(href='/clans') Clans
+        
+        ul
+          a(href='/leaderboards') Leaderboards
+        .mobileSocialMedia
+          a(href='https://discord.gg/mXahVSKGVb')
+            .fab.fa-discord
+          a(href='https://www.twitch.tv/faflive')
+            .fab.fa-twitch
+          a(href='https://www.youtube.com/c/ForgedAllianceForever')
+            .fab.fa-youtube
+          a(href='https://github.com/FAForever')
+            .fab.fa-github
+        .mobileOtherLinks
+          a(href='https://forum.faforever.com/') Forums
+          a(href='https://wiki.faforever.com/en/home') FAF Wiki
+      .splatForgedBorder.transformationReverse.absoluteBottom
+        .movingBackground1
+        .movingBackground2
+
+    
+      
+    .splatForgedBorder 
+      .movingBackground1
+      .movingBackground2
+
+    
+    block bannerData    
+
+
+    block banner
+      mixin banner()
+        .mainBannerContainer(class= bannerImage + 'Banner' style='background-image: url(../images/banner/' + bannerImage + '.webp);')
+          .bannerContainer.bannerTitle #{bannerFirstTitle}
+          .bannerContainer.bannerTitle #{bannerSecondTitle}
+          .bannerContainer.bannerSubtitle #{bannerSubTitle}
+
+          block bannerButton 
+    block bannerMixin
+      if bannerImage
+        +banner()
+        .splatForgedBorder.transformationReverse
+          .movingBackground1
+          .movingBackground2
+
+
+      //- The content block should contain the body of your template's content
+    block content
+    .splatForgedBorder.transformationReverse
+      .movingBackground1
+      .movingBackground2
+
+    .mainFooterContainer
+      .footerContainer.column12
+        .footerItem
+          //.backToTop Back to Top
+      .footerContainer.column12
+        .footerItem
+          a(href='/')
+            img(src='/images/logos/faflogo.svg' alt='FAF Logo')
+          h1 FORGED ALLIANCE FOREVER
+      .footerContainer.column12
+        .footerItem
+          ul ETIQUETTE
+            li
+              a(href='/cg') CONTRIBUTION GUIDELINES
+            li
+              a(href='/rules') RULES
+
+          ul CONTRIBUTE  
+            li
+              a(href='/contribution') CONTRIBUTIONS
+            li
+              a(href='/donation') DONATIONS
+
+          ul LEGAL
+            li
+              a(href='/privacy') PRIVACY STATEMENT  
+            li
+              a(href='/tos') TERMS OF SERVICE
+
+          ul CONTACT US
+            li
+              a(href='https://discord.gg/mXahVSKGVb') DISCORD
+            li
+              a(href='https://forum.faforever.com/')  FORUMS
+
+
+
+
+
 
       //- Add scripts that are globally required by your site here.
+      // This script here adss what our flash message requirements are.
+      script(type='text/javascript').
+        var htmlElement = !{JSON.stringify(flashRoutes)}
+      script(src="../../js/app/navigation.js")
+      
+
       //- Include template-specific javascript files by extending the js block
       block js
+        
