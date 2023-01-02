@@ -83,8 +83,8 @@ async function clientNews() {
   try {
     let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,newshub_externalLinkUrl,newshub_sortIndex,content.rendered,date,categories&categories=283`);
     
-    let dataObjectToArray = Object.values(response.data);
-    let sortedData = dataObjectToArray.map(item => ({
+    let dataObjectToArray = await Object.values(response.data);
+    let sortedData = await dataObjectToArray.map(item => ({
       category: item.categories,
       sortIndex: item.newshub_sortIndex,
       link: item.newshub_externalLinkUrl,
