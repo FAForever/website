@@ -2,14 +2,15 @@ extends ../../layouts/default
 include ../../mixins/flash-messages
 include ../../mixins/form/account
 block bannerMixin
-block bannerData
-  - var bannerImage = "activate"
-  - var bannerFirstTitle = "Complete FAForever Registration"
-  - var bannerSubTitle = `Hello ${username}, please define your password in order to create your account.`
 
 block content
   .activationContainer
     br
+    br
+    h1 Welcome #{username ? username : ''} to FAF!
+    h3 Just set your new account's password below and your registration will be complete.
+
+    +flash-messages(flash)
     .column12
       form(method='post',action="/account/activate?username="+username+"&token="+token,data-toggle="validator")
         - passwordName = passwordName || 'password'
@@ -30,6 +31,10 @@ block content
         .form-actions
           br
           button(type='submit') Register
+          br
+          br
+          br
+
 
 block js
   script(src='/js/account.min.js')
