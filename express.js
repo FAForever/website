@@ -116,12 +116,20 @@ appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
 // Account routes
 // These routes are protected by the 'loggedIn' function (which verifies if user is serialized/deserialized or logged in [same thing]).
 const accountRoutePath = './routes/views/account';
-const accountRoutes = [
-  'linkGog', 'requestPasswordReset', 'confirmPasswordReset', 'report', 'changePassword', 'changeEmail', 'changeUsername',];
+const protectedAccountRoutes = [
+  'linkGog', 'report', 'changePassword', 'changeEmail', 'changeUsername',];
 
-accountRoutes.forEach(page => app.post(`/account/${page}`, loggedIn, require(`${accountRoutePath}/post/${page}`)));
+protectedAccountRoutes.forEach(page => app.post(`/account/${page}`, loggedIn, require(`${accountRoutePath}/post/${page}`)));
 
-accountRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, require(`${accountRoutePath}/get/${page}`)));
+protectedAccountRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, require(`${accountRoutePath}/get/${page}`)));
+
+
+//Password reset routes
+const passwordResetRoutes = ['requestPasswordReset', 'confirmPasswordReset'];
+
+passwordResetRoutes.forEach(page => app.post(`/account/${page}`, loggedIn, require(`${accountRoutePath}/post/${page}`)));
+
+passwordResetRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, require(`${accountRoutePath}/get/${page}`)));
 
 
 // --- C L A N S ---
