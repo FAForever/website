@@ -81,13 +81,13 @@ async function news() {
 async function newshub() {
 
   try {
-    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,news_externalLinkUrl,news_sortIndex,content.rendered,date,categories&categories=283`);
+    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,newshub_externalLinkUrl,newshub_sortIndex,content.rendered,date,categories&categories=283`);
     
     let dataObjectToArray = await Object.values(response.data);
     let sortedData = await dataObjectToArray.map(item => ({
       category: item.categories,
-      sortIndex: item.news_sortIndex,
-      link: item.news_externalLinkUrl,
+      sortIndex: item.newshub_sortIndex,
+      link: item.newshub_externalLinkUrl,
       date: item.date,
       title: item.title.rendered,
       content: item.content.rendered,
