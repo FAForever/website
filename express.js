@@ -133,6 +133,10 @@ passwordResetRoutes.forEach(page => app.get(`/account/${page}`, require(`${accou
 app.get('/account/password/confirmReset', require(`${accountRoutePath}/get/confirmPasswordReset`));
 app.post('/account/password/confirmReset', require(`${accountRoutePath}/post/confirmPasswordReset`));
 
+//legacy password reset path for backwards compatibility
+app.get('/account/password/reset', require(`${accountRoutePath}/get/requestPasswordReset`));
+app.post('/account/password/reset', require(`${accountRoutePath}/post/requestPasswordReset`));
+
 
 // --- C L A N S ---
 const routes = './routes/views/';
