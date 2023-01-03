@@ -55,6 +55,9 @@ module.exports.run = function run() {
 			console.log(err);
 			verifyOutput();
 		}
-	});
+	}).catch(error => {
+    console.log(moment().format('DD-MM-YYYY - HH:mm:ss') + ' - Unable to retrieve client link');
+    console.log(error.message);
+  });
 };
 
