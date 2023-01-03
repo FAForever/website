@@ -128,8 +128,10 @@ protectedAccountRoutes.forEach(page => app.get(`/account/${page}`, loggedIn, req
 const passwordResetRoutes = ['requestPasswordReset', 'confirmPasswordReset'];
 
 passwordResetRoutes.forEach(page => app.post(`/account/${page}`, require(`${accountRoutePath}/post/${page}`)));
-
 passwordResetRoutes.forEach(page => app.get(`/account/${page}`, require(`${accountRoutePath}/get/${page}`)));
+
+app.get('/account/password/confirmReset', require(`${accountRoutePath}/get/confirmPasswordReset'`));
+app.post('/account/password/confirmReset', require(`${accountRoutePath}/post/confirmPasswordReset'`));
 
 
 // --- C L A N S ---
