@@ -8,7 +8,7 @@ setInterval(()=>{
 
   try {
 //We get our news title from here
-const readFile = fs.readFileSync('./public/js/app/members/newshub.json',
+const readFile = fs.readFileSync('./public/js/app/members/news.json',
   {encoding:'utf8', flag:'r'});
 const data =  JSON.parse(readFile);
 
@@ -22,7 +22,7 @@ let articleTitle = [];
       articleTitle.push(title);
     }
     //we create a get route for each article found
-    articleTitle.forEach(page => router.get(`/newshub/${page}`, (req, res) => {
+    articleTitle.forEach(page => router.get(`/news/${page}`, (req, res) => {
       res.render('newsArticle');
     }));    
   } catch (e) {

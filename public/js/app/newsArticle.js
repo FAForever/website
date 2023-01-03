@@ -1,7 +1,7 @@
 let articleTitleArray = [];
 
 async function getNewshub() {
-  const response = await fetch(`/js/app/members/newshub.json`);
+  const response = await fetch(`/js/app/members/news.json`);
   const data = await response.json();
 
 //we push the title names into an array so we can loop through the different routes
@@ -35,9 +35,9 @@ function articleActivate(article) {
 //So here we check the name of the article in the url and display the article, the slice is done so we only check the title and not the name.
 
 let url = window.location.href;
-const sliceIndicator = url.indexOf('/newshub');
+const sliceIndicator = url.indexOf('/news');
 // The slice has + 9 because thats the amount of characters in "/newshub/" yes with two /, not one!
-let findMatch = url.slice(sliceIndicator + 9);
+let findMatch = url.slice(sliceIndicator + 6);
 
 getNewshub()
   .then(data => {
