@@ -32,6 +32,7 @@ module.exports.run = function run() {
   }
   
 	//Get main client
+  console.log('Getting with error handling');
 	gh.getRepo('faforever', 'downlords-faf-client').getRelease('latest', function(err, release) {
 		if (!err) {
 		  let exeAsset = release.assets.filter(function (asset) {
