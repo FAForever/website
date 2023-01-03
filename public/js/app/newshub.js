@@ -1,60 +1,126 @@
 
-let articleTitleArray = [];
-
 async function getNewshub() {
   const response = await fetch(`js/app/members/newshub.json`);
   const data = await response.json();
-
-  for (let i = 0; i < data.length; i++) {
-    let title = data[i].title.replace(/ /g, '-');
-    articleTitleArray.push(title);
-  }
-
+  return await data;
+}
+async function getTournament() {
+  const response = await fetch(`js/app/members/tournament-news.json`);
+  const data = await response.json();
   return await data;
 }
 
+let dataLength = 0;
+let clientSpawn = document.getElementById('clientSpawn');
+let clientContainer = document.querySelectorAll('.clientContainer');
+let clientMainFeature = document.querySelectorAll('.clientMainFeature');
 
-let articleMain = document.getElementById('articleMain');
-
-function updateNewshub() {
+function createArticles() {
   getNewshub()
     .then(data => {
-      for (let i = 0; i < data.length; i++) {
-        articleMain.insertAdjacentHTML("afterbegin", `
-<div class ="articleContainer column4">
-  <div class ="articleImage" onClick="articleActivate(${data.length - 1 - i})"></div>
-  <div class ="articleText">
-    <h2 class ="articleAuthorDate"></h2>
-    <h1 class ="articleTitle"></h1>
-    <div class ="articleContent"></div>
-    <button onClick="articleActivate(${data.length - 1 - i})">Learn More</button>
-  </div>
-</div>`);
-      }
-      let articleImage = document.querySelectorAll('.articleImage');
-      let articleTitle = document.querySelectorAll('.articleTitle');
-      let articleAuthorDate = document.querySelectorAll('.articleAuthorDate');
-      let articleContent = document.querySelectorAll('.articleContent');
-      
+      dataLength = data.length;
+      let fixedLinkingOrder = data.length - 1;
+      for (let i = 0; i < data.length - 1; i++) {
+        clientSpawn.insertAdjacentHTML('afterbegin', `<a target='_blank' href="${data[fixedLinkingOrder].link}">
+    <div class="clientContainer column1">
+        <div class="clientImage"></div>
+        <div class="clientText">
+            <h1 class="clientTitle"></h1>
+            <div class="clientContent"></div>
+        </div>
+    </div>
+</a>`);
 
-      for (let i = 0; i < data.length; i++) {
-        let date = data[i].date;
-        let content = data[i].content;
-        articleImage[i].style.backgroundImage = `url("${data[i].media}")`;
-        articleTitle[i].innerHTML = `${data[i].title}`;
-        articleAuthorDate[i].innerHTML = `By ${data[i].author} on ${date.substring(0, 10)}`;
-        articleContent[i].innerHTML = `${content.substring(0, 150)}...`;
+        fixedLinkingOrder--;
       }
+      clientMainFeature[0].insertAdjacentHTML('afterbegin', `<a class="featureSubGrid column9" target='_blank' href="${data[0].link}">
+    <div class="featureContainer column5">
+        <div class="featureImage"></div>
+    </div>
+    <div class="featureContainer column7">
+        <div class="featureText">
+            <h1 class="featureTitle"></h1>
+            <div class="featureContent"></div>
+        </div>
+    </div>
+</a>`);
+      return data;
+    }).then(data => {
+
+    let clientImage = document.querySelectorAll('.clientImage');
+    let clientTitle = document.querySelectorAll('.clientTitle');
+    let clientContent = document.querySelectorAll('.clientContent');
+    for (let i = 0; i < data.length - 1; i++) {
+      let content = data[i + 1].content;
+      clientImage[i].style.backgroundImage = `url("${data[i + 1].media}")`;
+      clientTitle[i].innerHTML = `${data[i + 1].title}`;
+      clientContent[i].innerHTML = `${content.substring(0, 200)}`;
+    }
+    let featureImage = document.querySelectorAll('.featureImage');
+    let featureTitle = document.querySelectorAll('.featureTitle');
+    let featureContent = document.querySelectorAll('.featureContent');
+    let content = data[0].content;
+    featureImage[0].style.backgroundImage = `url("${data[0].media}")`;
+    featureTitle[0].innerHTML = `${data[0].title}`;
+    featureContent[0].innerHTML = `${content.substring(0, 400)}`;
+
+  });
+}
+
+createArticles();
+let arrowRight = document.getElementById('clientArrowRigth');
+let arrowLeft = document.getElementById('clientArrowLeft');
+let newsPosition = 0;
+let newsLimit = 0;
+let newsMove = clientContainer[0].offsetWidth;
+console.log(newsMove);
+let spawnStyle = getComputedStyle(clientSpawn).columnGap;
+let columnGap = spawnStyle.slice(0, 2);
+
+
+arrowRight.addEventListener('click', () => {
+  let newsMove = clientContainer[0].offsetWidth;
+  if (newsLimit === dataLength) {
+    console.log('limit reached');
+  } else {
+    newsLimit++;
+    newsPosition = newsPosition - newsMove;
+    clientSpawn.style.transform = `translateX(${newsPosition - columnGap}px)`;
+    arrowLeft.style.display = 'grid';
+  }
+});
+arrowLeft.addEventListener('click', () => {
+  let newsMove = clientContainer[0].offsetWidth;
+  if (newsLimit === 0) {
+  } else {
+    newsLimit--;
+    newsPosition = newsPosition + newsMove;
+    clientSpawn.style.transform = `translateX(${newsPosition - columnGap + 10}px)`;
+  }
+
+});
+addEventListener('resize', () => {
+  clientSpawn.style.transform = `translateX(0px)`;
+  newsPosition = 0;
+  newsLimit = 0;
+});
+
+let clientTournamentSpawn = document.getElementById('tournamentSpawn');
+function createTournaments() {
+  getTournament()
+    .then(data => {
+      clientTournamentSpawn.insertAdjacentHTML('beforeend', `${data[0].content}`);
+      return data;
     });
 }
 
-updateNewshub();
+createTournaments();
 
-function articleActivate(article) {
-  getNewshub()
-    .then(data => {
-      let currentURL = window.location.href;
-      window.location.href = `${currentURL}/${articleTitleArray[article]}`;
-    });
+
+
+
+let links = document.getElementsByTagName('a');
+let linksLength = links.length;
+for (let i= 0; i < linksLength; i++) {
+  links[i].target = '_blank';
 }
-

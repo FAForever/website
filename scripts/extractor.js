@@ -27,8 +27,8 @@ async function getTournamentNews() {
       content: item.content.rendered,
       category: item.categories
     }));
-    let clientNewsData = sortedData.filter(article => article.category[1] !== 284);
-    return await clientNewsData;
+    let newshubData = sortedData.filter(article => article.category[1] !== 284);
+    return await newshubData;
   } catch (e) {
     console.log(e);
     return null;
@@ -58,7 +58,7 @@ async function flashMessage() {
   }
 }
 
-async function newshub() {
+async function news() {
   try {
     let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,content.rendered,date,categories&categories=587`);
     
@@ -78,16 +78,16 @@ async function newshub() {
   }
 }
 
-async function clientNews() {
+async function newshub() {
 
   try {
-    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,newshub_externalLinkUrl,newshub_sortIndex,content.rendered,date,categories&categories=283`);
+    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=10&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,news_externalLinkUrl,news_sortIndex,content.rendered,date,categories&categories=283`);
     
     let dataObjectToArray = await Object.values(response.data);
     let sortedData = await dataObjectToArray.map(item => ({
       category: item.categories,
-      sortIndex: item.newshub_sortIndex,
-      link: item.newshub_externalLinkUrl,
+      sortIndex: item.news_sortIndex,
+      link: item.news_externalLinkUrl,
       date: item.date,
       title: item.title.rendered,
       content: item.content.rendered,
@@ -204,12 +204,12 @@ module.exports.run = function run() {
 
   // Do not change the order of these/make sure they match the order of fileNames below
   const extractorFunctions = [
-    getTournamentNews(), flashMessage(), newshub(), contentCreators(), clientNews(), fafTeams(), getAllClans(),
+    getTournamentNews(), flashMessage(), news(), contentCreators(), newshub(), fafTeams(), getAllClans(),
     getLeaderboards(1), getLeaderboards(2), getLeaderboards(3), getLeaderboards(4),
   ];
   //Make sure to not change the order of these since they match the order of extractorFunctions
   const fileNames = [
-    'tournament-news','flashMessage', 'newshub', 'content-creators', 'client-news', 'faf-teams', 'getAllClans',
+    'tournament-news','flashMessage', 'news', 'content-creators', 'newshub', 'faf-teams', 'getAllClans',
     'global', '1v1', '2v2', '4v4',
   ];
 

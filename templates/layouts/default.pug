@@ -19,8 +19,8 @@ html(lang='en')
 
     //- Customise the stylesheet for your site by editing /public/styles/site.sass
     link(href="/styles/css/site.min.css?version=" + Date.now(), rel="stylesheet")
-    script(async, defer, data-domain="faforever.com", src="https://plausible.faforever.com/js/plausible.js")
-    script(src="https://kit.fontawesome.com/33e7e258d3.js" crossorigin='anonymous')
+
+    
 
     //- Include template-specific stylesheets by extending the css block
     block css
@@ -36,6 +36,8 @@ html(lang='en')
         p(style=`background-color:${flashColor}`) #{flashMessage}
     .mainTopNavContainer
       // this is the "thin" navbar that has forums, discord, youtube icons, etc. 
+      .topNavContainer
+        a.topnav_item(href='/account/requestPasswordReset') Reset Password
       .topNavContainer
         a.topnav_item(href='/donation') Support FAF
       .topNavContainer
@@ -66,7 +68,7 @@ html(lang='en')
           a(href='/')
             li.navList HOME
               ul.navAbsolute
-          a(href='/newshub')
+          a(href='/news')
             li.navList NEWS
               ul.navAbsolute
           li.navList GAME
@@ -142,11 +144,12 @@ html(lang='en')
     .mobileTransition
       .mobileTransitionContainer
         img(src='/images/logos/faflogo.svg' alt='')
-      .fas.fa-bars
+      img(src='/images/fontAwesomeIcons/menu.svg').fas.fa-bars
 
 
     .gridMainContainer.mobileNavBar
-      i.fas.fa-times
+      .fas.fa-times
+        img(src='/images/fontAwesomeIcons/remove.svg')
       .gridItem.column12
         .splatForgedBorder
           .movingBackground1
@@ -156,7 +159,7 @@ html(lang='en')
         ul
           a(href='/') Home
         ul
-          a(href='/newshub') News
+          a(href='/news') News
         .mobileNavUl Game
           .fas.fa-caret-down.mobileCaret
         ul.mobileNavLi

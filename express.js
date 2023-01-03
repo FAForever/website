@@ -99,7 +99,7 @@ app.listen(process.env.PORT, () => {
 // --- UNPROTECTED ROUTES ---
 const appGetRouteArray = [
   // This first '' is the home/index page
-  '', 'client-news', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'newsArticle', 'clans',];
+  '', 'newshub', 'news', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'newsArticle', 'clans',];
 
 //Renders every page written above
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
@@ -248,13 +248,13 @@ passport.deserializeUser(function (user, done) {
 });
 
 
-app.get('/auth', passport.authenticate('faforever', {
+app.get(`/${process.env.CALLBACK}`, passport.authenticate('faforever', {
   failureRedirect: '/login', // Failed auth
   failureFlash: true
 }), function (req, res) {
-  res.redirect(fullUrl ? fullUrl : '/');
-
-  fullUrl = '/'; // Successful auth
+  res.redirect('/');
+  //res.redirect(fullUrl ? fullUrl : '/');
+  //fullUrl = '/'; // Successful auth
 });
 
 
