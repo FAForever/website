@@ -26,7 +26,6 @@ exports.getLatestClientRelease = function(req, res, next) {
       try {
         clientLink = JSON.parse(data);
       } catch (e) {
-        exec('node scripts/getLatestClientRelease.js');
         clientLink = {};
         clientLink.fafClientLink = 'https://github.com/FAForever/downlords-faf-client/releases';
       }
