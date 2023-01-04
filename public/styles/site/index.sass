@@ -22,7 +22,7 @@ h2
   background-size: cover
   padding: 9.5% 0
   letter-spacing: 1.2PX
-  text-shadow: 0 0px 7.5px black, 0 0px 7.5px black      
+  text-shadow: 0 0 7.5px black, 0 0 7.5px black      
 
 .bannerTitle
   font-size: var(--subtitle-font-size)
@@ -53,19 +53,20 @@ h2
 
 .showcaseBackground
   padding: 1vw 0 4vw 0
-  background-image: url("/../../images/factionpattern.jpg")
+
 .mainShowcaseReverse
   @include mixins.gridMainContainer
-  margin: 4vw 20vw 0 2vw
+  margin: 6vw 20vw 0 2vw
 .mainShowcase
   @include mixins.gridMainContainer
-  margin: 4vw 2vw 0 20vw
+  margin: 6vw 2vw 0 20vw
   
 .showcaseContainer
   font-family: variables.$family-paragraph
   background-color: variables.$background-secondary
   text-align: left
-  padding: 1.25em
+  padding: 2em
+  opacity: 0.9
   h2
     padding: 0.2em 10px
   h1
@@ -95,9 +96,9 @@ h2
 /* Here you can find stuff related to splitImage containers but in regards to the factions
 .factionMainContainer 
   @include mixins.gridMainContainer
-  padding: 0vw 6vw 4vw 6vw
+  padding: 0 6vw 4vw 6vw
   
-  background-image: url("/../../images/fafbgmasspattern0.5.jpg")
+  background-image: url("/../../images/black0.jpg")
   .factionTitle
     padding: 2em
 
@@ -181,7 +182,7 @@ h2
       grid-column: span 12
     .factionContainer
       height: 80%
-      margin: 0vw 
+      margin: 0 
 
   .bannerSubtitle
     font-size: 12px
