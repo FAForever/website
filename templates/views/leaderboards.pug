@@ -21,27 +21,23 @@ block content
 
     
      
-    .mainLeaderboardContainer.leaderboardBorder#searchResults.appearWhenSearching
-      .leaderboardContainer.column1
-        .leaderboardItem
-          ul Rank
-            li#leaderboardRankSearch
-      .leaderboardContainer.column3
-        .leaderboardItem
-          ul Player
-            li#leaderboardPlayerSearch
-      .leaderboardContainer.column3
-        .leaderboardItem
-          ul Rating
-            li#leaderboardRatingSearch
-      .leaderboardContainer.column2
-        .leaderboardItem
-          ul Win Rate
-            li#leaderboardWonSearch
-      .leaderboardContainer.column3
-        .leaderboardItem
-          ul Total Games
-            li#leaderboardGamesAmountSearch
+    .newLeaderboard.leaderboardBorder.appearWhenSearching#searchResults.leaderboardNoAwards
+      .newLeaderboardContainer.column12.newLeaderboardCategory
+        .column1
+          h2 Rank
+        .column4
+          h2 Player
+        .column2
+          h2 Rating
+         
+        .column2
+          h2 Win Rate
+         
+        .column3
+          h2 Total Games
+            
+      #insertSearch
+      
     .mainLeaderboardContainer.leaderboardCategory
       .column12.leaderboardSelect
         select.leaderboardFilter(onchange='changeLeaderboard(this.value)')
@@ -63,28 +59,34 @@ block content
       //DO NOT Change the order of these without changing the js. For them to work, they need to be in this specific order
 
 
-    .newLeaderboard
-      .newLeaderboardContainer.column12
+    .newLeaderboard#mainLeaderboard
+      .newLeaderboardContainer.column12.newLeaderboardCategory
         .column1
           h2 Rank
         .column4
           h2 Player
-        .column2
-          button Rating
-        .column2
-          button Win Rate
-        .column3
-          button Total Games
+        .column2.categoryFilter
+          h2(onclick='filterLeaderboards(1)') Rating
+            //img.categoryCaret(src='/images/fontAwesomeIcons/caret.svg')
+        .column2.categoryFilter
+          h2(onclick='filterLeaderboards(2)') Win Rate
+            //img.categoryCaret(src='/images/fontAwesomeIcons/caret.svg')
+        .column3.categoryFilter
+          h2(onclick='filterLeaderboards(3)') Total Games
+            //img.categoryCaret(src='/images/fontAwesomeIcons/caret.svg')
+      
       #insertPlayer
+        
     
-    .mainLeaderboardContainer
-      .leaderboardContainer.leaderboardCategory.column12
-        ul
-          li(onclick= `pageChange(0)`).pageButton.exhaustedButton First
-          li(onclick= `pageChange(lastPage)`).pageButton Last 
-        ul
-          li(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous 
-          li(onclick= `pageChange(pageNumber + 1)`).pageButton Next
+    .mainLeaderboardContainer.leaderboardCategory
+      .column12.leaderboardSelect
+
+        .categoryContainer
+          .categoryButton(onclick= `pageChange(0)`).pageButton.exhaustedButton First
+          .categoryButton(onclick= `pageChange(lastPage)`).pageButton Last 
+        .categoryContainer
+          .categoryButton(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous
+          .categoryButton(onclick= `pageChange(pageNumber + 1)`).pageButton Next
 
 block js
 

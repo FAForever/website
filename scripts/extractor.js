@@ -189,7 +189,7 @@ async function getLeaderboards(leaderboardID) {
     }));
     const combineArrays = (array1, array2) => array1.map((x, i) => [x, array2[i]]);
     let leaderboardData = combineArrays(playerLogin, playerValues);
-    leaderboardData.sort((playerA, playerB) => playerA[1].rating - playerB[1].rating);
+    leaderboardData.sort((playerA, playerB) =>  playerB[1].rating - playerA[1].rating);
     return await leaderboardData;
     
   } catch (e) {
