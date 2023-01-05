@@ -5,11 +5,10 @@ process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
 process.env.WP_URL = process.env.WP_URL || 'https:direct.faforever.com';
 
 const fs = require('fs');
-const fetch = require('node-fetch');
 const axios = require('axios');
 
 let d = new Date();
-let timeFilter = 6;
+let timeFilter = 12;
 let minusTimeFilter = d.setMonth(d.getMonth() - timeFilter);
 let currentDate = new Date(minusTimeFilter).toISOString();
 
@@ -142,7 +141,7 @@ async function contentCreators() {
 
 
 }
-//https://api.faforever.com/data/clan?include=memberships.player&filter=tag==FEM
+
 async function getAllClans() {
   try {
     let response = await axios.get(`${process.env.API_URL}/data/clan?sort=createTime&include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000`);
