@@ -4,8 +4,9 @@ let lastPage = 5;
 let playerList = [];
 let timedOutPlayers = [];
 let currentLeaderboard = '1v1';
-let backgroundColor = 'greyLeaderboard';
-let playerListDivided = playerList.length/100;
+const insertPlayer = document.getElementById('insertPlayer');
+const mainLeaderboard = document.getElementById('mainLeaderboard')
+let playerListDivided = playerList.length / 100;
 // This decides the time filter
 let d = new Date();
 let timeFilter = 6; // 6 Months is the default value
@@ -13,7 +14,6 @@ let minusTimeFilter = d.setMonth(d.getMonth() - timeFilter);
 let currentDate = new Date(minusTimeFilter).toISOString();
 
 
-//Names of buttons
 async function leaderboardOneJSON(leaderboardFile) {
   //Check which category is active
   const response = await fetch(`js/app/members/${leaderboardFile}.json`);
@@ -24,8 +24,8 @@ async function leaderboardOneJSON(leaderboardFile) {
 
 //Updates the leaderboard according to what is needed
 function leaderboardUpdate() {
-  // We convert playerList into a string to find out how many pages we have. We can find so by checking the first two digits. In other words, if we have 1349 players, then we have 13 pages. However, if we have 834, we have 8 pages (only take the first digit).
-  playerListDivided = playerList.length/100;
+  // We convert playerList into a string to find out how many pages we have. We can find so by dividing by a 100 and flooring the results to get an integer. In other words, if we have 1349 players, then we have 13 pages.
+  playerListDivided = playerList.length / 100;
   lastPage = Math.floor(playerListDivided);
 
   //Deletes everything with the class leaderboardDelete, we do it to delete all the previous leaderboard and add the new one back in.
@@ -35,26 +35,54 @@ function leaderboardUpdate() {
   });
 
   //determines the current page, whether to add or substract the missing players in case we pressed next or previous then it will add or substract players
-  let playerIndex = (playerList.length - 100) - (pageNumber * 100); //- addNextPlayer;
-  let next100Players = playerList.length  - (pageNumber * 100);
+  let playerIndex = pageNumber * 100;
+  let next100Players = (1 + pageNumber) * 100;
+
+  // Function to add player first second and third background
+  if (playerIndex === 0) {
+    mainLeaderboard.classList.remove('leaderboardNoAwards');
+    mainLeaderboard.classList.add('leaderboardAwards');
+  } else {
+    mainLeaderboard.classList.remove('leaderboardAwards');
+    mainLeaderboard.classList.add('leaderboardNoAwards');
+  }
+
+  // Actual insertion of HTML
   for (playerIndex; playerIndex < next100Players; playerIndex++) {
     if (playerIndex < 0) {
       playerIndex = 0;
-      console.log('There are no more players left. Therefore, I come here to relay this message my lord: The bastion of greatness known as the as the for loop of leaderboardUpdate() is unable to be of servitude beyond now. It has broken.');
     }
-    // Gets the player data and inserts it into the li element
     let rating = playerList[playerIndex][1].rating;
     let winRate = playerList[playerIndex][1].wonGames / playerList[playerIndex][1].totalgames * 100;
-    document.getElementById('leaderboardPlayer').insertAdjacentHTML('afterbegin', `<li class='leaderboardDelete ' > ${playerList[playerIndex][0].label}</li>`);
-    document.getElementById('leaderboardRank').insertAdjacentHTML('afterbegin', `<li class='leaderboardDelete '> ${-1 * (playerIndex - playerList.length)}</li>`);
-    document.getElementById('leaderboardRating').insertAdjacentHTML('afterbegin', `<li class='leaderboardDelete '> ${rating.toFixed(0)}</li>`);
-    document.getElementById('leaderboardGamesAmount').insertAdjacentHTML('afterbegin', `<li class='leaderboardDelete '> ${playerList[playerIndex][1].totalgames}</li>`);
-    document.getElementById('leaderboardWon').insertAdjacentHTML('afterbegin', `<li class='leaderboardDelete '> ${winRate.toFixed(1)}% </li>`);
+    insertPlayer.insertAdjacentHTML('beforebegin', `<div class="newLeaderboardContainer leaderboardDelete column12 leaderboardPlayer${playerIndex}">
+  <div class="column1">
+    <h3>${playerIndex + 1}</h3>
+  </div>
+  <div class="column4">
+    <h3>${playerList[playerIndex][0].label}</h3>
+  </div>
+  <div class="column2">
+    <h3>${rating.toFixed(0)}</h3>
+  </div>
+  <div class="column2">
+    <h3>${winRate.toFixed(1)}%</h3>
+  </div>
+  <div class="column3">
+    <h3>${playerList[playerIndex][1].totalgames}</h3>
+  </div>
+</div>`
+    );
   }
+
+
 }
+
+
 //This function triggers when the next, previous, first or last button are clicked
 let pageButton = document.querySelectorAll('.pageButton');
+
 function pageChange(newPageNumber) {
+  
   pageNumber = newPageNumber;
   pageButton.forEach(element => element.classList.remove(`exhaustedButton`));
   if (pageNumber === 0) {
@@ -74,7 +102,9 @@ function pageChange(newPageNumber) {
 }
 
 //This function checks the different filters the user has chosen
+// It shows as it not being used because it is called by the HTML
 function timeCheck(timeSelected) {
+  
   timeFilter = timeSelected;
   d = new Date();
   minusTimeFilter = d.setMonth(d.getMonth() - timeFilter);
@@ -84,7 +114,10 @@ function timeCheck(timeSelected) {
   for (let i = 0; i < timedOutPlayers.length; i++) {
     playerList.push(timedOutPlayers[i]);
   }
-  playerList.sort((playerA, playerB) => playerA[1].rating - playerB[1].rating);
+  // Sort players by their rating
+  playerList.sort((playerA, playerB) => playerB[1].rating - playerA[1].rating);
+  
+  //clean slate
   timedOutPlayers = [];
 
   //kick all the players that dont meet the time filter
@@ -96,42 +129,83 @@ function timeCheck(timeSelected) {
       playerList.splice(i, 1);
     }
   }
+  
+  
   pageChange(0);
 }
+
+function filterLeaderboards() {
+  console.log('Im in progress');
+  /*
+  //Re-insert all players that were kicked, to have a clean slate
+  for (let i = 0; i < timedOutPlayers.length; i++) {
+    playerList.push(timedOutPlayers[i]);
+  }
+  //Sort players
+  playerList.sort((playerA, playerB) => (playerB[1].wonGames / playerB[1].totalgames * 100) - (playerA[1].wonGames / playerA[1].totalgames * 100) || playerB[1].totalgames - playerA[1].totalgames);
+  
+  //clean slate
+  timedOutPlayers = [];
+
+  //kick all the players that dont meet the time filter
+
+  for (let i = 0; i < playerList.length; i++) {
+
+    if (50 > playerList[i][1].totalgames) {
+      timedOutPlayers.push(playerList[i]);
+      playerList.splice(i, 1);
+    }
+  }
+  pageChange(0);
+  */
+   
+}
+
 
 // This changes the current leaderboard(newLeaderboard), sets the page to 0 (pageNumber = 0) and resets the next and previous buttons.
 function changeLeaderboard(newLeaderboard) {
   leaderboardOneJSON(newLeaderboard)
     .then(data => {
       playerList = data;
-      playerListDivided = playerList.length/100;
+      playerListDivided = playerList.length / 100;
       lastPage = Math.floor(playerListDivided);
       pageChange(0);
     });
 }
+
 //Gets called once so it generates a leaderboard
 changeLeaderboard('1v1');
 
-
+const insertSearch = document.getElementById('insertSearch');
 
 // SEARCH BAR
 function findPlayer(playerName) {
   leaderboardOneJSON(currentLeaderboard)
-    .then( () => {
+    .then(() => {
       //input from the searchbar becomes playerName and then searchPlayer is their index number
       let searchPlayer = playerList.findIndex(element => element[0].label.toLowerCase() === playerName.toLowerCase());
-      if (backgroundColor === 'greyLeaderboard') {
-        backgroundColor = 'darkGreyLeaderboard';
-      } else {
-        backgroundColor = 'greyLeaderboard';
-      }
+
       let rating = playerList[searchPlayer][1].rating;
       let winRate = playerList[searchPlayer][1].wonGames / playerList[searchPlayer][1].totalgames * 100;
-      document.getElementById('leaderboardPlayerSearch').insertAdjacentHTML('afterbegin', `<li class='leaderboardDeleteSearch '> ${playerList[searchPlayer][0].label} ${currentLeaderboard}</li>`);
-      document.getElementById('leaderboardRankSearch').insertAdjacentHTML('afterbegin', `<li class='leaderboardDeleteSearch '> ${-1 * (searchPlayer - playerList.length)}</li>`);
-      document.getElementById('leaderboardRatingSearch').insertAdjacentHTML('afterbegin', `<li class='leaderboardDeleteSearch '> ${rating.toFixed(0)}</li>`);
-      document.getElementById('leaderboardGamesAmountSearch').insertAdjacentHTML('afterbegin', `<li class='leaderboardDeleteSearch '> ${playerList[searchPlayer][1].totalgames}</li>`);
-      document.getElementById('leaderboardWonSearch').insertAdjacentHTML('afterbegin', `<li class='leaderboardDeleteSearch '> ${winRate.toFixed(1)}% </li>`);
+      insertSearch.insertAdjacentHTML('beforebegin', `<div class="newLeaderboardContainer leaderboardDeleteSearch column12">
+  <div class="column1">
+    <h3>${searchPlayer + 1}</h3>
+  </div>
+  <div class="column4">
+    <h3>${playerList[searchPlayer][0].label} ${currentLeaderboard} </h3>
+  </div>
+  <div class="column2">
+    <h3>${rating.toFixed(0)}</h3>
+  </div>
+  <div class="column2">
+    <h3>${winRate.toFixed(1)}%</h3>
+  </div>
+  <div class="column3">
+    <h3>${playerList[searchPlayer][1].totalgames}</h3>
+  </div>
+</div>`);
+
+
       document.querySelector('#errorLog').innerText = ``;
     }).catch(() => {
     document.querySelector('#errorLog').innerText = `Player "${playerName}" couldn't be found in the ${currentLeaderboard} leaderboard.`;

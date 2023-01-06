@@ -3,12 +3,9 @@
 
 // Background of the whole thing
 .leaderboardBackground
-  padding: 7.5vw 11vw
-  background-image: url("/../../images/fafbgpattern0.5.jpg")
-  ul
-    list-style: none
-    li
-      padding: 0.5em 0
+  padding: 7.5vw 12vw
+
+  
 
 // This is the searchbar input form
 input 
@@ -21,6 +18,62 @@ input
   z-index: 2
   position: relative
 
+  
+  // This class determines whether the first second and third player will have a different background color
+.leaderboardAwards
+  .newLeaderboardContainer:nth-child(odd)
+    background-color: mix(variables.$background-tertiary, variables.$background-primary, 25%)
+  .newLeaderboardContainer:nth-child(even)
+    background-color: variables.$background-secondary
+  .newLeaderboardContainer:nth-child(2)
+    background-color: #594112
+  .newLeaderboardContainer:nth-child(3)
+    background-color: #737373
+  .newLeaderboardContainer:nth-child(4)
+    background-color: #5d351d
+    
+.leaderboardNoAwards
+  .newLeaderboardContainer:nth-child(odd)
+    background-color: mix(variables.$background-tertiary, variables.$background-primary, 25%)
+  .newLeaderboardContainer:nth-child(even)
+    background-color: variables.$background-secondary
+  
+
+
+.newLeaderboard
+  @include mixins.gridMainContainer
+  border-radius: 20px
+
+  .newLeaderboardCategory
+    padding: 0.5em
+    h2
+      font-size: 1.2rem
+      padding: 0
+    .categoryFilter
+    
+      h2
+        padding: 0
+    
+        //transition: 0.4s
+        //cursor: pointer
+        //&:hover
+          transform: scale(1.1)
+        
+  
+      img
+        display: inline-block
+        padding: 0 0.1em
+        height: 0.8em
+  .newLeaderboardContainer
+    @include mixins.gridMainContainer
+    
+    h3
+      font-size: 1rem
+      padding: 0.75em 0
+
+
+  
+
 .mainLeaderboardContainer
   @include mixins.gridMainContainer
   padding: 0
@@ -32,68 +85,59 @@ input
     padding: 0.2em
 
 .leaderboardFilter
-  border: 1px solid white
   font-family: variables.$family-paragraph
-  font-size: var(--paragraph-font-size)
+  font-size: 1.2rem
   color: variables.$color-active
   background-color: variables.$background-tertiary
-  padding: 0.5em 0 0.5em 0.5em
-  margin: 0 0.8em 
+  padding: 1em 0.25em
+  margin: 0 1em
+  border-radius: 20px
   text-align: center
+  select
+    cursor: pointer
+    font-size: 1.2rem
   option
+    padding: 0 0.25em
     color: variables.$color-active
     background-color: variables.$background-secondary
-// This is in here for the js since the leaderboard is actually starting from 100 to 1. So it needs to be displayed in reverse.
 
-
-.leaderboardBorder
-  border: 1px solid variables.$color-active
-  padding: 0px
-  background-color: variables.$background-primary
-
-.leaderboardContainer
-  font-family: variables.$family-paragraph
-  padding: 0em
-  ul
-    font-size: var(--paragraph-font-size)
-    padding: 1em 0
-    li
-      font-size: var(--paragraph-font-size)
-      padding: 1em 0
-.leaderboardItem
     
-  li:nth-child(odd)
-    background-color: mix(variables.$background-tertiary, variables.$background-primary, 25%)
-  li:nth-child(even)
-    background-color: variables.$background-secondary
+//Buttons across the leaderboards
 .leaderboardCategory
+  border-radius: 20px
   padding: 1em 0.25em
   display: inline-block
   place-items: start
   font-family: variables.$family-paragraph
-  font-size: var(--paragraph-font-size)
-  letter-spacing: 0em
-  ul
+  font-size: 1.2rem
+  letter-spacing: 0
+  .categoryButton:nth-child(odd)
+    border-radius: 30px 0 0 30px
+    border-right: 0.1em solid white
+    
+  .categoryButton:nth-child(even)
+    border-radius: 0 30px 30px 0
+  .categoryContainer
+    display: inline-block
+    margin: 0
     padding: 0.5em
-    li
+    .categoryButton
       display: inline-block
-      padding: 0.6em 1em
-      border: 0.05em solid variables.$color-inactive
+      padding: 1em
       background-color: variables.$background-tertiary
       cursor: pointer
       transition: 0.4s
       &:hover
-        border: 0.05em solid variables.$color-active
         filter: brightness(2)
     .exhaustedButton
-      border: 0.05em solid variables.$color-inactive
       background-color: variables.$background-secondary
       color: variables.$color-inactive-plus
       pointer-events: none
       cursor: default
+    
+  
 
-#searchResults
-  margin: 1em 0 0 0
+
 .appearWhenSearching
   display: none
 .centerYourself
@@ -126,7 +170,14 @@ input
       background-color: variables.$color-inactive-plus
       color: variables.$color-active
 
-   
+@media (max-width: 600px)
+  .newLeaderboard
+    .newLeaderboardCategory
+      h2
+        font-size: 14px
+    .newLeaderboardContainer
+      h3
+        font-size: 12px
 
 @media (max-width: 800px)
   .leaderboardFilter
