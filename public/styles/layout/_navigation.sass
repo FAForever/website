@@ -196,7 +196,7 @@ ul
     
     
     img
-      transition: 1s
+      transition: 0.4s
       height: 1.25em
       
       &:hover
@@ -333,6 +333,11 @@ ul
 .navList
   display: inline-block
   margin: 0 1em
+  img
+    height: 1em
+  h3
+    padding: 0
+    font-size: 1rem
   &:hover
     color: variables.$color-active
     transition: 0.25s
@@ -510,33 +515,45 @@ ul
 .navContainer
   .loginItem
     position: relative
+    padding: 0 4em
     li
       list-style: none
-      padding: 0.5em
+      padding: 0em
       font-size: 16px
     #loginList
       position: relative
 
     #loginAbsolute
+      width: 90%
+      border-radius: 20px
+      padding: 0.5em
       display: none
       z-index: 200
-      background-color: variables.$background-primary
+      background-color: variables.$background-secondary
       position: absolute
-      top: 1em
+      top: 100%
+      left: 50%
+      -webkit-transform: translateX(-50%)
+      transform: translateX(-50%)
+      
       opacity: 1
       .loginDropdown
         padding: 0
-    
+        
         display: block
         opacity: 1
         li
-          padding: 1em 0.8em
+          padding: 1em
+          font-size: 1rem
+          
           background-color: variables.$background-secondary
           transition: 0.4s
+        a
           &:hover
-            background-color: variables.$background-tertiary
-            a
+            li
+              background-color: variables.$background-tertiary
               color: variables.$color-active
+
 
 #flashMessageContainer
   display: none

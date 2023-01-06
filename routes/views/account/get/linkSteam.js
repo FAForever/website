@@ -26,7 +26,7 @@ exports = module.exports = function (req, res) {
   }
 
   //locals.steam = process.env.API_URL + '/users/linkToSteam';
-  locals.steamConnect = req.protocol + '://' + req.get('host') + '/account/connectSteam';
+  locals.steamConnect = req.protocol + '://' + req.get('host') + '/account/connect';
 
   // Render the view
   res.render('account/linkSteam', {flash: flash});

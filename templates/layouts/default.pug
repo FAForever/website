@@ -117,25 +117,24 @@ html(lang='en')
       if username
         .navContainer.navEnd#loginList
           ul.loginItem
-            .navList #{username}
+            .navList
+              img(src='/images/fontAwesomeIcons/user.svg')
+              h3 #{username}
             ul#loginAbsolute
               li.loginDropdown
                 ul(role='menu')                  
                   if hasClan
                     a(href="/clans/manage"): li My Clan
-                    
                   if !hasClan
                     a(href="/clans/create"): li Create Clan
                   a(href="/account/changeEmail"): li Change Email
                   a(href="/account/changePassword"): li Change Password
                   a(href="/account/changeUsername"): li Change Username
-                  a(href="/account/linkSteam"): li Steam Linking
+                  a(href="/account/link"): li Steam Linking
                   a(href="/account/linkGog"): li GOG Linking
                   a(href="/account/report"): li Report Player
-        .navContainer.navEnd
-          ul.navItem
-            a(href="/logout")
-              li.navList LOG OUT
+                  a(href="/logout"): li Log Out
+
 
 
     // the mobilenav is the mobile navbar, it has two stickies, one of them is the sticky for the mobile menu (so it stays with the user) and the second one is the black backgroud (so when the user opens the mobile menu, everything else darkens.)
