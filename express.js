@@ -243,10 +243,10 @@ passport.use('faforever', new OidcStrategy({
             return verified(null);
           }
           let user = JSON.parse(body);
-          console.log(accessToken)
+ 
           user.data.attributes.token = accessToken;
           user.data.id = user.data.attributes.userId;
-          console.log(user.data.attributes);
+   
 
           return verified(null, user);  
         } catch (e) {
@@ -261,7 +261,7 @@ passport.use('faforever', new OidcStrategy({
 
 
 passport.serializeUser(function (user, done) {
-  console.log(user.data.attributes);
+
   done(null, user);
   
 });
