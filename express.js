@@ -9,6 +9,7 @@ const flash = require('connect-flash');
 const fs = require('fs');
 let OidcStrategy = require('passport-openidconnect');
 const middleware = require('./routes/middleware');
+const cors = require('cors');
 const app = express();
 
 app.locals.clanInvitations = {};
@@ -183,10 +184,14 @@ app.get('/cg', markdown('templates/views/markdown/cg.md'));
   lobby_api (not in use in the new website)
  */
 // Protected
-app.get('/account/linkSteam', loggedIn, require(routes + 'account/get/linkSteam'));
-app.get('/account/connectSteam', loggedIn, require(routes + 'account/get/connectSteam'));
+
+app.get('/account/link', loggedIn, require(routes + 'account/get/linkSteam'));
+//app.get('/account/linkSteam', loggedIn, require(routes + 'account/get/linkSteam'));
+app.get('/account/connect', loggedIn, require(routes + 'account/get/connectSteam'));
+//app.get('/account/connectSteam', loggedIn, require(routes + 'account/get/connectSteam'));
 app.get('/account/resync', loggedIn, require(routes + 'account/get/resync'));
 // Not Protected
+app.get('/lobby_api', cors(), require('./routes/lobby_api'));
 app.get('/account/create', require(routes + 'account/get/createAccount'));
 app.get('/account_activated', require(routes + 'account/get/register'));
 app.get('/account/register', require(routes + 'account/get/register'));
@@ -238,8 +243,10 @@ passport.use('faforever', new OidcStrategy({
             return verified(null);
           }
           let user = JSON.parse(body);
+          console.log(accessToken)
           user.data.attributes.token = accessToken;
           user.data.id = user.data.attributes.userId;
+          console.log(user.data.attributes);
 
           return verified(null, user);  
         } catch (e) {
@@ -254,7 +261,9 @@ passport.use('faforever', new OidcStrategy({
 
 
 passport.serializeUser(function (user, done) {
+  console.log(user.data.attributes);
   done(null, user);
+  
 });
 
 passport.deserializeUser(function (user, done) {
@@ -270,7 +279,6 @@ app.get(`/${process.env.CALLBACK}`, passport.authenticate('faforever', {
   //res.redirect(fullUrl ? fullUrl : '/');
   //fullUrl = '/'; // Successful auth
 });
-
 
 // Run scripts initially on startup
 let requireRunArray = ['extractor', 'getLatestClientRelease'];
