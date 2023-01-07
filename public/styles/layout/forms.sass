@@ -13,13 +13,15 @@
 
 form
   align-self: center
-  width: 100%
+
   
   p
 
     font-size: calc(var(--paragraph-font-size)*1)
     padding: 0.1em
  
+    
+  
   .formStart
 
     display: inline-block
@@ -105,6 +107,11 @@ form
     align-self: center
     .g-recaptcha
       display: inline-block
+     
+
+
+
+
       
 // Markdown styling
 
@@ -172,3 +179,26 @@ form
       text-align: center
     th
       padding: 1.5em
+      
+      
+@media (max-width: 600px)
+  .accountForm
+    .column6
+      grid-column: span 12
+    .column12
+      .centerFormPlease
+        th, tr
+          padding: 0.1em
+    .formGroup, .form-group, h2, h3
+      padding: 0.1em
+    
+  form
+    .formStart
+      min-width: 100px
+      input
+        min-width: 100px
+    .form-control
+      width: initial
+  .containerCenter
+    padding: 0.25em
+    margin: 0

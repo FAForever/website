@@ -143,56 +143,68 @@ html(lang='en')
     .mobileTransition
       .mobileTransitionContainer
         img(src='/images/logos/faflogo.svg' alt='')
-      img(src='/images/fontAwesomeIcons/menu.svg').fas.fa-bars
+      img#openMenu(src='/images/fontAwesomeIcons/menu.svg')
 
 
-    .gridMainContainer.mobileNavBar
-      .fas.fa-times
-        img(src='/images/fontAwesomeIcons/remove.svg')
+    .gridMainContainer#mobileNavBar
+      img#closeMenu(src='/images/fontAwesomeIcons/remove.svg')
+      img#returnMenu(src='/images/fontAwesomeIcons/caret.svg')
       .gridItem.column12
         .splatForgedBorder
           .movingBackground1
           .movingBackground2
         img(src='/images/faflogo.svg' alt='')
 
-        ul
-          a(href='/') Home
-        ul
-          a(href='/news') News
-        .mobileNavUl Game
-          .fas.fa-caret-down.mobileCaret
-        ul.mobileNavLi
-          li
-            a(href='/tutorials-guides') Tutorials/Guides
-          li
-            a(href='/ai') AI/Co-op Play
-          li
-            a(href='/scfa-vs-faf') SC:FA vs FAF
-        .mobileNavUl Community
-          .fas.fa-caret-down.mobileCaret
-        ul.mobileNavLi
-          li
-            a(href='/faf-teams') Teams and Association
-          li
-            a(href='/content-creators') Content Creators
-          li
-            a(href='/donation') Donate
-          li
-            a(href='/contribution') Contribute
-          li
-            a(href='/clans') Clans
         
-        ul
+        a(href='/').mobileNavElement Home
+       
+          
+        a(href='/news').mobileNavElement News
+        
+          
+        .mobileNavElement.mobileNavMenu Game
+        .mobileNavMenuContent
           a(href='/leaderboards') Leaderboards
+          a(href='/tutorials-guides') Tutorials/Guides
+          a(href='/ai') AI/Co-op Play
+          a(href='/scfa-vs-faf') SC:FA vs FAF
+          a(href='/play') Play Now
+          
+          
+        .mobileNavElement.mobileNavMenu Community
+        .mobileNavMenuContent
+          a(href='/faf-teams') Teams and Association
+          a(href='/content-creators') Content Creators
+          a(href='/donation') Donate
+          a(href='/contribution') Contribute
+          a(href='/clans') Clans
+        if !username
+          a(href='/login').mobileNavElement Login
+          
+          
+        if username
+          .mobileNavElement.mobileNavMenu My Account
+          .mobileNavMenuContent
+            if hasClan
+              a(href="/clans/manage") My Clan
+            if !hasClan
+              a(href="/clans/create") Create Clan
+            a(href="/account/changeEmail") Change Email
+            a(href="/account/changePassword") Change Password
+            a(href="/account/changeUsername") Change Username
+            a(href="/account/report") Report Player
+            a(href="/logout") Log Out
+        
+        
         .mobileSocialMedia
           a(href='https://discord.gg/mXahVSKGVb')
-            .fab.fa-discord
+            img(src='/images/fontAwesomeIcons/discord.svg')
           a(href='https://www.twitch.tv/faflive')
-            .fab.fa-twitch
+            img(src='/images/fontAwesomeIcons/twitch.svg')
           a(href='https://www.youtube.com/c/ForgedAllianceForever')
-            .fab.fa-youtube
+            img(src='/images/fontAwesomeIcons/youtube.svg')
           a(href='https://github.com/FAForever')
-            .fab.fa-github
+            img(src='/images/fontAwesomeIcons/github.svg')
         .mobileOtherLinks
           a(href='https://forum.faforever.com/') Forums
           a(href='https://wiki.faforever.com/en/home') FAF Wiki
