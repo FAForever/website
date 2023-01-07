@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let bodyHTML = document.body;
 
   openMenu.addEventListener('click', () => {
-    console.log('clicked')
+    
     mobileNavBar.style.display = "grid";
     mobileTransitionBar[0].style.display = "none";
     mobileTransitionBar[0].style.opacity = "0";
