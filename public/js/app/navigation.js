@@ -33,54 +33,65 @@ document.addEventListener("DOMContentLoaded", () => {
     //when you mouseout/leave, menu dissapears
   }
   
-  let mobileNavLi = document.querySelectorAll(".mobileNavLi");
-  let mobileNavUl = document.querySelectorAll(".mobileNavUl");
-  let mobileCaret = document.querySelectorAll(".mobileCaret");
+  const mobileNavMenuContent = document.querySelectorAll(".mobileNavMenuContent");
+  const mobileNavElement = document.querySelectorAll(".mobileNavElement");
+  const mobileNavMenu = document.querySelectorAll(".mobileNavMenu");
+  const returnMenu = document.querySelector('#returnMenu');
+  //Random variable to determine whether same menu was clicked
   let mobileSameElementClicked = 7;
-  mobileNavUl[0].classList.add('MobileNavULActive');
   
-  // When you click a mobile nav
-  // Nav li === the options/dropdown menu
-  // Nav ul === The category
-  mobileNavUl.forEach((ul,index) => ul.addEventListener('click', () => {
-    mobileNavLi.forEach(li => li.style.display = "none");
-    mobileNavUl.forEach(li => li.style.backgroundColor = "#262626");
-    mobileCaret.forEach(li => li.classList.remove("mobileCaretActive"));
-    if (mobileSameElementClicked !== index) {
-      mobileNavUl[index].style.backgroundColor = "#3F3F3FFF";
-      mobileNavLi[index].style.display = "block";
-      mobileCaret[index].classList.add("mobileCaretActive");  
-    }
-    if (mobileSameElementClicked === index) {
-      mobileSameElementClicked = 7;
-    } else {
-      mobileSameElementClicked = index;  
-    }
+  //Code that works out how the mobileNav menus are open
+  mobileNavMenu.forEach((element,index) => element.addEventListener('click', () => {
+    mobileNavMenuContent.forEach(item => item.style.display = "none");
+    mobileNavMenu.forEach(item => item.style.backgroundColor = "#262626");
+    mobileNavElement.forEach(item => item.style.display = 'none');
+    returnMenu.style.display = 'none';
 
+    if (mobileSameElementClicked !== index) {
+      returnMenu.style.display = 'block';
+      mobileNavMenu[index].style.display = "block";
+      mobileNavMenu[index].style.backgroundColor = "#3F3F3FFF";
+      mobileNavMenuContent[index].style.display = "block";
+      mobileSameElementClicked = index;
+
+    } else {
+      mobileSameElementClicked = 7;
+      mobileNavElement.forEach(item => item.style.display = 'block');
+    }
   }));
+  // Clicking the return Menu Brings us back
+  returnMenu.addEventListener('click', () => {
+    mobileNavMenuContent.forEach(item => item.style.display = "none");
+    mobileNavMenu.forEach(item => item.style.backgroundColor = "#262626");
+    mobileNavElement.forEach(item => item.style.display = 'block');
+    returnMenu.style.display = 'none';
+  });
   
-  let mobileNavBar = document.querySelectorAll('.mobileNavBar');
+  
+  // Code that creates the transition from menu closing to menu opening
+  let mobileNavBar = document.querySelector('#mobileNavBar');
   let mobileTransitionBar = document.querySelectorAll('.mobileTransition');
-  let faBars = document.querySelectorAll('.fa-bars');
-  let closeMobileMenu = document.querySelectorAll('.fa-times');
+  let openMenu = document.querySelector('#openMenu');
+  let closeMenu = document.querySelector('#closeMenu');
   let bodyHTML = document.body;
 
-  faBars[0].addEventListener('click', () => {
-    mobileNavBar[0].style.display = "block";
+  openMenu.addEventListener('click', () => {
+    
+    mobileNavBar.style.display = "grid";
     mobileTransitionBar[0].style.display = "none";
     mobileTransitionBar[0].style.opacity = "0";
     bodyHTML.classList.add("stopScroll");
     setTimeout( () => {
-      mobileNavBar[0].style.opacity = "1";
+      mobileNavBar.style.opacity = "1";
     }, 1);
   });
   
-  closeMobileMenu[0].addEventListener('click', () => {
-    mobileNavBar[0].style.opacity = "0";
+  closeMenu.addEventListener('click', () => {
+    mobileNavBar.style.opacity = "0";
     mobileTransitionBar[0].style.display = "grid";
     bodyHTML.classList.remove("stopScroll");
     setTimeout( () => {
-      mobileNavBar[0].style.display = "none";
+      mobileNavBar.style.display = "none";
       mobileTransitionBar[0].style.opacity = "1";
     }, 500); 
   });
@@ -146,10 +157,9 @@ if (pages[0] === '/all') {
 } else {
   pages.forEach(route => {
 
-    if (window.location.href.includes(route)) {
+    if (window.location.href.includes(route) && window.innerWidth > 900) {
       document.getElementById('flashMessageContainer').style.display = 'block';
     }
   });  
 }
-
 

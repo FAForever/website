@@ -85,10 +85,11 @@ h3 , h4, h5, h6
 
 
 a
+  color: variables.$color-inactive
   &:link
     text-decoration: none
     color: variables.$color-inactive
-    transition: 0.5s
+    
 
   &:visited
     text-decoration: none
@@ -251,6 +252,7 @@ ul
 
       &:hover
         color: variables.$color-active
+        
         background-color: variables.$color-inactive-plus
   
 .topNavList
@@ -368,9 +370,9 @@ ul
   padding:  0.5em 0.5em 0.25em 0.5em
   top: 0
   z-index: 5
-  transition: 0.5s
+  transition: 0.4s
   background-color: variables.$background-secondary
-  border: 0.5em solid variables.$background-primary
+  border: 0.2em solid variables.$background-primary
   font-size: 28px
   img
     height: 30px
@@ -390,7 +392,7 @@ ul
   overflow: hidden
 
 //the actual mobile nav bar we see with links and other elements
-.mobileNavBar
+#mobileNavBar
   @include mixins.gridMainContainer
   display: none
   position: sticky
@@ -402,12 +404,13 @@ ul
   overflow-y: auto
   z-index: 100
   align-items: start
-  background-image: url("../../images/fafbgpatternMobile.jpg")
+  background-image: url("../../images/blackasf.jpg")
   font-family: variables.$family-subtitle
   font-size: 17px
   //font-size: calc(var(--title-font-size) * 1.1)
   color: variables.$color-active
   transition: 0.5s
+  
   .gridItem
     align-items: start
     a
@@ -419,20 +422,64 @@ ul
     margin-left: auto
     margin-right: auto
     display: inline
-  .mobileNavUl, ul
+  .mobileNavElement
     background-color: variables.$background-secondary
     border: 4px solid variables.$background-primary
     padding: 1em
     text-align: left
     list-style: none
-  .mobileNavLi
+
+  .mobileNavMenuContent
     display: none
-    background-color: variables.$background-primary
+    background-color: variables.$background-secondary
     padding: 0 1em
-    li
-      padding: 0.8em
-      a
-        color: variables.$color-inactive
+    a
+      text-align: left
+      display: block
+      color: variables.$color-inactive
+      padding: 0.7em
+  // the social media down below
+  .mobileSocialMedia
+    padding: 0.2em 0
+    a
+      padding: 0
+      img
+        display: inline
+        padding: 0 0.5em
+        width: 24px
+        color: variables.$color-active
+  // the X we see to close the navbar
+  #closeMenu
+    font-size: 30px
+    color: variables.$color-active
+    z-index: 100
+    position: absolute
+    opacity: 0.8
+    top: 0
+    right: 25px
+    width: 30px
+
+  #returnMenu
+    display: none
+    font-size: 30px
+    color: variables.$color-active
+    z-index: 100
+    position: absolute
+    opacity: 0.8
+    top: 0
+    left: 25px
+    width: 30px
+    transform: rotate(90deg)
+  //@media (max-width: 500px) 
+    .main-card 
+      max-width: 90vw
+      margin: 5rem auto
+      padding: 1em
+    
+    input, a, h2 
+      font-size: 40px
+
+
 
 .absoluteBottom
   position: absolute
@@ -442,28 +489,10 @@ ul
   transform: rotate(-0.25turn)
   transition: 0.5s
   
-// the X we see to close the navbar
-.fa-times
-  font-size: 30px
-  color: variables.$color-active
-  z-index: 100
-  position: absolute
-  opacity: 0.8
-  top: 0
-  right: 25px
-  img
-    width: 30px
+
 
   
-// the social media down below
-.mobileSocialMedia
-  padding: 1em 0
-  a
-    .fab
-      display: inline
-      font-size: 25px
-      padding: 18px
-      color: variables.$color-active
+
 
 
       
@@ -521,6 +550,7 @@ ul
       list-style: none
       padding: 0em
       font-size: 16px
+      transition: 0.4s
     #loginList
       position: relative
 
