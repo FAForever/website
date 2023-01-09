@@ -1,0 +1,78 @@
+
+@use '../abstracts/mixins'
+@use '../abstracts/variables'
+
+#accountEmailContainer
+  display: none
+
+.accountMain
+  @include mixins.gridMainContainer
+
+  
+  margin: 2vw 6vw
+  gap: 1em
+  .accountContainer
+    
+    border-radius: 20px
+    margin: auto 0
+    height: 100%
+    padding: 0.5em
+    background-color: variables.$background-zero
+    ul
+      text-align: center
+      font-size: 1.5rem
+      padding: 1em 0
+      li
+        border-radius: 10px
+        background-color: variables.$background-secondary
+        list-style: none
+        padding: 0.5em 0.25em
+        margin: 1.5em 0.5em 
+        font-size: 0.9rem
+        transition: 0.4s
+        cursor: pointer
+        &:hover
+          background-color: variables.$background-primary
+  .accountContent
+    display: none
+    padding: 2em
+    text-align: left
+    
+form
+  align-self: center
+  button
+    display: block
+    padding: 1em
+  label
+    display: block
+    padding: 0.25em 0
+  p
+    font-size: 1rem
+    padding: 0.1em
+  .formStart
+    padding: 1em 0
+    display: inline-block
+    p
+      font-size: 16px
+    input
+      min-width: 300px
+      border-radius: 0px
+      margin: 0.1em
+      border: 0.2em solid variables.$background-secondary
+    .formHelp
+      font-size: 0.9rem
+      text-align: left
+      ul
+        font-size: 0.9rem
+        padding: 0.5em 0
+        text-align: left
+        li
+          list-style: initial
+          margin: 0
+          background-color: initial
+          font-size: 0.9rem
+          padding: 0.25em
+          cursor: initial
+          &:hover
+            background-color: initial
+        

@@ -1,21 +1,22 @@
 mixin email
-  p Enter your Email 
+  
   .formStart
+    label Enter your email:
     input(type='email', name='email', required='required', placeholder='UEF@email.com', value=formData['email'])
     span(aria-hidden='true')
-    ul Please refrain from using Microsoft emails (@hotmail, @live, etc) if possible as we have technical difficulties delivering there.
+
 
           
           
           
           
 mixin username
-    p Enter your username
+    
     .formStart
-      //value=formData['username']
+      label Enter your username
       input(type='text', name='username', required='required', data-minlength='3', maxlength='16', pattern='[A-Za-z]{1}[A-Za-z0-9_-]{2,15}$', data-minlength-error='The username is too short - must be at least 3 characters', data-error='Please check username requirements', data-remote="/account/checkUsername", data-remote-error="Username taken",  placeholder='Eco_Player7-', value=formData['username'])
       span(aria-hidden='true')
-      .formHelp 
+      .formHelp
         ul Your username must:
           li Start with a letter
           
@@ -28,40 +29,36 @@ mixin username
 mixin usernameOrEmail
   .form-group
     label Username or email:
-      .input-group
-        input(type='text', name='usernameOrEmail', required='required', value=formData['usernameOrEmail']).form-control
-        span(aria-hidden='true')
+    input(type='text', name='usernameOrEmail', required='required', value=formData['usernameOrEmail']).form-control
+    span(aria-hidden='true')
 
 mixin confirm-password(passwordName,labelPassword)
   - passwordName = passwordName || 'password'
   - labelPassword = labelPassword || ''
-  .form-group.has-feedback
+  .formStart
     label #{labelPassword} Password:
-      .input-group
-        input(type='password', name=passwordName, required='required', id='inputPassword', data-minlength='6').form-control
-        span(aria-hidden='true').glyphicon.form-control-feedback
-        .help-block Minimum of 6 characters
-  .form-group.has-feedback
+    input(type='password', name=passwordName, required='required', id='inputPassword', data-minlength='6').form-control
+    span(aria-hidden='true')
+    .formHelp  Minimum of 6 characters
+  br
+  .formStart
     label Confirm #{labelPassword} Password:
-      .input-group
-        input(type='password', name=passwordName + '_confirm', required='required', data-match='#inputPassword', data-match-error="Passwords don't match. Please fix!", data-minlength='6').form-control
-        span(aria-hidden='true').glyphicon.form-control-feedback
-        .help-block.with-errors
+    input(type='password', name=passwordName + '_confirm', required='required', data-match='#inputPassword', data-match-error="Passwords don't match. Please fix!", data-minlength='6')
+    span(aria-hidden='true')
 
 mixin oldPassword(labelPassword)
   - labelPassword = labelPassword || ''
-  .form-group.has-feedback
+  .formStart
     label #{labelPassword} Password:
-      .input-group
-        input(type='password', name='old_password', required='required', id='oldPassword').form-control
-        span(aria-hidden='true').glyphicon.form-control-feedback
-
+    input(type='password', name='old_password', required='required', id='oldPassword')
+    span(aria-hidden='true')
+    
 mixin currentPassword(labelPassword)
   - labelPassword = labelPassword || ''
-  .form-group
+  .formStart
     label #{labelPassword} Password:
-      .input-group
-        input(type='password', name='password', required='required', id='password').form-control
+    input(type='password', name='password', required='required', id='password')
+    span(aria-hidden='true')
 
 mixin tosagree(checked)
   - checked = checked || false

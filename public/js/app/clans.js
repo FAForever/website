@@ -47,7 +47,7 @@ function clanUpdate() {
   for (clanIndex; clanIndex < next100Players; clanIndex++) {
     if (clanIndex < 0) {
       clanIndex = 0;
-      console.log('There are no more players left.');
+      
     }
     // Gets the player data and inserts it into the li element
 

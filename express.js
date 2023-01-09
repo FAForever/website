@@ -1,6 +1,7 @@
 const express = require('express');
 const showdown = require('showdown');
 const request = require('request');
+const axios = require('axios');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -47,7 +48,7 @@ app.use(cookieParser());
 app.use(session({
   secret: process.env.SESSION_SECRET_KEY,
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   cookie: {
     maxAge: process.env.TOKEN_LIFESPAN * 1000
   }
@@ -65,27 +66,23 @@ app.set('views', 'templates/views');
 app.set('view engine', 'pug');
 app.set('port', process.env.PORT);
 
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
   res.locals.message = req.flash();
   next();
 });
 
-let fullUrl = '/';
 
+let previousURL = '/';
 function loggedIn(req, res, next) {
-  
-  fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
-
   if (req.isAuthenticated()) {
     res.locals.username = req.user.data.attributes.userName;
     next();
   } else {
+    previousURL = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
+    console.log(previousURL);
     res.redirect('/login');
   }
 }
-
-
-
 
 
 //Start and listen on port
@@ -118,7 +115,7 @@ appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
 // These routes are protected by the 'loggedIn' function (which verifies if user is serialized/deserialized or logged in [same thing]).
 const accountRoutePath = './routes/views/account';
 const protectedAccountRoutes = [
-  'linkGog', 'report', 'changePassword', 'changeEmail', 'changeUsername',];
+  'linkGog', 'report', 'changePassword', 'changeEmail', 'changeUsername'];
 
 protectedAccountRoutes.forEach(page => app.post(`/account/${page}`, loggedIn, require(`${accountRoutePath}/post/${page}`)));
 
@@ -184,7 +181,7 @@ app.get('/cg', markdown('templates/views/markdown/cg.md'));
   lobby_api (not in use in the new website)
  */
 // Protected
-
+app.get('/account/settings', loggedIn, require(`${routes}account/get/settings`));
 app.get('/account/link', loggedIn, require(routes + 'account/get/linkSteam'));
 //app.get('/account/linkSteam', loggedIn, require(routes + 'account/get/linkSteam'));
 app.get('/account/connect', loggedIn, require(routes + 'account/get/connectSteam'));
@@ -234,28 +231,19 @@ passport.use('faforever', new OidcStrategy({
     callbackURL: `${process.env.HOST}/${process.env.CALLBACK}`,
     scope: ['openid', 'public_profile', 'write_account_data']
   }, function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
-    
-    request.get(
-      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
-      function (e, r, body) {
-        try {
-          if (r.statusCode !== 200) {
-            return verified(null);
-          }
-          let user = JSON.parse(body);
- 
-          user.data.attributes.token = accessToken;
-          user.data.id = user.data.attributes.userId;
-   
 
-          return verified(null, user);  
-        } catch (e) {
-          console.log(e);
-          return verified(null, null);
-        }
-        
-      }
-    );
+    axios.get(`${process.env.API_URL}/me`, 
+      {
+        headers: {'Authorization': `Bearer ${accessToken}`}
+      }).then( (res) => {
+          let user = res.data;
+          console.log(user);
+          user.token = accessToken;
+          return verified(null, user);
+      }).catch(e => {
+      console.log(e);
+      return verified(null, null);
+    });
   }
 ));
 
@@ -263,7 +251,7 @@ passport.use('faforever', new OidcStrategy({
 passport.serializeUser(function (user, done) {
 
   done(null, user);
-  
+
 });
 
 passport.deserializeUser(function (user, done) {
@@ -275,9 +263,11 @@ app.get(`/${process.env.CALLBACK}`, passport.authenticate('faforever', {
   failureRedirect: '/login', // Failed auth
   failureFlash: true
 }), function (req, res) {
-  res.redirect('/');
-  //res.redirect(fullUrl ? fullUrl : '/');
-  //fullUrl = '/'; // Successful auth
+  //Success Auth
+  console.log(previousURL);
+  res.redirect(previousURL ? previousURL : '/');
+  previousURL = '/';
+  console.log(previousURL);
 });
 
 // Run scripts initially on startup
@@ -295,7 +285,7 @@ for (let i = 0; i < requireRunArray.length; i++) {
     } catch (e) {
       console.error(`${requireRunArray[i]} caused the error`, e);
     }
-  }, process.env.EXTRACTOR_INTERVAL * 60 * 1000); 
+  }, process.env.EXTRACTOR_INTERVAL * 60 * 1000);
 }
 setInterval(() => {
   try {
@@ -304,7 +294,7 @@ setInterval(() => {
   } catch (e) {
     console.error(`getRecentUsers script caused the error`, e);
   }
-}, process.env.PLAYER_COUNT_INTERVAL * 1000); 
+}, process.env.PLAYER_COUNT_INTERVAL * 1000);
 
 
 //404 Error Handlers
