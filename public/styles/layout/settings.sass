@@ -2,17 +2,12 @@
 @use '../abstracts/mixins'
 @use '../abstracts/variables'
 
-#accountEmailContainer
-  display: none
 
 .accountMain
   @include mixins.gridMainContainer
-
-  
-  margin: 2vw 6vw
+  margin: 2vw 10vw
   gap: 1em
   .accountContainer
-    
     border-radius: 20px
     margin: auto 0
     height: 100%
@@ -42,7 +37,8 @@ form
   align-self: center
   button
     display: block
-    padding: 1em
+    padding: 0.75em
+    font-size: 1rem
   label
     display: block
     padding: 0.25em 0
@@ -76,3 +72,28 @@ form
           &:hover
             background-color: initial
         
+.clanManagementMain
+  @include mixins.gridMainContainer
+
+  margin: 2vw 8vw
+  background-color: variables.$background-zero
+  .clanManagementContainer
+    
+    padding: 1em
+    form
+      label
+        display: inline-block
+        padding: 1em
+      input
+        margin: 0.5em 0
+        display: inline-block
+      button
+        text-align: center
+        margin: 0 auto
+      textarea
+        width: 75%
+        height: 50%
+        color: variables.$color-active
+        background-color: variables.$background-secondary
+      
+

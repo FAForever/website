@@ -73,6 +73,7 @@ app.use(function (req, res, next) {
 
 
 let previousURL = '/';
+
 function loggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     res.locals.username = req.user.data.attributes.userName;
@@ -115,7 +116,7 @@ appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
 // These routes are protected by the 'loggedIn' function (which verifies if user is serialized/deserialized or logged in [same thing]).
 const accountRoutePath = './routes/views/account';
 const protectedAccountRoutes = [
-  'linkGog', 'report', 'changePassword', 'changeEmail', 'changeUsername'];
+  'linkGog', 'report'];
 
 protectedAccountRoutes.forEach(page => app.post(`/account/${page}`, loggedIn, require(`${accountRoutePath}/post/${page}`)));
 
@@ -130,10 +131,15 @@ passwordResetRoutes.forEach(page => app.get(`/account/${page}`, require(`${accou
 
 app.get('/account/password/confirmReset', require(`${accountRoutePath}/get/confirmPasswordReset`));
 app.post('/account/password/confirmReset', require(`${accountRoutePath}/post/confirmPasswordReset`));
-
 //legacy password reset path for backwards compatibility
 app.get('/account/password/reset', require(`${accountRoutePath}/get/requestPasswordReset`));
 app.post('/account/password/reset', require(`${accountRoutePath}/post/requestPasswordReset`));
+
+
+const accountSettings = [
+  'changePassword', 'changeEmail', 'changeUsername'];
+accountSettings.forEach((page => app.post(`/account/${page}`, loggedIn, require(`${accountRoutePath}/post/${page}`))));
+accountSettings.forEach((page => app.get(`/account/${page}`, loggedIn, require(`${accountRoutePath}/get/settings`))));
 
 
 // --- C L A N S ---
@@ -220,7 +226,6 @@ app.get('/logout', function (req, res, next) {
 app.get('/login', passport.authenticate('faforever'));
 
 
-
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
     tokenURL: process.env.OAUTH_URL + '/oauth2/token',
@@ -232,15 +237,16 @@ passport.use('faforever', new OidcStrategy({
     scope: ['openid', 'public_profile', 'write_account_data']
   }, function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
 
-    axios.get(`${process.env.API_URL}/me`, 
+    axios.get(`${process.env.API_URL}/me`,
       {
         headers: {'Authorization': `Bearer ${accessToken}`}
-      }).then( (res) => {
-          let user = res.data;
-          console.log(user);
-          user.token = accessToken;
-          return verified(null, user);
-      }).catch(e => {
+      }).then((res) => {
+      let user = res.data;
+      
+      user.token = accessToken;
+      console.log(user);
+      return verified(null, user);
+    }).catch(e => {
       console.log(e);
       return verified(null, null);
     });
@@ -264,10 +270,8 @@ app.get(`/${process.env.CALLBACK}`, passport.authenticate('faforever', {
   failureFlash: true
 }), function (req, res) {
   //Success Auth
-  console.log(previousURL);
   res.redirect(previousURL ? previousURL : '/');
   previousURL = '/';
-  console.log(previousURL);
 });
 
 // Run scripts initially on startup

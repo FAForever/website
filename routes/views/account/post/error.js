@@ -15,4 +15,4 @@ module.exports = {
     flash.messages = errorMessages;
     flash.type = 'Error!';
   }
-}
+};

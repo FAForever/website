@@ -6,21 +6,22 @@ block content
   
   .accountMain
     .column12
+      h1 Account Settings
       +flash-messages(flash)
-    .accountContainer.column2
+    .accountContainer.column3
       ul #{username}
         li.optionSettings Change Username
         li.optionSettings Change Password
         li.optionSettings Change Email
 
-    .accountContainer.accountContent.column10#usernameSettings
+    .accountContainer.accountContent.column9#usernameSettings
       h2 Change Username
       p Change your username by using the form below. Once it is changed, you can log in to your account with the new username. <br> You can only change the name every 30 days and your old username will be reserved for 6 months. <br> In case you choose an offending username you might get banned.
       br
       form(method='post', action="/account/changeUsername", data-toggle="validator")
         +username
         button(type='submit') Change
-    .accountContainer.accountContent.column10#passwordSettings
+    .accountContainer.accountContent.column9#passwordSettings
       h2 Change Password
       p Enter your username and current password to set a new password.
       form(method='post', action="/account/changePassword", data-toggle="validator")
@@ -30,7 +31,7 @@ block content
         br
         +confirm-password('','New')
         button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Change
-    .accountContainer.accountContent.column10#emailSettings
+    .accountContainer.accountContent.column9#emailSettings
       h2 Change Email
       p Enter your new email into the form below. <br> Refrain from using Microsoft emails such as @outlook or @hotmail since we have issues delivering mail there.
       br
