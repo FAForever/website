@@ -14,7 +14,8 @@ exports = module.exports = function(req, res) {
   try{
     clanMembershipId = req.user.data.attributes.clan.membershipId;
   }
-  catch{
+  catch(e){
+    console.log(e);
     // The user doesnt belong to a clan
     res.redirect('/clans');
     return;
