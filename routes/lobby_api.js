@@ -2,12 +2,12 @@ const request = require("request");
 const cache = {};
 let isFetching = false;
 
-const PLAYER_COUNT_UPDATE_INTERVAL = parseInt(process.env.PLAYER_COUNT_UPDATE_INTERVAL) * 1000;
+const PLAYER_COUNT_INTERVAL = process.env.PLAYER_COUNT_INTERVAL * 1000;
 
 exports = module.exports = function (req, res) {
   let resource = req.query.resource;
   if (cache[resource]) {
-    if (isFetching || Date.now() - cache[resource].pollTime < PLAYER_COUNT_UPDATE_INTERVAL) {
+    if (isFetching || Date.now() - cache[resource].pollTime < PLAYER_COUNT_INTERVAL) {
       return res.send(cache[resource].data);
     }
   }
