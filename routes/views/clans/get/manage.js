@@ -9,7 +9,7 @@ exports = module.exports = function (req, res) {
   res.locals.section = 'clan';
 
   let flash = {};
-
+  console.log('test')
   let clanMembershipId = null;
   try {
     clanMembershipId = req.user.data.attributes.clan.membershipId;
