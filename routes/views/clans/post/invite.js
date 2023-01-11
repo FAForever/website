@@ -48,8 +48,8 @@ exports = module.exports = async function (req, res) {
 
     // Let's check first that the player exists
     const fetchRoute = process.env.API_URL + '/data/player?filter=login=="' + invitedPlayer + '"&fields[player]=';
-
-
+    
+    
     let playerData = '';
     let playerId = '';
     const httpData = await promiseRequest(fetchRoute);
@@ -57,14 +57,13 @@ exports = module.exports = async function (req, res) {
     playerId = playerData[0].id;
     console.log('Start get Invite')
     
-    
     axios.get(`${process.env.API_URL}/clans/generateInvitationLink?clanId=${clanId}&playerId=${playerId}`, null,
       {
-        headers: {'Authorization': `Bearer 123`},
+        headers: {'Authorization': `Bearer ${req.user.token}`},
       }).then(response => {
         console.log('hello');
         console.log(response);
-        //const token = JSON.parse(res.body).jwtToken;
+        const token = JSON.parse(res.body).jwtToken;
         console.log(token)
         console.log('json Parse')
         const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5).toUpperCase();
@@ -75,7 +74,7 @@ exports = module.exports = async function (req, res) {
         return overallRes.redirect('manage?invitation_id=' + id);
 
     }).catch((e) => {
-
+      
       console.error(e.response);
       error.parseApiErrors(e.response, flash);
       let buff = Buffer.from(JSON.stringify(flash));

@@ -275,7 +275,7 @@ app.get(`/${process.env.CALLBACK}`, passport.authenticate('faforever', {
 });
 
 // Run scripts initially on startup
-let requireRunArray = ['extractor', 'getLatestClientRelease'];
+let requireRunArray = ['extractor'];
 for (let i = 0; i < requireRunArray.length; i++) {
   try {
     require(`./scripts/${requireRunArray[i]}`).run();
