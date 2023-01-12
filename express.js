@@ -80,7 +80,6 @@ function loggedIn(req, res, next) {
     next();
   } else {
     previousURL = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
-    console.log(previousURL);
     res.redirect('/login');
   }
 }
@@ -245,6 +244,7 @@ passport.use('faforever', new OidcStrategy({
       
       user.token = accessToken;
       console.log(user);
+      console.log(user.data.attributes.clan)
       return verified(null, user);
     }).catch(e => {
       console.log(e);

@@ -3,7 +3,7 @@ const request = require('request');
 exports = module.exports = function(req, res) {
 
   var locals = res.locals;
-
+  console.log('I was gotten!');
   // locals.section is used to set the currently selected
   // item in the header navigation.
   locals.section = 'clan';

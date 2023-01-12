@@ -114,7 +114,7 @@ exports = module.exports = async function (req, res) {
       url: queryUrl,
       body: JSON.stringify(newClanObject),
       headers: {
-        'Authorization': 'Bearer ' + req.user.data.attributes.token,
+        'Authorization': 'Bearer ' + req.user.token,
         'Content-Type': 'application/vnd.api+json',
         'Accept': 'application/vnd.api+json'
       }

@@ -34,6 +34,7 @@ exports = module.exports = function (req, res) {
       flash.messages = [{msg: 'Your new email was set successfully!'}];
       flash.type = 'Success!';
     }).catch(e => {
+      console.log(e)
       error.parseApiErrors(e.response, flash);
     }).finally( ()=>{
       res.render('account/settings', {flash: flash});

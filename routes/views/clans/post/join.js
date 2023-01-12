@@ -29,7 +29,7 @@ exports = module.exports = function(req, res) {
         {
             url: process.env.API_URL + '/clans/joinClan?token='+token,
             headers: {
-                'Authorization': 'Bearer ' + req.user.data.attributes.token
+                'Authorization': 'Bearer ' + req.user.token
             }
         },
         function (err, childRes, body) {
@@ -47,7 +47,7 @@ exports = module.exports = function(req, res) {
                 return request.get({
                     url: process.env.API_URL + '/me',
                     headers: {
-                        'Authorization': 'Bearer ' + req.user.data.attributes.token,
+                        'Authorization': 'Bearer ' + req.user.token,
                     }
                 },
                     
@@ -55,7 +55,7 @@ exports = module.exports = function(req, res) {
                     try{
                         let user = JSON.parse(body);
                         user.data.id = user.data.attributes.userId;
-                        user.data.attributes.token = req.user.data.attributes.token;
+                        user.token = req.user.token;
                         req.logIn(user, function(err){
                             if (err) console.error(err);
                             return overallRes.redirect(`${user.data.attributes.clan.tag}?member=true&flash=${flashData}`);

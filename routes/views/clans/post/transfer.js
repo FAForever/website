@@ -41,7 +41,7 @@ exports = module.exports = async function (req, res) {
 
     return overallRes.redirect('manage?flash=' + data);
   } else {
-      
+    const clanTAG = req.user.data.attributes.clan.tag
     const clanId = req.body.clan_id;    
     const userName = req.body.transfer_to;
 
@@ -106,7 +106,7 @@ exports = module.exports = async function (req, res) {
         url: queryUrl,
         body: JSON.stringify(newClanObject),
         headers: {
-            'Authorization': 'Bearer ' + req.user.data.attributes.token,
+            'Authorization': 'Bearer ' + req.user.token,
             'Content-Type': 'application/vnd.api+json'
         }
     }, function (err, res, body) {
@@ -135,7 +135,7 @@ exports = module.exports = async function (req, res) {
             request.get({
                 url: process.env.API_URL + '/me',
                 headers: {
-                    'Authorization': 'Bearer ' + req.user.data.attributes.token,
+                    'Authorization': 'Bearer ' + req.user.token,
                 }
             },
                 
@@ -143,10 +143,10 @@ exports = module.exports = async function (req, res) {
                 try{
                     let user = JSON.parse(body);
                     user.data.id = user.data.attributes.userId;
-                    user.data.attributes.token = req.user.data.attributes.token;
+                    user.token = req.user.token;
                     req.logIn(user, function(err){
                         if (err) console.error(err);
-                        return overallRes.redirect('see?id='+clanId);
+                        return overallRes.redirect(`${clanTAG}?member=true`);
                     });
                 }
                 catch{

@@ -74,11 +74,12 @@ form
         
 .clanManagementMain
   @include mixins.gridMainContainer
-
+  border-radius: 30px
+  font-size: 1rem
   margin: 2vw 8vw
   background-color: variables.$background-zero
   .clanManagementContainer
-    
+
     padding: 1em
     form
       label
@@ -89,11 +90,31 @@ form
         display: inline-block
       button
         text-align: center
-        margin: 0 auto
+        margin: 1em auto
       textarea
         width: 75%
         height: 50%
         color: variables.$color-active
         background-color: variables.$background-secondary
-      
+.clanManagementDanger
+  background-color: variables.$Cybran-dark
+ 
+  li
+    font-size: 1rem
+    font-weight: normal
+    list-style: none
+    padding: 0.25em
+
+.clanMembers
+  @include mixins.gridMainContainer
+  font-size: 0.9rem
+  p
+    text-align: right
+  form
+    text-align: left
+    display: inline-block
+    button
+      font-size: 0.9rem
+      display: inline-block
+    
 
