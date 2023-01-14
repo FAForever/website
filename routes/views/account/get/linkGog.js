@@ -32,7 +32,7 @@ exports = module.exports = function (req, res) {
 
   request.get({
     url: process.env.API_URL + '/users/buildGogProfileToken',
-    headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
+    headers: {'Authorization': 'Bearer ' + req.user.token},
     form: {}
   }, function (err, res, body) {
     locals.gogToken = 'unable to obtain token';

@@ -152,11 +152,13 @@ const clansRoutesPost = [
   'create', 'destroy', 'invite', 'kick', 'transfer', 'update', 'leave', 'join',];
 clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn, require(`${routes}clans/post/${page}`)));
 
-
+app.get('/clans/getClan', require(`${routes}clans/get/getClan`));
 //When searching for a specific clan
 app.get('/clans/*', (req, res) => {
-  res.render(`clans/seeClan`);
+  let id = req.path.slice(-3);
+  res.redirect(`/clans/getClan?tag=${id}`);
 });
+
 
 
 // Markdown Routes
@@ -243,8 +245,7 @@ passport.use('faforever', new OidcStrategy({
       let user = res.data;
       
       user.token = accessToken;
-      console.log(user);
-      console.log(user.data.attributes.clan)
+
       return verified(null, user);
     }).catch(e => {
       console.log(e);
@@ -275,7 +276,7 @@ app.get(`/${process.env.CALLBACK}`, passport.authenticate('faforever', {
 });
 
 // Run scripts initially on startup
-let requireRunArray = ['extractor'];
+let requireRunArray = ['extractor', 'getLatestClientRelease'];
 for (let i = 0; i < requireRunArray.length; i++) {
   try {
     require(`./scripts/${requireRunArray[i]}`).run();

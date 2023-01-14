@@ -16,7 +16,7 @@ exports = module.exports = function (req, res) {
 
   request.post({
       url: process.env.API_URL + '/users/resyncAccount',
-      headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
+      headers: {'Authorization': 'Bearer ' + req.user.token},
     }, function (err, res, body) {
 
       if (res.statusCode !== 200) {

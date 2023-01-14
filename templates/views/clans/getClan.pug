@@ -1,0 +1,25 @@
+extends ../../layouts/default
+block bannerMixin
+
+block content
+  // Most of this page is generated through its js file, this pug file is just used to put the ids in place
+  .renderClan
+    .renderClanContainer.column12
+      h2 #{clanTag} 
+      h1 #{clanName}
+      p #{clanDescription}
+      p Founded on #{clanCreation}
+      h1 Led by #{clanLeaderName}
+      
+      if leaveButton
+        form(method='post', action="/clans/leave", onsubmit="return confirm('You will not be able to return in that clan unless invited again. Press OK to confim.');")
+          .formStart
+            input(type='hidden', name='clan_id', value=clan_id)
+            input(type='hidden', name='membership_id', value=my_membership)
+            button(type='submit') Leave my clan
+      h2 Clan Members
+      
+      ul.renderClanSubGrid
+        each member in clanMembers
+          li #{member}
+    
