@@ -7,7 +7,6 @@ const error = require("../../account/post/error");
 function promiseRequest(url) {
   return new Promise(function (resolve, reject) {
     request(url, function (error, res, body) {
-      console.log('promiseRequets is being done!')
       if (!error && res.statusCode < 300) {
         resolve(body);
       } else {
@@ -70,23 +69,14 @@ exports = module.exports = async function (req, res) {
 
       return overallRes.redirect('manage?flash=' + data);
     }
-    console.log('request get')
     //Run post to endpoint
     axios.get(`${process.env.API_URL}/clans/generateInvitationLink?clanId=${clanId}&playerId=${playerId}`,
       {
         headers: {'Authorization': `Bearer ${req.user.token}`},
       }).then(response => {
       let data = response.data;
-      
-      console.log(data);
-
-      console.log('hellpo?')
       const token = data.jwtToken;
-
-
-
       let id = Math.random().toString(36).replace(/[^a-z]+/g, '').substring(0, 5).toUpperCase();
-      console.log(req.user.data)
       req.app.locals.clanInvitations[id] = {
         token: token,
         clan: clanId

@@ -43,9 +43,7 @@ block content
       .clanMembers
         each member in clan_members
           .column2
-            if member.id == me
-              abbr(title="Leader") 👑
-            p #{member.name}
+             p #{member.name}
           .column1
             if member.id != me
               form(method='post',action="/clans/kick")

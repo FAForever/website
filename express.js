@@ -243,7 +243,7 @@ passport.use('faforever', new OidcStrategy({
         headers: {'Authorization': `Bearer ${accessToken}`}
       }).then((res) => {
       let user = res.data;
-      
+
       user.token = accessToken;
 
       return verified(null, user);

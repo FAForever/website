@@ -2,6 +2,7 @@ doctype html
 html(lang='en')
   //- HTML HEADER
   head
+    //TODO: Change the meta tags and stuff so they work better on other social media like discord when we share a link for FAF
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
@@ -36,8 +37,6 @@ html(lang='en')
         p(style=`background-color:${flashColor}`) #{flashMessage}
     .mainTopNavContainer
       // this is the "thin" navbar that has forums, discord, youtube icons, etc. 
-      .topNavContainer
-        a.topnav_item(href='/account/requestPasswordReset') Reset Password
       .topNavContainer
         a.topnav_item(href='/donation') Support FAF
       .topNavContainer
@@ -187,9 +186,7 @@ html(lang='en')
               a(href="/clans/manage") My Clan
             if !hasClan
               a(href="/clans/create") Create Clan
-            a(href="/account/changeEmail") Change Email
-            a(href="/account/changePassword") Change Password
-            a(href="/account/changeUsername") Change Username
+            a(href="/account/settings") Account Settings
             a(href="/account/report") Report Player
             a(href="/logout") Log Out
         
