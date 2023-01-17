@@ -1,6 +1,6 @@
 let flash = {};
 const axios = require('axios');
-const error = require('./error')
+const error = require('./error');
 const {check, validationResult} = require('express-validator');
 
 exports = module.exports = function (req, res) {
@@ -34,9 +34,10 @@ exports = module.exports = function (req, res) {
       flash.messages = [{msg: 'Your new email was set successfully!'}];
       flash.type = 'Success!';
     }).catch(e => {
-      console.log(e)
+      console.log(e);
       error.parseApiErrors(e.response, flash);
     }).finally( ()=>{
+      res.locals.page = 'changeEmail';
       res.render('account/settings', {flash: flash});
     });
   }

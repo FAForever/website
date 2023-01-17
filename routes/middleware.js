@@ -77,7 +77,8 @@ exports.flashMessage =  function(req, res, next) {
     }
     next();    
   } catch (e) {
-    console.log(e);
+    //This is commented out since if flash isn't available, it will console log this everytime any user opens any page.
+    //console.log(e);
     next();
   }
 };

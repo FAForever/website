@@ -1,7 +1,7 @@
 let flash = {};
 const error = require('./error');
 const {check, validationResult} = require('express-validator');
-const axios = require("axios");
+const axios = require('axios');
 
 exports = module.exports = function (req, res) {
   res.locals.formData = req.body || {};
@@ -38,6 +38,7 @@ exports = module.exports = function (req, res) {
     }).catch((e) => {
       error.parseApiErrors(e.response, flash);
     }).finally(() => {
+      res.locals.page = 'changeUsername';
       res.render('account/settings', {flash: flash});
     });
   }

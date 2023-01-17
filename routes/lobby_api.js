@@ -1,3 +1,4 @@
+// This file acts like a "mirror" between the lobby/client and some other API. Apparently people can access information from it from other places, don't delete this file
 const request = require("request");
 const cache = {};
 let isFetching = false;

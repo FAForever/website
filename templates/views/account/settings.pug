@@ -10,39 +10,38 @@ block content
       +flash-messages(flash)
     .accountContainer.column3
       ul #{username}
-        li.optionSettings Change Username
-        li.optionSettings Change Password
-        li.optionSettings Change Email
-
-    .accountContainer.accountContent.column9#usernameSettings
-      h2 Change Username
-      p Change your username by using the form below. Once it is changed, you can log in to your account with the new username. <br> You can only change the name every 30 days and your old username will be reserved for 6 months. <br> In case you choose an offending username you might get banned.
-      br
-      form(method='post', action="/account/changeUsername", data-toggle="validator")
-        +username
-        button(type='submit') Change
-        
-    .accountContainer.accountContent.column9#passwordSettings
-      h2 Change Password
-      p Enter your username and current password to set a new password.
-      form(method='post', action="/account/changePassword", data-toggle="validator")
-        +username
+        a(href='/account/changeUsername')
+          li Change Username
+        a(href='/account/changePassword')
+          li Change Password
+        a(href='/account/changeEmail')
+          li Change Email
+    if page === 'changeUsername'
+      .accountContainer.accountContent.column9
+        h2 Change Username
+        p Change your username by using the form below. Once it is changed, you can log in to your account with the new username. <br> You can only change the name every 30 days and your old username will be reserved for 6 months. <br> In case you choose an offending username you might get banned.
         br
-        +oldPassword('Old')
+        form(method='post', action="/account/changeUsername", data-toggle="validator")
+          +username
+          button(type='submit') Change
+    if page === 'changePassword'
+      .accountContainer.accountContent.column9
+        h2 Change Password
+        p Enter your current and new password to set a new password.
+        form(method='post', action="/account/changePassword", data-toggle="validator")
+          +oldPassword('Old')
+          br
+          +confirm-password('password','New')
+          button(type='submit') Change Password
+    if page === 'changeEmail'
+      .accountContainer.accountContent.column9
+        h2 Change Email
+        p Enter your new email into the form below. <br> Refrain from using Microsoft emails such as @outlook or @hotmail since we have issues delivering mail there.
         br
-        +confirm-password('','New')
-        button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Change
-    .accountContainer.accountContent.column9#emailSettings
-      h2 Change Email
-      p Enter your new email into the form below. <br> Refrain from using Microsoft emails such as @outlook or @hotmail since we have issues delivering mail there.
-      br
-      form(method='post', action="/account/changeEmail", data-toggle="validator")
-        +email
-        br
-        +currentPassword('Current')
-        button(type='submit') Change Email
+        form(method='post', action="/account/changeEmail", data-toggle="validator")
+          +email
+          br
+          +currentPassword('Current')
+          button(type='submit') Change Email
 
-
-block js
-  script(src="../../js/app/settings.js")
  

@@ -7,7 +7,7 @@ exports = module.exports = function(req, res) {
 	locals.section = 'account';
 
 	locals.formData = req.body || {};
-
+  res.locals.page = 'changeUsername';
 	// Render the view
 	res.render('account/settings');
 

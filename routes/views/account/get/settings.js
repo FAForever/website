@@ -1,13 +1,20 @@
 exports = module.exports = function(req, res) {
 
-	let locals = res.locals;
 
-	// locals.section is used to set the currently selected
-	// item in the header navigation.
-	locals.section = 'account';
+	res.locals.formData = req.body || {};
 
-	locals.formData = req.body || {};
-
+  switch (req.path.slice(9)) {
+    case 'changePassword':
+      res.locals.page = 'changePassword';
+      break;
+    case 'changeEmail':
+      res.locals.page = 'changeEmail';
+      break;
+    case 'settings':
+    case 'changeUsername':
+      res.locals.page = 'changeUsername';
+      break;
+  }
 	// Render the view
 	res.render('account/settings');
 
