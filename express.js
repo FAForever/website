@@ -57,7 +57,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(require('./scripts/getNews'));
-app.use(require('./routes/accountRoutes'));
 app.use(flash());
 app.use(middleware.username);
 app.use(middleware.flashMessage);
@@ -141,6 +140,9 @@ const accountSettings = [
 //accountSettings.forEach((page => app.post(`/account/${page}`, loggedIn, require(`${accountRoutePath}/post/${page}`))));
 accountSettings.forEach((page => app.get(`/account/${page}`, loggedIn, require(`${accountRoutePath}/get/settings`))));
 
+const validation = require('./scripts/accountRoutes');
+
+app.post(`/account/changePassword`, loggedIn, validation.checkNewPassword,  require(`${accountRoutePath}/post/changePassword`));
 
 
 
