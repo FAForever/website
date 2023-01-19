@@ -137,12 +137,9 @@ app.post('/account/password/reset', require(`${accountRoutePath}/post/requestPas
 
 const accountSettings = [
   'changePassword', 'changeEmail', 'changeUsername'];
-//accountSettings.forEach((page => app.post(`/account/${page}`, loggedIn, require(`${accountRoutePath}/post/${page}`))));
+accountSettings.forEach((page => app.post(`/account/${page}`, loggedIn, require(`${accountRoutePath}/post/${page}`))));
 accountSettings.forEach((page => app.get(`/account/${page}`, loggedIn, require(`${accountRoutePath}/get/settings`))));
 
-const validation = require('./scripts/accountRoutes');
-
-app.post(`/account/changePassword`, loggedIn, validation.checkNewPassword,  require(`${accountRoutePath}/post/changePassword`));
 
 
 
