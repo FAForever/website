@@ -27,7 +27,10 @@ block content
           input(type='checkbox')
           label Switch your profile's about you to the code below (so we can make sure you own SC:FA).
           br
-          h2 #{gogToken}
+   
+          h2 Your GOG token: #{gogToken}
+          a(href='linkGog')
+            button Refresh GOG Token
           br
           img(src='/images/steamGOG/gog4.jpg')
           .gogSmallerImage2
@@ -43,24 +46,24 @@ block content
           br
           br
           input(type='checkbox')
-          label Write your GOG username below and then click the link accounts button.
-          br
-          +flash-messages(flash)
+          label#linkAccountGog Write your GOG username below and then click the link accounts button.
+          
+          if flash
+            br
+            +flash-messages(flash)
 
           br
           .displayBlock
             form(method='post', action="/account/linkGog", data-toggle="validator")
               +gogUsername
-              .form-actions
-                button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Link accounts
+
+              button(type='submit').btn.btn-default.btn-lg.btn-outro.btn-danger Link accounts
           br
           input(type='checkbox')
-          label Make sure the flash message below states you are connected.
-
+          label Make sure the flash message above states you are connected.
           br
-          p Flash Message:
-          +flash-messages(flash)
           br
+        br
         h1 And you are done with GOG linking forever!
           p Now if you want, you can set your privacy settings back to private and your profile's about you to normal.
 

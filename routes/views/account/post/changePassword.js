@@ -3,8 +3,7 @@ const error = require('./error');
 const axios = require('axios');
 const {body, validationResult} = require("express-validator");
 
-
-const checkNewPassword = [
+exports = module.exports = [
   body('old_password', 'Old Password is required').notEmpty(),
   body('password', 'New password must be six or more characters').isLength({min: 6}),
   body('password', '').custom((value, {req}) => {
@@ -15,6 +14,7 @@ const checkNewPassword = [
       return value;
     }
   }),
+  //Check for errors
   (req, res) => {
     res.locals.page = 'changePassword';
     if (!validationResult(req).isEmpty()) {
@@ -44,10 +44,7 @@ const checkNewPassword = [
       }).finally(() => {
         res.render('account/settings', {flash: flash});
       });
-
     }
-  },
-
+  }
 ];
 
-exports = module.exports = checkNewPassword;
