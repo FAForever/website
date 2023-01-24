@@ -6,18 +6,13 @@ const {body, validationResult} = require('express-validator');
 exports = module.exports = [
   // validate the input
   body('email', 'Email does not appear to be valid').isEmail(),
-  // check the validation object for errors
+
   (req, res) => {
     res.locals.page = 'changeEmail';
-    if (!validationResult(req).isEmpty()) {
-      let errorArray = [];
-      //We are putting a space in our forEach so that the errors comma don't stick to the next error.
-      validationResult(req).errors.forEach(error => errorArray.push(` ${error.msg}`));
-      flash.class = 'alert-danger';
-      flash.messages = errorArray;
-      flash.type = 'Error!';
-      res.render('account/settings', {flash: flash});
-    } else {
+    // check the validation object for errors
+    if (!validationResult(req).isEmpty()) error.errorChecking(req, res, 'account/settings');
+    // No errors in form, continue ahead
+    else {
       // pull the form variables off the request body
       const email = req.body.email;
       const password = req.body.password;
@@ -25,7 +20,7 @@ exports = module.exports = [
         {
           headers: {'Authorization': `Bearer ${req.user.token}`},
           params: {newEmail: email, currentPassword: password}
-        }).then((res) => {
+        }).then( () => {
         // Successfully changed email
         //console.log(res)
         //console.log(res.status)

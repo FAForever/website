@@ -4,7 +4,6 @@ const axios = require('axios');
 const {body, validationResult} = require("express-validator");
 
 exports = module.exports = [
-  body('old_password', 'Old Password is required').notEmpty(),
   body('password', 'New password must be six or more characters').isLength({min: 6}),
   body('password', '').custom((value, {req}) => {
     if (value !== req.body.password_confirm) {
@@ -14,19 +13,14 @@ exports = module.exports = [
       return value;
     }
   }),
-  //Check for errors
+  
   (req, res) => {
     res.locals.page = 'changePassword';
-    if (!validationResult(req).isEmpty()) {
-      let errorArray = [];
-      //We are putting a space in our forEach so that the errors comma don't stick to the next error.
-      validationResult(req).errors.forEach(error => errorArray.push(` ${error.msg}`));
-      flash.class = 'alert-danger';
-      flash.messages = errorArray;
-      flash.type = 'Error!';
-      res.render('account/settings', {flash: flash});
-    } else {
-      
+    // check the validation object for errors
+    if (!validationResult(req).isEmpty()) error.errorChecking(req, res, 'account/settings');
+    // No errors in form, continue ahead
+    else {
+
       const newPassword = req.body.password;
       const oldPassword = req.body.old_password;
 

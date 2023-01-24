@@ -11,15 +11,11 @@ exports = module.exports = [
   body('gogUsername', 'Username must be at most 100 characters').isLength({max: 100}),
   //Check for errors
   (req, res) => {
-    if (!validationResult(req).isEmpty()) {
-      let errorArray = [];
-      //We are putting a space in our forEach so that the errors comma don't stick to the next error.
-      validationResult(req).errors.forEach(error => errorArray.push(` ${error.msg}`));
-      flash.class = 'alert-danger';
-      flash.messages = errorArray;
-      flash.type = 'Error!';
-      res.render('account/linkGog', {flash: flash});
-    } else {
+
+    // check the validation object for errors
+    if (!validationResult(req).isEmpty()) error.errorChecking(req, res, 'account/linkGog');
+    // No errors in form, continue ahead  
+    else {
 
       res.locals.gogToken = 'Refresh to re-obtain';
       let gogUsername = req.body.gogUsername;
@@ -32,9 +28,9 @@ exports = module.exports = [
         flash.class = 'alert-success';
         flash.messages = [{msg: 'Your account was linked successfully.'}];
         flash.type = 'Success!';
-        
+
       }).catch(e => {
-          error.parseApiErrors(e.response, flash);
+        error.parseApiErrors(e.response, flash);
 
       }).finally(() => {
 

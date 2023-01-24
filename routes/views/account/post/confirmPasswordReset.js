@@ -1,56 +1,44 @@
 let flash = {};
-let request = require('request');
+let axios = require('axios');
 let error = require('./error');
-const {check, validationResult} = require('express-validator');
+const {validationResult, body} = require('express-validator');
 
-exports = module.exports = function (req, res) {
+exports = module.exports = [
 
-  let locals = res.locals;
-  locals.username = req.query.username
-  locals.token = req.query.token
+// validate the input
+  body('password', 'Password must be six or more characters').isLength({min: 6}),
+  body('password', '').custom((value, {req}) => {
+    if (value !== req.body.password_confirm) {
+      // throw error if passwords do not match
+      throw new Error(`New passwords don't match`);
+    } else {
+      return value;
+    }
+  }),
+  (req, res) => {
+    // check the validation object for errors
+    if (!validationResult(req).isEmpty()) error.errorChecking(req, res, 'account/confirmPasswordReset');
+    // No errors in form, continue ahead
+    else {
+      res.locals.username = req.query.username;
+      res.locals.token = req.query.token;
+      let token = req.query.token;
+      let newPassword = req.body.password;
 
-  locals.formData = req.body || {};
-
-  // validate the input
-  check('password', 'Password is required').notEmpty();
-  check('password', 'Password must be six or more characters').isLength({min: 6});
-  check('password', 'Passwords don\'t match').equals(req.body.password_confirm);
-
-  // check the validation object for errors
-  let errors = validationResult(req);
-
-  //Must have client side errors to fix
-  if (!errors.isEmpty()) {
-    flash.class = 'alert-danger';
-    flash.messages = errors;
-    flash.type = 'Error!';
-
-    res.render('account/confirmPasswordReset', {flash: flash});
-  } else {
-    let token = req.query.token;
-    let newPassword = req.body.password;
-
-    let overallRes = res;
-
-    //Run post to reset endpoint
-    request.post({
-      url: process.env.API_URL + '/users/performPasswordReset',
-      form: {newPassword: newPassword, token: token}
-    }, function (err, res, body) {
-
-      if (res.statusCode !== 200) {
-        error.parseApiErrors(body, flash);        
-        return overallRes.render('account/confirmPasswordReset', {flash: flash});
-      }
-
-    // Successfully reset password
-    flash.class = 'alert-success';
-    flash.messages = [{msg: 'Your password was changed successfully.'}];
-    flash.type = 'Success!';
-
-    overallRes.render('account/confirmPasswordReset', {flash: flash});
+      //Run post to reset endpoint
+      axios.post(`${process.env.API_URL}/users/performPasswordReset`, null, 
+        {
+          params: {newPassword: newPassword, token: token}
+        }).then( () => {
+          // Successfully reset password
+          flash.class = 'alert-success';
+          flash.messages = [{msg: 'Your password was changed successfully.'}];
+          flash.type = 'Success!';
+      }).catch((e) => {
+        error.parseApiErrors(e.response, flash);
+      }).finally(() => {
+        res.render('account/confirmPasswordReset', {flash: flash});
+      });
+    }
   }
-);
-}
-}
-;
+];
