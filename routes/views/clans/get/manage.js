@@ -18,20 +18,6 @@ exports = module.exports = function (req, res) {
     return;
   }
 
-  // In case the user has just generated an invite link
-  if (req.query.invitation_id) {
-    flash = {};
-    flash.class = 'alert-invite';
-
-    flash.messages = [
-      {
-        msg:
-          `<p><a id='inviteLink' onclick='return false' href='${process.env.HOST}/clans/accept_invite?i=${req.query.invitation_id}'> Right click on me and copy the invitation link</a></p>Note: It only works for the user you typed.`
-      }
-    ];
-    flash.type = '';
-
-  }
 
   axios.get(`${process.env.API_URL}/data/clanMembership/${clanMembershipId}/clan?include=memberships.player&fields[clan]=createTime,description,name,tag,updateTime,websiteUrl,founder,leader&fields[player]=login,updateTime&fields[clanMembership]=createTime,player`, null,
     {
@@ -40,9 +26,10 @@ exports = module.exports = function (req, res) {
     }).then(response => {
 
     let clan = response.data
+
+    // Not the leader! Shouldn't be able to manage stuff
     if (clan.data.relationships.leader.data.id != req.user.data.attributes.userId) {
-      // Not the leader! Shouldn't be able to manage stuff
-      res.redirect(`/clans/${req.user.data.attributes.clan.tag}?member=true`);
+      res.redirect(`/clans/getClan?tag=${req.user.data.attributes.clan.tag}`);
       return;
     }
 
@@ -52,7 +39,6 @@ exports = module.exports = function (req, res) {
     res.locals.clan_create_time = clan.data.attributes.createTime;
     res.locals.me = req.user.data.attributes.userId;
     res.locals.clan_id = clan.data.id;
-    res.locals.clan_link = process.env.HOST + "/clans/see?id=" + clan.data.id;
 
     let members = {};
 
@@ -86,24 +72,27 @@ exports = module.exports = function (req, res) {
       flash.class = 'alert-success';
       flash.messages = [{msg: 'You have successfully created your clan'}];
       flash.type = 'Success!';
-    } else if (req.query.flash) {
-      let buff = Buffer.from(req.query.flash, 'base64');
-      let text = buff.toString('ascii');
-      try {
-        flash = JSON.parse(text);
-      } catch (e) {
-        console.error("Parsing error while trying to decode a flash error: " + text);
-        console.log(e)
-        flash = [{msg: "Unknown error"}];
-      }
-    }
+    } 
 
   }).catch((e) => {
-    console.log(e)
-    console.error(e.response);
+    console.log(e);
     error.parseApiErrors(e.response, flash);
+    
+    
   }).finally(() => {
-    // Render the view
+    // In case the user has just generated an invite link
+
+    if (req.query.invitation_id && req.query.invitation_id !== 'error') {
+
+      flash.class = 'alert-invite';
+      flash.hasHTML = `<a id="inviteLink" onclick="return false" href="${process.env.HOST}/clans/accept_invite?invitationId=${req.query.invitation_id}">${process.env.HOST}/clans/accept_invite?i=${req.query.invitation_id}</a>`;
+      flash.type = 'invite';
+    } else if (req.query.invitation_id === 'error') {
+      flash.class = 'alert-danger';
+      flash.messages = `User isn't a valid username (check your spelling). If error continues contact support`;
+      flash.type = 'Error!';
+    }
     res.render('clans/manage', {flash: flash});
   });
+  
 };

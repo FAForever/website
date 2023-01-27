@@ -25,6 +25,7 @@ block content
         br
         form(method='post', action="/account/changeUsername", data-toggle="validator")
           +username
+          br
           button(type='submit') Change
     if page === 'changePassword'
       .accountContainer.accountContent.column9
@@ -34,6 +35,7 @@ block content
           +oldPassword('Old')
           br
           +confirm-password('password','New')
+          br
           button(type='submit') Change Password
     if page === 'changeEmail'
       .accountContainer.accountContent.column9
@@ -44,6 +46,7 @@ block content
           +email
           br
           +currentPassword('Current')
+          br
           button(type='submit') Change Email
 
  

@@ -2,18 +2,6 @@ let flash = {};
 let request = require('request');
 const {check, validationResult} = require('express-validator');
 
-function promiseRequest(url) {
-  return new Promise(function (resolve, reject) {
-    request(url, function (error, res, body) {
-      if (!error && res.statusCode < 300) {
-        resolve(body);
-      } else {
-        reject(error);
-      }
-    });
-  });
-}
-
 exports = module.exports = async function (req, res) {
 
   let locals = res.locals;

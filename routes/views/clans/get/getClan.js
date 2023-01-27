@@ -35,11 +35,13 @@ exports = module.exports = function(req, res) {
     });
     
   }).catch((e)=>{
-    console.log('e')
+    console.log(e)
     res.redirect('../../404');
     
   }).finally( ()=>{
-    if (req.user) {
+    // first lets check user is logged in and has a clan
+    if (req.user && req.user.data.attributes.clan !== undefined) {
+      // lets check if the user belongs to the clan
       if (req.user.data.attributes.clan.tag.toLowerCase() === req.query.tag.toLowerCase() ) {
         res.locals.leaveButton = true;
       } 

@@ -6,8 +6,14 @@ block content
   
   .clanManagementMain
     .clanManagementContainer.column12
-      +flash-messages(flash)
+      // Display non-html flash message
+      if flash.messages
+        +flash-messages(flash)
       
+
+        
+      
+
     .clanManagementContainer.column12
       h1 Clan Management
       h2 Invite players
@@ -16,7 +22,18 @@ block content
         p Be sure to type the player name correctly!
         input(type='hidden', name='clan_id', value=clan_id)
         input(type='text', name='invited_player', placeholder='Player name', style="margin-left:5px;margin-right:5px")
-        button(type='submit' onclick="copyTextButton()") Invite
+        br
+        button(type='submit' onclick="copyTextButton()") Invite Player
+      // We use HTML for the invite button
+      if flash.hasHTML
+        br
+        h2 Invitation link
+        .displayNone 
+          #{flash.hasHTML}
+        
+        
+        button(onclick="copyInviteLink()") Copy invite link to Clipboard
+        p Note: It only works for the user you typed.
 
 
     .clanManagementContainer.column12
@@ -37,6 +54,8 @@ block content
         
         textarea(rows='12', name='clan_description', required='required', placeholder='The description players will see when they look your clan') #{clan_description}
         span(aria-hidden='true')
+        br
+        
         button(type='submit') Update Clan Settings
 
     .clanManagementContainer.column12
@@ -77,6 +96,7 @@ block content
   
         
         input(type='text', id="ownership_transfer_textbox", name='transfer_to', placeholder='New clan owner', style="margin-left:5px;margin-right:5px")
+        br
         button(type='submit') Transfer clan ownership
   
       form(method='post',action="/clans/destroy", onsubmit="return confirm('THIS OPERATION IS DEFINITIVE. Press OK to confirm you want to delete your clan');")
@@ -87,10 +107,12 @@ block content
         p All memberships will be terminated and the clan will be removed. The name and tag of the clan will become free.
         p This operation 
           b CANNOT BE CANCELED
-  
+        br
         button(type='submit') Delete my clan
         br
         br
 
-                      
+        script.
+          function copyInviteLink() {
+            navigator.clipboard.writeText(document.getElementById("inviteLink").getAttribute("href"))}
     

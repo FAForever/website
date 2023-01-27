@@ -1,94 +1,62 @@
 let flash = {};
-const request = require('request');
 const axios = require('axios');
-const {check, validationResult} = require('express-validator');
+const {body, validationResult} = require('express-validator');
 const error = require("../../account/post/error");
 
-function promiseRequest(url) {
-  return new Promise(function (resolve, reject) {
-    request(url, function (error, res, body) {
-      if (!error && res.statusCode < 300) {
-        resolve(body);
-      } else {
-        console.error("Call to " + url + " failed: " + error);
-        reject(error);
-      }
-    });
-  });
-}
 
+exports = module.exports = [
 
-exports = module.exports = async function (req, res) {
-
-  let locals = res.locals;
-
-  locals.formData = req.body || {};
-
-  let overallRes = res;
-
-  let id = '';
   // validate the input
-  check('invited_player', 'Please indicate the player name').notEmpty();
+  body('invited_player', 'Please indicate the player name').notEmpty(),
 
-  // check the validation object for errors
-  let errors = validationResult(req);
 
-  //Must have client side errors to fix
-  if (!errors.isEmpty()) {
-    flash.class = 'alert-danger';
-    flash.messages = errors;
-    flash.type = 'Error!';
+  async (req, res) => {
+    // check the validation object for errors
+    if (!validationResult(req).isEmpty()) error.errorChecking(req, res, 'account/settings');
+    // No errors in form, continue ahead
+    else {
+      // Let's get the local variables
+      const clanId = req.body.clan_id;
+      const userName = req.body.invited_player;
+      let playerId = null;
+      // Let's check first that the player exists
+      await axios.get(`${process.env.API_URL}/data/player?filter=login==${userName}&fields[player]=`)
+        .then(response => {
 
-    let buff = Buffer.from(JSON.stringify(flash));
-    let data = buff.toString('base64');
+          // Player does exist, lets create the invite link
+          if (response.data.data[0] ? response.data.data[0] : false) {
+            playerId = response.data.data[0].id;
 
-    return overallRes.redirect('manage?flash=' + data);
-  } else {
+         
+          } else { // Player doesn't exist
 
-    const clanId = req.body.clan_id;
-    const userName = req.body.invited_player;
+            res.redirect(`manage?invitation_id=error`);
+          }
+        }).catch(e => {
+          console.log(e)
+          res.redirect(`manage?invitation_id=error`);
+        });
 
-    // Let's check first that the player exists
-    const fetchRoute = process.env.API_URL + '/data/player?filter=login=="' + userName + '"&fields[player]=';
+      if (playerId !== null) {
+        await axios.get(`${process.env.API_URL}/clans/generateInvitationLink?clanId=${clanId}&playerId=${playerId}`,
+          {
+            headers: {'Authorization': `Bearer ${req.user.token}`},
+          }).then(response => {
+          let data = response.data;
+          const token = data.jwtToken;
+          let id = Math.random().toString(36).replace(/[^a-z]+/g, '').substring(0, 5).toUpperCase();
+          req.app.locals.clanInvitations[id] = {
+            token: token,
+            clan: clanId
+          };
+          res.redirect('manage?invitation_id=' + id);
+        }).catch(e => {
+          console.log(e.response);
+          res.redirect(`manage?invitation_id=error`);
+        });
+      }
 
-    let exists = true;
-    let playerData = null;
-    let playerId = null;
-    try {
-      const httpData = await promiseRequest(fetchRoute);
-      playerData = JSON.parse(httpData).data;
-      exists = playerData.length > 0;
-      playerId = playerData[0].id;
-    } catch (e) {
-      flash.class = 'alert-danger';
-      flash.messages = [{msg: 'The player ' + userName + " doesn't seem to exist" + e}];
-      flash.type = 'Error!';
 
-      let buff = Buffer.from(JSON.stringify(flash));
-      let data = buff.toString('base64');
-
-      return overallRes.redirect('manage?flash=' + data);
     }
-    //Run post to endpoint
-    axios.get(`${process.env.API_URL}/clans/generateInvitationLink?clanId=${clanId}&playerId=${playerId}`,
-      {
-        headers: {'Authorization': `Bearer ${req.user.token}`},
-      }).then(response => {
-      let data = response.data;
-      const token = data.jwtToken;
-      let id = Math.random().toString(36).replace(/[^a-z]+/g, '').substring(0, 5).toUpperCase();
-      req.app.locals.clanInvitations[id] = {
-        token: token,
-        clan: clanId
-      };
-      
-      res.redirect('manage?invitation_id=' + id);
-
-    }).catch(e => {
-      console.log(e)
-      console.log(e.response)
-      error.parseApiErrors(e.response, flash);
-
-    });
   }
-}
+];

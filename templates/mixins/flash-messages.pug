@@ -3,4 +3,7 @@ mixin flash-messages(messages)
     div.alert(class=flash['class'])
         if flash.messages
           p <strong>#{flash.type}</strong> #{flash['messages']}
+        if flash.hasHTML
+          #{flash.hasHTML}
+          
 

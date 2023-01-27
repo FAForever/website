@@ -1,95 +1,34 @@
-const request = require('request');
+const axios = require('axios');
 
-exports = module.exports = function(req, res) {
+exports = module.exports = function (req, res) {
 
-  var locals = res.locals;
-  console.log('I was gotten!');
-  // locals.section is used to set the currently selected
-  // item in the header navigation.
-  locals.section = 'clan';
   let flash = {};
 
-  if (!req.query.i){
-    flash.type = 'Error!';
-    flash.class = 'alert-danger';
-    flash.messages = [{msg: 'The invitation link is wrong or truncated. Key informations are missing.'}];
-
-    let buff = Buffer.from(JSON.stringify(flash));
-    let data = buff.toString('base64');
-
-    return res.redirect('/clans?flash='+data);
-  }
-
-  const invitationId = req.query.i;
-
-  if (!req.app.locals.clanInvitations[invitationId]){
-    flash.type = 'Error!';
-    flash.class = 'alert-danger';
-    flash.messages = [{msg: 'The invitation link is wrong or truncated. Invite code missing from website clan map.'}];
-
-    let buff = Buffer.from(JSON.stringify(flash));
-    let data = buff.toString('base64');
-
-    return res.redirect('/clans?flash='+data);
-  }
-
+  const invitationId = req.query.invitationId;
   const invite = req.app.locals.clanInvitations[invitationId];
+  if (!invite || !req.query.invitationId) {
+    flash.type = 'Error!';
+    flash.class = 'alert-danger';
+    flash.messages = 'The invitation link is wrong or truncated.';
+    res.render('/clans', {flash: flash});
+  }
+  
   const clanId = invite.clan;
-
-  if (req.user.data.attributes.clan != null){
+// Lets check if user is in clan
+  if (req.user.data.attributes.clan != null) {
     // User is already in a clan!
-    return res.redirect(`/clans/${req.user.data.attributes.clan.tag}?member=true`);
+    res.redirect(`/clans/getClan?tag=${req.user.data.attributes.clan.tag}`);
+  } else {
+    //User is not in a clan, lets render so they can accept the invite
+    axios.get(`${process.env.API_URL}/data/clan/${clanId}?include=memberships.player&fields[clan]=createTime,description,name,tag,updateTime,websiteUrl,founder,leader&fields[player]=login,updateTime`
+    ).then(response => {
+        res.locals.clanName = response.data.data.attributes.name;
+        res.locals.acceptURL = `/clans/join?token=${invite.token}`;
+        // Render the view
+        res.render('clans/accept_invite');
+      }
+    );    
   }
 
-  const queryUrl = process.env.API_URL
-    + '/data/clan/'+clanId
-    + '?include=memberships.player'
-    + '&fields[clan]=createTime,description,name,tag,updateTime,websiteUrl,founder,leader'
-    + '&fields[player]=login,updateTime'
-  ;
-
-  request.get(
-    {
-      url: queryUrl
-    },
-    function (err, childRes, body) {
-
-      const clan = JSON.parse(body);
-
-      if (err || !clan.data){
-        flash.type = 'Error!';
-        flash.class = 'alert-danger';
-        flash.messages = [{msg: 'The clan you want to join is invalid or does no longer exist'}];
-
-        let buff = Buffer.from(JSON.stringify(flash));
-        let data = buff.toString('base64');
-
-        return res.redirect('./?flash='+data);
-      }
-
-      locals.clanName = clan.data.attributes.name;
-      locals.clanLeaderName = "<unknown>";
-
-      for (k in clan.included){
-        switch(clan.included[k].type){
-          case "player":
-            const player = clan.included[k];
-
-            // Getting the leader name
-            if (player.id == clan.data.relationships.leader.data.id)
-            {
-              locals.clanLeaderName = player.attributes.login;
-            }
-
-            break;
-        }
-      }
-
-      const token = invite.token;
-      locals.acceptURL = `/clans/join?clan_id=${clanId}&token=${token}`;
-
-      // Render the view
-      res.render('clans/accept_invite');
-    }
-  );
+  
 };
