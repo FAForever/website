@@ -30,9 +30,10 @@ exports = module.exports = function (req, res) {
     // Not the leader! Shouldn't be able to manage stuff
     if (clan.data.relationships.leader.data.id != req.user.data.attributes.userId) {
       res.redirect(`/clans/getClan?tag=${req.user.data.attributes.clan.tag}`);
-      return;
     }
-
+    
+    
+    // Lets create the schema for all the members and clan descriptions
     res.locals.clan_name = clan.data.attributes.name;
     res.locals.clan_tag = clan.data.attributes.tag;
     res.locals.clan_description = clan.data.attributes.description;
@@ -66,22 +67,36 @@ exports = module.exports = function (req, res) {
       }
     }
     res.locals.clan_members = members;
-
-    if (req.originalUrl == '/clan_created') {
-      flash = {};
+    
+    // Lets check the different flash types
+    if (req.query.flash) {
       flash.class = 'alert-success';
-      flash.messages = [{msg: 'You have successfully created your clan'}];
       flash.type = 'Success!';
-    } 
+      switch (req.query.flash) {
+        
+        case 'created':
+          flash.messages = 'You have created your clan.';
+          break;
 
-  }).catch((e) => {
-    console.log(e);
-    error.parseApiErrors(e.response, flash);
+        case 'kick':
+          flash.messages = `You have kicked ${req.query.kickPlayer}.`;
+          break;
+          
+        case 'update':
+          flash.messages = `You have updated your clan information.`;
+          break;
+          
+          
+        case 'error':
+          flash.class = 'alert-danger';
+          flash.messages = 'There was an error with your request.';
+          flash.type = 'Error!';
+          break;
+      }
+    }
     
     
-  }).finally(() => {
-    // In case the user has just generated an invite link
-
+    //Lets check if they tried inviting an user
     if (req.query.invitation_id && req.query.invitation_id !== 'error') {
 
       flash.class = 'alert-invite';
@@ -92,6 +107,13 @@ exports = module.exports = function (req, res) {
       flash.messages = `User isn't a valid username (check your spelling). If error continues contact support`;
       flash.type = 'Error!';
     }
+
+  }).catch((e) => {
+    console.log(e);
+    error.parseApiErrors(e.response, flash);
+    
+    
+  }).finally(() => {
     res.render('clans/manage', {flash: flash});
   });
   

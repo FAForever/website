@@ -35,8 +35,8 @@ exports = module.exports = function(req, res) {
     });
     
   }).catch((e)=>{
-    console.log(e)
-    res.redirect('../../404');
+    console.log(e);
+    res.redirect('../clans?flash=error');
     
   }).finally( ()=>{
     // first lets check user is logged in and has a clan
@@ -50,9 +50,4 @@ exports = module.exports = function(req, res) {
     
     res.render('clans/getClan');
   });
-  
-  
-
-
-  
 };

@@ -14,16 +14,13 @@ exports = module.exports = [
   
     else {
       //Run post to endpoint
-      axios.delete(`${process.env.API_URL}/data/clan/${req.body.clan_id}`, {
+      axios.delete(`${process.env.API_URL}/data/clan/${req.body.clan_id}`, 
+        {
         headers: {'Authorization': `Bearer ${req.user.token}`}
       }).then( ()=> {
         
-        flash.class = 'alert-success';
-        flash.messages = 'The clan was successfully destroyed';
-        flash.type = 'Success!';
-
         // Refreshing user
-        error.userUpdate(req, res, '/clans');
+        error.userUpdate(req, res, '/clans?flash=destroy');
           
       }).catch((e) => {
         error.parseApiErrors(e.response, flash);

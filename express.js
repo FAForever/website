@@ -13,6 +13,8 @@ const middleware = require('./routes/middleware');
 const cors = require('cors');
 const app = express();
 
+
+// This thing is where clan invitations are stored. If the website is restarted, all invitations are deleted...
 app.locals.clanInvitations = {};
 
 require('dotenv').config();
@@ -97,7 +99,7 @@ app.listen(process.env.PORT, () => {
 // --- UNPROTECTED ROUTES ---
 const appGetRouteArray = [
   // This first '' is the home/index page
-  '', 'newshub', 'news', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'newsArticle', 'clans',];
+  '', 'newshub', 'news', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'newsArticle',];
 
 //Renders every page written above
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
@@ -154,6 +156,8 @@ const clansRoutesPost = [
   'create', 'destroy', 'invite', 'kick', 'transfer', 'update', 'leave', 'join',];
 clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn, require(`${routes}clans/post/${page}`)));
 
+//Unprotected clan routes
+app.get('/clans', require(`${routes}clans/get/clans`));
 app.get('/clans/getClan', require(`${routes}clans/get/getClan`));
 //When searching for a specific clan
 app.get('/clans/*', (req, res) => {

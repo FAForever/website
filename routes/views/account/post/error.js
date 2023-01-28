@@ -30,7 +30,8 @@ module.exports = {
    flash.type = 'Error!';
    res.render(path, {flash: flash});
  },
- 
+  // I know its on the error file but its just out of convenience
+  
  // This function is used after modifying the user (creating a clan, leaving a clan) so user doesn't need to log out and log in in order to not see a ghost clan that was deleted/left.
   userUpdate: (req, res, path) => {
     axios.get(`${process.env.API_URL}/me`, {

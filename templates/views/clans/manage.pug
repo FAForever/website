@@ -66,9 +66,10 @@ block content
           .column1
             if member.id != me
               form(method='post',action="/clans/kick")
+                input(type='hidden', name="membership_name", value=member.name)
                 input(type='hidden', name="membership_id", value=member.membershipId)
                 input(type='hidden', name='clan_id', value=clan_id)
-                button(type='submit').btn Kick
+                button(type='submit') Kick
             else
               span
   .clanManagementMain
@@ -95,7 +96,7 @@ block content
           |  all your rights over this clan in favor of the new owner.
   
         
-        input(type='text', id="ownership_transfer_textbox", name='transfer_to', placeholder='New clan owner', style="margin-left:5px;margin-right:5px")
+        input(type='text', id="ownership_transfer_textbox", name='transfer_to', placeholder='New clan owner')
         br
         button(type='submit') Transfer clan ownership
   
@@ -111,7 +112,7 @@ block content
         button(type='submit') Delete my clan
         br
         br
-
+        // This script makes it so people can copy the invite link with just a click
         script.
           function copyInviteLink() {
             navigator.clipboard.writeText(document.getElementById("inviteLink").getAttribute("href"))}
