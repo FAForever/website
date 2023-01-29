@@ -24,7 +24,7 @@ exports = module.exports = function (req, res) {
       } else {
         // Successfully account resync
         flash.class = 'alert-success';
-        flash.messages = [{msg: 'Your account was resynced successfully.'}];
+        flash.messages = 'Your account was resynced successfully.';
         flash.type = 'Success!';
       }
 

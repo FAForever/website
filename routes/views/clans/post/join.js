@@ -16,12 +16,13 @@ exports = module.exports = function (req, res) {
 
     axios.post(`${process.env.API_URL}/clans/joinClan?token=${token}`, null, 
       {
-      headers: {'Authorization': `Bearer ${req.user.token}`}
+      headers: {'Authorization': `Bearer null`}
     }).then(() => {
         // Refreshing user, by going to clan/manage, user is redirected to their own clan.
         error.userUpdate(req, res, '/clans/manage');
     }).catch( e => {
       console.log(e);
+      res.redirect('../clans?flash=error');
     });
   }
 };

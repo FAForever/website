@@ -2,17 +2,16 @@ let flash = {};
 const axios = require('axios');
 const {body, validationResult} = require('express-validator');
 const error = require("../../account/post/error");
-const {userUpdate} = require("../../account/post/error");
 
 exports = module.exports = [
 
   // validate the input
-
+  body('clan_tag', 'Your clan tag is too long (max 3 characters)').notEmpty().isLength({max: 3}),
   body('clan_description', 'Your clan description is too long (max 1000 characters)').notEmpty().isLength({max: 1000}),
   body('clan_name', 'Your clan name is too long (max 40 characters)').isLength({max: 40}),
   async (req, res) => {
     // check the validation object for errors
-    if (!validationResult(req).isEmpty()) error.errorChecking(req, res, 'account/settings');
+    if (!validationResult(req).isEmpty()) error.errorChecking(req, res, 'clans/create');
     // No errors in form, continue ahead
     else {
 
@@ -58,7 +57,7 @@ exports = module.exports = [
           
         }).catch((e) => {
           error.parseApiErrors(e.response, flash);
-          res.render('/clans/create', {flash: flash});
+          res.render('clans/create', {flash: flash});
         });
       }
 

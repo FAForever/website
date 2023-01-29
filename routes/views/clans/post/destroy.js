@@ -1,4 +1,3 @@
-let flash = {};
 let axios = require('axios');
 const {body, validationResult} = require('express-validator');
 const error = require("../../account/post/error");
@@ -9,7 +8,7 @@ exports = module.exports = [
   body('clan_id', 'Internal error while processing your query: invalid clan ID').notEmpty(),
   (req, res) => {
     // check the validation object for errors
-    if (!validationResult(req).isEmpty()) error.errorChecking(req, res, 'account/settings');
+    if (!validationResult(req).isEmpty()) error.errorChecking(req, res, 'clans');
     // No errors in form, continue ahead
   
     else {
@@ -23,8 +22,7 @@ exports = module.exports = [
         error.userUpdate(req, res, '/clans?flash=destroy');
           
       }).catch((e) => {
-        error.parseApiErrors(e.response, flash);
-        res.render('/clans/manage', {flash: flash});
+        res.redirect('manage?flash=error');
       });
     }
   }

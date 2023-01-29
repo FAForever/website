@@ -21,7 +21,7 @@ block content
         p This will generate an invitation link for the player of your choice
         p Be sure to type the player name correctly!
         input(type='hidden', name='clan_id', value=clan_id)
-        input(type='text', name='invited_player', placeholder='Player name', style="margin-left:5px;margin-right:5px")
+        input(type='text', name='invited_player', placeholder='Player name', required='required')
         br
         button(type='submit' onclick="copyTextButton()") Invite Player
       // We use HTML for the invite button
@@ -41,7 +41,7 @@ block content
       form(method='post',action="/clans/update",data-toggle="validator")
         input(type='hidden', name='clan_id', value=clan_id)
         label Clan Name
-        input(type='text', name='clan_name', value=clan_name, placeholder='Clan name')
+        input(type='text', name='clan_name', value=clan_name, placeholder='Clan name', required='required')
         input(type='hidden', name='original_clan_name', value=clan_name)
         span(aria-hidden='true')
         label Clan Tag:
@@ -96,7 +96,7 @@ block content
           |  all your rights over this clan in favor of the new owner.
   
         
-        input(type='text', id="ownership_transfer_textbox", name='transfer_to', placeholder='New clan owner')
+        input(type='text', required='required', id="ownership_transfer_textbox", name='transfer_to', placeholder='New clan owner')
         br
         button(type='submit') Transfer clan ownership
   
