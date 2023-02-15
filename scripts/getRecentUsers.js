@@ -5,11 +5,12 @@ require('dotenv').config();
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-let d = new Date();
-let timeFilter = 1;
-let minusTimeFilter = d.setHours(d.getHours() - timeFilter);
+// This time filter will make our application go back to the players playing in the last 10 minutes
+let date = new Date();
+let timeFilter = 10;
+let minusTimeFilter = date.setMinutes(date.getMinutes() - timeFilter);
 let currentDate = new Date(minusTimeFilter).toISOString();
-
+console.log(currentDate);
 
 async function getRecentUsers() {
   
