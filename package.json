@@ -28,7 +28,7 @@
     "passport": "^0.6.0",
     "passport-discord": "^0.1.4",
     "passport-openidconnect": "^0.1.1",
-    "postcss": "^8.4.14",
+    "postcss": "^8.4.31",
     "pug": "3.0.2",
     "request": "2.88.2",
     "semver-regex": "^4.0.5",
