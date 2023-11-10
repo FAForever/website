@@ -47,3 +47,5 @@ public/styles/css/*
 
 #Ignore link.json
 link.json
+
+public/js/*.js

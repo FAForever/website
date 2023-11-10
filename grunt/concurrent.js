@@ -1,6 +1,6 @@
 module.exports = {
 	dev: {
-		tasks: ['nodemon:debug', 'concat:js', 'uglify:dev', 'watch'],
+		tasks: ['nodemon', 'concat', 'watch'],
 		options: {
 			logConcurrentOutput: true
 		}

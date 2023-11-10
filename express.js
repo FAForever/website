@@ -17,9 +17,10 @@ app.locals.clanInvitations = {};
 require('dotenv').config();
 //Define environment variables with default values
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-process.env.PORT = process.env.PORT || '4000';
+process.env.PORT = process.env.PORT || '3000';
 process.env.CALLBACK = process.env.CALLBACK || 'callback';
 process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.faforever.com';
+process.env.OAUTH_PUBLIC_URL = process.env.OAUTH_PUBLIC_URL || process.env.OAUTH_URL;
 process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
 process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
 process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
@@ -227,7 +228,7 @@ app.get('/login', passport.authenticate('faforever'));
 passport.use('faforever', new OidcStrategy({
     issuer: process.env.OAUTH_URL + '/',
     tokenURL: process.env.OAUTH_URL + '/oauth2/token',
-    authorizationURL: process.env.OAUTH_URL + '/oauth2/auth',
+    authorizationURL: process.env.OAUTH_PUBLIC_URL + '/oauth2/auth',
     userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
     clientID: process.env.OAUTH_CLIENT_ID,
     clientSecret: process.env.OAUTH_CLIENT_SECRET,

@@ -1,0 +1,19 @@
+version: "3.5"
+
+services:
+  website:
+    env_file: .env
+    ports:
+      - ${WEBSITE_EXPOSED_PORT-8020}:${WEBSITE_CONTAINER_PORT-3000}
+    volumes:
+      - .:/code
+    build:
+      dockerfile: Dockerfile-dev
+      context: .
+    networks:
+      -  faf-stack
+    
+networks:
+  faf-stack:
+    name: faf-stack_faf
+    external: true

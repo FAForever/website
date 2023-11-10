@@ -1,0 +1,16 @@
+depcheck:
+  ignoreMatches: [
+    "npm-check",  # used manually to check for updates
+    "pug", # used in express as the template engine
+    "awesomplete", # used statically in grunt/concat.js
+    
+    # grunt plugins used in "./grunt"
+    "grunt-sass", 
+    "grunt-postcss",
+    "grunt-nodemon",
+    "grunt-contrib-watch",
+    "grunt-contrib-uglify-es",
+    "grunt-contrib-jshint",
+    "grunt-contrib-concat",
+    "grunt-concurrent"
+  ]
