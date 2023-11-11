@@ -6,5 +6,7 @@ async function playerCounterJSON() {
 
 playerCounterJSON()
   .then((data) => {
-    document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", data.length);
+    // disabled due https://github.com/FAForever/website/issues/445
+    // document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", data.length);
+    document.getElementById('playerCounter').insertAdjacentHTML("afterbegin", "MANY");
   });

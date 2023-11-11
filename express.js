@@ -105,6 +105,10 @@ const appGetRouteArray = [
 
 //Renders every page written above
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
+  // disabled due https://github.com/FAForever/website/issues/445
+  if (['leaderboards', 'clans'].includes(page)) {
+    res.status(503).render('errors/503-known-issue')
+  }
   res.render(page);
 }));
 
@@ -145,17 +149,23 @@ const routes = './routes/views/';
 
 const clansRoutesGet = [
   'create', 'manage', 'accept_invite',];
-clansRoutesGet.forEach(page => app.get(`/clans/${page}`, loggedIn, require(`${routes}clans/get/${page}`)));
+// disabled due https://github.com/FAForever/website/issues/445
+// clansRoutesGet.forEach(page => app.get(`/clans/${page}`, loggedIn, require(`${routes}clans/get/${page}`)));
+clansRoutesGet.forEach(page => app.get(`/clans/${page}`, loggedIn, (req, res) =>  res.status(503).render('errors/503-known-issue')));
 
 const clansRoutesPost = [
   'create', 'destroy', 'invite', 'kick', 'transfer', 'update', 'leave', 'join',];
-clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn, require(`${routes}clans/post/${page}`)));
+// disabled due https://github.com/FAForever/website/issues/445
+// clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn, require(`${routes}clans/post/${page}`)));
+clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn,  (req, res) =>  res.status(503).render('errors/503-known-issue')));
 
 
+// disabled due https://github.com/FAForever/website/issues/445
 //When searching for a specific clan
-app.get('/clans/*', (req, res) => {
-  res.render(`clans/seeClan`);
-});
+// app.get('/clans/*', (req, res) => {
+//   res.render(`clans/seeClan`);
+// });
+app.get('/clans/*',  (req, res) =>  res.status(503).render('errors/503-known-issue'));
 
 
 // Markdown Routes

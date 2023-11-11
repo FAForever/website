@@ -143,60 +143,65 @@ async function contentCreators() {
 }
 
 async function getAllClans() {
-  try {
-    let response = await axios.get(`${process.env.API_URL}/data/clan?sort=createTime&include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000`);
-    
-    let dataObjectToArray = Object.values(response.data);
-    let clanLeader = dataObjectToArray[2].map(item => ({
-      leaderName: item.attributes.login
-    }));
-    let clanValues = dataObjectToArray[0].map(item => ({
-      //id: item.id,
-      name: item.attributes.name,
-      tag: item.attributes.tag,
-      createTime: item.attributes.createTime,
-      //description: item.attributes.description,
-      population: item.relationships.memberships.data.length
-    }));
-    const combineArrays = (array1, array2) => array1.map((x, i) => [x, array2[i]]);
-    let clanData = combineArrays(clanLeader, clanValues);
-    clanData.sort((playerA, playerB) => playerA[1].population - playerB[1].population);
-    return await clanData;
-
-  } catch (e) {
-    console.log(e);
-    return null;
-  }
+  
+  return [];
+  //disabled due https://github.com/FAForever/website/issues/445
+  // try {
+  //   let response = await axios.get(`${process.env.API_URL}/data/clan?sort=createTime&include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000`);
+  //  
+  //   let dataObjectToArray = Object.values(response.data);
+  //   let clanLeader = dataObjectToArray[2].map(item => ({
+  //     leaderName: item.attributes.login
+  //   }));
+  //   let clanValues = dataObjectToArray[0].map(item => ({
+  //     //id: item.id,
+  //     name: item.attributes.name,
+  //     tag: item.attributes.tag,
+  //     createTime: item.attributes.createTime,
+  //     //description: item.attributes.description,
+  //     population: item.relationships.memberships.data.length
+  //   }));
+  //   const combineArrays = (array1, array2) => array1.map((x, i) => [x, array2[i]]);
+  //   let clanData = combineArrays(clanLeader, clanValues);
+  //   clanData.sort((playerA, playerB) => playerA[1].population - playerB[1].population);
+  //   return await clanData;
+  //
+  // } catch (e) {
+  //   console.log(e);
+  //   return null;
+  // }
 
 }
 
 
 async function getLeaderboards(leaderboardID) {
-  try {
-    let response = await axios.get(`${process.env.API_URL}/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
-
-
-    let dataObjectToArray = await Object.values(response.data);
-
-    let playerLogin = dataObjectToArray[2].map(item => ({
-      label: item.attributes.login
-    }));
-    let playerValues = dataObjectToArray[0].map(item => ({
-      rating: item.attributes.rating,
-      totalgames: item.attributes.totalGames,
-      wonGames: item.attributes.wonGames,
-      date: item.attributes.updateTime,
-    }));
-    const combineArrays = (array1, array2) => array1.map((x, i) => [x, array2[i]]);
-    let leaderboardData = combineArrays(playerLogin, playerValues);
-    leaderboardData.sort((playerA, playerB) =>  playerB[1].rating - playerA[1].rating);
-    return await leaderboardData;
-    
-  } catch (e) {
-    console.log(e);
-    return null;
-
-  }
+  return [];
+  //disabled due https://github.com/FAForever/website/issues/445
+  // try {
+  //   let response = await axios.get(`${process.env.API_URL}/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
+  //
+  //
+  //   let dataObjectToArray = await Object.values(response.data);
+  //
+  //   let playerLogin = dataObjectToArray[2].map(item => ({
+  //     label: item.attributes.login
+  //   }));
+  //   let playerValues = dataObjectToArray[0].map(item => ({
+  //     rating: item.attributes.rating,
+  //     totalgames: item.attributes.totalGames,
+  //     wonGames: item.attributes.wonGames,
+  //     date: item.attributes.updateTime,
+  //   }));
+  //   const combineArrays = (array1, array2) => array1.map((x, i) => [x, array2[i]]);
+  //   let leaderboardData = combineArrays(playerLogin, playerValues);
+  //   leaderboardData.sort((playerA, playerB) =>  playerB[1].rating - playerA[1].rating);
+  //   return await leaderboardData;
+  //  
+  // } catch (e) {
+  //   console.log(e);
+  //   return null;
+  //
+  // }
 }
 
 module.exports.run = function run() {
