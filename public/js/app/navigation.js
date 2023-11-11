@@ -15,20 +15,23 @@ document.addEventListener("DOMContentLoaded", () => {
     //When you mouseover/click, menu appears
     navList[i].addEventListener("mouseout", () => {
       stillHere = 1;
-      navAbsolute[i].classList.remove("navAbsoluteActive");
-      setTimeout(() => {
-        if (stillHere === 1) {
-          navAbsolute.forEach(list => list.style.opacity = "0%");
-        }
-      }, 0);
-
+      if (navAbsolute[i]) {
+        navAbsolute[i].classList.remove("navAbsoluteActive");
+        setTimeout(() => {
+          if (stillHere === 1) {
+            navAbsolute.forEach(list => list.style.opacity = "0%");
+          }
+        }, 0);
+      }
     });
     navList[i].addEventListener("mouseover", () => {
       stillHere = 0;
-      navAbsolute[i].classList.add("navAbsoluteActive");
-      setTimeout(() => {
-        navAbsolute[i].style.opacity = "100%";
-      }, 10);
+      if (navAbsolute[i]) {
+        navAbsolute[i].classList.add("navAbsoluteActive");
+        setTimeout(() => {
+          navAbsolute[i].style.opacity = "100%";
+        }, 10);
+      }
     });
     //when you mouseout/leave, menu dissapears
   }
@@ -100,24 +103,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   let loginList = document.getElementById("loginList");
-  let loginAbsolute = document.getElementById("loginAbsolute");
-  let stillHovering = 0;
   
-  
-  //when you mouse is over the login, it should appear
-  loginList.addEventListener("mouseover", () => {
-    stillHovering = 0;
-   
-    setTimeout(() => {
-      loginAbsolute.style.display = "block";
-      //console.log('timeout done');
-    }, 0);
-  });
+  if (loginList) {
+    let loginAbsolute = document.getElementById("loginAbsolute");
+    let stillHovering = 0;
+    //when you mouse is over the login, it should appear
+    loginList.addEventListener("mouseover", () => {
+      stillHovering = 0;
+
+      setTimeout(() => {
+        loginAbsolute.style.display = "block";
+        //console.log('timeout done');
+      }, 0);
+    });
     //When you mouseover/click, menu appears
     //when you mouseout/leave, menu dissapears
     loginList.addEventListener("mouseout", () => {
       stillHovering = 1;
-      
       setTimeout(() => {
         if (stillHovering === 1) {
           loginAbsolute.style.display = "none";
@@ -125,11 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 0);
 
     });
-    
- 
-    
-  
-  
+  }
 
   //function to make highligthed text change colors/pulsate (it goes from white to gold and viceversa)
   let highlightText = document.querySelectorAll(".highlightText");
@@ -151,15 +149,18 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 
-let pages = htmlElement.split(',');
-if (pages[0] === '/all') {
-  document.getElementById('flashMessageContainer').style.display = 'block';
-} else {
-  pages.forEach(route => {
+if (typeof htmlElement !== 'undefined') {
+  let pages = htmlElement.split(',');
+  if (pages[0] === '/all') {
+    document.getElementById('flashMessageContainer').style.display = 'block';
+  } else {
+    pages.forEach(route => {
 
-    if (window.location.href.includes(route) && window.innerWidth > 900) {
-      document.getElementById('flashMessageContainer').style.display = 'block';
-    }
-  });  
+      if (window.location.href.includes(route) && window.innerWidth > 900) {
+        document.getElementById('flashMessageContainer').style.display = 'block';
+      }
+    });
+  }
 }
+
 

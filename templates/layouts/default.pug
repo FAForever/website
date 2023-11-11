@@ -292,8 +292,10 @@ html(lang='en')
 
       //- Add scripts that are globally required by your site here.
       // This script here adss what our flash message requirements are.
-      script(type='text/javascript').
-        var htmlElement = !{JSON.stringify(flashRoutes)}
+      if flashRoutes
+        script(type='text/javascript').
+          var htmlElement = !{JSON.stringify(flashRoutes)}
+          
       script(src="../../js/app/navigation.js")
       
 
