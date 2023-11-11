@@ -12,13 +12,35 @@ The Main Focus for what the primary purpose of the website is. The following was
 1. To Focus on Acquiring and On-boarding of new Player into FAForever (Registration of players, Documentation & Support)
 2. Promote The Community (Clans, Maps, Mods, Tournaments etc.)
 
-## Developing the Website / Setting up your local enviroment
+## Developing the Website / Setting up your local environment
 
-If you want to setup your own local enviroment, there's a guide below.
+### Option #1 - locally install node, yarn etc
+Local installation without docker [guide](https://github.com/FAForever/website/wiki/Setting-up-a-local-environment-for-the-website)
 
-https://github.com/FAForever/website/wiki/Setting-up-a-local-environment-for-the-website
+### Option #2 - run everything in docker (linux, wsl2, mac)
+Local requirements:
+- docker
+- docker compose
 
-For any PR/Pull Request, please make sure you detail in the comments on files/changes. Otherwise it might take longer for your change to be approved.
+The website has dependencies to Hydra, [Lobby](https://github.com/FAForever/server), Wordpress and the [Java-API](https://github.com/FAForever/faf-java-api).
+You can run those with the [local-stack](https://github.com/FAForever/faf-stack).
+
+If you got the [local-stack](https://github.com/FAForever/faf-stack) up and running, we need to stop the "faf-website" and replace it with a development container.
+````bash
+cd ../faf-stack # replace path if needed
+docker compose stop faf-website
+````
+
+Development-Container:
+`````bash
+cd ../website # replace path if needed
+cp -n .env.faf-stack .env
+docker compose build 
+docker compose run website yarn install
+docker compose up 
+`````
+
+this should start the express-server on http://localhost:8020/.
 
 ## Other Ways to Contribute
 

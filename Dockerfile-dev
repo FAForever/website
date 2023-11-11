@@ -1,0 +1,6 @@
+FROM node:20.9-bookworm
+RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
+ENV NODE_ENV development
+WORKDIR /code
+
+CMD ["dumb-init", "./node_modules/.bin/grunt", "concurrent"]

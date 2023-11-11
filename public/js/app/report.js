@@ -32,7 +32,7 @@ function addOffender(){
             addAwesompleteListener(element);
             return element;
         }
-    };
+    }
 }
 
 const offenders = JSON.parse(offenders_names);

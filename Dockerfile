@@ -1,27 +1,22 @@
-# Use an ubuntu-image for building assets for use in a runtime image...
-FROM node:lts as builder
+FROM node:20.9-bookworm as builder
+RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
+ENV NODE_ENV development
 
-RUN mkdir code
-
-# Add files to /code folder
-ADD . /code
-
+COPY . /code
 WORKDIR /code
 
-RUN yarn install
-
+RUN yarn install --production=false --frozen-lockfile
 RUN ./node_modules/.bin/grunt prod
+RUN yarn install --production=true --ignore-optional --frozen-lockfile
 
-# Slimmer runtime image without python/make/gcc etc.
-FROM node:lts-alpine as runtime
+FROM node:20.9.0-bookworm-slim as runtime
+ENV NODE_ENV production
 
-COPY --from=builder /code /code
+COPY --from=builder /usr/bin/dumb-init /usr/bin/dumb-init
+COPY --from=builder --chown=node:node /code /code
 
 WORKDIR /code
+USER node
 
-# Only install runtime dependencies for the runtime image
-RUN yarn --prod
+CMD ["dumb-init", "node", "express.js"]
 
-CMD PORT=3000 npm start
-
-EXPOSE 3000

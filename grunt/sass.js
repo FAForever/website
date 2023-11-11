@@ -3,6 +3,7 @@ const sass = require('dart-sass');
 module.exports = {
   dev: {
     options: {
+      implementation: sass,
       style: 'expanded',
       compass: true
     },
