@@ -2,7 +2,7 @@ import {Octokit} from "https://esm.sh/@octokit/core";
 
 const githubOrg = 'faforever'
 const githubRepository = 'downlords-faf-client'
-const githubFallbackUrl = 'https://github.com/FAForever/downlords-faf-client/releases';
+const githubFallbackUrl = 'https://github.com/FAForever/downlords-faf-client/releases/latest';
 const downloadButtonId = 'faf-client-download'
 
 const startDownloadFile = (url) => window.location.assign(url)
