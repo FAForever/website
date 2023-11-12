@@ -29,7 +29,7 @@ async function getTournamentNews() {
     let newshubData = sortedData.filter(article => article.category[1] !== 284);
     return await newshubData;
   } catch (e) {
-    console.log(e);
+    console.error(currentDate, '- [error] extractor::getTournamentNews failed with =>', e.toString());
     return null;
   }
 }
@@ -52,7 +52,7 @@ async function flashMessage() {
     }));
     return await data;
   } catch (e) {
-    console.log(e);
+    console.error(currentDate, '- [error] extractor::flashMessage failed with =>', e.toString());
     return null;
   }
 }
@@ -72,7 +72,7 @@ async function news() {
     }));
     return await data;
   } catch (e) {
-    console.log(e);
+    console.error(currentDate, '- [error] extractor::news failed with =>', e.toString());
     return null;
   }
 }
@@ -102,7 +102,7 @@ async function newshub() {
     let data = sortedData.filter(onlyActiveArticles);
     return await data;
   } catch (e) {
-    console.log(e);
+    console.error(currentDate, '- [error] extractor::newshub failed with =>', e.toString());
     return null;
   }
 }
@@ -119,7 +119,7 @@ async function fafTeams() {
     }));
     return await data;
   } catch (e) {
-    console.log(e);
+    console.error(currentDate, '- [error] extractor::fafTeams failed with =>', e.toString());
     return null;
   }
 
@@ -135,7 +135,7 @@ async function contentCreators() {
     }));
     return await data;
   } catch (e) {
-    console.log(e);
+    console.error(currentDate, '- [error] extractor::contentCreators failed with =>', e.toString());
     return null;
   }
 
@@ -222,7 +222,7 @@ module.exports.run = function run() {
       .then(data => {
         fs.writeFile(`public/js/app/members/${fileName}.json`, JSON.stringify(data), error => {
           if (error) {
-            console.log(error);
+            console.error(currentDate, '- [error] extractor::run', fileName, 'failed with =>', error.toString());
           } else {
             console.log(`${currentDate} - ${fileName} file created.`);
           }
