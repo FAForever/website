@@ -60,7 +60,7 @@ block content
       .playContainer
         h1 1 - Download and install FAF 
         p Download the FAF Client and install it. FAF is open source and safe to use. <br> If your Windows computer stops you from running FAF, click on "More info" and you'll be able to run it. <br> This happens because FAF doesn't pay Microsoft for security certifications. So it's an "unrecognized app" for Windows. <br> If you have any issues or troubleshooting, join our Discord or use our forum for help.
-        a(href=fafClientDownloadLink)
+        a(href="#" id="faf-client-download")
           button Download FAF
         br
         br
@@ -96,3 +96,7 @@ block content
         br
         br
         iframe(style="width:75%; height:45vh;" src="https://www.youtube.com/embed/Nks9loE96ok" title="NEW TO FAF? || SUPREME COMMANDER TUTORIAL", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"  allowfullscreen )
+
+block js
+  script(src="../../js/app/play.js" type="module" defer="true")
+       
