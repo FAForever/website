@@ -7,7 +7,11 @@ block content
       h2 Recent
       h1.highlightText News
     #articleMain.column12
-
-
-block js
-  script( src="../../js/app/news.js")
+        each newsArticle in news
+            div(class=['articleContainer', 'column4'])
+                div.articleImage(style='background-image:url(' + newsArticle.media + ')' )
+                div.articleText
+                    h2.articleAuthorDate=`By ${newsArticle.author} on ${newsArticle.date.substring(0, 10)}`
+                    h1.articleTitle=newsArticle.title
+                    div.articleContent !{newsArticle.content.substring(0, 150)} ...
+                    button(onClick="window.location.href = '/news/" + newsArticle.slug + "'") Learn More
