@@ -22,7 +22,7 @@ Local requirements:
 - docker
 - docker compose
 
-The website has dependencies to Hydra, [Lobby](https://github.com/FAForever/server), Wordpress and the [Java-API](https://github.com/FAForever/faf-java-api).
+The website has dependencies to Hydra, Wordpress and the [Java-API](https://github.com/FAForever/faf-java-api).
 You can run those with the [local-stack](https://github.com/FAForever/faf-stack).
 
 If you got the [local-stack](https://github.com/FAForever/faf-stack) up and running, we need to stop the "faf-website" and replace it with a development container.

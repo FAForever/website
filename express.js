@@ -201,7 +201,6 @@ app.get('/account/connect', loggedIn, require(routes + 'account/get/connectSteam
 //app.get('/account/connectSteam', loggedIn, require(routes + 'account/get/connectSteam'));
 app.get('/account/resync', loggedIn, require(routes + 'account/get/resync'));
 // Not Protected
-app.get('/lobby_api', cors(), require('./routes/lobby_api'));
 app.get('/account/create', require(routes + 'account/get/createAccount'));
 app.get('/account_activated', require(routes + 'account/get/register'));
 app.get('/account/register', require(routes + 'account/get/register'));
