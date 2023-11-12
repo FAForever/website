@@ -322,7 +322,12 @@ setInterval(() => {
 app.use(function (req, res) {
   res.status(404).render('errors/404');
 });
-app.use(function (req, res) {
+app.use(function (err, req, res, next) {
+  console.error('[error] Incoming request to"', req.originalUrl, '"failed with error "', err.toString(), '"')
+  if (res.headersSent) {
+    return next(err);
+  }
+
   res.status(500).render('errors/500');
 });
  
