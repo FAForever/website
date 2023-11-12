@@ -6,6 +6,7 @@ process.env.WP_URL = process.env.WP_URL || 'https:direct.faforever.com';
 
 const fs = require('fs');
 const axios = require('axios');
+const {convert} = require('url-slug')
 
 let d = new Date();
 let timeFilter = 12;
@@ -64,11 +65,13 @@ async function news() {
     //Now we get a js array rather than a js object. Otherwise we can't sort it out.
     let dataObjectToArray = Object.values(response.data);
     let data = dataObjectToArray.map(item => ({
-      date: item.date,
-      title: item.title.rendered,
-      content: item.content.rendered,
-      author: item._embedded.author[0].name,
-      media: item._embedded['wp:featuredmedia'][0].source_url,
+        slug: convert(item.title.rendered),
+        bcSlug: item.title.rendered.replace(/ /g, '-'),
+        date: item.date,
+        title: item.title.rendered,
+        content: item.content.rendered,
+        author: item._embedded.author[0].name,
+        media: item._embedded['wp:featuredmedia'][0].source_url,
     }));
     return await data;
   } catch (e) {

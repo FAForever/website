@@ -11,6 +11,7 @@ let OidcStrategy = require('passport-openidconnect');
 const middleware = require('./routes/middleware');
 const cors = require('cors');
 const app = express();
+const newsRouter = require('./routes/views/news');
 
 app.locals.clanInvitations = {};
 
@@ -55,7 +56,6 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(require('./scripts/getNews'));
 app.use(flash());
 app.use(middleware.username);
 app.use(middleware.flashMessage);
@@ -97,10 +97,12 @@ app.listen(process.env.PORT, () => {
 // --- R O U T E S ---
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
 
+app.use("/news", newsRouter)
+
 // --- UNPROTECTED ROUTES ---
 const appGetRouteArray = [
   // This first '' is the home/index page
-  '', 'newshub', 'news', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'newsArticle', 'clans',];
+  '', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'clans',];
 
 //Renders every page written above
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
