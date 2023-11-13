@@ -45,7 +45,4 @@ public/styles/css/*
 #Ignore environment
 .env
 
-#Ignore link.json
-link.json
-
 public/js/*.js

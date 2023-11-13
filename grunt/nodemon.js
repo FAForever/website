@@ -7,7 +7,6 @@ module.exports = {
         'node_modules/**',
         'grunt/**',
         'Gruntfile.js',
-        'link.json',
         'public/js/app/members/**'
       ]
     }
