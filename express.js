@@ -108,7 +108,7 @@ const appGetRouteArray = [
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
   // disabled due https://github.com/FAForever/website/issues/445
   if (['leaderboards', 'clans'].includes(page)) {
-    res.status(503).render('errors/503-known-issue')
+    return res.status(503).render('errors/503-known-issue')
   }
   res.render(page);
 }));
