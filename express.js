@@ -6,12 +6,12 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
-const fs = require('fs');
 const setupCronJobs = require('./scripts/cron-jobs');
 const middleware = require('./routes/middleware');
 const app = express();
 const newsRouter = require('./routes/views/news');
 const staticMarkdownRouter = require('./routes/views/staticMarkdownRouter');
+const leaderboardRouter = require('./routes/views/leaderboardRouter');
 const authRouter = require('./routes/views/auth');
 
 app.locals.clanInvitations = {};
@@ -71,19 +71,27 @@ function loggedIn(req, res, next) {
   }
 }
 
-app.use('/news', newsRouter)
-app.use('/', staticMarkdownRouter)
+//Start and listen on port
+
+
+
+// --- R O U T E S ---
+// when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
+
 app.use('/', authRouter)
+app.use('/', staticMarkdownRouter)
+app.use('/news', newsRouter)
+app.use('/leaderboards', leaderboardRouter)
 
 // --- UNPROTECTED ROUTES ---
 const appGetRouteArray = [
   // This first '' is the home/index page
-  '', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'leaderboards', 'play', 'clans',];
+  '', 'newshub', 'campaign-missions', 'scfa-vs-faf', 'donation', 'tutorials-guides', 'ai', 'patchnotes', 'faf-teams', 'contribution', 'content-creators', 'tournaments', 'training', 'play', 'clans',];
 
 //Renders every page written above
 appGetRouteArray.forEach(page => app.get(`/${page}`, (req, res) => {
   // disabled due https://github.com/FAForever/website/issues/445
-  if (['leaderboards', 'clans'].includes(page)) {
+  if (page === 'clans') {
     return res.status(503).render('errors/503-known-issue')
   }
   res.render(page);

@@ -44,6 +44,7 @@ public/styles/css/*
 
 #Ignore environment
 .env
+.env.faf.xyz
 
 public/js/*.js
 

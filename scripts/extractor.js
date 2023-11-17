@@ -176,48 +176,15 @@ async function getAllClans() {
 
 }
 
-
-async function getLeaderboards(leaderboardID) {
-  return [];
-  //disabled due https://github.com/FAForever/website/issues/445
-  // try {
-  //   let response = await axios.get(`${process.env.API_URL}/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${leaderboardID};updateTime=ge=${currentDate}&page[size]=9999`);
-  //
-  //
-  //   let dataObjectToArray = await Object.values(response.data);
-  //
-  //   let playerLogin = dataObjectToArray[2].map(item => ({
-  //     label: item.attributes.login
-  //   }));
-  //   let playerValues = dataObjectToArray[0].map(item => ({
-  //     rating: item.attributes.rating,
-  //     totalgames: item.attributes.totalGames,
-  //     wonGames: item.attributes.wonGames,
-  //     date: item.attributes.updateTime,
-  //   }));
-  //   const combineArrays = (array1, array2) => array1.map((x, i) => [x, array2[i]]);
-  //   let leaderboardData = combineArrays(playerLogin, playerValues);
-  //   leaderboardData.sort((playerA, playerB) =>  playerB[1].rating - playerA[1].rating);
-  //   return await leaderboardData;
-  //  
-  // } catch (e) {
-  //   console.log(e);
-  //   return null;
-  //
-  // }
-}
-
 module.exports.run = function run() {
 
   // Do not change the order of these/make sure they match the order of fileNames below
   const extractorFunctions = [
     getTournamentNews(), flashMessage(), news(), contentCreators(), newshub(), fafTeams(), getAllClans(),
-    getLeaderboards(1), getLeaderboards(2), getLeaderboards(3), getLeaderboards(4),
   ];
   //Make sure to not change the order of these since they match the order of extractorFunctions
   const fileNames = [
     'tournament-news','flashMessage', 'news', 'content-creators', 'newshub', 'faf-teams', 'getAllClans',
-    'global', '1v1', '2v2', '4v4',
   ];
 
   fileNames.forEach((fileName, index) => {
