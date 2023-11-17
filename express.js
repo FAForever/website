@@ -214,12 +214,6 @@ app.post('/account/activate', require(routes + 'account/post/activate'));
 app.get('/account/checkUsername', require('./routes/views/checkUsername'));
 app.get('/password_resetted', require(routes + 'account/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'account/get/report'));
-// Download Client
-app.get('/client', (req, res) => {
-  let locals = res.locals;
-  res.redirect(locals.downlords_faf_client_download_link);
-});
-
 
 app.get('/logout', function (req, res, next) {
   req.logout(function (err) {
