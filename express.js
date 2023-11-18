@@ -3,7 +3,7 @@ const express = require('express');
 const showdown = require('showdown');
 const passport = require('passport');
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
+const FileStore = require('session-file-store')(session);
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const fs = require('fs');
@@ -24,20 +24,19 @@ app.use(express.static('public', {
   maxAge: 4 * 60 * 60 * 1000 // 4 hours
 }));
 
-
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
 
-// Session determines how long will the user be logged in/authorized in the website
 app.use(session({
-  secret: appConfig.session.key,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: appConfig.session.tokenLifespan * 1000
-  }
+    resave: false, 
+    saveUninitialized: true,
+    secret: appConfig.session.key,
+    store: new FileStore({
+        retries: 0,
+        ttl: appConfig.session.tokenLifespan,
+        secret: appConfig.session.key
+    })
 }));
 
 app.use(passport.initialize());
