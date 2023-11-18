@@ -46,3 +46,6 @@ public/styles/css/*
 .env
 
 public/js/*.js
+
+#Sessions
+sessions
