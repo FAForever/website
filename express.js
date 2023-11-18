@@ -1,32 +1,18 @@
+const appConfig = require('./config/app')
 const express = require('express');
 const showdown = require('showdown');
-const request = require('request');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const fs = require('fs');
-let OidcStrategy = require('passport-openidconnect');
 const middleware = require('./routes/middleware');
-const cors = require('cors');
 const app = express();
 const newsRouter = require('./routes/views/news');
+const authRouter = require('./routes/views/auth');
 
 app.locals.clanInvitations = {};
-
-require('dotenv').config();
-//Define environment variables with default values
-process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-process.env.PORT = process.env.PORT || '3000';
-process.env.CALLBACK = process.env.CALLBACK || 'callback';
-process.env.OAUTH_URL = process.env.OAUTH_URL || 'https://hydra.faforever.com';
-process.env.OAUTH_PUBLIC_URL = process.env.OAUTH_PUBLIC_URL || process.env.OAUTH_URL;
-process.env.API_URL = process.env.API_URL || 'https://api.faforever.com';
-process.env.OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '12345';
-process.env.OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '12345';
-process.env.HOST = process.env.HOST || 'http://localhost';
-process.env.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '12345';
 
 //Execute Middleware
 app.use(middleware.initLocals);
@@ -46,11 +32,11 @@ app.use(cookieParser());
 
 // Session determines how long will the user be logged in/authorized in the website
 app.use(session({
-  secret: process.env.SESSION_SECRET_KEY,
+  secret: appConfig.session.key,
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: process.env.TOKEN_LIFESPAN * 1000
+    maxAge: appConfig.session.tokenLifespan * 1000
   }
 }));
 
@@ -63,7 +49,7 @@ app.use(middleware.flashMessage);
 //Initialize values for default configs
 app.set('views', 'templates/views');
 app.set('view engine', 'pug');
-app.set('port', process.env.PORT);
+app.set('port', appConfig.expressPort);
 
 app.use(function(req, res, next){
   res.locals.message = req.flash();
@@ -84,20 +70,15 @@ function loggedIn(req, res, next) {
   }
 }
 
-
-
-
-
 //Start and listen on port
-app.listen(process.env.PORT, () => {
-  console.log(`Express listening on port ${process.env.PORT}`);
-});
+
 
 
 // --- R O U T E S ---
 // when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
 
-app.use("/news", newsRouter)
+app.use('/news', newsRouter)
+app.use('/', authRouter)
 
 // --- UNPROTECTED ROUTES ---
 const appGetRouteArray = [
@@ -221,76 +202,6 @@ app.get('/client', (req, res) => {
 });
 
 
-app.get('/logout', function (req, res, next) {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect('/');
-  });
-});
-
-// Login and Login/redirect routes
-app.get('/login', passport.authenticate('faforever'));
-
-
-
-passport.use('faforever', new OidcStrategy({
-    issuer: process.env.OAUTH_URL + '/',
-    tokenURL: process.env.OAUTH_URL + '/oauth2/token',
-    authorizationURL: process.env.OAUTH_PUBLIC_URL + '/oauth2/auth',
-    userInfoURL: process.env.OAUTH_URL + '/userinfo?schema=openid',
-    clientID: process.env.OAUTH_CLIENT_ID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    callbackURL: `${process.env.HOST}/${process.env.CALLBACK}`,
-    scope: ['openid', 'public_profile', 'write_account_data']
-  }, function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
-    
-    request.get(
-      {url: process.env.API_URL + '/me', headers: {'Authorization': 'Bearer ' + accessToken}},
-      function (e, r, body) {
-        try {
-          if (r.statusCode !== 200) {
-            return verified(null);
-          }
-          let user = JSON.parse(body);
- 
-          user.data.attributes.token = accessToken;
-          user.data.id = user.data.attributes.userId;
-   
-
-          return verified(null, user);  
-        } catch (e) {
-          console.log(e);
-          return verified(null, null);
-        }
-        
-      }
-    );
-  }
-));
-
-
-passport.serializeUser(function (user, done) {
-
-  done(null, user);
-  
-});
-
-passport.deserializeUser(function (user, done) {
-  done(null, user);
-});
-
-
-app.get(`/${process.env.CALLBACK}`, passport.authenticate('faforever', {
-  failureRedirect: '/login', // Failed auth
-  failureFlash: true
-}), function (req, res) {
-  res.redirect('/');
-  //res.redirect(fullUrl ? fullUrl : '/');
-  //fullUrl = '/'; // Successful auth
-});
-
 // Run scripts initially on startup
 let requireRunArray = ['extractor'];
 for (let i = 0; i < requireRunArray.length; i++) {
@@ -306,7 +217,7 @@ for (let i = 0; i < requireRunArray.length; i++) {
     } catch (e) {
       console.error(`${requireRunArray[i]} caused the error`, e);
     }
-  }, process.env.EXTRACTOR_INTERVAL * 60 * 1000); 
+  }, appConfig.extractorInterval * 60 * 1000); 
 }
 setInterval(() => {
   try {
@@ -315,7 +226,7 @@ setInterval(() => {
   } catch (e) {
     console.error(`getRecentUsers script caused the error`, e);
   }
-}, process.env.PLAYER_COUNT_INTERVAL * 1000); 
+}, appConfig.playerCountInterval * 1000); 
 
 
 //404 Error Handlers
@@ -330,4 +241,7 @@ app.use(function (err, req, res, next) {
 
   res.status(500).render('errors/500');
 });
- 
+
+app.listen(appConfig.expressPort, () => {
+    console.log(`Express listening on port ${appConfig.expressPort}`);
+});
