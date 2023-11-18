@@ -71,13 +71,6 @@ function loggedIn(req, res, next) {
   }
 }
 
-//Start and listen on port
-
-
-
-// --- R O U T E S ---
-// when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
-
 app.use('/', authRouter)
 app.use('/', staticMarkdownRouter)
 app.use('/news', newsRouter)

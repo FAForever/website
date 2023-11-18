@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const LeaderboardServiceFactory = require('../../lib/LeaderboardServiceFactory')
-const {LockoutTimeoutError} = require("../../lib/LockService");
+const {AcquireTimeoutError} = require('../../lib/MutexService');
+const appConfig = require('../../config/app')
+
 
 const getLeaderboardId = (leaderboardName) => {
     const mapping = {
@@ -39,11 +41,11 @@ router.get('/:leaderboard.json', async (req, res) => {
         }
 
         const token = req.user.data.attributes.token
-        const leaderboardService = LeaderboardServiceFactory(process.env.API_URL, token)
+        const leaderboardService = LeaderboardServiceFactory(appConfig.apiUrl, token)
 
         return res.json(await leaderboardService.getLeaderboard(leaderboardId))
     } catch (e) {
-        if (e instanceof LockoutTimeoutError) {
+        if (e instanceof AcquireTimeoutError) {
             return res.status(503).json({error: 'timeout reached'})
         }
 
