@@ -1,6 +1,6 @@
 const LeaderboardService = require("../lib/LeaderboardService")
 const LeaderboardRepository = require("../lib/LeaderboardRepository")
-const {LockService} = require("../lib/LockService")
+const {MutexService} = require("../lib/MutexService")
 const NodeCache = require("node-cache")
 const {Axios} = require("axios");
 
@@ -34,7 +34,7 @@ beforeEach(() => {
         new NodeCache(
             { stdTTL: 300, checkperiod: 600 }
         ),
-        new LockService(),
+        new MutexService(),
         new LeaderboardRepository(axios)
     )
 })
@@ -97,9 +97,9 @@ test('timeout for cache creation throws an error', async () => {
     expect.assertions(1);
     axios.get.mockImplementationOnce(() => Promise.resolve({ status: 200, data: fakeEntry }))
 
-    leaderboardService.lockService.locked = true
+    leaderboardService.mutexService.locked = true
     leaderboardService.getLeaderboard(0).then(() => {}).catch((e) => {
-        expect(e.toString()).toBe('Error: LockService timeout reached')
+        expect(e.toString()).toBe('Error: MutexService timeout reached')
     })
     
     jest.runOnlyPendingTimers()
