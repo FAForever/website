@@ -7,6 +7,7 @@ const FileStore = require('session-file-store')(session);
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const fs = require('fs');
+const setupCronJobs = require('./scripts/cron-jobs');
 const middleware = require('./routes/middleware');
 const app = express();
 const newsRouter = require('./routes/views/news');
@@ -170,23 +171,7 @@ app.get('/account/checkUsername', require('./routes/views/checkUsername'));
 app.get('/password_resetted', require(routes + 'account/get/requestPasswordReset'));
 app.get('/report_submitted', require(routes + 'account/get/report'));
 
-// Run scripts initially on startup
-let requireRunArray = ['extractor'];
-for (let i = 0; i < requireRunArray.length; i++) {
-  try {
-    require(`./scripts/${requireRunArray[i]}`).run();
-  } catch (e) {
-    console.error(`Error running ${requireRunArray[i]} script. Make sure the API is available (will try again after interval).`, e);
-  }
-// Interval for scripts
-  setInterval(() => {
-    try {
-      require(`./scripts/${requireRunArray[i]}`).run();
-    } catch (e) {
-      console.error(`${requireRunArray[i]} caused the error`, e);
-    }
-  }, appConfig.extractorInterval * 60 * 1000); 
-}
+setupCronJobs()
 
 //404 Error Handlers
 app.use(function (req, res) {
