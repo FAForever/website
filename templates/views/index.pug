@@ -3,7 +3,7 @@ block bannerData
   - var bannerImage = "home"
   - var bannerFirstTitle = "AN RTS CLASSIC REFORGED"
   - var bannerSecondTitle = "MASSIVE SCALE WARFARE"
-  - var bannerSubTitle = "" + " " + "COMMANDERS PLAYING RIGHT NOW"
+  - var bannerSubTitle = "MANY COMMANDERS PLAYING RIGHT NOW"
 block banner
   mixin banner()
     .mainBannerContainer(class= bannerImage + 'Banner' style='background-image: url(../images/banner/' + bannerImage + '.webp);')
@@ -120,8 +120,3 @@ block content
         button PLAY NOW
       a(href='https://discord.gg/mXahVSKGVb')
         button Join our Discord
-
-block js
-  script(src="../../js/app/index.js")
-
-
