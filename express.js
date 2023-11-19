@@ -213,15 +213,6 @@ for (let i = 0; i < requireRunArray.length; i++) {
     }
   }, appConfig.extractorInterval * 60 * 1000); 
 }
-setInterval(() => {
-  try {
-    require(`./scripts/getRecentUsers`).run();
-
-  } catch (e) {
-    console.error(`getRecentUsers script caused the error`, e);
-  }
-}, appConfig.playerCountInterval * 1000); 
-
 
 //404 Error Handlers
 app.use(function (req, res) {
