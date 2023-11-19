@@ -10,6 +10,7 @@ const fs = require('fs');
 const middleware = require('./routes/middleware');
 const app = express();
 const newsRouter = require('./routes/views/news');
+const staticMarkdownRouter = require('./routes/views/staticMarkdownRouter');
 const authRouter = require('./routes/views/auth');
 
 app.locals.clanInvitations = {};
@@ -70,14 +71,8 @@ function loggedIn(req, res, next) {
   }
 }
 
-//Start and listen on port
-
-
-
-// --- R O U T E S ---
-// when the website is asked to render "/pageName" it will come here and see what are the "instructions" to render said page. If the page isn't here, then the website won't render it properly.
-
 app.use('/news', newsRouter)
+app.use('/', staticMarkdownRouter)
 app.use('/', authRouter)
 
 // --- UNPROTECTED ROUTES ---
@@ -148,26 +143,6 @@ clansRoutesPost.forEach(page => app.post(`/clans/${page}`, loggedIn,  (req, res)
 //   res.render(`clans/seeClan`);
 // });
 app.get('/clans/*',  (req, res) =>  res.status(503).render('errors/503-known-issue'));
-
-
-// Markdown Routes
-
-// ToS and Privacy Statement
-function markdown(template) {
-  let html = new showdown.Converter().makeHtml(fs.readFileSync(template, 'utf-8'));
-  return (req, res) => {
-    res.render('markdown', {content: html});
-  };
-}
-
-app.get('/privacy', markdown('templates/views/markdown/privacy.md'));
-app.get('/privacy-fr', markdown('templates/views/markdown/privacy-fr.md'));
-app.get('/privacy-ru', markdown('templates/views/markdown/privacy-ru.md'));
-app.get('/tos', markdown('templates/views/markdown/tos.md'));
-app.get('/tos-fr', markdown('templates/views/markdown/tos-fr.md'));
-app.get('/tos-ru', markdown('templates/views/markdown/tos-ru.md'));
-app.get('/rules', markdown('templates/views/markdown/rules.md'));
-app.get('/cg', markdown('templates/views/markdown/cg.md'));
 
 
 // ---ODD BALLS---
