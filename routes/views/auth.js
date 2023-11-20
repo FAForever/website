@@ -42,8 +42,15 @@ router.get('/login', passport.authenticate('faforever'));
 
 router.get(
     '/' + appConfig.oauth.callback,
+    (req, res, next)=>{
+        res.locals.returnTo = req.session.returnTo
+        
+        return next()
+    },
     passport.authenticate('faforever', {failureRedirect: '/login', failureFlash: true}),
-    (req, res) => res.redirect('/')
+    (req, res) => {
+        res.redirect(res.locals.returnTo || '/')
+    }
 )
 
 router.get('/logout', (req, res, next) => {
