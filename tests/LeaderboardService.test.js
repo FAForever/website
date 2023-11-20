@@ -122,7 +122,7 @@ test('full scenario', async () => {
     expect(cacheSetSpy).toHaveBeenCalledTimes(1);
     
     const date = new Date()
-    date.setSeconds(date.getSeconds() + 301)
+    date.setSeconds(date.getSeconds() + (60 * 60 * 4) + 1)
     jest.setSystemTime(date);
     
     // start another with when the cache is stale
