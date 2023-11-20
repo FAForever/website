@@ -1,8 +1,9 @@
+const appConfig = require('../../config/app')
 const express = require('express');
 const router = express.Router();
 const LeaderboardServiceFactory = require('../../lib/LeaderboardServiceFactory')
 const {AcquireTimeoutError} = require('../../lib/MutexService');
-const appConfig = require('../../config/app')
+const middlewares = require('../middleware')
 
 
 const getLeaderboardId = (leaderboardName) => {
@@ -20,19 +21,11 @@ const getLeaderboardId = (leaderboardName) => {
     return null
 }
 
-router.get('/', (req, res) => {
-    if (!req.isAuthenticated()) {
-        return res.redirect('/login');
-    }
-
+router.get('/', middlewares.isAuthenticated(), (req, res) => {
     return res.render('leaderboards')
 })
 
-router.get('/:leaderboard.json', async (req, res) => {
-    if (!req.isAuthenticated()) {
-        return res.status(403).json({error: 'Not Authenticated'})
-    }
-
+router.get('/:leaderboard.json', middlewares.isAuthenticated(null, true), async (req, res) => {
     try {
         const leaderboardId = getLeaderboardId(req.params.leaderboard ?? null);
 
