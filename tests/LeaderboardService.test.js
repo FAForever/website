@@ -34,7 +34,6 @@ beforeEach(() => {
         new NodeCache(
             { stdTTL: 300, checkperiod: 600 }
         ),
-        new MutexService(),
         new LeaderboardRepository(axios)
     )
 })

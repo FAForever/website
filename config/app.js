@@ -18,6 +18,7 @@ const appConfig = {
         callback: process.env.CALLBACK || 'callback',
     },
     apiUrl: process.env.API_URL || 'https://api.faforever.com',
+    wordpressUrl: process.env.WP_URL || 'https://direct.faforever.com',
     extractorInterval: process.env.EXTRACTOR_INTERVAL || 5,
     playerCountInterval: process.env.PLAYER_COUNT_INTERVAL || 15
 }

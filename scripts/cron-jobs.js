@@ -1,16 +1,27 @@
 const appConfig = require("../config/app")
+const WordpressServiceFactory = require("../lib/WordpressServiceFactory");
+const Scheduler = require("../lib/Scheduler");
 
-module.exports = () => {
-    try {
-        require(`./extractor`).run()
-    } catch (e) {
-        console.error(`Error running extractor script. Make sure the API is available (will try again after interval).`, e)
+const warmupWordpressCache = async () => {
+    const wordpressService = WordpressServiceFactory(appConfig.wordpressUrl)
+    
+    const successHandler = (name) => {
+        console.info(name, 'cache generated')
     }
-    setInterval(() => {
-        try {
-            require(`./extractor`).run()
-        } catch (e) {
-            console.error(`extractor caused the error`, e)
-        }
-    }, appConfig.extractorInterval * 60 * 1000)
+    const errorHandler = (e, name) => {
+        console.error(name, e.toString(), 'cache failed')
+    }
+    
+    wordpressService.getNews(true).then(() => successHandler('getNews')).catch((e) => errorHandler(e, 'getNews'))
+    wordpressService.getNewshub(true).then(() => successHandler('getNewshub')).catch((e) => errorHandler(e, 'getNewshub'))
+    wordpressService.getContentCreators(true).then(() => successHandler('getContentCreators')).catch((e) => errorHandler(e, 'getContentCreators'))
+    wordpressService.getTournamentNews(true).then(() => successHandler('getTournamentNews')).catch((e) => errorHandler(e, 'getTournamentNews'))
+    wordpressService.getFafTeams(true).then(() => successHandler('getFafTeams')).catch((e) => errorHandler(e, 'getFafTeams'))
+}
+
+module.exports = async () => {
+    await warmupWordpressCache()
+    
+    const wordpressScheduler = new Scheduler('createWordpressCaches', warmupWordpressCache, 60 * 59 * 1000)
+    wordpressScheduler.start()
 }

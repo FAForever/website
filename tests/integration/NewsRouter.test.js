@@ -1,21 +1,17 @@
 const request = require('supertest')
 const express = require('express')
 const newsRouter = require( "../../routes/views/news")
-const fs = require('fs')
+const middleware = require("../../routes/middleware");
 
 const app = new express();
 app.set('views', 'templates/views');
 app.set('view engine', 'pug');
+app.use(middleware.injectServices);
 app.use("/news", newsRouter)
 
 describe('News Routes', function () {
-    const testFile =  fs.readFileSync('tests/integration/testData/news.json',{encoding:'utf8', flag:'r'})
 
     test('responds to /', async () => {
-        jest.mock('fs')
-        jest.spyOn(fs, 'readFileSync').mockReturnValueOnce(testFile)
-        
-        
         const res = await request(app).get('/news');
         expect(res.header['content-type']).toBe('text/html; charset=utf-8');
         expect(res.statusCode).toBe(200);
@@ -26,10 +22,6 @@ describe('News Routes', function () {
     });
 
     test('responds to /:slug', async () => {
-        jest.mock('fs')
-        jest.spyOn(fs, 'readFileSync').mockReturnValueOnce(testFile)
-
-
         const res = await request(app).get('/news/balance-patch-3750-is-live');
         expect(res.header['content-type']).toBe('text/html; charset=utf-8');
         expect(res.statusCode).toBe(200);
@@ -37,10 +29,6 @@ describe('News Routes', function () {
     });
 
     test('responds to /:slug with redirect if called with old slug', async () => {
-        jest.mock('fs')
-        jest.spyOn(fs, 'readFileSync').mockReturnValueOnce(testFile)
-
-
         const res = await request(app).get('/news/Balance-Patch-3750-Is-Live');
         expect(res.statusCode).toBe(301);
         expect(res.header['location']).toBe('balance-patch-3750-is-live');
