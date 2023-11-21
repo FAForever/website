@@ -2,7 +2,7 @@
 let teamSelection = document.querySelectorAll('.teamSelection');
 let teamContainer = document.querySelectorAll('.teamContainer');
 async function getWordpress() {
-  const response = await fetch(`js/app/members/faf-teams.json`);
+  const response = await fetch('/data/faf-teams.json');
   const data = await response.json();
   let insertWordpress = document.getElementById('insertWordpress');
   insertWordpress.insertAdjacentHTML('beforeend', `${data[0].content}`);

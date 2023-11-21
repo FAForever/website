@@ -8,7 +8,6 @@ module.exports = {
         'node_modules/**',
         'grunt/**',
         'Gruntfile.js',
-        'public/js/app/members/**'
       ]
     }
   }

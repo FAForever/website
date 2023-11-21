@@ -13,10 +13,12 @@ const newsRouter = require('./routes/views/news');
 const staticMarkdownRouter = require('./routes/views/staticMarkdownRouter');
 const leaderboardRouter = require('./routes/views/leaderboardRouter');
 const authRouter = require('./routes/views/auth');
+const dataRouter = require('./routes/views/dataRouter');
 
 app.locals.clanInvitations = {};
 
 //Execute Middleware
+app.use(middleware.injectServices);
 app.use(middleware.initLocals);
 app.use(middleware.clientChecks);
 
@@ -74,6 +76,7 @@ app.use('/', authRouter)
 app.use('/', staticMarkdownRouter)
 app.use('/news', newsRouter)
 app.use('/leaderboards', leaderboardRouter)
+app.use('/data', dataRouter)
 
 // --- UNPROTECTED ROUTES ---
 const appGetRouteArray = [

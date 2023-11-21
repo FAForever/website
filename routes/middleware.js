@@ -1,10 +1,7 @@
-/**
-	Initialises the standard view locals
+const WordpressServiceFactory = require("../lib/WordpressServiceFactory");
+const appConfig = require("../config/app");
+const wordpressService = WordpressServiceFactory(appConfig.wordpressUrl)
 
-	The included layout depends on the navLinks array to generate
-	the navigation in the header, you may wish to change this array
-	or replace it with your own templates / logic.
-*/
 exports.initLocals = function(req, res, next) {
 	let locals = res.locals;
 	locals.navLinks = [];
@@ -51,4 +48,12 @@ exports.isAuthenticated = (redirectUrlAfterLogin = null, isApiRequest = false) =
 
         return res.redirect('/login')
     }
+}
+
+exports.injectServices =  function(req, res, next) {
+    req.services = {
+        wordpressService: wordpressService
+    }
+
+    next()
 }

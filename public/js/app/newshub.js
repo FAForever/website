@@ -1,11 +1,11 @@
 
 async function getNewshub() {
-  const response = await fetch(`js/app/members/newshub.json`);
+  const response = await fetch('/data/newshub.json');
   const data = await response.json();
   return await data;
 }
 async function getTournament() {
-  const response = await fetch(`js/app/members/tournament-news.json`);
+  const response = await fetch('/data/tournament-news.json');
   const data = await response.json();
   return await data;
 }
@@ -72,8 +72,6 @@ let arrowRight = document.getElementById('clientArrowRigth');
 let arrowLeft = document.getElementById('clientArrowLeft');
 let newsPosition = 0;
 let newsLimit = 0;
-let newsMove = clientContainer[0].offsetWidth;
-console.log(newsMove);
 let spawnStyle = getComputedStyle(clientSpawn).columnGap;
 let columnGap = spawnStyle.slice(0, 2);
 
