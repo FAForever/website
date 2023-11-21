@@ -31,9 +31,6 @@ html(lang='en')
 
   //- HTML BODY
   body
-    if flashMessage
-      #flashMessageContainer
-        p(style=`background-color:${flashColor}`) #{flashMessage}
     .mainTopNavContainer
       // this is the "thin" navbar that has forums, discord, youtube icons, etc. 
       .topNavContainer
@@ -284,20 +281,8 @@ html(lang='en')
               a(href='https://discord.gg/mXahVSKGVb') DISCORD
             li
               a(href='https://forum.faforever.com/')  FORUMS
-
-
-
-
-
-
-      //- Add scripts that are globally required by your site here.
-      // This script here adss what our flash message requirements are.
-      if flashRoutes
-        script(type='text/javascript').
-          var htmlElement = !{JSON.stringify(flashRoutes)}
           
       script(src="../../js/app/navigation.js")
-      
 
       //- Include template-specific javascript files by extending the js block
       block js
