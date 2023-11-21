@@ -148,19 +148,3 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(highlightPulse, 2000);
   
 });
-
-if (typeof htmlElement !== 'undefined') {
-  let pages = htmlElement.split(',');
-  if (pages[0] === '/all') {
-    document.getElementById('flashMessageContainer').style.display = 'block';
-  } else {
-    pages.forEach(route => {
-
-      if (window.location.href.includes(route) && window.innerWidth > 900) {
-        document.getElementById('flashMessageContainer').style.display = 'block';
-      }
-    });
-  }
-}
-
-

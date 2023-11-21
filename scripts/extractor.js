@@ -35,29 +35,6 @@ async function getTournamentNews() {
   }
 }
 
-
-async function flashMessage() {
-
-  try {
-    let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields,_links.wp:featuredmedia,_embedded,title,content.rendered,categories&categories=640`);
-    
-    //Now we get a js array rather than a js object. Otherwise we can't sort it out.
-    let dataObjectToArray = Object.values(response.data);
-    let data = dataObjectToArray.map(item => ({
-      //title: item.title.rendered,
-      content: item.newshub_badge,
-      color: item.newshub_backgroundcolor,
-      valid: item.newshub_sortIndex,
-      pages: item.newshub_externalLinkUrl,
-
-    }));
-    return await data;
-  } catch (e) {
-    console.error(currentDate, '- [error] extractor::flashMessage failed with =>', e.toString());
-    return null;
-  }
-}
-
 async function news() {
   try {
     let response = await axios.get(`${process.env.WP_URL}/wp-json/wp/v2/posts/?per_page=100&_embed&_fields=_links.author,_links.wp:featuredmedia,_embedded,title,content.rendered,date,categories&categories=587`);
@@ -180,11 +157,11 @@ module.exports.run = function run() {
 
   // Do not change the order of these/make sure they match the order of fileNames below
   const extractorFunctions = [
-    getTournamentNews(), flashMessage(), news(), contentCreators(), newshub(), fafTeams(), getAllClans(),
+    getTournamentNews(), news(), contentCreators(), newshub(), fafTeams(), getAllClans(),
   ];
   //Make sure to not change the order of these since they match the order of extractorFunctions
   const fileNames = [
-    'tournament-news','flashMessage', 'news', 'content-creators', 'newshub', 'faf-teams', 'getAllClans',
+    'tournament-news', 'news', 'content-creators', 'newshub', 'faf-teams', 'getAllClans',
   ];
 
   fileNames.forEach((fileName, index) => {

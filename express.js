@@ -45,7 +45,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(middleware.username);
-app.use(middleware.flashMessage);
 
 //Initialize values for default configs
 app.set('views', 'templates/views');
