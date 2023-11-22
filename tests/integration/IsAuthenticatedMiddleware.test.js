@@ -1,23 +1,15 @@
 const express = require('express')
 const middlewares = require('../../routes/middleware')
-const passport = require("passport");
-const appConfig = require("../../config/app");
 const supertestSession = require('supertest-session');
-const session = require('express-session');
+const fafApp = require("../../fafApp");
 
 let testApp = null
 let testSession = null
 
 beforeEach(() => {
     const app = new express()
+    fafApp.setup(app)
     testSession = supertestSession(app)
-    app.use(session({
-        resave: false,
-        saveUninitialized: true,
-        secret: appConfig.session.key,
-    }));
-    app.use(passport.initialize())
-    app.use(passport.session())
     testApp = app
 })
 

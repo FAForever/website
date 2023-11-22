@@ -1,6 +1,5 @@
 const LeaderboardService = require("../lib/LeaderboardService")
 const LeaderboardRepository = require("../lib/LeaderboardRepository")
-const {MutexService} = require("../lib/MutexService")
 const NodeCache = require("node-cache")
 const {Axios} = require("axios");
 
@@ -29,6 +28,7 @@ const fakeEntry = JSON.stringify({
 })
 
 beforeEach(() => {
+    jest.restoreAllMocks()
     jest.useFakeTimers()
     leaderboardService = new LeaderboardService(
         new NodeCache(
