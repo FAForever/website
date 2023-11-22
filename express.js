@@ -18,7 +18,6 @@ app.locals.clanInvitations = {};
 
 //Execute Middleware
 app.use(middleware.initLocals);
-app.use(middleware.clientChecks);
 
 //Set static public directory path
 app.use(express.static('public', {

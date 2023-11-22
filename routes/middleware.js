@@ -12,17 +12,6 @@ exports.initLocals = function(req, res, next) {
   next();
 };
 
-exports.clientChecks = function(req, res, next) {
-    let locals = res.locals;
-    locals.removeNavigation = false;
- 
-    let userAgent = req.headers['user-agent'];
-    if (userAgent === 'downlords-faf-client') {
-        locals.removeNavigation = true;
-    }
-    next();
-};
-
 exports.username = function(req, res, next) {
   var locals = res.locals;
 
