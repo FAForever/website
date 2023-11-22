@@ -30,7 +30,7 @@ router.get('/:leaderboard.json', middlewares.isAuthenticated(null, true), async 
         const leaderboardId = getLeaderboardId(req.params.leaderboard ?? null);
 
         if (leaderboardId === null) {
-            return res.status(404).json({error: 'Leaderboard "' + req.params.leaderboard + '"does not exist'})
+            return res.status(404).json({error: 'Leaderboard "' + req.params.leaderboard + '" does not exist'})
         }
 
         const token = req.user.data.attributes.token

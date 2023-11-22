@@ -1,1 +1,89 @@
-[{"category":[283],"sortIndex":"2000","link":"https://forum.faforever.com/topic/6718/legend-of-the-stars-2023-qualifier/1","date":"2023-11-20T11:33:34","title":"Legend of the Stars Qualifiers","content":"\n<p>The largest tournament of the year is back again with a total prize pool of $1900! Time to gear up and try to qualify yourself on the 25th of November to enter the group stage! Click here for more information</p>\n\n\n\n<p></p>\n","author":"Jip","media":"https://direct.faforever.com/wp-content/uploads/2023/11/lots-small.png"},{"category":[283],"sortIndex":"1000","link":"https://forum.faforever.com/topic/6753/looking-for-feedback-on-whether-people-perceive-more-or-less-connection-problems","date":"2023-10-13T15:06:53","title":"Did the recent work on the client help?","content":"\n<p>The recent work to mitigate the DDOS attacks are bearing fruit! All that fruit is stuffed in the <a href=\"https://github.com/FAForever/downlords-faf-client/releases/tag/v2023.11.0\">v2023.11.0</a> of the client. Go get it while it is hot! Please leave your experience on whether there are more or less connectivity problems in the feedback channel on the forums by clicking on this news item.</p>\n\n\n\n<p></p>\n","author":"Jip","media":"https://direct.faforever.com/wp-content/uploads/2023/06/server_issues.png"},{"category":[283],"sortIndex":"910","link":"https://www.youtube.com/watch?v=12iT8o6pJW4&list=PLp2GJBSquXYfJdFxPEnqkpVTmqh3ir4ic&index=3 ","date":"2023-11-16T15:00:50","title":"Terms &#038; phrases you should know!","content":"\n<p>Do you know what ASF&#8217;s, RAS spam, and build capacity are? Worry not if you don&#8217;t, TheGreenSquier will go over the most used terms, phrases, and acronyms in this video!</p>\n","author":"Jip","media":"https://direct.faforever.com/wp-content/uploads/2023/11/Iceberg_Thumbnail_alt_4.png"},{"category":[283],"sortIndex":"880","link":"https://forum.faforever.com/topic/6791/brigadier-fletcher-player-tournament/1","date":"2023-11-16T14:56:25","title":"‘Brigadier Fletcher’ Player tournament","content":"\n<p>Time to duke it out for two teams on the submissions of the equally named mapping tournament! Read up all about it here and don&#8217;t forget to give the submitted maps a play or two!</p>\n","author":"Jip","media":"https://direct.faforever.com/wp-content/uploads/2023/11/brigadier-fletcher-player-tournament.png"},{"category":[283],"sortIndex":"800","link":"https://wiki.faforever.com/en/Development/Mapping","date":"2023-09-09T15:57:08","title":"Modern mapping tutorials","content":"\n<p>Now&#8217;s the ideal time to master map-making! Thanks to Prohibitorum, FAForever Wiki&#8217;s mapping section is up-to-date with the latest tutorials.</p>\n","author":"Jip","media":"https://direct.faforever.com/wp-content/uploads/2023/09/luminarybreakdown.jpg"},{"category":[283],"sortIndex":"750","link":"https://wiki.faforever.com/en/Development/Mapping/Gaea/Texturing","date":"2023-09-13T14:17:34","title":"Texturing guide using Gaea","content":"\n<p>Another valuable piece of content for map authors: Learn all about procedurally generating stratum masks! With thanks to Prohibitorum for his time and effort<br><br></p>\n","author":"Jip","media":"https://direct.faforever.com/wp-content/uploads/2023/09/preview-texturing-gaea.png"}]
+[
+    {
+        "category": [
+            283
+        ],
+        "sortIndex": "1000",
+        "link": "https://github.com/FAForever/downlords-faf-client/releases",
+        "date": "2023-10-13T15:06:53",
+        "title": "Help with testing an alpha build of the client!",
+        "content": "\n<p>A new alpha build of the client is released. This client uses the new server communication protocol which should help to mitigate some of the connection issues people have been seeing recently. Do give it a try and report back on Discord using the #client-bug-reporting channel!</p>\n\n\n\n<p>Latest version is 2023.10.0-alpha-4, released on the 16th of October. This version also brings back the IRC chat</p>\n",
+        "author": "Jip",
+        "media": "https://direct.faforever.xyz/wp-content/uploads/2023/06/server_issues.png"
+    },
+    {
+        "category": [
+            633,
+            283
+        ],
+        "sortIndex": "910",
+        "link": "https://www.youtube.com/watch?v=n2KbEQAzuN8&list=PLp2GJBSquXYfPhSiXoDJs8jKCUvZp3ADv&index=5",
+        "date": "2023-10-13T15:09:48",
+        "title": "7 Essential Tips for Beginners",
+        "content": "\n<p>TheGreenSquier goes over certain things you can do if you want to improve at Supreme Commander. Depending on your rating, you might already be doing them!</p>\n",
+        "author": "Jip",
+        "media": "https://direct.faforever.xyz/wp-content/uploads/2023/10/Get_Good_Thumbnail_1.png"
+    },
+    {
+        "category": [
+            283,
+            23
+        ],
+        "sortIndex": "890",
+        "link": "https://forum.faforever.com/topic/6535/sunday-tournaments",
+        "date": "2023-09-27T18:29:12",
+        "title": "Weekly Sunday Tournaments!",
+        "content": "\n<p>Rowan is hosting a weekly, casual tournament every Sunday! The format changes each week. Click here to read up more about it on the forums</p>\n\n\n\n<p></p>\n",
+        "author": "Jip",
+        "media": "https://direct.faforever.xyz/wp-content/uploads/2023/09/tournament.png"
+    },
+    {
+        "category": [
+            633,
+            283
+        ],
+        "sortIndex": "880",
+        "link": "https://forum.faforever.com/topic/6499/brigadier-fletcher-mapping-tournament/1",
+        "date": "2023-10-13T15:20:34",
+        "title": "&#8216;Brigadier Fletcher&#8217; Mapping tournament",
+        "content": "\n<p>Another tournament, another faction! This time the theme the UEF Faction starring Brigadier Fletcher! Everyone is welcome to participate. Deadline to submit is the 12th of November, 2023</p>\n",
+        "author": "Jip",
+        "media": "https://direct.faforever.xyz/wp-content/uploads/2023/10/4e1f7490-e117-4687-ba9a-b9f0f05bbe3b-image.png"
+    },
+    {
+        "category": [
+            283
+        ],
+        "sortIndex": "800",
+        "link": "https://wiki.faforever.com/en/Development/Mapping",
+        "date": "2023-09-09T15:57:08",
+        "title": "Modern mapping tutorials",
+        "content": "\n<p>Now&#8217;s the ideal time to master map-making! Thanks to Prohibitorum, FAForever Wiki&#8217;s mapping section is up-to-date with the latest tutorials.</p>\n",
+        "author": "Jip",
+        "media": "https://direct.faforever.xyz/wp-content/uploads/2023/09/luminarybreakdown.jpg"
+    },
+    {
+        "category": [
+            283
+        ],
+        "sortIndex": "750",
+        "link": "https://wiki.faforever.com/en/Development/Mapping/Gaea/Texturing",
+        "date": "2023-09-13T14:17:34",
+        "title": "Texturing guide using Gaea",
+        "content": "\n<p>Another valuable piece of content for map authors: Learn all about procedurally generating stratum masks! With thanks to Prohibitorum for his time and effort<br><br></p>\n",
+        "author": "Jip",
+        "media": "https://direct.faforever.xyz/wp-content/uploads/2023/09/preview-texturing-gaea.png"
+    },
+    {
+        "category": [
+            283
+        ],
+        "sortIndex": "500",
+        "link": "https://www.youtube.com/watch?v=4qItEqlOYmg",
+        "date": "2023-09-13T13:49:44",
+        "title": "Latest updates by Tactical Takeover",
+        "content": "\n<p>Learn about some of the biggest features added by the last update in this video showcase by Tactical Takeover!</p>\n",
+        "author": "Jip",
+        "media": "https://direct.faforever.xyz/wp-content/uploads/2023/09/tt-thumbnail.png"
+    }
+]

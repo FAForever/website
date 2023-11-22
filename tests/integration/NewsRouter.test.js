@@ -1,18 +1,20 @@
-const request = require('supertest')
 const express = require('express')
-const newsRouter = require( "../../routes/views/news")
-const middleware = require("../../routes/middleware");
+const supertestSession = require("supertest-session");
+const fafApp = require('../../fafApp')
 
-const app = new express();
-app.set('views', 'templates/views');
-app.set('view engine', 'pug');
-app.use(middleware.injectServices);
-app.use("/news", newsRouter)
+let testSession = null
+beforeEach(() => {
+    const app = new express()
+    fafApp.setup(app)
+    fafApp.loadRouters(app)
+    
+    testSession = supertestSession(app)
+})
 
 describe('News Routes', function () {
 
     test('responds to /', async () => {
-        const res = await request(app).get('/news');
+        const res = await testSession.get('/news');
         expect(res.header['content-type']).toBe('text/html; charset=utf-8');
         expect(res.statusCode).toBe(200);
         expect(res.text).toContain('Welcome to the patchnotes for the 3750 patch.');
@@ -22,14 +24,14 @@ describe('News Routes', function () {
     });
 
     test('responds to /:slug', async () => {
-        const res = await request(app).get('/news/balance-patch-3750-is-live');
+        const res = await testSession.get('/news/balance-patch-3750-is-live');
         expect(res.header['content-type']).toBe('text/html; charset=utf-8');
         expect(res.statusCode).toBe(200);
         expect(res.text).toContain('Welcome to the patchnotes for the 3750 patch.');
     });
 
     test('responds to /:slug with redirect if called with old slug', async () => {
-        const res = await request(app).get('/news/Balance-Patch-3750-Is-Live');
+        const res = await testSession.get('/news/Balance-Patch-3750-Is-Live');
         expect(res.statusCode).toBe(301);
         expect(res.header['location']).toBe('balance-patch-3750-is-live');
     });
