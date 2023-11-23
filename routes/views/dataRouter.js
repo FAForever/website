@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const {AcquireTimeoutError} = require('../../lib/MutexService');
+const LeaderboardServiceFactory = require("../../lib/LeaderboardServiceFactory");
+const appConfig = require("../../config/app");
 
 const getData = async (req, res, name, data) => {
     try {
-        return res.json(data)
+        return res.json(await data)
     } catch (e) {
         if (e instanceof AcquireTimeoutError) {
             return res.status(503).json({error: 'timeout reached'})
@@ -31,6 +33,24 @@ router.get('/faf-teams.json', async (req, res) => {
 
 router.get('/content-creators.json', async (req, res) => {
     getData(req, res, 'content-creators', await req.services.wordpressService.getContentCreators())
+})
+
+router.get('/clans.json', async (req, res) => {
+    try {
+        return res.json(await req.services.clanService.getAll())
+    } catch (e) {
+        if (e instanceof AcquireTimeoutError) {
+            return res.status(503).json({error: 'timeout reached'})
+        }
+
+        console.error('[error] dataRouter::get:clans.json failed with "' + e.toString() + '"')
+
+        if (!res.headersSent) {
+            return res.status(500).json({error: 'unexpected error'})
+        }
+
+        throw e
+    }
 })
 
 

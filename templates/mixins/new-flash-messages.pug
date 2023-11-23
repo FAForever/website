@@ -1,0 +1,6 @@
+mixin flash-messages(messages)
+    if messages
+        div.alert
+            for message, type in messages
+                for message, type in messages
+                    p <strong>#{type}</strong> #{message}

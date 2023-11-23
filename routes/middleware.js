@@ -1,4 +1,5 @@
-const WordpressServiceFactory = require("../lib/WordpressServiceFactory");
+const WordpressServiceFactory = require("../lib/WordpressServiceFactory")
+const ClanServiceFactory = require("../lib/clan/ClanServiceFactory")
 const appConfig = require("../config/app");
 const wordpressService = WordpressServiceFactory(appConfig.wordpressUrl)
 
@@ -42,6 +43,10 @@ exports.isAuthenticated = (redirectUrlAfterLogin = null, isApiRequest = false) =
 exports.injectServices =  function(req, res, next) {
     req.services = {
         wordpressService: wordpressService
+    }
+    
+    if (req.isAuthenticated()) {
+        req.services.clanService =  ClanServiceFactory(appConfig.apiUrl, req.user.data.attributes.token)
     }
 
     next()

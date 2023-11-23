@@ -1,48 +1,42 @@
 extends ../../layouts/default
-include ../../mixins/flash-messages
+include ../../mixins/new-flash-messages
 include ../../mixins/form/account
 block bannerMixin
 block content
 
-  .containerCenter.text-center
-    .row
-      .col-md-12
+    .containerCenter.text-center
+
         h1.account-title Create a clan
         div
-          p You can create your own clan, and then invite other players to join it.
-          p Be sure to 
-            a(href='/rules') review the rules
-            |  before naming your clan!
-          p Offensive clan names will result in an immediate sanction
-        
-    .row
-      .col-md-offset-3.col-md-6
-        +flash-messages(flash)   
-  form(method='post', action="/clans/create", data-toggle="validator")
-    input(type='hidden', name="user_id", value=userId)
+            p You can create your own clan, and then invite other players to join it.
+            p Be sure to 
+                a(href='/rules') review the rules
+                |  before naming your clan!
+            p Offensive clan names will result in an immediate sanction
+        +flash-messages(flash)
+        form(method='post', action="/clans/create", data-toggle="validator")
+            input(type='hidden', name="user_id", value=userId)
 
-    .clanManagement
-      .column12
-        div.clanManagementItem
-          label Name
-          input(type='text', name='clan_name', value=clan_name, placeholder='Clan name').form-control
-          input(type='hidden', name='original_clan_name', value=clan_name)
-          span(aria-hidden='true').glyphicon.form-control-feedback
+            .clanManagement
+                .column12
+                    .clanManagementItem
+                        label Name
+                        input(type='text', required='required', name='clan_name', value=clan_name, placeholder='Clan name').form-control
+                        input(type='hidden', name='original_clan_name', value=clan_name)
+                        span(aria-hidden='true').glyphicon.form-control-feedback
 
-        div.clanManagementItem
-          label Tag:
+                    .clanManagementItem
+                        label Tag:
 
-          input(type='text', required='required', name='clan_tag', value=clan_tag, placeholder='TAG', style="display:inline;margin-left:5px;margin-right:5px;width:5em;").form-control
-          input(type='hidden', name='original_clan_tag', value=clan_tag)
+                        input(type='text', required='required', name='clan_tag', value=clan_tag, placeholder='TAG', style="display:inline;margin-left:5px;margin-right:5px;width:5em;").form-control
+                        input(type='hidden', name='original_clan_tag', value=clan_tag)
 
-          span(aria-hidden='true').glyphicon.form-control-feedback
-        br
-        div.clanManagementItem
-          label Clan description
-          br
-          br
-          textarea(rows='12', name='clan_description', required='required', placeholder='The description players will see when they look your clan').form-control #{clan_description}
-          span(aria-hidden='true').glyphicon.form-control-feedback
+                        span(aria-hidden='true')
+                    br
+                    .clanManagementItem
+                        label Clan description
+                        br
 
-        .form-actions
-          button(type='submit').bigButton Create your Clan
+                        textarea(rows='12', name='clan_description', required='required', placeholder='The description players will see when they look your clan').form-control #{clan_description}
+                        span(aria-hidden='true')
+                        button(type='submit') Create your Clan

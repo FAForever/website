@@ -1,130 +1,71 @@
 let flash = {};
-let request = require('request');
-const {check, validationResult} = require('express-validator');
+const axios = require('axios');
+const {body, validationResult} = require('express-validator');
+const error = require("../../account/post/error");
 
-function promiseRequest(url) {
-  return new Promise(function (resolve, reject) {
-    request(url, function (error, res, body) {
-      if (!error && res.statusCode < 300) {
-        resolve(body);
-      } else {
-        reject(error);
-      }
-    });
-  });
-}
+exports = module.exports = [
 
-exports = module.exports = async function (req, res) {
-
-  let locals = res.locals;
-
-  locals.formData = req.body || {};
-
-  let overallRes = res;
-
-  // validate the input
-  check('clan_tag', 'Please indicate the clan tag - No special characters and 3 characters maximum').notEmpty().isLength({max: 3});
-  check('clan_description', 'Please add a description for your clan').notEmpty().isLength({max: 1000});
-  check('clan_name', "Please indicate your clan's name").notEmpty().isLength({max: 40});
-
-  // check the validation object for errors
-  let errors = validationResult(req);
-
-  //Must have client side errors to fix
-  if (!errors.isEmpty()) {
-    flash.class = 'alert-danger';
-    flash.messages = errors;
-    flash.type = 'Error!';
-
-    let buff = Buffer.from(JSON.stringify(flash));
-    let data = buff.toString('base64');
-
-    return overallRes.redirect('create?flash=' + data);
-  } else {
-
-    const clanName = req.body.clan_name;
-    const clanTag = req.body.clan_tag;
-    const clanDescription = req.body.clan_description;
-    const userId = req.body.user_id;
-
-    // Let's check first that the name or tag are not taken
-    const clanFetchRoute = process.env.API_URL+'/data/clan?filter=name=="'+clanName+'",tag=="'+clanTag+'"';
-    let exists = true;
-    try {
-      const httpData = await promiseRequest(clanFetchRoute);
-      exists = JSON.parse(httpData).data.length > 0;
-    }
-    catch(e){
-      flash.class = 'alert-danger';
-      flash.messages = [{msg: 'Error while creating the clan '+e}];
-      flash.type = 'Error!';
-
-      let buff = Buffer.from(JSON.stringify(flash));
-      let data = buff.toString('base64');
-
-      return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
-    }
-
-    const queryUrl =
-      process.env.API_URL
-      + '/clans/create'
-      + '?name=' + encodeURIComponent(clanName)
-      + '&tag='+encodeURIComponent(clanTag)
-      + '&description='+encodeURIComponent(clanDescription)
-    ;
-
-    //Run post to endpoint
-    request.post({
-      url: queryUrl,
-      body: "",
-      headers: {
-        'Authorization': 'Bearer ' + req.user.data.attributes.token
-      }
-    }, function (err, res, body) {
-
-      let resp;
-      let errorMessages = [];
-
-      if (res.statusCode !== 200) {
-        let msg = 'Error while creating the clan';
-        try {
-
-          msg += ': ' + JSON.stringify(JSON.parse(res.body).errors[0].detail);
-        } catch {
+    // validate the input
+    body('clan_tag', 'Your clan tag is too long (max 3 characters)').notEmpty().isLength({max: 3}),
+    body('clan_description', 'Your clan description is too long (max 1000 characters)').notEmpty().isLength({max: 1000}),
+    body('clan_name', 'Your clan name is too long (max 40 characters)').isLength({max: 40}),
+    async (req, res) => {
+        // check the validation object for errors
+        if (!validationResult(req).isEmpty()) {
+            error.errorChecking(req, res, 'clans/create');
         }
-        errorMessages.push({msg: msg});
-        flash.class = 'alert-danger';
-        flash.messages = errorMessages;
-        flash.type = 'Error!';
+        else {
 
-        let buff = Buffer.from(JSON.stringify(flash));
-        let data = buff.toString('base64');
+            // Take variables from form 
+            const clanName = req.body.clan_name;
+            const clanTag = req.body.clan_tag;
+            const clanDescription = req.body.clan_description;
 
-        return overallRes.redirect('create?flash='+data+'&clan_name='+clanName+'&clan_tag='+clanTag+'&clan_description='+clanDescription+'');
-      }
+            // We check if the clan already exists
+            let clanExists = '';
+            await axios.get(`${process.env.API_URL}/data/clan?filter=name=="${clanName}",tag=="${clanTag}"`, {
+                headers: {'Authorization': 'Bearer ' + req.user.token}
+            })
+                .then(response => {
+                    clanExists = !response.data.data[0];
+                }).catch(e => {
+                    console.log(e)
+                    error.parseApiErrors(e.response, flash);
+                });
+            if (!clanExists) {
+                flash.class = 'alert-danger';
+                flash.messages = 'The clan tag/name are already taken. Choose a different one.';
+                flash.type = 'Error!';
+                res.render('clans/create', {flash: flash});
 
-      // Refreshing user
-      request.get({
-          url: process.env.API_URL + '/me',
-          headers: {
-            'Authorization': 'Bearer ' + req.user.data.attributes.token,
-          }
-        },
-        function (err, res, body) {
-          try{
-            let user = JSON.parse(body);
-            user.data.attributes.token = req.user.data.attributes.token;
-            user.data.id = user.data.attributes.userId;
-            req.logIn(user, function(err){
-              if (err) console.error(err);
-              return overallRes.redirect('/clans/manage');
-            });
-          }
-          catch{
-            console.error("There was an error updating a session after a clan creation");
-          }
-        });
+            }
+            // Clan doesn't exist, lets create it!
+            else {
+                axios.post(`${process.env.API_URL}/clans/create?name=${clanName}&tag=${clanTag}&description=${clanDescription}`, null,
+                    {
+                        headers: {'Authorization': 'Bearer ' + req.user.token}
+                    }).then( () => {
 
-    });
-  }
-}
+                    // Refreshing user
+                    axios.get(`${process.env.API_URL}/me`, {
+                        headers: {
+                            'Authorization': `Bearer ${req.user.token}`,
+                        }
+                    }).then( () => {
+
+                        //Lets update our user
+                        error.userUpdate(req, res, '/clans/create' );
+                    }).catch(e => {
+                        error.parseApiErrors(e.response, flash);
+                    });
+
+                }).catch((e) => {
+                    console.log(e.toString())
+                    error.parseApiErrors(e.response, flash);
+                    res.render('clans/create', {flash: flash});
+                });
+            }
+
+        }
+    }
+];

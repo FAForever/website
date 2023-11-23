@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 exports = module.exports = function(req, res) {
 
   let locals = res.locals;
@@ -8,19 +10,17 @@ exports = module.exports = function(req, res) {
 
   const request = require('request');
 
-  request.get(
+  axios.get(process.env.API_URL + '/clans/me',
     {
-      url: process.env.API_URL + '/clans/me',
-      headers: {
-        'Authorization': 'Bearer ' + req.user.data.attributes.token
-      }
-    },
-    function (err, childRes, body) {
+        headers: {
+            'Authorization': 'Bearer ' + req.user.data.attributes.token
+        }
+    }
+  ).then(function (clanInfo) {
 
-      const clanInfo = JSON.parse(body);
       if (clanInfo.clan != null){
-        res.redirect('/clans/manage');
-        return;
+          res.redirect('/clans/manage');
+          return;
       }
 
       locals.formData = req.body || {};
@@ -32,21 +32,21 @@ exports = module.exports = function(req, res) {
       var flash = null;
 
       if (req.query.flash){
-        let buff = Buffer.from(req.query.flash, 'base64');
-        let text = buff.toString('ascii');
+          let buff = Buffer.from(req.query.flash, 'base64');
+          let text = buff.toString('ascii');
 
-        try{
-          flash = JSON.parse(text);
-        }
-        catch(e){
-          console.error("Parsing error while trying to decode a flash error: " + text);
-          console.error(e);
-          flasg = [{msg: "Unknown error"}];
-        }
+          try{
+              flash = JSON.parse(text);
+          }
+          catch(e){
+              console.error("Parsing error while trying to decode a flash error: " + text);
+              console.error(e);
+              flasg = [{msg: "Unknown error"}];
+          }
       }
 
       // Render the view
       res.render('clans/create', {flash: flash});
-    }
-  );
+  })
+      .catch((e) => console.log(e.toString()))
 };

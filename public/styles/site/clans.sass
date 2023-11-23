@@ -1,6 +1,38 @@
 @use '../abstracts/variables'
 @use '../abstracts/mixins'
 
+#clan-view
+    text-align: left
+    margin: 20px 60px
+#clan-info
+    text-align: left
+    td 
+        padding: 10px
+#clan-table
+    button
+        margin: 0
+        padding: 0
+    .datatable-sorter::before
+        border-top: 4px solid white
+    .datatable-sorter::after
+        border-bottom: 4px solid white
+    tbody
+        tr:hover
+            background-color: #1f2349
+            cursor: pointer
+        td
+            text-align: left
+#clan-members
+    button
+        margin: 0
+        padding: 0
+    .datatable-sorter::before
+        border-top: 4px solid white
+    .datatable-sorter::after
+        border-bottom: 4px solid white
+    tbody
+        td
+            text-align: left
 // Background of the whole thing
 .clanBackground
   padding: 7.5vw 11vw
@@ -178,15 +210,6 @@ input
     textarea
       width: 40vw
     
-  .clanManagementDanger
-    background-color: variables.$Cybran-dark
-    border-radius: 20px
-    ul
-      text-align: center
-      li
-        display: inline-block
-        list-style: none
-        text-align: left
   .clanManagementTable
     padding: 1.5em
     display: inline-block

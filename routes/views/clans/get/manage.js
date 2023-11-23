@@ -1,134 +1,128 @@
-const request = require('request');
+const error = require("../../account/post/error");
+const appConfig = require('../../../../config/app')
+const ClanRepository = require('../../../../lib/clan/ClanRepository')
+const {Axios} = require("axios");
 
-exports = module.exports = function(req, res) {
+exports = module.exports = async function (req, res) {
 
-  let locals = res.locals;
-
-  // locals.section is used to set the currently selected
-  // item in the header navigation.
-  locals.section = 'clan';
-
-  let flash = null;
-
-  let clanMembershipId = null;
-  try{
-    clanMembershipId = req.user.data.attributes.clan.membershipId;
-  }
-  catch{
-    // The user doesnt belong to a clan
-    res.redirect('/clans');
-    return;
-  }
-
-  // In case the user has just generated an invite link
-  if (req.query.invitation_id) {
-    flash = {};
-    flash.class = 'alert-invite';
-    
-    flash.messages = [
-      {msg:
-          `<p><a id='inviteLink' onclick='return false' href='${process.env.HOST}/clans/accept_invite?i=${req.query.invitation_id}'> Right click on me and copy the invitation link</a></p>Note: It only works for the user you typed.`}
-    ];
-    flash.type = '';
-    
-  }
-
-
-  
-  
-  request.get(
-    {
-      url:
-        process.env.API_URL
-        + '/data/clanMembership/'+clanMembershipId+'/clan'
-        + '?include=memberships.player'
-        + '&fields[clan]=createTime,description,name,tag,updateTime,websiteUrl,founder,leader'
-        + '&fields[player]=login,updateTime'
-        + '&fields[clanMembership]=createTime,player',
-      headers: {
-        'Authorization': 'Bearer ' + req.user.data.attributes.token
-      }
-    },
-    function (err, childRes, body) {
-
-      const clan = JSON.parse(body);
-
-      if (err || !clan.data){
-        flash = {};
-        flash.class = 'alert-danger';
-        flash.messages = [{msg: "Unknown error while retrieving your clan information"}];
-        flash.type = 'Error!';
-
-        let buff = Buffer.from(JSON.stringify(flash));
-        let data = buff.toString('base64');
-
-        return res.redirect('/clans?flash='+data);
-      }
-
-      if (clan.data.relationships.leader.data.id != req.user.data.id){
-        // Not the leader! Shouldn't be able to manage stuff
-        res.redirect(`/clans/${req.user.data.attributes.clan.tag}?member=true`);
+    let flash = {};
+    let clanMembershipId = null;
+    try {
+        clanMembershipId = req.user.data.attributes.clan.membershipId;
+    } catch (e) {
+        // The user doesnt belong to a clan
+        res.redirect('../clans');
         return;
-      }
-
-      locals.clan_name = clan.data.attributes.name;
-      locals.clan_tag = clan.data.attributes.tag;
-      locals.clan_description = clan.data.attributes.description;
-      locals.clan_create_time = clan.data.attributes.createTime;
-      locals.me = req.user.data.id;
-      locals.clan_id = clan.data.id;
-      locals.clan_link = process.env.HOST + "/clans/see?id="+clan.data.id;
-
-      let members = {};
-
-      for (k in clan.included){
-        switch(clan.included[k].type){
-          case "player":
-            const player = clan.included[k];
-            if (!members[player.id]) members[player.id] = {};
-            members[player.id].id = player.id;
-            members[player.id].name = player.attributes.login;
-
-            if (clan.data.relationships.founder.data.id == player.id){
-              locals.founder_name = player.attributes.login
-            }
-            break;
-
-          case "clanMembership":
-            const membership = clan.included[k];
-            const member = membership.relationships.player.data;
-            if (!members[member.id]) members[member.id] = {};
-            members[member.id].id = member.id;
-            members[member.id].membershipId = membership.id;
-            members[member.id].joinedAt = membership.attributes.createTime;
-            break;
-
-        }
-      }
-
-      locals.clan_members = members;
-
-      if (req.originalUrl == '/clan_created') {
-        flash = {};
-        flash.class = 'alert-success';
-        flash.messages = [{msg: 'You have successfully created your clan'}];
-        flash.type = 'Success!';
-      }
-      else if (req.query.flash){
-        let buff = Buffer.from(req.query.flash, 'base64');
-        let text = buff.toString('ascii');
-        try{
-          flash = JSON.parse(text);
-        }
-        catch(e){
-          console.error("Parsing error while trying to decode a flash error: " + text);
-          console.error(e);
-          flash = [{msg: "Unknown error"}];
-        }
-      }
-
-      // Render the view
-      res.render('clans/manage', {flash: flash});
     }
-  );
+    const config = {
+        baseURL: appConfig.apiUrl,
+        headers: {Authorization: `Bearer ${req.user.token}`}
+    };
+    const javaApiClient = new Axios(config)
+    const clanRepository = new ClanRepository(javaApiClient)
+
+    try {
+        const clan = await clanRepository.fetchClanMembership(clanMembershipId)
+        
+        return res.render('clans/manage', {flash: flash, clan: clan});
+    } catch (e) {
+        // error.parseApiErrors(e.response, flash);
+        console.log(e.toString())
+        return res.redirect('/');
+    }
+
+    // axios.get(`${process.env.API_URL}/data/clanMembership/${clanMembershipId}/clan?include=memberships.player&fields[clan]=createTime,description,name,tag,updateTime,websiteUrl,founder,leader&fields[player]=login,updateTime&fields[clanMembership]=createTime,player`,
+    //     {
+    //         headers: {'Authorization': `Bearer ${req.user.token}`},
+    //
+    //     }).then(response => {
+    //     const clan = response.data
+    //     // Not the leader! Shouldn't be able to manage stuff
+    //     if (clan.data.relationships.leader.data.id != req.user.data.attributes.userId) {
+    //         res.redirect(`/clans/getClan?tag=${req.user.data.attributes.clan.tag}`);
+    //     } else {
+    //         // Lets create the schema for all the members and clan descriptions
+    //         res.locals.clan_name = clan.data.attributes.name;
+    //         res.locals.clan_tag = clan.data.attributes.tag;
+    //         res.locals.clan_description = clan.data.attributes.description;
+    //         res.locals.clan_create_time = clan.data.attributes.createTime;
+    //         res.locals.me = req.user.data.attributes.userId;
+    //         res.locals.clan_id = clan.data.id;
+    //
+    //         let members = {};
+    //
+    //         for (k in clan.included) {
+    //             switch (clan.included[k].type) {
+    //                 case "player":
+    //                     const player = clan.included[k];
+    //                     if (!members[player.id]) members[player.id] = {};
+    //                     members[player.id].id = player.id;
+    //                     members[player.id].name = player.attributes.login;
+    //
+    //                     if (clan.data.relationships.founder.data.id == player.id) {
+    //                         res.locals.founder_name = player.attributes.login
+    //                     }
+    //                     break;
+    //
+    //                 case "clanMembership":
+    //                     const membership = clan.included[k];
+    //                     const member = membership.relationships.player.data;
+    //                     if (!members[member.id]) members[member.id] = {};
+    //                     members[member.id].id = member.id;
+    //                     members[member.id].membershipId = membership.id;
+    //                     members[member.id].joinedAt = membership.attributes.createTime;
+    //                     break;
+    //             }
+    //         }
+    //
+    //         // Lets check the different flash types
+    //         if (req.query.flash) {
+    //             flash.class = 'alert-success';
+    //             flash.type = 'Success!';
+    //             switch (req.query.flash) {
+    //
+    //                 case 'created':
+    //                     flash.messages = 'You have created your clan.';
+    //                     break;
+    //
+    //                 case 'kick':
+    //                     flash.messages = `You have kicked ${req.query.kickPlayer}.`;
+    //                     break;
+    //
+    //                 case 'update':
+    //                     flash.messages = `You have updated your clan information.`;
+    //                     break;
+    //
+    //
+    //                 case 'error':
+    //                     flash.class = 'alert-danger';
+    //                     flash.messages = 'There was an error with your request.';
+    //                     flash.type = 'Error!';
+    //                     break;
+    //                 case 'alreadyTaken':
+    //                     flash.class = 'alert-danger';
+    //                     flash.messages = 'The clan name/tag is already taken. Choose a different one.';
+    //                     flash.type = 'Error!';
+    //                     break;
+    //             }
+    //         }
+    //
+    //
+    //         //Lets check if they tried inviting an user
+    //         if (req.query.invitation_id && req.query.invitation_id !== 'error') {
+    //
+    //             flash.class = 'alert-invite';
+    //             flash.hasHTML = `<a id="inviteLink" onclick="return false" href="${process.env.HOST}/clans/accept_invite?invitationId=${req.query.invitation_id}">${process.env.HOST}/clans/accept_invite?i=${req.query.invitation_id}</a>`;
+    //             flash.type = 'invite';
+    //         } else if (req.query.invitation_id === 'error') {
+    //             flash.class = 'alert-danger';
+    //             flash.messages = `User isn't a valid username (check your spelling). If error continues contact support`;
+    //             flash.type = 'Error!';
+    //         }
+    //         res.render('clans/manage', {flash: flash, clan_members: members});
+    //     }
+    // }).catch((e) => {
+    //     error.parseApiErrors(e.response, flash);
+    //     res.render('clans/manage', {flash: flash});
+    // });
 };

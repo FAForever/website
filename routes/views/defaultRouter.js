@@ -13,6 +13,10 @@ router.get('/contribution', (reqd, res) => res.render('contribution'))
 router.get('/content-creators', (reqd, res) => res.render('content-creators'))
 router.get('/play', (reqd, res) => res.render('play'))
 
+// redirect for the game-client https://github.com/FAForever/website/issues/459
+router.get('/clan/:id', (req, res) => {
+    res.redirect('/clans/view/' + req.params.id)
+})
 // https://github.com/search?q=org%3AFAForever+account_activated&type=code
 router.get('/account_activated', (req, res) => res.redirect('/account/register'))
 

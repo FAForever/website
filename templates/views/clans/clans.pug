@@ -1,0 +1,15 @@
+extends ../../layouts/default
+include ../../mixins/new-flash-messages
+block bannerMixin
+
+block head
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css')
+block content
+    h1 Clans
+    table#clan-table
+
+block js
+
+  script( src="https://cdn.jsdelivr.net/npm/simple-datatables@latest")
+  script( src="../../js/app/clans.js")
+  
