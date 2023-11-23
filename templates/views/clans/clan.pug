@@ -1,12 +1,9 @@
 extends ../../layouts/default
-block bannerMixin
 block head
-    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css')
+    link(rel='stylesheet' href='/styles/css/simple-datatables.css')
 block content
-    
     #clan-view
         a(href="/clans") <- OVERVIEW
-        <br />
         <br />
         <br />
         .gridMainContainer
@@ -48,5 +45,4 @@ block content
                                 td #{member.name}
                                 td #{member.joinedAt}
 block js
-    script( src="https://cdn.jsdelivr.net/npm/simple-datatables@latest")
-    script( src="../../js/app/clan.js")
+    script( src="../../js/app/clan.js" type="module")

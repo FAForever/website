@@ -1,4 +1,4 @@
-(async() => {
+import('/js/simple-datatables.js').then(({DataTable}) => {
     fetch('/data/clans.json')
         .then(response => response.json())
         .then(data => {
@@ -6,7 +6,7 @@
                 return
             }
 
-            window.datatable = new window.simpleDatatables.DataTable("#clan-table", {
+            window.datatable = new DataTable("#clan-table", {
                 perPageSelect: null,
                 data: {
                     headings: [
@@ -30,7 +30,8 @@
         .catch((err) => {
             console.log(err, 'loading clans failed')
         })
-})()
+})
+
 
 
 
