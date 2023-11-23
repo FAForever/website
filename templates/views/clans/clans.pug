@@ -1,0 +1,9 @@
+extends ../../layouts/default
+
+block head
+    link(rel='stylesheet' href='/styles/css/simple-datatables.css')
+block content
+    h1 Clans
+    table#clan-table
+block js
+  script( src="../../js/app/clans.js" type="module")

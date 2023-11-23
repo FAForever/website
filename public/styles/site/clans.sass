@@ -1,204 +1,35 @@
 @use '../abstracts/variables'
 @use '../abstracts/mixins'
 
-// Background of the whole thing
-.clanBackground
-  padding: 7.5vw 11vw
-  background-image: url("/../../images/fafbgpattern0.5.jpg")
-  ul
-    list-style: none
-    li
-      padding: 0.5em 0
-
-// This is the searchbar input form
-input 
-  margin: 1em 1em 2px 1em
-  background-color: variables.$background-tertiary
-  color: variables.$color-active
-  font-size: var(--paragraph-font-size)
-  border: 0.5em solid variables.$background-secondary
-  border-radius: 10px
-  z-index: 2
-  position: relative
-
-  
-  
-// The main box with all the names, tags, ranks, etc.
-.mainClanContainer
-  @include mixins.gridMainContainer
-  padding: 0
-  p
-    padding: 0.2em
-
-.clanContainer
-  font-family: variables.$family-paragraph
-  padding: 0em
-  .clanItem
-    
-    ul
-      font-size: var(--paragraph-font-size)
-      padding: 1em 0
-      font-weight: 700
-      
-    // ACTUAL LISTS
-    // There is a double li element here because the js creates a li parent element and then puts another li child element (which the child is all the names you see like ANZ and so on)
-    li
-      list-style: none
-      font-weight: normal
-      padding: 0em 0
-      li
-        font-size: var(--paragraph-font-size)
-        padding: 1em 0
-
-.clanBorder
-  border: 1px solid variables.$color-active
-  padding: 0px
-  background-color: variables.$background-primary
-
-// Change background colors on items in the leaderboard
-.clanItem
-  li:nth-child(odd)
-    background-color: mix(variables.$background-tertiary, variables.$background-primary, 25%)
-  li:nth-child(even)
-    background-color: variables.$background-secondary
-    
-// First page last page, etc
-.clanButton
-  padding: 1em 0.25em
-  display: inline-block
-  place-items: start
-  font-family: variables.$family-paragraph
-  font-size: var(--paragraph-font-size)
-  letter-spacing: 0em
-  ul
-    padding: 0.5em
-    font-weight: 900
-    li
-      
-      display: inline-block
-      padding: 0.6em 1em
-      border: 0.05em solid variables.$color-inactive
-      background-color: variables.$background-tertiary
-      cursor: pointer
-      transition: 0.4s
-      &:hover
-        border: 0.05em solid variables.$color-active
-        filter: brightness(2)
-    .exhaustedButton
-      border: 0.05em solid variables.$color-inactive
-      background-color: variables.$background-secondary
-      color: variables.$color-inactive-plus
-      pointer-events: none
-      cursor: default
-
-#searchResults
-  margin: 1em 0 0 0
-.appearWhenSearching
-  display: none
-.centerYourself
-  display: grid
-  justify-items: center
-  position: relative
-
-.searchBar
-  ul
-    background-color: variables.$background-secondary
-    color: variables.$color-inactive
-    font-size: calc(var(--paragraph-font-size) * 0.9)
-    border-radius:  0  0 10px 10px
+#clan-view
     text-align: left
-    li
-      padding: 0.5em 1em
-      
-.clearButton
-  li
-    cursor: pointer
-    margin: 1em 1em 0 1em
-    border-radius: 10px
-    background-color: variables.$background-tertiary
-    color: variables.$color-inactive
-    transition: 0.4s
-    &:hover
-      background-color: variables.$color-inactive-plus
-      color: variables.$color-active
-  .fa-trash-alt
-    padding: 0.5em
-
-@media (max-width: 800px)
-  .clanFilter
-    font-size: 10px
-  .clanContainer
-    ul
-      font-size: 10px
-      padding: 1em 0 0 0
-      
-      li
-        text-overflow: ellipsis
-        font-size: 10px
-        padding: 1em 0
-  
-  .clearButton
-    left: 90%
-    top: 68%
-  .clanBackground
-    padding: 1vw
-  .clanButton
-    padding: 1vw
-    font-size: var(--paragraph-font-size)
-    ul
-      li
-        padding: 0.65em
-  .clanDelete
-    font-size: 10px
-    
-
-@media (max-width: 1600px)
-  .clanContainer
-    ul
-      font-size: 14px
-      li
-        font-size: 14px
-  .clanFilter
-    font-size: 14px
-
-    
-    
-// Below are classes that depend 
-.clanManagement
-  @include mixins.gridMainContainer
-  padding: 0vw 15vw
-  margin: 1em 0 
-  .clanManagementItem
-    padding: 1.5em 0
-    display: inline-block
-    justify-self: center
-    align-self: center
-    
-    //clan Description
-    textarea
-      width: 40vw
-    
-  .clanManagementDanger
-    background-color: variables.$Cybran-dark
-    border-radius: 20px
-    ul
-      text-align: center
-      li
-        display: inline-block
-        list-style: none
-        text-align: left
-  .clanManagementTable
-    padding: 1.5em
-    display: inline-block
-    justify-self: center
-    align-self: center
-    th
-      padding: 4em
-    
-@media (max-width: 800px)
-  .clanManagement
-    padding: 5px
-.bigButton
-  font-size: 1.25em
-
-
+    margin: 20px 60px
+#clan-info
+    text-align: left
+    td 
+        padding: 10px
+#clan-table
+    button
+        margin: 0
+        padding: 0
+    .datatable-sorter::before
+        border-top: 4px solid white
+    .datatable-sorter::after
+        border-bottom: 4px solid white
+    tbody
+        tr:hover
+            background-color: #1f2349
+            cursor: pointer
+        td
+            text-align: left
+#clan-members
+    button
+        margin: 0
+        padding: 0
+    .datatable-sorter::before
+        border-top: 4px solid white
+    .datatable-sorter::after
+        border-bottom: 4px solid white
+    tbody
+        td
+            text-align: left

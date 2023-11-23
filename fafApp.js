@@ -63,8 +63,7 @@ module.exports.setup = (app) => {
     app.set('views', 'templates/views')
     app.set('view engine', 'pug')
     app.set('port', appConfig.expressPort)
-
-    app.use(middleware.injectServices)
+    
     app.use(middleware.initLocals)
 
     app.use(express.static('public', {
@@ -88,6 +87,8 @@ module.exports.setup = (app) => {
     }))
     app.use(passport.initialize())
     app.use(passport.session())
+    app.use(middleware.injectServices)
+    
     app.use(flash())
     app.use(middleware.username)
     app.use(copyFlashHandler)
