@@ -19,3 +19,4 @@ jobs:
     # --force should be removed if all the issues are fixed
     - run: ./node_modules/.bin/grunt jshint --force
     - run: yarn run test
+    - uses: codecov/codecov-action@v3
