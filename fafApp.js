@@ -15,6 +15,9 @@ const clanRouter = require("./routes/views/clanRouter")
 const accountRouter = require("./routes/views/accountRouter")
 const dataRouter = require('./routes/views/dataRouter');
 const setupCronJobs = require("./scripts/cron-jobs")
+const OidcStrategy = require("passport-openidconnect");
+const axios = require("axios");
+const refresh = require("passport-oauth2-refresh");
 
 const copyFlashHandler = (req, res, next) => {
     res.locals.message = req.flash();
@@ -31,6 +34,45 @@ const errorHandler = (err, req, res, next) => {
     }
 
     res.status(500).render('errors/500');
+}
+
+const loadAuth = () => {
+    passport.serializeUser((user, done) => done(null, user))
+    passport.deserializeUser((user, done) => done(null, user))
+
+    const authStrategy = new OidcStrategy({
+            issuer: appConfig.oauth.url + '/',
+            tokenURL: appConfig.oauth.url + '/oauth2/token',
+            authorizationURL: appConfig.oauth.publicUrl + '/oauth2/auth',
+            userInfoURL: appConfig.oauth.url + '/userinfo?schema=openid',
+            clientID: appConfig.oauth.clientId,
+            clientSecret: appConfig.oauth.clientSecret,
+            callbackURL: `${appConfig.host}/${appConfig.oauth.callback}`,
+            scope: ['openid', 'offline', 'public_profile', 'write_account_data']
+        }, function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
+
+            axios.get(
+                appConfig.apiUrl + '/me',
+                {
+                    headers: {'Authorization': `Bearer ${accessToken}`}
+                }).then((res) => {
+                const user = res.data
+                user.token = accessToken
+                user.refreshToken = refreshToken
+                user.data.attributes.token = accessToken;
+                user.data.id = user.data.attributes.userId;
+
+                return verified(null, user);
+            }).catch(e => {
+                console.error('[Error] views/auth.js::passport::verify failed with "' + e.toString() + '"');
+
+                return verified(null, null);
+            });
+        }
+    )
+
+    passport.use(appConfig.oauth.strategy, authStrategy)
+    refresh.use(appConfig.oauth.strategy, authStrategy)
 }
 
 module.exports.setupCronJobs = () => {
@@ -64,7 +106,7 @@ module.exports.setup = (app) => {
     app.set('view engine', 'pug')
     app.set('port', appConfig.expressPort)
 
-    app.use(middleware.injectServices)
+    
     app.use(middleware.initLocals)
 
     app.use(express.static('public', {
@@ -88,6 +130,10 @@ module.exports.setup = (app) => {
     }))
     app.use(passport.initialize())
     app.use(passport.session())
+    loadAuth()
+    
+    app.use(middleware.injectServices)
+    
     app.use(flash())
     app.use(middleware.username)
     app.use(copyFlashHandler)

@@ -16,6 +16,7 @@
     "node-fetch": "^2.6.7",
     "npm-check": "^6.0.1",
     "passport": "^0.6.0",
+    "passport-oauth2-refresh": "^2.2.0",
     "passport-openidconnect": "^0.1.1",
     "pug": "3.0.2",
     "request": "2.88.2",
@@ -40,6 +41,7 @@
     "jshint-stylish": "2.2.1",
     "load-grunt-config": "4.0.1",
     "load-grunt-tasks": "5.1.0",
+    "nock": "^13.3.8",
     "supertest": "^6.3.3"
   },
   "engines": {
