@@ -17,6 +17,11 @@ let currentDate = new Date(minusTimeFilter).toISOString();
 async function leaderboardOneJSON(leaderboardFile) {
   //Check which category is active
   const response = await fetch(`leaderboards/${leaderboardFile}.json`);
+
+    if (response.status === 400) {
+        window.location.href = '/leaderboards'
+    }
+    
   currentLeaderboard = leaderboardFile;
   const data = await response.json();
   return await data;
