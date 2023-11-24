@@ -17,13 +17,16 @@ block content
                         td #{clan.tag}
                     tr
                         td LEADER
-                        td #{clan.leader.name} 👑
+                        if clan.leader
+                            td #{clan.leader.name} 👑
+                        else
+                            td -
                     tr
                         td FOUNDER
                         if clan.founder
                            td #{clan.founder.name}
                         else
-                            td GONE
+                            td -
                     tr
                         td JOIN
                         if clan.requiresInvitation

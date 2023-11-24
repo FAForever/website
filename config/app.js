@@ -11,6 +11,7 @@ const appConfig = {
         tokenLifespan: process.env.TOKEN_LIFESPAN || 43200
     },
     oauth: {
+        strategy: 'faforever',
         clientId: process.env.OAUTH_CLIENT_ID || '12345',
         clientSecret: process.env.OAUTH_CLIENT_SECRET || '12345',
         url: oauthUrl,
