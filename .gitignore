@@ -50,3 +50,5 @@ public/js/*.js
 
 #Sessions
 sessions
+
+dist

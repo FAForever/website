@@ -4,6 +4,7 @@ module.exports = {
     options: {
       delay: 500,
       ignore: [
+        'dist/js/*.js',
         'sessions/**',
         'node_modules/**',
         'grunt/**',

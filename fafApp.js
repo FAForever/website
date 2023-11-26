@@ -72,6 +72,11 @@ module.exports.setup = (app) => {
         maxAge: 4 * 60 * 60 * 1000 // 4 hours
     }))
 
+    app.use('/dist', express.static('dist', {
+        immutable: true,
+        maxAge: 4 * 60 * 60 * 1000 // 4 hours, could be longer since we got cache-busting
+    }))
+
     app.use(express.json())
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({extended: false}))
@@ -90,5 +95,6 @@ module.exports.setup = (app) => {
     app.use(passport.session())
     app.use(flash())
     app.use(middleware.username)
+    app.use(middleware.webpackAsset)
     app.use(copyFlashHandler)
 }

@@ -109,5 +109,4 @@ block js
     const reportable_members = '!{JSON.stringify(reportable_members)}';
     const offenders_names = '!{JSON.stringify(offenders_names)}';
     
-  script(src='/js/account.min.js')
-  script(src="/js/report.min.js")
+  script(src=webpackAssetJS('report'))
