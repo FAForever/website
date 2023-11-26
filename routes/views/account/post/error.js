@@ -6,6 +6,7 @@ module.exports = {
 
     try {
       let response = JSON.parse(body);
+        console.log(response)
       response.errors.forEach(error => errorMessages.push({msg: error.detail}))
     } catch (e) {
       errorMessages.push({msg: 'An unknown error occurred. Please try again later or ask the support.'});

@@ -13,7 +13,7 @@ exports = module.exports = function(req, res) {
   axios.get(process.env.API_URL + '/clans/me',
     {
         headers: {
-            'Authorization': 'Bearer ' + req.user.data.attributes.token
+            'Authorization': 'Bearer ' + req.user.oAuthPassport.token
         }
     }
   ).then(function (clanInfo) {

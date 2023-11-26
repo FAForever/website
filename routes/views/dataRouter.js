@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const {AcquireTimeoutError} = require('../../lib/MutexService');
-const LeaderboardServiceFactory = require("../../lib/LeaderboardServiceFactory");
-const appConfig = require("../../config/app");
 
 const getData = async (req, res, name, data) => {
     try {

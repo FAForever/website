@@ -107,7 +107,7 @@ html(lang='en')
             li.navList PLAY NOW
               ul.navAbsolute
 
-      if !username
+      if !loggedInUser
         .navContainer.navEnd
           ul.navItem
             a(href="/login")
@@ -117,18 +117,18 @@ html(lang='en')
             a(href="/account/register")
               li.navList REGISTER
       
-      if username
+      if loggedInUser
         .navContainer.navEnd#loginList
           ul.loginItem
             .navList
               img(src='/images/fontAwesomeIcons/user.svg')
-              h3 #{username}
+              h3 #{loggedInUser.name}
             ul#loginAbsolute
               li.loginDropdown
                 ul(role='menu')                  
-                  if hasClan
+                  if loggedInUser.clan
                     a(href="/clans/manage"): li My Clan
-                  if !hasClan
+                  if !loggedInUser.clan
                     a(href="/clans/create"): li Create Clan
                   a(href="/account/changeEmail"): li Change Email
                   a(href="/account/changePassword"): li Change Password
@@ -181,16 +181,16 @@ html(lang='en')
           a(href='/donation') Donate
           a(href='/contribution') Contribute
           a(href='/clans') Clans
-        if !username
+        if !loggedInUser
           a(href='/login').mobileNavElement Login
           
           
-        if username
+        if loggedInUser
           .mobileNavElement.mobileNavMenu My Account
           .mobileNavMenuContent
-            if hasClan
+            if loggedInUser.clan
               a(href="/clans/manage") My Clan
-            if !hasClan
+            if !loggedInUser.clan
               a(href="/clans/create") Create Clan
             a(href="/account/changeEmail") Change Email
             a(href="/account/changePassword") Change Password

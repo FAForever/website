@@ -4,6 +4,10 @@ async function getNewshub() {
   const data = await response.json();
   return await data;
 }
+
+
+
+
 async function getTournament() {
   const response = await fetch('/data/tournament-news.json');
   const data = await response.json();

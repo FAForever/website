@@ -1,28 +1,15 @@
-const error = require("../../account/post/error");
-const appConfig = require('../../../../config/app')
-const ClanRepository = require('../../../../lib/clan/ClanRepository')
-const {Axios} = require("axios");
-
 exports = module.exports = async function (req, res) {
 
     let flash = {};
-    let clanMembershipId = null;
-    try {
-        clanMembershipId = req.user.data.attributes.clan.membershipId;
-    } catch (e) {
-        // The user doesnt belong to a clan
-        res.redirect('../clans');
-        return;
+    let clanMembershipId = req.user?.clan?.membershipId || null
+    if (!clanMembershipId) {
+        return res.redirect('/clans')
     }
-    const config = {
-        baseURL: appConfig.apiUrl,
-        headers: {Authorization: `Bearer ${req.user.token}`}
-    };
-    const javaApiClient = new Axios(config)
-    const clanRepository = new ClanRepository(javaApiClient)
 
+    console.log(clanMembershipId)
+    
     try {
-        const clan = await clanRepository.fetchClanMembership(clanMembershipId)
+        const clan = await req.services.clanService.getClanMembership(clanMembershipId)
         
         return res.render('clans/manage', {flash: flash, clan: clan});
     } catch (e) {

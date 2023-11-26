@@ -18,6 +18,8 @@ const setupCronJobs = require("./scripts/cron-jobs")
 const OidcStrategy = require("passport-openidconnect");
 const axios = require("axios");
 const refresh = require("passport-oauth2-refresh");
+const JavaApiClientFactory = require("./lib/JavaApiClient");
+const UserRepository = require("./lib/UserRepository");
 
 const copyFlashHandler = (req, res, next) => {
     res.locals.message = req.flash();
@@ -29,6 +31,7 @@ const notFoundHandler = (req, res) => {
 
 const errorHandler = (err, req, res, next) => {
     console.error('[error] Incoming request to"', req.originalUrl, '"failed with error "', err.toString(), '"')
+    console.error(err.stack)
     if (res.headersSent) {
         return next(err);
     }
@@ -40,6 +43,7 @@ const loadAuth = () => {
     passport.serializeUser((user, done) => done(null, user))
     passport.deserializeUser((user, done) => done(null, user))
 
+
     const authStrategy = new OidcStrategy({
             issuer: appConfig.oauth.url + '/',
             tokenURL: appConfig.oauth.url + '/oauth2/token',
@@ -49,27 +53,26 @@ const loadAuth = () => {
             clientSecret: appConfig.oauth.clientSecret,
             callbackURL: `${appConfig.host}/${appConfig.oauth.callback}`,
             scope: ['openid', 'offline', 'public_profile', 'write_account_data']
-        }, function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
-
-            axios.get(
-                appConfig.apiUrl + '/me',
-                {
-                    headers: {'Authorization': `Bearer ${accessToken}`}
-                }).then((res) => {
-                const user = res.data
-                user.token = accessToken
-                user.refreshToken = refreshToken
-                user.data.attributes.token = accessToken;
-                user.data.id = user.data.attributes.userId;
-
-                return verified(null, user);
-            }).catch(e => {
-                console.error('[Error] views/auth.js::passport::verify failed with "' + e.toString() + '"');
-
-                return verified(null, null);
-            });
+        }, async function (iss, sub, profile, jwtClaims, accessToken, refreshToken, params, verified) {
+        
+        const oAuthPassport = {
+            token: accessToken,
+            refreshToken: refreshToken,
         }
-    )
+
+        const apiClient = JavaApiClientFactory(appConfig.apiUrl, oAuthPassport)
+        const userRepository = new UserRepository(apiClient)
+            
+        try {
+            const user = await userRepository.fetchUser(oAuthPassport)
+
+            return verified(null, user)
+        } catch(e) {
+            console.error('[Error] oAuth verify failed with "' + e.toString() + '"')
+
+            return verified(null, null)
+        }
+    })
 
     passport.use(appConfig.oauth.strategy, authStrategy)
     refresh.use(appConfig.oauth.strategy, authStrategy)
@@ -134,6 +137,6 @@ module.exports.setup = (app) => {
     app.use(middleware.injectServices)
     
     app.use(flash())
-    app.use(middleware.username)
+    app.use(middleware.populatePugGlobals)
     app.use(copyFlashHandler)
 }
