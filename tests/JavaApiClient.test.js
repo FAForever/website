@@ -1,9 +1,9 @@
-const JavaApiClientFactory = require("../lib/JavaApiClient")
-const appConfig = require("../config/app")
-const refresh = require("passport-oauth2-refresh")
-const OidcStrategy = require("passport-openidconnect")
+const JavaApiClientFactory = require('../lib/JavaApiClient')
+const appConfig = require('../config/app')
+const refresh = require('passport-oauth2-refresh')
+const OidcStrategy = require('passport-openidconnect')
 const nock = require('nock')
-const {AuthFailed} = require("../lib/ApiErrors")
+const { AuthFailed } = require('../lib/ApiErrors')
 
 beforeEach(() => {
     refresh.use(appConfig.oauth.strategy, new OidcStrategy({
@@ -26,7 +26,7 @@ test('multiple calls with stale token will trigger refresh only once', async () 
         token: '123',
         refreshToken: '456'
     })
-    
+
     const refreshSpy = jest.spyOn(refresh, 'requestNewAccessToken')
     const apiScope = nock('http://api-localhost')
         .get('/example')
@@ -39,18 +39,18 @@ test('multiple calls with stale token will trigger refresh only once', async () 
     const authScope = nock('http://auth-localhost')
         .post('/oauth2/token')
         .times(1)
-        .reply(200, {access_token: 'new_tok', refresh_token: 'new_ref'})
-    
+        .reply(200, { access_token: 'new_tok', refresh_token: 'new_ref' })
+
     const response = client.get('/example').then((res) => {
-       expect(res.request.headers['authorization']).toBe('Bearer new_tok')
+        expect(res.request.headers.authorization).toBe('Bearer new_tok')
     })
 
     const response2 = client.get('/example').then((res) => {
-        expect(res.request.headers['authorization']).toBe('Bearer new_tok')
+        expect(res.request.headers.authorization).toBe('Bearer new_tok')
     })
 
     await Promise.all([response, response2])
-    
+
     expect(refreshSpy).toBeCalledTimes(1)
 
     apiScope.done()
@@ -102,7 +102,7 @@ test('refresh will not loop to death', async () => {
     const authScope = nock('http://auth-localhost')
         .post('/oauth2/token')
         .times(1)
-        .reply(200, {access_token: 'new_tok', refresh_token: 'new_ref'})
+        .reply(200, { access_token: 'new_tok', refresh_token: 'new_ref' })
 
     const response = await client.get('/example')
 

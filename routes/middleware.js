@@ -33,7 +33,6 @@ exports.webpackAsset = (req, res, next) => {
 
 exports.populatePugGlobals = function(req, res, next) {
     res.locals.loggedInUser = req.user || null
-    
     next()
 }
 
@@ -55,11 +54,10 @@ exports.isAuthenticated = (redirectUrlAfterLogin = null, isApiRequest = false) =
     }
 }
 
-exports.injectServices =  function(req, res, next) {
+exports.injectServices = function (req, res, next) {
     req.services = {
         wordpressService: wordpressService
     }
-    
     if (req.isAuthenticated()) {
         req.services.javaApiClient = JavaApiClientFactory(appConfig.apiUrl, req.user.oAuthPassport)
         req.services.userService = new UserService(new UserRepository(req.services.javaApiClient), req)
