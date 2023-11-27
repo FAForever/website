@@ -1,6 +1,6 @@
 module.exports = {
 	dev: {
-		tasks: ['nodemon', 'concat', 'watch'],
+		tasks: [['run:webpack', 'sass:dev','nodemon'], 'watch'],
 		options: {
 			logConcurrentOutput: true
 		}

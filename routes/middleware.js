@@ -1,6 +1,8 @@
 const WordpressServiceFactory = require("../lib/WordpressServiceFactory");
 const appConfig = require("../config/app");
 const wordpressService = WordpressServiceFactory(appConfig.wordpressUrl)
+const fs = require('fs');
+const webpackManifestJS = JSON.parse(fs.readFileSync('dist/js/manifest.json', 'utf8'));
 
 exports.initLocals = function(req, res, next) {
 	let locals = res.locals;
@@ -8,6 +10,18 @@ exports.initLocals = function(req, res, next) {
   locals.cNavLinks = [];
   next();
 };
+
+exports.webpackAsset = (req, res, next) => {
+    res.locals.webpackAssetJS = (asset) => {
+        if (asset in webpackManifestJS) {
+            return webpackManifestJS[asset]
+        }
+        
+        throw new Error('[error] middleware::webpackAsset Failed to find asset "' + asset + '"')
+    }
+    
+    next()
+}
 
 exports.username = function(req, res, next) {
   var locals = res.locals;
