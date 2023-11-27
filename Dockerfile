@@ -6,6 +6,7 @@ COPY . /code
 WORKDIR /code
 
 RUN yarn install --production=false --frozen-lockfile
+RUN npx webpack
 RUN ./node_modules/.bin/grunt prod
 RUN yarn install --production=true --ignore-optional --frozen-lockfile
 

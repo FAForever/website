@@ -1,4 +1,4 @@
-import {Octokit} from "https://esm.sh/@octokit/core";
+import {Octokit} from "octokit";
 
 const githubOrg = 'faforever'
 const githubRepository = 'downlords-faf-client'

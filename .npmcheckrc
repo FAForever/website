@@ -9,8 +9,5 @@ depcheck:
     "grunt-postcss",
     "grunt-nodemon",
     "grunt-contrib-watch",
-    "grunt-contrib-uglify-es",
-    "grunt-contrib-jshint",
-    "grunt-contrib-concat",
     "grunt-concurrent"
   ]

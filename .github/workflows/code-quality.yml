@@ -16,6 +16,8 @@ jobs:
         node-version: '20'
         cache: 'yarn'
     - run: yarn install
-    # --force should be removed if all the issues are fixed
-    - run: ./node_modules/.bin/grunt jshint --force
+    - run: npx webpack
+    - run: yarn run lint
+      continue-on-error: true # should be removed if all the issues are fixed
     - run: yarn run test
+    - uses: codecov/codecov-action@v3

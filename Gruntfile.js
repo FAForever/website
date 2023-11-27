@@ -22,8 +22,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prod', [
     'sass:dist',
-    'concat:js',
-    'uglify:dist',
     'copy'
   ]);
 };
