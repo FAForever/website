@@ -18,6 +18,5 @@ jobs:
     - run: yarn install
     - run: npx webpack
     - run: yarn run lint
-      continue-on-error: true # should be removed if all the issues are fixed
     - run: yarn run test
     - uses: codecov/codecov-action@v3

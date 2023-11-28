@@ -2,13 +2,17 @@ let flash = {};
 let request = require('request');
 const {check, validationResult} = require('express-validator');
 
-function promiseRequest(url) {
+function promiseRequest(url, req) {
   return new Promise(function (resolve, reject) {
-    request(url, function (error, res, body) {
+    request(url, {
+        headers: {
+            'Authorization': 'Bearer ' + req.user.data.attributes.token,
+        }
+      }, function (error, res, body) {
       if (!error && res.statusCode < 300) {
         resolve(body);
       } else {
-        reject(error);
+        reject(error || new Error('report failed with status' + res.statusCode));
       }
     });
   });
@@ -78,7 +82,7 @@ exports = module.exports = async function (req, res) {
     const userFetchRoute = process.env.API_URL+'/data/player?filter='+filter+'&fields[player]=login&page[size]='+offenders.length;
     let apiUsers;
     try {
-      const userFetch = await promiseRequest(userFetchRoute);
+      const userFetch = await promiseRequest(userFetchRoute, req);
       apiUsers = JSON.parse(userFetch);
     }
     catch(e){
@@ -126,7 +130,7 @@ exports = module.exports = async function (req, res) {
     if (isGameReport){
       const gameFetchRoute = process.env.API_URL+'/data/game?filter=id=='+req.body.game_id+'&fields[game]='; /* empty field here to fetch nothing but ID */
       try {
-        const gameFetch = await promiseRequest(gameFetchRoute);
+        const gameFetch = await promiseRequest(gameFetchRoute, req);
         const gameData = JSON.parse(gameFetch);
       }
       catch(e){
