@@ -1,8 +1,8 @@
-import {Octokit} from "octokit";
+import { Octokit } from 'octokit'
 
 const githubOrg = 'faforever'
 const githubRepository = 'downlords-faf-client'
-const githubFallbackUrl = 'https://github.com/FAForever/downlords-faf-client/releases/latest';
+const githubFallbackUrl = 'https://github.com/FAForever/downlords-faf-client/releases/latest'
 const downloadButtonId = 'faf-client-download'
 
 const startDownloadFile = (url) => window.location.assign(url)
@@ -10,27 +10,27 @@ const startDownloadFile = (url) => window.location.assign(url)
 const openFallbackDownloadPage = () => open(githubFallbackUrl, '_blank')
 
 const getWindowsDownloadLink = (response) => {
-    let [exeAsset] = response?.data?.assets?.filter?.(function (asset) {
+    const [exeAsset] = response?.data?.assets?.filter?.(function (asset) {
         return asset.name?.includes?.('.exe')
     }) ?? []
 
     if (exeAsset) {
         try {
-            new URL(exeAsset.browser_download_url ?? false)
-            
-            return exeAsset.browser_download_url
+            const url = new URL(exeAsset.browser_download_url ?? false)
+
+            return url.toString()
         } catch (e) {}
     }
-    
+
     return false
 }
 
 const onGithubResponse = (response) => {
     const windowsDownloadLink = getWindowsDownloadLink(response)
-    
+
     if (windowsDownloadLink) {
         startDownloadFile(windowsDownloadLink)
-        
+
         return
     }
 
@@ -50,5 +50,5 @@ const onDownloadButtonClicked = (event) => {
 const downloadButton = document.getElementById(downloadButtonId)
 
 if (downloadButton) {
-    downloadButton.addEventListener("click", onDownloadButtonClicked)
+    downloadButton.addEventListener('click', onDownloadButtonClicked)
 }
