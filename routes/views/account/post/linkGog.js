@@ -35,7 +35,7 @@ exports = module.exports = function(req, res) {
 		
 		request.post({
 			url: process.env.API_URL + '/users/linkToGog',
-			headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
+			headers: {'Authorization': 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token},
 			form: {gogUsername: gogUsername}
 		}, function (err, res, body) {
       
@@ -55,7 +55,7 @@ exports = module.exports = function(req, res) {
         // it's not possible to extract it into a separate function while saving any code
         request.get({
           url: process.env.API_URL + '/users/buildGogProfileToken',
-          headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
+          headers: {'Authorization': 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token},
           form: {}
         }, function (err, res, body) {
           locals.gogToken = 'unable to obtain token';

@@ -1,40 +1,34 @@
-let request = require('request');
-let error = require('../post/error');
+const axios = require("axios");
+const appConfig = require('../../../../config/app')
 
-exports = module.exports = function (req, res) {
-
-  var locals = res.locals;
-
-  // locals.section is used to set the currently selected
-  // item in the header navigation.
-  locals.section = 'account';
-
-  locals.formData = req.body || {};
-
-  var flash = {};
-
-  let overallRes = res;
-
-  request.post({
-      url: process.env.API_URL + '/users/buildSteamPasswordResetUrl',
-    }, function (err, res, body) {
-
-      if (err || res.statusCode !== 200) {
-        console.error(err);
-        if (res) {
-          error.parseApiErrors(body, flash);
-        } else {
-          flash.class = 'alert-danger';
-          flash.messages = err;
-          flash.type = 'Error!';
-        }
-        overallRes.render('account/requestPasswordReset', {flash: flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
-        return;
-      }
-
-      locals.steamReset = JSON.parse(body).steamUrl;
-      overallRes.render('account/requestPasswordReset', {flash: flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY});
+exports = module.exports = async function (req, res) {
+    const formData = req.body || {};
+    
+    // funky issue: https://stackoverflow.com/questions/69169492/async-external-function-leaves-open-handles-jest-supertest-express
+    await new Promise(resolve => process.nextTick(resolve))
+    
+    axios.post(appConfig.apiUrl + '/users/buildSteamPasswordResetUrl', {}, { maxRedirects: 0 }).then(response => {
+    if (response.status !== 200) {
+        throw new Error('java-api error')
     }
-  );
-
-};
+    
+    res.render('account/requestPasswordReset', {
+      section: 'account',
+      flash: {},
+      steamReset: response.data.steamUrl,
+      formData: formData,
+      recaptchaSiteKey: appConfig.recaptchaKey
+    })
+    }).catch(error => {
+      res.render('account/requestPasswordReset', {
+          section: 'account',
+          flash: {
+              class: 'alert-danger',
+              messages: 'issue resetting',
+              type: 'Error!',
+          },
+          formData: formData,
+          recaptchaSiteKey: appConfig.recaptchaKey
+      })
+    })
+}
