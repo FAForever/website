@@ -1,10 +1,10 @@
-name: Website static checks
+name: ESLint
 
 on: [pull_request]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
 
 jobs:
   checks:
@@ -15,8 +15,5 @@ jobs:
       with:
         node-version: '20'
         cache: 'yarn'
-    - run: yarn install
-    - run: npx webpack
+    - run: yarn install --frozen-lockfile
     - run: yarn run lint
-    - run: yarn run test
-    - uses: codecov/codecov-action@v3
