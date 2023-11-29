@@ -5,13 +5,14 @@ function StrategyMock (options) {
     this.name = 'mock'
     this.passAuthentication = options.passAuthentication ?? true
     this.user = options.user || {
-        token: 'test-token',
-        data: {
-            id: 1,
-            attributes: {
-                token: 'test-token'
-            }
-        }
+        oAuthPassport: {
+            token: 'test-token',
+            refreshToken: 'test-refresh-token'
+        },
+        id: -1,
+        name: 'minion',
+        email: 'banana@example.org',
+        clan: null
     }
 }
 

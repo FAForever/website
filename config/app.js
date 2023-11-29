@@ -11,6 +11,7 @@ const appConfig = {
         tokenLifespan: process.env.TOKEN_LIFESPAN || 43200
     },
     oauth: {
+        strategy: 'faforever',
         clientId: process.env.OAUTH_CLIENT_ID || '12345',
         clientSecret: process.env.OAUTH_CLIENT_SECRET || '12345',
         url: oauthUrl,
@@ -20,7 +21,8 @@ const appConfig = {
     apiUrl: process.env.API_URL || 'https://api.faforever.com',
     wordpressUrl: process.env.WP_URL || 'https://direct.faforever.com',
     extractorInterval: process.env.EXTRACTOR_INTERVAL || 5,
-    playerCountInterval: process.env.PLAYER_COUNT_INTERVAL || 15
+    playerCountInterval: process.env.PLAYER_COUNT_INTERVAL || 15,
+    recaptchaKey: process.env.RECAPTCHA_SITE_KEY || 'test'
 }
 
 module.exports = appConfig

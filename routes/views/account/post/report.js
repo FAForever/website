@@ -6,7 +6,7 @@ function promiseRequest(url, req) {
   return new Promise(function (resolve, reject) {
     request(url, {
         headers: {
-            'Authorization': 'Bearer ' + req.user.data.attributes.token,
+            'Authorization': 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token,
         }
       }, function (error, res, body) {
       if (!error && res.statusCode < 300) {
@@ -185,7 +185,7 @@ exports = module.exports = async function (req, res) {
       url: process.env.API_URL + '/data/moderationReport',
       body: JSON.stringify(report),
       headers: {
-        'Authorization': 'Bearer ' + req.user.data.attributes.token,
+        'Authorization': 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token,
         'Content-Type': 'application/vnd.api+json',
         'Accept': 'application/vnd.api+json'
       }

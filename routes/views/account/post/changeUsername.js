@@ -34,7 +34,7 @@ exports = module.exports = function (req, res) {
     //Run post to reset endpoint
     request.post({
       url: process.env.API_URL + '/users/changeUsername',
-      headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
+      headers: {'Authorization': 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token},
       form: {newUsername: username}
     }, function (err, res, body) {
 
