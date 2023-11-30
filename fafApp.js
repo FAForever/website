@@ -1,5 +1,5 @@
 const appConfig = require('./config/app')
-const express = require('express')
+const express = require('./ExpressApp')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)

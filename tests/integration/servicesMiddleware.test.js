@@ -1,4 +1,4 @@
-const Express = require('express')
+const Express = require('../../ExpressApp')
 const WordpressService = require('../../lib/WordpressService')
 const UserService = require('../../lib/LoggedInUserService')
 const LeaderboardService = require('../../lib/LeaderboardService')

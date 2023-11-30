@@ -1,5 +1,5 @@
 const fafApp = require('./fafApp')
-const express = require('express')
+const express = require('./ExpressApp')
 const app = express()
 
 fafApp.setup(app)

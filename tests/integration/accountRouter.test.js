@@ -1,4 +1,4 @@
-const Express = require('express')
+const Express = require('../../ExpressApp')
 const supertestSession = require('supertest-session')
 const fafApp = require('../../fafApp')
 
