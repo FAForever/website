@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('../../ExpressApp')
 const router = express.Router();
 
 function getNewsArticleBySlug(articles, slug) {

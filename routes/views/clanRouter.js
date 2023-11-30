@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('../../ExpressApp')
 const router = express.Router();
 
 // This will be replaced soon, therefor I did not spend time on it

@@ -1,6 +1,6 @@
 const appConfig = require('../../config/app')
 const passport = require('passport')
-const express = require("express")
+const express = require('../../ExpressApp')
 const router = express.Router()
 
 router.get('/login', passport.authenticate(appConfig.oauth.strategy));

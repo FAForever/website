@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('../../ExpressApp')
 const showdown = require('showdown')
 const fs = require('fs')
 const router = express.Router()
