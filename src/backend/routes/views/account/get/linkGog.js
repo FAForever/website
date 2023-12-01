@@ -27,7 +27,7 @@ exports = module.exports = function (req, res) {
 
     request.get({
         url: process.env.API_URL + '/users/buildGogProfileToken',
-        headers: { Authorization: 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token },
+        headers: { Authorization: 'Bearer ' + req.requestContainer.get('UserService').getUser()?.oAuthPassport.token },
         form: {}
     }, function (err, res, body) {
         locals.gogToken = 'unable to obtain token'

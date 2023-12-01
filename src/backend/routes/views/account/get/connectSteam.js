@@ -9,7 +9,7 @@ exports = module.exports = function (req, res) {
 
     request.post({
         url: process.env.API_URL + '/users/buildSteamLinkUrl',
-        headers: { Authorization: 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token },
+        headers: { Authorization: 'Bearer ' + req.requestContainer.get('UserService').getUser()?.oAuthPassport.token },
         form: { callbackUrl: req.protocol + '://' + req.get('host') + '/account/link?done' }
     }, function (err, res, body) {
         if (err) {
