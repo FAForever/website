@@ -1,5 +1,5 @@
-const LeaderboardService = require('../lib/LeaderboardService')
-const LeaderboardRepository = require('../lib/LeaderboardRepository')
+const { LeaderboardService } = require('../src/backend/services/LeaderboardService')
+const { LeaderboardRepository } = require('../src/backend/services/LeaderboardRepository')
 const NodeCache = require('node-cache')
 const { Axios } = require('axios')
 

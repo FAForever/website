@@ -35,9 +35,9 @@ Development-Container:
 `````bash
 cd ../website # replace path if needed
 cp -n .env.faf-stack .env
-docker compose build 
+docker compose build
 docker compose run website yarn install
-docker compose up 
+docker compose up
 `````
 
 this should start the express-server on http://localhost:8020/.
@@ -53,5 +53,3 @@ As of March 2022 the main 4 Languages that are set up on POEditor are:
 - Russian
 - French
 - German
-
-

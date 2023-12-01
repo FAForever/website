@@ -17,9 +17,10 @@ async function leaderboardOneJSON (leaderboardFile) {
     // Check which category is active
     const response = await fetch(`leaderboards/${leaderboardFile}.json`)
 
-    if (response.status === 400) {
-        window.location.href = '/leaderboards'
+    if (response.status !== 200) {
+        throw new Error('issues getting leaderboard')
     }
+
     currentLeaderboard = leaderboardFile
     const data = await response.json()
     return await data

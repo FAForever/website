@@ -19,5 +19,5 @@ COPY --from=builder --chown=node:node /code /code
 WORKDIR /code
 USER node
 
-CMD ["dumb-init", "node", "express.js"]
+CMD ["dumb-init", "node", "src/backend/index.js"]
 

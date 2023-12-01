@@ -1,4 +1,4 @@
-const { AcquireTimeoutError, MutexService } = require('../lib/MutexService')
+const { AcquireTimeoutError, MutexService } = require('../src/backend/services/MutexService')
 test('release will unlock the queue', async () => {
     const mutexService = new MutexService()
     expect(mutexService.locked).toBe(false)

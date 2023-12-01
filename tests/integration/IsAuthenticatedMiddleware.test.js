@@ -1,16 +1,14 @@
-const Express = require('../../ExpressApp')
-const middlewares = require('../../routes/middleware')
+const middlewares = require('../../src/backend/routes/middleware')
 const supertestSession = require('supertest-session')
-const fafApp = require('../../fafApp')
+const { AppKernel } = require('../../src/backend/AppKernel')
 
 let testApp = null
 let testSession = null
-
-beforeEach(() => {
-    const app = new Express()
-    fafApp.setup(app)
-    testSession = supertestSession(app)
-    testApp = app
+beforeEach(async () => {
+    const kernel = new AppKernel()
+    await kernel.boot()
+    testSession = supertestSession(kernel.expressApp)
+    testApp = kernel.expressApp
 })
 
 describe('Authenticate Middleware', function () {
