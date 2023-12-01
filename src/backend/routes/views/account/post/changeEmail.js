@@ -33,7 +33,7 @@ exports = module.exports = function (req, res) {
 
         request.post({
             url: `${process.env.API_URL}/users/changeEmail`,
-            headers: { Authorization: `Bearer ${req.services.userService.getUser()?.oAuthPassport.token}` },
+            headers: { Authorization: `Bearer ${req.requestContainer.get('UserService').getUser()?.oAuthPassport.token}` },
             form: { newEmail: email, currentPassword: password }
         }, function (err, res, body) {
             if (err || res.statusCode !== 200) {

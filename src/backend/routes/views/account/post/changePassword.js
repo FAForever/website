@@ -32,15 +32,13 @@ exports = module.exports = function (req, res) {
         // Encrypt password before sending it off to endpoint
         const newPassword = req.body.password
         const oldPassword = req.body.old_password
-        const username = req.body.username
-
         const overallRes = res
 
         // Run post to reset endpoint
         request.post({
             url: process.env.API_URL + '/users/changePassword',
-            headers: { Authorization: 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token },
-            form: { name: username, currentPassword: oldPassword, newPassword }
+            headers: { Authorization: 'Bearer ' + req.requestContainer.get('UserService').getUser()?.oAuthPassport.token },
+            form: { currentPassword: oldPassword, newPassword }
         }, function (err, res, body) {
             if (err || res.statusCode !== 200) {
                 error.parseApiErrors(body, flash)

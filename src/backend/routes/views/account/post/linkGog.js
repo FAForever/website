@@ -31,7 +31,7 @@ exports = module.exports = function (req, res) {
 
         request.post({
             url: process.env.API_URL + '/users/linkToGog',
-            headers: { Authorization: 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token },
+            headers: { Authorization: 'Bearer ' + req.requestContainer.get('UserService').getUser()?.oAuthPassport.token },
             form: { gogUsername }
         }, function (err, res, body) {
             if (!err && res.statusCode === 200) {
@@ -49,7 +49,7 @@ exports = module.exports = function (req, res) {
                 // it's not possible to extract it into a separate function while saving any code
                 request.get({
                     url: process.env.API_URL + '/users/buildGogProfileToken',
-                    headers: { Authorization: 'Bearer ' + req.services.userService.getUser()?.oAuthPassport.token },
+                    headers: { Authorization: 'Bearer ' + req.requestContainer.get('UserService').getUser()?.oAuthPassport.token },
                     form: {}
                 }, function (err, res, body) {
                     locals.gogToken = 'unable to obtain token'
