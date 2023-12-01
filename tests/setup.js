@@ -1,23 +1,26 @@
 const fs = require('fs')
-const wordpressService = require('../lib/WordpressService')
-const leaderboardService = require('../lib/LeaderboardService')
+const { WordpressService } = require('../src/backend/services/WordpressService')
+const { LeaderboardService } = require('../src/backend/services/LeaderboardService')
+const nock = require('nock')
+nock.disableNetConnect()
+nock.enableNetConnect('127.0.0.1')
 beforeEach(() => {
     const newsFile = JSON.parse(fs.readFileSync('tests/integration/testData/news.json', { encoding: 'utf8', flag: 'r' }))
-    jest.spyOn(wordpressService.prototype, 'getNews').mockResolvedValue(newsFile)
+    jest.spyOn(WordpressService.prototype, 'getNews').mockResolvedValue(newsFile)
 
     const tnFile = JSON.parse(fs.readFileSync('tests/integration/testData/tournament-news.json', { encoding: 'utf8', flag: 'r' }))
-    jest.spyOn(wordpressService.prototype, 'getTournamentNews').mockResolvedValue(tnFile)
+    jest.spyOn(WordpressService.prototype, 'getTournamentNews').mockResolvedValue(tnFile)
 
     const ccFile = JSON.parse(fs.readFileSync('tests/integration/testData/content-creators.json', { encoding: 'utf8', flag: 'r' }))
-    jest.spyOn(wordpressService.prototype, 'getContentCreators').mockResolvedValue(ccFile)
+    jest.spyOn(WordpressService.prototype, 'getContentCreators').mockResolvedValue(ccFile)
 
     const ftFile = JSON.parse(fs.readFileSync('tests/integration/testData/faf-teams.json', { encoding: 'utf8', flag: 'r' }))
-    jest.spyOn(wordpressService.prototype, 'getFafTeams').mockResolvedValue(ftFile)
+    jest.spyOn(WordpressService.prototype, 'getFafTeams').mockResolvedValue(ftFile)
 
     const nhFile = JSON.parse(fs.readFileSync('tests/integration/testData/newshub.json', { encoding: 'utf8', flag: 'r' }))
-    jest.spyOn(wordpressService.prototype, 'getNewshub').mockResolvedValue(nhFile)
+    jest.spyOn(WordpressService.prototype, 'getNewshub').mockResolvedValue(nhFile)
 
-    jest.spyOn(leaderboardService.prototype, 'getLeaderboard').mockImplementation((id) => {
+    jest.spyOn(LeaderboardService.prototype, 'getLeaderboard').mockImplementation((id) => {
         const mapping = {
             1: 'global',
             2: '1v1',

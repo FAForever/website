@@ -1,4 +1,4 @@
-const Express = require('../../ExpressApp')
+const Express = require('../../src/backend/ExpressApp')
 const supertestSession = require('supertest-session')
 
 let testApp = null

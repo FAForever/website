@@ -1,0 +1,115 @@
+extends ../../layouts/default
+include ../../mixins/flash-error
+include ../../mixins/form/account
+block css
+    link(href="/styles/awesomplete.css?version=" + Date.now(), rel="stylesheet")
+block bannerMixin
+block content
+    .containerCenter.text-center
+        .row
+            .col-md-12
+                h1.account-title Report a FAF user
+                div(style={'text-align':'left'})
+                    p Here you can report players who have broken the community rules in some way. We encourage users to report misconducting players to keep Forged Alliance Forever a healthy community. All reports will be processed by our moderation team.
+                    p Examples of reportable behaviour:
+                    ul
+                        li
+                            a(href='/rules') Breaking any of the rules
+                        li Teamkilling
+                        li Griefing (e.g. reclaiming friendly units or structures)
+                        li Insulting and bad behaviour
+                        li Exploits
+
+                    p Bugs in the game should be
+                        a(href='https://forum.faforever.com/category/8/game-issues-and-gameplay-questions') submitted to our tech support forum
+                        | or preferably as an
+                        a(href='https://github.com/FAForever/fa') issue on our github page.
+                hr
+                br
+                br
+        .row
+            .col-md-offset-3.col-md-6
+                +flash-error(flash)
+
+        form(method='post', action="/account/report", data-toggle="validator").accountForm
+            .column6
+                div.form-group
+                    p Reporter:
+                    input(type='text', disabled='disabled', value=appGlobals.loggedInUser.name).form-control
+                    span(aria-hidden='true').glyphicon.form-control-feedback
+
+                div.form-group
+                    p Offender username:
+                    input(type='text', required='required', class='offender_name', id='offender', name='offender', placeholder='FAF username(s)').form-control
+
+                    span(aria-hidden='true').glyphicon.form-control-feedback
+                    .help-block Make sure to spell the name correctly and to respect the casing.
+
+
+
+            .column6
+                div.form-group
+                    p Replay/Game ID:
+                    input(type='text', name='game_id', value=game_id, placeholder='(If it happened ingame)').form-control
+                    span(aria-hidden='true').glyphicon.form-control-feedback
+                    .help-block
+                        p Please enter the replay ID of the game where the incident happened
+
+
+                div.form-group
+                    p Timestamp:
+                    input(type='text', name='game_timecode', placeholder='(If it happened ingame)').form-control
+                    span(aria-hidden='true').glyphicon.form-control-feedback
+                    .help-block
+                        p Enter in-game time when the incident started here.
+            .column12
+              div.form-group
+                p Incident report:
+                textarea(rows='8', name='report_description', required='required', placeholder='Please provide a short but thorough description of the incident you are reporting. If there are no records available of the incident (e.g. not something that happened in #aeolus or in-game), please provide us a screenshot of it. You can use any image hosting site, e.g. http://imgur.com/.').form-control
+                span(aria-hidden='true').glyphicon.form-control-feedback
+            br
+            .column12
+                .form-actions
+                    button(type='submit') Submit Report
+
+            h3.column12
+              br
+              br
+              p Current reports
+
+
+              .centerFormPlease
+                table
+                  thead
+                    tr
+                      th #
+                      th(style={'text-align':'center'}) Created at
+                      th(style={'text-align':'center'}) Offender
+                      th(style={'text-align':'center'}) Game
+                      th(style={'text-align':'center'}) Description
+                      th(style={'text-align':'center'}) Moderator
+                      th(style={'text-align':'center'}) Notice
+                      th(style={'text-align':'center'}) Status
+                  tbody
+                    each report in reports
+                      tr
+                      td #{report.id}
+                      td #{report.creationTime}
+                      td #{report.offenders}
+                      td #{report.game}
+                      td #{report.description}
+                      td #{report.lastModerator}
+                      td #{report.notice}
+                      td(style=report.statusStyle) #{report.status}
+
+
+
+
+
+block js
+  script(type='text/javascript').
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+  script(src=webpackAssetJS('report'))

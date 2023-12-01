@@ -1,13 +1,12 @@
-const Express = require('../../ExpressApp')
 const supertestSession = require('supertest-session')
-const fafApp = require('../../fafApp')
+const { AppKernel } = require('../../src/backend/AppKernel')
 
 let testSession = null
 beforeEach(async () => {
-    const app = new Express()
-    fafApp.setup(app)
-    fafApp.loadRouters(app)
-    testSession = supertestSession(app)
+    const kernel = new AppKernel()
+    await kernel.boot()
+    kernel.loadControllers()
+    testSession = supertestSession(kernel.expressApp)
 })
 
 describe('Clan Routes', function () {

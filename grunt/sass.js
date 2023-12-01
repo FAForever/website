@@ -1,24 +1,24 @@
-const sass = require('dart-sass');
+const sass = require('dart-sass')
 
 module.exports = {
-  dev: {
-    options: {
-      implementation: sass,
-      style: 'expanded',
-      compass: true
+    dev: {
+        options: {
+            implementation: sass,
+            style: 'expanded',
+            compass: true
+        },
+        files: {
+            'public/styles/css/site.min.css': 'public/styles/site.sass'
+        }
     },
-    files: {
-      'public/styles/css/site.min.css': 'public/styles/site.sass',
+    dist: {
+        options: {
+            implementation: sass,
+            style: 'compressed',
+            compass: true
+        },
+        files: {
+            'public/styles/css/site.min.css': 'public/styles/site.sass'
+        }
     }
-  },
-  dist: {
-    options: {
-      implementation: sass,
-      style: 'compressed',
-      compass: true
-    },
-    files: {
-      'public/styles/css/site.min.css': 'public/styles/site.sass',
-    }
-  }
-};
+}

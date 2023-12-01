@@ -1,21 +1,20 @@
-const Express = require('../../ExpressApp')
 const supertestSession = require('supertest-session')
-const fafApp = require('../../fafApp')
 const passportMock = require('../helpers/PassportMock')
+const { AppKernel } = require('../../src/backend/AppKernel')
 
 let testSession = null
-beforeEach(() => {
-    const app = new Express()
-    fafApp.setup(app)
-    passportMock(app, { passAuthentication: true })
-    fafApp.loadRouters(app)
-    testSession = supertestSession(app)
+beforeEach(async () => {
+    const kernel = new AppKernel()
+    await kernel.boot()
+    passportMock(kernel.expressApp, { passAuthentication: true })
+    kernel.loadControllers()
+    testSession = supertestSession(kernel.expressApp)
 })
 
 describe('Leaderboard Routes', function () {
-    test('authentication required for main page', async () => {
+    test('no authentication required for main page', async () => {
         let response = await testSession.get('/leaderboards')
-        expect(response.status).toBe(302)
+        expect(response.status).toBe(200)
 
         await testSession.get('/mock-login')
 
@@ -23,9 +22,9 @@ describe('Leaderboard Routes', function () {
         expect(response.status).toBe(200)
     })
 
-    test('authentication required for datasets', async () => {
+    test('no authentication required for datasets', async () => {
         const response = await testSession.get('/leaderboards/1v1.json')
-        expect(response.status).toBe(401)
+        expect(response.status).toBe(200)
     })
 
     test('fails with 404 on unknown leaderboard', async () => {
