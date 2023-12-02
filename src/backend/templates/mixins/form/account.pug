@@ -1,23 +1,23 @@
 mixin email
-  p Enter your Email 
+  p Enter your Email
   .formStart
     input(type='email', name='email', required='required', placeholder='UEF@email.com', value=formData['email'])
-    span(aria-hidden='true')        
-          
-          
-          
+    span(aria-hidden='true')
+
+
+
 mixin username
     p Enter your username
     .formStart
       //value=formData['username']
-      input(type='text', name='username', required='required', data-minlength='3', maxlength='16', pattern='[A-Za-z]{1}[A-Za-z0-9_-]{2,15}$', data-minlength-error='The username is too short - must be at least 3 characters', data-error='Please check username requirements', data-remote="/account/checkUsername", data-remote-error="Username taken",  placeholder='Eco_Player7-', value=formData['username'])
+      input(type='text', name='username', required='required', data-minlength='3', maxlength='16', pattern='^[A-Za-z]{1}[A-Za-z0-9_\\-]{2,15}$', data-minlength-error='The username is too short - must be at least 3 characters', data-error='Please check username requirements', data-remote="/account/checkUsername", data-remote-error="Username taken",  placeholder='Eco_Player7-', value=formData['username'])
       span(aria-hidden='true')
-      .formHelp 
+      .formHelp
         ul Your username must:
           li Start with a letter
-          
+
           li Be between 3 and 16 characters
-          
+
           li Only use letters and digits ( - and _ are allowed).
 
 
