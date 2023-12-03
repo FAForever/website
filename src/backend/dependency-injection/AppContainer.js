@@ -4,6 +4,8 @@ const { LeaderboardService } = require('../services/LeaderboardService')
 const { JavaApiM2MClient } = require('../services/JavaApiM2MClient')
 const { WordpressService } = require('../services/WordpressService')
 const { WordpressRepository } = require('../services/WordpressRepository')
+const { DataRepository } = require('../services/DataRepository')
+const { ClanService } = require('../services/ClanService')
 const NodeCache = require('node-cache')
 const { Axios } = require('axios')
 const fs = require('fs')
@@ -49,6 +51,13 @@ module.exports.appContainer = function (appConfig) {
     container.register('LeaderboardService', LeaderboardService)
         .addArgument(new Reference('NodeCache'))
         .addArgument(new Reference('LeaderboardRepository'))
+
+    container.register('DataRepository', DataRepository)
+        .addArgument(new Reference('JavaApiM2MClient'))
+
+    container.register('ClanService', ClanService)
+        .addArgument(new Reference('NodeCache'))
+        .addArgument(new Reference('DataRepository'))
 
     return container
 }

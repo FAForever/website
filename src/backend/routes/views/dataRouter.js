@@ -43,4 +43,22 @@ router.get('/recent-players.json', async (req, res) => {
     getData(req, res, 'content-creators', data)
 })
 
+router.get('/clans.json', async (req, res) => {
+    try {
+        return res.json(await req.appContainer.get('ClanService').getAll())
+    } catch (e) {
+        if (e instanceof AcquireTimeoutError) {
+            return res.status(503).json({ error: 'timeout reached' })
+        }
+
+        console.error('[error] dataRouter::get:clans.json failed with "' + e.toString() + '"')
+
+        if (!res.headersSent) {
+            return res.status(500).json({ error: 'unexpected error' })
+        }
+
+        throw e
+    }
+})
+
 module.exports = router

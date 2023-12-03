@@ -3,12 +3,20 @@ const path = require('path')
 
 module.exports = {
     mode: 'production',
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    },
     entry: {
+        clan: ['./src/frontend/js/entrypoint/clan.js'],
         clans: ['./src/frontend/js/entrypoint/clans.js'],
         'content-creators': ['./src/frontend/js/entrypoint/content-creators.js'],
         donation: ['./src/frontend/js/entrypoint/donation.js'],
         'faf-teams': ['./src/frontend/js/entrypoint/faf-teams.js'],
-        getClans: ['./src/frontend/js/entrypoint/getClans.js'],
         leaderboards: ['./src/frontend/js/entrypoint/leaderboards.js'],
         navigation: ['./src/frontend/js/entrypoint/navigation.js'],
         newshub: ['./src/frontend/js/entrypoint/newshub.js'],
