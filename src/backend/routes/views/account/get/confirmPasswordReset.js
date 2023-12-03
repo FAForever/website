@@ -11,18 +11,15 @@ exports = module.exports = function (req, res) {
     locals.username = req.query.username
     locals.token = req.query.token
 
-    // Likely too verbose - but can be used as a catch-all for further validations
-    const valid_params = (token, username) => {
-        if (!token || !username) {
-          return false
-        } else {
-          return true
-        }
-    }
+    const valid_req = (!locals.token || !locals.username)
 
-    valid_params
-        ? res.render('account/confirmPasswordReset')
-        : () => {
-            res.redirect('/account/requestPasswordReset')
-          }
+    if (valid_req) {
+      let flash = {}
+      flash.class = 'alert-danger'
+      flash.messages = [{ msg: 'Invalid reset link' }]
+      flash.type = 'Error!'
+      res.redirect('/account/requestPasswordReset')
+    } else {
+      res.render('account/confirmPasswordReset')
+    }
 }
