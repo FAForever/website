@@ -12,6 +12,7 @@ exports = module.exports = async function (req, res) {
             throw new Error('java-api error')
         }
 
+        let flash = {}
         if (req.query.flash) {
             const buff = Buffer.from(req.query.flash, 'base64')
             const text = buff.toString('ascii')
@@ -27,7 +28,7 @@ exports = module.exports = async function (req, res) {
 
         res.render('account/requestPasswordReset', {
             section: 'account',
-            flash: flash || {},
+            flash: flash,
             steamReset: response.data.steamUrl,
             formData,
             recaptchaSiteKey: appConfig.recaptchaKey
