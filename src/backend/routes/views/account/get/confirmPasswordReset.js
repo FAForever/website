@@ -7,23 +7,22 @@ exports = module.exports = function (req, res) {
 
     locals.formData = req.body || {}
 
-
     // Render the view
     locals.username = req.query.username
     locals.token = req.query.token
 
-    if (!locals.username || !locals.token) {
-      const flash = {
-        class: 'alert-danger',
-        messages: [{ msg: 'Invalid reset request.' }],
-        type: 'Error!'
-      };
-
-      return res.redirect('/account/requestPasswordReset');
+    // Likely too verbose - but can be used as a catch-all for further validations
+    const valid_params = (token, username) => {
+        if (!token || !username) {
+          return false
+        } else {
+          return true
+        }
     }
 
-    else {
-      const flash = null;
-      res.render('account/confirmPasswordReset', { flash })
-    }
+    valid_params
+        ? res.render('account/confirmPasswordReset')
+        : () => {
+            res.redirect('/account/requestPasswordReset')
+          }
 }
