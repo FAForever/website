@@ -7,10 +7,23 @@ exports = module.exports = function (req, res) {
 
     locals.formData = req.body || {}
 
-    const flash = null
 
     // Render the view
     locals.username = req.query.username
     locals.token = req.query.token
-    res.render('account/confirmPasswordReset', { flash })
+
+    if (!locals.username || !locals.token) {
+      const flash = {
+        class: 'alert-danger',
+        messages: [{ msg: 'Invalid reset request.' }],
+        type: 'Error!'
+      };
+
+      return res.redirect('/account/requestPasswordReset');
+    }
+
+    else {
+      const flash = null;
+      res.render('account/confirmPasswordReset', { flash })
+    }
 }
