@@ -1,0 +1,45 @@
+extends ../../layouts/default
+block content
+    #clan-view
+        a(href="/clans") <- OVERVIEW
+        <br />
+        <br />
+        .gridMainContainer
+            .column4
+                table#clan-info
+                    tr
+                        td NAME
+                        td [#{clan.tag}] #{clan.name}
+                    tr
+                        td LEADER
+                        if clan.leader
+                            td #{clan.leader.name} 👑
+                        else
+                            td -
+                    tr
+                        td FOUNDER
+                        if clan.founder
+                            td #{clan.founder.name}
+                        else
+                            td -
+                    tr
+                        td JOIN
+                        if clan.requiresInvitation
+                            td Invitation Only
+                        else
+                            td Free For All
+            .column8
+                div(style='white-space:pre-wrap') #{clan.description}
+            .column12
+                table#clan-members
+                    thead
+                        tr
+                            th NAME
+                            th JOINED AT
+                    tbody
+                        each member in clan.memberships
+                            tr
+                                td #{member.name}
+                                td #{member.joinedAt}
+block js
+    script( src=webpackAssetJS('clan'))
