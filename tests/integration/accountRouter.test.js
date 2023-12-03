@@ -24,13 +24,12 @@ describe('Account Routes', function () {
     test('responds with OK to provided parameters', async () => {
         const response = await testSession.get('/account/password/confirmReset?username=turbo2&token=XXXXX')
         expect(response.statusCode).toBe(200)
-        expect(response.headers.location).toBe('/account/requestPasswordReset')
     })
 
-    test('redirect to reset request page if missing parameters', async () => {
+    test('redirect to reset request page if missing parameters with flash parameter', async () => {
         const response = await testSession.get('/account/password/confirmReset')
-        expect(response.statusCode).toBe(200)
-        expect(response.headers.location).toBe('/account/requestPasswordReset')
+        expect(response.statusCode).toBe(302)
+        expect(response.headers.location).toContain('/account/requestPasswordReset?flash=')
     })
 
     test('redirect old pw-reset routes', async () => {
