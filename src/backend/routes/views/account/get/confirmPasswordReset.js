@@ -1,6 +1,8 @@
 exports = module.exports = function (req, res) {
     const locals = res.locals
 
+    const overallRes = res
+
     // locals.section is used to set the currently selected
     // item in the header navigation.
     locals.section = 'account'
@@ -14,7 +16,7 @@ exports = module.exports = function (req, res) {
     // Ensure token and username are present
     const validateParamPresence = (token, username) => {
       if (!token || !username) {
-        return "Invalid request"
+        return 'Invalid request'
       } else {
         return null
       }
@@ -23,7 +25,15 @@ exports = module.exports = function (req, res) {
     const errorMsg = validateParamPresence(req.query.username, req.query.token)
 
     if (errorMsg) {
-      res.redirect('/account/requestPasswordReset?flash=' + errorMsg)
+      flash = {}
+      flash.class = 'alert-danger'
+      flash.messages = [{ msg:  errorMsg}]
+      flash.type = 'Error!'
+
+      const buff = Buffer.from(JSON.stringify(flash))
+      const data = buff.toString('base64')
+
+      return overallRes.redirect('/account/requestPasswordReset?flash=' + data)
     } else {
       res.render('account/confirmPasswordReset')
     }

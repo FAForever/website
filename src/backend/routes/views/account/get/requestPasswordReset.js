@@ -12,11 +12,17 @@ exports = module.exports = async function (req, res) {
             throw new Error('java-api error')
         }
 
-        let flash = {}
         if (req.query.flash) {
-          flash.class = 'alert-danger'
-          flash.messages = [{ msg: req.query.flash }]
-          flash.type = 'Error!'
+            const buff = Buffer.from(req.query.flash, 'base64')
+            const text = buff.toString('ascii')
+
+            try {
+                flash = JSON.parse(text)
+            } catch (e) {
+                console.error('Parsing error while trying to decode a flash error: ' + text)
+                console.error(e)
+                flash = [{ msg: 'Unknown error' }]
+            }
         }
 
         res.render('account/requestPasswordReset', {
