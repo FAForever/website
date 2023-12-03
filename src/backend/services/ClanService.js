@@ -14,24 +14,7 @@ class ClanService {
     }
 
     async getClan (id, ignoreCache = false) {
-        const cacheKey = this.getCacheKey('clan-' + id)
-
-        if (this.cacheService.has(cacheKey) && ignoreCache === false) {
-            return this.cacheService.get(cacheKey)
-        }
-
-        if (this.mutexService.locked) {
-            await this.mutexService.acquire(() => {
-            }, this.lockTimeout)
-            return this.getClan(id)
-        }
-
-        await this.mutexService.acquire(async () => {
-            const result = await this.dataRepository.fetchClan(id)
-            this.cacheService.set(cacheKey, result, clanTTL)
-        })
-
-        return this.getClan(id)
+        return await this.dataRepository.fetchClan(id)
     }
 
     async getAll () {

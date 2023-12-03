@@ -9,10 +9,7 @@ block content
                 table#clan-info
                     tr
                         td NAME
-                        td #{clan.name}
-                    tr
-                        td TAG
-                        td #{clan.tag}
+                        td [#{clan.tag}] #{clan.name}
                     tr
                         td LEADER
                         if clan.leader
@@ -32,8 +29,7 @@ block content
                         else
                             td Free For All
             .column8
-                h2 Description
-                div #{clan.description}
+                div(style='white-space:pre-wrap') #{clan.description}
             .column12
                 table#clan-members
                     thead
