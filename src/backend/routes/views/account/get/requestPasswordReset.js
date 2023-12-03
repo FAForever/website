@@ -28,7 +28,7 @@ exports = module.exports = async function (req, res) {
 
         res.render('account/requestPasswordReset', {
             section: 'account',
-            flash: flash,
+            flash,
             steamReset: response.data.steamUrl,
             formData,
             recaptchaSiteKey: appConfig.recaptchaKey

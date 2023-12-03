@@ -15,26 +15,26 @@ exports = module.exports = function (req, res) {
 
     // Ensure token and username are present
     const validateParamPresence = (token, username) => {
-      if (!token || !username) {
-        return 'Invalid request'
-      } else {
-        return null
-      }
+        if (!token || !username) {
+            return 'Invalid request'
+        } else {
+            return null
+        }
     }
 
     const errorMsg = validateParamPresence(req.query.username, req.query.token)
 
     if (errorMsg) {
-      flash = {}
-      flash.class = 'alert-danger'
-      flash.messages = [{ msg:  errorMsg}]
-      flash.type = 'Error!'
+        const flash = {}
+        flash.class = 'alert-danger'
+        flash.messages = [{ msg: errorMsg }]
+        flash.type = 'Error!'
 
-      const buff = Buffer.from(JSON.stringify(flash))
-      const data = buff.toString('base64')
+        const buff = Buffer.from(JSON.stringify(flash))
+        const data = buff.toString('base64')
 
-      return overallRes.redirect('/account/requestPasswordReset?flash=' + data)
+        return overallRes.redirect('/account/requestPasswordReset?flash=' + data)
     } else {
-      res.render('account/confirmPasswordReset')
+        res.render('account/confirmPasswordReset')
     }
 }
