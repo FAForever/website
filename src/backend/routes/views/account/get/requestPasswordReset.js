@@ -12,9 +12,16 @@ exports = module.exports = async function (req, res) {
             throw new Error('java-api error')
         }
 
+        let flash = {}
+        if (req.query.flash) {
+          flash.class = 'alert-danger'
+          flash.messages = [{ msg: req.query.flash }]
+          flash.type = 'Error!'
+        }
+
         res.render('account/requestPasswordReset', {
             section: 'account',
-            flash: {},
+            flash: flash,
             steamReset: response.data.steamUrl,
             formData,
             recaptchaSiteKey: appConfig.recaptchaKey

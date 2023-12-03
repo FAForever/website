@@ -11,14 +11,19 @@ exports = module.exports = function (req, res) {
     locals.username = req.query.username
     locals.token = req.query.token
 
-    const valid_req = (!locals.token || !locals.username)
+    // Ensure token and username are present
+    const validateParamPresence = (token, username) => {
+      if (!token || !username) {
+        return "Invalid request"
+      } else {
+        return null
+      }
+    }
 
-    if (valid_req) {
-      let flash = {}
-      flash.class = 'alert-danger'
-      flash.messages = [{ msg: 'Invalid reset link' }]
-      flash.type = 'Error!'
-      res.redirect('/account/requestPasswordReset')
+    const errorMsg = validateParamPresence(req.query.username, req.query.token)
+
+    if (errorMsg) {
+      res.redirect('/account/requestPasswordReset?flash=' + errorMsg)
     } else {
       res.render('account/confirmPasswordReset')
     }
