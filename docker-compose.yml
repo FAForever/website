@@ -12,7 +12,9 @@ services:
       context: .
     networks:
       -  faf-stack
-    
+    logging:
+      driver: "json-file"
+
 networks:
   faf-stack:
     name: faf-stack_faf
