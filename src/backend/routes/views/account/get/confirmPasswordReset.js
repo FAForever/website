@@ -2,11 +2,7 @@ const { validationResult } = require('express-validator')
 exports = module.exports = function (req, res) {
     const locals = res.locals
 
-    const overallRes = res
-
     const errors = validationResult(req)
-
-    console.log(errors)
 
     if (!errors.isEmpty()) {
         const flash = {}
@@ -20,7 +16,7 @@ exports = module.exports = function (req, res) {
         const buff = Buffer.from(JSON.stringify(flash))
         const data = buff.toString('base64')
 
-        return overallRes.redirect('/account/requestPasswordReset?flash=' + data)
+        return res.redirect('/account/requestPasswordReset?flash=' + data)
     }
 
     // locals.section is used to set the currently selected

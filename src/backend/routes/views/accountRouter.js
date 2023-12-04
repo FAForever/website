@@ -20,8 +20,8 @@ router.post('/changeEmail', middlewares.isAuthenticated(), require('./account/po
 router.get('/changeUsername', middlewares.isAuthenticated(), require('./account/get/changeUsername'))
 router.post('/changeUsername', middlewares.isAuthenticated(), require('./account/post/changeUsername'))
 
-router.get('/password/confirmReset', [query('token').notEmpty().withMessage('Invalid reset request'),
-    query('username').notEmpty().withMessage('Invalid reset request')],
+router.get('/password/confirmReset', [query('token').notEmpty().withMessage('Missing token'),
+    query('username').notEmpty().withMessage('Missing username')],
 require('./account/get/confirmPasswordReset'))
 router.post('/password/confirmReset', require('./account/post/confirmPasswordReset'))
 
