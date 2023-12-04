@@ -1,6 +1,7 @@
 const express = require('../../ExpressApp')
 const router = express.Router()
 const middlewares = require('../middleware')
+const url = require('url')
 
 router.get('/linkGog', middlewares.isAuthenticated(), require('./account/get/linkGog'))
 router.post('/linkGog', middlewares.isAuthenticated(), require('./account/post/linkGog'))
@@ -25,6 +26,12 @@ router.post('/requestPasswordReset', require('./account/post/requestPasswordRese
 
 // still used in other applications (user-service, game-client etc.)
 router.get('/password/reset', (req, res) => res.redirect('/account/requestPasswordReset'))
+router.get('/confirmPasswordReset', (req, res) => {
+    res.redirect(url.format({
+        pathname: '/account/password/confirmReset',
+        query: req.query
+    }))
+})
 
 router.get('/register', require('./account/get/register'))
 router.post('/register', require('./account/post/register'))
