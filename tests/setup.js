@@ -45,6 +45,10 @@ beforeEach(() => {
     })
 
     nock(appConfig.apiUrl)
+        .post('/users/buildSteamPasswordResetUrl')
+        .reply(200, { steamUrl: 'http://localhost/test-steam-reset' })
+
+    nock(appConfig.apiUrl)
         .get('/data/clan?include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000')
         .reply(200, fs.readFileSync('tests/integration/testData/clan/clans.json', { encoding: 'utf8', flag: 'r' }))
 

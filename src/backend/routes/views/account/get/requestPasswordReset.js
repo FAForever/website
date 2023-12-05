@@ -14,7 +14,6 @@ exports = module.exports = async function (req, res) {
 
         res.render('account/requestPasswordReset', {
             section: 'account',
-            flash: {},
             steamReset: response.data.steamUrl,
             formData,
             recaptchaSiteKey: appConfig.recaptchaKey
@@ -23,9 +22,9 @@ exports = module.exports = async function (req, res) {
         console.error(error.toString())
         res.render('account/requestPasswordReset', {
             section: 'account',
-            flash: {
+            errors: {
                 class: 'alert-danger',
-                messages: 'issue resetting',
+                messages: error.toString,
                 type: 'Error!'
             },
             formData,
