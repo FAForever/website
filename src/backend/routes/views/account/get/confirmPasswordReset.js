@@ -4,6 +4,8 @@ const { validationResult } = require('express-validator')
 exports = module.exports = function (req, res) {
     const errors = validationResult(req)
 
+    // A render/redirect ignores this if not async and renders the confirm
+    // Theres probably a better way to do this
     if (!errors.isEmpty()) {
         return renderRequestPasswordReset(req, res, errors)
     }
@@ -21,6 +23,8 @@ const renderRequestPasswordReset = async (req, res, errors) => {
         if (response.status !== 200) {
             throw new Error('java-api error')
         }
+
+        errors.errors[errors.errors.length - 1].msg += '. You may request a new link here'
 
         return res.render('account/requestPasswordReset', {
             section: 'account',
