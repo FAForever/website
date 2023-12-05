@@ -23,6 +23,9 @@ block content
                         else
                             td -
                     tr
+                        td FOUNDED
+                        td #{clan.createTime}
+                    tr
                         td JOIN
                         if clan.requiresInvitation
                             td Invitation Only
@@ -31,15 +34,25 @@ block content
             .column8
                 div(style='white-space:pre-wrap') #{clan.description}
             .column12
+                if canLeave
+                    a(href='/clans/leave').faf-button Leave Clan
+                if isLeader
+                    a(href='/clans/invite').faf-button Create Invite
+                    a(href='/clans/manage').faf-button Update Clan
+            .column12
                 table#clan-members
                     thead
                         tr
                             th NAME
                             th JOINED AT
+                            th ACTIONS
                     tbody
                         each member in clan.memberships
                             tr
                                 td #{member.name}
                                 td #{member.joinedAt}
+                                td
+                                    if isLeader && member.membershipId !== userMembershipId
+                                        a(href='/clans/kick/' + member.membershipId onclick="return confirm('Kick?')").action-link Kick
 block js
     script( src=webpackAssetJS('clan'))

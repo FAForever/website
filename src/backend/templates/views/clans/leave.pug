@@ -1,0 +1,18 @@
+extends ../../layouts/default
+include ../../mixins/flash-error
+include ../../mixins/form/account
+block bannerMixin
+block content
+
+    .clanManagement
+        .column12
+            +flash-error(errors)
+
+    .clanManagement
+        .column12
+            h2 Leave Clan
+            form(method='post' action="/clans/leave")
+                .row.inline-panel
+                    button(type='submit') Confirm
+            br
+
