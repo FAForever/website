@@ -36,6 +36,13 @@ beforeEach(() => {
         throw new Error('do we need to change the mock?')
     })
 
+<<<<<<< HEAD
+=======
+    nock(appConfig.apiUrl)
+        .post('/users/buildSteamPasswordResetUrl')
+        .reply(200, { steamUrl: 'http://localhost/test-steam-reset' })
+
+>>>>>>> e9a54d1 (lint)
     jest.spyOn(JavaApiM2MClient, 'getToken').mockResolvedValue({
         token: {
             refresh: () => {},
