@@ -1,6 +1,7 @@
 const fs = require('fs')
 const { WordpressService } = require('../src/backend/services/WordpressService')
 const { LeaderboardService } = require('../src/backend/services/LeaderboardService')
+const { JavaApiM2MClient } = require('../src/backend/services/JavaApiM2MClient')
 const appConfig = require('../src/backend/config/app')
 const nock = require('nock')
 nock.disableNetConnect()
@@ -36,10 +37,6 @@ beforeEach(() => {
         throw new Error('do we need to change the mock?')
     })
 
-    nock(appConfig.apiUrl)
-        .post('/users/buildSteamPasswordResetUrl')
-        .reply(200, { steamUrl: 'http://localhost/test-steam-reset' })
-
     jest.spyOn(JavaApiM2MClient, 'getToken').mockResolvedValue({
         token: {
             refresh: () => {},
@@ -48,15 +45,16 @@ beforeEach(() => {
     })
 
     nock(appConfig.apiUrl)
+        .post('/users/buildSteamPasswordResetUrl')
+        .reply(200, { steamUrl: 'http://localhost/test-steam-reset' })
+
+    nock(appConfig.apiUrl)
         .get('/data/clan?include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000')
         .reply(200, fs.readFileSync('tests/integration/testData/clan/clans.json', { encoding: 'utf8', flag: 'r' }))
 
     nock(appConfig.apiUrl)
         .get('/data/clan/2741?include=memberships.player')
         .reply(200, fs.readFileSync('tests/integration/testData/clan/clan.json', { encoding: 'utf8', flag: 'r' }))
-    nock(appConfig.apiUrl)
-        .post('/users/buildSteamPasswordResetUrl')
-        .reply(200, { steamUrl: 'http://localhost/test-steam-reset' })
 })
 
 afterEach(() => {

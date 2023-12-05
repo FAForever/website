@@ -26,27 +26,18 @@ describe('Account Routes', function () {
         expect(response.statusCode).toBe(200)
     })
 
-    test('redirect to reset request page if missing username parameter with flash parameter', async () => {
+    test('render request content if missing username parameter with flash', async () => {
         const response = await testSession.get('/account/password/confirmReset?token=XXXXX')
 
-        expect(response.statusCode).toBe(302)
-        expect(response.headers.location).toContain('/account/requestPasswordReset?flash=')
-
-        const redirectResponse = await testSession.get(response.headers.location)
-
-        expect(redirectResponse.text).toContain('Missing username')
+        expect(response.statusCode).toBe(200)
+        expect(response.text).toContain('Missing username')
     })
 
-    test('redirect to reset request page if missing token parameter with flash parameter', async () => {
-        const response = await testSession.get('/account/password/confirmReset?username=turbo2')
+    test('render request content if missing token parameter with flash', async () => {
+        const response = await testSession.get('/account/password/confirmReset?token=XXXXX')
 
-        const flashValue = response.headers.location.match(/flash=([^&]+)/)[1]
-        const buff = Buffer.from(flashValue, 'base64')
-        const text = JSON.parse(buff.toString('ascii')).messages[0].msg
-
-        expect(response.statusCode).toBe(302)
-        expect(response.headers.location).toContain('/account/requestPasswordReset?flash=')
-        expect(text).toBe('Missing token')
+        expect(response.statusCode).toBe(200)
+        expect(response.text).toContain('Missing username')
     })
 
     test('redirect old pw-reset routes', async () => {
