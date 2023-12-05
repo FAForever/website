@@ -13,14 +13,14 @@ class ClanService {
         return 'ClanService_' + name
     }
 
-    async getClan (id, ignoreCache = false) {
+    async getClan (id) {
         return await this.dataRepository.fetchClan(id)
     }
 
-    async getAll () {
+    async getAll (ignoreCache = false) {
         const cacheKey = this.getCacheKey('all')
 
-        if (this.cacheService.has(cacheKey)) {
+        if (this.cacheService.has(cacheKey) && ignoreCache === false) {
             return this.cacheService.get(cacheKey)
         }
 
@@ -36,6 +36,10 @@ class ClanService {
         })
 
         return this.getAll()
+    }
+
+    async getClanMembership (clanMembershipId) {
+        return this.dataRepository.fetchClanMembership(clanMembershipId)
     }
 }
 

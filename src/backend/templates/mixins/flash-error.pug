@@ -1,5 +1,5 @@
 mixin flash-error(validationErrors)
-    if validationErrors
+    if validationErrors &&  validationErrors.messages
         div.alert(class=validationErrors.class)
           ul.validationErrors-errors
               each error in validationErrors.messages.errors

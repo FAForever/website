@@ -1,3 +1,5 @@
+const { JavaApiError } = require('./ApiErrors')
+
 class DataRepository {
     constructor (javaApiM2MClient) {
         this.javaApiM2MClient = javaApiM2MClient
@@ -130,6 +132,72 @@ class DataRepository {
         clan.memberships = members
 
         return clan
+    }
+
+    async fetchClanMembership (clanMembershipId) {
+        const response = await this.javaApiM2MClient.get(`/data/clanMembership/${clanMembershipId}/clan?include=memberships.player&fields[clan]=createTime,description,name,tag,updateTime,websiteUrl,founder,leader&fields[player]=login,updateTime&fields[clanMembership]=createTime,player`)
+
+        if (response.status !== 200) {
+            throw new JavaApiError(response.status, response.config.url, JSON.parse(response.data) || [])
+        }
+
+        return this.mapClanMembership(JSON.parse(response.data))
+    }
+
+    mapClanMembership (data) {
+        if (typeof data !== 'object' || data === null) {
+            throw new Error('ClanRepository::mapClanMembership malformed response, not an object')
+        }
+
+        if (!Object.prototype.hasOwnProperty.call(data, 'data')) {
+            throw new Error('ClanRepository::mapClanMembership malformed response, expected "data"')
+        }
+
+        if (typeof data.data !== 'object' || data.data === null) {
+            return null
+        }
+
+        if (typeof data.included !== 'object' || data.included === null) {
+            throw new Error('ClanRepository::mapClanMembership malformed response, expected "included"')
+        }
+
+        const clanMembershipRaw = data.data.attributes
+
+        const clanMembership = {
+            clan_id: data.data.id,
+            clan_name: clanMembershipRaw.name,
+            clan_tag: clanMembershipRaw.tag,
+            clan_description: clanMembershipRaw.description,
+            clan_create_time: clanMembershipRaw.createTime
+        }
+
+        const members = {}
+
+        for (const k in data.included) {
+            switch (data.included[k].type) {
+            case 'player': {
+                const player = data.included[k]
+                if (!members[player.id]) members[player.id] = {}
+                members[player.id].id = player.id
+                members[player.id].name = player.attributes.login
+
+                break
+            }
+            case 'clanMembership': {
+                const membership = data.included[k]
+                const member = membership.relationships.player.data
+                if (!members[member.id]) members[member.id] = {}
+                members[member.id].id = member.id
+                members[member.id].membershipId = membership.id
+                members[member.id].joinedAt = membership.attributes.createTime
+                break
+            }
+            }
+        }
+
+        clanMembership.members = members
+
+        return clanMembership
     }
 }
 

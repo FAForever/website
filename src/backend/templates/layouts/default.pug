@@ -1,3 +1,4 @@
+include ../mixins/flash-connect
 doctype html
 html(lang='en')
   //- HTML HEADER
@@ -20,7 +21,7 @@ html(lang='en')
     //- Customise the stylesheet for your site by editing /public/styles/site.sass
     link(href="/styles/css/site.min.css?version=" + Date.now(), rel="stylesheet")
 
-    
+
 
     //- Include template-specific stylesheets by extending the css block
     block css
@@ -32,7 +33,7 @@ html(lang='en')
   //- HTML BODY
   body
     .mainTopNavContainer
-      // this is the "thin" navbar that has forums, discord, youtube icons, etc. 
+      // this is the "thin" navbar that has forums, discord, youtube icons, etc.
       .topNavContainer
         a.topnav_item(href='/account/requestPasswordReset') Reset Password
       .topNavContainer
@@ -59,7 +60,7 @@ html(lang='en')
       .topNavContainer
         a(href='https://www.reddit.com/r/FAF')
           img(src='/images/fontAwesomeIcons/reddit.svg')
-    // Main Navbar with FAF NEWS, LOGIN AND DOWNLOAD. 
+    // Main Navbar with FAF NEWS, LOGIN AND DOWNLOAD.
     .mainNavContainer
       .navContainer
         .navItem
@@ -75,7 +76,7 @@ html(lang='en')
             li.navList NEWS
               ul.navAbsolute
           li.navList GAME
-           
+
             ul.navAbsolute
               a(href='/campaign-missions')
                 li Campaign & Co-Op Missions
@@ -87,7 +88,7 @@ html(lang='en')
                 li SC:FA vs FAF
 
           li.navList COMMUNITY
-            
+
             ul.navAbsolute
               a(href='/faf-teams')
                 li Teams and Association
@@ -116,7 +117,7 @@ html(lang='en')
           ul.navItem
             a(href="/account/register")
               li.navList REGISTER
-      
+
       if appGlobals.loggedInUser
         .navContainer.navEnd#loginList
           ul.loginItem
@@ -125,7 +126,7 @@ html(lang='en')
               h3 #{appGlobals.loggedInUser.name}
             ul#loginAbsolute
               li.loginDropdown
-                ul(role='menu')                  
+                ul(role='menu')
                   if appGlobals.loggedInUser.clan
                     a(href="/clans/manage"): li My Clan
                   else
@@ -158,13 +159,13 @@ html(lang='en')
           .movingBackground2
         img(src='/images/faflogo.svg' alt='')
 
-        
+
         a(href='/').mobileNavElement Home
-       
-          
+
+
         a(href='/news').mobileNavElement News
-        
-          
+
+
         .mobileNavElement.mobileNavMenu Game
         .mobileNavMenuContent
           a(href='/leaderboards') Leaderboards
@@ -172,8 +173,8 @@ html(lang='en')
           a(href='/ai') AI/Co-op Play
           a(href='/scfa-vs-faf') SC:FA vs FAF
           a(href='/play') Play Now
-          
-          
+
+
         .mobileNavElement.mobileNavMenu Community
         .mobileNavMenuContent
           a(href='/faf-teams') Teams and Association
@@ -183,8 +184,8 @@ html(lang='en')
           a(href='/clans') Clans
         if !appGlobals.loggedInUser
           a(href='/login').mobileNavElement Login
-          
-          
+
+
         if appGlobals.loggedInUser
           .mobileNavElement.mobileNavMenu My Account
           .mobileNavMenuContent
@@ -197,8 +198,8 @@ html(lang='en')
             a(href="/account/changeUsername") Change Username
             a(href="/account/report") Report Player
             a(href="/logout") Log Out
-        
-        
+
+
         .mobileSocialMedia
           a(href='https://discord.gg/mXahVSKGVb')
             img(src='/images/fontAwesomeIcons/discord.svg')
@@ -215,14 +216,14 @@ html(lang='en')
         .movingBackground1
         .movingBackground2
 
-    
-      
-    .splatForgedBorder 
+
+
+    .splatForgedBorder
       .movingBackground1
       .movingBackground2
 
-    
-    block bannerData    
+
+    block bannerData
 
 
     block banner
@@ -232,7 +233,7 @@ html(lang='en')
           .bannerContainer.bannerTitle #{bannerSecondTitle}
           .bannerContainer.bannerSubtitle #{bannerSubTitle}
 
-          block bannerButton 
+          block bannerButton
     block bannerMixin
       if bannerImage
         +banner()
@@ -240,7 +241,7 @@ html(lang='en')
           .movingBackground1
           .movingBackground2
 
-
+    +flash-connect(connectFlash)
       //- The content block should contain the body of your template's content
     block content
     .splatForgedBorder.transformationReverse
@@ -264,7 +265,7 @@ html(lang='en')
             li
               a(href='/rules') RULES
 
-          ul CONTRIBUTE  
+          ul CONTRIBUTE
             li
               a(href='/contribution') CONTRIBUTIONS
             li
@@ -272,7 +273,7 @@ html(lang='en')
 
           ul LEGAL
             li
-              a(href='/privacy') PRIVACY STATEMENT  
+              a(href='/privacy') PRIVACY STATEMENT
             li
               a(href='/tos') TERMS OF SERVICE
 
@@ -281,9 +282,9 @@ html(lang='en')
               a(href='https://discord.gg/mXahVSKGVb') DISCORD
             li
               a(href='https://forum.faforever.com/')  FORUMS
-          
+
       script(src=webpackAssetJS('navigation'))
 
       //- Include template-specific javascript files by extending the js block
       block js
-        
+
