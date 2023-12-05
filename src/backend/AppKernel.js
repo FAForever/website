@@ -96,8 +96,18 @@ class AppKernel {
         })
 
         this.expressApp.use(flash())
-        this.expressApp.use((req, res, next) => {
-            res.locals.message = req.flash()
+        this.expressApp.use(function (req, res, next) {
+            req.asyncFlash = async function () {
+                const result = req.flash(...arguments)
+                await new Promise(resolve => req.session.save(resolve))
+
+                return result
+            }
+
+            return next()
+        })
+        this.expressApp.use(async (req, res, next) => {
+            res.locals.connectFlash = () => req.flash()
             next()
         })
 

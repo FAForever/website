@@ -11,6 +11,7 @@ class RequestContainerCompilerPass {
             if (this.request.user) {
                 container.get('UserService').setUserFromRequest(this.request)
                 container.set('JavaApiClient', JavaApiClientFactory.createInstance(container.get('UserService'), this.appConfig.apiUrl, this.request.user.oAuthPassport, this.appConfig.oauth.strategy))
+                container.get('UserService').setUserRepository(container.get('UserRepository'))
             }
 
             return container
