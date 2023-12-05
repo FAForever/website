@@ -39,7 +39,7 @@ exports = module.exports = async function (req, res) {
             section: 'account',
             flash: {
                 class: 'alert-danger',
-                messages: 'issue resetting',
+                messages: [{ msg: 'issue resetting' }],
                 type: 'Error!'
             },
             formData,

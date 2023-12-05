@@ -1,7 +1,6 @@
 const fs = require('fs')
 const { WordpressService } = require('../src/backend/services/WordpressService')
 const { LeaderboardService } = require('../src/backend/services/LeaderboardService')
-const { JavaApiM2MClient } = require('../src/backend/services/JavaApiM2MClient')
 const appConfig = require('../src/backend/config/app')
 const nock = require('nock')
 nock.disableNetConnect()
@@ -51,6 +50,9 @@ beforeEach(() => {
     nock(appConfig.apiUrl)
         .get('/data/clan/2741?include=memberships.player')
         .reply(200, fs.readFileSync('tests/integration/testData/clan/clan.json', { encoding: 'utf8', flag: 'r' }))
+    nock(appConfig.apiUrl)
+        .post('/users/buildSteamPasswordResetUrl')
+        .reply(200, { steamUrl: 'http://localhost/test-steam-reset' })
 })
 
 afterEach(() => {
