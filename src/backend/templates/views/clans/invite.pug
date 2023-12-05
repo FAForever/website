@@ -1,0 +1,29 @@
+extends ../../layouts/default
+include ../../mixins/flash-error
+include ../../mixins/form/account
+block bannerMixin
+block css
+    link(href="/styles/awesomplete.css?version=" + Date.now(), rel="stylesheet")
+block content
+
+    .clanManagement
+        .column12
+            +flash-error(errors)
+
+    .clanManagement
+        .column12
+            h2 Invite players
+            if link
+                .row
+                    p Invite created for #{invited_player}
+                    button(data-href=link id='invitationLink') click to copy link
+            form(method='post' action="/clans/invite")
+                .row.inline-panel
+                    input(type='text' id='invited_player' name='invited_player' value=invited_player placeholder='Player name' style="margin-left:5px;margin-right:5px").form-control
+                    button(type='submit') Invite
+            br
+            br
+
+
+block js
+    script(src=webpackAssetJS('clan-invite'))

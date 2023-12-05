@@ -21,7 +21,8 @@ module.exports = {
         navigation: ['./src/frontend/js/entrypoint/navigation.js'],
         newshub: ['./src/frontend/js/entrypoint/newshub.js'],
         play: ['./src/frontend/js/entrypoint/play.js'],
-        report: ['./src/frontend/js/entrypoint/report.js']
+        report: ['./src/frontend/js/entrypoint/report.js'],
+        'clan-invite': ['./src/frontend/js/entrypoint/clan-invite.js']
     },
     output: {
         filename: '[name].[contenthash].js',

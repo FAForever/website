@@ -60,7 +60,7 @@ class DataRepository {
         const response = await this.javaApiM2MClient.get(`/data/clan/${id}?include=memberships.player`)
 
         if (response.status !== 200) {
-            throw new Error('DataRepository::fetchClan failed with response status "' + response.status + '"')
+            throw new JavaApiError(response.status, response.config.url, JSON.parse(response.data) || [])
         }
 
         const data = JSON.parse(response.data)
@@ -84,7 +84,7 @@ class DataRepository {
         const clanRaw = data.data.attributes
 
         const clan = {
-            id: data.data.id,
+            id: parseInt(data.data.id),
             name: clanRaw.name,
             tag: clanRaw.tag,
             description: clanRaw.description,
@@ -104,7 +104,7 @@ class DataRepository {
             case 'player': {
                 const player = data.included[k]
                 if (!members[player.id]) members[player.id] = {}
-                members[player.id].id = player.id
+                members[player.id].id = parseInt(player.id)
                 members[player.id].name = player.attributes.login
 
                 if (player.id === data.data.relationships.leader.data.id) {
@@ -121,8 +121,8 @@ class DataRepository {
                 const membership = data.included[k]
                 const member = membership.relationships.player.data
                 if (!members[member.id]) members[member.id] = {}
-                members[member.id].id = member.id
-                members[member.id].membershipId = membership.id
+                members[member.id].id = parseInt(member.id)
+                members[member.id].membershipId = parseInt(membership.id)
                 members[member.id].joinedAt = membership.attributes.createTime
                 break
             }
@@ -198,6 +198,24 @@ class DataRepository {
         clanMembership.members = members
 
         return clanMembership
+    }
+
+    async fetchUserByName (userName) {
+        const response = await this.javaApiM2MClient.get(`/data/player?filter=login==${userName}&fields[player]=`)
+
+        if (response.status !== 200) {
+            throw new JavaApiError(response.status, response.config.url, JSON.parse(response.data) || [])
+        }
+
+        const rawUser = JSON.parse(response.data)
+
+        if (!rawUser.data[0]) {
+            return null
+        }
+
+        return {
+            id: rawUser.data[0].id
+        }
     }
 }
 

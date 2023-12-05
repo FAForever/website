@@ -41,6 +41,32 @@ class ClanManagementService {
             console.error(e.stack)
         }
     }
+
+    async createInvite (playerId) {
+        return await this.clanManagementRepository.createInvite(this.userService.getUser().clan.id, playerId)
+    }
+
+    async acceptInvitation (token) {
+        await this.clanManagementRepository.acceptInvitation(token)
+        try {
+            await this.userService.refreshUser()
+        } catch (e) {
+            console.error(e.stack)
+        }
+    }
+
+    async kickMember (membershipId) {
+        await this.clanManagementRepository.removeClanMembership(membershipId)
+    }
+
+    async leaveClan () {
+        await this.clanManagementRepository.removeClanMembership(this.userService.getUser().clan.membershipId)
+        try {
+            await this.userService.refreshUser()
+        } catch (e) {
+            console.error(e.stack)
+        }
+    }
 }
 
 module.exports.ClanManagementService = ClanManagementService

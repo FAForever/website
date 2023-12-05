@@ -19,7 +19,7 @@ class UserService {
     }
 
     getUser () {
-        return this.session.passport.user
+        return this.session?.passport?.user
     }
 
     updatePassport (oAuthPassport) {

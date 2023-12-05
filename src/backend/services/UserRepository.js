@@ -11,15 +11,15 @@ class UserRepository {
 
             if (rawUser.attributes.clan) {
                 clan = {
-                    id: rawUser.attributes.clan.id,
-                    membershipId: rawUser.attributes.clan.membershipId,
+                    id: parseInt(rawUser.attributes.clan.id),
+                    membershipId: parseInt(rawUser.attributes.clan.membershipId),
                     tag: rawUser.attributes.clan.tag,
                     name: rawUser.attributes.clan.name
                 }
             }
 
             return {
-                id: rawUser.id,
+                id: parseInt(rawUser.attributes.userId),
                 name: rawUser.attributes.userName,
                 email: rawUser.attributes.email,
                 clan,

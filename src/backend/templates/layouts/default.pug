@@ -128,7 +128,7 @@ html(lang='en')
               li.loginDropdown
                 ul(role='menu')
                   if appGlobals.loggedInUser.clan
-                    a(href="/clans/manage"): li My Clan
+                    a(href="/clans/view/" + appGlobals.loggedInUser.clan.id): li My Clan
                   else
                     a(href="/clans/create"): li Create Clan
                   a(href="/account/changeEmail"): li Change Email
@@ -190,7 +190,7 @@ html(lang='en')
           .mobileNavElement.mobileNavMenu My Account
           .mobileNavMenuContent
             if appGlobals.loggedInUser.clan
-              a(href="/clans/manage") My Clan
+              a(href="/clans/view/" + appGlobals.loggedInUser.clan.id) My Clan
             else
               a(href="/clans/create") Create Clan
             a(href="/account/changeEmail") Change Email
