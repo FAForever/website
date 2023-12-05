@@ -1,33 +1,49 @@
+const axios = require('axios')
+const appConfig = require('../../../../config/app')
 const { validationResult } = require('express-validator')
 exports = module.exports = function (req, res) {
-    const locals = res.locals
-
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
-        const flash = {}
-        flash.class = 'alert-danger'
-        flash.type = 'Error!'
-        flash.messages = []
-        errors.array().forEach((e) => {
-            flash.messages.push({ msg: e.msg })
-        })
-
-        const buff = Buffer.from(JSON.stringify(flash))
-        const data = buff.toString('base64')
-
-        return res.redirect('/account/requestPasswordReset?flash=' + data)
+        return renderRequestPasswordReset(req, res, errors)
     }
 
-    // locals.section is used to set the currently selected
-    // item in the header navigation.
-    locals.section = 'account'
+    res.render('account/confirmPasswordReset', {
+        section: 'account',
+        formData: req.body || {},
+        username: req.query.username,
+        token: req.query.token
+    })
+}
 
-    locals.formData = req.body || {}
+const renderRequestPasswordReset = async (req, res, errors) => {
+    axios.post(appConfig.apiUrl + '/users/buildSteamPasswordResetUrl', {}, { maxRedirects: 0 }).then(response => {
+        if (response.status !== 200) {
+            throw new Error('java-api error')
+        }
 
-    // Render the view
-    locals.username = req.query.username
-    locals.token = req.query.token
-
-    return res.render('account/confirmPasswordReset')
+        return res.render('account/requestPasswordReset', {
+            section: 'account',
+            errors: {
+                class: 'alert-danger',
+                messages: errors,
+                type: 'Error!'
+            },
+            steamReset: response.data.steamUrl,
+            formData: {},
+            recaptchaSiteKey: appConfig.recaptchaKey
+        })
+    }).catch(error => {
+        console.error(error.toString())
+        return res.render('account/requestPasswordReset', {
+            section: 'account',
+            errors: {
+                class: 'alert-danger',
+                messages: error.toString(),
+                type: 'Error!'
+            },
+            formData: {},
+            recaptchaSiteKey: appConfig.recaptchaKey
+        })
+    })
 }

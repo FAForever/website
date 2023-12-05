@@ -12,23 +12,8 @@ exports = module.exports = async function (req, res) {
             throw new Error('java-api error')
         }
 
-        let flash = {}
-        if (req.query.flash) {
-            const buff = Buffer.from(req.query.flash, 'base64')
-            const text = buff.toString('ascii')
-
-            try {
-                flash = JSON.parse(text)
-            } catch (e) {
-                console.error('Parsing error while trying to decode a flash error: ' + text)
-                console.error(e)
-                flash = [{ msg: 'Unknown error' }]
-            }
-        }
-
         res.render('account/requestPasswordReset', {
             section: 'account',
-            flash,
             steamReset: response.data.steamUrl,
             formData,
             recaptchaSiteKey: appConfig.recaptchaKey
@@ -37,9 +22,9 @@ exports = module.exports = async function (req, res) {
         console.error(error.toString())
         res.render('account/requestPasswordReset', {
             section: 'account',
-            flash: {
+            errors: {
                 class: 'alert-danger',
-                messages: [{ msg: 'issue resetting' }],
+                messages: error.toString,
                 type: 'Error!'
             },
             formData,
