@@ -19,6 +19,7 @@ const leaderboardRouter = require('./routes/views/leaderboardRouter')
 const clanRouter = require('./routes/views/clanRouter')
 const accountRouter = require('./routes/views/accountRouter')
 const dataRouter = require('./routes/views/dataRouter')
+const clanCacheCrawler = require('./cron-jobs/clanCacheCrawler')
 
 class AppKernel {
     constructor (nodeEnv = 'production') {
@@ -122,6 +123,7 @@ class AppKernel {
     startCronJobs () {
         this.schedulers.push(leaderboardCacheCrawler(this.appContainer.get('LeaderboardService')))
         this.schedulers.push(wordpressCacheCrawler(this.appContainer.get('WordpressService')))
+        this.schedulers.push(clanCacheCrawler(this.appContainer.get('ClanService')))
     }
 
     loadControllers () {
