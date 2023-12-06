@@ -11,6 +11,7 @@ const flash = require('connect-flash')
 const FileStore = require('session-file-store')(session)
 const wordpressCacheCrawler = require('./cron-jobs/wordpressCacheCrawler')
 const leaderboardCacheCrawler = require('./cron-jobs/leaderboardCacheCrawler')
+const clanCacheCrawler = require('./cron-jobs/clanCacheCrawler')
 const defaultRouter = require('./routes/views/defaultRouter')
 const authRouter = require('./routes/views/auth')
 const staticMarkdownRouter = require('./routes/views/staticMarkdownRouter')
@@ -19,7 +20,6 @@ const leaderboardRouter = require('./routes/views/leaderboardRouter')
 const clanRouter = require('./routes/views/clanRouter')
 const accountRouter = require('./routes/views/accountRouter')
 const dataRouter = require('./routes/views/dataRouter')
-const clanCacheCrawler = require('./cron-jobs/clanCacheCrawler')
 
 class AppKernel {
     constructor (nodeEnv = 'production') {

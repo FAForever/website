@@ -10,7 +10,7 @@ const errorHandler = (e, name) => {
 
 const warmupClans = async (clanService) => {
     try {
-        await clanService.getAll(false)
+        await clanService.getAll(true)
             .then(() => successHandler('clanService::getAll(global)'))
             .catch((e) => errorHandler(e, 'clanService::getAll(global)'))
     } catch (e) {
@@ -27,7 +27,7 @@ const warmupClans = async (clanService) => {
 module.exports = (clanService) => {
     warmupClans(clanService).then(() => {})
 
-    const clansScheduler = new Scheduler('createClanCache',
+    const clansScheduler = new Scheduler('createClanCache', // Refresh cache every 59 minutes
         () => warmupClans(clanService).then(() => {}), 60 * 59 * 1000)
     clansScheduler.start()
 
