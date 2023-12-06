@@ -37,7 +37,6 @@ const warmupWordpressCache = (wordpressService) => {
 
 /**
  * @param {WordpressService} wordpressService
- * @param {LeaderboardService} leaderboardService
  * @return {Scheduler[]}
  */
 module.exports = (wordpressService) => {
