@@ -1,5 +1,5 @@
 const { MutexService } = require('./MutexService')
-const clanTTL = 60 * 5
+const clanTTL = 60 * 60
 
 class ClanService {
     constructor (cacheService, dataRepository, lockTimeout = 3000) {

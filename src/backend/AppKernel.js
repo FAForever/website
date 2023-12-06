@@ -11,6 +11,7 @@ const flash = require('connect-flash')
 const FileStore = require('session-file-store')(session)
 const wordpressCacheCrawler = require('./cron-jobs/wordpressCacheCrawler')
 const leaderboardCacheCrawler = require('./cron-jobs/leaderboardCacheCrawler')
+const clanCacheCrawler = require('./cron-jobs/clanCacheCrawler')
 const defaultRouter = require('./routes/views/defaultRouter')
 const authRouter = require('./routes/views/auth')
 const staticMarkdownRouter = require('./routes/views/staticMarkdownRouter')
@@ -122,6 +123,7 @@ class AppKernel {
     startCronJobs () {
         this.schedulers.push(leaderboardCacheCrawler(this.appContainer.get('LeaderboardService')))
         this.schedulers.push(wordpressCacheCrawler(this.appContainer.get('WordpressService')))
+        this.schedulers.push(clanCacheCrawler(this.appContainer.get('ClanService')))
     }
 
     loadControllers () {
