@@ -1,12 +1,9 @@
 const NodeCache = require('node-cache')
+const cacheService = new NodeCache(
+    {
+        stdTTL: 300, // use 5 min for all caches if not changed with ttl
+        checkperiod: 600 // cleanup memory every 10 min
+    }
+)
 
-const createCacheService = (stdTTL, checkperiod) => {
-    return new NodeCache({
-        stdTTL: stdTTL || 300,
-        checkperiod: checkperiod || 600
-    })
-}
-
-module.exports = {
-    CacheService: createCacheService()
-}
+module.exports.CacheService = cacheService
