@@ -40,10 +40,11 @@ const warmupWordpressCache = (wordpressService) => {
  * @param {LeaderboardService} leaderboardService
  * @return {Scheduler[]}
  */
-module.exports = (wordpressService, leaderboardService) => {
+module.exports = (wordpressService) => {
     warmupWordpressCache(wordpressService)
 
-    const wordpressScheduler = new Scheduler('createWordpressCaches', () => warmupWordpressCache(wordpressService), 60 * 59 * 1000)
+    const wordpressScheduler = new Scheduler('createWordpressCaches',
+        () => warmupWordpressCache(wordpressService), 60 * 59 * 1000)
     wordpressScheduler.start()
 
     return wordpressScheduler
