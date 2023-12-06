@@ -38,7 +38,8 @@ const warmupLeaderboard = async (leaderboardService) => {
 module.exports = (leaderboardService) => {
     warmupLeaderboard(leaderboardService).then(() => {})
 
-    const leaderboardScheduler = new Scheduler('createLeaderboardCaches', () => warmupLeaderboard(leaderboardService).then(() => {}), 60 * 59 * 1000)
+    const leaderboardScheduler = new Scheduler('createLeaderboardCaches',
+        () => warmupLeaderboard(leaderboardService).then(() => {}), 60 * 59 * 1000)
     leaderboardScheduler.start()
 
     return leaderboardScheduler
