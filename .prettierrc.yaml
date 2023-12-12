@@ -1,4 +1,10 @@
+# See https://prettier.io/docs/en/options. most are set to default
 trailingComma: "es5"
 tabWidth: 4
 semi: false
 singleQuote: true
+bracketSpacing: true
+bracketSameLine: false
+arrowParens: always
+htmlWhitespaceSensitivity: strict
+singleAttributePerLine: false
