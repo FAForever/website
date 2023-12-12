@@ -52,11 +52,17 @@ block content
                     option(value='3') 3 Months
                     option(value='1') 1 Month
                 .categoryContainer
-                    .categoryButton.pageButton.exhaustedButton(onclick='pageChange(0)') First
+                    .categoryButton.pageButton.exhaustedButton(
+                        onclick='pageChange(0)'
+                    ) First
                     .categoryButton.pageButton(onclick='pageChange(lastPage)') Last
                 .categoryContainer
-                    .categoryButton.pageButton.exhaustedButton(onclick='pageChange(pageNumber - 1)') Previous
-                    .categoryButton.pageButton(onclick='pageChange(pageNumber + 1)') Next
+                    .categoryButton.pageButton.exhaustedButton(
+                        onclick='pageChange(pageNumber - 1)'
+                    ) Previous
+                    .categoryButton.pageButton(
+                        onclick='pageChange(pageNumber + 1)'
+                    ) Next
             //DO NOT Change the order of these without changing the js. For them to work, they need to be in this specific order
 
         #mainLeaderboard.newLeaderboard
@@ -80,11 +86,17 @@ block content
         .mainLeaderboardContainer.leaderboardCategory
             .column12.leaderboardSelect
                 .categoryContainer
-                    .categoryButton.pageButton.exhaustedButton(onclick='pageChange(0)') First
+                    .categoryButton.pageButton.exhaustedButton(
+                        onclick='pageChange(0)'
+                    ) First
                     .categoryButton.pageButton(onclick='pageChange(lastPage)') Last
                 .categoryContainer
-                    .categoryButton.pageButton.exhaustedButton(onclick='pageChange(pageNumber - 1)') Previous
-                    .categoryButton.pageButton(onclick='pageChange(pageNumber + 1)') Next
+                    .categoryButton.pageButton.exhaustedButton(
+                        onclick='pageChange(pageNumber - 1)'
+                    ) Previous
+                    .categoryButton.pageButton(
+                        onclick='pageChange(pageNumber + 1)'
+                    ) Next
 
 block js
     script(src=webpackAssetJS('leaderboards'))

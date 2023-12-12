@@ -44,7 +44,9 @@ block content
                     li.pageButton.exhaustedButton(onclick='pageChange(0)') First
                     li.pageButton(onclick='pageChange(lastPage)') Last
                 ul
-                    li.pageButton.exhaustedButton(onclick='pageChange(pageNumber - 1)') Previous
+                    li.pageButton.exhaustedButton(
+                        onclick='pageChange(pageNumber - 1)'
+                    ) Previous
                     li.pageButton(onclick='pageChange(pageNumber + 1)') Next
 
         .mainClanContainer.clanBorder
@@ -70,7 +72,9 @@ block content
                     li.pageButton.exhaustedButton(onclick='pageChange(0)') First
                     li.pageButton(onclick='pageChange(lastPage)') Last
                 ul
-                    li.pageButton.exhaustedButton(onclick='pageChange(pageNumber - 1)') Previous
+                    li.pageButton.exhaustedButton(
+                        onclick='pageChange(pageNumber - 1)'
+                    ) Previous
                     li.pageButton(onclick='pageChange(pageNumber + 1)') Next
 
 block js
