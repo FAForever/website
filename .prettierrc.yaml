@@ -8,3 +8,9 @@ bracketSameLine: false
 arrowParens: always
 htmlWhitespaceSensitivity: strict
 singleAttributePerLine: false
+plugins:
+  - "@prettier/plugin-pug"
+overrides:
+  - files: "*.pug"
+    options:
+      parser: "pug"

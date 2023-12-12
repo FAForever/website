@@ -1,9 +1,8 @@
 {
     "root": true,
     "extends": ["standard", "plugin:prettier/recommended"],
-    "plugins": ["prettier"],
+    "plugins": ["pug", "prettier"],
     "rules": {
-        "indent": ["error", 4],
         "prettier/prettier": "error"
     },
     "overrides": [
@@ -15,7 +14,7 @@
             }
         },
         {
-            "files": ["src/backend/**/*.js"],
+            "files": ["src/backend/**/*.js", "src/backend/**/*.pug"],
             "env": {
                 "node": true,
                 "es2020": true
