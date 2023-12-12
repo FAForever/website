@@ -1,4 +1,6 @@
-const { JavaApiClientFactory } = require('../src/backend/services/JavaApiClientFactory')
+const {
+    JavaApiClientFactory,
+} = require('../src/backend/services/JavaApiClientFactory')
 const appConfig = require('../src/backend/config/app')
 const refresh = require('passport-oauth2-refresh')
 const OidcStrategy = require('passport-openidconnect')
@@ -7,14 +9,20 @@ const { AuthFailed } = require('../src/backend/services/ApiErrors')
 const { UserService } = require('../src/backend/services/UserService')
 
 beforeEach(() => {
-    refresh.use(appConfig.oauth.strategy, new OidcStrategy({
-        issuer: 'me',
-        tokenURL: 'http://auth-localhost/oauth2/token',
-        authorizationURL: 'http://auth-localhost/oauth2/auth',
-        clientID: 'test',
-        clientSecret: 'test',
-        scope: ['openid', 'offline']
-    }, () => {}))
+    refresh.use(
+        appConfig.oauth.strategy,
+        new OidcStrategy(
+            {
+                issuer: 'me',
+                tokenURL: 'http://auth-localhost/oauth2/token',
+                authorizationURL: 'http://auth-localhost/oauth2/auth',
+                clientID: 'test',
+                clientSecret: 'test',
+                scope: ['openid', 'offline'],
+            },
+            () => {}
+        )
+    )
 })
 
 afterEach(() => {
@@ -22,24 +30,49 @@ afterEach(() => {
     jest.restoreAllMocks()
 })
 test('empty passport', () => {
-    expect(() => JavaApiClientFactory.createInstance(new UserService(), 'http://api-localhost')).toThrowError('oAuthPassport not an object')
+    expect(() =>
+        JavaApiClientFactory.createInstance(
+            new UserService(),
+            'http://api-localhost'
+        )
+    ).toThrowError('oAuthPassport not an object')
 })
 
 test('empty token', () => {
-    expect(() => JavaApiClientFactory.createInstance(new UserService(), 'http://api-localhost', { refreshToken: '123' })).toThrowError('oAuthPassport.token not a string')
+    expect(() =>
+        JavaApiClientFactory.createInstance(
+            new UserService(),
+            'http://api-localhost',
+            { refreshToken: '123' }
+        )
+    ).toThrowError('oAuthPassport.token not a string')
 })
 
 test('empty refresh-token', () => {
-    expect(() => JavaApiClientFactory.createInstance(new UserService(), 'http://api-localhost', { token: '123' })).toThrowError('oAuthPassport.refreshToken not a string')
+    expect(() =>
+        JavaApiClientFactory.createInstance(
+            new UserService(),
+            'http://api-localhost',
+            { token: '123' }
+        )
+    ).toThrowError('oAuthPassport.refreshToken not a string')
 })
 
 test('multiple calls with stale token will trigger refresh only once', async () => {
     const userService = new UserService()
-    userService.setUserFromRequest({ user: {}, session: { passport: { user: {} } } })
-    const client = JavaApiClientFactory.createInstance(userService, 'http://api-localhost', {
-        token: '123',
-        refreshToken: '456'
-    }, appConfig.oauth.strategy)
+    userService.setUserFromRequest({
+        user: {},
+        session: { passport: { user: {} } },
+    })
+    const client = JavaApiClientFactory.createInstance(
+        userService,
+        'http://api-localhost',
+        {
+            token: '123',
+            refreshToken: '456',
+        },
+        appConfig.oauth.strategy
+    )
 
     const refreshSpy = jest.spyOn(refresh, 'requestNewAccessToken')
     const apiScope = nock('http://api-localhost')
@@ -73,11 +106,19 @@ test('multiple calls with stale token will trigger refresh only once', async () 
 
 test('refresh will throw on error', async () => {
     const userService = new UserService()
-    userService.setUserFromRequest({ user: {}, session: { passport: { user: {} } } })
-    const client = JavaApiClientFactory.createInstance(userService, 'http://api-localhost', {
-        token: '123',
-        refreshToken: '456'
-    }, appConfig.oauth.strategy)
+    userService.setUserFromRequest({
+        user: {},
+        session: { passport: { user: {} } },
+    })
+    const client = JavaApiClientFactory.createInstance(
+        userService,
+        'http://api-localhost',
+        {
+            token: '123',
+            refreshToken: '456',
+        },
+        appConfig.oauth.strategy
+    )
 
     const refreshSpy = jest.spyOn(refresh, 'requestNewAccessToken')
     const apiScope = nock('http://api-localhost')
@@ -106,11 +147,19 @@ test('refresh will throw on error', async () => {
 
 test('refresh will not loop to death', async () => {
     const userService = new UserService()
-    userService.setUserFromRequest({ user: {}, session: { passport: { user: {} } } })
-    const client = JavaApiClientFactory.createInstance(userService, 'http://api-localhost', {
-        token: '123',
-        refreshToken: '456'
-    }, appConfig.oauth.strategy)
+    userService.setUserFromRequest({
+        user: {},
+        session: { passport: { user: {} } },
+    })
+    const client = JavaApiClientFactory.createInstance(
+        userService,
+        'http://api-localhost',
+        {
+            token: '123',
+            refreshToken: '456',
+        },
+        appConfig.oauth.strategy
+    )
 
     const apiScope = nock('http://api-localhost')
         .get('/example')

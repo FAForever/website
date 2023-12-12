@@ -3,29 +3,35 @@ const { body } = require('express-validator')
 const url = require('url')
 
 exports = module.exports = [
-    body('invited_player', 'Please select a player').notEmpty().isLength({ max: 20 }),
+    body('invited_player', 'Please select a player')
+        .notEmpty()
+        .isLength({ max: 20 }),
     async (req, res) => {
         if (req.method === 'POST') {
-            const user = await req.appContainer.get('DataRepository').fetchUserByName(req.body.invited_player)
+            const user = await req.appContainer
+                .get('DataRepository')
+                .fetchUserByName(req.body.invited_player)
 
             if (!user) {
                 await req.asyncFlash('error', 'User not found')
                 return res.render('clans/invite', {
-                    invited_player: req.body.invited_player
+                    invited_player: req.body.invited_player,
                 })
             }
 
             try {
-                const invitation = await req.requestContainer.get('ClanManagementService').createInvite(user.id)
+                const invitation = await req.requestContainer
+                    .get('ClanManagementService')
+                    .createInvite(user.id)
 
                 return res.render('clans/invite', {
                     invited_player: req.body.invited_player,
                     link: url.format({
                         pathname: '/clans/invite-accept',
                         query: {
-                            token: encodeURIComponent(invitation)
-                        }
-                    })
+                            token: encodeURIComponent(invitation),
+                        },
+                    }),
                 })
             } catch (e) {
                 let message = e.toString()
@@ -40,7 +46,7 @@ exports = module.exports = [
         }
 
         return res.render('clans/invite', {
-            invited_player: ''
+            invited_player: '',
         })
-    }
+    },
 ]

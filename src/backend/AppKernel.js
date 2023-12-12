@@ -1,6 +1,8 @@
 const { appContainer } = require('./dependency-injection/AppContainer')
 const { RequestContainer } = require('./dependency-injection/RequestContainer')
-const { RequestContainerCompilerPass } = require('./dependency-injection/RequestContainerCompilerPass')
+const {
+    RequestContainerCompilerPass,
+} = require('./dependency-injection/RequestContainerCompilerPass')
 const { webpackAsset } = require('./middleware/webpackAsset')
 const { bootPassport } = require('./security/bootPassport')
 const express = require('./ExpressApp')
@@ -22,7 +24,7 @@ const accountRouter = require('./routes/views/accountRouter')
 const dataRouter = require('./routes/views/dataRouter')
 
 class AppKernel {
-    constructor (nodeEnv = 'production') {
+    constructor(nodeEnv = 'production') {
         this.env = nodeEnv
         this.config = appConfig
         this.expressApp = null
@@ -30,18 +32,18 @@ class AppKernel {
         this.schedulers = []
     }
 
-    async boot () {
+    async boot() {
         await this.compileContainer(this.config)
         this.bootstrapExpress()
         return this
     }
 
-    async compileContainer (config) {
+    async compileContainer(config) {
         this.appContainer = appContainer(config)
         await this.appContainer.compile()
     }
 
-    bootstrapExpress () {
+    bootstrapExpress() {
         this.expressApp = express()
 
         this.expressApp.locals.clanInvitations = {}
@@ -49,44 +51,55 @@ class AppKernel {
             res.locals.navLinks = []
             res.locals.cNavLinks = []
             res.locals.appGlobals = {
-                loggedInUser: null
+                loggedInUser: null,
             }
             next()
         })
 
         this.expressApp.set('views', 'src/backend/templates/views')
         this.expressApp.set('view engine', 'pug')
-        this.expressApp.use(express.static('public', {
-            immutable: true,
-            maxAge: 4 * 60 * 60 * 1000 // 4 hours
-        }))
+        this.expressApp.use(
+            express.static('public', {
+                immutable: true,
+                maxAge: 4 * 60 * 60 * 1000, // 4 hours
+            })
+        )
 
-        this.expressApp.use('/dist', express.static('dist', {
-            immutable: true,
-            maxAge: 4 * 60 * 60 * 1000 // 4 hours, could be longer since we got cache-busting
-        }))
+        this.expressApp.use(
+            '/dist',
+            express.static('dist', {
+                immutable: true,
+                maxAge: 4 * 60 * 60 * 1000, // 4 hours, could be longer since we got cache-busting
+            })
+        )
 
         this.expressApp.use(express.json())
         this.expressApp.use(bodyParser.json())
         this.expressApp.use(bodyParser.urlencoded({ extended: false }))
-        this.expressApp.use(webpackAsset(this.appContainer.getParameter('webpackManifestJS')))
+        this.expressApp.use(
+            webpackAsset(this.appContainer.getParameter('webpackManifestJS'))
+        )
 
-        this.expressApp.use(session({
-            resave: false,
-            saveUninitialized: true,
-            secret: appConfig.session.key,
-            store: new FileStore({
-                retries: 0,
-                ttl: appConfig.session.tokenLifespan,
-                secret: appConfig.session.key
+        this.expressApp.use(
+            session({
+                resave: false,
+                saveUninitialized: true,
+                secret: appConfig.session.key,
+                store: new FileStore({
+                    retries: 0,
+                    ttl: appConfig.session.tokenLifespan,
+                    secret: appConfig.session.key,
+                }),
             })
-        }))
+        )
         bootPassport(this.expressApp, this.config)
 
         this.expressApp.use(async (req, res, next) => {
             req.appContainer = this.appContainer
             req.requestContainer = RequestContainer(this.appContainer, req)
-            req.requestContainer.addCompilerPass(new RequestContainerCompilerPass(this.config, req))
+            req.requestContainer.addCompilerPass(
+                new RequestContainerCompilerPass(this.config, req)
+            )
             await req.requestContainer.compile()
 
             if (req.requestContainer.fafThrownException) {
@@ -100,7 +113,7 @@ class AppKernel {
         this.expressApp.use(function (req, res, next) {
             req.asyncFlash = async function () {
                 const result = req.flash(...arguments)
-                await new Promise(resolve => req.session.save(resolve))
+                await new Promise((resolve) => req.session.save(resolve))
 
                 return result
             }
@@ -114,19 +127,27 @@ class AppKernel {
 
         this.expressApp.use(function (req, res, next) {
             if (req.isAuthenticated()) {
-                res.locals.appGlobals.loggedInUser = req.requestContainer.get('UserService').getUser()
+                res.locals.appGlobals.loggedInUser = req.requestContainer
+                    .get('UserService')
+                    .getUser()
             }
             next()
         })
     }
 
-    startCronJobs () {
-        this.schedulers.push(leaderboardCacheCrawler(this.appContainer.get('LeaderboardService')))
-        this.schedulers.push(wordpressCacheCrawler(this.appContainer.get('WordpressService')))
-        this.schedulers.push(clanCacheCrawler(this.appContainer.get('ClanService')))
+    startCronJobs() {
+        this.schedulers.push(
+            leaderboardCacheCrawler(this.appContainer.get('LeaderboardService'))
+        )
+        this.schedulers.push(
+            wordpressCacheCrawler(this.appContainer.get('WordpressService'))
+        )
+        this.schedulers.push(
+            clanCacheCrawler(this.appContainer.get('ClanService'))
+        )
     }
 
-    loadControllers () {
+    loadControllers() {
         this.expressApp.use('/', defaultRouter)
         this.expressApp.use('/', authRouter)
         this.expressApp.use('/', staticMarkdownRouter)
@@ -140,7 +161,13 @@ class AppKernel {
             res.status(404).render('errors/404')
         })
         this.expressApp.use((err, req, res, next) => {
-            console.error('[error] Incoming request to"', req.originalUrl, '"failed with error "', err.toString(), '"')
+            console.error(
+                '[error] Incoming request to"',
+                req.originalUrl,
+                '"failed with error "',
+                err.toString(),
+                '"'
+            )
             console.error(err.stack)
 
             if (res.headersSent) {

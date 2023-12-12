@@ -30,7 +30,13 @@ module.exports = async (req, res) => {
             }
         }
 
-        return res.render('clans/clan', { clan, isMember, isLeader, canLeave, userMembershipId: user?.clan?.membershipId })
+        return res.render('clans/clan', {
+            clan,
+            isMember,
+            isLeader,
+            canLeave,
+            userMembershipId: user?.clan?.membershipId,
+        })
     } catch (e) {
         let message = e.toString()
         if (e instanceof JavaApiError && e.error?.errors) {

@@ -1,8 +1,7 @@
 const decodingJWT = (token) => {
     if (token !== null) {
         const base64String = token.split('.')[1]
-        return JSON.parse(Buffer.from(base64String,
-            'base64').toString('ascii'))
+        return JSON.parse(Buffer.from(base64String, 'base64').toString('ascii'))
     }
     return null
 }
@@ -26,11 +25,14 @@ exports = module.exports = async function (req, res) {
     if (req.requestContainer.get('UserService').getUser()?.clan) {
         await req.asyncFlash('error', 'You are already in a clan')
 
-        return res.redirect('/clans/view/' + req.requestContainer.get('UserService').getUser().clan.id)
+        return res.redirect(
+            '/clans/view/' +
+                req.requestContainer.get('UserService').getUser().clan.id
+        )
     }
 
     res.render('clans/accept_invite', {
         acceptURL: `/clans/join?token=${token}`,
-        clanName: decodedToken.clan.name
+        clanName: decodedToken.clan.name,
     })
 }

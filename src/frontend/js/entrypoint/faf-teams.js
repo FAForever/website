@@ -1,6 +1,6 @@
 let teamSelection = document.querySelectorAll('.teamSelection')
 let teamContainer = document.querySelectorAll('.teamContainer')
-async function getWordpress () {
+async function getWordpress() {
     const response = await fetch('/data/faf-teams.json')
     const data = await response.json()
     const insertWordpress = document.getElementById('insertWordpress')
@@ -11,7 +11,11 @@ async function getWordpress () {
 }
 getWordpress()
 
-teamSelection.forEach((team, index) => team.addEventListener('click', () => {
-    teamSelection.forEach(item => { item.style.display = 'none' })
-    teamContainer[index].style.display = 'grid'
-}))
+teamSelection.forEach((team, index) =>
+    team.addEventListener('click', () => {
+        teamSelection.forEach((item) => {
+            item.style.display = 'none'
+        })
+        teamContainer[index].style.display = 'grid'
+    })
+)

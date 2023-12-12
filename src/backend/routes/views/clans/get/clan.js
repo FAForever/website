@@ -10,6 +10,8 @@ module.exports = [
 
         const data = matchedData(req)
 
-        return res.render('clans/clan', { clan: await req.appContainer.get('ClanService').getClan(data.id) })
-    }
+        return res.render('clans/clan', {
+            clan: await req.appContainer.get('ClanService').getClan(data.id),
+        })
+    },
 ]

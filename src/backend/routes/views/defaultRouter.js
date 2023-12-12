@@ -17,10 +17,14 @@ router.get('/clan/:id', (req, res) => {
     res.redirect('/clans/view/' + req.params.id)
 })
 // https://github.com/search?q=org%3AFAForever+account_activated&type=code
-router.get('/account_activated', (req, res) => res.redirect('/account/register'))
+router.get('/account_activated', (req, res) =>
+    res.redirect('/account/register')
+)
 
 // see: https://github.com/search?q=org%3AFAForever%20password_resetted&type=code
-router.get('/password_resetted', (req, res) => res.redirect('/account/requestPasswordReset'))
+router.get('/password_resetted', (req, res) =>
+    res.redirect('/account/requestPasswordReset')
+)
 
 // this is prob. outdated, but don't know
 router.get('/report_submitted', require('./account/get/report'))

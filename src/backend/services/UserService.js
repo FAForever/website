@@ -1,39 +1,39 @@
 class UserService {
-    constructor () {
+    constructor() {
         this.user = null
         this.session = null
         this.userRepository = null
     }
 
-    setUserFromRequest (request) {
+    setUserFromRequest(request) {
         this.user = request.user
         this.session = request.session
     }
 
-    setUserRepository (userRepository) {
+    setUserRepository(userRepository) {
         this.userRepository = userRepository
     }
 
-    isAuthenticated () {
+    isAuthenticated() {
         return !!this.user
     }
 
-    getUser () {
+    getUser() {
         return this.session?.passport?.user
     }
 
-    updatePassport (oAuthPassport) {
+    updatePassport(oAuthPassport) {
         this.user.oAuthPassport = oAuthPassport
         this.session.passport.user.oAuthPassport = oAuthPassport
     }
 
-    async refreshUser () {
+    async refreshUser() {
         const oAuthPassport = this.user.oAuthPassport
 
         this.user = await this.userRepository.fetchUser(oAuthPassport)
         this.session.passport.user = this.user
 
-        await new Promise(resolve => this.session.save(resolve))
+        await new Promise((resolve) => this.session.save(resolve))
 
         return this.user
     }

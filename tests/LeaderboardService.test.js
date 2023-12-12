@@ -1,5 +1,9 @@
-const { LeaderboardService } = require('../src/backend/services/LeaderboardService')
-const { LeaderboardRepository } = require('../src/backend/services/LeaderboardRepository')
+const {
+    LeaderboardService,
+} = require('../src/backend/services/LeaderboardService')
+const {
+    LeaderboardRepository,
+} = require('../src/backend/services/LeaderboardRepository')
 const NodeCache = require('node-cache')
 const { Axios } = require('axios')
 
@@ -14,26 +18,24 @@ const fakeEntry = JSON.stringify({
                 rating: -1000,
                 totalGames: 100,
                 wonGames: 30,
-                updateTime: '2023-12-1'
-            }
-        }
+                updateTime: '2023-12-1',
+            },
+        },
     ],
     included: [
         {
             attributes: {
-                login: 'player1'
-            }
-        }
-    ]
+                login: 'player1',
+            },
+        },
+    ],
 })
 
 beforeEach(() => {
     jest.restoreAllMocks()
     jest.useFakeTimers()
     leaderboardService = new LeaderboardService(
-        new NodeCache(
-            { stdTTL: 300, checkperiod: 600 }
-        ),
+        new NodeCache({ stdTTL: 300, checkperiod: 600 }),
         new LeaderboardRepository(axios)
     )
 })
@@ -44,34 +46,52 @@ afterEach(() => {
 })
 test('non 200 will throw', async () => {
     axios.get.mockImplementationOnce(() => Promise.resolve({ status: 403 }))
-    await expect(leaderboardService.getLeaderboard(0)).rejects.toThrowError('LeaderboardRepository::fetchLeaderboard failed with response status "403"')
+    await expect(leaderboardService.getLeaderboard(0)).rejects.toThrowError(
+        'LeaderboardRepository::fetchLeaderboard failed with response status "403"'
+    )
 })
 
 test('malformed empty response', async () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ status: 200, data: null }))
-    await expect(leaderboardService.getLeaderboard(0)).rejects.toThrowError('LeaderboardRepository::mapResponse malformed response, not an object')
+    axios.get.mockImplementationOnce(() =>
+        Promise.resolve({ status: 200, data: null })
+    )
+    await expect(leaderboardService.getLeaderboard(0)).rejects.toThrowError(
+        'LeaderboardRepository::mapResponse malformed response, not an object'
+    )
 })
 
 test('malformed response data missing', async () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ status: 200, data: JSON.stringify({ included: [] }) }))
-    await expect(leaderboardService.getLeaderboard(0)).rejects.toThrowError('LeaderboardRepository::mapResponse malformed response, expected "data"')
+    axios.get.mockImplementationOnce(() =>
+        Promise.resolve({ status: 200, data: JSON.stringify({ included: [] }) })
+    )
+    await expect(leaderboardService.getLeaderboard(0)).rejects.toThrowError(
+        'LeaderboardRepository::mapResponse malformed response, expected "data"'
+    )
 })
 
 test('malformed response included missing', async () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ status: 200, data: JSON.stringify({ data: [{}] }) }))
-    await expect(leaderboardService.getLeaderboard(0)).rejects.toThrowError('LeaderboardRepository::mapResponse malformed response, expected "included"')
+    axios.get.mockImplementationOnce(() =>
+        Promise.resolve({ status: 200, data: JSON.stringify({ data: [{}] }) })
+    )
+    await expect(leaderboardService.getLeaderboard(0)).rejects.toThrowError(
+        'LeaderboardRepository::mapResponse malformed response, expected "included"'
+    )
 })
 
 test('empty response will log and not throw an error', async () => {
     const warn = jest.spyOn(console, 'log').mockImplementationOnce(() => {})
-    axios.get.mockImplementationOnce(() => Promise.resolve({ status: 200, data: JSON.stringify({ data: [] }) }))
+    axios.get.mockImplementationOnce(() =>
+        Promise.resolve({ status: 200, data: JSON.stringify({ data: [] }) })
+    )
     await leaderboardService.getLeaderboard(0)
 
     expect(warn).toBeCalledWith('[info] leaderboard empty')
 })
 
 test('response is mapped correctly', async () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ status: 200, data: fakeEntry }))
+    axios.get.mockImplementationOnce(() =>
+        Promise.resolve({ status: 200, data: fakeEntry })
+    )
     const result = await leaderboardService.getLeaderboard(0)
 
     expect(result).toHaveLength(1)
@@ -88,25 +108,34 @@ test('only numbers valid', async () => {
     try {
         await leaderboardService.getLeaderboard()
     } catch (e) {
-        expect(e.toString()).toBe('Error: LeaderboardService:getLeaderboard id must be a number')
+        expect(e.toString()).toBe(
+            'Error: LeaderboardService:getLeaderboard id must be a number'
+        )
     }
 })
 
 test('timeout for cache creation throws an error', async () => {
     expect.assertions(1)
-    axios.get.mockImplementationOnce(() => Promise.resolve({ status: 200, data: fakeEntry }))
+    axios.get.mockImplementationOnce(() =>
+        Promise.resolve({ status: 200, data: fakeEntry })
+    )
 
     leaderboardService.mutexService.locked = true
-    leaderboardService.getLeaderboard(0).then(() => {}).catch((e) => {
-        expect(e.toString()).toBe('Error: MutexService timeout reached')
-    })
+    leaderboardService
+        .getLeaderboard(0)
+        .then(() => {})
+        .catch((e) => {
+            expect(e.toString()).toBe('Error: MutexService timeout reached')
+        })
 
     jest.runOnlyPendingTimers()
 })
 
 test('full scenario', async () => {
     const cacheSetSpy = jest.spyOn(leaderboardService.cacheService, 'set')
-    const mock = axios.get.mockImplementation(() => Promise.resolve({ status: 200, data: fakeEntry }))
+    const mock = axios.get.mockImplementation(() =>
+        Promise.resolve({ status: 200, data: fakeEntry })
+    )
 
     // starting two promises simultaneously
     const creatingTheCache = leaderboardService.getLeaderboard(0)
@@ -121,7 +150,7 @@ test('full scenario', async () => {
     expect(cacheSetSpy).toHaveBeenCalledTimes(1)
 
     const date = new Date()
-    date.setSeconds(date.getSeconds() + (60 * 60) + 1)
+    date.setSeconds(date.getSeconds() + 60 * 60 + 1)
     jest.setSystemTime(date)
 
     // start another with when the cache is stale

@@ -10,5 +10,8 @@ exports = module.exports = function (req, res) {
     const flash = null
 
     // Render the view
-    res.render('account/register', { flash, recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY })
+    res.render('account/register', {
+        flash,
+        recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
+    })
 }

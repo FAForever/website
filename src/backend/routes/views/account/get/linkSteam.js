@@ -13,11 +13,13 @@ exports = module.exports = function (req, res) {
             const errors = JSON.parse(req.query.errors)
 
             flash.class = 'alert-danger'
-            flash.messages = errors.map(error => ({ msg: error.detail }))
+            flash.messages = errors.map((error) => ({ msg: error.detail }))
             flash.type = 'Error'
         } else {
             flash.class = 'alert-success'
-            flash.messages = [{ msg: 'Your steam account has successfully been linked.' }]
+            flash.messages = [
+                { msg: 'Your steam account has successfully been linked.' },
+            ]
             flash.type = 'Success'
         }
     } else {
@@ -25,7 +27,8 @@ exports = module.exports = function (req, res) {
     }
 
     // locals.steam = process.env.API_URL + '/users/linkToSteam';
-    locals.steamConnect = req.protocol + '://' + req.get('host') + '/account/connect'
+    locals.steamConnect =
+        req.protocol + '://' + req.get('host') + '/account/connect'
 
     // Render the view
     res.render('account/linkSteam', { flash })

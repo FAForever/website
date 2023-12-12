@@ -1,13 +1,12 @@
-class AcquireTimeoutError extends Error {
-}
+class AcquireTimeoutError extends Error {}
 
 class MutexService {
-    constructor () {
+    constructor() {
         this.queue = []
         this.locked = false
     }
 
-    async acquire (callback, timeLimitMS = 500) {
+    async acquire(callback, timeLimitMS = 500) {
         let timeoutHandle
         const lockHandler = {}
 
@@ -16,7 +15,10 @@ class MutexService {
             lockHandler.reject = reject
 
             timeoutHandle = setTimeout(
-                () => reject(new AcquireTimeoutError('MutexService timeout reached')),
+                () =>
+                    reject(
+                        new AcquireTimeoutError('MutexService timeout reached')
+                    ),
                 timeLimitMS
             )
         })
@@ -33,30 +35,32 @@ class MutexService {
             }
         })
 
-        await Promise.race([asyncPromise, timeoutPromise]).then(async () => {
-            clearTimeout(timeoutHandle)
-            try {
-                if (callback[Symbol.toStringTag] === 'AsyncFunction') {
-                    await callback()
-                    return
+        await Promise.race([asyncPromise, timeoutPromise])
+            .then(async () => {
+                clearTimeout(timeoutHandle)
+                try {
+                    if (callback[Symbol.toStringTag] === 'AsyncFunction') {
+                        await callback()
+                        return
+                    }
+
+                    callback()
+                } finally {
+                    this.release()
+                }
+            })
+            .catch((e) => {
+                const index = this.queue.indexOf(lockHandler)
+
+                if (index !== -1) {
+                    this.queue.splice(index, 1)
                 }
 
-                callback()
-            } finally {
-                this.release()
-            }
-        }).catch(e => {
-            const index = this.queue.indexOf(lockHandler)
-
-            if (index !== -1) {
-                this.queue.splice(index, 1)
-            }
-
-            throw e
-        })
+                throw e
+            })
     }
 
-    release () {
+    release() {
         if (this.queue.length > 0) {
             const queueItem = this.queue.shift()
             queueItem.resolve()

@@ -17,9 +17,14 @@ exports = module.exports = async function (req, res) {
     }
 
     try {
-        await req.requestContainer.get('ClanManagementService').kickMember(memberId)
+        await req.requestContainer
+            .get('ClanManagementService')
+            .kickMember(memberId)
 
-        return res.redirect('/clans/view/' + req.requestContainer.get('UserService').getUser().clan.id)
+        return res.redirect(
+            '/clans/view/' +
+                req.requestContainer.get('UserService').getUser().clan.id
+        )
     } catch (e) {
         let message = e.toString()
         if (e instanceof JavaApiError && e.error?.errors) {
@@ -28,6 +33,9 @@ exports = module.exports = async function (req, res) {
 
         await req.asyncFlash('error', message)
 
-        return res.redirect('/clans/view/' + req.requestContainer.get('UserService').getUser().clan.id)
+        return res.redirect(
+            '/clans/view/' +
+                req.requestContainer.get('UserService').getUser().clan.id
+        )
     }
 }

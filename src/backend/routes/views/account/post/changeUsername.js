@@ -10,7 +10,9 @@ exports = module.exports = function (req, res) {
 
     // validate the input
     check('username', 'Username is required').notEmpty()
-    check('username', 'Username must be three or more characters').isLength({ min: 3 })
+    check('username', 'Username must be three or more characters').isLength({
+        min: 3,
+    })
 
     // check the validation object for errors
     const errors = validationResult(req)
@@ -24,27 +26,41 @@ exports = module.exports = function (req, res) {
 
         res.render('account/changeUsername', { flash })
     } else {
-    // pull the form variables off the request body
+        // pull the form variables off the request body
         const username = req.body.username
         const overallRes = res
 
         // Run post to reset endpoint
-        request.post({
-            url: process.env.API_URL + '/users/changeUsername',
-            headers: { Authorization: 'Bearer ' + req.requestContainer.get('UserService').getUser()?.oAuthPassport.token },
-            form: { newUsername: username }
-        }, function (err, res, body) {
-            if (err || res.statusCode !== 200) {
-                error.parseApiErrors(body, flash)
-                return overallRes.render('account/changeUsername', { flash })
+        request.post(
+            {
+                url: process.env.API_URL + '/users/changeUsername',
+                headers: {
+                    Authorization:
+                        'Bearer ' +
+                        req.requestContainer.get('UserService').getUser()
+                            ?.oAuthPassport.token,
+                },
+                form: { newUsername: username },
+            },
+            function (err, res, body) {
+                if (err || res.statusCode !== 200) {
+                    error.parseApiErrors(body, flash)
+                    return overallRes.render('account/changeUsername', {
+                        flash,
+                    })
+                }
+
+                // Successfully changed username
+                flash.class = 'alert-success'
+                flash.messages = [
+                    {
+                        msg: 'Your username was changed successfully. Please use the new username to log in!',
+                    },
+                ]
+                flash.type = 'Success!'
+
+                overallRes.render('account/changeUsername', { flash })
             }
-
-            // Successfully changed username
-            flash.class = 'alert-success'
-            flash.messages = [{ msg: 'Your username was changed successfully. Please use the new username to log in!' }]
-            flash.type = 'Success!'
-
-            overallRes.render('account/changeUsername', { flash })
-        })
+        )
     }
 }

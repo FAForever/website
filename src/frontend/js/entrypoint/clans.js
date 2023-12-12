@@ -2,9 +2,14 @@ import { DataTable } from 'simple-datatables'
 import axios from 'axios'
 import 'simple-datatables/dist/style.css'
 
-axios.get('/data/clans.json')
-    .then(response => {
-        if (response.status !== 200 || !response.data || !response.data.length) {
+axios
+    .get('/data/clans.json')
+    .then((response) => {
+        if (
+            response.status !== 200 ||
+            !response.data ||
+            !response.data.length
+        ) {
             console.error('request clans failed')
 
             return
@@ -14,16 +19,16 @@ axios.get('/data/clans.json')
         const datatable = new DataTable('#clan-table', {
             perPageSelect: null,
             data: {
-                headings: [
-                    'TAG',
-                    'NAME',
-                    'LEADER',
-                    'POPULATION'
-                ],
-                data: clans.map(item => {
-                    return [item.tag, item.name, item.leaderName, item.population]
-                })
-            }
+                headings: ['TAG', 'NAME', 'LEADER', 'POPULATION'],
+                data: clans.map((item) => {
+                    return [
+                        item.tag,
+                        item.name,
+                        item.leaderName,
+                        item.population,
+                    ]
+                }),
+            },
         })
 
         datatable.on('datatable.selectrow', (rowIndex, event) => {
