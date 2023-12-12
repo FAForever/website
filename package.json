@@ -70,6 +70,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore src tests",
-    "lint:fix": "eslint --fix --ignore-path .gitignore src tests"
+    "lint:fix": "eslint --fix --ignore-path .gitignore src tests",
+    "lint:pug": "prettier --write **/*.pug"
   }
 }
