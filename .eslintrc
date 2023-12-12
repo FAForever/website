@@ -14,7 +14,7 @@
             }
         },
         {
-            "files": ["src/backend/**/*.js", "src/backend/**/*.pug"],
+            "files": ["src/backend/**/*.js"],
             "env": {
                 "node": true,
                 "es2020": true
