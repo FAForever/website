@@ -1,53 +1,60 @@
 extends ../layouts/default
 block bannerData
-  - var bannerImage = "ai"
-  - var bannerFirstTitle = "IMPROVED AI'S ON"
-  - var bannerSecondTitle = "FORGED ALLIANCE FOREVER"
-  - var bannerSubTitle = "COLD BLOODED MACHINES THAT WILL NEVER STOP"
+    - var bannerImage = 'ai'
+    - var bannerFirstTitle = "IMPROVED AI'S ON"
+    - var bannerSecondTitle = 'FORGED ALLIANCE FOREVER'
+    - var bannerSubTitle = 'COLD BLOODED MACHINES THAT WILL NEVER STOP'
 
-block content    
-
-  .showcaseBackground
-    .descriptionMain
-      .descriptionContainer
-        h2 Artificial intelligence on FAF
-        p Originally, Supreme Commander:FA had very suboptimal AI, being barely able to do anything even trivial. Nonetheless, thanks to the contribution of FAF contributors, now you have 4 quite challenging AIs! Specially on 5x5 and 10x10 land maps, these AIs will show you who's boss! You can download these AIs in the FAF client Mods section.
-    .profileMain
-      .profileSubGrid.column6
-        .profileImage.azraelBG.column4
-        .profileContainer.column8
-          h2.highlightText Get flooded
-          h1 AI-Swarm by AzraelianAngel
-          p Swarm is a bit of a middle grounded AI, it is regarded as the most solid economic AI. It tends to be heavy on land but it adapts to air and naval situations!
-          a(href='https://forum.faforever.com/topic/53/ai-swarm-ai-mod-for-faforever?_=1646687814769')
-            button AI-Swarm DevLog
-      .profileSubGrid.column6
-        .profileImage.uvesoBG.column4
-        .profileContainer.column8
-          h2.highlightText Uveso by AI-Uveso
-          h1 AI-Uveso by Uveso
-          p Adaptive AI with multiple sub AIs in order for players to have control on the behavior of the AI! The sub AIs are Adaptive, Overwhelm, Rush, Experimental and Easy!
-          a(href='https://forum.faforever.com/topic/350/ai-uveso-v98-ai-mod-for-faforever')
-            button AI-Uveso DevLog
-      .profileSubGrid.column6
-        .profileImage.relentorBG.column4
-        .profileContainer.column8
-          h2.highlightText Random number generator?
-          h1 RNGAI by Relent0r
-          p AI aimed at the players wanting to learn 1v1 gameplay. It provides an avenue to play against something that emulates some of the methods ladder players use!
-          a(href='https://forums.faforever.com/viewtopic.php?f=88&t=19149')
-            button RGNAI DevLog
-      .profileSubGrid.column6
-        .profileImage.maudlinBG.column4
-        .profileContainer.column8
-          h2.highlightText Best 1v1 AI
-          h1 M27AI by Maudlin27
-          p Adaptive AI, intended for both 1v1 and team games, makes use of advanced tactics for players seeking a challenge.
-          a(href='https://forum.faforever.com/topic/2373/ai-development-guide-and-m27ai-v24-devlog')
-            button M27AI DevLog
-    .descriptionMain
-      .descriptionContainer
-        h2 Not difficult enough?
-        p If AIs aren't a challenge for you, we recommend using the in-lobby option "AIx Cheat Multiplier" which can be found in a game lobby throught Options > AI Options. Putting it to 1.1 or 1.2 should provide a challenge for a great deal of players. This bonus makes the AI cheat, meaning it gets 1.1 resources and buildpower. Making more stuff in less time!
+block content
+    .showcaseBackground
+        .descriptionMain
+            .descriptionContainer
+                h2 Artificial intelligence on FAF
+                p Originally, Supreme Commander:FA had very suboptimal AI, being barely able to do anything even trivial. Nonetheless, thanks to the contribution of FAF contributors, now you have 4 quite challenging AIs! Specially on 5x5 and 10x10 land maps, these AIs will show you who's boss! You can download these AIs in the FAF client Mods section.
+        .profileMain
+            .profileSubGrid.column6
+                .profileImage.azraelBG.column4
+                .profileContainer.column8
+                    h2.highlightText Get flooded
+                    h1 AI-Swarm by AzraelianAngel
+                    p Swarm is a bit of a middle grounded AI, it is regarded as the most solid economic AI. It tends to be heavy on land but it adapts to air and naval situations!
+                    a(
+                        href='https://forum.faforever.com/topic/53/ai-swarm-ai-mod-for-faforever?_=1646687814769'
+                    )
+                        button AI-Swarm DevLog
+            .profileSubGrid.column6
+                .profileImage.uvesoBG.column4
+                .profileContainer.column8
+                    h2.highlightText Uveso by AI-Uveso
+                    h1 AI-Uveso by Uveso
+                    p Adaptive AI with multiple sub AIs in order for players to have control on the behavior of the AI! The sub AIs are Adaptive, Overwhelm, Rush, Experimental and Easy!
+                    a(
+                        href='https://forum.faforever.com/topic/350/ai-uveso-v98-ai-mod-for-faforever'
+                    )
+                        button AI-Uveso DevLog
+            .profileSubGrid.column6
+                .profileImage.relentorBG.column4
+                .profileContainer.column8
+                    h2.highlightText Random number generator?
+                    h1 RNGAI by Relent0r
+                    p AI aimed at the players wanting to learn 1v1 gameplay. It provides an avenue to play against something that emulates some of the methods ladder players use!
+                    a(
+                        href='https://forums.faforever.com/viewtopic.php?f=88&t=19149'
+                    )
+                        button RGNAI DevLog
+            .profileSubGrid.column6
+                .profileImage.maudlinBG.column4
+                .profileContainer.column8
+                    h2.highlightText Best 1v1 AI
+                    h1 M27AI by Maudlin27
+                    p Adaptive AI, intended for both 1v1 and team games, makes use of advanced tactics for players seeking a challenge.
+                    a(
+                        href='https://forum.faforever.com/topic/2373/ai-development-guide-and-m27ai-v24-devlog'
+                    )
+                        button M27AI DevLog
+        .descriptionMain
+            .descriptionContainer
+                h2 Not difficult enough?
+                p If AIs aren't a challenge for you, we recommend using the in-lobby option "AIx Cheat Multiplier" which can be found in a game lobby throught Options > AI Options. Putting it to 1.1 or 1.2 should provide a challenge for a great deal of players. This bonus makes the AI cheat, meaning it gets 1.1 resources and buildpower. Making more stuff in less time!
 
 block js

@@ -1,83 +1,123 @@
 doctype html
 html(lang='en')
-  //- HTML HEADER
-  head
-    meta(charset="utf-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    meta(name="description" content="FAF Community Website")
+    //- HTML HEADER
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='description', content='FAF Community Website')
 
-    title= title || 'Forged Alliance Forever'
-    link(rel="shortcut icon", href="/images/favicon.png", type="image/png")
+        title= title || 'Forged Alliance Forever'
+        link(rel='shortcut icon', href='/images/favicon.png', type='image/png')
 
-    // Fonts
-    link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css')
-    link(href='https://fonts.googleapis.com/css2?family=Electrolize&display=swap' rel='stylesheet')
+        // Fonts
+        link(
+            href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz',
+            rel='stylesheet',
+            type='text/css'
+        )
+        link(
+            href='https://fonts.googleapis.com/css2?family=Electrolize&display=swap',
+            rel='stylesheet'
+        )
 
-    link(href='https://fonts.googleapis.com/css2?family=Electrolize&family=Russo+One&display=swap' rel='stylesheet' type='text/css')
-    link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Orbitron&display=swap')
+        link(
+            href='https://fonts.googleapis.com/css2?family=Electrolize&family=Russo+One&display=swap',
+            rel='stylesheet',
+            type='text/css'
+        )
+        link(
+            rel='stylesheet',
+            href='https://fonts.googleapis.com/css2?family=Orbitron&display=swap'
+        )
 
-    //- Customise the stylesheet for your site by editing /public/styles/site.sass
-    link(href="/styles/css/site.min.css?version="+Date.now(), rel="stylesheet")
+        //- Customise the stylesheet for your site by editing /public/styles/site.sass
+        link(
+            href='/styles/css/site.min.css?version=' + Date.now(),
+            rel='stylesheet'
+        )
 body
+    .clientBackground
+        .clientMainFeature
+            .featureSubGrid.column3.featureLink
+                .featureSocial.column12
+                    .featureLink.featureDiscord.column4
+                        a(
+                            target='_blank',
+                            href='https://discord.gg/mXahVSKGVb'
+                        )
+                            img(src='/../../images/logos/discord.svg', alt='')
+                    .featureLink.featureTwitch.column4
+                        a(
+                            target='_blank',
+                            href='https://www.twitch.tv/directory/game/Supreme%20Commander%3A%20Forged%20Alliance'
+                        )
+                            img(src='/../../images/logos/twitch.png', alt='')
+                    .featureLink.featureYoutube.column4
+                        a(
+                            target='_blank',
+                            href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw'
+                        )
+                            img(src='/../../images/logos/youtube.png', alt='')
+                    .clientSupportFAF.column12
+                        a(target='_blank', href='https://www.patreon.com/faf')
+                            h1 SUPPORT FAF
+                                img(
+                                    src='/../../images/logos/patreon.png',
+                                    alt=''
+                                )
+                    .clientSupportFAF.column12
+                        // TODO Jip needs to make a link or find one for the report a bug button
+                        a(
+                            target='_blank',
+                            href='https://discord.com/channels/197033481883222026/907037442832482315'
+                        )
+                            h2 Report a Bug
 
+        #clientMain
+            #clientSpawn
+                .clientContainer.column1
+                    a(
+                        target='_blank',
+                        href='https://discord.com/channels/197033481883222026/1102940262617067541'
+                    )
+                        .clientNewsRequest
+                            h1.column12 Submit a news item
 
-  .clientBackground
-    .clientMainFeature
-      .featureSubGrid.column3.featureLink
-        .featureSocial.column12
-          .featureLink.featureDiscord.column4
-            a(target='_blank' href='https://discord.gg/mXahVSKGVb')
-              img(src='/../../images/logos/discord.svg' alt='')
-          .featureLink.featureTwitch.column4
-            a(target='_blank' href='https://www.twitch.tv/directory/game/Supreme%20Commander%3A%20Forged%20Alliance')
-              img(src='/../../images/logos/twitch.png' alt='')
-          .featureLink.featureYoutube.column4
-            a(target='_blank' href='https://www.youtube.com/channel/UChiCO27pbaXDR0d0JfxlIpw')
-              img(src='/../../images/logos/youtube.png' alt='')
-          .clientSupportFAF.column12
-            a(target='_blank' href='https://www.patreon.com/faf')
-              h1 SUPPORT FAF
-                img(src='/../../images/logos/patreon.png' alt='')
-          .clientSupportFAF.column12
-            // TODO Jip needs to make a link or find one for the report a bug button
-            a(target='_blank' href='https://discord.com/channels/197033481883222026/907037442832482315')
-              h2 Report a Bug
-
-
-
-    #clientMain
-      #clientSpawn
-
-        .clientContainer.column1
-          a(target='_blank' href='https://discord.com/channels/197033481883222026/1102940262617067541')
-            .clientNewsRequest
-
-              h1.column12 Submit a news item
-
-      #clientArrowLeft
-        .fas.fa-chevron-left
-      #clientArrowRigth
-        .fas.fa-chevron-right
-    .clientMenu
-      .clientMenuContainer.column2
-        ul NEW PLAYERS
-        a(target='_blank' href='https://forum.faforever.com/category/18/frequently-asked-questions') FAQ
-        a(target='_blank' href='https://youtu.be/Nks9loE96ok') First Time in FAF
-        a(target='_blank' href='https://wiki.faforever.com/en/Play/Learning/Learning-SupCom') Community Guides
-      .clientMenuContainer.column2
-        ul COMMUNITY
-        a(target='_blank' href='https://forum.faforever.com/') Forums
-        a(target='_blank' href='https://kazbek.github.io/FAF-Analytics/') Player Statistics
-        a(target='_blank' href='https://www.faforever.com/coc') Player Guidelines
-      .clientMenuContainer.column2
-        ul DEVELOPMENT
-        a(target='_blank' href='https://github.com/FAForever/fa') Github
-        a(target='_blank' href='https://faforever.com/contribution') Contribute
-        a(target='_blank' href='https://wiki.faforever.com/en/Vault-Rules') Vault Rules
-      .clientMenuContainer.clientTournament.column6
-        #tournamentSpawn
-          ul.column12 UPCOMING TOURNAMENTS/EVENTS
-
+            #clientArrowLeft
+                .fas.fa-chevron-left
+            #clientArrowRigth
+                .fas.fa-chevron-right
+        .clientMenu
+            .clientMenuContainer.column2
+                ul NEW PLAYERS
+                a(
+                    target='_blank',
+                    href='https://forum.faforever.com/category/18/frequently-asked-questions'
+                ) FAQ
+                a(target='_blank', href='https://youtu.be/Nks9loE96ok') First Time in FAF
+                a(
+                    target='_blank',
+                    href='https://wiki.faforever.com/en/Play/Learning/Learning-SupCom'
+                ) Community Guides
+            .clientMenuContainer.column2
+                ul COMMUNITY
+                a(target='_blank', href='https://forum.faforever.com/') Forums
+                a(
+                    target='_blank',
+                    href='https://kazbek.github.io/FAF-Analytics/'
+                ) Player Statistics
+                a(target='_blank', href='https://www.faforever.com/coc') Player Guidelines
+            .clientMenuContainer.column2
+                ul DEVELOPMENT
+                a(target='_blank', href='https://github.com/FAForever/fa') Github
+                a(target='_blank', href='https://faforever.com/contribution') Contribute
+                a(
+                    target='_blank',
+                    href='https://wiki.faforever.com/en/Vault-Rules'
+                ) Vault Rules
+            .clientMenuContainer.clientTournament.column6
+                #tournamentSpawn
+                    ul.column12 UPCOMING TOURNAMENTS/EVENTS
 
 script(src=webpackAssetJS('newshub'))

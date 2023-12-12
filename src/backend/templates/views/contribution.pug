@@ -1,55 +1,67 @@
 extends ../layouts/default
 
 block bannerData
-  - var bannerImage = "contribution"
-  - var bannerFirstTitle = "LEND A HAND TODAY"
-  - var bannerSecondTitle = "HELP THE FAF COMMUNITY"
-  - var bannerSubTitle = ""
+    - var bannerImage = 'contribution'
+    - var bannerFirstTitle = 'LEND A HAND TODAY'
+    - var bannerSecondTitle = 'HELP THE FAF COMMUNITY'
+    - var bannerSubTitle = ''
 block content
+    .showcaseBackground
+        .descriptionMain
+            .descriptionContainer
+                H2 READY TO DO YOUR DUTY SOLDIER?
+                p FAF isn't being maintained by any company or business. It is being built upon the contributions of hundreds of individuals, all with different talents, giving a bit of their time and expertise to develop FAF more and more. Whether you are a programmer, graphic designer, content creator or multilingual, FAF has a space for you to use your skills for the betterment of the community!
+        .mainShowcase
+            .showcaseContainer.column6
+                h2.highlightText Fixing bugs, killing lag
+                h1 Game development
+                p Want to help fix a game issue? Create your own Co-op mission? Then you can help with development on Github. To start, join our discord so that you can talk with the correct dev and invite you to our Zulip. It is recommended (but not necessary!) knowing some Lua for game developlment, Python for the server work or Java for the FAF client.
+                a(target='_blank', href='https://discord.gg/mXahVSKGVb')
+                    button Join our Discord
+                a(target='_blank', href='https://github.com/faforever/')
+                    button FAF repository
+            .showcaseImage.developmentBG.column6
+        .mainShowcaseReverse
+            .showcaseImage.mapsModsBG.column6
+            .showcaseContainer.column6
+                h2.highlightText Infinite possibilities
+                h1 Creating maps and mods
+                p Make your wildest dreams come true and create the twin barrel Monkeylord or release your inner artist and create the Mona Lisa of Maps. Our vaults are always open for new and exciting maps and mods! If you have doubts about where to start or are stuck, we recommend joining our Discord for answers!
+                a(
+                    target='_blank',
+                    href='https://wiki.faforever.com/en/Development/Mapping/FA-Forever-Map-Editor'
+                )
+                    button Map Editor Guide
+                a(
+                    target='_blank',
+                    href='https://wiki.faforever.com/en/Development/Modding/Modding'
+                )
+                    button Mod Making Guide
+                a(
+                    target='_blank',
+                    href='https://www.youtube.com/playlist?list=PL0nxuIUIjpFvqJ5i1HfPwoA8FnBCtGLWn'
+                )
+                    button Youtube Playlist
+        .mainShowcase
+            .showcaseContainer.column6
+                h2.highlightText Become our guinea pig
+                h1 Testing & bug reports
+                p Want to be the first one to try the latest features? Then you can help as a tester for balance patches, client updates and by testing the latest new mods or AIs from our developers. Just join our Discord and grab the tester role!
+                a(
+                    target='_blank',
+                    href='https://discord.com/channels/197033481883222026/1111359811230113814'
+                )
+                    button Join our discord
 
-
-  .showcaseBackground
-    .descriptionMain
-      .descriptionContainer
-        H2 READY TO DO YOUR DUTY SOLDIER?
-        p FAF isn't being maintained by any company or business. It is being built upon the contributions of hundreds of individuals, all with different talents, giving a bit of their time and expertise to develop FAF more and more. Whether you are a programmer, graphic designer, content creator or multilingual, FAF has a space for you to use your skills for the betterment of the community!
-    .mainShowcase
-      .showcaseContainer.column6
-        h2.highlightText Fixing bugs, killing lag
-        h1 Game development
-        p Want to help fix a game issue? Create your own Co-op mission? Then you can help with development on Github. To start, join our discord so that you can talk with the correct dev and invite you to our Zulip. It is recommended (but not necessary!) knowing some Lua for game developlment, Python for the server work or Java for the FAF client.
-        a(target='_blank' href='https://discord.gg/mXahVSKGVb')
-          button Join our Discord
-        a(target='_blank' href='https://github.com/faforever/')
-          button FAF repository
-      .showcaseImage.developmentBG.column6
-    .mainShowcaseReverse
-      .showcaseImage.mapsModsBG.column6
-      .showcaseContainer.column6
-        h2.highlightText Infinite possibilities
-        h1 Creating maps and mods
-        p Make your wildest dreams come true and create the twin barrel Monkeylord or release your inner artist and create the Mona Lisa of Maps. Our vaults are always open for new and exciting maps and mods! If you have doubts about where to start or are stuck, we recommend joining our Discord for answers!
-        a(target='_blank' href='https://wiki.faforever.com/en/Development/Mapping/FA-Forever-Map-Editor')
-          button Map Editor Guide
-        a(target='_blank' href='https://wiki.faforever.com/en/Development/Modding/Modding')
-          button Mod Making Guide
-        a(target='_blank' href='https://www.youtube.com/playlist?list=PL0nxuIUIjpFvqJ5i1HfPwoA8FnBCtGLWn')
-          button Youtube Playlist
-    .mainShowcase
-      .showcaseContainer.column6
-        h2.highlightText Become our guinea pig
-        h1 Testing & bug reports
-        p Want to be the first one to try the latest features? Then you can help as a tester for balance patches, client updates and by testing the latest new mods or AIs from our developers. Just join our Discord and grab the tester role!
-        a(target='_blank' href='https://discord.com/channels/197033481883222026/1111359811230113814')
-          button Join our discord
-  
-      .showcaseImage.testerBG.column6
-    .mainShowcaseReverse
-      .showcaseImage.artworkBG.column6
-      .showcaseContainer.column6
-        h2.highlightText Show your skills
-        h1  Graphic design and promotion
-        p Everytime there is a new event, we need anything from pixel art client avatars, poster graphics, tourney logos to video animations for our Twitch casters. No matter the art style, we'll take any artists that want to contribute with their FAF related artwork and skills! Just join the discord and look for the promotions team!
-        a(target='_blank' href='https://discord.com/channels/197033481883222026/1108833863817498656')
-          button Join our Discord
-
+            .showcaseImage.testerBG.column6
+        .mainShowcaseReverse
+            .showcaseImage.artworkBG.column6
+            .showcaseContainer.column6
+                h2.highlightText Show your skills
+                h1 Graphic design and promotion
+                p Everytime there is a new event, we need anything from pixel art client avatars, poster graphics, tourney logos to video animations for our Twitch casters. No matter the art style, we'll take any artists that want to contribute with their FAF related artwork and skills! Just join the discord and look for the promotions team!
+                a(
+                    target='_blank',
+                    href='https://discord.com/channels/197033481883222026/1108833863817498656'
+                )
+                    button Join our Discord

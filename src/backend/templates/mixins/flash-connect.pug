@@ -2,12 +2,12 @@ mixin flash-connect(connectFlash)
     - var flashes = connectFlash()
         if flashes
             if flashes.info
-                div.alert(class='alert-success')
+                .alert.alert-success
                     ul
                     each info in flashes.info
-                        li !{info}
+                        li !{ info }
             if flashes.error
-                div.alert(class='alert-danger')
+                .alert.alert-danger
                     ul
                     each error in flashes.error
-                        li !{error}
+                        li !{ error }

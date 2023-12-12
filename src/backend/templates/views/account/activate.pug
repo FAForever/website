@@ -4,33 +4,49 @@ include ../../mixins/form/account
 block bannerMixin
 
 block content
-  .activationContainer
-    br
-    br
-    h1 Welcome #{username ? username : ''} to FAF!
-    h3 Just set your new account's password below and your registration will be complete.
-
-    +flash-messages(flash)
-    .column12
-      form(method='post',action="/account/activate?username="+username+"&token="+token,data-toggle="validator")
-        - passwordName = passwordName || 'password'
-        - labelPassword = labelPassword || ''
-        .form-group.has-feedback
-          label #{labelPassword} Password:
-            .input-group
-              input(type='password', name=passwordName, required='required', id='inputPassword', data-minlength='6').form-control
-              span(aria-hidden='true').glyphicon.form-control-feedback
-              .help-block Minimum of 6 characters
+    .activationContainer
         br
-        .form-group.has-feedback
-          label Confirm #{labelPassword} Password:
-            .input-group
-              input(type='password', name=passwordName + '_confirm', required='required',data-match='#inputPassword', data-match-error="Passwords don't match. Please fix!", data-minlength='6').form-control
-              span(aria-hidden='true').glyphicon.form-control-feedback
-              .help-block.with-errors
-        .form-actions
-          br
-          button(type='submit') Register
-          br
-          br
-          br
+        br
+        h1 Welcome #{ username ? username : '' } to FAF!
+        h3 Just set your new account's password below and your registration will be complete.
+
+        +flash-messages(flash)
+        .column12
+            form(
+                method='post',
+                action='/account/activate?username=' + username + '&token=' + token,
+                data-toggle='validator'
+            )
+                - passwordName = passwordName || 'password'
+                - labelPassword = labelPassword || ''
+                .form-group.has-feedback
+                    label #{ labelPassword } Password:
+                        .input-group
+                            input#inputPassword.form-control(
+                                type='password',
+                                name=passwordName,
+                                required='required',
+                                data-minlength='6'
+                            )
+                            span.glyphicon.form-control-feedback(aria-hidden='true')
+                            .help-block Minimum of 6 characters
+                br
+                .form-group.has-feedback
+                    label Confirm #{ labelPassword } Password:
+                        .input-group
+                            input.form-control(
+                                type='password',
+                                name=passwordName + '_confirm',
+                                required='required',
+                                data-match='#inputPassword',
+                                data-match-error='Passwords don\'t match. Please fix!',
+                                data-minlength='6'
+                            )
+                            span.glyphicon.form-control-feedback(aria-hidden='true')
+                            .help-block.with-errors
+                .form-actions
+                    br
+                    button(type='submit') Register
+                    br
+                    br
+                    br

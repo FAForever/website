@@ -1,31 +1,24 @@
 extends ../layouts/default
 
 block bannerData
-  - var bannerImage = "donation"
-  - var bannerFirstTitle = "LETS KEEP THE FOREVER IN"
-  - var bannerSecondTitle = "FORGED ALLIANCE FOREVER!"
-  - var bannerSubTitle = "AND GET SOME REWARDS!"
+    - var bannerImage = 'donation'
+    - var bannerFirstTitle = 'LETS KEEP THE FOREVER IN'
+    - var bannerSecondTitle = 'FORGED ALLIANCE FOREVER!'
+    - var bannerSubTitle = 'AND GET SOME REWARDS!'
 block content
+    figure.highcharts-figure(aria-label='Donation pie chart')
+        #container
 
-  
-    
-  
-  figure.highcharts-figure(aria-label='Donation pie chart')
-    #container
-
-  .descriptionMain
-    .descriptionContainer
-      p As a non-profit open source project we are reliant on donations to keep servers running, pay for other infrastructure costs and create a competitive scene for FAF. Donations are used exclusively for continued development and support of FAF. Through our Patreon, you can decide where your funds will go (Free to use, Tournament prizes or Infrastructure costs). We are extremely grateful for your aid! 
-      h2 You can Donate to FAF through
-    a(href='https://www.patreon.com/faf' target='_blank')
-      button 
-        img(src='/images/logos/patreonBlack.png' alt='Patreon Logo')
-    a(href='https://www.paypal.com/paypalme/faforever' target='_blank')
-      button
-        img(src='/images/logos/paypal.png' alt='Paypal Logo')
-
-
+    .descriptionMain
+        .descriptionContainer
+            p As a non-profit open source project we are reliant on donations to keep servers running, pay for other infrastructure costs and create a competitive scene for FAF. Donations are used exclusively for continued development and support of FAF. Through our Patreon, you can decide where your funds will go (Free to use, Tournament prizes or Infrastructure costs). We are extremely grateful for your aid!
+            h2 You can Donate to FAF through
+        a(href='https://www.patreon.com/faf', target='_blank')
+            button
+                img(src='/images/logos/patreonBlack.png', alt='Patreon Logo')
+        a(href='https://www.paypal.com/paypalme/faforever', target='_blank')
+            button
+                img(src='/images/logos/paypal.png', alt='Paypal Logo')
 
 block js
-  script(src=webpackAssetJS('donation'))
-
+    script(src=webpackAssetJS('donation'))

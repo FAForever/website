@@ -3,30 +3,55 @@ include ../../mixins/flash-error
 include ../../mixins/form/account
 block bannerMixin
 block content
-  .containerCenter.text-center
-    .row
-      .col-md-12
-        h1 Create a clan
-        div
-          | You can create your own clan, and then invite other players to join it.
-          <br>
-          | Be sure to&nbsp
-          a(href='/rules') review the rules
-          |  before naming your clan!
-          <br>
-          | Offensive clan names will result in an immediate sanction
+    .containerCenter.text-center
+        .row
+            .col-md-12
+                h1 Create a clan
+                div
+                    | You can create your own clan, and then invite other players to join it.
+                    <br>
+                    | Be sure to&nbsp
+                    a(href='/rules') review the rules
+                    |
+                    | before naming your clan!
+                    <br>
+                    | Offensive clan names will result in an immediate sanction
 
-    .row
-      .col-md-offset-3.col-md-6
-        +flash-error(errors)
-    .clanManagement
-        .column12
-          form(method='post', action="/clans/create", data-toggle="validator")
-            input(type='text' name='clan_name' value=clan_name placeholder='Clan name' title='Name' required='required')
-            br
-            input(type='text' required='required' name='clan_tag' title='Tag' value=clan_tag placeholder='TAG')
-            br
-            textarea(rows='12' name='clan_description' title='description' required='required' placeholder='The description players will see when they look your clan') #{clan_description}
-            br
+        .row
+            .col-md-offset-3.col-md-6
+                +flash-error(errors)
+        .clanManagement
+            .column12
+                form(
+                    method='post',
+                    action='/clans/create',
+                    data-toggle='validator'
+                )
+                    input(
+                        type='text',
+                        name='clan_name',
+                        value=clan_name,
+                        placeholder='Clan name',
+                        title='Name',
+                        required='required'
+                    )
+                    br
+                    input(
+                        type='text',
+                        required='required',
+                        name='clan_tag',
+                        title='Tag',
+                        value=clan_tag,
+                        placeholder='TAG'
+                    )
+                    br
+                    textarea(
+                        rows='12',
+                        name='clan_description',
+                        title='description',
+                        required='required',
+                        placeholder='The description players will see when they look your clan'
+                    ) #{ clan_description }
+                    br
 
-            button(type='submit').bigButton Create your Clan
+                    button.bigButton(type='submit') Create your Clan

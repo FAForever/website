@@ -3,90 +3,88 @@ extends ../layouts/default
 block bannerMixin
 
 block content
-  .leaderboardBackground
-    .mainLeaderboardContainer
-      .leaderboardContainer.column12.centerYourself
-        p Search for a player in the selected leaderboard
-          #errorLog
-        input#input(onkeyup=`pressEnter(event)` type='text' placeholder='Player Name')
-        #searchbar
-          .searchBar
-            ul
-              #placeMe
-        ul#clearSearch.clearButton.appearWhenSearching
-          img(src='/../../images/fontAwesomeIcons/trash.svg' alt='')
-          
-    
+    .leaderboardBackground
+        .mainLeaderboardContainer
+            .leaderboardContainer.column12.centerYourself
+                p Search for a player in the selected leaderboard
+                    #errorLog
+                input#input(
+                    onkeyup='pressEnter(event)',
+                    type='text',
+                    placeholder='Player Name'
+                )
+                #searchbar
+                    .searchBar
+                        ul
+                            #placeMe
+                ul#clearSearch.clearButton.appearWhenSearching
+                    img(src='/../../images/fontAwesomeIcons/trash.svg', alt='')
 
-    
-     
-    .newLeaderboard.leaderboardBorder.appearWhenSearching#searchResults.leaderboardNoAwards
-      .newLeaderboardContainer.column12.newLeaderboardCategory
-        .column1
-          h2 Rank
-        .column4
-          h2 Player
-        .column2
-          h2 Rating
-         
-        .column2
-          h2 Win Rate
-         
-        .column3
-          h2 Total Games
-            
-      #insertSearch
-      
-    .mainLeaderboardContainer.leaderboardCategory
-      .column12.leaderboardSelect
-        select.leaderboardFilter(onchange='changeLeaderboard(this.value)')
-          option(value='1v1') 1v1
-          option(value='2v2') 2v2
-          option(value='4v4') 4v4
-          option(value='global') Global
-        select.leaderboardFilter(onchange='timeCheck(this.value)')
-          option(value='12') 1 Year
-          option(value='6') 6 Months
-          option(value='3') 3 Months
-          option(value='1') 1 Month
-        .categoryContainer
-          .categoryButton(onclick= `pageChange(0)`).pageButton.exhaustedButton First
-          .categoryButton(onclick= `pageChange(lastPage)`).pageButton Last 
-        .categoryContainer
-          .categoryButton(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous
-          .categoryButton(onclick= `pageChange(pageNumber + 1)`).pageButton Next
-      //DO NOT Change the order of these without changing the js. For them to work, they need to be in this specific order
+        #searchResults.newLeaderboard.leaderboardBorder.appearWhenSearching.leaderboardNoAwards
+            .newLeaderboardContainer.column12.newLeaderboardCategory
+                .column1
+                    h2 Rank
+                .column4
+                    h2 Player
+                .column2
+                    h2 Rating
 
+                .column2
+                    h2 Win Rate
 
-    .newLeaderboard#mainLeaderboard
-      .newLeaderboardContainer.column12.newLeaderboardCategory
-        .column1
-          h2 Rank
-        .column4
-          h2 Player
-        .column2.categoryFilter
-          h2(onclick='filterLeaderboards(1)') Rating
-            //img.categoryCaret(src='/images/fontAwesomeIcons/caret.svg')
-        .column2.categoryFilter
-          h2(onclick='filterLeaderboards(2)') Win Rate
-            //img.categoryCaret(src='/images/fontAwesomeIcons/caret.svg')
-        .column3.categoryFilter
-          h2(onclick='filterLeaderboards(3)') Total Games
-            //img.categoryCaret(src='/images/fontAwesomeIcons/caret.svg')
-      
-      #insertPlayer
-        
-    
-    .mainLeaderboardContainer.leaderboardCategory
-      .column12.leaderboardSelect
+                .column3
+                    h2 Total Games
 
-        .categoryContainer
-          .categoryButton(onclick= `pageChange(0)`).pageButton.exhaustedButton First
-          .categoryButton(onclick= `pageChange(lastPage)`).pageButton Last 
-        .categoryContainer
-          .categoryButton(onclick= `pageChange(pageNumber - 1)`).pageButton.exhaustedButton Previous
-          .categoryButton(onclick= `pageChange(pageNumber + 1)`).pageButton Next
+            #insertSearch
+
+        .mainLeaderboardContainer.leaderboardCategory
+            .column12.leaderboardSelect
+                select.leaderboardFilter(
+                    onchange='changeLeaderboard(this.value)'
+                )
+                    option(value='1v1') 1v1
+                    option(value='2v2') 2v2
+                    option(value='4v4') 4v4
+                    option(value='global') Global
+                select.leaderboardFilter(onchange='timeCheck(this.value)')
+                    option(value='12') 1 Year
+                    option(value='6') 6 Months
+                    option(value='3') 3 Months
+                    option(value='1') 1 Month
+                .categoryContainer
+                    .categoryButton.pageButton.exhaustedButton(onclick='pageChange(0)') First
+                    .categoryButton.pageButton(onclick='pageChange(lastPage)') Last
+                .categoryContainer
+                    .categoryButton.pageButton.exhaustedButton(onclick='pageChange(pageNumber - 1)') Previous
+                    .categoryButton.pageButton(onclick='pageChange(pageNumber + 1)') Next
+            //DO NOT Change the order of these without changing the js. For them to work, they need to be in this specific order
+
+        #mainLeaderboard.newLeaderboard
+            .newLeaderboardContainer.column12.newLeaderboardCategory
+                .column1
+                    h2 Rank
+                .column4
+                    h2 Player
+                .column2.categoryFilter
+                    h2(onclick='filterLeaderboards(1)') Rating
+                        //img.categoryCaret(src='/images/fontAwesomeIcons/caret.svg')
+                .column2.categoryFilter
+                    h2(onclick='filterLeaderboards(2)') Win Rate
+                        //img.categoryCaret(src='/images/fontAwesomeIcons/caret.svg')
+                .column3.categoryFilter
+                    h2(onclick='filterLeaderboards(3)') Total Games
+                        //img.categoryCaret(src='/images/fontAwesomeIcons/caret.svg')
+
+            #insertPlayer
+
+        .mainLeaderboardContainer.leaderboardCategory
+            .column12.leaderboardSelect
+                .categoryContainer
+                    .categoryButton.pageButton.exhaustedButton(onclick='pageChange(0)') First
+                    .categoryButton.pageButton(onclick='pageChange(lastPage)') Last
+                .categoryContainer
+                    .categoryButton.pageButton.exhaustedButton(onclick='pageChange(pageNumber - 1)') Previous
+                    .categoryButton.pageButton(onclick='pageChange(pageNumber + 1)') Next
 
 block js
-  script(src=webpackAssetJS('leaderboards'))
-  
+    script(src=webpackAssetJS('leaderboards'))
