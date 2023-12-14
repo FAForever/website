@@ -37,11 +37,11 @@ block content
                     name='clan_description',
                     title='description',
                     required='required',
-                    placeholder='The description players will see when they look your clan'
+                    placeholder='The description players will see when they view your clan'
                 ) #{ clan_description }
                 br
 
-                button(type='submit') Update Clan Settings
+                button.bigButton(type='submit') Update Clan Settings
                 br
                 br
                 hr
@@ -56,5 +56,5 @@ block content
                 action='/clans/destroy',
                 onsubmit='return confirm(\'THIS OPERATION IS DEFINITIVE. Press OK to confirm you want to delete your clan\');'
             )
-                button(type='submit') Delete my clan
+                button(type='submit') Delete My Clan
             br

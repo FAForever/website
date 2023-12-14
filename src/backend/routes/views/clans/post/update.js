@@ -8,9 +8,10 @@ exports = module.exports = [
     )
         .notEmpty()
         .isLength({ max: 3 }),
-    body('clan_description', 'Please add a description for your clan')
-        .notEmpty()
-        .isLength({ max: 1000 }),
+    body('clan_description', 'Cannot exceed 1000 characters').isLength({
+        max: 1000,
+    }),
+    body('clan_description', 'Cannot be empty').notEmpty(),
     body('clan_name', "Please indicate your clan's name")
         .notEmpty()
         .isLength({ max: 40 }),
