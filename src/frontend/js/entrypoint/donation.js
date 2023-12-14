@@ -6,28 +6,27 @@ Highcharts.chart('container', {
         plotBorderWidth: null,
         plotShadow: true,
         backgroundColor: 'transparent',
-        type: 'pie'
-
+        type: 'pie',
     },
     credits: {
-        enabled: false
+        enabled: false,
     },
     exporting: {
-        enabled: false
+        enabled: false,
     },
     title: {
         text: 'How FAF Uses Donations',
         style: {
             color: '#ffffff',
             fontSize: '30px',
-            fontFamily: 'electrolize'
-        }
+            fontFamily: 'electrolize',
+        },
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
     },
     accessibility: {
-        enabled: false
+        enabled: false,
     },
     plotOptions: {
         pie: {
@@ -41,33 +40,37 @@ Highcharts.chart('container', {
                 format: '<h2>{point.name}</h2>: {point.percentage:.1f} %',
                 style: {
                     fontSize: '18px',
-                    fontFamily: 'electrolize'
-                }
-            }
-        }
+                    fontFamily: 'electrolize',
+                },
+            },
+        },
     },
     dataLabels: {
         style: {
-            color: '#ffffff'
-        }
+            color: '#ffffff',
+        },
     },
-    series: [{
-        name: 'Expenses',
-        colorByPoint: true,
-        color: '#ffffff',
+    series: [
+        {
+            name: 'Expenses',
+            colorByPoint: true,
+            color: '#ffffff',
 
-        data: [{
-            name: 'Infrastructure Costs',
-            y: 56,
-            sliced: true,
-            color: '#7376a8',
-            selected: true
-
-        }, {
-            name: 'Tournament Prizes',
-            y: 44,
-            color: '#dadada',
-            selected: true
-        }]
-    }]
+            data: [
+                {
+                    name: 'Infrastructure Costs',
+                    y: 56,
+                    sliced: true,
+                    color: '#7376a8',
+                    selected: true,
+                },
+                {
+                    name: 'Tournament Prizes',
+                    y: 44,
+                    color: '#dadada',
+                    selected: true,
+                },
+            ],
+        },
+    ],
 })

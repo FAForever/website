@@ -13,20 +13,29 @@ exports = module.exports = function (req, res) {
 
     const overallRes = res
 
-    request.post({
-        url: process.env.API_URL + '/users/resyncAccount',
-        headers: { Authorization: 'Bearer ' + req.requestContainer.get('UserService').getUser()?.oAuthPassport.token }
-    }, function (err, res, body) {
-        if (err || res.statusCode !== 200) {
-            error.parseApiErrors(body, flash)
-        } else {
-        // Successfully account resync
-            flash.class = 'alert-success'
-            flash.messages = [{ msg: 'Your account was resynced successfully.' }]
-            flash.type = 'Success!'
-        }
+    request.post(
+        {
+            url: process.env.API_URL + '/users/resyncAccount',
+            headers: {
+                Authorization:
+                    'Bearer ' +
+                    req.requestContainer.get('UserService').getUser()
+                        ?.oAuthPassport.token,
+            },
+        },
+        function (err, res, body) {
+            if (err || res.statusCode !== 200) {
+                error.parseApiErrors(body, flash)
+            } else {
+                // Successfully account resync
+                flash.class = 'alert-success'
+                flash.messages = [
+                    { msg: 'Your account was resynced successfully.' },
+                ]
+                flash.type = 'Success!'
+            }
 
-        overallRes.render('account/confirmResyncAccount', { flash })
-    }
+            overallRes.render('account/confirmResyncAccount', { flash })
+        }
     )
 }

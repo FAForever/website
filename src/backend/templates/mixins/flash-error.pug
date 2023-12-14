@@ -1,7 +1,7 @@
 mixin flash-error(validationErrors)
     if validationErrors &&  validationErrors.messages
-        div.alert(class=validationErrors.class)
-          ul.validationErrors-errors
-              each error in validationErrors.messages.errors
-                if error.msg
-                  li <strong>#{validationErrors.type}</strong> !{error.msg}
+        .alert(class=validationErrors.class)
+            ul.validationErrors-errors
+                each error in validationErrors.messages.errors
+                    if error.msg
+                        li <strong>#{ validationErrors.type }</strong> !{ error.msg }

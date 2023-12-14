@@ -68,7 +68,9 @@ describe('Authenticate Middleware', function () {
             fail('did not protect')
         })
 
-        const res = await testSession.get('/').set('X-Requested-With', 'XMLHttpRequest')
+        const res = await testSession
+            .get('/')
+            .set('X-Requested-With', 'XMLHttpRequest')
         expect(res.status).toBe(401)
         expect(res.body).toEqual({ error: 'Unauthorized' })
     })

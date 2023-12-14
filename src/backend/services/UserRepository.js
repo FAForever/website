@@ -1,10 +1,10 @@
 class UserRepository {
-    constructor (javaApiClient) {
+    constructor(javaApiClient) {
         this.javaApiClient = javaApiClient
     }
 
-    fetchUser (oAuthPassport) {
-        return this.javaApiClient.get('/me').then(response => {
+    fetchUser(oAuthPassport) {
+        return this.javaApiClient.get('/me').then((response) => {
             const rawUser = JSON.parse(response.data).data
 
             let clan = null
@@ -12,9 +12,11 @@ class UserRepository {
             if (rawUser.attributes.clan) {
                 clan = {
                     id: parseInt(rawUser.attributes.clan.id),
-                    membershipId: parseInt(rawUser.attributes.clan.membershipId),
+                    membershipId: parseInt(
+                        rawUser.attributes.clan.membershipId
+                    ),
                     tag: rawUser.attributes.clan.tag,
-                    name: rawUser.attributes.clan.name
+                    name: rawUser.attributes.clan.name,
                 }
             }
 
@@ -23,7 +25,7 @@ class UserRepository {
                 name: rawUser.attributes.userName,
                 email: rawUser.attributes.email,
                 clan,
-                oAuthPassport
+                oAuthPassport,
             }
         })
     }

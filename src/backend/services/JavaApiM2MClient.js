@@ -3,15 +3,19 @@ const { ClientCredentials } = require('simple-oauth2')
 const { AuthFailed } = require('./ApiErrors')
 
 class JavaApiM2MClient {
-    static createInstance (clientId, clientSecret, host, javaApiBaseURL) {
+    static createInstance(clientId, clientSecret, host, javaApiBaseURL) {
         let passport = null
         const axios = new Axios({
-            baseURL: javaApiBaseURL
+            baseURL: javaApiBaseURL,
         })
 
         axios.interceptors.request.use(async (config) => {
             if (!passport || passport.expired()) {
-                passport = await JavaApiM2MClient.getToken(clientId, clientSecret, host)
+                passport = await JavaApiM2MClient.getToken(
+                    clientId,
+                    clientSecret,
+                    host
+                )
             }
             config.headers.Authorization = `Bearer ${passport.token.access_token}`
 
@@ -21,26 +25,25 @@ class JavaApiM2MClient {
         return axios
     }
 
-    static getToken (clientId, clientSecret, host) {
+    static getToken(clientId, clientSecret, host) {
         const tokenClient = new ClientCredentials({
             client: {
                 id: clientId,
-                secret: clientSecret
-
+                secret: clientSecret,
             },
             auth: {
                 tokenHost: host,
                 tokenPath: '/oauth2/token',
-                revokePath: '/oauth2/revoke'
+                revokePath: '/oauth2/revoke',
             },
             options: {
-                authorizationMethod: 'body'
-            }
+                authorizationMethod: 'body',
+            },
         })
 
         try {
             return tokenClient.getToken({
-                scope: ''
+                scope: '',
             })
         } catch (error) {
             throw new AuthFailed(error.toString())

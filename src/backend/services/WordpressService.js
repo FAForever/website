@@ -2,7 +2,7 @@ const { MutexService } = require('./MutexService')
 const wordpressTTL = 60 * 60
 
 class WordpressService {
-    constructor (cacheService, wordpressRepository, lockTimeout = 3000) {
+    constructor(cacheService, wordpressRepository, lockTimeout = 3000) {
         this.lockTimeout = lockTimeout
         this.cacheService = cacheService
         this.mutexServices = {
@@ -10,16 +10,16 @@ class WordpressService {
             tournament: new MutexService(),
             creators: new MutexService(),
             teams: new MutexService(),
-            newshub: new MutexService()
+            newshub: new MutexService(),
         }
         this.wordpressRepository = wordpressRepository
     }
 
-    getCacheKey (name) {
+    getCacheKey(name) {
         return 'WordpressService_' + name
     }
 
-    async getNews (ignoreCache = false) {
+    async getNews(ignoreCache = false) {
         const cacheKey = this.getCacheKey('news')
 
         if (this.cacheService.has(cacheKey) && ignoreCache === false) {
@@ -27,8 +27,7 @@ class WordpressService {
         }
 
         if (this.mutexServices.news.locked) {
-            await this.mutexServices.news.acquire(() => {
-            }, this.lockTimeout)
+            await this.mutexServices.news.acquire(() => {}, this.lockTimeout)
             return this.getNews()
         }
 
@@ -40,7 +39,7 @@ class WordpressService {
         return this.getNews()
     }
 
-    async getTournamentNews (ignoreCache = false) {
+    async getTournamentNews(ignoreCache = false) {
         const cacheKey = this.getCacheKey('tournament-news')
 
         if (this.cacheService.has(cacheKey) && ignoreCache === false) {
@@ -48,8 +47,7 @@ class WordpressService {
         }
 
         if (this.mutexServices.tournament.locked) {
-            await this.mutexService.acquire(() => {
-            }, this.lockTimeout)
+            await this.mutexService.acquire(() => {}, this.lockTimeout)
             return this.getTournamentNews()
         }
 
@@ -61,7 +59,7 @@ class WordpressService {
         return this.getTournamentNews()
     }
 
-    async getContentCreators (ignoreCache = false) {
+    async getContentCreators(ignoreCache = false) {
         const cacheKey = this.getCacheKey('content-creators')
 
         if (this.cacheService.has(cacheKey) && ignoreCache === false) {
@@ -69,8 +67,10 @@ class WordpressService {
         }
 
         if (this.mutexServices.creators.locked) {
-            await this.mutexServices.creators.acquire(() => {
-            }, this.lockTimeout)
+            await this.mutexServices.creators.acquire(
+                () => {},
+                this.lockTimeout
+            )
             return this.getContentCreators()
         }
 
@@ -82,7 +82,7 @@ class WordpressService {
         return this.getContentCreators()
     }
 
-    async getFafTeams (ignoreCache = false) {
+    async getFafTeams(ignoreCache = false) {
         const cacheKey = this.getCacheKey('faf-teams')
 
         if (this.cacheService.has(cacheKey) && ignoreCache === false) {
@@ -90,8 +90,7 @@ class WordpressService {
         }
 
         if (this.mutexServices.teams.locked) {
-            await this.mutexService.acquire(() => {
-            }, this.lockTimeout)
+            await this.mutexService.acquire(() => {}, this.lockTimeout)
             return this.getFafTeams()
         }
 
@@ -103,7 +102,7 @@ class WordpressService {
         return this.getFafTeams()
     }
 
-    async getNewshub (ignoreCache = false) {
+    async getNewshub(ignoreCache = false) {
         const cacheKey = this.getCacheKey('newshub')
 
         if (this.cacheService.has(cacheKey) && ignoreCache === false) {
@@ -111,8 +110,7 @@ class WordpressService {
         }
 
         if (this.mutexServices.newshub.locked) {
-            await this.mutexService.acquire(() => {
-            }, this.lockTimeout)
+            await this.mutexService.acquire(() => {}, this.lockTimeout)
             return this.getNewshub()
         }
 

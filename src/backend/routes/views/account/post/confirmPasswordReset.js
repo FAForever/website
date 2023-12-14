@@ -12,8 +12,10 @@ exports = module.exports = function (req, res) {
 
     // validate the input
     check('password', 'Password is required').notEmpty()
-    check('password', 'Password must be six or more characters').isLength({ min: 6 })
-    check('password', 'Passwords don\'t match').equals(req.body.password_confirm)
+    check('password', 'Password must be six or more characters').isLength({
+        min: 6,
+    })
+    check('password', "Passwords don't match").equals(req.body.password_confirm)
 
     // check the validation object for errors
     const errors = validationResult(req)
@@ -32,22 +34,28 @@ exports = module.exports = function (req, res) {
         const overallRes = res
 
         // Run post to reset endpoint
-        request.post({
-            url: process.env.API_URL + '/users/performPasswordReset',
-            form: { newPassword, token }
-        }, function (err, res, body) {
-            if (err || res.statusCode !== 200) {
-                error.parseApiErrors(body, flash)
-                return overallRes.render('account/confirmPasswordReset', { flash })
+        request.post(
+            {
+                url: process.env.API_URL + '/users/performPasswordReset',
+                form: { newPassword, token },
+            },
+            function (err, res, body) {
+                if (err || res.statusCode !== 200) {
+                    error.parseApiErrors(body, flash)
+                    return overallRes.render('account/confirmPasswordReset', {
+                        flash,
+                    })
+                }
+
+                // Successfully reset password
+                flash.class = 'alert-success'
+                flash.messages = [
+                    { msg: 'Your password was changed successfully.' },
+                ]
+                flash.type = 'Success!'
+
+                overallRes.render('account/confirmPasswordReset', { flash })
             }
-
-            // Successfully reset password
-            flash.class = 'alert-success'
-            flash.messages = [{ msg: 'Your password was changed successfully.' }]
-            flash.type = 'Success!'
-
-            overallRes.render('account/confirmPasswordReset', { flash })
-        }
         )
     }
 }

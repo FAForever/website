@@ -21,7 +21,7 @@ describe('Default Routes', function () {
         '/faf-teams',
         '/contribution',
         '/content-creators',
-        '/play'
+        '/play',
     ]
 
     test.each(arr)('responds with OK to %p', async (route) => {

@@ -6,7 +6,8 @@ exports = module.exports = function (req, res) {
     locals.section = 'account'
 
     if (req.query.token) {
-        locals.tokenURL = process.env.API_URL + '/users/activate?token=' + req.query.token
+        locals.tokenURL =
+            process.env.API_URL + '/users/activate?token=' + req.query.token
     } else {
         const flash = {}
         flash.type = 'Error!'

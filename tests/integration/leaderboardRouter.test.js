@@ -29,16 +29,20 @@ describe('Leaderboard Routes', function () {
 
     test('fails with 404 on unknown leaderboard', async () => {
         await testSession.get('/mock-login')
-        const response = await testSession.get('/leaderboards/this-is-not-valid.json')
+        const response = await testSession.get(
+            '/leaderboards/this-is-not-valid.json'
+        )
         expect(response.status).toBe(404)
-        expect(response.body).toEqual({ error: 'Leaderboard "this-is-not-valid" does not exist' })
+        expect(response.body).toEqual({
+            error: 'Leaderboard "this-is-not-valid" does not exist',
+        })
     })
 
     const arr = [
         '/leaderboards/1v1.json',
         '/leaderboards/2v2.json',
         '/leaderboards/4v4.json',
-        '/leaderboards/global.json'
+        '/leaderboards/global.json',
     ]
 
     test.each(arr)('responds with OK to %p', async (route) => {

@@ -1,7 +1,9 @@
 const getReports = async (javaApiClient) => {
     const maxDescriptionLength = 48
 
-    const response = await javaApiClient.get('/data/moderationReport?include=reportedUsers,lastModerator&sort=-createTime')
+    const response = await javaApiClient.get(
+        '/data/moderationReport?include=reportedUsers,lastModerator&sort=-createTime'
+    )
 
     if (response.status !== 200) {
         return []
@@ -27,7 +29,10 @@ const getReports = async (javaApiClient) => {
         if (report.relationships.lastModerator.data) {
             for (const l in reports.included) {
                 const user = reports.included[l]
-                if (user.type === 'player' && user.id === report.relationships.lastModerator.data.id) {
+                if (
+                    user.type === 'player' &&
+                    user.id === report.relationships.lastModerator.data.id
+                ) {
                     moderator = user.attributes.login
                     break
                 }
@@ -35,6 +40,7 @@ const getReports = async (javaApiClient) => {
         }
 
         let statusStyle = {}
+        // prettier-ignore
         switch (report.attributes.reportStatus) {
         case 'AWAITING':
             statusStyle = { color: '#806A15', 'background-color': '#FAD147' }
@@ -55,12 +61,23 @@ const getReports = async (javaApiClient) => {
             id: report.id,
             offenders: offenders.join(' '),
             creationTime: report.attributes.createTime,
-            game: report.relationships.game.data != null ? '#' + report.relationships.game.data.id : '',
+            game:
+                report.relationships.game.data != null
+                    ? '#' + report.relationships.game.data.id
+                    : '',
             lastModerator: moderator,
-            description: report.attributes.reportDescription.substr(0, maxDescriptionLength) + (report.attributes.reportDescription.length > maxDescriptionLength ? '...' : ''),
+            description:
+                report.attributes.reportDescription.substr(
+                    0,
+                    maxDescriptionLength
+                ) +
+                (report.attributes.reportDescription.length >
+                maxDescriptionLength
+                    ? '...'
+                    : ''),
             notice: report.attributes.moderatorNotice,
             status: report.attributes.reportStatus,
-            statusStyle
+            statusStyle,
         })
     }
 
@@ -78,8 +95,12 @@ module.exports = async (req, res) => {
     if (req.originalUrl === '/report_submitted') {
         flash = {
             class: 'alert-success ',
-            messages: { errors: [{ msg: 'You have successfully submitted your report' }] },
-            type: 'Success!'
+            messages: {
+                errors: [
+                    { msg: 'You have successfully submitted your report' },
+                ],
+            },
+            type: 'Success!',
         }
     } else if (req.query.flash) {
         const buff = Buffer.from(req.query.flash, 'base64')
@@ -94,6 +115,6 @@ module.exports = async (req, res) => {
         flash,
         reports: await getReports(req.requestContainer.get('JavaApiClient')),
         reportable_members: {},
-        offenders_names: offendersNames
+        offenders_names: offendersNames,
     })
 }

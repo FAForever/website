@@ -1,9 +1,9 @@
-async function getNewshub () {
+async function getNewshub() {
     const response = await fetch('/data/newshub.json')
     const data = await response.json()
     return await data
 }
-async function getTournament () {
+async function getTournament() {
     const response = await fetch('/data/tournament-news.json')
     const data = await response.json()
     return await data
@@ -14,13 +14,15 @@ const clientSpawn = document.getElementById('clientSpawn')
 const clientContainer = document.querySelectorAll('.clientContainer')
 const clientMainFeature = document.querySelectorAll('.clientMainFeature')
 
-function createArticles () {
+function createArticles() {
     getNewshub()
-        .then(data => {
+        .then((data) => {
             dataLength = data.length
             let fixedLinkingOrder = data.length - 1
             for (let i = 0; i < data.length - 1; i++) {
-                clientSpawn.insertAdjacentHTML('afterbegin', `<a target='_blank' href="${data[fixedLinkingOrder].link}">
+                clientSpawn.insertAdjacentHTML(
+                    'afterbegin',
+                    `<a target='_blank' href="${data[fixedLinkingOrder].link}">
     <div class="clientContainer column1">
         <div class="clientImage"></div>
         <div class="clientText">
@@ -28,11 +30,14 @@ function createArticles () {
             <div class="clientContent"></div>
         </div>
     </div>
-</a>`)
+</a>`
+                )
 
                 fixedLinkingOrder--
             }
-            clientMainFeature[0].insertAdjacentHTML('afterbegin', `<a class="featureSubGrid column9" target='_blank' href="${data[0].link}">
+            clientMainFeature[0].insertAdjacentHTML(
+                'afterbegin',
+                `<a class="featureSubGrid column9" target='_blank' href="${data[0].link}">
     <div class="featureContainer column5">
         <div class="featureImage"></div>
     </div>
@@ -42,15 +47,19 @@ function createArticles () {
             <div class="featureContent"></div>
         </div>
     </div>
-</a>`)
+</a>`
+            )
             return data
-        }).then(data => {
+        })
+        .then((data) => {
             const clientImage = document.querySelectorAll('.clientImage')
             const clientTitle = document.querySelectorAll('.clientTitle')
             const clientContent = document.querySelectorAll('.clientContent')
             for (let i = 0; i < data.length - 1; i++) {
                 const content = data[i + 1].content
-                clientImage[i].style.backgroundImage = `url("${data[i + 1].media}")`
+                clientImage[i].style.backgroundImage = `url("${
+                    data[i + 1].media
+                }")`
                 clientTitle[i].innerHTML = `${data[i + 1].title}`
                 clientContent[i].innerHTML = `${content.substring(0, 200)}`
             }
@@ -79,7 +88,9 @@ arrowRight.addEventListener('click', () => {
     } else {
         newsLimit++
         newsPosition = newsPosition - newsMove
-        clientSpawn.style.transform = `translateX(${newsPosition - columnGap}px)`
+        clientSpawn.style.transform = `translateX(${
+            newsPosition - columnGap
+        }px)`
         arrowLeft.style.display = 'grid'
     }
 })
@@ -88,7 +99,9 @@ arrowLeft.addEventListener('click', () => {
     if (newsLimit !== 0) {
         newsLimit--
         newsPosition = newsPosition + newsMove
-        clientSpawn.style.transform = `translateX(${newsPosition - columnGap + 10}px)`
+        clientSpawn.style.transform = `translateX(${
+            newsPosition - columnGap + 10
+        }px)`
     }
 })
 addEventListener('resize', () => {
@@ -98,12 +111,14 @@ addEventListener('resize', () => {
 })
 
 const clientTournamentSpawn = document.getElementById('tournamentSpawn')
-function createTournaments () {
-    getTournament()
-        .then(data => {
-            clientTournamentSpawn.insertAdjacentHTML('beforeend', `${data[0].content}`)
-            return data
-        })
+function createTournaments() {
+    getTournament().then((data) => {
+        clientTournamentSpawn.insertAdjacentHTML(
+            'beforeend',
+            `${data[0].content}`
+        )
+        return data
+    })
 }
 
 createTournaments()

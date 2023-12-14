@@ -39,6 +39,8 @@ describe('Clan Routes', function () {
     test.each(arr)('responds with 503 to %p', async (route) => {
         const res = await testSession.get(route)
         expect(res.statusCode).toBe(503)
-        expect(res.text).toContain('Sorry commanders, we failed to build enough pgens and are now in a tech upgrade')
+        expect(res.text).toContain(
+            'Sorry commanders, we failed to build enough pgens and are now in a tech upgrade'
+        )
     })
 })

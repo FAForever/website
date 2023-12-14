@@ -5,7 +5,11 @@ module.exports.webpackAsset = (webpackManifestJS) => {
                 return webpackManifestJS[asset]
             }
 
-            throw new Error('[error] middleware::webpackAsset Failed to find asset "' + asset + '"')
+            throw new Error(
+                '[error] middleware::webpackAsset Failed to find asset "' +
+                    asset +
+                    '"'
+            )
         }
         next()
     }

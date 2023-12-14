@@ -1,4 +1,4 @@
-async function getWordpress () {
+async function getWordpress() {
     const response = await fetch('/data/content-creators.json')
     const data = await response.json()
     const insertWordpress = document.getElementById('contentCreatorWordpress')

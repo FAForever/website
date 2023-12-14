@@ -17,7 +17,7 @@ describe('Privacy And TOS Routes', function () {
         '/tos-fr',
         '/tos-ru',
         '/rules',
-        '/cg'
+        '/cg',
     ]
 
     test.each(arr)('responds with OK to %p', async (route) => {

@@ -6,14 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let stillHere = 0
 
     for (let i = 0; i < navList.length; i++) {
-    // When you mouseover/click, menu appears
+        // When you mouseover/click, menu appears
         navList[i].addEventListener('mouseout', () => {
             stillHere = 1
             if (navAbsolute[i]) {
                 navAbsolute[i].classList.remove('navAbsoluteActive')
                 setTimeout(() => {
                     if (stillHere === 1) {
-                        navAbsolute.forEach(list => { list.style.opacity = '0%' })
+                        navAbsolute.forEach((list) => {
+                            list.style.opacity = '0%'
+                        })
                     }
                 }, 0)
             }
@@ -27,10 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 10)
             }
         })
-    // when you mouseout/leave, menu dissapears
+        // when you mouseout/leave, menu dissapears
     }
 
-    const mobileNavMenuContent = document.querySelectorAll('.mobileNavMenuContent')
+    const mobileNavMenuContent = document.querySelectorAll(
+        '.mobileNavMenuContent'
+    )
     const mobileNavElement = document.querySelectorAll('.mobileNavElement')
     const mobileNavMenu = document.querySelectorAll('.mobileNavMenu')
     const returnMenu = document.querySelector('#returnMenu')
@@ -38,28 +42,44 @@ document.addEventListener('DOMContentLoaded', () => {
     let mobileSameElementClicked = 7
 
     // Code that works out how the mobileNav menus are open
-    mobileNavMenu.forEach((element, index) => element.addEventListener('click', () => {
-        mobileNavMenuContent.forEach(item => { item.style.display = 'none' })
-        mobileNavMenu.forEach(item => { item.style.backgroundColor = '#262626' })
-        mobileNavElement.forEach(item => { item.style.display = 'none' })
-        returnMenu.style.display = 'none'
+    mobileNavMenu.forEach((element, index) =>
+        element.addEventListener('click', () => {
+            mobileNavMenuContent.forEach((item) => {
+                item.style.display = 'none'
+            })
+            mobileNavMenu.forEach((item) => {
+                item.style.backgroundColor = '#262626'
+            })
+            mobileNavElement.forEach((item) => {
+                item.style.display = 'none'
+            })
+            returnMenu.style.display = 'none'
 
-        if (mobileSameElementClicked !== index) {
-            returnMenu.style.display = 'block'
-            mobileNavMenu[index].style.display = 'block'
-            mobileNavMenu[index].style.backgroundColor = '#3F3F3FFF'
-            mobileNavMenuContent[index].style.display = 'block'
-            mobileSameElementClicked = index
-        } else {
-            mobileSameElementClicked = 7
-            mobileNavElement.forEach(item => { item.style.display = 'block' })
-        }
-    }))
+            if (mobileSameElementClicked !== index) {
+                returnMenu.style.display = 'block'
+                mobileNavMenu[index].style.display = 'block'
+                mobileNavMenu[index].style.backgroundColor = '#3F3F3FFF'
+                mobileNavMenuContent[index].style.display = 'block'
+                mobileSameElementClicked = index
+            } else {
+                mobileSameElementClicked = 7
+                mobileNavElement.forEach((item) => {
+                    item.style.display = 'block'
+                })
+            }
+        })
+    )
     // Clicking the return Menu Brings us back
     returnMenu.addEventListener('click', () => {
-        mobileNavMenuContent.forEach(item => { item.style.display = 'none' })
-        mobileNavMenu.forEach(item => { item.style.backgroundColor = '#262626' })
-        mobileNavElement.forEach(item => { item.style.display = 'block' })
+        mobileNavMenuContent.forEach((item) => {
+            item.style.display = 'none'
+        })
+        mobileNavMenu.forEach((item) => {
+            item.style.backgroundColor = '#262626'
+        })
+        mobileNavElement.forEach((item) => {
+            item.style.display = 'block'
+        })
         returnMenu.style.display = 'none'
     })
 
@@ -120,14 +140,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const highlightText = document.querySelectorAll('.highlightText')
     let highLigthCounter = 0
 
-    function highlightPulse () {
+    function highlightPulse() {
         if (highLigthCounter < 1) {
             highLigthCounter++
-            highlightText.forEach(element => { element.style.transition = '1s' })
-            highlightText.forEach(element => { element.style.color = '#FFFFFF' })
+            highlightText.forEach((element) => {
+                element.style.transition = '1s'
+            })
+            highlightText.forEach((element) => {
+                element.style.color = '#FFFFFF'
+            })
         } else {
             highLigthCounter--
-            highlightText.forEach(element => { element.style.color = '#f7941d' })
+            highlightText.forEach((element) => {
+                element.style.color = '#f7941d'
+            })
         }
     }
 

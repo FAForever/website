@@ -1,33 +1,42 @@
 const express = require('../../ExpressApp')
 const router = express.Router()
 
-function getNewsArticleBySlug (articles, slug) {
-    const [newsArticle] = articles.filter((entry) => {
-        return entry.slug === slug
-    }) ?? []
+function getNewsArticleBySlug(articles, slug) {
+    const [newsArticle] =
+        articles.filter((entry) => {
+            return entry.slug === slug
+        }) ?? []
 
     return newsArticle ?? null
 }
 
-function getNewsArticleByDeprecatedSlug (articles, slug) {
-    const [newsArticle] = articles.filter((entry) => {
-        return entry.bcSlug === slug
-    }) ?? []
+function getNewsArticleByDeprecatedSlug(articles, slug) {
+    const [newsArticle] =
+        articles.filter((entry) => {
+            return entry.bcSlug === slug
+        }) ?? []
 
     return newsArticle ?? null
 }
 
 router.get('/', async (req, res) => {
-    res.render('news', { news: await req.appContainer.get('WordpressService').getNews() })
+    res.render('news', {
+        news: await req.appContainer.get('WordpressService').getNews(),
+    })
 })
 
 router.get('/:slug', async (req, res) => {
-    const newsArticles = await req.appContainer.get('WordpressService').getNews()
+    const newsArticles = await req.appContainer
+        .get('WordpressService')
+        .getNews()
 
     const newsArticle = getNewsArticleBySlug(newsArticles, req.params.slug)
 
     if (newsArticle === null) {
-        const newsArticleByOldSlug = getNewsArticleByDeprecatedSlug(newsArticles, req.params.slug)
+        const newsArticleByOldSlug = getNewsArticleByDeprecatedSlug(
+            newsArticles,
+            req.params.slug
+        )
 
         if (newsArticleByOldSlug) {
             // old slug style, here for backward compatibility
@@ -42,7 +51,7 @@ router.get('/:slug', async (req, res) => {
     }
 
     res.render('newsArticle', {
-        newsArticle
+        newsArticle,
     })
 })
 

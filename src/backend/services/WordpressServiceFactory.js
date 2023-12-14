@@ -5,9 +5,12 @@ const cacheService = require('./CacheService')
 
 module.exports = (wordpressBaseURL) => {
     const config = {
-        baseURL: wordpressBaseURL
+        baseURL: wordpressBaseURL,
     }
     const wordpressClient = new Axios(config)
 
-    return new WordpressService(cacheService, new WordpressRepository(wordpressClient))
+    return new WordpressService(
+        cacheService,
+        new WordpressRepository(wordpressClient)
+    )
 }

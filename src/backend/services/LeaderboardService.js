@@ -2,16 +2,18 @@ const { MutexService } = require('./MutexService')
 const leaderboardTTL = 60 * 60 // 1 hours ttl as a relaxation for https://github.com/FAForever/website/issues/482
 
 class LeaderboardService {
-    constructor (cacheService, leaderboardRepository, lockTimeout = 3000) {
+    constructor(cacheService, leaderboardRepository, lockTimeout = 3000) {
         this.lockTimeout = lockTimeout
         this.cacheService = cacheService
         this.mutexService = new MutexService()
         this.leaderboardRepository = leaderboardRepository
     }
 
-    async getLeaderboard (id, ignoreCache = false) {
-        if (typeof (id) !== 'number') {
-            throw new Error('LeaderboardService:getLeaderboard id must be a number')
+    async getLeaderboard(id, ignoreCache = false) {
+        if (typeof id !== 'number') {
+            throw new Error(
+                'LeaderboardService:getLeaderboard id must be a number'
+            )
         }
 
         const cacheKey = 'leaderboard-' + id
@@ -21,8 +23,7 @@ class LeaderboardService {
         }
 
         if (this.mutexService.locked) {
-            await this.mutexService.acquire(() => {
-            }, this.lockTimeout)
+            await this.mutexService.acquire(() => {}, this.lockTimeout)
             return this.getLeaderboard(id)
         }
 

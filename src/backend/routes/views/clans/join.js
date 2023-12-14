@@ -9,10 +9,15 @@ exports = module.exports = async function (req, res) {
     const token = req.query.token
 
     try {
-        await req.requestContainer.get('ClanManagementService').acceptInvitation(token)
+        await req.requestContainer
+            .get('ClanManagementService')
+            .acceptInvitation(token)
         await req.asyncFlash('info', 'Clan joined!')
 
-        return res.redirect('/clans/view/' + req.requestContainer.get('UserService').getUser().clan.id)
+        return res.redirect(
+            '/clans/view/' +
+                req.requestContainer.get('UserService').getUser().clan.id
+        )
     } catch (e) {
         console.log(e.stack)
         let message = e.toString()

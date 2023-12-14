@@ -1,19 +1,28 @@
 const { JavaApiError, GenericJavaApiError } = require('./ApiErrors')
 
 class ClanManagementRepository {
-    constructor (javaApiClient) {
+    constructor(javaApiClient) {
         this.javaApiClient = javaApiClient
     }
 
-    async create (tag, name, description) {
+    async create(tag, name, description) {
         try {
-            const response = await this.javaApiClient.post('/clans/create' +
-                '?name=' + encodeURIComponent(name) +
-                '&tag=' + encodeURIComponent(tag) +
-                '&description=' + encodeURIComponent(description))
+            const response = await this.javaApiClient.post(
+                '/clans/create' +
+                    '?name=' +
+                    encodeURIComponent(name) +
+                    '&tag=' +
+                    encodeURIComponent(tag) +
+                    '&description=' +
+                    encodeURIComponent(description)
+            )
 
             if (response.status !== 200) {
-                throw new JavaApiError(response.status, response.config.url, JSON.parse(response.data) || [])
+                throw new JavaApiError(
+                    response.status,
+                    response.config.url,
+                    JSON.parse(response.data) || []
+                )
             }
         } catch (e) {
             if (e instanceof JavaApiError) {
@@ -24,15 +33,19 @@ class ClanManagementRepository {
         }
     }
 
-    async deleteClan (clanId) {
+    async deleteClan(clanId) {
         const response = await this.javaApiClient.delete('/data/clan/' + clanId)
 
         if (response.status !== 204) {
-            throw new JavaApiError(response.status, response.config.url, JSON.parse(response.data) || [])
+            throw new JavaApiError(
+                response.status,
+                response.config.url,
+                JSON.parse(response.data) || []
+            )
         }
     }
 
-    async update (id, tag, name, description) {
+    async update(id, tag, name, description) {
         const newClanObject = {
             data: {
                 type: 'clan',
@@ -40,21 +53,29 @@ class ClanManagementRepository {
                 attributes: {
                     description,
                     name,
-                    tag
-                }
-            }
+                    tag,
+                },
+            },
         }
 
         try {
-            const response = await this.javaApiClient.patch(`/data/clan/${id}`, JSON.stringify(newClanObject), {
-                headers: {
-                    'Content-Type': 'application/vnd.api+json',
-                    Accept: 'application/vnd.api+json'
+            const response = await this.javaApiClient.patch(
+                `/data/clan/${id}`,
+                JSON.stringify(newClanObject),
+                {
+                    headers: {
+                        'Content-Type': 'application/vnd.api+json',
+                        Accept: 'application/vnd.api+json',
+                    },
                 }
-            })
+            )
 
             if (response.status !== 204) {
-                throw new JavaApiError(response.status, response.config.url, JSON.parse(response.data) || [])
+                throw new JavaApiError(
+                    response.status,
+                    response.config.url,
+                    JSON.parse(response.data) || []
+                )
             }
         } catch (e) {
             if (e instanceof JavaApiError) {
@@ -65,12 +86,18 @@ class ClanManagementRepository {
         }
     }
 
-    async createInvite (clanId, playerId) {
+    async createInvite(clanId, playerId) {
         try {
-            const response = await this.javaApiClient.get(`/clans/generateInvitationLink?clanId=${clanId}&playerId=${playerId}`)
+            const response = await this.javaApiClient.get(
+                `/clans/generateInvitationLink?clanId=${clanId}&playerId=${playerId}`
+            )
 
             if (response.status !== 200) {
-                throw new JavaApiError(response.status, response.config.url, JSON.parse(response.data) || [])
+                throw new JavaApiError(
+                    response.status,
+                    response.config.url,
+                    JSON.parse(response.data) || []
+                )
             }
 
             const rawToken = JSON.parse(response.data)
@@ -85,12 +112,18 @@ class ClanManagementRepository {
         }
     }
 
-    async acceptInvitation (token) {
+    async acceptInvitation(token) {
         try {
-            const response = await this.javaApiClient.post(`/clans/joinClan?token=${token}`)
+            const response = await this.javaApiClient.post(
+                `/clans/joinClan?token=${token}`
+            )
 
             if (response.status !== 200) {
-                throw new JavaApiError(response.status, response.config.url, JSON.parse(response.data) || [])
+                throw new JavaApiError(
+                    response.status,
+                    response.config.url,
+                    JSON.parse(response.data) || []
+                )
             }
         } catch (e) {
             if (e instanceof JavaApiError) {
@@ -101,12 +134,18 @@ class ClanManagementRepository {
         }
     }
 
-    async removeClanMembership (membershipId) {
+    async removeClanMembership(membershipId) {
         try {
-            const response = await this.javaApiClient.delete(`/data/clanMembership/${membershipId}`)
+            const response = await this.javaApiClient.delete(
+                `/data/clanMembership/${membershipId}`
+            )
 
             if (response.status !== 204) {
-                throw new JavaApiError(response.status, response.config.url, JSON.parse(response.data) || [])
+                throw new JavaApiError(
+                    response.status,
+                    response.config.url,
+                    JSON.parse(response.data) || []
+                )
             }
         } catch (e) {
             if (e instanceof JavaApiError) {

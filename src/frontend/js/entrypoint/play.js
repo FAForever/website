@@ -2,7 +2,8 @@ import { Octokit } from 'octokit'
 
 const githubOrg = 'faforever'
 const githubRepository = 'downlords-faf-client'
-const githubFallbackUrl = 'https://github.com/FAForever/downlords-faf-client/releases/latest'
+const githubFallbackUrl =
+    'https://github.com/FAForever/downlords-faf-client/releases/latest'
 const downloadButtonId = 'faf-client-download'
 
 const startDownloadFile = (url) => window.location.assign(url)
@@ -10,9 +11,10 @@ const startDownloadFile = (url) => window.location.assign(url)
 const openFallbackDownloadPage = () => open(githubFallbackUrl, '_blank')
 
 const getWindowsDownloadLink = (response) => {
-    const [exeAsset] = response?.data?.assets?.filter?.(function (asset) {
-        return asset.name?.includes?.('.exe')
-    }) ?? []
+    const [exeAsset] =
+        response?.data?.assets?.filter?.(function (asset) {
+            return asset.name?.includes?.('.exe')
+        }) ?? []
 
     if (exeAsset) {
         try {

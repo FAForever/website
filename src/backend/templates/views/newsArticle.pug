@@ -1,19 +1,21 @@
 extends ../layouts/default
 block bannerMixin
-  
+
 block content
-  #emptyContainer
-    .newsAbsolute
-      a(href='/news')
-        button Back to News page
-    #newsBackground(style='background-image:url(\'/images/black' + Math.floor(Math.random() * 4) + '.jpg\')' )
-      #newsMain
-        .newsContainer.column12
-          h1#title=newsArticle.title
-        .newsContainer.column12
-          #featuredImage
-              img(src=newsArticle.media alt=newsArticle.title)
-        .newsContainer.column12
-          h1#authorDate=`By ${newsArticle.author} on ${newsArticle.date.substring(0, 10)}`
-        .newsContainer.column12
-          #content !{newsArticle.content}
+    #emptyContainer
+        .newsAbsolute
+            a(href='/news')
+                button Back to News page
+        #newsBackground(
+            style="background-image:url('/images/black" + Math.floor(Math.random() * 4) + ".jpg')"
+        )
+            #newsMain
+                .newsContainer.column12
+                    h1#title= newsArticle.title
+                .newsContainer.column12
+                    #featuredImage
+                        img(src=newsArticle.media, alt=newsArticle.title)
+                .newsContainer.column12
+                    h1#authorDate= `By ${newsArticle.author} on ${newsArticle.date.substring(0, 10)}`
+                .newsContainer.column12
+                    #content !{ newsArticle.content }

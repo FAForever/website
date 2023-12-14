@@ -1,5 +1,5 @@
 class JavaApiError extends Error {
-    constructor (status, url, error) {
+    constructor(status, url, error) {
         super('Failed request "' + url + '" with status "' + status + '"')
 
         this.status = status

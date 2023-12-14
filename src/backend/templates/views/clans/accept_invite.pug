@@ -2,9 +2,8 @@ extends ../../layouts/default
 block bannerMixin
 block content
     .row
-      .col-md-12
-        h1.account-title Accept invitation
-        h4.account-subtitle.text-center Click the button below to accept the invitation to join #{clanName}
-        a(href=acceptURL).faf-button Join #{clanName}
+        .col-md-12
+            h1.account-title Accept invitation
+            h4.account-subtitle.text-center Click the button below to accept the invitation to join #{ clanName }
+            a.faf-button(href=acceptURL) Join #{ clanName }
     br
-

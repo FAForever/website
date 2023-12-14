@@ -12,7 +12,10 @@ router.get(
 
         return next()
     },
-    passport.authenticate(appConfig.oauth.strategy, { failureRedirect: '/login', failureFlash: true }),
+    passport.authenticate(appConfig.oauth.strategy, {
+        failureRedirect: '/login',
+        failureFlash: true,
+    }),
     (req, res) => {
         res.redirect(res.locals.returnTo || '/')
     }

@@ -1,7 +1,33 @@
 {
-  "root": true,
-  "extends": ["standard"],
-  "rules": {
-    "indent": ["error", 4]
-  }
+    "root": true,
+    "extends": ["standard", "plugin:prettier/recommended"],
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": "error"
+    },
+    "overrides": [
+        {
+            "files": ["src/frontend/**/*.js"],
+            "env": {
+                "browser": true,
+                "es2020": true
+            }
+        },
+        {
+            "files": ["src/backend/**/*.js"],
+            "env": {
+                "node": true,
+                "es2020": true
+            }
+        },
+        {
+            "files": ["tests/**/*.js"],
+            "env": {
+                "es2020": true,
+                "node": true,
+                "jest": true,
+                "jasmine": true
+            }
+        }
+    ]
 }

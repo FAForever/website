@@ -13,7 +13,9 @@ describe('News Routes', function () {
         const res = await testSession.get('/news')
         expect(res.header['content-type']).toBe('text/html; charset=utf-8')
         expect(res.statusCode).toBe(200)
-        expect(res.text).toContain('Welcome to the patchnotes for the 3750 patch.')
+        expect(res.text).toContain(
+            'Welcome to the patchnotes for the 3750 patch.'
+        )
         expect(res.text).toContain('New FAF Website')
         expect(res.text).toContain('Game version 3738')
         expect(res.text).toContain('Weapon Target Checking Intervals')
@@ -23,7 +25,9 @@ describe('News Routes', function () {
         const res = await testSession.get('/news/balance-patch-3750-is-live')
         expect(res.header['content-type']).toBe('text/html; charset=utf-8')
         expect(res.statusCode).toBe(200)
-        expect(res.text).toContain('Welcome to the patchnotes for the 3750 patch.')
+        expect(res.text).toContain(
+            'Welcome to the patchnotes for the 3750 patch.'
+        )
     })
 
     test('responds to /:slug with redirect if called with old slug', async () => {

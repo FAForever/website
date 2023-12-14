@@ -1,17 +1,21 @@
 extends ../layouts/default
 block bannerMixin
-  
+
 block content
-  #articleStart
-    .articleTopTitle.column12
-      h2 Recent
-      h1.highlightText News
-    #articleMain.column12
-        each newsArticle in news
-            div(class=['articleContainer', 'column4'])
-                div.articleImage(style='background-image:url(' + newsArticle.media + ')' )
-                div.articleText
-                    h2.articleAuthorDate=`By ${newsArticle.author} on ${newsArticle.date.substring(0, 10)}`
-                    h1.articleTitle=newsArticle.title
-                    div.articleContent !{newsArticle.content.substring(0, 150)} ...
-                    button(onClick="window.location.href = '/news/" + newsArticle.slug + "'") Learn More
+    #articleStart
+        .articleTopTitle.column12
+            h2 Recent
+            h1.highlightText News
+        #articleMain.column12
+            each newsArticle in news
+                div(class=['articleContainer', 'column4'])
+                    .articleImage(
+                        style='background-image:url(' + newsArticle.media + ')'
+                    )
+                    .articleText
+                        h2.articleAuthorDate= `By ${newsArticle.author} on ${newsArticle.date.substring(0, 10)}`
+                        h1.articleTitle= newsArticle.title
+                        .articleContent !{ newsArticle.content.substring(0, 150) } ...
+                        button(
+                            onClick="window.location.href = '/news/" + newsArticle.slug + "'"
+                        ) Learn More

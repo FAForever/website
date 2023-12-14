@@ -1,7 +1,7 @@
 extends ../../layouts/default
 block content
     #clan-view
-        a(href="/clans") <- OVERVIEW
+        a(href='/clans') <- OVERVIEW
         <br />
         <br />
         .gridMainContainer
@@ -9,22 +9,22 @@ block content
                 table#clan-info
                     tr
                         td NAME
-                        td [#{clan.tag}] #{clan.name}
+                        td [#{ clan.tag }] #{ clan.name }
                     tr
                         td LEADER
                         if clan.leader
-                            td #{clan.leader.name} 👑
+                            td #{ clan.leader.name } 👑
                         else
                             td -
                     tr
                         td FOUNDER
                         if clan.founder
-                            td #{clan.founder.name}
+                            td #{ clan.founder.name }
                         else
                             td -
                     tr
                         td FOUNDED
-                        td #{clan.createTime}
+                        td #{ clan.createTime }
                     tr
                         td JOIN
                         if clan.requiresInvitation
@@ -32,13 +32,13 @@ block content
                         else
                             td Free For All
             .column8
-                div(style='white-space:pre-wrap') #{clan.description}
+                div(style='white-space: pre-wrap') #{ clan.description }
             .column12
                 if canLeave
-                    a(href='/clans/leave').faf-button Leave Clan
+                    a.faf-button(href='/clans/leave') Leave Clan
                 if isLeader
-                    a(href='/clans/invite').faf-button Create Invite
-                    a(href='/clans/manage').faf-button Update Clan
+                    a.faf-button(href='/clans/invite') Create Invite
+                    a.faf-button(href='/clans/manage') Update Clan
             .column12
                 table#clan-members
                     thead
@@ -49,10 +49,13 @@ block content
                     tbody
                         each member in clan.memberships
                             tr
-                                td #{member.name}
-                                td #{member.joinedAt}
+                                td #{ member.name }
+                                td #{ member.joinedAt }
                                 td
                                     if isLeader && member.membershipId !== userMembershipId
-                                        a(href='/clans/kick/' + member.membershipId onclick="return confirm('Kick?')").action-link Kick
+                                        a.action-link(
+                                            href='/clans/kick/' + member.membershipId,
+                                            onclick='return confirm(\'Kick?\')'
+                                        ) Kick
 block js
-    script( src=webpackAssetJS('clan'))
+    script(src=webpackAssetJS('clan'))

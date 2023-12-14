@@ -28,27 +28,34 @@ exports = module.exports = function (req, res) {
         const overallRes = res
 
         // Run post to reset endpoint
-        request.post({
-            url: process.env.API_URL + '/users/requestPasswordReset',
-            form: { identifier, recaptchaResponse }
-        }, function (err, res, body) {
-            if (err || res.statusCode !== 200) {
-                error.parseApiErrors(body, flash)
-                return overallRes.render('account/requestPasswordReset', {
+        request.post(
+            {
+                url: process.env.API_URL + '/users/requestPasswordReset',
+                form: { identifier, recaptchaResponse },
+            },
+            function (err, res, body) {
+                if (err || res.statusCode !== 200) {
+                    error.parseApiErrors(body, flash)
+                    return overallRes.render('account/requestPasswordReset', {
+                        flash,
+                        recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
+                    })
+                }
+
+                // Successfully reset password
+                flash.class = 'alert-success'
+                flash.messages = [
+                    {
+                        msg: 'Your password is in the process of being reset, please reset your password by clicking on the link provided in an email.',
+                    },
+                ]
+                flash.type = 'Success!'
+
+                overallRes.render('account/requestPasswordReset', {
                     flash,
-                    recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
+                    recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
                 })
             }
-
-            // Successfully reset password
-            flash.class = 'alert-success'
-            flash.messages = [{ msg: 'Your password is in the process of being reset, please reset your password by clicking on the link provided in an email.' }]
-            flash.type = 'Success!'
-
-            overallRes.render('account/requestPasswordReset', {
-                flash,
-                recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
-            })
-        })
+        )
     }
 }
