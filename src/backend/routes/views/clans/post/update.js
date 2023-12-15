@@ -53,7 +53,6 @@ exports = module.exports = [
 
             return res.render('clans/manage', {
                 clan_tag: req.body.clan_tag,
-                clan_id: req.body.clan_id,
                 clan_name: req.body.clan_name,
                 clan_description: req.body.clan_description,
             })
