@@ -54,12 +54,11 @@ block content
                                 td
                                     if isLeader && member.membershipId !== userMembershipId
                                         a.action-link(
-                                            href=`/clans/kick/${member.membershipId}`
+                                            href=`/clans/kick/${member.membershipId}`,
                                             onclick='return confirm(\'Kick?\')'
                                         ) Kick
-                                        a.action-link(
-                                            id='transfer-clan-ownership'
-                                            href=`/clans/transfer/${member.membershipId}`
+                                        a#transfer-clan-ownership.action-link(
+                                            href=`/clans/transfer/${member.membershipId}`,
                                             onclick='return confirm(\'Transfer Clan Ownership?\')'
                                         ) Make Leader
 
