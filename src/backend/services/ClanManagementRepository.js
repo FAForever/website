@@ -86,6 +86,50 @@ class ClanManagementRepository {
         }
     }
 
+    async transferOwnership(newOwnerId, clanId) {
+        try {
+            const transferRequestBody = {
+                data: {
+                    type: 'clan',
+                    id: clanId,
+                    relationships: {
+                        leader: {
+                            data: {
+                                id: newOwnerId,
+                                type: 'player',
+                            },
+                        },
+                    },
+                },
+            }
+
+            const response = await this.javaApiClient.patch(
+                '/data/clan/' + clanId,
+                JSON.stringify(transferRequestBody),
+                {
+                    headers: {
+                        'Content-Type': 'application/vnd.api+json',
+                        Accept: 'application/vnd.api+json',
+                    },
+                }
+            )
+
+            if (response.status !== 204) {
+                throw new JavaApiError(
+                    response.status,
+                    response.config.url,
+                    JSON.parse(response.data) || []
+                )
+            }
+        } catch (e) {
+            if (e instanceof JavaApiError) {
+                throw e
+            }
+
+            throw new GenericJavaApiError(e.toString())
+        }
+    }
+
     async createInvite(clanId, playerId) {
         try {
             const response = await this.javaApiClient.get(

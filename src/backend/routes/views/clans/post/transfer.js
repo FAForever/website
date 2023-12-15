@@ -2,7 +2,7 @@ const { body, validationResult, matchedData } = require('express-validator')
 const { JavaApiError } = require('../../../../services/ApiErrors')
 
 exports = module.exports = [
-    // validate the input
+    // Validations will need to change
     body('transfer_to', 'Please indicate the recipient name').notEmpty(),
     body(
         'clan_id',
@@ -11,8 +11,6 @@ exports = module.exports = [
 
     async (req, res) => {
         const errors = validationResult(req)
-
-        // Handle client-side errors
         if (!errors.isEmpty()) {
             return res.render('clans/manage', {
                 errors: {
@@ -26,17 +24,16 @@ exports = module.exports = [
             })
         }
 
-        // Sanitize req
-        const data = matchedData(req)
-        const clanId = data.body.clan_id
-        const owner = data.user.data.attributes.userName
-        const newOwner = data.body.transfer_to
-
+        // This will also need changed
+        const newOwner = matchedData(req).body.transfer_to
         try {
             await req.requestContainer
                 .get('ClanManagementService')
-                .transferOwnership(owner, newOwner, clanId)
-            await req.asyncFlash('info', 'Clan ownership transferred')
+                .transferOwnership(newOwner)
+            await req.asyncFlash(
+                'info',
+                `Clan ownership transferred to ${newOwner}`
+            )
 
             return res.redirect(
                 '/clans/view/' +
