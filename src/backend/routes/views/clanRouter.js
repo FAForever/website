@@ -34,7 +34,7 @@ router.get(
     require('./clans/kick')
 )
 router.get(
-    '/transfer/:memberId',
+    '/transfer/:userId',
     middlewares.isAuthenticated(),
     require('./clans/transfer')
 )
