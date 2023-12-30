@@ -36,12 +36,17 @@ class ClanManagementService {
         }
     }
 
-    async transferOwnership(newOwnerMemberId, clanId) {
-        const newOwnerUser =
+    async transferOwnership(newOwnerMemberId) {
+        const clanMembership =
             await this.clanService.getClanMembership(newOwnerMemberId)
+
+        const newOwnerMember = Object.values(clanMembership.members).find(
+            (member) => member.membershipId === newOwnerMemberId
+        )
+
         await this.clanManagementRepository.transferOwnership(
-            newOwnerUser.id,
-            clanId
+            newOwnerMember.id,
+            clanMembership.clan_id
         )
         try {
             this.clanService

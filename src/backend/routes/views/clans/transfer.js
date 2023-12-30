@@ -7,26 +7,19 @@ exports = module.exports = [
         try {
             await req.requestContainer
                 .get('ClanManagementService')
-                .transferOwnership(newOwnerMemberId, clanId)
+                .transferOwnership(newOwnerMemberId)
             await req.asyncFlash('info', 'Clan ownership transferred')
 
-            return res.redirect(`/clans/view/${clanId}`, {
-                clan_tag: req.body.clan_tag,
-                clan_name: req.body.clan_name,
-                clan_description: req.body.clan_description,
-            })
+            return res.redirect(`/clans/view/${clanId}`)
         } catch (e) {
+            console.log('<==============HIT ERROR ==============>')
             let message = e.toString()
             if (e instanceof JavaApiError && e.error?.errors) {
                 message = e.error.errors[0].detail
             }
 
             await req.asyncFlash('error', message)
-            return res.redirect(`/clans/view/${clanId}`, {
-                clan_tag: req.body.clan_tag,
-                clan_name: req.body.clan_name,
-                clan_description: req.body.clan_description,
-            })
+            return res.redirect(`/clans/view/${clanId}`)
         }
     },
 ]
