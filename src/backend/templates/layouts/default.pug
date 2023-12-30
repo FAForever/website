@@ -293,6 +293,14 @@ html(lang='en')
                             a(href='https://forum.faforever.com/') FORUMS
 
             script(src=webpackAssetJS('navigation'))
+            script(
+                src='https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js',
+                crossorigin='anonymous'
+            )
+            script(type='text/javascript').
+                if (typeof Snowflakes !== 'undefined') {
+                    new Snowflakes()
+                }
 
             //- Include template-specific javascript files by extending the js block
             block js
