@@ -26,7 +26,7 @@ This is a short overview of the rules. For any moderating purpose, only the comp
 - **Do not harass, defame, or discriminate** other players based on their sexual orientation, gender, race, culture, religion, nationality.
 - **Do not invade other people's privacy.**
 - **Do not use FAF to violate any laws.**
-- **Do not abuse by using multiple accounts.**
+- **Do not create more than one account**
 - **Do not manipulate your account information.**
 - **Do not abuse any game bugs and/or exploits.** [Exploits are listed here](https://forum.faforever.com/topic/203/list-of-banned-exploits)
 - **Do not discuss drugs, illegal content or pornography.**
@@ -44,13 +44,13 @@ This is a short overview of the rules. For any moderating purpose, only the comp
 
 - Respecting other community members is important. You will always respect your fellow community members. You will not harass or attack other users. You will respect the rights of other users to have their own opinions.
 
-- You will not communicate any material that is knowingly false and/or defamatory, inaccurate, abusive, hateful, harassing, derogatory to someone’s sexual orientation, race, culture, religion, threatening, invasive of a person’s privacy or in violation of any law. 
+- You will not communicate any material that is knowingly false and/or defamatory, inaccurate, abusive, hateful, harassing, derogatory to someone’s sexual orientation, race, culture, religion, threatening, invasive of a person’s privacy or in violation of any law.
 
 - For your protection, you should not send any personal identifiable information about yourself in your messages.
 
 - Action may be taken on a user account without prior warning or notice. You remain solely responsible for your behaviour and actions and you agree that FAF and it's agents are blameless if actions are taken toward you or your accounts.
 
-- Objectionable content should be brought to the attention of the moderation team immediately. Send a private message to a moderator in chat or to the IRC Moderator usergroup on the forums, or submit a report form from here : and the matter will be processed as soon as possible. 
+- Objectionable content should be brought to the attention of the moderation team immediately. Send a private message to a moderator in chat or to the IRC Moderator usergroup on the forums, or submit a report form from here : and the matter will be processed as soon as possible.
 
 - Do not create copies of maps already in the vault with minor tweaks without asking the M+M Councillor or anyone they ask to arbitrate.
 
@@ -65,7 +65,7 @@ For example, sharing an account or playing with a banned user who is avoiding th
 
 - You will **not exploit any bugs or loopholes** in any of the services. You can find a list of exploits here: [exploits](https://forum.faforever.com/topic/203/list-of-banned-exploits)
 
-- If you discover any exploit report it to tech support: [tech support](https://forum.faforever.com/category/8/game-issues-and-gameplay-questions) 
+- If you discover any exploit report it to tech support: [tech support](https://forum.faforever.com/category/8/game-issues-and-gameplay-questions)
 - You will not **lose on purpose** to lower your rating, your rating can be reset in addition to any other sanctions that may apply.
 - You will **not manipulate your rating** in any way.
 - You will **not ruin the game intentionally** by any means.
@@ -79,7 +79,7 @@ We will list what sort of UI mods are not allowed here. This includes:
 - All autoclickers
 
 If you are unsure if what you are using/developing is allowed, send a message to the moderation team, which contains instructions on how to find said mod/a download link, a description and we will inform you as soon as possible.
-This list may change. 
+This list may change.
 
 ## Communicating on FAF
 When communicating through FAF the following is prohibited:
@@ -95,7 +95,7 @@ When communicating through FAF the following is prohibited:
 - Spam or content of a spammy nature, and material that degrades the quality of the communication medium.
 
 The userbase for this lobby is international in nature, as such #aeolus is generally reserved for English chat. Quick questions or brief conversations in other languages are allowed, but if asked to stop, they should quickly.
-There are language channels for **#russian, #german** and **#french**. 
+There are language channels for **#russian, #german** and **#french**.
 
 **The creation of IRC bots to enhance chat is encouraged, provided they behave in an appropriate manner.**
 
@@ -132,19 +132,19 @@ In addition to the FAF rules:
 
 We reserve the right to delete, lock, move and edit any posts on the message board. Action may be taken on a post or on a user account without prior warning or notice. **You remain solely responsible for the content of your posts**, FAF and its agents are blameless if actions are taken toward you or your accounts.
 ## Violations and Penalties:
-If, for any reason, you are in violation of any of the rules of FAF then your privileges to use FAF services will be reviewed by the moderation team. The penalties range from being given a severe warning as to future conduct, a timed ban (for a specified time), a total forum/lobby ban (you may still play on FAF) or a total FAF ban (you will not be able to play on FAF). 
-If the matter warrants it then you might also be reported to your ISP/appropriate authorities. 
+If, for any reason, you are in violation of any of the rules of FAF then your privileges to use FAF services will be reviewed by the moderation team. The penalties range from being given a severe warning as to future conduct, a timed ban (for a specified time), a total forum/lobby ban (you may still play on FAF) or a total FAF ban (you will not be able to play on FAF).
+If the matter warrants it then you might also be reported to your ISP/appropriate authorities.
 
 **The moderation team has the final say over what constitutes a violation of these Community Rules, and reserve the right to apply penalties at their discretion.**
 
-- Warnings and notices from community staff will be sent via private message. It is your responsibility to check your private messages for any notices that may occur. 
+- Warnings and notices from community staff will be sent via private message. It is your responsibility to check your private messages for any notices that may occur.
 - All situations will be dealt with on a case by case basis.
 
 - Testing the boundaries of the rules will often result in more severe penalties, and the boundaries of the rules are reserved for the moderation team to define. Attempts to incite action from and harrass the moderation team will result in penalties, just as they would for other members of the FAF community.
 - Minor infractions that do not justify a penalty alone will be nonetheless recorded and when a sufficient number is reached, penalties can be applied.
 - Repeat offenses are taken seriously. If you do not apply effort in changing your behaviour for the better, penalties that are more severe will be applied, and could escalate into a total FAF ban from a series of minor infractions.
 ## Appealing bans & contacting moderation
-If you feel you have been mistreated or that your ban is unjustified, you can always appeal moderation decisions by contacting the moderation team. 
+If you feel you have been mistreated or that your ban is unjustified, you can always appeal moderation decisions by contacting the moderation team.
 You can also always contact a moderator via private messages, either via the forums or the chat in the client.
 The official way is to send a message to the moderation team via email to the following address: **moderation@faforever.com**
 
