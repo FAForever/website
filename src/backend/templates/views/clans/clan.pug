@@ -54,8 +54,13 @@ block content
                                 td
                                     if isLeader && member.membershipId !== userMembershipId
                                         a.action-link(
-                                            href='/clans/kick/' + member.membershipId,
+                                            href=`/clans/kick/${member.membershipId}`,
                                             onclick='return confirm(\'Kick?\')'
                                         ) Kick
+                                        a.action-link(
+                                            href=`/clans/transfer/${member.id}`,
+                                            onclick='return confirm(\'Transfer Clan Ownership?\')'
+                                        ) Make Leader
+
 block js
     script(src=webpackAssetJS('clan'))

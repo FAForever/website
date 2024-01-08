@@ -36,6 +36,22 @@ class ClanManagementService {
         }
     }
 
+    async transferOwnership(newOwnerId) {
+        await this.clanManagementRepository.transferOwnership(
+            newOwnerId,
+            this.userService.getUser().clan.id
+        )
+        try {
+            this.clanService
+                .getAll(true)
+                .then(() => {})
+                .catch((e) => console.error(e.stack))
+            await this.userService.refreshUser()
+        } catch (e) {
+            console.error(e.stack)
+        }
+    }
+
     async deleteClan() {
         const clanId = parseInt(this.userService.getUser()?.clan.id)
         if (!clanId) {

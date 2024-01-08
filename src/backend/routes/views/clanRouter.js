@@ -33,6 +33,11 @@ router.get(
     middlewares.isAuthenticated(),
     require('./clans/kick')
 )
+router.get(
+    '/transfer/:userId',
+    middlewares.isAuthenticated(),
+    require('./clans/transfer')
+)
 router.get('/leave', middlewares.isAuthenticated(), leave)
 router.post('/leave', middlewares.isAuthenticated(), leave)
 router.get('/join', middlewares.isAuthenticated(), require('./clans/join'))
