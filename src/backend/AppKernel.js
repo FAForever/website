@@ -45,7 +45,8 @@ class AppKernel {
 
     bootstrapExpress() {
         this.expressApp = express()
-
+        this.expressApp.locals.discordUrl = 'https://discord.gg/mXahVSKGVb'
+        this.expressApp.locals.forumUrl = 'https://forum.faforever.com/'
         this.expressApp.locals.clanInvitations = {}
         this.expressApp.use((req, res, next) => {
             res.locals.navLinks = []

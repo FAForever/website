@@ -57,11 +57,11 @@ html(lang='en')
             .topNavContainer
                 a.topnav_item(href='/donation') Support FAF
             .topNavContainer
-                a.topnav_item(href='https://forum.faforever.com/') Forums
+                a.topnav_item(href=forumUrl) Forums
             .topNavContainer
                 a.topnav_item(href='https://wiki.faforever.com/en/home') Wiki
             .topNavContainer
-                a(href='https://discord.gg/mXahVSKGVb')
+                a(href=discordUrl)
                     img(src='/images/fontAwesomeIcons/discord.svg')
             .topNavContainer
                 a(href='https://www.youtube.com/c/ForgedAllianceForever')
@@ -211,7 +211,7 @@ html(lang='en')
                         a(href='/logout') Log Out
 
                 .mobileSocialMedia
-                    a(href='https://discord.gg/mXahVSKGVb')
+                    a(href=discordUrl)
                         img(src='/images/fontAwesomeIcons/discord.svg')
                     a(href='https://www.twitch.tv/faflive')
                         img(src='/images/fontAwesomeIcons/twitch.svg')
@@ -220,7 +220,7 @@ html(lang='en')
                     a(href='https://github.com/FAForever')
                         img(src='/images/fontAwesomeIcons/github.svg')
                 .mobileOtherLinks
-                    a(href='https://forum.faforever.com/') Forums
+                    a(href=forumUrl) Forums
                     a(href='https://wiki.faforever.com/en/home') FAF Wiki
             .splatForgedBorder.transformationReverse.absoluteBottom
                 .movingBackground1
@@ -288,9 +288,9 @@ html(lang='en')
 
                     ul CONTACT US
                         li
-                            a(href='https://discord.gg/mXahVSKGVb') DISCORD
+                            a(href=discordUrl) DISCORD
                         li
-                            a(href='https://forum.faforever.com/') FORUMS
+                            a(href=forumUrl) FORUMS
 
             script(src=webpackAssetJS('navigation'))
             script(
