@@ -15,23 +15,19 @@ block content
 
                 hr
                 h3
-                    strong Lost account / returning player
+                    strong
+                        a(
+                            href='/account/requestPasswordReset',
+                            target='_blank'
+                        ) Lost Account or Returning Player
                 p Creating and operating multiple accounts is prohibited.
-                p If you have a FAF account you can no longer access, please attempt to&nbsp;
-                    a(
-                        href='https://help.steampowered.com/en/wizard/HelpWithLoginInfo?reset=1&issueid=408',
-                        target='_blank'
-                    ) reset your Steam password.
-                p For further assistance, contact the moderation team via&nbsp;
-                    a(href=discordUrl, target='_blank') Discord
-                    |
-                    | or the&nbsp;
-                    a(href=forumUrl, target='_blank') Forums.
                 form(
                     method='post',
                     action='/account/register',
                     data-toggle='validator'
                 )
+                    h2
+                        strong New Players
                     +username
                     br
                     br
