@@ -4,9 +4,10 @@ block bannerMixin
 block content
     .playMain
         .playInnerGrid
+            h1 How to link FAF Account to Steam
+                p.highlightText Shouldn't take more than 1-2 minutes.
             .playContainer
-                h1 How to link FAF account to Steam?
-                    p Shouldn't take more than 1-2 minutes.
+                h2 Your Steam account must be public to link
                 .playContentContainer
                     label Go to your Profile inside the Steam client -> Edit Profile -> Privacy Settings -> Set Game details to "Public"
                     img(src='/images/steamGOG/steamPublic.jpg')
@@ -17,9 +18,9 @@ block content
                         button Link your FAF account to Steam
                     img(src='/images/steamGOG/steamLogin.jpg')
                     label Make sure the flash message below states you are connected.
-                    p Flash Message:
+                    label Flash Message:
                     +flash-messages(flash)
-                    p If you encounter issues linking then you may also need to set the game to be public
+                    label If you encounter issues linking then you may also need to set the game to be public
                     label Login to steam in your browser -> Games -> Supreme commander -> "Unmark as private"
                     img(src='/images/steamGOG/steamBrowserGames.jpg')
                     img(src='/images/steamGOG/steamBrowserGameSettings.jpg')

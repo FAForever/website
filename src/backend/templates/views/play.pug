@@ -3,14 +3,15 @@ block bannerMixin
 block content
     .playMain
         .playInnerGrid
-            h1 Play the best RTS out there
+            h1 Play the Best RTS out There
                 p.highlightText Join hundreds of players on the battlefield
             .playContainer
-                h2 Before installing FAF<br><small> Doing these now will ensure an easy installation later and avoid issues.</small>
+                h2 Before installing FAF
+                    p Doing these now will ensure an easy installation later and avoid issues.
                 .playContentContainer
                     label Buy and install Supreme Commander:Forged Alliance (SC:FA) via Steam or GOG.
                     label Make sure to run SC:FA and start a skirmish game (you can quit out after it begins)
-                    .div
+                    div
                         a(
                             href='https://store.steampowered.com/app/9420/Supreme_Commander_Forged_Alliance',
                             target='_blank'
@@ -22,11 +23,11 @@ block content
                         )
                             button Buy on GOG
                     label Create and activate your FAF account
-                    .div
+                    div
                         a(href='/account/register', target='_blank')
                             button Register
                     label Link Steam or GOG account to your FAF account.
-                    .div
+                    div
                         a(href='/account/link', target='_blank')
                             button Link Steam Account
                         a(href='/account/linkGog', target='_blank')
@@ -34,16 +35,16 @@ block content
                 h2 Why do I need to link my Steam/GOG account to FAF?
                     p FAF as an organization doesn't own the copyright or trademark to SC:FA (Square Enix does). <br> Therefore, we need to verify you own a copy of SC:FA to prevent piracy.
 
-            h2.highlightText Checked everything above?
+            h2.highlightText Completed everything above?
             h2.highlightText Then follow these easy steps to play FAF
 
             .playContainer
                 .playContentContainer
                     h1 1 - Download and install FAF
                     p Download the FAF Client and install it. FAF is open source and safe to use. <br> If your Windows computer stops you from running FAF, click on "More info" and you'll be able to run it. <br> This happens because FAF doesn't pay Microsoft for security certifications. So it's an "unrecognized app" for Windows. <br> If you have any issues or troubleshooting, join our Discord or use our forum for help.
-                    .div
-                        a#faf-client-download(href='#')
-                            button Download FAF
+                    a#faf-client-download(href='#')
+                        button Download FAF
+                    div
                         a(href=discordUrl)
                             button Discord
                         a(href=forumUrl)
@@ -52,7 +53,8 @@ block content
                             href='https://wiki.faforever.com/en/Play/Linux-Install'
                         )
                             button Linux Installation
-                    img(src='/images/windowsDefender.png')
+                    .smallerImages
+                        img(src='/images/windowsDefender.png')
 
             .playContainer
                 .playContentContainer

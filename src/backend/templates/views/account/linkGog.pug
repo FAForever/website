@@ -5,21 +5,22 @@ block bannerMixin
 block content
     .playMain
         .playInnerGrid
+            h1 How to link FAF Account to GOG
+                p.highlightText Shouldn't take more than 1-2 minutes.
             .playContainer
-                h2 How to link FAF account to GOG?
-                    p Shouldn't take more than 1-2 minutes.
+                h2 Your GOG account must be public to link
                 .playContentContainer
                     label Go to your Profile inside GOG -> Order & Settings -> Privacy -> Set everything to Everyone/All visitors
                     label Once the linking is done, you can revert this.
-                    .gogSmallerImages
+                    .smallerImages
                         img(src='/images/steamGOG/gog1.jpg')
                         img(src='/images/steamGOG/gog2.jpg')
                     img(src='/images/steamGOG/gog3.jpg')
 
                     label Switch your profile's about you to the code below (so we can make sure you own SC:FA).
-                    h2 #{ gogToken }
+                    h3 #{ gogToken }
                     img(src='/images/steamGOG/gog4.jpg')
-                    .gogSmallerImages
+                    .smallerImages
                         img(src='/images/steamGOG/gog5.jpg')
                         img(src='/images/steamGOG/gog6.jpg')
 
