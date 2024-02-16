@@ -17,23 +17,16 @@
     margin: 0 auto
     gap: 3em 0
     .playContainer
-      padding: 1em 0 
+      padding: 1em 0
       width: 100%
       border-radius: 20px
       text-align: center
       background-color: variables.$background-secondary
-      
-      img
-        width: 40%
-        height: 100%
+
       label
         margin: 0
         font-size: 18px
 
-      input
-        margin: 1em 0.5em
-        width: 0.75em
-        height: 0.75em
 
 
       a
@@ -43,27 +36,33 @@
           font-size: 1em
           text-align: center
           display: block
-          
+
       h2
         padding: 1em
         font-weight: 600
         p
           font-weight: normal
-    .playCheckboxContainer
+    .playContentContainer
       padding: 0 0.25em
-      text-align: left
-      display: inline-block
+      margin: 0 0.25em
+      text-align: center
+      display: grid
+      justify-items: center
+      gap: 1.25em
       img
-        width: 75%
-      .gogSmallerImage
+        max-width: 100%
+      .smallerImages
+        display: inline-flex
+        justify-content: space-between
+        flex-direction: row
         img
-          width: 30%
-      .gogSmallerImage2
-        img
-          width: 45%
+          flex-grow: 1
+          padding: 1.25em .75em
+          max-height: 500px
       .displayBlock
         input
           width: initial
+
 
 @media (max-width: 1000px)
   .playMain
@@ -72,3 +71,7 @@
     .playInnerGrid
       .playContainer
         padding: 1em 0.1em
+        .playContentContainer
+          .smallerImages
+            flex-direction: column
+

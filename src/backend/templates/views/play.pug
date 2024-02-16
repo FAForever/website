@@ -1,100 +1,84 @@
 extends ../layouts/default
-
 block bannerMixin
-
 block content
     .playMain
-        h1 Play the best RTS out there
-        h2.highlightText Join hundreds of players on the battlefield
-
-        br
-
         .playInnerGrid
+            h1 Play the Best RTS out There
+                p.highlightText Join hundreds of players on the battlefield
             .playContainer
-                h1 Before installing FAF
-                p Doing these now will ensure an easy installation later and avoid issues.
-
-                .playCheckboxContainer
-                    input(type='checkbox') 
+                h2 Before installing FAF
+                    p Doing these now will ensure an easy installation later and avoid issues.
+                .playContentContainer
                     label Buy and install Supreme Commander:Forged Alliance (SC:FA) via Steam or GOG.
-                    br
-                    a(
-                        href='https://store.steampowered.com/app/9420/Supreme_Commander_Forged_Alliance',
-                        target='_blank'
-                    )
-                        button Buy on Steam
-                    a(
-                        href='https://www.gog.com/en/game/supreme_commander_gold_edition',
-                        target='_blank'
-                    )
-                        button Buy on GOG
-                    br
-                    input(type='checkbox')
+                    label Make sure to run SC:FA and start a skirmish game (you can quit out after it begins)
+                    div
+                        a(
+                            href='https://store.steampowered.com/app/9420/Supreme_Commander_Forged_Alliance',
+                            target='_blank'
+                        )
+                            button Buy on Steam
+                        a(
+                            href='https://www.gog.com/en/game/supreme_commander_gold_edition',
+                            target='_blank'
+                        )
+                            button Buy on GOG
                     label Create and activate your FAF account
-                    br
-                    a(href='/account/register', target='_blank')
-                        button Register
-
-                    br
-
-                    input(type='checkbox')
+                    div
+                        a(href='/account/register', target='_blank')
+                            button Register
                     label Link Steam or GOG account to your FAF account.
-                    br
-                    a(href='/account/link', target='_blank')
-                        button Link Steam Account
-                    a(href='/account/linkGog', target='_blank')
-                        button Link GOG Account
-                    br
-                    input(type='checkbox')
-                    label Run SC:FA locally once to create a profile in it (game generates necessary files doing so)
-                    br
-
+                    div
+                        a(href='/account/link', target='_blank')
+                            button Link Steam Account
+                        a(href='/account/linkGog', target='_blank')
+                            button Link GOG Account
                 h2 Why do I need to link my Steam/GOG account to FAF?
                     p FAF as an organization doesn't own the copyright or trademark to SC:FA (Square Enix does). <br> Therefore, we need to verify you own a copy of SC:FA to prevent piracy.
 
-            h2.highlightText Checked everything above?
+            h2.highlightText Completed everything above?
             h2.highlightText Then follow these easy steps to play FAF
 
             .playContainer
-                h1 1 - Download and install FAF
-                p Download the FAF Client and install it. FAF is open source and safe to use. <br> If your Windows computer stops you from running FAF, click on "More info" and you'll be able to run it. <br> This happens because FAF doesn't pay Microsoft for security certifications. So it's an "unrecognized app" for Windows. <br> If you have any issues or troubleshooting, join our Discord or use our forum for help.
-                a#faf-client-download(href='#')
-                    button Download FAF
-                br
-                br
-                a(href=discordUrl)
-                    button Discord
-                a(href=forumUrl)
-                    button Forum
-                a(href='https://wiki.faforever.com/en/Play/Linux-Install')
-                    button Linux Installation
-                br
-                br
-                img(src='/images/windowsDefender.png')
+                .playContentContainer
+                    h1 1 - Download and install FAF
+                    p Download the FAF Client and install it. FAF is open source and safe to use. <br> If your Windows computer stops you from running FAF, click on "More info" and you'll be able to run it. <br> This happens because FAF doesn't pay Microsoft for security certifications. So it's an "unrecognized app" for Windows. <br> If you have any issues or troubleshooting, join our Discord or use our forum for help.
+                    a#faf-client-download(href='#')
+                        button Download FAF
+                    div
+                        a(href=discordUrl)
+                            button Discord
+                        a(href=forumUrl)
+                            button Forum
+                        a(
+                            href='https://wiki.faforever.com/en/Play/Linux-Install'
+                        )
+                            button Linux Installation
+                    .smallerImages
+                        img(src='/images/windowsDefender.png')
 
             .playContainer
-                h1 2 - Run FAF and find your SC:FA directory
-                p Run FAF and log in with the same credentials you used for your FAF account. <br> Now once you try joining a lobby or creating a game in the Play tab, FAF will ask for your SC:FA game files/directory. <br> Below are instructions if you dont know where you installed SC:FA on Steam or GOG
-                a(href='https://www.youtube.com/watch?v=-BVEctqzkxw')
-                    button How to find Steam directory
-                a(href='https://www.youtube.com/watch?v=7IzJlw3Tdtg')
-                    button How to find GOG directory
+                .playContentContainer
+                    h1 2 - Run FAF and find your SC:FA directory
+                    p Run FAF and log in with the same credentials you used for your FAF account. <br> Now once you try joining a lobby or creating a game in the Play tab, FAF will ask for your SC:FA game files/directory. <br> Below are instructions if you dont know where you installed SC:FA on Steam or GOG
+                    .div
+                        a(href='https://www.youtube.com/watch?v=-BVEctqzkxw')
+                            button How to find Steam directory
+                        a(href='https://www.youtube.com/watch?v=7IzJlw3Tdtg')
+                            button How to find GOG directory
 
             .playContainer
-                h1 3 - Enjoy Forged Alliance Forever!
-                p You are officially done! If you are new to the game, we recommend <br> watching the video below and joining the official FAF Discord, <br> you'll find plenty of friendly people to play, ask questions and become part of the community!
-
-                a(href='https://discord.gg/kTsxKu52WU')
-                    button Join the FAF Discord
-                br
-                br
-                iframe(
-                    style='width: 75%; height: 45vh',
-                    src='https://www.youtube.com/embed/Nks9loE96ok',
-                    title='NEW TO FAF? || SUPREME COMMANDER TUTORIAL',
-                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;',
-                    allowfullscreen
-                )
+                .playContentContainer
+                    h1 3 - Enjoy Forged Alliance Forever!
+                    p You are officially done! If you are new to the game, we recommend <br> watching the video below and joining the official FAF Discord, <br> you'll find plenty of friendly people to play, ask questions and become part of the community!
+                    a(href='https://discord.gg/kTsxKu52WU')
+                        button Join the FAF Discord
+                    iframe(
+                        style='width: 75%; height: 45vh',
+                        src='https://www.youtube.com/embed/Nks9loE96ok',
+                        title='NEW TO FAF? || SUPREME COMMANDER TUTORIAL',
+                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;',
+                        allowfullscreen
+                    )
 
 block js
     script(src=webpackAssetJS('play'))

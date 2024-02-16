@@ -5,43 +5,27 @@ block bannerMixin
 block content
     .playMain
         .playInnerGrid
+            h1 How to link FAF Account to GOG
+                p.highlightText Shouldn't take more than 1-2 minutes.
             .playContainer
-                h2 How to link FAF account to GOG?
-                    p Shouldnt take more than 1-2 minutes.
-
-                .playCheckboxContainer
-                    input(type='checkbox')
-                    label Go to your Profile inside GOG -> Order & Settings -> Privacy -> Set everything to Everyone/All visitors (once the linking is done, you can revert this)
-                    br
-                    .gogSmallerImage
+                h2 Your GOG account must be public to link
+                .playContentContainer
+                    label Go to your Profile inside GOG -> Order & Settings -> Privacy -> Set everything to Everyone/All visitors
+                    label Once the linking is done, you can revert this.
+                    .smallerImages
                         img(src='/images/steamGOG/gog1.jpg')
                         img(src='/images/steamGOG/gog2.jpg')
-                    br
-                    br
                     img(src='/images/steamGOG/gog3.jpg')
 
-                    br
-                    input(type='checkbox')
                     label Switch your profile's about you to the code below (so we can make sure you own SC:FA).
-                    br
-                    h2 #{ gogToken }
-                    br
+                    h3 #{ gogToken }
                     img(src='/images/steamGOG/gog4.jpg')
-                    .gogSmallerImage2
-                        br
+                    .smallerImages
                         img(src='/images/steamGOG/gog5.jpg')
-                        br
-                        br
                         img(src='/images/steamGOG/gog6.jpg')
 
-                    br
-                    br
-                    input(type='checkbox')
                     label Write your GOG username below and then click the link accounts button.
-                    br
                     +flash-messages(flash)
-
-                    br
                     .displayBlock
                         form(
                             method='post',
@@ -53,17 +37,12 @@ block content
                                 button.btn.btn-default.btn-lg.btn-outro.btn-danger(
                                     type='submit'
                                 ) Link accounts
-                    br
-                    input(type='checkbox')
                     label Make sure the flash message below states you are connected.
 
-                    br
                     p Flash Message:
                     +flash-messages(flash)
-                    br
                 h1 And you are done with GOG linking forever!
                     p Now if you want, you can set your privacy settings back to private and your profile's about you to normal.
-
                 h2 Why do I need to link my Steam/GOG account to FAF?
                     p FAF as an organization doesn't own the copyright or trademark to SC:FA (Square Enix does). <br> Therefore, we need to verify you own a copy of SC:FA to prevent piracy.
                     p Linking your GOG account to FAF doesn't provide us with any information or powers over your account. <br> Only the fact that you own Supreme Commander: Forged Alliance. <br> Which is why we need you to set your Game Details to public when linking your account.
