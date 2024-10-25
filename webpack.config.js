@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const path = require('path')
 
@@ -33,5 +34,12 @@ module.exports = {
         publicPath: '/dist/js',
         clean: true,
     },
-    plugins: [new WebpackManifestPlugin({ useEntryKeys: true })],
+    plugins: [
+        new WebpackManifestPlugin({ useEntryKeys: true }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/frontend/robots.txt', to: '../robots.txt' }
+            ],
+        }),
+    ],
 }

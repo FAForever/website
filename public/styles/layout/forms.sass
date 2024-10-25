@@ -8,32 +8,32 @@
   @include mixins.gridMainContainer
   padding: 0vw
   gap: 0
-  
-    
+
+
 
 form
   align-self: center
 
-  
+
   p
 
     font-size: calc(var(--paragraph-font-size)*1)
     padding: 0.1em
- 
-    
-  
+
+
+
   .formStart
 
     display: inline-block
     p
       font-size: 16px
-      
+
     input
       min-width: 300px
       margin: 0.1em
       border: 0.2em solid variables.$background-primary
-      
-      
+
+
     .formHelp
       display: inline
       ul
@@ -45,9 +45,9 @@ form
           font-weight: normal
           line-height: 1.25em
 
-          
 
-          
+
+
 .formGroup
   p
     padding: 0.2em
@@ -63,18 +63,18 @@ form
   padding: 2em 1em
   textarea
     min-width: 500px
-  
+
 .form-control
   width: 300px
-  
 
-  
+
+
 .tosAgree
   label
     display: block
   input
     display: inline-block
-    
+
 .alert
   border-radius: 20px
   display: inline-block
@@ -107,12 +107,12 @@ form
     align-self: center
     .g-recaptcha
       display: inline-block
-     
 
 
 
 
-      
+
+
 // Markdown styling
 
 
@@ -135,14 +135,14 @@ form
     &:hover
       color: variables.$button-active
       text-decoration: underline variables.$button-active
-    
+
   h2
     padding: 1em
-  
+
   li
     padding: 0.5em
     font-size: 1em
-    
+
 .containerCenter
   background-color: rgba(0,0,0,0.8)
   margin: 2vw 5vw
@@ -179,8 +179,8 @@ form
       text-align: center
     th
       padding: 1.5em
-      
-      
+
+
 @media (max-width: 600px)
   .accountForm
     .column6
@@ -191,7 +191,7 @@ form
           padding: 0.1em
     .formGroup, .form-group, h2, h3
       padding: 0.1em
-    
+
   form
     .formStart
       min-width: 100px
@@ -202,3 +202,87 @@ form
   .containerCenter
     padding: 0.25em
     margin: 0
+
+
+.container.under-review
+  background-color: rgba(0, 0, 0, 0.9)
+  margin: 2vw auto
+  max-width: 950px
+  padding: 2em 4vw
+  border-radius: 20px
+  text-align: left
+
+  h1, h2, h3, h4, h5, h6
+    margin: 1.5em 0 -0.15em
+    padding: 0
+
+  h1
+    font-size: 2.5em
+
+  h2
+    font-size: 2em
+
+  h3
+    font-size: 1.5em
+
+  h4
+    font-size: 1.25em
+
+  h5
+    font-size: 1.1em
+
+  h6
+    font-size: 1em
+
+  p
+    font-family: variables.$family-readability
+    margin: 1em 0
+    padding: 0
+    font-size: 1em
+    line-height: 1.5em
+
+  a
+    color: variables.$button-inactive
+    text-decoration: underline variables.$button-inactive
+    transition: 0.4s
+    &:hover
+      color: variables.$button-active
+      text-decoration: underline variables.$button-active
+
+  ul, ol
+    padding-left: 1.5em
+    margin: 1em 0
+
+  li
+    font-family: variables.$family-readability
+    margin: 0 0 0.5em
+    padding-top: 0
+    padding-bottom: 0
+    font-size: 1em
+    line-height: 1.5em
+
+    ul
+      margin: 0
+
+      li
+        margin-top: 0.5em
+        margin-bottom: 0
+
+  pre, code
+    background-color: rgba(255, 255, 255, 0.1)
+    padding: 0.5em 1em
+    border-radius: 5px
+    font-family: monospace
+
+  blockquote
+    border-left: 5px solid rgba(255, 255, 255, 0.3)
+    margin: 1em 0
+    padding: 0.5em 1em
+    font-style: italic
+
+  .markdownButton
+    a
+      display: inline-block
+      margin: 2em 2em 0 0
+      button
+        margin: 0
