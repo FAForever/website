@@ -9,7 +9,7 @@ We expect these guidelines to be honored by everyone who contributes to the FAFo
 These guidelines are not exhaustive or complete. They serve to distill our common understanding of a collaborative, shared environment and goals. We expect them to be followed in spirit as much as in the letter, so that they can enrich all of us and the technical communities in which we participate.
 They may be supplemented by further rules specifying desired and undesired behaviour in certain areas.
 
-The [Rules of the FAForever community](/rules) also apply to contributors.
+The [Rules of the FAForever community](https://www.faforever.com/rules) also apply to contributors.
 
 
 ## Specific Guidelines

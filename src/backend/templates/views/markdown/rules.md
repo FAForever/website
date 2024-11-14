@@ -2,7 +2,7 @@
 
 Welcome to the Forged Alliance Forever community\! By joining this community, you help keep our favorite RTS active more than a decade after it launched. Please take a moment to review the following rules and guidelines to make sure that being part of our community remains a pleasant experience for everyone.
 
-By accessing FAF services, you agree to the rules outlined here. This Code of Conduct is supplemental to the FAF [Terms of Service](/tos).
+By accessing FAF services, you agree to the rules outlined here. This Code of Conduct is supplemental to the FAF [Terms of Service](https://www.faforever.com/tos).
 
 <div class="markdownButton">
 <a href="#contents">
@@ -12,7 +12,7 @@ By accessing FAF services, you agree to the rules outlined here. This Code of Co
 
 ## **The Moderation Team**
 
-The moderation team actively moderates the FAF environment. This includes the game itself, as well as all official FAF channels of communication, such as the FAF client, the FAF forums, and official FAF Discord. Users who do not follow the rules listed in this page may receive penalties limiting their access to FAF services. The moderation team judges rule violations and decides on appropriate penalties. However, moderation decisions may be challenged through the appeal system. More information on report processing, ban reasons, appeals, and FAQs can be found on the [FAF Moderation page](/moderation#page-not-created-yet).
+The moderation team actively moderates the FAF environment. This includes the game itself, as well as all official FAF channels of communication, such as the FAF client, the FAF forums, and official FAF Discord. Users who do not follow the rules listed in this page may receive penalties limiting their access to FAF services. The moderation team judges rule violations and decides on appropriate penalties. However, moderation decisions may be challenged through the appeal system. More information on report processing, ban reasons, appeals, and FAQs can be found on the [FAF Moderation page](https://www.faforever.com/moderation#page-not-created-yet).
 
 ## **Reporting Code of Conduct violations**
 
@@ -22,12 +22,12 @@ We encourage reporting disrespectful or unfair behavior. However, we expect you 
 
 ## **Contents**
 
-- [Common rules summarized](#commonrulessummarized)
-- [Section 1: General rules and responsibilities](#section1generalrulesandresponsibilities)
-- [Section 2: In-Game conduct](#section2ingameconduct)
-- [Section 3: Communication](#section3communication)
-- [Section 4: Account Management](#section4accountmanagement)
-- [Section 5: FAF content development (Mods and Maps)](#section5fafcontentdevelopmentmodsandmaps)
+- [Common rules summarized](https://www.faforever.com/rules#commonrulessummarized)
+- [Section 1: General rules and responsibilities](https://www.faforever.com/rules#section1generalrulesandresponsibilities)
+- [Section 2: In-Game conduct](https://www.faforever.com/rules#section2ingameconduct)
+- [Section 3: Communication](https://www.faforever.com/rules#section3communication)
+- [Section 4: Account Management](https://www.faforever.com/rules#section4accountmanagement)
+- [Section 5: FAF content development (Mods and Maps)](https://www.faforever.com/rules#section5fafcontentdevelopmentmodsandmaps)
 
 ## **Common rules summarized**
 
@@ -47,7 +47,7 @@ FAF as a community cannot work without respect, fairness, and accountability. By
 
 ### **FAF regulations**
 
-- **ToS** — By using FAF services, you agree to the [Terms of Service](/tos) and are responsible for your actions, behavior, and communications.
+- **ToS** — By using FAF services, you agree to the [Terms of Service](https://www.faforever.com/tos) and are responsible for your actions, behavior, and communications.
 - **Moderation actions** — FAF reserves the right to take action on posts or accounts without prior warning, including deleting, locking, or moving forum posts. The Moderation team has the full authority to determine rule violations and apply appropriate sanctions.
 
 ### **General rules**

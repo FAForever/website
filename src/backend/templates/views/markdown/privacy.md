@@ -43,7 +43,7 @@ When you create a new account, you agree to our collection of this User Personal
 
 Under the GDPR, we’re required to notify you about the legal basis on which we process User Personal Information.
 
-When you create an account, we require your user name and email address to enter into the [Terms of Service](/tos) agreement with us, and we use this data as the basis of that contract. We also process your email address and user name on other legal bases.
+When you create an account, we require your user name and email address to enter into the [Terms of Service](https://www.faforever.com/tos) agreement with us, and we use this data as the basis of that contract. We also process your email address and user name on other legal bases.
 The remainder of information processing we do is necessary for the purposes of our legitimate interests. For example, for security purposes, we keep logs of hardware information unique to your machine, in order to identify malicious users trying to spoof their identify.
 If you would like to request erasure of your data, please email us at [admin@faforever.com](mailto:admin@faforever.com).
 
