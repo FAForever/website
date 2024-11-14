@@ -1,153 +1,166 @@
-# Forged Alliance Forever rules
+# FAF Code of Conduct
 
-The rule changes below are not retroactive and are for the moment subject to change as we work towards improving and consolidating the rules. Keep in mind that lobby rules in essence apply not only to #aeolus but also to your in-game behavior. If you have any suggestions or concerns please contact the IRC moderator usergroup.
+Welcome to the Forged Alliance Forever community\! By joining this community, you help keep our favorite RTS active more than a decade after it launched. Please take a moment to review the following rules and guidelines to make sure that being part of our community remains a pleasant experience for everyone.
 
-To report infractions of other users, it is recommended to use this form:
-Mod Report Form: [link](/account/report)
+By accessing FAF services, you agree to the rules outlined here. This Code of Conduct is supplemental to the FAF [Terms of Service](/tos).
 
-Contents:
-- Overview
-- FAF Rules
-- In-game Rules
-- Communicating on FAF
-- Forum Rules
-- Penalties & violations
-- Appealing bans & contacting moderation
+<div class="markdownButton">
+<a href="#contents">
+<button>Go to rules</button>
+</a>
+</div>
 
+## **The Moderation Team**
 
-FAF moderation is active on all platforms and services that Forged Alliance Forever provides. This includes the clients, in-game, the forums and other platforms such as slack and discord.
+The moderation team actively moderates the FAF environment. This includes the game itself, as well as all official FAF channels of communication, such as the FAF client, the FAF forums, and official FAF Discord. Users who do not follow the rules listed in this page may receive penalties limiting their access to FAF services. The moderation team judges rule violations and decides on appropriate penalties. However, moderation decisions may be challenged through the appeal system. More information on report processing, ban reasons, appeals, and FAQs can be found on the [FAF Moderation page](/moderation#page-not-created-yet).
 
-## Overview:
+## **Reporting Code of Conduct violations**
 
-Everything on FAF is subject to the Terms of Service here: [TOS](https://www.faforever.com/tos)
+The moderation team relies on reports from community members to enforce the Code of Conduct. Reports for offenses committed in-game can be created using the “Moderation reports” option in the top-right of the client. Such reports will generally only be accepted from players who participated in that particular game. For forum posts, the individual posts can be directly reported using the ‘report post’ button. In the FAF Discord you may choose to ping the Moderation team directly, or you may create a moderation ticket and link to the offending message.
 
-This is a short overview of the rules. For any moderating purpose, only the complete rules will be taken into account : this summary is for your information only.
+We encourage reporting disrespectful or unfair behavior. However, we expect you to be truthful in your reports. Intentionally submitting false reports will result in penalties to your account.
 
-- **Do not harass, defame, or discriminate** other players based on their sexual orientation, gender, race, culture, religion, nationality.
-- **Do not invade other people's privacy.**
-- **Do not use FAF to violate any laws.**
-- **Do not create more than one account**
-- **Do not manipulate your account information.**
-- **Do not abuse any game bugs and/or exploits.** [Exploits are listed here](https://forum.faforever.com/topic/203/list-of-banned-exploits)
-- **Do not discuss drugs, illegal content or pornography.**
-- **Do not spam nor impersonate any other user, or take bots names.**
-- **Do not friendly fire, reclaim or teamkill allies.**
+## **Contents**
 
-**You are responsible for everything you do!**
+- [Common rules summarized](#commonrulessummarized)
+- [Section 1: General rules and responsibilities](#section1generalrulesandresponsibilities)
+- [Section 2: In-Game conduct](#section2ingameconduct)
+- [Section 3: Communication](#section3communication)
+- [Section 4: Account Management](#section4accountmanagement)
+- [Section 5: FAF content development (Mods and Maps)](#section5fafcontentdevelopmentmodsandmaps)
 
+## **Common rules summarized**
 
-**By using FAF services you agree to the rules detailed in this post.**
-- If you don't comply with the FAF rules, the moderation team can and will **warn, kick, or/and ban** you from using FAF services.
+This is a summary of the most commonly breached rules. More details on these and other rules are in the relevant sections.
 
-## FAF Rules:
-*By using FAF you agree to the rules defined in this forum post. For the purposes of moderation, the english translation will be used, and other translations are intended for clarity & reference only. These rules add-up to the FAF Terms of Service, but do not replace it in any way.*
+- You’re accountable for your own actions and should respect other users
+- Do not insult or harass other users
+- Report breaches instead of taking revenge
+- Do not self-destruct or "CTRL+K" your base
+- Mass extractor slots and reclaim can’t be ‘reserved’ for a particular player
+- Do not intentionally leave games prematurely (see detailed rules for further details and exceptions)
+- Do not make multiple accounts or share your account with others
 
-- Respecting other community members is important. You will always respect your fellow community members. You will not harass or attack other users. You will respect the rights of other users to have their own opinions.
+## **Section 1: General rules and responsibilities**
 
-- You will not communicate any material that is knowingly false and/or defamatory, inaccurate, abusive, hateful, harassing, derogatory to someone’s sexual orientation, race, culture, religion, threatening, invasive of a person’s privacy or in violation of any law.
+FAF as a community cannot work without respect, fairness, and accountability. By participating, you agree to follow the rules that maintain and contribute to that community. It is important to remember that this is a shared space where everyone should feel welcome and encouraged to play.
 
-- For your protection, you should not send any personal identifiable information about yourself in your messages.
+### **FAF regulations**
 
-- Action may be taken on a user account without prior warning or notice. You remain solely responsible for your behaviour and actions and you agree that FAF and it's agents are blameless if actions are taken toward you or your accounts.
+- **ToS** — By using FAF services, you agree to the [Terms of Service](/tos) and are responsible for your actions, behavior, and communications.
+- **Moderation actions** — FAF reserves the right to take action on posts or accounts without prior warning, including deleting, locking, or moving forum posts. The Moderation team has the full authority to determine rule violations and apply appropriate sanctions.
 
-- Objectionable content should be brought to the attention of the moderation team immediately. Send a private message to a moderator in chat or to the IRC Moderator usergroup on the forums, or submit a report form from here : and the matter will be processed as soon as possible.
+### **General rules**
 
-- Do not create copies of maps already in the vault with minor tweaks without asking the M+M Councillor or anyone they ask to arbitrate.
+- **Privacy** — Do not invade others’ privacy.
+- **Illegal acts** — Do not use FAF services to violate any laws.
+- **Assisting rule violations** — Do not assist others in breaking FAF rules. This includes making cheats, exploits, or uploading maps that unfairly benefit one team.
+- **Harming FAF** — Do not undertake any actions or communications that are harmful to FAF or its community.
+- **Questions** — If you are unsure if something is against the Code of Conduct, contact the Moderation team.
 
-- Do not create copies of mods already in the vault with minor tweaks without asking the M+M Councillor or anyone they ask to arbitrate.
+### **Responsibilities**
 
-Avoiding penalties applied to you by the moderation team via any means is forbidden, and will result in an extension of the penalties.
-Helping others with breaking FAF rules or avoiding penalties is also forbidden, and carries a similar punishment.
-For example, sharing an account or playing with a banned user who is avoiding their penalty will result in a ban of both users.
+- **Personal accountability** — Each user is accountable for their own actions.
+- **Independent penalties** — Penalties are determined individually for each user involved in rule violations.
+- **Revenge** — Taking revenge against another user, like griefing them back or responding to verbal abuse with more abuse, is not allowed and will lead to penalties. We encourage you to keep playing as best as you can, and to report the player after the game. If the player’s behavior makes it impossible to continue, you can leave the game and report the issue instead.
 
-## In-game Rules:
-**All of the rules for FAF apply ingame**, excluding the english language requirement.
+## **Section 2: In-Game conduct**
 
-- You will **not exploit any bugs or loopholes** in any of the services. You can find a list of exploits here: [exploits](https://forum.faforever.com/topic/203/list-of-banned-exploits)
+FAF is at its best when every user comes to compete in and contribute to a fun, balanced game. For the game to be enjoyable, fairness is key — this means a community free from cheating, misuse of game mechanics, harassment, and any behavior that prevents others from having a good time.
 
-- If you discover any exploit report it to tech support: [tech support](https://forum.faforever.com/category/8/game-issues-and-gameplay-questions)
-- You will not **lose on purpose** to lower your rating, your rating can be reset in addition to any other sanctions that may apply.
-- You will **not manipulate your rating** in any way.
-- You will **not ruin the game intentionally** by any means.
-- You will not **reclaim or teamkill/friendly fire** allies.
-- You will **not slow or block the game from progressing.**
+For competitive games, playing to win doesn’t have to mean following fixed strategies; experimenting is valid if you support your team and try to win. This respect should extend to your teammates as well — even if their playstyle differs from yours, focus on teamwork and the shared goal of victory.
 
-## Rules on UI mods:
+### **Teamplay and Fairness:**
 
-We will list what sort of UI mods are not allowed here. This includes:
-- All reclaim macros
-- All autoclickers
+- **Friendly fire** — Do not reclaim allied units or purposefully fire on allies.
+- **Controlling behavior** — Do not force teammates to play in a certain way. Constructive feedback is great if it's asked for, but ordering people around is not acceptable.
+- **Teammates** — Treat your teammates as they would wish to be treated.
+- **Sharing resources** — Resources such as reclaim and mass extractors do not have to be shared evenly, but be open to sharing them fairly with your team.
+    - There are no reserved mass extractor slots or reclaim. Teammates taking available resources does not constitute as griefing.
 
-If you are unsure if what you are using/developing is allowed, send a message to the moderation team, which contains instructions on how to find said mod/a download link, a description and we will inform you as soon as possible.
-This list may change.
+### **Commit to Competition**
 
-## Communicating on FAF
-When communicating through FAF the following is prohibited:
-- Discussions regarding drugs and illegal substances
-- Advertisement of goods and services, and commercially oriented material that is not a part of the FAF community or services.
-- Pornographic, sexually offensive material, and material not suited for a family/office environment.
-- Discussing or offering pirated material, or links to such.
-- Messages containing copyrighted material unless that material is owned by the sender or by FAF.
-- Discussing acts of illegal nature.
-- Discussing moderation decisions in public is discouraged. Channels exist for appealing processes and raising concerns about moderation.
-- Using usernames that are offensive or mimicking other FAF users.
-- Impersonating a member of the community staff or any FAF user, or breaking bots by taking their names.
-- Spam or content of a spammy nature, and material that degrades the quality of the communication medium.
+- **Abandoning games** — Stay focused on helping your team win, even during tough matches.
+    - Do not leave a ranked game before it is finished; unless a match is undeniably lost or you have already been eliminated, you are expected to commit to playing the game you started.
+    - Players may need to leave unexpectedly due to connection or personal issues. However, consistently leaving matches early may lead to penalties.
+- **Forced surrender** — Do not try to force teammates to give up if they’re still playing to win. If a recall vote fails, play the match out.
+- **CTRL-K** — Do not self-destruct or "CTRL-K" your base or significant quantities of units; use the recall option if you wish to end early, which allows your teammates a vote.
 
-The userbase for this lobby is international in nature, as such #aeolus is generally reserved for English chat. Quick questions or brief conversations in other languages are allowed, but if asked to stop, they should quickly.
-There are language channels for **#russian, #german** and **#french**.
+### **Cheating, exploits, and griefing:**
 
-**The creation of IRC bots to enhance chat is encouraged, provided they behave in an appropriate manner.**
+- **Rating manipulation** — Do not engage in rating manipulation, such as intentionally losing or forfeiting games early to lower your rating, or having someone else forfeit a game to boost your rating.
+- **Ruining games** — Do not deliberately ruin games by abusing game mechanics, such as continuously pausing the game or spamming pings.
+- **Third party software** — Do not use UI mods, macros, or autoclickers that provide unfair advantages.
+- **Disruption** — Do not intentionally disrupt games or FAF services. The Moderation team will assess the context and impact of such actions, examples of which include deliberately slowing the game or breaking lobbies.
+- **Exploits** — Abusing any exploit, including but not limited to those listed on this [list of known exploits](https://forum.faforever.com/topic/203/list-of-banned-exploits), will result in penalties. Report any exploits to the moderation team.
+    - Assisting others in using exploits or failing to report players exploiting a game you are participating in may result in penalties.
 
-### Bot rules:
-ALL bots must be registered with the IRC mod team before they are used or they will be banned.
+## **Section 3: Communication**
 
-The following guidelines should be adhered to wherever possible:
+When engaging in any form of communication in the FAF environment, you are responsible for your words and how you express them. Offensive, hateful, or vulgar language is not permitted, and we moderate this strictly.
 
-1. Commands should in general have cooldowns.
+### **Respectful Behavior:**
 
-    -  Any commands which generate significant output (this can be multiple lines, or one long line of text) should have a cooldown to prevent abuse.
- The recommended cooldown is at least 60 seconds.
+- **Insults** — Do not insult or harass other users based on such things as sexual orientation, gender, race, culture, religion, or nationality.
+- **Lies and hatred** — Do not communicate material that is knowingly false, defamatory, inaccurate, abusive, hateful, harassing, or derogatory.
+- **Respect** — Be respectful towards fellow users in all communication channels (chat, voice, Discord).
+- **Threats** — Threats or harassment toward other users are unacceptable, regardless of the specific language used.
 
-    - Other commands may also require cooldowns depending on usage.
+### **Privacy:**
 
+- **Doxing** — Do not leak the personal information of other users.
+- **Your info** — For your protection, it is recommended that you do not send any personal identifiable information about yourself in your messages.
 
-2. To avoid disturbing other users, bots should only ping or otherwise directly interact with a user if:
+### **Content Guidelines:**
 
-    - the user has explicitly permitted the given interaction. This can be by previously signing up to be pinged by the command, or if the user launched the given command.
+- **Spam** — Do not spam, whether it be pings or messages, or post material that lowers the quality of the communication medium.
+- **Illegal content** — Do not discuss drugs, pornography, or similar content.
+- **Piracy** — Do not distribute or provide links to pirated/copyrighted content.
+- **Adverts** — Do not advertise goods and services, and commercially oriented material that is not a part of the FAF community or services.
+- **Safe For Work** — All names, content, and communications (including usernames and lobby titles) must be appropriate for a work environment.
 
-    - the user of the command has specifically identified the ping recipient in the command.
+### **Language:**
 
+- **English** — While quick questions or brief conversations in languages other than English are allowed, conversations in the FAF Discord and the main IRC channel (\#Aeolus) should be in English.
 
-3. All bots should make reasonable efforts to not overlap on specific commands. This is to avoid multiple bots responding to the same command. This can be achieved by using different keywords, or restricting access to particular users for that command.
+### **Moderation related Discussions:**
 
-4. FAF rules apply to the bot as they would for any user, so a bot posting derogatory material about other users is liable.
+- **Discussing bans** — Discussing specific moderation actions in public is not permitted. Such discussions include arguing a ban is unfair or that a specific offense should have been allowed due to specific circumstances. Please see the FAF Report System page for more information on how to discuss or appeal an action by the Moderation team.
+- **Discussing moderation** — Discussing general moderation actions or the FAF Code of Conduct is allowed. Such discussions include proposed changes to the Code of Conduct or discussing the actions of the Moderation team as a whole.
 
-5. The owner of the bot is responsible for the bots actions, and can have penalties applied to them.
+### **Political Discussions:**
 
-Finally, the moderators have the final decision on whether or not a bot behaves unsuitably. The above guidelines should be considered as an addition to the other chat rules.
-Any bots deemed inappropriate are liable to be banned.
-## Forum rules:
-In addition to the FAF rules:
+- Political discussions are only allowed in the designated Discord politics channel.
 
-We reserve the right to delete, lock, move and edit any posts on the message board. Action may be taken on a post or on a user account without prior warning or notice. **You remain solely responsible for the content of your posts**, FAF and its agents are blameless if actions are taken toward you or your accounts.
-## Violations and Penalties:
-If, for any reason, you are in violation of any of the rules of FAF then your privileges to use FAF services will be reviewed by the moderation team. The penalties range from being given a severe warning as to future conduct, a timed ban (for a specified time), a total forum/lobby ban (you may still play on FAF) or a total FAF ban (you will not be able to play on FAF).
-If the matter warrants it then you might also be reported to your ISP/appropriate authorities.
+## **Section 4: Account Management**
 
-**The moderation team has the final say over what constitutes a violation of these Community Rules, and reserve the right to apply penalties at their discretion.**
+Your FAF account represents your identity within the community, and you should take care to maintain its integrity. This means keeping your account information accurate and secure, as well as adhering to guidelines regarding account creation and management. Attempts to manipulate, evade bans, or otherwise misuse accounts will be met with penalties.
 
-- Warnings and notices from community staff will be sent via private message. It is your responsibility to check your private messages for any notices that may occur.
-- All situations will be dealt with on a case by case basis.
+### **Single Account Use:**
 
-- Testing the boundaries of the rules will often result in more severe penalties, and the boundaries of the rules are reserved for the moderation team to define. Attempts to incite action from and harrass the moderation team will result in penalties, just as they would for other members of the FAF community.
-- Minor infractions that do not justify a penalty alone will be nonetheless recorded and when a sufficient number is reached, penalties can be applied.
-- Repeat offenses are taken seriously. If you do not apply effort in changing your behaviour for the better, penalties that are more severe will be applied, and could escalate into a total FAF ban from a series of minor infractions.
-## Appealing bans & contacting moderation
-If you feel you have been mistreated or that your ban is unjustified, you can always appeal moderation decisions by contacting the moderation team.
-You can also always contact a moderator via private messages, either via the forums or the chat in the client.
-The official way is to send a message to the moderation team via email to the following address: **moderation@faforever.com**
+- **Account sharing** — Do not share your account with others.
+- **Multiple accounts** — Users may only create one account. Creating multiple accounts (e.g., for smurfing or evading bans) is not allowed without explicit permission by the Moderation team.
 
-## Reporting
-This link to the report form can be used to report other community members :
-[link](/account/report)
+### **Ban Evasion:**
+
+- **Ban evasion** — Do not attempt to bypass bans or restrictions placed on your main account.
+- **Account manipulation** — Do not alter or falsify account details to evade detection or moderation.
+
+### **Usernames**
+
+- **Impersonation** — Do not choose a username that impersonates other users or is visually identical to other usernames.
+- **Unreadable names** — Do not abuse similar or indistinguishable characters. For example, names such as ‘|lI|I|I|I|||’ are not allowed.
+- **Family friendly** — Names should comply with the rules on communicating in FAF (e.g. names should be ‘family appropriate’).
+- **Renames** — Usernames may be changed once every 3 months.
+
+### **Account linking:**
+
+- **Linking** — Each FAF account must be linked to a Steam or GOG account that owns a valid copy of Supreme Commander: Forged Alliance.
+
+## **Section 5: FAF content development (Mods and Maps)**
+
+The FAF community values creativity, and players who make new maps and mods help keep the game fresh and alive. When sharing your work, make sure to respect others by following copyright rules and getting permission if needed. We encourage you to come up with new ideas, but copying or changing someone else's work without their permission takes away from the community's hard work.
+
+### **General:**
+
+- **Contribution guidelines** — In addition to the FAF Code of Conduct, all mods and maps have to comply with the [FAF contribution guidelines](https://forum.faforever.com/topic/2051/faf-contribution-guidelines) and the [vault rules](https://wiki.faforever.com/en/Development/Vault/Rules).

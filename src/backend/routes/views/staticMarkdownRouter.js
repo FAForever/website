@@ -3,6 +3,7 @@ const showdown = require('showdown')
 const fs = require('fs')
 const router = express.Router()
 
+// second argument containerClass can be used to inject a class, for page specific styling
 function markdown(template, containerClass = "") {
     return (req, res) => {
         res.render('markdown', {
@@ -37,40 +38,5 @@ router.get(
 )
 router.get('/rules', markdown('src/backend/templates/views/markdown/rules.md'))
 router.get('/cg', markdown('src/backend/templates/views/markdown/cg.md'))
-
-// Under-review, these routes will include a containerClass that gives them the new styling.
-router.get(
-    '/privacy-under-review-not-valid',
-    markdown('src/backend/templates/views/markdown/privacy.md', 'under-review')
-)
-router.get(
-    '/privacy-fr-under-review-not-valid',
-    markdown('src/backend/templates/views/markdown/privacy-fr.md', 'under-review')
-)
-router.get(
-    '/privacy-ru-under-review-not-valid',
-    markdown('src/backend/templates/views/markdown/privacy-ru.md', 'under-review')
-)
-router.get(
-    '/tos-under-review-not-valid',
-    markdown('src/backend/templates/views/markdown/tos.md', 'under-review')
-)
-router.get(
-    '/tos-fr-under-review-not-valid',
-    markdown('src/backend/templates/views/markdown/tos-fr.md', 'under-review')
-)
-router.get(
-    '/tos-ru-under-review-not-valid',
-    markdown('src/backend/templates/views/markdown/tos-ru.md', 'under-review')
-)
-router.get(
-    '/rules-under-review-not-valid',
-    markdown('src/backend/templates/views/markdown/rules-new.md', 'under-review')
-)
-router.get(
-    '/cg-under-review-not-valid',
-    markdown('src/backend/templates/views/markdown/cg.md', 'under-review')
-)
-
 
 module.exports = router

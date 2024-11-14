@@ -4,7 +4,7 @@
 </a>
 
 <a href="/tos-ru">
-<button> Tos Pусский </button>
+<button> Tos Русский </button>
 </a>
 </div>
 # Forged Alliance Forever Terms of Service

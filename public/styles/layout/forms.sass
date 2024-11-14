@@ -117,94 +117,6 @@ form
 
 
 .container
-  background-color: rgba(0,0,0,0.8)
-  margin: 2vw 5vw
-  padding: 2em 4vw
-  border-radius: 20px
-  text-align: left
-  .markdownButton
-    a
-      display: inline-block
-      margin: 1em
-      button
-        margin: 0
-  a
-    color: variables.$button-inactive
-    text-decoration: underline variables.$button-inactive
-    transition: 0.4s
-    &:hover
-      color: variables.$button-active
-      text-decoration: underline variables.$button-active
-
-  h2
-    padding: 1em
-
-  li
-    padding: 0.5em
-    font-size: 1em
-
-.containerCenter
-  background-color: rgba(0,0,0,0.8)
-  margin: 2vw 5vw
-  padding: 2em 4vw
-  border-radius: 20px
-  text-align: center
-  .markdownButton
-    a
-      display: inline-block
-      margin: 1em
-      button
-        margin: 0
-  a
-    color: variables.$button-inactive
-    text-decoration: underline variables.$button-inactive
-    transition: 0.4s
-    &:hover
-      color: variables.$button-active
-      text-decoration: underline variables.$button-active
-
-  h2
-    padding: 0.25em 0
-
-  li
-    padding: 0.5em
-    font-size: 1em
-.centerFormPlease
-  text-align: center
-  table
-    text-align: center
-    margin: 0 auto
-    display: block
-    thead, tr, th
-      text-align: center
-    th
-      padding: 1.5em
-
-
-@media (max-width: 600px)
-  .accountForm
-    .column6
-      grid-column: span 12
-    .column12
-      .centerFormPlease
-        th, tr
-          padding: 0.1em
-    .formGroup, .form-group, h2, h3
-      padding: 0.1em
-
-  form
-    .formStart
-      min-width: 100px
-      input
-        min-width: 100px
-    .form-control
-      width: initial
-  .containerCenter
-    padding: 0.25em
-    margin: 0
-
-
-.container.under-review
   background-color: rgba(0, 0, 0, 0.9)
   margin: 2vw auto
   max-width: 950px
@@ -286,3 +198,64 @@ form
       margin: 2em 2em 0 0
       button
         margin: 0
+
+
+.containerCenter
+  background-color: rgba(0,0,0,0.8)
+  margin: 2vw 5vw
+  padding: 2em 4vw
+  border-radius: 20px
+  text-align: center
+  .markdownButton
+    a
+      display: inline-block
+      margin: 1em
+      button
+        margin: 0
+  a
+    color: variables.$button-inactive
+    text-decoration: underline variables.$button-inactive
+    transition: 0.4s
+    &:hover
+      color: variables.$button-active
+      text-decoration: underline variables.$button-active
+
+  h2
+    padding: 0.25em 0
+
+  li
+    padding: 0.5em
+    font-size: 1em
+.centerFormPlease
+  text-align: center
+  table
+    text-align: center
+    margin: 0 auto
+    display: block
+    thead, tr, th
+      text-align: center
+    th
+      padding: 1.5em
+
+
+@media (max-width: 600px)
+  .accountForm
+    .column6
+      grid-column: span 12
+    .column12
+      .centerFormPlease
+        th, tr
+          padding: 0.1em
+    .formGroup, .form-group, h2, h3
+      padding: 0.1em
+
+  form
+    .formStart
+      min-width: 100px
+      input
+        min-width: 100px
+    .form-control
+      width: initial
+  .containerCenter
+    padding: 0.25em
+    margin: 0

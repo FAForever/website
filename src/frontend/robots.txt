@@ -1,9 +1,0 @@
-User-agent: *
-Disallow: /privacy-under-review-not-valid
-Disallow: /privacy-fr-under-review-not-valid
-Disallow: /privacy-ru-under-review-not-valid
-Disallow: /tos-under-review-not-valid
-Disallow: /tos-fr-under-review-not-valid
-Disallow: /tos-ru-under-review-not-valid
-Disallow: /rules-under-review-not-valid
-Disallow: /cg-under-review-not-valid

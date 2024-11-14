@@ -11,7 +11,7 @@ Nous traitons tous nos utilisateurs de la même manière, et chacun et concerné
 
 ## Les informations que nous collectons et pourquoi
 
-Si vous ne faites que naviguer sur notre site (faforever.com, wiki.faforever.com, forum.faforever.com, ou tout site internet hébergé sur le domaine faforever.com), nous collectons la même quantité d'information basique que n'importe quel autre site internet. Cette information inclut le type de navigateur, les préférences linguistiques, le site qui vous y a amené et la date et l'heure de la requête internet. En plus de cela, nous collectons des informations possiblement personnellement-uniques comme les adresses IP. 
+Si vous ne faites que naviguer sur notre site (faforever.com, wiki.faforever.com, forum.faforever.com, ou tout site internet hébergé sur le domaine faforever.com), nous collectons la même quantité d'information basique que n'importe quel autre site internet. Cette information inclut le type de navigateur, les préférences linguistiques, le site qui vous y a amené et la date et l'heure de la requête internet. En plus de cela, nous collectons des informations possiblement personnellement-uniques comme les adresses IP.
 
 Cette information est collectée dans le cadre d'analyses, à fin de mieux comprendre qui visite nos sites.
 
@@ -37,7 +37,7 @@ Lorsque vous créez un nouveau compte, vous donnez votre accord pour la collecti
 
 Sous la RGPD, nous sommes obligés de vous informer à propos des implications légales de notre traitement de vos Informations utilisateur personnelles
 
-Lorsque vous créez un compte, nous requerrons votre nom d'utilisateur et adresse courriel afin d'accepter les [Conditions d'Utilisation](https://www.faforever.com/tos), et nous utilisons ces données comme base de ce contrat. Nous traitons également avec votre adresse courriel et non d'utilisateur pour d'autres implications légales.
+Lorsque vous créez un compte, nous requerrons votre nom d'utilisateur et adresse courriel afin d'accepter les [Conditions d'Utilisation](/tos), et nous utilisons ces données comme base de ce contrat. Nous traitons également avec votre adresse courriel et non d'utilisateur pour d'autres implications légales.
 
 Le reste du traitement des informations que nous effectuons est nécessaire dans le cadre de nos intérêts légitimes. Par exemple, pour des raisons de sécurité, nous devons conserver des traces des informations matérielles uniques de votre machine afin d'identifier des utilisateurs frauduleux tentant de masquer leur identité.
 
@@ -72,4 +72,4 @@ Cette déclaration de confidentialité est sous la license [Creative Commons Zer
 ## Note
 
 Ce document a été traduit de l'anglais. En cas de litige, seul le document original fait foi.
-Vous pouvez trouver le document dans sa version originale à l'adresse suivante [ici](https://faforever.com/privacy).
+Vous pouvez trouver le document dans sa version originale à l'adresse suivante [ici](/privacy).
