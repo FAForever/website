@@ -1,4 +1,4 @@
-# The FAF report system
+# The FAF moderation process
 
 ## **Brief summary:**
 

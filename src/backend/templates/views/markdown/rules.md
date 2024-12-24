@@ -28,13 +28,6 @@ We encourage reporting disrespectful or unfair behavior. Submitted reports are e
 
 ## **Contents**
 
-[FAF Code of Conduct](#fafcodeofconduct)
-
-[Moderation team, ban appeals and processes](#moderationteambanappealsandprocesses)
-
-[Reporting Code of Conduct violations](#reportingcodeofconductviolations)
-
-[Contents](#contents)
 
 [Common rules summarized](#commonrulessummarized)
 
@@ -148,7 +141,7 @@ When engaging in any form of communication in the FAF environment, you are respo
 
 ### **Moderation related Discussions:**
 
-* **Discussing bans** — Discussing specific moderation actions in public is not permitted. Such discussions include arguing that a ban is unfair or that a specific offense should have been allowed due to specific circumstances. Please see the FAF Report System page for more information on how to discuss or appeal an action by the moderation team.
+* **Discussing bans** — Discussing specific moderation actions in public is not permitted. Such discussions include arguing that a ban is unfair or that a specific offense should have been allowed due to specific circumstances. Please see the [FAF Moderation page](https://www.faforever.com/moderation) for more information on how to discuss or appeal an action by the moderation team.
 * **Discussing moderation** — Discussing general moderation actions or the FAF Code of Conduct is allowed. Such discussions include proposed changes to the Code of Conduct or discussing the actions of the moderation team as a whole.
 
 ### **Political Discussions:**
