@@ -38,5 +38,6 @@ router.get(
 )
 router.get('/rules', markdown('src/backend/templates/views/markdown/rules.md'))
 router.get('/cg', markdown('src/backend/templates/views/markdown/cg.md'))
+router.get('/moderation', markdown('src/backend/templates/views/markdown/moderation.md'))
 
 module.exports = router
