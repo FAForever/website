@@ -10,7 +10,7 @@ By accessing FAF services, you agree to the rules outlined here. This Code of Co
 </a>
 </div>
 
-## **Moderation team, ban appeals and processes**
+## **Moderation team, ban appeals, and processes**
 
 The moderation team actively moderates the FAF environment. They judge rule violations and decide on appropriate penalties. This includes the game itself, as well as all official FAF channels of communication, such as the FAF client, the FAF forums, and the official FAF Discord server. Moderation decisions may be appealed through [the appeal system](https://www.faforever.com/moderation#appealingapenalty).
 
@@ -46,7 +46,7 @@ We encourage reporting disrespectful or unfair behavior. Submitted reports are e
 This is a summary of the most commonly breached rules. More details on these and other rules are in the relevant sections.
 
 * You are accountable for your own actions.
-* Do not insult or harass other users, treat other players with respect.
+* Do not insult or harass other users. Treat other players with respect.
 * Report offenses, rather than taking revenge.
 * Do not self-destruct or "CTRL+K" your base.
 * Mass extractor slots and reclaim cannot be ‘reserved’ for a particular player.
@@ -74,7 +74,7 @@ FAF as a community cannot work without respect, fairness, and accountability. By
 
 * **Personal accountability** — Each user is accountable for their own actions.
 * **Independent penalties** — Penalties are determined individually for each user involved in rule violations.
-* **Revenge** — Taking revenge against another user, like griefing them back or responding to verbal abuse with more abuse, is not allowed and will lead to penalties for all parties involved. We encourage you to keep playing as best as you can, and to report the player after the game. If the player’s behavior makes it impossible to continue, you can leave the game and report the issue instead.
+* **No revenge** — Taking revenge against another user, like griefing them back or responding to verbal abuse with more abuse, is not allowed and will lead to penalties for all parties involved. We encourage you to keep playing as best as you can, and to report the player after the game. If the player’s behavior makes it impossible to continue, you can leave the game and report the issue instead.
 
 ## **Section 2: In-Game conduct**
 
@@ -99,7 +99,7 @@ For competitive games, playing to win doesn’t have to mean following fixed str
   * In share until death games, if possible, try instead to transfer units to a teammate and move somewhere safe before going AFK. If going AFK is not possible, make sure you minimize friendly fire from your ACU explosion before you leave the game.
   * \*As a rough guideline, the mod team will typically consider someone being reported for 3+ games in a week by teammates as 'frequently' leaving games
 * **Forced surrender** — Do not try to force teammates to give up if they’re still playing to win.
-* **CTRL-K** — Do not self-destruct or "CTRL-K" your base or significant quantities of units.
+* **CTRL-K** — Do not self-destruct, also known as or "CTRL-K", your base or significant quantities of units.
 
 ### **Cheating, exploits, and griefing:**
 
