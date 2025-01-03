@@ -17,7 +17,7 @@ exports = module.exports = function (req, res) {
 
             flash.class = 'alert-danger'
             flash.messages = errors.map((error) => ({ msg: error.detail }))
-            flash.type = 'Error'
+            flash.type = 'Error!'
         }
     } else {
         flash = null
