@@ -5,6 +5,7 @@ block content
     .playMain
         .playInnerGrid
             h1 How to link FAF Account to Steam
+            if flash == null || flash.type !== 'Error!'
                 p.highlightText Shouldn't take more than 1-2 minutes.
             .playContainer
                 h2 Your Steam account must be public to link
@@ -19,7 +20,8 @@ block content
                     img(src='/images/steamGOG/steamLogin.jpg')
                     label Make sure the flash message below states you are connected.
                     label Flash Message:
-                    +flash-messages(flash)
+                    span(id='flash-msg-container', data-flash-type=flash ? flash.type : '')
+                        +flash-messages(flash)
                     label If you encounter issues linking then you may also need to set the game to be public
                     label Login to steam in your browser -> Games -> Supreme commander -> "Unmark as private"
                     img(src='/images/steamGOG/steamBrowserGames.jpg')
@@ -30,3 +32,6 @@ block content
                 h2 Why do I need to link my Steam/GOG account to FAF?
                     p FAF as an organization doesn't own the copyright or trademark to SC:FA (Square Enix does). <br> Therefore, we need to verify you own a copy of SC:FA to prevent piracy.
                     p Linking your steam account to FAF doesn't provide us with any information or powers over your account. <br> Only the fact that you own Supreme Commander: Forged Alliance. <br> Which is why we need you to set your Game Details to public when linking your account.
+
+block js
+    script(src=webpackAssetJS('scroll-to-flash'))
