@@ -4,6 +4,26 @@
 
 You can report players who breach FAF rules in-game by finding the game in recent replays, right clicking on their name, and using the report player option. Alternatively, you can use the Moderation reports menu (click on your username in the top-right of the client to find this menu). For more details on the reporting and appeals system see below.
 
+[The FAF Report System](#introductiontothefafreportsystem)
+
+- [How to file a report](#howtofileareport)
+
+- [Providing evidence with your report](#providingevidencewithyourreport)
+
+- [What happens after you submit a report](#whathappensafteryousubmitareport)
+
+- [How context is considered during investigations.](#howcontextisconsideredduringinvestigations)
+
+- [Possible Outcomes](#possibleoutcomes)
+
+- [Inquiries and feedback regarding moderation](#inquiriesandfeedbackregardingmoderation)
+
+[The FAF Appeal System](#appealingapenalty)
+
+- [How to file an appeal](#howtofileanappeal)
+
+[Frequently asked questions](#frequentlyaskedquestions)
+
 ## **Introduction to the FAF Report System**
 
 As members of the Forged Alliance Forever community, we are all responsible for creating a positive community. For this reason, all members are required to follow the FAF Code of Conduct. Members may file a report against another member if they observe one or multiple rules in this Code of Conduct to be violated. Reports will be processed by the moderation team, who will review the reports, provide feedback, and assign penalties. Members who have received a penalty may file an appeal with the moderation team if they believe their judgment is in error.
