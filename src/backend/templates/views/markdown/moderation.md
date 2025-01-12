@@ -140,58 +140,85 @@ Understand that an appeal is a chance to convince the moderation team that they�
 
 ## **Frequently asked questions**
 
-How do I know what I have been banned for, and how long my ban will last?
+<button onclick="expandAllFAQ()">Expand All</button>
+<button onclick="collapseAllFAQ()">Collapse All</button>
 
-* Upon logging into the FAF client, banned players will be shown a message that will state when their ban expires in the UTC time zone, the length of their ban, the reason for why they were banned, and the replayID of the game that led to the ban (if applicable).
+<details>
+  <summary>How do I know what I have been banned for, and how long my ban will last?</summary>
+  * Upon logging into the FAF client, banned players will be shown a message that will state when their ban expires in the UTC time zone, the length of their ban, the reason for why they were banned, and the replayID of the game that led to the ban (if applicable).
+</details>
 
-What should I do when I believe my ban is unfair?
+<details>
+  <summary>What should I do when I believe my ban is unfair?</summary>
+  * Please create a moderation support ticket through the Discord, and we will discuss the ban with you. If you remain convinced your ban should be revoked, you may file an appeal.
+</details>
 
-* Please create a moderation support ticket through the Discord, and we will discuss the ban with you. If you remain convinced your ban should be revoked, you may file an appeal.
+<details>
+  <summary>Why was my report dismissed?</summary>
+  * Reports may get dismissed if they miss critical information (such as a clear description, a replayID, or an accurate timestamp), if the reported offense was found not to have occurred, or if the report is malicious.
+</details>
 
-Why was my report dismissed?
+<details>
+  <summary>Why is my ban much longer than another player’s, even though they committed the same offense?</summary>
+  * We take a player’s moderation history into account when assigning penalties. Players who have no prior penalties will generally receive lower penalties (in the order of one or more days), while repeat offenders will find that the length of their penalties may increase with each offense.
+</details>
 
-* Reports may get dismissed if they miss critical information (such as a clear description, a replayID, or an accurate timestamp), if the reported offense was found to have occurred, or if they are malicious.
+<details>
+  <summary>Why was I banned for more than a few days even though this was my first offense?</summary>
+  * Some offenses, such as severe verbal abuse or abusing bugs, may result in more severe penalties. The moderation team has the final say over what qualifies as an appropriate penalty.
+</details>
 
-Why is my ban much longer than another player’s, even though they committed the same offense?
+<details>
+  <summary>Does reporting a player guarantee that they will be penalized?</summary>
+  * No. Sometimes the moderation team may choose not to apply a penalty, but to make reference to the offense in the player’s moderation record. Future reports will take such references into consideration, which may lead to a (higher) penalty in the future.
+</details>
 
-* We take a player’s moderation history into account when assigning penalties. Players who have no prior penalties will generally receive lower penalties (in the order of one or more days), while repeat offenders will find that the length of their penalties may increase with each offense.
+<details>
+  <summary>I accidentally disconnected from the game, will I be banned?</summary>
+  * Accidental disconnections happen. Unless a clear pattern of malicious behavior has been established, you will not receive a penalty for accidentally disconnecting.
+</details>
 
-Why was I banned for more than a few days even though this was my first offense?
+<details>
+  <summary>Will I be penalized for accidentally killing a team member?</summary>
+  * Recent patches have made it exceedingly difficult to accidentally kill a team member. However, if you have somehow managed anyway, it will likely become clear during the investigation of the ticket by the moderation team. If you received a ban regardless but believe it is clear you made the kill by accident, please create a moderation support ticket.
+</details>
 
-* Some offenses, such as severe verbal abuse or abusing bugs may result in more severe penalties. The moderation team has the final say over what qualifies as an appropriate sanction.
+<details>
+  <summary>I reclaimed engineers from my teammates, because they were taking my reclaim/mass extractor spots. Why was I banned?</summary>
+  * Reclaiming allied units is not accepted, even in response to a teammate reclaiming your units. Additionally, the FAF Code of Conduct explicitly explains that there are no ‘reserved’ reclaim patches or mass extractor spots; if you have not yet built a mass extractor, you have no claim to that mass spot. We recommend you discuss the assignment of reclaim or mexes with your team.
+</details>
 
-Does reporting a player guarantee that they will be penalized?
+<details>
+  <summary>I reported my teammate for taking all the available mass extractors. Why was my report dismissed?</summary>
+  * You may discuss with your teammate how mass extractors are assigned, but in the end they may get taken on a first-come first-serve basis. Addressing this is not a matter for the moderation team. You may want to consider adding the player to your foe-list instead.
+</details>
 
-* No. Sometimes the moderation team may choose not to apply a penalty, but to make reference to the offense in the player’s moderation record. Future reports will take such references into consideration, which may lead to a (higher) penalty in the future.
+<details>
+  <summary>Why is destroying my own base (base CTRL-K’ing), especially in full-share games, against the rules?</summary>
+  * By destroying your base, you prevent your team from benefiting from the resources and units that would be transferred to another teammate. As this effectively sabotages their chances of winning, this action is considered griefing.
+</details>
 
-I accidentally disconnected from the game, will I be banned?
+<details>
+  <summary>I have destroyed my base because I want to force my team to give up. The game is lost and I want to play a new game. Why was I banned?</summary>
+  * If you believe the game is indisputably lost, you may call a vote to recall. If your teammates do not agree with your recall vote, you are not entitled to force your decision upon them by destroying your base. Doing so anyway is considered griefing.
+</details>
 
-* Accidental disconnections happen. Unless a clear pattern of malicious behavior has been established, you will not receive a penalty for accidentally disconnecting.
+<details>
+  <summary>Why was my report about my teammate not playing properly dismissed?</summary>
+  * Playing to win doesn't mean sticking strictly to established strategies. Experimenting and trying new approaches is valid. Additionally, players may have days when they are not playing their best, or are simply not seeing opportunities that you are seeing. Unless a player is being clearly malicious, we do not consider this a bannable offense.
+</details>
 
-Will I be penalized for accidentally killing a team member?
+<details>
+  <summary>I have been banned for smurfing, but I do not own a second account. What do I do?</summary>
+  * Contact the moderation team through the moderation support ticket system. It is possible that our smurf-detection systems have wrongly identified you, and if that is the case we’ll do our best to clear it up quickly.
+</details>
 
-* Recent patches have made it exceedingly difficult to accidentally kill a team member. However, if you have somehow managed anyway, it will likely become clear during the investigation of the ticket by the moderation team. If you received a ban regardless but believe it is clear you made the kill by accident, please create a moderation support ticket.
+<script>
+  function expandAllFAQ() {
+    document.querySelectorAll("details").forEach(detail => detail.open = true);
+  }
 
-I reclaimed engineers from my teammates, because they were taking my reclaim/mass extractor spots. Why was I banned?
-
-* Reclaiming allied units is not accepted. Additionally, the FAF Code of Conduct explicitly explains that there are no ‘reserved’ reclaim patches or mass extractor spots. We recommend you discuss the assignment of reclaim or mexes with your team.
-
-I reported my teammate for taking all the available mass extractors. Why was my report dismissed?
-
-* You may discuss with your teammate how mass extractors are assigned, but in the end they may get taken on a first-come first-serve basis. Addressing this is not a matter for the moderation team. You may want to consider adding the player to your foe-list instead.
-
-Why is destroying my own base (base CTRL-K’ing), especially in full-share games, against the rules?
-
-* By destroying your base, you prevent your team from benefiting from the resources and units that would be transferred to another teammate. As this effectively sabotages their chances of winning, this action is considered griefing.
-
-I have destroyed my base because I want to force my team to give up. The game is lost and I want to play a new game. Why was I banned?
-
-* If you believe the game is indisputably lost, you may call a vote to recall. If your teammates do not agree with your recall vote, you are not entitled to force your decision upon them by destroying your base. Doing so anyway is considered griefing.
-
-Why was my report about my teammate not playing properly dismissed?
-
-* Playing to win doesn't mean sticking strictly to established strategies. Experimenting and trying new approaches is valid. Additionally, players may have days when they are not playing their best, or are simply not seeing opportunities that you are seeing. Unless a player is being clearly malicious, we do not consider this a bannable offense.
-
-I have been banned for smurfing, but I do not own a second account. What do I do?
-
-* Contact the moderation team through the moderation support ticket system. It is possible that our smurf-detection systems have wrongly identified you, and if that is the case we’ll do our best to clear it up quickly.
+  function collapseAllFAQ() {
+    document.querySelectorAll("details").forEach(detail => detail.open = false);
+  }
+</script>

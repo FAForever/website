@@ -88,16 +88,16 @@ For competitive games, playing to win doesn’t have to mean following fixed str
 * **Controlling behavior** — Do not force teammates to play in a certain way. Constructive feedback is great if it's asked for, but ordering people around is not acceptable.
 * **Teammates** — Treat your teammates as they would wish to be treated.
 * **Sharing resources** — Resources such as reclaim and mass extractors do not have to be shared evenly, but be open to sharing them fairly with your team.
-  * There are no reserved mass extractor slots or reclaim. Teammates taking available resources does not constitute as griefing.
+    * There are no reserved mass extractor slots or reclaim. Teammates taking available resources does not constitute as griefing.
 * **Game pausing** \- If another player pauses the game and requests a short break, allow it briefly, but don't feel obliged to wait too long. Abusing pauses to gain an in-game advantage is not allowed.
 * **Helping enemy team** \- Do not maliciously seek to help the enemy team by sharing match-relevant information of a teammate to the enemy (for example, this might include telling the enemy team that a teammate is building a nuke launcher)
 
 ### **Commit to Competition**
 
 * **Leaving games**: Don’t leave in the first 5 minutes, and don’t frequently\* leave games.
-  * Using the recall function, or leaving an abandoned game (for example, multiple players disconnecting together, or the players on both teams agree to restart the game), is permitted.
-  * In share until death games, if possible, try instead to transfer units to a teammate and move somewhere safe before going AFK. If going AFK is not possible, make sure you minimize friendly fire from your ACU explosion before you leave the game.
-  * \*As a rough guideline, the mod team will typically consider someone being reported for 3+ games in a week by teammates as 'frequently' leaving games
+    * Using the recall function, or leaving an abandoned game (for example, multiple players disconnecting together, or the players on both teams agree to restart the game), is permitted.
+    * In share until death games, if possible, try instead to transfer units to a teammate and move somewhere safe before going AFK. If going AFK is not possible, make sure you minimize friendly fire from your ACU explosion before you leave the game.
+    * \*As a rough guideline, the mod team will typically consider someone being reported for 3+ games in a week by teammates as 'frequently' leaving games
 * **Forced surrender** — Do not try to force teammates to give up if they’re still playing to win.
 * **CTRL-K** — Do not self-destruct, also known as or "CTRL-K", your base or significant quantities of units.
 
@@ -106,10 +106,10 @@ For competitive games, playing to win doesn’t have to mean following fixed str
 * **Rating manipulation** — Do not engage in rating manipulation, such as intentionally losing or forfeiting games early to lower your rating, or having someone else forfeit a game to boost your rating.
 * **Ruining games** — Do not deliberately ruin games by abusing game mechanics, such as continuously pausing the game or spamming pings.
 * **Third party software** — Do not use UI mods, macros, or autoclickers that provide unfair advantages.
-  * In case you are uncertain if any of these are allowed, contact the moderation team.
+    * In case you are uncertain if any of these are allowed, contact the moderation team.
 * **Disruption** — Do not intentionally disrupt games or FAF services. The moderation team will assess the context and impact of such actions, examples of which include deliberately slowing the game or breaking lobbies.
 * **Exploits** — Abusing any exploit, including but not limited to those listed on this [list of known exploits](https://forum.faforever.com/topic/203/list-of-banned-exploits), will result in penalties. Report any exploits to the moderation team.
-  * Assisting others in using exploits or failing to report players exploiting a game you are participating in may result in penalties.
+    * Assisting others in using exploits or failing to report players exploiting a game you are participating in may result in penalties.
 
 ## **Section 3: Communication**
 

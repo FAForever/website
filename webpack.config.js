@@ -21,7 +21,6 @@ module.exports = {
         'faf-teams': ['./src/frontend/js/entrypoint/faf-teams.js'],
         leaderboards: ['./src/frontend/js/entrypoint/leaderboards.js'],
         navigation: ['./src/frontend/js/entrypoint/navigation.js'],
-        snowflakes: ['./src/frontend/js/entrypoint/snowflakes.js'],
         newshub: ['./src/frontend/js/entrypoint/newshub.js'],
         play: ['./src/frontend/js/entrypoint/play.js'],
         report: ['./src/frontend/js/entrypoint/report.js'],
