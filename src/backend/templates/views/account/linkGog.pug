@@ -41,7 +41,9 @@ block content
                     label Make sure the flash message below states you are connected.
 
                     p Flash Message:
-                    span(id='flash-msg-container', data-flash-type=flash ? flash.type : '')
+                    span#flash-msg-container(
+                        data-flash-type=flash ? flash.type : ''
+                    )
                         +flash-messages(flash)
                 h1 And you are done with GOG linking forever!
                     p Now if you want, you can set your privacy settings back to private and your profile's about you to normal.

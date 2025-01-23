@@ -20,7 +20,9 @@ block content
                     img(src='/images/steamGOG/steamLogin.jpg')
                     label Make sure the flash message below states you are connected.
                     label Flash Message:
-                    span(id='flash-msg-container', data-flash-type=flash ? flash.type : '')
+                    span#flash-msg-container(
+                        data-flash-type=flash ? flash.type : ''
+                    )
                         +flash-messages(flash)
                     label If you encounter issues linking then you may also need to set the game to be public
                     label Login to steam in your browser -> Games -> Supreme commander -> "Unmark as private"
