@@ -2,7 +2,7 @@ const express = require('../../ExpressApp')
 const router = express.Router()
 
 router.get('/', (req, res) => res.render('index'))
-router.get('/newshub', (req, res) => res.render('newshub'))
+
 router.get('/campaign-missions', (req, res) => res.render('campaign-missions'))
 router.get('/scfa-vs-faf', (req, res) => res.render('scfa-vs-faf'))
 router.get('/ai', (req, res) => res.render('ai'))
@@ -25,6 +25,12 @@ router.get('/account_activated', (req, res) =>
 router.get('/password_resetted', (req, res) =>
     res.redirect('/account/requestPasswordReset')
 )
+
+// see : https://news.faforever.com/
+router.get('/newshub', (req, res) =>
+    res.redirect('https://news.faforever.com')
+)
+
 
 // this is prob. outdated, but don't know
 router.get('/report_submitted', require('./account/get/report'))
