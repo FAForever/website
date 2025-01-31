@@ -1,9 +1,6 @@
 const express = require('../../ExpressApp')
 const router = express.Router()
-
-const { query } = require('express-validator')
 const middlewares = require('../middleware')
-const url = require('url')
 
 router.get(
     '/linkGog',
@@ -60,54 +57,12 @@ router.post(
     require('./account/post/changeUsername')
 )
 
-router.get(
-    '/password/confirmReset',
-    [
-        query('token').notEmpty().withMessage('Missing token'),
-        query('username').notEmpty().withMessage('Missing username'),
-    ],
-    require('./account/get/confirmPasswordReset')
-)
-router.post(
-    '/password/confirmReset',
-    require('./account/post/confirmPasswordReset')
-)
-
-router.get(
-    '/requestPasswordReset',
-    require('./account/get/requestPasswordReset')
-)
-router.post(
-    '/requestPasswordReset',
-    require('./account/post/requestPasswordReset')
-)
-
-// still used in other applications (user-service, game-client etc.)
-router.get('/password/reset', (req, res) =>
-    res.redirect('/account/requestPasswordReset')
-)
-router.get('/confirmPasswordReset', (req, res) => {
-    res.redirect(
-        url.format({
-            pathname: '/account/password/confirmReset',
-            query: req.query,
-        })
-    )
-})
-
-router.get('/register', require('./account/get/register'))
-router.post('/register', require('./account/post/register'))
-
-router.get('/activate', require('./account/get/activate'))
-router.post('/activate', require('./account/post/activate'))
-
 router.get('/checkUsername', require('./checkUsername'))
 router.get(
     '/resync',
     middlewares.isAuthenticated(),
     require('./account/get/resync')
 )
-router.get('/create', require('./account/get/createAccount'))
 router.get(
     '/link',
     middlewares.isAuthenticated(),
