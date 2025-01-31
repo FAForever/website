@@ -1,6 +1,7 @@
 require('dotenv').config()
 
-const oauthUrl = process.env.OAUTH_URL || 'https://hydra.faforever.com'
+const oauthUrl =
+    process.env.OAUTH_URL || `https://hydra.${process.env.BASE_DOMAIN}`
 
 const appConfig = {
     nodeEnv: process.env.NODE_ENV || 'production',
@@ -23,8 +24,15 @@ const appConfig = {
         clientSecret: process.env.OAUTH_M2M_CLIENT_SECRET || 'banana',
         url: oauthUrl,
     },
-    apiUrl: process.env.API_URL || 'https://api.faforever.com',
-    wordpressUrl: process.env.WP_URL || 'https://direct.faforever.com',
+    userServiceUrl:
+        process.env.USER_SERVICE_URL ||
+        `https://user.${process.env.BASE_DOMAIN}`,
+    apiUrl: process.env.API_URL || `https://api.${process.env.BASE_DOMAIN}`,
+    forumUrl:
+        process.env.FORUM_URL || `https://forum.${process.env.BASE_DOMAIN}`,
+    wordpressUrl:
+        process.env.WP_URL || `https://direct.${process.env.BASE_DOMAIN}`,
+    discordUrl: process.env.DISCORD_URL || 'https://discord.gg/mXahVSKGVb',
     extractorInterval: process.env.EXTRACTOR_INTERVAL || 5,
     playerCountInterval: process.env.PLAYER_COUNT_INTERVAL || 15,
     recaptchaKey: process.env.RECAPTCHA_SITE_KEY || 'test',

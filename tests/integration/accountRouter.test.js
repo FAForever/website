@@ -10,58 +10,6 @@ beforeEach(async () => {
 })
 
 describe('Account Routes', function () {
-    const publicUrls = [
-        '/account/requestPasswordReset',
-        '/account/register',
-        '/account/activate',
-    ]
-
-    test.each(publicUrls)('responds with OK to %p', async (route) => {
-        const res = await testSession.get(route)
-        expect(res.statusCode).toBe(200)
-    })
-
-    test('responds with OK to provided parameters', async () => {
-        const response = await testSession.get(
-            '/account/password/confirmReset?username=turbo2&token=XXXXX'
-        )
-        expect(response.statusCode).toBe(200)
-    })
-
-    test('render request content if missing username parameter with flash', async () => {
-        const response = await testSession.get(
-            '/account/password/confirmReset?token=XXXXX'
-        )
-
-        expect(response.statusCode).toBe(200)
-        expect(response.text).toContain('Missing username')
-    })
-
-    test('render request content if missing token parameter with flash', async () => {
-        const response = await testSession.get(
-            '/account/password/confirmReset?token=XXXXX'
-        )
-
-        expect(response.statusCode).toBe(200)
-        expect(response.text).toContain('Missing username')
-    })
-
-    test('redirect old pw-reset routes', async () => {
-        const response = await testSession.get('/account/password/reset')
-        expect(response.statusCode).toBe(302)
-        expect(response.headers.location).toBe('/account/requestPasswordReset')
-    })
-
-    test('redirect old pw-reset-confirm routes', async () => {
-        const response = await testSession.get(
-            '/account/confirmPasswordReset?username=banana&token=xxx'
-        )
-        expect(response.statusCode).toBe(302)
-        expect(response.headers.location).toBe(
-            '/account/password/confirmReset?username=banana&token=xxx'
-        )
-    })
-
     const protectedUrls = [
         '/account/linkGog',
         '/account/report',
@@ -71,7 +19,6 @@ describe('Account Routes', function () {
         '/account/resync',
         '/account/link',
         '/account/connect',
-        '/account/create',
     ]
 
     test.each(protectedUrls)(
