@@ -1,215 +1,234 @@
+@use "sass:color"
 @use '../abstracts/variables'
 @use '../abstracts/mixins'
 
 // Background of the whole thing
 .leaderboardBackground
-  padding: 7.5vw 12vw
+    padding: 7.5vw 12vw
 
-  
 
 // This is the searchbar input form
-input 
-  margin: 1em 1em 2px 1em
-  background-color: variables.$background-tertiary
-  color: variables.$color-active
-  font-size: var(--paragraph-font-size)
-  border: 0.5em solid variables.$background-secondary
-  border-radius: 10px
-  z-index: 2
-  position: relative
+input
+    margin: 1em 1em 2px 1em
+    background-color: variables.$background-tertiary
+    color: variables.$color-active
+    font-size: var(--paragraph-font-size)
+    border: 0.5em solid variables.$background-secondary
+    border-radius: 10px
+    z-index: 2
+    position: relative
 
-  
-  // This class determines whether the first second and third player will have a different background color
+
+// This class determines whether the first second and third player will have a different background color
 .leaderboardAwards
-  .newLeaderboardContainer:nth-child(odd)
-    background-color: mix(variables.$background-tertiary, variables.$background-primary, 25%)
-  .newLeaderboardContainer:nth-child(even)
-    background-color: variables.$background-secondary
-  .newLeaderboardContainer:nth-child(2)
-    background-color: #594112
-  .newLeaderboardContainer:nth-child(3)
-    background-color: #737373
-  .newLeaderboardContainer:nth-child(4)
-    background-color: #5d351d
-    
+    .newLeaderboardContainer:nth-child(odd)
+        background-color: color.mix(variables.$background-tertiary, variables.$background-primary, 25%)
+
+    .newLeaderboardContainer:nth-child(even)
+        background-color: variables.$background-secondary
+
+    .newLeaderboardContainer:nth-child(2)
+        background-color: #594112
+
+    .newLeaderboardContainer:nth-child(3)
+        background-color: #737373
+
+    .newLeaderboardContainer:nth-child(4)
+        background-color: #5d351d
+
 .leaderboardNoAwards
-  .newLeaderboardContainer:nth-child(odd)
-    background-color: mix(variables.$background-tertiary, variables.$background-primary, 25%)
-  .newLeaderboardContainer:nth-child(even)
-    background-color: variables.$background-secondary
-  
+    .newLeaderboardContainer:nth-child(odd)
+        background-color: color.mix(variables.$background-tertiary, variables.$background-primary, 25%)
+
+    .newLeaderboardContainer:nth-child(even)
+        background-color: variables.$background-secondary
 
 
 .newLeaderboard
-  @include mixins.gridMainContainer
-  border-radius: 20px
-
-  .newLeaderboardCategory
-    padding: 0.5em
-    h2
-      font-size: 1.2rem
-      padding: 0
-    .categoryFilter
-    
-      h2
-        padding: 0
-    
-        //transition: 0.4s
-        //cursor: pointer
-        //&:hover
-          transform: scale(1.1)
-        
-  
-      img
-        display: inline-block
-        padding: 0 0.1em
-        height: 0.8em
-  .newLeaderboardContainer
     @include mixins.gridMainContainer
-    
-    h3
-      font-size: 0.9rem
-      padding: 0.75em 0
+    border-radius: 20px
+
+    .newLeaderboardCategory
+        padding: 0.5em
+
+        h2
+            font-size: 1.2rem
+            padding: 0
+
+        .categoryFilter
+
+            h2
+                padding: 0
+
+            //transition: 0.4s
+            //cursor: pointer
+            //&:hover
+              transform: scale(1.1)
 
 
-  
+            img
+                display: inline-block
+                padding: 0 0.1em
+                height: 0.8em
+
+    .newLeaderboardContainer
+        @include mixins.gridMainContainer
+
+        h3
+            font-size: 0.9rem
+            padding: 0.75em 0
+
 
 .mainLeaderboardContainer
-  @include mixins.gridMainContainer
-  padding: 0
-  ul
-    list-style: none
-    li
-      padding: 0.8em 0
-  p
-    padding: 0.2em
+    @include mixins.gridMainContainer
+    padding: 0
+
+    ul
+        list-style: none
+
+        li
+            padding: 0.8em 0
+
+    p
+        padding: 0.2em
 
 .leaderboardFilter
-  font-family: variables.$family-paragraph
-  font-size: 1.2rem
-  color: variables.$color-active
-  background-color: variables.$background-tertiary
-  padding: 1em 0.25em
-  margin: 0 1em
-  border-radius: 20px
-  text-align: center
-  select
-    cursor: pointer
+    font-family: variables.$family-paragraph
     font-size: 1.2rem
-  option
-    padding: 0 0.25em
     color: variables.$color-active
-    background-color: variables.$background-secondary
+    background-color: variables.$background-tertiary
+    padding: 1em 0.25em
+    margin: 0 1em
+    border-radius: 20px
+    text-align: center
 
-    
+    select
+        cursor: pointer
+        font-size: 1.2rem
+
+    option
+        padding: 0 0.25em
+        color: variables.$color-active
+        background-color: variables.$background-secondary
+
+
 //Buttons across the leaderboards
 .leaderboardCategory
-  border-radius: 20px
-  padding: 1em 0.25em
-  display: inline-block
-  place-items: start
-  font-family: variables.$family-paragraph
-  font-size: 1.2rem
-  letter-spacing: 0
-  .categoryButton:nth-child(odd)
-    border-radius: 30px 0 0 30px
-    border-right: 0.1em solid white
-    
-  .categoryButton:nth-child(even)
-    border-radius: 0 30px 30px 0
-  .categoryContainer
+    border-radius: 20px
+    padding: 1em 0.25em
     display: inline-block
-    margin: 0
-    padding: 0.5em
-    .categoryButton
-      display: inline-block
-      padding: 1em
-      background-color: variables.$background-tertiary
-      cursor: pointer
-      transition: 0.4s
-      &:hover
-        filter: brightness(2)
-    .exhaustedButton
-      background-color: variables.$background-secondary
-      color: variables.$color-inactive-plus
-      pointer-events: none
-      cursor: default
-    
-  
+    place-items: start
+    font-family: variables.$family-paragraph
+    font-size: 1.2rem
+    letter-spacing: 0
+
+    .categoryButton:nth-child(odd)
+        border-radius: 30px 0 0 30px
+        border-right: 0.1em solid white
+
+    .categoryButton:nth-child(even)
+        border-radius: 0 30px 30px 0
+
+    .categoryContainer
+        display: inline-block
+        margin: 0
+        padding: 0.5em
+
+        .categoryButton
+            display: inline-block
+            padding: 1em
+            background-color: variables.$background-tertiary
+            cursor: pointer
+            transition: 0.4s
+
+            &:hover
+                filter: brightness(2)
+
+        .exhaustedButton
+            background-color: variables.$background-secondary
+            color: variables.$color-inactive-plus
+            pointer-events: none
+            cursor: default
 
 
 .appearWhenSearching
-  display: none
+    display: none
+
 .centerYourself
-  display: grid
-  justify-items: center
-  position: relative
+    display: grid
+    justify-items: center
+    position: relative
 
 .searchBar
-  ul
-    background-color: variables.$background-secondary
-    color: variables.$color-inactive
-    font-size: calc(var(--paragraph-font-size) * 0.9)
-    border-radius:  0  0 10px 10px
-    text-align: left
-    li
-      padding: 0.5em 1em
-      
+    ul
+        background-color: variables.$background-secondary
+        color: variables.$color-inactive
+        font-size: calc(var(--paragraph-font-size) * 0.9)
+        border-radius: 0 0 10px 10px
+        text-align: left
+
+        li
+            padding: 0.5em 1em
+
 .clearButton
-  img
-    cursor: pointer
-    margin: 0.5em 0.5em 0 0.5em
-    border-radius: 10px
-    z-index: 10
-    width: 1em
-    background-color: variables.$background-tertiary
-    color: variables.$color-inactive
-    padding: 0.5em
-    transition: 0.4s
-    &:hover
-      background-color: variables.$color-inactive-plus
-      color: variables.$color-active
+    img
+        cursor: pointer
+        margin: 0.5em 0.5em 0 0.5em
+        border-radius: 10px
+        z-index: 10
+        width: 1em
+        background-color: variables.$background-tertiary
+        color: variables.$color-inactive
+        padding: 0.5em
+        transition: 0.4s
+
+        &:hover
+            background-color: variables.$color-inactive-plus
+            color: variables.$color-active
 
 @media (max-width: 600px)
-  .newLeaderboard
-    .newLeaderboardCategory
-      h2
-        font-size: 14px
-    .newLeaderboardContainer
-      h3
-        font-size: 12px
+    .newLeaderboard
+        .newLeaderboardCategory
+            h2
+                font-size: 14px
+
+        .newLeaderboardContainer
+            h3
+                font-size: 12px
 
 @media (max-width: 800px)
-  .leaderboardFilter
-    font-size: 12px
-  .leaderboardContainer
-    ul
-      font-size: 12px
-      padding: 1em 0 0 0
-      
-      li
-        text-overflow: ellipsis
+    .leaderboardFilter
         font-size: 12px
-        padding: 1em 0
-  
-  .clearButton
-    left: 90%
-    top: 68%
-  .leaderboardBackground
-    padding: 1vw
-  .leaderboardCategory
-    padding: 1vw
-    font-size: var(--paragraph-font-size)
-    ul
-      li
-        padding: 0.65em
-    
+    .leaderboardContainer
+        ul
+            font-size: 12px
+            padding: 1em 0 0 0
+
+            li
+                text-overflow: ellipsis
+                font-size: 12px
+                padding: 1em 0
+
+    .clearButton
+        left: 90%
+        top: 68%
+    .leaderboardBackground
+        padding: 1vw
+    .leaderboardCategory
+        padding: 1vw
+        font-size: var(--paragraph-font-size)
+
+        ul
+            li
+                padding: 0.65em
+
 
 @media (max-width: 1600px)
-  .leaderboardContainer
-    ul
-      font-size: 14px
-      li
+    .leaderboardContainer
+        ul
+            font-size: 14px
+
+            li
+                font-size: 14px
+    .leaderboardFilter
         font-size: 14px
-  .leaderboardFilter
-    font-size: 14px
