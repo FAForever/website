@@ -1,4 +1,4 @@
-const sass = require('dart-sass')
+const sass = require('sass')
 
 module.exports = {
     dev: {

@@ -9,10 +9,10 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v3
       with:
-        node-version: '20'
+        node-version: '22'
         cache: 'yarn'
     -   run: yarn install --frozen-lockfile
     -   run: npx webpack
     -   run: yarn run test
     -   uses: codecov/codecov-action@v3
-    
+

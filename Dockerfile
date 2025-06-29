@@ -1,4 +1,4 @@
-FROM node:20.9-bookworm as builder
+FROM node:22-bookworm as builder
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
 ENV NODE_ENV development
 
@@ -10,7 +10,7 @@ RUN npx webpack
 RUN ./node_modules/.bin/grunt prod
 RUN yarn install --production=true --ignore-optional --frozen-lockfile
 
-FROM node:20.9.0-bookworm-slim as runtime
+FROM node:22-bookworm-slim as runtime
 ENV NODE_ENV production
 
 COPY --from=builder /usr/bin/dumb-init /usr/bin/dumb-init
