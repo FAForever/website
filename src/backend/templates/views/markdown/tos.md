@@ -1,12 +1,3 @@
-<div class="markdownButton">
-<a href="/tos-fr">
-<button> Tos Français</button>
-</a>
-
-<a href="/tos-ru">
-<button> Tos Русский </button>
-</a>
-</div>
 # Forged Alliance Forever Terms of Service
 
 Effective date: _July 8, 2024_
