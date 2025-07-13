@@ -46,6 +46,8 @@ router.get(
     middlewares.isAuthenticated(),
     require('./clans/inviteAccept')
 )
-router.all('*splat', (req, res) => res.status(503).render('errors/503-known-issue'))
+router.all('*splat', (req, res) =>
+    res.status(503).render('errors/503-known-issue')
+)
 
 module.exports = router
