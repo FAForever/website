@@ -35,7 +35,7 @@ test('empty passport', () => {
             new UserService(),
             'http://api-localhost'
         )
-    ).toThrowError('oAuthPassport not an object')
+    ).toThrow('oAuthPassport not an object')
 })
 
 test('empty token', () => {
@@ -45,7 +45,7 @@ test('empty token', () => {
             'http://api-localhost',
             { refreshToken: '123' }
         )
-    ).toThrowError('oAuthPassport.token not a string')
+    ).toThrow('oAuthPassport.token not a string')
 })
 
 test('empty refresh-token', () => {
@@ -55,7 +55,7 @@ test('empty refresh-token', () => {
             'http://api-localhost',
             { token: '123' }
         )
-    ).toThrowError('oAuthPassport.refreshToken not a string')
+    ).toThrow('oAuthPassport.refreshToken not a string')
 })
 
 test('multiple calls with stale token will trigger refresh only once', async () => {
@@ -89,16 +89,16 @@ test('multiple calls with stale token will trigger refresh only once', async () 
         .reply(200, { access_token: 'new_tok', refresh_token: 'new_ref' })
 
     const response = client.get('/example').then((res) => {
-        expect(res.request.headers.authorization).toBe('Bearer new_tok')
+        expect(res.config.headers.get('Authorization')).toBe('Bearer new_tok')
     })
 
     const response2 = client.get('/example').then((res) => {
-        expect(res.request.headers.authorization).toBe('Bearer new_tok')
+        expect(res.config.headers.get('Authorization')).toBe('Bearer new_tok')
     })
 
     await Promise.all([response, response2])
 
-    expect(refreshSpy).toBeCalledTimes(1)
+    expect(refreshSpy).toHaveBeenCalledTimes(1)
 
     apiScope.done()
     authScope.done()
@@ -139,7 +139,7 @@ test('refresh will throw on error', async () => {
     }
 
     expect(thrown).toBe(true)
-    expect(refreshSpy).toBeCalledTimes(1)
+    expect(refreshSpy).toHaveBeenCalledTimes(1)
 
     apiScope.done()
     authScope.done()
