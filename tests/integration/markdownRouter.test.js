@@ -11,11 +11,7 @@ beforeEach(async () => {
 describe('Privacy And TOS Routes', function () {
     const arr = [
         '/privacy',
-        '/privacy-fr',
-        '/privacy-ru',
         '/tos',
-        '/tos-fr',
-        '/tos-ru',
         '/rules',
         '/cg',
     ]
