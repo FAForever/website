@@ -9,12 +9,7 @@ beforeEach(async () => {
     testSession = supertestSession(kernel.expressApp)
 })
 describe('Privacy And TOS Routes', function () {
-    const arr = [
-        '/privacy',
-        '/tos',
-        '/rules',
-        '/cg',
-    ]
+    const arr = ['/privacy', '/tos', '/rules', '/cg']
 
     test.each(arr)('responds with OK to %p', async (route) => {
         const res = await testSession.get(route)
