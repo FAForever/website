@@ -7,6 +7,7 @@ const getLeaderboardId = (leaderboardName) => {
         global: 1,
         '1v1': 2,
         '2v2': 3,
+        '3v3': 6,
         '4v4': 4,
     }
 
