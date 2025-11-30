@@ -15,7 +15,7 @@ module.exports.bootPassport = (expressApp, appConfig) => {
     const authStrategy = new OidcStrategy(
         {
             passReqToCallback: true,
-            issuer: appConfig.oauth.url + '/',
+            issuer: appConfig.oauth.url,
             tokenURL: appConfig.oauth.url + '/oauth2/token',
             authorizationURL: appConfig.oauth.publicUrl + '/oauth2/auth',
             userInfoURL: appConfig.oauth.url + '/userinfo?schema=openid',
