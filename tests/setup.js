@@ -87,23 +87,42 @@ beforeEach(() => {
     })
 
     jest.spyOn(JavaApiM2MClient, 'getToken').mockResolvedValue({
+        expired: () => false,
         token: {
             refresh: () => {},
             access_token: 'test',
         },
     })
 
-    nock(appConfig.apiUrl)
-        .get(
-            '/data/clan?include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000'
+    const clansFile = JSON.parse(
+        fs.readFileSync('tests/integration/testData/clan/clans.json', {
+            encoding: 'utf8',
+            flag: 'r',
+        })
+    )
+    const clanPageSize = 100
+    const totalClanPages = Math.floor(clansFile.data.length / clanPageSize) + 1
+    for (let p = 1; p <= totalClanPages; p++) {
+        const start = (p - 1) * clanPageSize
+        const end = start + clanPageSize
+        const pageData = clansFile.data.slice(start, end)
+        const includedIds = new Set(
+            pageData
+                .map((c) => c.relationships?.leader?.data?.id)
+                .filter(Boolean)
         )
-        .reply(
-            200,
-            fs.readFileSync('tests/integration/testData/clan/clans.json', {
-                encoding: 'utf8',
-                flag: 'r',
-            })
+        const pageIncluded = clansFile.included.filter((i) =>
+            includedIds.has(i.id)
         )
+        nock(appConfig.apiUrl)
+            .get(
+                `/data/clan?include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=${p}&page[size]=${clanPageSize}`
+            )
+            .reply(
+                200,
+                JSON.stringify({ data: pageData, included: pageIncluded })
+            )
+    }
 
     nock(appConfig.apiUrl)
         .get('/data/clan/2741?include=memberships.player')

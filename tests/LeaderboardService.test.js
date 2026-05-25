@@ -14,16 +14,23 @@ const axios = new Axios()
 const fakeEntry = JSON.stringify({
     data: [
         {
+            id: '42',
+            type: 'leaderboardRating',
             attributes: {
                 rating: -1000,
                 totalGames: 100,
                 wonGames: 30,
                 updateTime: '2023-12-1',
             },
+            relationships: {
+                player: { data: { type: 'player', id: '42' } },
+            },
         },
     ],
     included: [
         {
+            id: '42',
+            type: 'player',
             attributes: {
                 login: 'player1',
             },
@@ -47,16 +54,16 @@ afterEach(() => {
 test('non 200 will throw', async () => {
     axios.get.mockImplementationOnce(() => Promise.resolve({ status: 403 }))
     await expect(leaderboardService.getLeaderboard(0)).rejects.toThrow(
-        'LeaderboardRepository::fetchLeaderboard failed with response status "403"'
+        'LeaderboardRepository::fetchAll failed with response status "403"'
     )
 })
 
 test('malformed empty response', async () => {
     axios.get.mockImplementationOnce(() =>
-        Promise.resolve({ status: 200, data: null })
+        Promise.resolve({ status: 200, data: 'null' })
     )
     await expect(leaderboardService.getLeaderboard(0)).rejects.toThrow(
-        'LeaderboardRepository::mapResponse malformed response, not an object'
+        'LeaderboardRepository::fetchAll malformed response, not an object'
     )
 })
 
@@ -65,16 +72,7 @@ test('malformed response data missing', async () => {
         Promise.resolve({ status: 200, data: JSON.stringify({ included: [] }) })
     )
     await expect(leaderboardService.getLeaderboard(0)).rejects.toThrow(
-        'LeaderboardRepository::mapResponse malformed response, expected "data"'
-    )
-})
-
-test('malformed response included missing', async () => {
-    axios.get.mockImplementationOnce(() =>
-        Promise.resolve({ status: 200, data: JSON.stringify({ data: [{}] }) })
-    )
-    await expect(leaderboardService.getLeaderboard(0)).rejects.toThrow(
-        'LeaderboardRepository::mapResponse malformed response, expected "included"'
+        'LeaderboardRepository::fetchAll malformed response, expected "data"'
     )
 })
 

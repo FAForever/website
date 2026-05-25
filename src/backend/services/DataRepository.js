@@ -1,4 +1,5 @@
 const { JavaApiError } = require('./ApiErrors')
+const { JavaApiPaginator } = require('./JavaApiPaginator')
 
 class DataRepository {
     constructor(javaApiM2MClient) {
@@ -6,31 +7,11 @@ class DataRepository {
     }
 
     async fetchAllClans() {
-        const response = await this.javaApiM2MClient.get(
-            '/data/clan?include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login&page[number]=1&page[size]=3000'
+        const responseData = await JavaApiPaginator.fetchAll(
+            this.javaApiM2MClient,
+            '/data/clan?include=leader&fields[clan]=name,tag,description,leader,memberships,createTime&fields[player]=login',
+            'DataRepository'
         )
-
-        if (response.status !== 200) {
-            throw new Error(
-                'DataRepository::fetchAllClans failed with response status "' +
-                    response.status +
-                    '"'
-            )
-        }
-
-        const responseData = JSON.parse(response.data)
-
-        if (typeof responseData !== 'object' || responseData === null) {
-            throw new Error(
-                'DataRepository::fetchAllClans malformed response, not an object'
-            )
-        }
-
-        if (!Object.prototype.hasOwnProperty.call(responseData, 'data')) {
-            throw new Error(
-                'DataRepository::fetchAllClans malformed response, expected "data"'
-            )
-        }
 
         if (responseData.data.length === 0) {
             console.log('[info] clans empty')
@@ -38,21 +19,26 @@ class DataRepository {
             return []
         }
 
-        if (!Object.prototype.hasOwnProperty.call(responseData, 'included')) {
-            throw new Error(
-                'DataRepository::fetchAll malformed response, expected "included"'
-            )
+        const playersById = new Map()
+        for (const item of responseData.included) {
+            if (item && item.type === 'player') {
+                playersById.set(item.id, item)
+            }
         }
 
-        const clans = responseData.data.map((item, index) => ({
-            id: parseInt(item.id),
-            leaderName: responseData.included[index]?.attributes.login || '-',
-            name: item.attributes.name,
-            tag: item.attributes.tag,
-            createTime: item.attributes.createTime,
-            description: item.attributes.description,
-            population: item.relationships.memberships.data.length,
-        }))
+        const clans = responseData.data.map((item) => {
+            const leaderId = item.relationships?.leader?.data?.id
+            const leader = leaderId ? playersById.get(leaderId) : null
+            return {
+                id: parseInt(item.id),
+                leaderName: leader?.attributes?.login || '-',
+                name: item.attributes.name,
+                tag: item.attributes.tag,
+                createTime: item.attributes.createTime,
+                description: item.attributes.description,
+                population: item.relationships.memberships.data.length,
+            }
+        })
 
         clans.sort((a, b) => {
             if (a.population > b.population) {

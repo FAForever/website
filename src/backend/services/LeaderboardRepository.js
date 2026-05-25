@@ -1,3 +1,5 @@
+const { JavaApiPaginator } = require('./JavaApiPaginator')
+
 class LeaderboardRepository {
     constructor(javaApiClient, monthsInThePast = 12) {
         this.javaApiClient = javaApiClient
@@ -14,19 +16,13 @@ class LeaderboardRepository {
     async fetchLeaderboard(id) {
         const updateTime = this.getUpdateTimeForApiEntries()
 
-        const response = await this.javaApiClient.get(
-            `/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${id};updateTime=ge=${updateTime}&page[size]=9999`
+        const merged = await JavaApiPaginator.fetchAll(
+            this.javaApiClient,
+            `/data/leaderboardRating?include=player&sort=-rating&filter=leaderboard.id==${id};updateTime=ge=${updateTime}`,
+            'LeaderboardRepository'
         )
 
-        if (response.status !== 200) {
-            throw new Error(
-                'LeaderboardRepository::fetchLeaderboard failed with response status "' +
-                    response.status +
-                    '"'
-            )
-        }
-
-        return this.mapResponse(JSON.parse(response.data))
+        return this.mapResponse(merged)
     }
 
     mapResponse(data) {
@@ -54,19 +50,26 @@ class LeaderboardRepository {
             )
         }
 
+        const playersById = new Map()
+        for (const item of data.included) {
+            if (item && item.type === 'player') {
+                playersById.set(item.id, item)
+            }
+        }
+
         const leaderboardData = []
 
-        data.data.forEach((item, index) => {
+        data.data.forEach((item) => {
             try {
+                const playerId = item.relationships?.player?.data?.id ?? item.id
+                const player = playersById.get(playerId)
                 leaderboardData.push({
-                    playerId: item.id,
+                    playerId,
                     rating: item.attributes.rating,
                     totalgames: item.attributes.totalGames,
                     wonGames: item.attributes.wonGames,
                     date: item.attributes.updateTime,
-                    label:
-                        data.included[index]?.attributes.login ||
-                        'unknown user',
+                    label: player?.attributes?.login || 'unknown user',
                 })
             } catch (e) {
                 console.error(

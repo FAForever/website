@@ -1,15 +1,19 @@
+const { JavaApiPaginator } = require('../../../../services/JavaApiPaginator')
+
 const getReports = async (javaApiClient) => {
     const maxDescriptionLength = 48
 
-    const response = await javaApiClient.get(
-        '/data/moderationReport?include=reportedUsers,lastModerator&sort=-createTime'
-    )
-
-    if (response.status !== 200) {
+    let reports
+    try {
+        reports = await JavaApiPaginator.fetchAll(
+            javaApiClient,
+            '/data/moderationReport?include=reportedUsers,lastModerator&sort=-createTime',
+            'ModerationReports'
+        )
+    } catch (e) {
+        console.error(e)
         return []
     }
-
-    const reports = JSON.parse(response.data)
     const cleanReports = []
     for (const k in reports.data) {
         const report = reports.data[k]
