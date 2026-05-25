@@ -27,19 +27,16 @@
         "simple-datatables": "^10.0.0",
         "simple-oauth2": "^5.1.0",
         "supertest-session": "^5.0.1",
-        "url-slug": "^4.0.1"
+        "url-slug": "^5.0.0"
     },
     "devDependencies": {
-        "@eslint/eslintrc": "^3.3.1",
-        "@eslint/js": "^9.31.0",
         "@prettier/plugin-pug": "^3.4.0",
         "awesomplete": "^1.1.7",
         "css-loader": "^7.1.2",
-        "eslint": "^9.30.0",
+        "eslint": "^10.4.0",
         "eslint-config-prettier": "^10.1.5",
-        "eslint-config-standard": "^17.1.0",
         "eslint-plugin-import": "^2.32.0",
-        "eslint-plugin-n": "^17.20.0",
+        "eslint-plugin-n": "^17.24.0",
         "eslint-plugin-prettier": "^5.5.1",
         "eslint-plugin-promise": "^7.2.1",
         "grunt": "1.6.2",
@@ -53,15 +50,16 @@
         "jest": "^30.0.3",
         "load-grunt-config": "4.0.1",
         "load-grunt-tasks": "5.1.0",
+        "neostandard": "^0.13.0",
         "nock": "^14.0.5",
         "octokit": "^5.0.3",
         "prettier": "^3.6.2",
         "style-loader": "^4.0.0",
         "supertest": "^7.1.1",
-        "typescript": "^5.8.3",
+        "typescript": "^6.0.3",
         "webpack": "^5.99.9",
-        "webpack-cli": "^6.0.1",
-        "webpack-manifest-plugin": "^5.0.1"
+        "webpack-cli": "^7.0.2",
+        "webpack-manifest-plugin": "^6.0.1"
     },
     "engines": {
         "node": ">=22.0.0",
