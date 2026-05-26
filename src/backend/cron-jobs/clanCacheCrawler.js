@@ -1,43 +1,17 @@
-const Scheduler = require('../services/Scheduler')
+const { scheduleRepeating } = require('./scheduleRepeating')
+const { warmAll } = require('./warmAll')
+const { CACHE_WARM_INTERVAL_MS } = require('./constants')
 
-const successHandler = (name) => {
-    console.debug('[debug] Cache updated', { name })
-}
-const errorHandler = (e, name) => {
-    console.error(e.toString(), { name, entrypoint: 'clanCacheCrawler.js' })
-    console.error(e.stack)
-}
-
-const warmupClans = async (clanService) => {
-    try {
-        await clanService
-            .getAll(true)
-            .then(() => successHandler('clanService::getAll(global)'))
-            .catch((e) => errorHandler(e, 'clanService::getAll(global)'))
-    } catch (e) {
-        console.error(
-            'Error: clanCacheCrawler::warmupClans failed with "' +
-                e.toString() +
-                '"',
-            { entrypoint: 'clanCacheCrawler.js' }
-        )
-        console.error(e.stack)
-    }
-}
+const warmupClans = (clanService) =>
+    warmAll('clan', [['all', () => clanService.getAll(true)]])
 
 /**
- * @param {clanService} clanService
- * @return {Scheduler[]}
+ * @param {ClanService} clanService
+ * @return {{ stop: () => void }}
  */
-module.exports = (clanService) => {
-    warmupClans(clanService).then(() => {})
-
-    const clansScheduler = new Scheduler(
-        'createClanCache', // Refresh cache every 59 minutes
-        () => warmupClans(clanService).then(() => {}),
-        60 * 59 * 1000
+module.exports = (clanService) =>
+    scheduleRepeating(
+        'clan-cache',
+        () => warmupClans(clanService),
+        CACHE_WARM_INTERVAL_MS
     )
-    clansScheduler.start()
-
-    return clansScheduler
-}

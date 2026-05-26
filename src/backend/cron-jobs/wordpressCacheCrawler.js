@@ -1,70 +1,23 @@
-const Scheduler = require('../services/Scheduler')
+const { scheduleRepeating } = require('./scheduleRepeating')
+const { warmAll } = require('./warmAll')
+const { CACHE_WARM_INTERVAL_MS } = require('./constants')
 
-const successHandler = (name) => {
-    console.debug('[debug] Cache updated', { name })
-}
-const errorHandler = (e, name) => {
-    console.error(e.toString(), {
-        name,
-        entrypoint: 'wordpressCacheCrawler.js',
-    })
-    console.error(e.stack)
-}
-
-const warmupWordpressCache = (wordpressService) => {
-    try {
-        wordpressService
-            .getNews(true)
-            .then(() => successHandler('wordpressService::getNews'))
-            .catch((e) => errorHandler(e, 'wordpressService::getNews'))
-
-        wordpressService
-            .getNewshub(true)
-            .then(() => successHandler('wordpressService::getNewshub'))
-            .catch((e) => errorHandler(e, 'wordpressService::getNewshub'))
-
-        wordpressService
-            .getContentCreators(true)
-            .then(() => successHandler('wordpressService::getContentCreators'))
-            .catch((e) =>
-                errorHandler(e, 'wordpressService::getContentCreators')
-            )
-
-        wordpressService
-            .getTournamentNews(true)
-            .then(() => successHandler('wordpressService::getTournamentNews'))
-            .catch((e) =>
-                errorHandler(e, 'wordpressService::getTournamentNews')
-            )
-
-        wordpressService
-            .getFafTeams(true)
-            .then(() => successHandler('wordpressService::getFafTeams'))
-            .catch((e) => errorHandler(e, 'wordpressService::getFafTeams'))
-    } catch (e) {
-        console.error(
-            'Error: wordpressCacheCrawler::warmupWordpressCache failed with "' +
-                e.toString() +
-                '"',
-            { entrypoint: 'wordpressCacheCrawler.js' }
-        )
-        console.error(e.stack)
-    }
-}
+const warmupWordpress = (wordpressService) =>
+    warmAll('wordpress', [
+        ['news', () => wordpressService.getNews(true)],
+        ['newshub', () => wordpressService.getNewshub(true)],
+        ['contentCreators', () => wordpressService.getContentCreators(true)],
+        ['tournamentNews', () => wordpressService.getTournamentNews(true)],
+        ['fafTeams', () => wordpressService.getFafTeams(true)],
+    ])
 
 /**
  * @param {WordpressService} wordpressService
- * @return {Scheduler[]}
+ * @return {{ stop: () => void }}
  */
-module.exports = (wordpressService) => {
-    warmupWordpressCache(wordpressService)
-
-    const wordpressScheduler = new Scheduler(
-        'createWordpressCaches',
-        () => warmupWordpressCache(wordpressService),
-        60 * 59 * 1000
+module.exports = (wordpressService) =>
+    scheduleRepeating(
+        'wordpress-cache',
+        () => warmupWordpress(wordpressService),
+        CACHE_WARM_INTERVAL_MS
     )
-    wordpressScheduler.start()
-
-    return wordpressScheduler
-}
