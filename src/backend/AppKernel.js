@@ -147,6 +147,14 @@ class AppKernel {
         this.schedulers.push(
             clanCacheCrawler(this.appContainer.get('ClanService'))
         )
+
+        const shutdown = () => {
+            for (const scheduler of this.schedulers) {
+                scheduler.stop()
+            }
+        }
+        process.once('SIGTERM', shutdown)
+        process.once('SIGINT', shutdown)
     }
 
     loadControllers() {
