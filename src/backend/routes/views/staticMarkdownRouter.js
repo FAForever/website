@@ -4,6 +4,10 @@ const fs = require('fs')
 const router = express.Router()
 
 // second argument containerClass can be used to inject a class, for page specific styling
+// NOTE: showdown has an unpatched ReDoS advisory (GHSA, moderate). It is only
+// reachable if attacker-controlled text is passed to makeHtml. Input here is
+// limited to repo-bundled .md files (privacy, tos, rules, cg, moderation), so
+// the advisory is not exploitable. Do not pass user input to this converter.
 function markdown(template, containerClass = '') {
     return (req, res) => {
         res.render('markdown', {
