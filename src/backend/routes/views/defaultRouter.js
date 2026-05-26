@@ -9,9 +9,9 @@ router.get('/ai', (req, res) => res.render('ai'))
 router.get('/donation', (req, res) => res.render('donation'))
 router.get('/tutorials-guides', (req, res) => res.render('tutorials-guides'))
 router.get('/faf-teams', (req, res) => res.render('faf-teams'))
-router.get('/contribution', (reqd, res) => res.render('contribution'))
-router.get('/content-creators', (reqd, res) => res.render('content-creators'))
-router.get('/play', (reqd, res) => res.render('play'))
+router.get('/contribution', (req, res) => res.render('contribution'))
+router.get('/content-creators', (req, res) => res.render('content-creators'))
+router.get('/play', (req, res) => res.render('play'))
 // redirect for the game-client https://github.com/FAForever/website/issues/459
 router.get('/clan/:id', (req, res) => {
     res.redirect('/clans/view/' + req.params.id)
