@@ -1,5 +1,5 @@
 const flash = {}
-const request = require('request')
+const axios = require('axios')
 const error = require('../post/error')
 
 exports = module.exports = function (req, res) {
@@ -13,19 +13,20 @@ exports = module.exports = function (req, res) {
 
     const overallRes = res
 
-    request.post(
-        {
-            url: process.env.API_URL + '/users/resyncAccount',
+    axios
+        .post(process.env.API_URL + '/users/resyncAccount', null, {
             headers: {
                 Authorization:
                     'Bearer ' +
                     req.requestContainer.get('UserService').getUser()
                         ?.oAuthPassport.token,
             },
-        },
-        function (err, res, body) {
-            if (err || res.statusCode !== 200) {
-                error.parseApiErrors(body, flash)
+            transformResponse: [(r) => r],
+            validateStatus: () => true,
+        })
+        .then((response) => {
+            if (response.status !== 200) {
+                error.parseApiErrors(response.data, flash)
             } else {
                 // Successfully account resync
                 flash.class = 'alert-success'
@@ -36,6 +37,9 @@ exports = module.exports = function (req, res) {
             }
 
             overallRes.render('account/confirmResyncAccount', { flash })
-        }
-    )
+        })
+        .catch(() => {
+            error.parseApiErrors(null, flash)
+            overallRes.render('account/confirmResyncAccount', { flash })
+        })
 }

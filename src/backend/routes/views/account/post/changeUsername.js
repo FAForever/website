@@ -1,5 +1,5 @@
 const flash = {}
-const request = require('request')
+const axios = require('axios')
 const error = require('./error')
 const { check, validationResult } = require('express-validator')
 
@@ -31,20 +31,24 @@ exports = module.exports = function (req, res) {
         const overallRes = res
 
         // Run post to reset endpoint
-        request.post(
-            {
-                url: process.env.API_URL + '/users/changeUsername',
-                headers: {
-                    Authorization:
-                        'Bearer ' +
-                        req.requestContainer.get('UserService').getUser()
-                            ?.oAuthPassport.token,
-                },
-                form: { newUsername: username },
-            },
-            function (err, res, body) {
-                if (err || res.statusCode !== 200) {
-                    error.parseApiErrors(body, flash)
+        axios
+            .post(
+                process.env.API_URL + '/users/changeUsername',
+                new URLSearchParams({ newUsername: username }),
+                {
+                    headers: {
+                        Authorization:
+                            'Bearer ' +
+                            req.requestContainer.get('UserService').getUser()
+                                ?.oAuthPassport.token,
+                    },
+                    transformResponse: [(r) => r],
+                    validateStatus: () => true,
+                }
+            )
+            .then((response) => {
+                if (response.status !== 200) {
+                    error.parseApiErrors(response.data, flash)
                     return overallRes.render('account/changeUsername', {
                         flash,
                     })
@@ -60,7 +64,10 @@ exports = module.exports = function (req, res) {
                 flash.type = 'Success!'
 
                 overallRes.render('account/changeUsername', { flash })
-            }
-        )
+            })
+            .catch(() => {
+                error.parseApiErrors(null, flash)
+                return overallRes.render('account/changeUsername', { flash })
+            })
     }
 }
