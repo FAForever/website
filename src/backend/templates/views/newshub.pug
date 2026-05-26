@@ -39,10 +39,7 @@ html(lang='en')
         )
 
         //- Customise the stylesheet for your site by editing /public/styles/site.sass
-        link(
-            href='/styles/css/site.min.css?version=' + Date.now(),
-            rel='stylesheet'
-        )
+        link(href=webpackAssetCSS('styles'), rel='stylesheet')
 body
     .clientBackground
         .clientMainFeature

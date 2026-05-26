@@ -9,8 +9,8 @@ const { ClanService } = require('../services/ClanService')
 const NodeCache = require('node-cache')
 const { Axios } = require('axios')
 const fs = require('fs')
-const webpackManifestJS = JSON.parse(
-    fs.readFileSync('dist/js/manifest.json', 'utf8')
+const webpackManifest = JSON.parse(
+    fs.readFileSync('dist/manifest.json', 'utf8')
 )
 
 /**
@@ -20,7 +20,7 @@ const webpackManifestJS = JSON.parse(
 module.exports.appContainer = function (appConfig) {
     const container = new ContainerBuilder()
 
-    container.setParameter('webpackManifestJS', webpackManifestJS)
+    container.setParameter('webpackManifest', webpackManifest)
 
     container.register('NodeCache', NodeCache).addArgument({
         stdTTL: 300, // use 5 min for all caches if not changed with ttl

@@ -79,7 +79,7 @@ class AppKernel {
         this.expressApp.use(bodyParser.json())
         this.expressApp.use(bodyParser.urlencoded({ extended: false }))
         this.expressApp.use(
-            webpackAsset(this.appContainer.getParameter('webpackManifestJS'))
+            webpackAsset(this.appContainer.getParameter('webpackManifest'))
         )
 
         this.expressApp.use(

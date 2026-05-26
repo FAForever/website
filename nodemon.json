@@ -1,0 +1,6 @@
+{
+    "watch": ["src/backend"],
+    "ignore": ["dist", "sessions", "node_modules"],
+    "delay": 500,
+    "script": "src/backend/index.js"
+}

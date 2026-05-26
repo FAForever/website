@@ -1,4 +1,6 @@
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts')
 const path = require('path')
 
 module.exports = {
@@ -8,6 +10,14 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    { loader: 'css-loader', options: { url: false } },
+                    'sass-loader',
+                ],
             },
         ],
     },
@@ -26,12 +36,19 @@ module.exports = {
         report: ['./src/frontend/js/entrypoint/report.js'],
         'clan-invite': ['./src/frontend/js/entrypoint/clan-invite.js'],
         'scroll-to-flash': ['./src/frontend/js/entrypoint/scroll-to-flash.js'],
+        styles: ['./public/styles/site.sass'],
     },
     output: {
-        filename: '[name].[contenthash].js',
-        path: path.resolve(__dirname, 'dist/js'),
-        publicPath: '/dist/js',
+        filename: 'js/[name].[contenthash].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/dist/',
         clean: true,
     },
-    plugins: [new WebpackManifestPlugin({ useEntryKeys: true })],
+    plugins: [
+        new RemoveEmptyScriptsPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'styles/[name].[contenthash].css',
+        }),
+        new WebpackManifestPlugin(),
+    ],
 }
