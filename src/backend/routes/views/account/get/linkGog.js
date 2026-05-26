@@ -35,6 +35,7 @@ exports = module.exports = function (req, res) {
             },
             transformResponse: [(r) => r],
             validateStatus: () => true,
+            timeout: 10000,
         })
         .then((response) => {
             locals.gogToken = 'unable to obtain token'

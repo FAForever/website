@@ -23,6 +23,7 @@ exports = module.exports = function (req, res) {
             },
             transformResponse: [(r) => r],
             validateStatus: () => true,
+            timeout: 10000,
         })
         .then((response) => {
             if (response.status !== 200) {
