@@ -1,4 +1,3 @@
-import Awesomplete from 'awesomplete'
 import axios from 'axios'
 
 async function getPlayers() {
@@ -11,21 +10,19 @@ async function getPlayers() {
 }
 
 getPlayers().then((memberList) => {
-    addAwesompleteListener(
-        document.getElementById('invited_player'),
-        memberList
-    )
+    populateDatalist('player-suggestions', memberList)
 })
 
-function addAwesompleteListener(element, memberList) {
-    const list = memberList.map((player) => {
-        return player.name
-    })
-
-    /* eslint-disable no-new */
-    new Awesomplete(element, {
-        list,
-    })
+function populateDatalist(datalistId, memberList) {
+    const datalist = document.getElementById(datalistId)
+    if (!datalist) return
+    const fragment = document.createDocumentFragment()
+    for (const player of memberList) {
+        const option = document.createElement('option')
+        option.value = player.name
+        fragment.appendChild(option)
+    }
+    datalist.appendChild(fragment)
 }
 
 const invitationLinkButton = document.getElementById('invitationLink')

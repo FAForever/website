@@ -1,11 +1,6 @@
 extends ../../layouts/default
 include ../../mixins/flash-error
 include ../../mixins/form/account
-block css
-    link(
-        href='/styles/awesomplete.css?version=' + Date.now(),
-        rel='stylesheet'
-    )
 block bannerMixin
 block content
     .containerCenter.text-center
@@ -57,8 +52,11 @@ block content
                         type='text',
                         required='required',
                         name='offender',
-                        placeholder='FAF username(s)'
+                        placeholder='FAF username(s)',
+                        list='offender-suggestions',
+                        autocomplete='off'
                     )
+                    datalist#offender-suggestions
 
                     span.glyphicon.form-control-feedback(aria-hidden='true')
                     .help-block Make sure to spell the name correctly and to respect the casing.
