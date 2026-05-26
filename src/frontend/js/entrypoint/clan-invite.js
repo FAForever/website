@@ -9,9 +9,27 @@ async function getPlayers() {
     return response.data
 }
 
-getPlayers().then((memberList) => {
-    populateDatalist('player-suggestions', memberList)
-})
+getPlayers()
+    .then((memberList) => {
+        populateDatalist('player-suggestions', memberList)
+    })
+    .catch((err) => {
+        console.error('Failed to load player suggestions:', err)
+        showSuggestionError(
+            'invited_player',
+            'Could not load player suggestions. You can still enter a name manually.'
+        )
+    })
+
+function showSuggestionError(inputId, message) {
+    const input = document.getElementById(inputId)
+    if (!input) return
+    const hint = document.createElement('div')
+    hint.className = 'help-block'
+    hint.style.color = '#a94442'
+    hint.textContent = message
+    input.insertAdjacentElement('afterend', hint)
+}
 
 function populateDatalist(datalistId, memberList) {
     const datalist = document.getElementById(datalistId)
