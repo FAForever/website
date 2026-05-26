@@ -1,5 +1,5 @@
 const flash = {}
-const request = require('request')
+const axios = require('axios')
 const error = require('./error')
 const { check, validationResult } = require('express-validator')
 
@@ -31,20 +31,27 @@ exports = module.exports = function (req, res) {
 
         const overallRes = res
 
-        request.post(
-            {
-                url: `${process.env.API_URL}/users/changeEmail`,
-                headers: {
-                    Authorization: `Bearer ${
-                        req.requestContainer.get('UserService').getUser()
-                            ?.oAuthPassport.token
-                    }`,
-                },
-                form: { newEmail: email, currentPassword: password },
-            },
-            function (err, res, body) {
-                if (err || res.statusCode !== 200) {
-                    error.parseApiErrors(body, flash)
+        axios
+            .post(
+                `${process.env.API_URL}/users/changeEmail`,
+                new URLSearchParams({
+                    newEmail: email,
+                    currentPassword: password,
+                }),
+                {
+                    headers: {
+                        Authorization: `Bearer ${
+                            req.requestContainer.get('UserService').getUser()
+                                ?.oAuthPassport.token
+                        }`,
+                    },
+                    transformResponse: [(r) => r],
+                    validateStatus: () => true,
+                }
+            )
+            .then((response) => {
+                if (response.status !== 200) {
+                    error.parseApiErrors(response.data, flash)
                     return overallRes.render('account/changeEmail', { flash })
                 }
 
@@ -54,7 +61,10 @@ exports = module.exports = function (req, res) {
                 flash.type = 'Success!'
 
                 overallRes.render('account/changeEmail', { flash })
-            }
-        )
+            })
+            .catch(() => {
+                error.parseApiErrors(null, flash)
+                return overallRes.render('account/changeEmail', { flash })
+            })
     }
 }

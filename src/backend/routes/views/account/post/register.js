@@ -1,5 +1,5 @@
 const flash = {}
-const request = require('request')
+const axios = require('axios')
 const { check, validationResult } = require('express-validator')
 require('dotenv').config()
 
@@ -35,16 +35,21 @@ exports = module.exports = function (req, res) {
         const overallRes = res
 
         // Run post to register endpoint
-        request.post(
-            {
-                url: process.env.API_URL + '/users/register',
-                form: { username, email, recaptchaResponse },
-            },
-            function (err, res, body) {
+        axios
+            .post(
+                process.env.API_URL + '/users/register',
+                new URLSearchParams({ username, email, recaptchaResponse }),
+                {
+                    transformResponse: [(r) => r],
+                    validateStatus: () => true,
+                }
+            )
+            .then((response) => {
+                const body = response.data
                 let resp
                 const errorMessages = []
 
-                if (err || res.statusCode !== 200) {
+                if (response.status !== 200) {
                     try {
                         resp = JSON.parse(body)
                     } catch (e) {
@@ -88,7 +93,20 @@ exports = module.exports = function (req, res) {
                 flash.type = 'Success!'
 
                 overallRes.render('account/register', { flash })
-            }
-        )
+            })
+            .catch(() => {
+                flash.class = 'alert-danger'
+                flash.messages = [
+                    {
+                        msg: 'Invalid registration sign up. Please try again later.',
+                    },
+                ]
+                flash.type = 'Error!'
+
+                return overallRes.render('account/register', {
+                    flash,
+                    recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
+                })
+            })
     }
 }

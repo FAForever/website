@@ -1,4 +1,4 @@
-const request = require('request')
+const axios = require('axios')
 const flash = {}
 
 exports = module.exports = function (req, res) {
@@ -7,38 +7,31 @@ exports = module.exports = function (req, res) {
     locals.section = 'account'
     const overallRes = res
 
-    request.post(
-        {
-            url: process.env.API_URL + '/users/buildSteamLinkUrl',
-            headers: {
-                Authorization:
-                    'Bearer ' +
-                    req.requestContainer.get('UserService').getUser()
-                        ?.oAuthPassport.token,
-            },
-            form: {
+    axios
+        .post(
+            process.env.API_URL + '/users/buildSteamLinkUrl',
+            new URLSearchParams({
                 callbackUrl:
                     req.protocol +
                     '://' +
                     req.get('host') +
                     '/account/link?done',
-            },
-        },
-        function (err, res, body) {
-            if (err) {
-                flash.class = 'alert-danger'
-                flash.messages = [
-                    {
-                        msg: 'Your steam account was not successfully linked! Please verify you logged into the website correctly.',
-                    },
-                ]
-                flash.type = 'Error!'
-
-                return overallRes.render('account/linkSteam', { flash })
+            }),
+            {
+                headers: {
+                    Authorization:
+                        'Bearer ' +
+                        req.requestContainer.get('UserService').getUser()
+                            ?.oAuthPassport.token,
+                },
+                transformResponse: [(r) => r],
+                validateStatus: () => true,
             }
+        )
+        .then((response) => {
             // Must not be valid, check to see if errors, otherwise return generic error.
             try {
-                body = JSON.parse(body)
+                const body = JSON.parse(response.data)
 
                 if (body.steamUrl) {
                     return overallRes.redirect(body.steamUrl)
@@ -67,6 +60,16 @@ exports = module.exports = function (req, res) {
 
                 overallRes.render('account/linkSteam', { flash })
             }
-        }
-    )
+        })
+        .catch(() => {
+            flash.class = 'alert-danger'
+            flash.messages = [
+                {
+                    msg: 'Your steam account was not successfully linked! Please verify you logged into the website correctly.',
+                },
+            ]
+            flash.type = 'Error!'
+
+            return overallRes.render('account/linkSteam', { flash })
+        })
 }

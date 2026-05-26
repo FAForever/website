@@ -1,4 +1,4 @@
-const request = require('request')
+const axios = require('axios')
 const error = require('../post/error')
 
 exports = module.exports = function (req, res) {
@@ -25,29 +25,34 @@ exports = module.exports = function (req, res) {
 
     const overallRes = res
 
-    request.get(
-        {
-            url: process.env.API_URL + '/users/buildGogProfileToken',
+    axios
+        .get(process.env.API_URL + '/users/buildGogProfileToken', {
             headers: {
                 Authorization:
                     'Bearer ' +
                     req.requestContainer.get('UserService').getUser()
                         ?.oAuthPassport.token,
             },
-            form: {},
-        },
-        function (err, res, body) {
+            transformResponse: [(r) => r],
+            validateStatus: () => true,
+        })
+        .then((response) => {
             locals.gogToken = 'unable to obtain token'
-            if (err || res.statusCode !== 200) {
+            if (response.status !== 200) {
                 flash = {}
-                error.parseApiErrors(body, flash)
+                error.parseApiErrors(response.data, flash)
                 return overallRes.render('account/linkGog', { flash })
             }
 
-            locals.gogToken = JSON.parse(body).gogToken
+            locals.gogToken = JSON.parse(response.data).gogToken
 
             // Render the view
             overallRes.render('account/linkGog', { flash })
-        }
-    )
+        })
+        .catch(() => {
+            locals.gogToken = 'unable to obtain token'
+            flash = {}
+            error.parseApiErrors(null, flash)
+            return overallRes.render('account/linkGog', { flash })
+        })
 }
