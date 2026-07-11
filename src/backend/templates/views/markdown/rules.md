@@ -96,7 +96,8 @@ For competitive games, playing to win doesn’t have to mean following fixed str
 
 * **Leaving games**: Don’t leave in the first 5 minutes, and don’t frequently\* leave games.
     * Using the recall function, or leaving an abandoned game (for example, multiple players disconnecting together, or the players on both teams agree to restart the game), is permitted.
-    * In share until death games, if possible, try instead to transfer units to a teammate and move somewhere safe before going AFK. If going AFK is not possible, make sure you minimize friendly fire from your ACU explosion before you leave the game.
+    * In Share Until Death or Partial Share games: if possible, transfer your units and move your ACU to a safe spot before going AFK. If you must leave, try to avoid causing friendly fire with your ACU explosion. Do not destroy your units.
+    * In Union Control: Just disconnect. Your ACU stays alive, and your team can control your units. Do not self-destruct your ACU.
     * \*As a rough guideline, the mod team will typically consider someone being reported for 3+ games in a week by teammates as 'frequently' leaving games
 * **Forced surrender** — Do not try to force teammates to give up if they’re still playing to win.
 * **CTRL-K** — Do not self-destruct, also known as or "CTRL-K", your base or significant quantities of units.
