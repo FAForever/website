@@ -1,4 +1,4 @@
-FROM node:22-bookworm as builder
+FROM node:24-trixie as builder
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
 ENV NODE_ENV development
 
@@ -9,7 +9,7 @@ RUN yarn install --production=false --frozen-lockfile
 RUN yarn build
 RUN yarn install --production=true --ignore-optional --frozen-lockfile
 
-FROM node:22-bookworm-slim as runtime
+FROM node:24-trixie-slim as runtime
 ENV NODE_ENV production
 
 COPY --from=builder /usr/bin/dumb-init /usr/bin/dumb-init
