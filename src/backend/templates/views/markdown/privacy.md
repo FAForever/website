@@ -1,6 +1,6 @@
 # Forged Alliance Forever Privacy Statement
 
-Effective date: _May 25, 2018_ (Last updated: _July 11, 2025_)
+Effective date: _May 25, 2018_ (Last updated: _October 28, 2026_)
 
 Thanks for playing Supreme Commander: Forged Alliance in our community. We want to make it easy for you to hold on to your private information and control your online identity, as such, this document outlines what private data we collect and how we process it.
 
@@ -71,6 +71,7 @@ Under the GDPR, you have the following rights concerning your personal data:
 - **Right to lodge a complaint:** You have the right to file a complaint with a supervisory authority (Art. 77 GDPR).
 
 To exercise these rights, please contact us at admin@faforever.com.
+To delete your account we have a self-service deletion request available at https://user.faforever.com/ucp.
 
 ## Sharing of information
 We do not share your private information with any third parties for any reason, however your nickname as provided during account creation and changeable on the website is considered public, and is thus shared with other users in several instances during your use of our service.
